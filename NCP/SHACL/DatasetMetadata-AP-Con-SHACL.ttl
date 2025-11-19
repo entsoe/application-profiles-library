@@ -1099,6 +1099,7 @@ dm:AllowedClasses-property
         sh:name         "ClassNotInProfile";
         sh:order        1;
         sh:path         rdf:type;
+		sh:deactivated	true;
         sh:severity     sh:Info .
 
 dm:AllowedClasses-node
