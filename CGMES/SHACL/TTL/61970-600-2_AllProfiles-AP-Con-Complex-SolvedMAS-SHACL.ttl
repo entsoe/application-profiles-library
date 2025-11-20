@@ -10,21 +10,21 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dash:  <http://datashapes.org/dash#> .
-@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 
 sm6002:Ontology  rdf:type         owl:Ontology ;
-        dct:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
-        dct:creator           "ENTSO-E CIM EG"@en ;
-        dct:description       "The constraints for solved MAS."@en ;
-        dct:identifier        "urn:uuid:ca509b68-4b4c-463b-8760-56790d4848ee" ;
-        dct:issued            "2021-10-19T12:09:21Z"^^xsd:dateTime ;
-        dct:language          "en-GB" ;
-        dct:modified          "2020-10-19"^^xsd:date ;
-        dct:publisher         "ENTSO-E"@en ;
-        dct:rights            "Copyright"@en ;
-        dct:rightsHolder      "ENTSO-E"@en ;
-        dct:title             "Solved MAS Constraints"@en ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "The constraints for solved MAS."@en ;
+        dcterms:identifier        "ca509b68-4b4c-463b-8760-56790d4848ee" ;
+        dcterms:issued            "2021-10-19T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2020-10-19"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "Solved MAS Constraints"@en ;
         owl:versionIRI        <http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0> ;
         owl:versionInfo       "3.0.0"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.-->
-<rdf:RDF xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://iec.ch/TC57/CIM100" xmlns:eu="http://iec.ch/TC57/CIM100-European#"  xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"  xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#" xmlns:dct="http://purl.org/dc/terms/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:owl="http://www.w3.org/2002/07/owl#" >
+<rdf:RDF xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://iec.ch/TC57/CIM100" xmlns:eu="http://iec.ch/TC57/CIM100-European#"  xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"  xmlns:dm="http://iec.ch/TC57/61970-552/DifferenceModel/1#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:owl="http://www.w3.org/2002/07/owl#" >
 <!--  ********** Header **************** -->
 <!-- RDFS header -->
 <rdf:Description rdf:about = "http://iec.ch/TC57/ns/CIM/FileHeader-EU#Ontology">
@@ -8,21 +8,21 @@
 	<dcat:landingPage>https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/</dcat:landingPage>
 	<dcat:theme xml:lang ="en">vocabulary</dcat:theme>
 	<owl:versionIRI rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1"/>
-	<dct:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dct:conformsTo>
-	<dct:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dct:conformsTo>
-	<dct:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dct:conformsTo>
-	<dct:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dct:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+	<dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
 	<owl:versionInfo xml:lang ="en">3.0.0</owl:versionInfo>
-	<dct:creator xml:lang ="en">ENTSO-E CIM EG</dct:creator>
-	<dct:description xml:lang ="en">This vocabulary is describing the file header profile from IEC 61970-600-2.</dct:description>
-	<dct:identifier>6f8a0699-7366-4cb2-9220-d9d44d586081</dct:identifier>
-	<dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-01-27T12:09:21Z</dct:issued>
-	<dct:language>en-GB</dct:language>
-	<dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-10-12</dct:modified>
-	<dct:publisher xml:lang ="en">ENTSO-E</dct:publisher>
-	<dct:rights xml:lang ="en">Copyright</dct:rights>
-	<dct:rightsHolder xml:lang ="en">ENTSO-E</dct:rightsHolder>
-	<dct:title xml:lang ="en">File Header Vocabulary</dct:title>
+	<dcterms:creator xml:lang ="en">ENTSO-E CIM EG</dcterms:creator>
+	<dcterms:description xml:lang ="en">This vocabulary is describing the file header profile from IEC 61970-600-2.</dcterms:description>
+	<dcterms:identifier>6f8a0699-7366-4cb2-9220-d9d44d586081</dcterms:identifier>
+	<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-01-27T12:09:21Z</dcterms:issued>
+	<dcterms:language>en-GB</dcterms:language>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-10-12</dcterms:modified>
+	<dcterms:publisher xml:lang ="en">ENTSO-E</dcterms:publisher>
+	<dcterms:rights xml:lang ="en">Copyright</dcterms:rights>
+	<dcterms:rightsHolder xml:lang ="en">ENTSO-E</dcterms:rightsHolder>
+	<dcterms:title xml:lang ="en">File Header Vocabulary</dcterms:title>
 <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
 </rdf:Description >
 <!-- ******************************** -->

@@ -5,7 +5,7 @@
 @prefix dash:    <http://datashapes.org/dash#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
-@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix dcterms:     <http://purl.org/dc/terms/> .
 @prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
 @prefix ido:     <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
@@ -19,17 +19,17 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 sv:Ontology  rdf:type         owl:Ontology ;
-        dct:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
-        dct:creator           "ENTSO-E CIM EG"@en ;
-        dct:description       "The constraints for the state variables profile from IEC 61970-600-2."@en ;
-        dct:identifier        "urn:uuid:40186e81-76e9-4901-9075-b44f94aee282" ;
-        dct:issued            "2021-10-18T12:09:21Z"^^xsd:dateTime ;
-        dct:language          "en-GB" ;
-        dct:modified          "2020-10-12"^^xsd:date ;
-        dct:publisher         "ENTSO-E"@en ;
-        dct:rights            "Copyright"@en ;
-        dct:rightsHolder      "ENTSO-E"@en ;
-        dct:title             "State Variables Constraints"@en ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "The constraints for the state variables profile from IEC 61970-600-2."@en ;
+        dcterms:identifier        "40186e81-76e9-4901-9075-b44f94aee282" ;
+        dcterms:issued            "2021-10-18T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2020-10-12"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "State Variables Constraints"@en ;
         owl:versionIRI        <http://iec.ch/TC57/ns/CIM/StateVariables-EU/Constraints/3.0> ;
         owl:versionInfo       "3.0.0"@en ;
         dcat:keyword          "SV" ;

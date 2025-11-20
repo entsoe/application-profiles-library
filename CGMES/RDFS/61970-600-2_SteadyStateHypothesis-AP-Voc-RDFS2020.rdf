@@ -5,7 +5,7 @@ xmlns:cim="http://iec.ch/TC57/CIM100#"
 xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
 xmlns:dc="http://purl.org/dc/elements/1.1/"
 xmlns:dcat="http://www.w3.org/ns/dcat#"
-xmlns:dct="http://purl.org/dc/terms/"
+xmlns:dcterms="http://purl.org/dc/terms/"
 xmlns:eu="http://iec.ch/TC57/CIM100-European#"
 xmlns:owl="http://www.w3.org/2002/07/owl#"
 xmlns:prof="http://iec.ch/TC57/ns/CIM/prof-cim#"
@@ -27,21 +27,21 @@ xml:base ="http://iec.ch/TC57/CIM100"
 	<owl:priorVersion rdf:resource="http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"/>
 	<dcat:theme xml:lang ="en">vocabulary</dcat:theme>
 	<owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/3.0"/>
-	<dct:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dct:conformsTo>
-	<dct:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dct:conformsTo>
-	<dct:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dct:conformsTo>
-	<dct:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dct:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+	<dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+	<dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
 	<owl:versionInfo xml:lang ="en">3.0.0</owl:versionInfo>
-	<dct:creator xml:lang ="en">ENTSO-E CIM EG</dct:creator>
-	<dct:description xml:lang ="en">This vocabulary is describing the steady state hypothesis profile from IEC 61970-600-2.</dct:description>
-	<dct:identifier>urn:uuid:5aabb9bd-8fe3-4f3c-a0fa-f6902e767ce5</dct:identifier>
-	<dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-01-27T12:19:09Z</dct:issued>
-	<dct:language>en-GB</dct:language>
-	<dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-10-12</dct:modified>
-	<dct:publisher xml:lang ="en">ENTSO-E</dct:publisher>
-	<dct:rights xml:lang ="en">Copyright</dct:rights>
-	<dct:rightsHolder xml:lang ="en">ENTSO-E</dct:rightsHolder>
-	<dct:title xml:lang ="en">Steady State Hypothesis Vocabulary</dct:title>
+	<dcterms:creator xml:lang ="en">ENTSO-E CIM EG</dcterms:creator>
+	<dcterms:description xml:lang ="en">This vocabulary is describing the steady state hypothesis profile from IEC 61970-600-2.</dcterms:description>
+	<dcterms:identifier>5aabb9bd-8fe3-4f3c-a0fa-f6902e767ce5</dcterms:identifier>
+	<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-01-27T12:19:09Z</dcterms:issued>
+	<dcterms:language>en-GB</dcterms:language>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-10-12</dcterms:modified>
+	<dcterms:publisher xml:lang ="en">ENTSO-E</dcterms:publisher>
+	<dcterms:rights xml:lang ="en">Copyright</dcterms:rights>
+	<dcterms:rightsHolder xml:lang ="en">ENTSO-E</dcterms:rightsHolder>
+	<dcterms:title xml:lang ="en">Steady State Hypothesis Vocabulary</dcterms:title>
 <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
 </rdf:Description >
 <!-- ******************************** -->
