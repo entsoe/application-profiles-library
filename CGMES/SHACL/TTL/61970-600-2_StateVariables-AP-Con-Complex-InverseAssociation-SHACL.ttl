@@ -114,7 +114,7 @@ svi:TopologicalNode.TopologicalIsland-cardinality
         sh:message      "Wrong number of associated instances." ;
         sh:name         "TopologicalNode.TopologicalIsland-cardinality" ;
         sh:order        6 ;
-        sh:path         [sh:inversePath  cim:TopologicalIsland.TopologicalNode] ;
+        sh:path         [sh:inversePath  cim:TopologicalIsland.TopologicalNodes] ;
         sh:severity     sh:Violation .        
                 
 svi:TapChanger  a     sh:NodeShape ;
