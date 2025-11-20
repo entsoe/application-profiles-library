@@ -5,7 +5,7 @@
 @prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 @prefix cim17: <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
-@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix dcterms:   <http://purl.org/dc/terms/> .
 @prefix dm:    <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
 @prefix gd:    <https://ap-con.cim4.eu/GridDisturbance-Simple/1.1#> .
 @prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
@@ -18,16 +18,16 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 gd:Ontology  rdf:type     owl:Ontology;
-        dct:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1";
-        dct:description   "Describing constraints extracted from RDFS.";
-        dct:identifier    "urn:uuid90c382e9-52ef-4ee7-9fd0-8c8f6a2f5e4c";
-        dct:issued        "2025-09-11T16:31:52.209415800"^^xsd:dateTime;
-        dct:language      "en-GB";
-        dct:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dct:modified      "2025-09-11"^^xsd:date;
-        dct:publisher     "ENTSO-E"@en;
-        dct:rightsHolder  "ENTSO-E"@en;
-        dct:title         "Grid Disturbance vocabulary"@en;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1";
+        dcterms:description   "Describing constraints extracted from RDFS.";
+        dcterms:identifier    "90c382e9-52ef-4ee7-9fd0-8c8f6a2f5e4c";
+        dcterms:issued        "2025-09-11T16:31:52.209415800"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2025-09-11"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Grid Disturbance vocabulary"@en;
         owl:versionIRI    <1.1/1.1>;
         owl:versionInfo   "2.2.4"@en;
         dcat:keyword      "GD";

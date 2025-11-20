@@ -19,7 +19,7 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 dm:Ontology  rdf:type         owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "urn:uuid0a80dee4-e743-4ef2-816a-08241688fb39";
+        dcterms:identifier    "0a80dee4-e743-4ef2-816a-08241688fb39";
         dcterms:issued        "2025-02-04T20:52:40.541662800"^^xsd:dateTime;
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
         dcterms:modified      "2025-02-04"^^xsd:date;

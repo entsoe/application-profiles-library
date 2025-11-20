@@ -22,7 +22,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the power system profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0</dcterms:identifier>
+    <dcterms:identifier>29bfa45c-7d04-42f1-97c1-2e0f70f476a0</dcterms:identifier>
     <dcat:keyword>PSP</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

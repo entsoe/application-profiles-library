@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the equipment reliability profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:5f727c5c-b49f-47be-b750-a00fefb7e806</dcterms:identifier>
+    <dcterms:identifier>5f727c5c-b49f-47be-b750-a00fefb7e806</dcterms:identifier>
     <dcat:keyword>ER</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

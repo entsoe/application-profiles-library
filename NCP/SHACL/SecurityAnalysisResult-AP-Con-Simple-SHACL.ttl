@@ -5,7 +5,7 @@
 @prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 @prefix cim17: <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
-@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix dcterms:   <http://purl.org/dc/terms/> .
 @prefix dm:    <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
 @prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix md:    <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
@@ -18,16 +18,16 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 sar:Ontology  rdf:type    owl:Ontology;
-        dct:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
-        dct:description   "Describing constraints extracted from RDFS.";
-        dct:identifier    "urn:uuidf3efc6a9-11f3-41db-8f36-7821249b2afd";
-        dct:issued        "2025-09-11T16:35:41.483683"^^xsd:dateTime;
-        dct:language      "en-GB";
-        dct:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dct:modified      "2025-09-11"^^xsd:date;
-        dct:publisher     "ENTSO-E"@en;
-        dct:rightsHolder  "ENTSO-E"@en;
-        dct:title         "Security Analysis Result Vocabulary"@en;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
+        dcterms:description   "Describing constraints extracted from RDFS.";
+        dcterms:identifier    "f3efc6a9-11f3-41db-8f36-7821249b2afd";
+        dcterms:issued        "2025-09-11T16:35:41.483683"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2025-09-11"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Security Analysis Result Vocabulary"@en;
         owl:versionIRI    <2.5/2.5>;
         owl:versionInfo   "2.5.0"@en;
         dcat:keyword      "SAR";

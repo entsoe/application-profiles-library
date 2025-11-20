@@ -3,7 +3,7 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix cc:   <https://common-constraints.eu/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix dm:   <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
 @prefix ido:  <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
@@ -16,16 +16,16 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 psp:Ontology  rdf:type    owl:Ontology;
-        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1";
-        dct:description   "Describing constraints extracted from RDFS.";
-        dct:identifier    "urn:uuid522f682d-a80f-472a-b0c7-784259eb3fef";
-        dct:issued        "2025-09-11T16:34:23.202427900"^^xsd:dateTime;
-        dct:language      "en-GB";
-        dct:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dct:modified      "2025-01-04"^^xsd:date;
-        dct:publisher     "ENTSO-E"@en;
-        dct:rightsHolder  "ENTSO-E"@en;
-        dct:title         "Power System Project Vocabulary"@en;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1";
+        dcterms:description   "Describing constraints extracted from RDFS.";
+        dcterms:identifier    "522f682d-a80f-472a-b0c7-784259eb3fef";
+        dcterms:issued        "2025-09-11T16:34:23.202427900"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2025-01-04"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Power System Project Vocabulary"@en;
         owl:versionIRI    <2.3/2.3>;
         owl:versionInfo   "2.3.4"@en;
         dcat:keyword      "PSP";
@@ -67,23 +67,23 @@ psp:DifferenceModel-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              3;
-        sh:property           [ sh:path  dct:Resource.rights ];
-        sh:property           [ sh:path  dct:Resource.accessRights ];
-        sh:property           [ sh:path  dct:Resource.description ];
-        sh:property           [ sh:path  dct:Resource.rightsHolder ];
+        sh:property           [ sh:path  dcterms:Resource.rights ];
+        sh:property           [ sh:path  dcterms:Resource.accessRights ];
+        sh:property           [ sh:path  dcterms:Resource.description ];
+        sh:property           [ sh:path  dcterms:Resource.rightsHolder ];
         sh:property           [ sh:path  dcat:Resource.hasVersion ];
-        sh:property           [ sh:path  dct:Resource.conformsTo ];
+        sh:property           [ sh:path  dcterms:Resource.conformsTo ];
         sh:property           [ sh:path  dcat:Resource.keyword ];
-        sh:property           [ sh:path  dct:Resource.issued ];
-        sh:property           [ sh:path  dct:Resource.creator ];
-        sh:property           [ sh:path  dct:Resource.modified ];
+        sh:property           [ sh:path  dcterms:Resource.issued ];
+        sh:property           [ sh:path  dcterms:Resource.creator ];
+        sh:property           [ sh:path  dcterms:Resource.modified ];
         sh:property           [ sh:path  dcat:Resource.version ];
-        sh:property           [ sh:path  dct:Resource.identifier ];
-        sh:property           [ sh:path  dct:Resource.license ];
-        sh:property           [ sh:path  dct:Resource.title ];
+        sh:property           [ sh:path  dcterms:Resource.identifier ];
+        sh:property           [ sh:path  dcterms:Resource.license ];
+        sh:property           [ sh:path  dcterms:Resource.title ];
         sh:property           [ sh:path  adms:Resource.versionNotes ];
         sh:property           [ sh:path  dcat:Resource.isVersionOf ];
-        sh:property           [ sh:path  dct:Resource.publisher ];
+        sh:property           [ sh:path  dcterms:Resource.publisher ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DifferenceModel .
 
@@ -100,7 +100,7 @@ psp:Resource.rights-datatype
         sh:name         "Resource.rights-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        25;
-        sh:path         dct:Resource.rights;
+        sh:path         dcterms:Resource.rights;
         sh:severity     sh:Violation .
 
 psp:Resource.rights-cardinality
@@ -111,7 +111,7 @@ psp:Resource.rights-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.rights-cardinality";
         sh:order        37;
-        sh:path         dct:Resource.rights;
+        sh:path         dcterms:Resource.rights;
         sh:severity     sh:Violation .
 
 psp:Resource.accessRights-datatype
@@ -123,7 +123,7 @@ psp:Resource.accessRights-datatype
         sh:name         "Resource.accessRights-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        24;
-        sh:path         dct:Resource.accessRights;
+        sh:path         dcterms:Resource.accessRights;
         sh:severity     sh:Violation .
 
 psp:Resource.accessRights-cardinality
@@ -134,7 +134,7 @@ psp:Resource.accessRights-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.accessRights-cardinality";
         sh:order        36;
-        sh:path         dct:Resource.accessRights;
+        sh:path         dcterms:Resource.accessRights;
         sh:severity     sh:Violation .
 
 psp:Resource.description-datatype
@@ -146,7 +146,7 @@ psp:Resource.description-datatype
         sh:name         "Resource.description-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        23;
-        sh:path         dct:Resource.description;
+        sh:path         dcterms:Resource.description;
         sh:severity     sh:Violation .
 
 psp:Resource.description-cardinality
@@ -157,7 +157,7 @@ psp:Resource.description-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.description-cardinality";
         sh:order        35;
-        sh:path         dct:Resource.description;
+        sh:path         dcterms:Resource.description;
         sh:severity     sh:Violation .
 
 psp:Resource.publisher-datatype
@@ -169,7 +169,7 @@ psp:Resource.publisher-datatype
         sh:name         "Resource.publisher-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        22;
-        sh:path         dct:Resource.publisher;
+        sh:path         dcterms:Resource.publisher;
         sh:severity     sh:Violation .
 
 psp:Resource.publisher-cardinality
@@ -180,7 +180,7 @@ psp:Resource.publisher-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.publisher-cardinality";
         sh:order        34;
-        sh:path         dct:Resource.publisher;
+        sh:path         dcterms:Resource.publisher;
         sh:severity     sh:Violation .
 
 psp:Resource.isVersionOf-datatype
@@ -239,7 +239,7 @@ psp:Resource.title-datatype
         sh:name         "Resource.title-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        19;
-        sh:path         dct:Resource.title;
+        sh:path         dcterms:Resource.title;
         sh:severity     sh:Violation .
 
 psp:Resource.title-cardinality
@@ -250,7 +250,7 @@ psp:Resource.title-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.title-cardinality";
         sh:order        31;
-        sh:path         dct:Resource.title;
+        sh:path         dcterms:Resource.title;
         sh:severity     sh:Violation .
 
 psp:Resource.license-datatype
@@ -262,7 +262,7 @@ psp:Resource.license-datatype
         sh:name         "Resource.license-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        18;
-        sh:path         dct:Resource.license;
+        sh:path         dcterms:Resource.license;
         sh:severity     sh:Violation .
 
 psp:Resource.license-cardinality
@@ -273,7 +273,7 @@ psp:Resource.license-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.license-cardinality";
         sh:order        30;
-        sh:path         dct:Resource.license;
+        sh:path         dcterms:Resource.license;
         sh:severity     sh:Violation .
 
 psp:Resource.identifier-datatype
@@ -285,7 +285,7 @@ psp:Resource.identifier-datatype
         sh:name         "Resource.identifier-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        17;
-        sh:path         dct:Resource.identifier;
+        sh:path         dcterms:Resource.identifier;
         sh:severity     sh:Violation .
 
 psp:Resource.identifier-cardinality
@@ -296,7 +296,7 @@ psp:Resource.identifier-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.identifier-cardinality";
         sh:order        29;
-        sh:path         dct:Resource.identifier;
+        sh:path         dcterms:Resource.identifier;
         sh:severity     sh:Violation .
 
 psp:Resource.version-datatype
@@ -331,7 +331,7 @@ psp:Resource.modified-datatype
         sh:name         "Resource.modified-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        15;
-        sh:path         dct:Resource.modified;
+        sh:path         dcterms:Resource.modified;
         sh:severity     sh:Violation .
 
 psp:Resource.modified-cardinality
@@ -342,7 +342,7 @@ psp:Resource.modified-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.modified-cardinality";
         sh:order        27;
-        sh:path         dct:Resource.modified;
+        sh:path         dcterms:Resource.modified;
         sh:severity     sh:Violation .
 
 psp:Resource.creator-datatype
@@ -354,7 +354,7 @@ psp:Resource.creator-datatype
         sh:name         "Resource.creator-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        14;
-        sh:path         dct:Resource.creator;
+        sh:path         dcterms:Resource.creator;
         sh:severity     sh:Violation .
 
 psp:Resource.creator-cardinality
@@ -365,7 +365,7 @@ psp:Resource.creator-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.creator-cardinality";
         sh:order        26;
-        sh:path         dct:Resource.creator;
+        sh:path         dcterms:Resource.creator;
         sh:severity     sh:Violation .
 
 psp:Resource.issued-datatype
@@ -377,7 +377,7 @@ psp:Resource.issued-datatype
         sh:name         "Resource.issued-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        13;
-        sh:path         dct:Resource.issued;
+        sh:path         dcterms:Resource.issued;
         sh:severity     sh:Violation .
 
 psp:Resource.issued-cardinality
@@ -388,7 +388,7 @@ psp:Resource.issued-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.issued-cardinality";
         sh:order        25;
-        sh:path         dct:Resource.issued;
+        sh:path         dcterms:Resource.issued;
         sh:severity     sh:Violation .
 
 psp:Resource.keyword-datatype
@@ -423,7 +423,7 @@ psp:Resource.conformsTo-datatype
         sh:name         "Resource.conformsTo-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        11;
-        sh:path         dct:Resource.conformsTo;
+        sh:path         dcterms:Resource.conformsTo;
         sh:severity     sh:Violation .
 
 psp:Resource.hasVersion-datatype
@@ -458,7 +458,7 @@ psp:Resource.rightsHolder-datatype
         sh:name         "Resource.rightsHolder-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        9;
-        sh:path         dct:Resource.rightsHolder;
+        sh:path         dcterms:Resource.rightsHolder;
         sh:severity     sh:Violation .
 
 psp:Resource.rightsHolder-cardinality
@@ -469,7 +469,7 @@ psp:Resource.rightsHolder-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "Resource.rightsHolder-cardinality";
         sh:order        21;
-        sh:path         dct:Resource.rightsHolder;
+        sh:path         dcterms:Resource.rightsHolder;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProject.SilhouetteProject-propertyInverse
@@ -829,21 +829,21 @@ psp:PowerSystemProject-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              2;
-        sh:property           [ sh:path  dct:Resource.rights ];
-        sh:property           [ sh:path  dct:Resource.accessRights ];
-        sh:property           [ sh:path  dct:Resource.description ];
-        sh:property           [ sh:path  dct:Resource.publisher ];
+        sh:property           [ sh:path  dcterms:Resource.rights ];
+        sh:property           [ sh:path  dcterms:Resource.accessRights ];
+        sh:property           [ sh:path  dcterms:Resource.description ];
+        sh:property           [ sh:path  dcterms:Resource.publisher ];
         sh:property           [ sh:path  dcat:Resource.isVersionOf ];
         sh:property           [ sh:path  adms:Resource.versionNotes ];
-        sh:property           [ sh:path  dct:Resource.title ];
-        sh:property           [ sh:path  dct:Resource.license ];
-        sh:property           [ sh:path  dct:Resource.identifier ];
+        sh:property           [ sh:path  dcterms:Resource.title ];
+        sh:property           [ sh:path  dcterms:Resource.license ];
+        sh:property           [ sh:path  dcterms:Resource.identifier ];
         sh:property           [ sh:path  dcat:Resource.version ];
-        sh:property           [ sh:path  dct:Resource.modified ];
-        sh:property           [ sh:path  dct:Resource.creator ];
-        sh:property           [ sh:path  dct:Resource.issued ];
+        sh:property           [ sh:path  dcterms:Resource.modified ];
+        sh:property           [ sh:path  dcterms:Resource.creator ];
+        sh:property           [ sh:path  dcterms:Resource.issued ];
         sh:property           [ sh:path  dcat:Resource.keyword ];
-        sh:property           [ sh:path  dct:Resource.conformsTo ];
+        sh:property           [ sh:path  dcterms:Resource.conformsTo ];
         sh:property           [ sh:path  dcat:Resource.hasVersion ];
         sh:property           [ sh:path  nc:PowerSystemProject.cancelled ];
         sh:property           [ sh:path  nc:PowerSystemProject.commissioned ];
@@ -858,7 +858,7 @@ psp:PowerSystemProject-AllowedProperties
         sh:property           [ sh:path  nc:PowerSystemProject.priority ];
         sh:property           [ sh:path  nc:PowerSystemProject.AvailabilitySchedule ];
         sh:property           [ sh:path  nc:PowerSystemProject.officialExpectedCommissioning ];
-        sh:property           [ sh:path  dct:Resource.rightsHolder ];
+        sh:property           [ sh:path  dcterms:Resource.rightsHolder ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerSystemProject .
 
@@ -892,7 +892,7 @@ psp:PowerSystemProjectGroup.description-datatype
         sh:name         "PowerSystemProjectGroup.description-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        1;
-        sh:path         dct:PowerSystemProjectGroup.description;
+        sh:path         dcterms:PowerSystemProjectGroup.description;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup.description-cardinality
@@ -903,7 +903,7 @@ psp:PowerSystemProjectGroup.description-cardinality
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSystemProjectGroup.description-cardinality";
         sh:order        3;
-        sh:path         dct:PowerSystemProjectGroup.description;
+        sh:path         dcterms:PowerSystemProjectGroup.description;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup.identifier-datatype
@@ -915,7 +915,7 @@ psp:PowerSystemProjectGroup.identifier-datatype
         sh:name         "PowerSystemProjectGroup.identifier-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        0;
-        sh:path         dct:PowerSystemProjectGroup.identifier;
+        sh:path         dcterms:PowerSystemProjectGroup.identifier;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup.identifier-cardinality
@@ -927,7 +927,7 @@ psp:PowerSystemProjectGroup.identifier-cardinality
         sh:minCount     1;
         sh:name         "PowerSystemProjectGroup.identifier-cardinality";
         sh:order        2;
-        sh:path         dct:PowerSystemProjectGroup.identifier;
+        sh:path         dcterms:PowerSystemProjectGroup.identifier;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup.title-datatype
@@ -939,7 +939,7 @@ psp:PowerSystemProjectGroup.title-datatype
         sh:name         "PowerSystemProjectGroup.title-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        -1;
-        sh:path         dct:PowerSystemProjectGroup.title;
+        sh:path         dcterms:PowerSystemProjectGroup.title;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup.title-cardinality
@@ -951,7 +951,7 @@ psp:PowerSystemProjectGroup.title-cardinality
         sh:minCount     1;
         sh:name         "PowerSystemProjectGroup.title-cardinality";
         sh:order        1;
-        sh:path         dct:PowerSystemProjectGroup.title;
+        sh:path         dcterms:PowerSystemProjectGroup.title;
         sh:severity     sh:Violation .
 
 psp:PowerSystemProjectGroup-AllowedProperties
@@ -963,9 +963,9 @@ psp:PowerSystemProjectGroup-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              1;
-        sh:property           [ sh:path  dct:PowerSystemProjectGroup.description ];
-        sh:property           [ sh:path  dct:PowerSystemProjectGroup.identifier ];
-        sh:property           [ sh:path  dct:PowerSystemProjectGroup.title ];
+        sh:property           [ sh:path  dcterms:PowerSystemProjectGroup.description ];
+        sh:property           [ sh:path  dcterms:PowerSystemProjectGroup.identifier ];
+        sh:property           [ sh:path  dcterms:PowerSystemProjectGroup.title ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerSystemProjectGroup .
 

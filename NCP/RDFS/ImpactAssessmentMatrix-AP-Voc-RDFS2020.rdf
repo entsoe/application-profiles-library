@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the impact assessment matrix profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:1eb41c0b-3c58-4762-a79b-33220d051d32</dcterms:identifier>
+    <dcterms:identifier>1eb41c0b-3c58-4762-a79b-33220d051d32</dcterms:identifier>
     <dcat:keyword>IAM</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the aseessed element profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:a2de1738-214d-4552-b894-5b33cbc34218</dcterms:identifier>
+    <dcterms:identifier>a2de1738-214d-4552-b894-5b33cbc34218</dcterms:identifier>
     <dcat:keyword>AE</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

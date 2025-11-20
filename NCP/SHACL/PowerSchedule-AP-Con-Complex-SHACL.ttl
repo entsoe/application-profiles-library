@@ -19,7 +19,7 @@ psc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for power schedule profile."@en ;
-        dcterms:identifier        "urn:uuid:7a8899c4-08fb-463c-b4c7-825237917618" ;
+        dcterms:identifier        "7a8899c4-08fb-463c-b4c7-825237917618" ;
         dcterms:issued            "2025-01-04T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
         dcterms:modified          "2025-01-04"^^xsd:date ;

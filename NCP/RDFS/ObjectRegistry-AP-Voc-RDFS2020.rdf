@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the object registry profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:14166b65-abaa-4611-b466-34975c15c27d</dcterms:identifier>
+    <dcterms:identifier>14166b65-abaa-4611-b466-34975c15c27d</dcterms:identifier>
     <dcat:keyword>OR</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

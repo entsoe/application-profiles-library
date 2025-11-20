@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the contingency profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:8947de1c-6e53-4f1f-82c3-99ef118db9eb</dcterms:identifier>
+    <dcterms:identifier>8947de1c-6e53-4f1f-82c3-99ef118db9eb</dcterms:identifier>
     <dcat:keyword>CO</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

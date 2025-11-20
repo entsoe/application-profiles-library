@@ -20,7 +20,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the dataset metadata profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:f7bb07f7-8614-4ff5-88da-2b4824b143f1</dcterms:identifier>
+    <dcterms:identifier>f7bb07f7-8614-4ff5-88da-2b4824b143f1</dcterms:identifier>
     <dcat:keyword>DM</dcat:keyword>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-02-04</dcterms:modified>

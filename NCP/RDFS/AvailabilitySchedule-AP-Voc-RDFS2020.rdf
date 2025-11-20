@@ -21,7 +21,7 @@
     <dcterms:conformsTo>file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the availability schedule profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:8d128e35-86c7-4d67-b2dd-93229bf1005a</dcterms:identifier>
+    <dcterms:identifier>8d128e35-86c7-4d67-b2dd-93229bf1005a</dcterms:identifier>
     <dcat:keyword>AS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

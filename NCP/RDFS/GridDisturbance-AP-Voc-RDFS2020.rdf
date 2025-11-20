@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG PRA project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the grid disturbance profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16</dcterms:identifier>
+    <dcterms:identifier>81c488d7-a09f-49ef-a3cd-3bb19a1d6f16</dcterms:identifier>
     <dcat:keyword>GD</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

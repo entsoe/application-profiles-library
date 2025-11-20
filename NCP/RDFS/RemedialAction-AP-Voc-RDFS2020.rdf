@@ -21,7 +21,7 @@
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the remedial action profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:57fcfe0e-258c-45f2-b2ed-ff5b6a9859bc</dcterms:identifier>
+    <dcterms:identifier>57fcfe0e-258c-45f2-b2ed-ff5b6a9859bc</dcterms:identifier>
     <dcat:keyword>RA</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

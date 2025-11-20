@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the state instruction schedule profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:af884936-ea95-416b-b4c9-1214caa68658</dcterms:identifier>
+    <dcterms:identifier>af884936-ea95-416b-b4c9-1214caa68658</dcterms:identifier>
     <dcat:keyword>SIS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

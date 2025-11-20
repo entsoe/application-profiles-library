@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the steady state hypothesis schedule.</dcterms:description>
-    <dcterms:identifier>urn:uuid:0d815deb-9968-4c6f-85d7-503d49e0b81f</dcterms:identifier>
+    <dcterms:identifier>0d815deb-9968-4c6f-85d7-503d49e0b81f</dcterms:identifier>
     <dcat:keyword>SHS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

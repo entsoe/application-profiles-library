@@ -21,7 +21,7 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the monitoring area profile.</dcterms:description>
-    <dcterms:identifier>urn:uuid:41075091-91f0-4b14-a5b8-93945aa528ed</dcterms:identifier>
+    <dcterms:identifier>41075091-91f0-4b14-a5b8-93945aa528ed</dcterms:identifier>
     <dcat:keyword>MA</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>

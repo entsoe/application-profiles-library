@@ -19,7 +19,7 @@ rasc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for remedial action scheule profile."@en ;
-        dcterms:identifier        "urn:uuid:657b4a7f-0868-4764-8327-ff7cbb377dd4" ;
+        dcterms:identifier        "657b4a7f-0868-4764-8327-ff7cbb377dd4" ;
         dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
         dcterms:modified          "2025-09-11"^^xsd:date ;

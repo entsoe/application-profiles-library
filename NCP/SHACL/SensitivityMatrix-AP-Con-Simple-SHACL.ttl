@@ -3,7 +3,7 @@
 @prefix cc:   <https://common-constraints.eu/> .
 @prefix cim:  <https://cim.ucaiug.io/ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix dm:   <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
 @prefix ido:  <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
@@ -16,16 +16,16 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 sm:Ontology  rdf:type     owl:Ontology;
-        dct:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-501:draft:ed-2";
-        dct:description   "Describing constraints extracted from RDFS.";
-        dct:identifier    "urn:uuidead9dc9c-77b6-4087-ba39-ca77974ca19c";
-        dct:issued        "2025-09-11T16:36:20.018391700"^^xsd:dateTime;
-        dct:language      "en-GB";
-        dct:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dct:modified      "2025-01-04"^^xsd:date;
-        dct:publisher     "ENTSO-E"@en;
-        dct:rightsHolder  "ENTSO-E"@en;
-        dct:title         "Sensitivity Matrix Vocabulary"@en;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-501:draft:ed-2";
+        dcterms:description   "Describing constraints extracted from RDFS.";
+        dcterms:identifier    "ead9dc9c-77b6-4087-ba39-ca77974ca19c";
+        dcterms:issued        "2025-09-11T16:36:20.018391700"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2025-01-04"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Sensitivity Matrix Vocabulary"@en;
         owl:versionIRI    <2.3/2.3>;
         owl:versionInfo   "2.3.3"@en;
         dcat:keyword      "SM";
