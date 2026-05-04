@@ -14,7 +14,7 @@
 		<dcat:keyword>OR</dcat:keyword>
 		<dcterms:language>en-GB</dcterms:language>
 		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-15</dcterms:modified>
 		<owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1"/>
 		<dcterms:publisher>ENTSO-E</dcterms:publisher>
 		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
@@ -22,7 +22,7 @@
 		<dcterms:title>Object Registry Profile</dcterms:title>
 		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
 		<owl:versionIRI rdf:resource="https://ap.cim4.eu/ObjectRegistry/2.2"/>
-		<owl:versionInfo>2.2.1</owl:versionInfo>
+		<owl:versionInfo>2.2.2</owl:versionInfo>
 		<prof:hasResource rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry/2.2"/>
 		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2"/>
 		<prof:hasResource rdf:resource="https://ap-spec.cim4.eu/ObjectRegistry/2.2"/>

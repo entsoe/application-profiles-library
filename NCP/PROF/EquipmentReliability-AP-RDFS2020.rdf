@@ -14,7 +14,7 @@
 		<dcat:keyword>ER</dcat:keyword>
 		<dcterms:language>en-GB</dcterms:language>
 		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-15</dcterms:modified>
 		<owl:priorVersion rdf:resource="https://ap.cim4.eu/EquipmentReliability/2.3"/>
 		<dcterms:publisher>ENTSO-E</dcterms:publisher>
 		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
@@ -22,7 +22,7 @@
 		<dcterms:title>Equipment Reliability Profile</dcterms:title>
 		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
 		<owl:versionIRI rdf:resource="https://ap.cim4.eu/EquipmentReliability/2.4"/>
-		<owl:versionInfo>2.4.0</owl:versionInfo>
+		<owl:versionInfo>2.4.1</owl:versionInfo>
 		<prof:hasResource rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability/2.4"/>
 		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/EquipmentReliability-Simple/2.4"/>
 		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4"/>
