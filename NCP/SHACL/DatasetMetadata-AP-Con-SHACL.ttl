@@ -291,12 +291,11 @@ dm:temporalResolution-cardinality
         sh:severity     sh:Violation .
 
 dm:spatial-datatype  rdf:type  sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "spatial-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        37;
         sh:path         dcterms:spatial;
         sh:severity     sh:Violation .
@@ -365,12 +364,11 @@ dm:description-cardinality
 
 dm:accessRights-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "accessRights-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        34;
         sh:path         dcterms:accessRights;
         sh:severity     sh:Violation .
@@ -421,19 +419,18 @@ dm:generatedAtTime-cardinality
         sh:group        dm:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
+        sh:minCount     0;
         sh:name         "generatedAtTime-cardinality";
         sh:order        32;
         sh:path         prov:generatedAtTime;
         sh:severity     sh:Violation .
 
 dm:source-datatype  rdf:type  sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "source-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        31;
         sh:path         dcterms:source;
         sh:severity     sh:Violation .
@@ -463,12 +460,11 @@ dm:versionNotes-cardinality
 
 dm:processType-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "processType-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        29;
         sh:path         eumd:processType;
         sh:severity     sh:Violation .
@@ -595,12 +591,11 @@ dm:preferredVersion-cardinality
 
 dm:usedSettings-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "usedSettings-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        22;
         sh:path         eumd:usedSettings;
         sh:severity     sh:Violation .
@@ -629,12 +624,11 @@ dm:endDate-cardinality
 
 dm:publisher-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "publisher-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        20;
         sh:path         dcterms:publisher;
         sh:severity     sh:Violation .
@@ -687,12 +681,11 @@ dm:keyword-datatype  rdf:type  sh:PropertyShape;
 
 dm:wasGeneratedBy-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "wasGeneratedBy-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        17;
         sh:path         prov:wasGeneratedBy;
         sh:severity     sh:Violation .
@@ -802,12 +795,11 @@ dm:rightsHolder-cardinality
 
 dm:conformsTo-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "conformsTo-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        12;
         sh:path         dcterms:conformsTo;
         sh:severity     sh:Violation .
@@ -864,12 +856,11 @@ dm:isPartOf-inverseNodePresent
         sh:targetSubjectsOf  dcterms:isPartOf .
 
 dm:license-datatype  rdf:type  sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "license-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        9;
         sh:path         dcterms:license;
         sh:severity     sh:Violation .
@@ -970,12 +961,11 @@ dm:issued-cardinality
         sh:severity     sh:Violation .
 
 dm:type-datatype  rdf:type  sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:message      "The property value is not a IRI.";
         sh:name         "type-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        4;
         sh:path         dcterms:type;
         sh:severity     sh:Violation .
