@@ -26,7 +26,7 @@ sm:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Sensitivity Matrix Vocabulary"@en;
-        owl:versionIRI    <2.3/2.3>;
+        owl:versionIRI    <https://ap-con.cim4.eu/SensitivityMatrix-Simple/2.3>;
         owl:versionInfo   "2.3.3"@en;
         dcat:keyword      "SM";
         dcat:theme        "constraint"@en .

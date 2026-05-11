@@ -28,7 +28,7 @@ sar:Ontology  rdf:type    owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Security Analysis Result Vocabulary"@en;
-        owl:versionIRI    <2.5/2.5>;
+        owl:versionIRI    <https://ap-con.cim4.eu/SecurityAnalysisResult-Simple/2.5>;
         owl:versionInfo   "2.5.0"@en;
         dcat:keyword      "SAR";
         dcat:theme        "constraint"@en .

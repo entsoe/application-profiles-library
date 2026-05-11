@@ -28,7 +28,7 @@ ps:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Power schedule vocabulary"@en;
-        owl:versionIRI    <2.4/2.4>;
+        owl:versionIRI    <https://ap-con.cim4.eu/PowerSchedule-Simple/2.4>;
         owl:versionInfo   "2.4.0"@en;
         dcat:keyword      "PS";
         dcat:theme        "constraint"@en .

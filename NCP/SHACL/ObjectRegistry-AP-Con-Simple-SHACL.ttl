@@ -30,7 +30,7 @@ or:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Object Registry vocabulary"@en;
-        owl:versionIRI    <2.2/2.2>;
+        owl:versionIRI    <https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2>;
         owl:versionInfo   "2.2.5"@en;
         dcat:keyword      "OR";
         dcat:theme        "constraint"@en .

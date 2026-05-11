@@ -28,7 +28,7 @@ as:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Availability schedule vocabulary"@en;
-        owl:versionIRI    <2.3/2.3>;
+        owl:versionIRI    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.3>;
         owl:versionInfo   "2.3.3"@en;
         dcat:keyword      "AS";
         dcat:theme        "constraint"@en .

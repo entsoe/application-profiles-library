@@ -28,7 +28,7 @@ shs:Ontology  rdf:type    owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Steady State Hypothesis Schedule Vocabulary"@en;
-        owl:versionIRI    <1.1/1.1>;
+        owl:versionIRI    <https://ap-con.cim4.eu/SteadyStateHypothesisSchedule-Simple/1.1>;
         owl:versionInfo   "1.1.0"@en;
         dcat:keyword      "SHS";
         dcat:theme        "constraint"@en .

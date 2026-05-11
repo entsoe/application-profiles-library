@@ -28,7 +28,7 @@ gd:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Grid Disturbance vocabulary"@en;
-        owl:versionIRI    <1.1/1.1>;
+        owl:versionIRI    <https://ap-con.cim4.eu/GridDisturbance-Simple/1.1>;
         owl:versionInfo   "2.2.4"@en;
         dcat:keyword      "GD";
         dcat:theme        "constraint"@en .

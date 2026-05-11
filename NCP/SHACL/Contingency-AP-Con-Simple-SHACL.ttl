@@ -28,7 +28,7 @@ co:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Contingency Vocabulary"@en;
-        owl:versionIRI    <2.3/2.3>;
+        owl:versionIRI    <https://ap-con.cim4.eu/Contingency-Simple/2.3>;
         owl:versionInfo   "2.3.4"@en;
         dcat:keyword      "CO";
         dcat:theme        "constraint"@en .

@@ -28,7 +28,7 @@ ae:Ontology  rdf:type     owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Assessed Element Vocabulary"@en;
-        owl:versionIRI    <2.4/2.4>;
+        owl:versionIRI    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4>;
         owl:versionInfo   "2.4.0"@en;
         dcat:keyword      "AE";
         dcat:theme        "constraint"@en .
