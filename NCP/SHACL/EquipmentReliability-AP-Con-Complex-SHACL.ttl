@@ -185,7 +185,7 @@ erc:Circuit-associationsSparql
 			SELECT  $this  
 			WHERE {      
        
-		BIND(EXISTS{$this nc:Circuit.Equipment ?o1} AS ?ce).
+		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
 		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
         FILTER (?ce=false && ?ct=false).
 			}""" . 		
