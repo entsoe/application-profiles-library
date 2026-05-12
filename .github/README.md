@@ -11,6 +11,8 @@ The folders (and branches) reveal which artifacts were used in which release and
 
 Note that for some of the previous version’s folders (e.g., for CGMES v2.4, NCP v2.2), an Enhanced folder exists. Such folders have a version that is updated after the official version release. This happens in cases where (profiling and validation) tooling was updated in the meantime and offers users using an archived, but updated version of the artifacts bug fixes discovered years after their release. 
 
+For each release the repository has PROF, RDFS and SHACL packages which contain machine readable artifacts. PROF contains the description of the profiles; RDFS is the RDF schemas and SHACL is the SHACL based constraints. 
+
 Enhanced versions of other previous release folders can be generated under request.
 
 
@@ -25,7 +27,7 @@ Please, refer to the [LICENSE](https://github.com/entsoe/application-profiles-li
 ### Accreditations
 List of the people and organisations contributing to this repository.
 
-- [@EduardoRelAlg](https://github.com/EduardoRelAlg) - ENTSO-E
+- [@HarisVranaj](https://github.com/HarisVranaj) - ENTSO-E
 - [@griddigit-eu](https://github.com/griddigit-eu) - gridDigIt
 
 # Introduction
