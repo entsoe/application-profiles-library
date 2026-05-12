@@ -27,6 +27,7 @@
 		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/MonitoringArea-Simple/2.3"/>
 		<prof:hasResource rdf:resource="https://ap-spec.cim4.eu/MonitoringArea/2.3"/>
 		<prof:hasResource rdf:resource="https://ap-val.cim4.eu/MonitoringArea/2.3"/>
+		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0"/>
 	</rdf:Description>
 	<rdf:Description rdf:about="https://ap-voc.cim4.eu/MonitoringArea/2.3">
 		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
@@ -62,4 +63,13 @@
 		<dcterms:description>The specification of the Monitoring Area profile.</dcterms:description>
 		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
 	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0">
+    		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0/DatasetMetadata-AP-Con-SHACL.ttl"/>
+    		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    		<rdfs:label>Dataset metadata Simple Constraints</rdfs:label>
+    		<dcterms:description>SHACL based constraints used to validate datatypes, cardinality, associations value types.</dcterms:description>
+    		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+    	</rdf:Description>
 </rdf:RDF>
