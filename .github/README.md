@@ -117,7 +117,7 @@ Examples:
 ENTSO-E does not put the publisher in the file name as it is not expected that these artifacts will be republished. 
 
 # SHACL Constraints Design
-Constraints for CGMES v3.0 were designed in 2020 and a master spreadsheet named CGMES Constraints Repository was prepared.
+Constraints for CGMES v3.0 were designed in 2020 and a master spreadsheet named [CGMES Constraints Repository](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/APL/1.1.1/CGMES_Constraints_Repository.xlsx) was prepared.
  
 # Master spreadsheet of CGMES v3.0 constraints
 ## Overview 
