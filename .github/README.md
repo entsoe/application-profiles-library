@@ -80,6 +80,9 @@ In addition a [beta version](https://github.com/entsoe/application-profiles-libr
 Please use these files only for information on the direction where RDFS will evolve in that standard and provide feedback that will be discussed in the standardisation process. 
 Namely, the RDFS contains the vocabulary part only, while the constraints (cardinalities, datatypes, etc.) are expressed by SHACL based constraints.
 
+# Profile description (PROF)
+The datasets in this package are using PROF vocabulary from W3C to describe the relationship between profiles and their components. The vocabulary is used to define the structure and semantics of the profiles, enabling interoperability and data exchange between different systems and applications.
+
 # Constraints
 SHACL based constraints are provided for CGMES v3.0 and NC Profiles. These are the files which file name contains “Con-SHACL” or “Con-{xys}-SHACL”, where {xys} indicates the main content. For instance, “Con-Simple-SHACL” indicates that the constraints were derived from RDFS and “Con-Complex-NotSolvedMAS-SHACL” indicates that constraints have manually been produced and are applicable for a model that contains Equipment (EQ) and Steady State Hypothesis (SSH) profiles of CGMES.
 
