@@ -83,6 +83,50 @@ Namely, the RDFS contains the vocabulary part only, while the constraints (cardi
 # Profile description (PROF)
 The datasets in this package are using PROF vocabulary from W3C to describe the relationship between profiles and their components. The vocabulary is used to define the structure and semantics of the profiles, enabling interoperability and data exchange between different systems and applications.
 
+## From instance data to SHACL validation via PROF
+
+An instance file declares which profile it conforms to via `dcterms:conformsTo` in its `dcat:Dataset` header:
+
+```xml
+<dcat:Dataset rdf:about="urn:uuid:...">
+  <dcterms:conformsTo rdf:resource="https://ap.cim4.eu/AssessedElement/2.4"/>
+</dcat:Dataset>
+```
+
+The PROF descriptor for that profile (`NCP/CurrentRelease/PROF/AssessedElement-AP-RDFS2020.rdf`) declares the available resources and their roles:
+
+```
+Profile URI (e.g. https://ap.cim4.eu/AssessedElement)
+  │
+  ├─ prof:hasResource (role: vocabulary)
+  │    └─ hasArtifact → AssessedElement-AP-Voc-RDFS2020.rdf
+  │
+  ├─ prof:hasResource (role: constraints)  ← Simple SHACL
+  │    └─ hasArtifact → AssessedElement-AP-Con-Simple-SHACL.ttl
+  │
+  ├─ prof:hasResource (role: constraints)  ← Complex SHACL
+  │    └─ hasArtifact → AssessedElement-AP-Con-Complex-SHACL.ttl
+  │
+  ├─ prof:hasResource (role: validation)   ← Validation SHACL (planned)
+  │    └─ hasArtifact → AssessedElement-AP-Con-Validation-SHACL.ttl
+  │
+  └─ prof:hasResource (role: specification)
+       └─ hasArtifact → AssessedElement_Profile_Specification.pdf
+```
+
+Each constraint resource in the PROF has a URI (e.g. `https://ap-con.cim4.eu/AssessedElement-Simple/2.4`). The corresponding SHACL file declares the same URI as its `owl:versionIRI`:
+
+```turtle
+ae:Ontology rdf:type owl:Ontology ;
+    owl:versionIRI    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4> ;
+    owl:versionInfo   "2.4.0"@en .
+```
+
+There are two approaches to resolve which SHACL rules apply to an instance file:
+
+1. **Via PROF** — follow the `hasArtifact` URL from the PROF constraint resource to locate the SHACL file
+2. **Via SHACL headers** — load all SHACL files, read each `owl:versionIRI`, and match against the constraint resource URIs declared in the PROF for the profile that the instance conforms to
+
 # Constraints
 SHACL based constraints are provided for CGMES v3.0 and NC Profiles. These are the files which file name contains “Con-SHACL” or “Con-{xys}-SHACL”, where {xys} indicates the main content. For instance, “Con-Simple-SHACL” indicates that the constraints were derived from RDFS and “Con-Complex-NotSolvedMAS-SHACL” indicates that constraints have manually been produced and are applicable for a model that contains Equipment (EQ) and Steady State Hypothesis (SSH) profiles of CGMES.
 
