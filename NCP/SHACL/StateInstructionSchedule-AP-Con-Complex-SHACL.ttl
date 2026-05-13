@@ -134,7 +134,7 @@ sisc:PowerShiftKeySchedule-associationsSparql
 			(?vEC=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vSR=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
 			(?vES=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vSR=true || ?vENI=true || ?vHP=true)) || 
 			(?vENI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vSR=true || ?vHP=true)) || 
-			(?vHP=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vSR=true)) || 
+			(?vHP=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vSR=true))
 		).
 			}""" .   
 
