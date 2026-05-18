@@ -70,7 +70,7 @@ com:CommonConstraints
 
 com:DanglingReferences  a  sh:NodeShape ;
         sh:property     com:All-DanglingReferences;
-        sh:targetNode   cim:DanglingReferences.
+        sh:targetSubjectsOf   rdf:type.
 
 
 com:All-DanglingReferences
