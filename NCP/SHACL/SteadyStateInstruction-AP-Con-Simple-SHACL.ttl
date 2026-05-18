@@ -6652,7 +6652,7 @@ cc:ClassCount-property
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
         sh:property    cc:ClassCount-property;
-        sh:targetNode  cc:ClassCount .
+        sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
         rdfs:label  "ClassesCount";
