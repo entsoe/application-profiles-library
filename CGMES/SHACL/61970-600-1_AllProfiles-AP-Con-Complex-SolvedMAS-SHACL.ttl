@@ -61,20 +61,8 @@ sm600:solvedMAS600Group
 
 sm600:DanglingReferences  a  sh:NodeShape ;
         sh:property     sm600:All-DanglingReferences;
-        sh:targetNode   cim:DanglingReferences.
-        #sh:target  
-        #[
-        #      a sh:SPARQLTarget ;
-        #      sh:prefixes cim: ;
-        #      sh:select """
-        #        SELECT DISTINCT ?this
-        #        WHERE {
-        #          ?any ?p ?this .
-        #          FILTER(!isLiteral(?this) && CONTAINS(str(?this),"_") &&
-        #          !CONTAINS(str(?this),"FullModel") && !CONTAINS(str(?this),"DifferenceModel")).
-        #        }
-        #        """ ;
-        #] . 
+        sh:targetSubjectsOf   rdf:type.
+
 
 sm600:All-DanglingReferences
         a               sh:PropertyShape ;
@@ -93,32 +81,12 @@ sm600:All-DanglingReferencesSparql
 		sh:select """
 			SELECT  DISTINCT $this ?value ?s 
 			WHERE {
-        #?s !(rdf:type | md:Model.DependentOn | md:Model.Supersedes) ?value .
         ?s !rdf:type ?value .
         BIND (str(?value) AS ?strvalue).
-        #OPTIONAL{?s (!rdf:type)/rdf:type ?v} .
-        #OPTIONAL{?value  rdf:type ?v}.
-        
-        #FILTER(!isLiteral(?value) && CONTAINS(str(?value),"_") &&
-        #      !CONTAINS(str(?value),"FullModel") && !CONTAINS(str(?value),"DifferenceModel")).
-        #FILTER(!isLiteral(?value) && !STRSTARTS(str(?value),"urn:uuid:") && (CONTAINS(str(?value),"#_") || STRLEN(STRAFTER(str(?value),"#"))<=1) &&
-        #      !CONTAINS(str(?value),"FullModel") && !CONTAINS(str(?value),"DifferenceModel") ).  
         FILTER(isIRI(?value) && (CONTAINS(?strvalue,"#_") || STRSTARTS(?strvalue,"urn:uuid:") || STRENDS(?strvalue,"#"))).              
-        #OPTIONAL{?value  rdf:type ?v}.
-        #FILTER (!bound(?v) ).
         FILTER NOT EXISTS {?value rdf:type ?v }.
 			}""" . 
         
-#sm600:All-DanglingReferencesSparql
-#		a         sh:SPARQLConstraint ;  
-#		sh:message "Dangling reference is present in the model." ;
-#		sh:prefixes cim: ;
-#		sh:select """
-#			SELECT  $this ?value
-#			WHERE {
-#        OPTIONAL {$this  rdf:type ?value}.
-#        FILTER (!bound(?value)).
-#			}""" . 
       
 sm600:SvVoltage  a  sh:NodeShape ;
         sh:property     sm600:SvVoltage-SV__4 ;

@@ -56,14 +56,14 @@ io:IOstringLength
         rdfs:label  "IdentifiedObjectStringLength" ;
         sh:order    0 .
 
-io:IdentifiedObjectStringLength  a          sh:NodeShape ;
-        sh:property     io:IdentifiedObject.shortName-stringLength , io:IdentifiedObject.energyIdentCodeEic-stringLength , io:IdentifiedObject.name-stringLength , io:IdentifiedObject.description-stringLength;
-        sh:targetNode  cim:IdentifiedObjectStringLength .
+io:IdentifiedObjectStringLengthshortName  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.shortName-stringLength ;
+        sh:targetSubjectsOf  eu:IdentifiedObject.shortName .
 
 io:IdentifiedObject.shortName-stringLength
         a               sh:PropertyShape ;
         sh:sparql       io:IdentifiedObject.shortName-stringLengthSparql ;
-        sh:path         rdf:type ;
+        sh:path         eu:IdentifiedObject.shortName ;
         sh:description  "Length of the string 12 characters maximum." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.shortName:stringLength|C:301:EQBD:IdentifiedObject.shortName:stringLength||C:301:TP:IdentifiedObject.shortName:stringLength" ;
@@ -78,17 +78,20 @@ io:IdentifiedObject.shortName-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s eu:IdentifiedObject.shortName ?value
+        ?s $PATH ?value .
         
         FILTER (STRLEN(?value)>12) .
 			}""" .         
-        
+
+io:IdentifiedObjectStringLengthenergyIdentCodeEic  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.energyIdentCodeEic-stringLength ;
+        sh:targetSubjectsOf  eu:IdentifiedObject.energyIdentCodeEic .        
         
 io:IdentifiedObject.energyIdentCodeEic-stringLength
         a               sh:PropertyShape ;
         sh:description  "The length of the string is 16 characters as defined by the EIC code." ;
         sh:sparql       io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql ;
-        sh:path         rdf:type ;
+        sh:path         eu:IdentifiedObject.energyIdentCodeEic ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:EQBD:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:TP:IdentifiedObject.energyIdentCodeEic:stringLength" ;
         sh:order        2 ;
@@ -101,17 +104,20 @@ io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s eu:IdentifiedObject.energyIdentCodeEic ?value
+        ?s $PATH ?value .
         
         FILTER (STRLEN(?value)!=16) .
 			}""" .          
 
-
+io:IdentifiedObjectStringLengthName  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.name-stringLength ;
+        sh:targetSubjectsOf  cim:IdentifiedObject.name .
+		
 io:IdentifiedObject.name-stringLength
         a               sh:PropertyShape ;
         sh:description  "The string IdentifiedObject.name has a maximum of 128 characters." ;
         sh:sparql       io:IdentifiedObject.name-stringLengthSparql ;
-        sh:path         rdf:type ;
+        sh:path         cim:IdentifiedObject.name ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.name:stringLength|C:453:DL:IdentifiedObject.name:stringLength|C:456:TP:IdentifiedObject.name:stringLength|C:456:SV:IdentifiedObject.name:stringLength|C:457:DY:IdentifiedObject.name:stringLength|C:600:EQBD:IdentifiedObject.name:stringLength" ;
         sh:order        3 ;
@@ -124,17 +130,20 @@ io:IdentifiedObject.name-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s cim:IdentifiedObject.name ?value
+        ?s $PATH ?value .
         
         FILTER (STRLEN(?value)>128) .
 			}""" .        
-        
+
+io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.description-stringLength;
+        sh:targetSubjectsOf  cim:IdentifiedObject.description .        
 
 io:IdentifiedObject.description-stringLength
         a               sh:PropertyShape ;
         sh:description  "The string IdentifiedObject.description is maximum 256 characters." ;
         sh:sparql       io:IdentifiedObject.description-stringLengthSparql ;
-        sh:path         rdf:type ;
+        sh:path         cim:IdentifiedObject.description ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.description:stringLength|C:600:EQBD:IdentifiedObject.description:stringLength|C:457:DY:IdentifiedObject.description:stringLength|C:456:TP:IdentifiedObject.description:stringLength" ;
         sh:order        4 ;
@@ -147,7 +156,7 @@ io:IdentifiedObject.description-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s cim:IdentifiedObject.description ?value
+        ?s $PATH ?value .
         
         FILTER (STRLEN(?value)>256) .
 			}""" .    
