@@ -214,7 +214,7 @@ dm:isReferencedBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        43 , 41;
+        sh:order        43;
         sh:path         dcterms:isReferencedBy;
         sh:severity     sh:Violation .
 
@@ -230,7 +230,7 @@ dm:seriesMember-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        42 , 40;
+        sh:order        42;
         sh:path         dcat:seriesMember;
         sh:severity     sh:Violation .
 
@@ -487,7 +487,7 @@ dm:hasAlternativeVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        30 , 28;
+        sh:order        30;
         sh:path         dcatcim:hasAlternativeVersion;
         sh:severity     sh:Violation .
 
@@ -536,7 +536,7 @@ dm:hasPreferredVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        27 , 25;
+        sh:order        27;
         sh:path         dcatcim:hasPreferredVersion;
         sh:severity     sh:Violation .
 
@@ -552,7 +552,7 @@ dm:isRequiredBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        26 , 24;
+        sh:order        26;
         sh:path         dcterms:isRequiredBy;
         sh:severity     sh:Violation .
 
@@ -732,7 +732,7 @@ dm:isReplacedBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        17 , 15;
+        sh:order        17;
         sh:path         dcterms:isReplacedBy;
         sh:severity     sh:Violation .
 
@@ -846,7 +846,7 @@ dm:isPartOf-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        12 , 10;
+        sh:order        12;
         sh:path         dcterms:isPartOf;
         sh:severity     sh:Violation .
 
