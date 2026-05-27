@@ -344,7 +344,7 @@ fh:Model.profile-datatype
         sh:group        fh:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "Model.profile-datatype";
-        sh:nodeKind     sh:IRI;
+        sh:nodeKind     sh:Literal;
         sh:order        0;
         sh:path         md:Model.profile;
         sh:severity     sh:Violation .
@@ -366,8 +366,8 @@ fh:Model.modelingAuthoritySet-datatype
         sh:group        fh:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "Model.modelingAuthoritySet-datatype";
-        sh:nodeKind     sh:IRI;
-        sh:order        -1;
+        sh:nodeKind     sh:Literal;
+        sh:order        1;
         sh:path         md:Model.modelingAuthoritySet;
         sh:severity     sh:Violation .
 

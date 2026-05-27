@@ -131,7 +131,7 @@ dm:subject-cardinality
         sh:message      "Missing required attribute.";
         sh:minCount     1;
         sh:name         "subject-cardinality";
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcatcim:statement rdf:subject );
         sh:severity     sh:Violation .
 
@@ -165,7 +165,7 @@ dm:title-datatype  rdf:type  sh:PropertyShape;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "title-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcterms:title );
         sh:severity     sh:Violation .
 
@@ -176,7 +176,7 @@ dm:title-cardinality  rdf:type  sh:PropertyShape;
         sh:message      "Missing required attribute.";
         sh:minCount     1;
         sh:name         "title-cardinality";
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcterms:title );
         sh:severity     sh:Violation .
 
@@ -987,7 +987,7 @@ dm:hasVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        5 , 3;
+        sh:order        5;
         sh:path         dcat:hasVersion;
         sh:severity     sh:Violation .
 
