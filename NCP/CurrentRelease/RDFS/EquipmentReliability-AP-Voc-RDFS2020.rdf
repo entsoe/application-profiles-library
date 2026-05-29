@@ -8,6 +8,7 @@
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:eu="https://cim.ucaiug.io/ns/eu#"
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
@@ -17,15 +18,15 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v19_MS10v03_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the equipment reliability profile.</dcterms:description>
-    <dcterms:identifier>5f727c5c-b49f-47be-b750-a00fefb7e806</dcterms:identifier>
+    <dcterms:identifier>376b0343-2bdc-4e36-8d43-26978e3c2315</dcterms:identifier>
     <dcat:keyword>ER</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
     <owl:priorVersion rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability/2.3"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,7 +34,7 @@
     <dcterms:title xml:lang="en">Equipment Reliability Vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability/2.4"/>
-    <owl:versionInfo xml:lang="en">2.4.0</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.4.2</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#ACDCConverter">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#Package_EquipmentReliabilityProfile"/>
@@ -639,7 +640,7 @@ The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZone"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder.FromBiddingZone"/>
     <rdfs:label xml:lang="en">FromBiddingZoneBorder</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -661,7 +662,7 @@ The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZone"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#SchedulingArea.BiddingZone"/>
     <rdfs:label xml:lang="en">SchedulingArea</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#SchedulingArea"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -730,12 +731,12 @@ The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZoneBorder.TieCorridor">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Tie corridor for a given bidding zone border.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#TieCorridor.BiddingZoneBorder"/>
     <rdfs:label xml:lang="en">TieCorridor</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#TieCorridor"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -4304,6 +4305,7 @@ An energy type reference refers to an energy characteristic that is needed for r
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#Package_EquipmentReliabilityProfile"/>
     <rdfs:comment>This class represents the external network and it is used for IEC 60909 calculations.</rdfs:comment>
     <rdfs:label xml:lang="en">ExternalNetworkInjection</rdfs:label>
+    <cims:stereotype>Description</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
     <rdfs:subClassOf rdf:resource="#RegulatingCondEq"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -4317,42 +4319,6 @@ An energy type reference refers to an energy characteristic that is needed for r
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#EquivalentGeneratingUnit"/>
     <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ExternalNetworkInjection.maxP">
-    <rdfs:comment>Maximum active power of the injection.</rdfs:comment>
-    <cims:dataType rdf:resource="#ActivePower"/>
-    <rdfs:domain rdf:resource="#ExternalNetworkInjection"/>
-    <rdfs:label xml:lang="en">maxP</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ExternalNetworkInjection.maxQ">
-    <rdfs:comment>Maximum reactive power limit. It is used for modelling of infeed for load flow exchange and not for short circuit modelling.</rdfs:comment>
-    <cims:dataType rdf:resource="#ReactivePower"/>
-    <rdfs:domain rdf:resource="#ExternalNetworkInjection"/>
-    <rdfs:label xml:lang="en">maxQ</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ExternalNetworkInjection.minP">
-    <rdfs:comment>Minimum active power of the injection.</rdfs:comment>
-    <cims:dataType rdf:resource="#ActivePower"/>
-    <rdfs:domain rdf:resource="#ExternalNetworkInjection"/>
-    <rdfs:label xml:lang="en">minP</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ExternalNetworkInjection.minQ">
-    <rdfs:comment>Minimum reactive power limit. It is used for modelling of infeed for load flow exchange and not for short circuit modelling.</rdfs:comment>
-    <cims:dataType rdf:resource="#ReactivePower"/>
-    <rdfs:domain rdf:resource="#ExternalNetworkInjection"/>
-    <rdfs:label xml:lang="en">minQ</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#FACTSEquipment">
@@ -5288,7 +5254,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.energyIdentCodeEic">
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#IdentifiedObject.energyIdentCodeEic">
     <rdfs:comment>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
     <rdfs:domain rdf:resource="#IdentifiedObject"/>
@@ -7869,7 +7835,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SchedulingArea"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#BiddingZone.SchedulingArea"/>
     <rdfs:label xml:lang="en">BiddingZone</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BiddingZone"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -8811,12 +8777,12 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#TieCorridor.BiddingZoneBorder">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Bidding zone border in which the tie corridor is located.</rdfs:comment>
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Bidding zone border in which the tie corridor is included.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#TieCorridor"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder.TieCorridor"/>
     <rdfs:label xml:lang="en">BiddingZoneBorder</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>

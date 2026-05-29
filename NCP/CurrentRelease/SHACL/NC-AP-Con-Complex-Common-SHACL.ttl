@@ -68,31 +68,41 @@ com:CommonConstraints
         rdfs:label  "Common Constraints" ;
         sh:order    0 .
 
-com:DanglingReferences  a  sh:NodeShape ;
-        sh:property     com:All-DanglingReferences;
-        sh:targetSubjectsOf   rdf:type.
+com:DanglingReferences
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+		sh:prefixes cim: ;
+        sh:select """
+            SELECT DISTINCT ?this
+            WHERE {
+                ?subject ?predicate ?this .
 
+                FILTER(?predicate != rdf:type)
+                FILTER(isIRI(?this))
+
+                FILTER(
+                    STRSTARTS(STR(?this), "urn:uuid:")
+                    || CONTAINS(STR(?this), "#_")
+                    || STRENDS(STR(?this), "#")
+                )
+
+                FILTER NOT EXISTS {
+                    ?this rdf:type ?type .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:property com:All-DanglingReferences .
 
 com:All-DanglingReferences
-        a               sh:PropertyShape ;
-        sh:sparql       com:All-DanglingReferencesSparql ;
-        sh:path         rdf:type ;
-        sh:description  "It is required that at the receiving end of the exchange all references in the instance files pointing to instance files from other profiles which are part of the exchange should be satisfied. Therefore, the complete set of instance files necessary for the grid model shall have fulfilled references (no dangling references are allowed)." ;
-        sh:name         "C:600:ALL:NA:FBOD4" ;
-        sh:group        com:CommonConstraints ;
-        sh:order        1 ;
-        sh:severity     sh:Violation .
-
-com:All-DanglingReferencesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Dangling reference is present in the model. The ID of the class having a dangling reference is: {?s} and the dangling reference is: {?value}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value ?s 
-			WHERE {
-        ?s !rdf:type ?value .
-        BIND (str(?value) AS ?strvalue).
-        FILTER(isIRI(?value) && (CONTAINS(?strvalue,"#_") || STRSTARTS(?strvalue,"urn:uuid:") || STRENDS(?strvalue,"#"))).              
-        FILTER NOT EXISTS {?value rdf:type ?v }.
-			}""" . 
-
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:description  "It is required that at the receiving end of the exchange all references in the instance files pointing to instance files from other profiles which are part of the exchange should be satisfied. Therefore, the complete set of instance files necessary for the grid model shall have fulfilled references (no dangling references are allowed)." ;
+    sh:name         "C:600:ALL:NA:FBOD4" ;
+    sh:group        com:CommonConstraints ;
+    sh:order        1 ;
+    sh:severity     sh:Violation .
+    sh:minCount     1 ;
+	sh:message   "Dangling reference is present in the model." .

@@ -189,7 +189,6 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
 [CIM context:
 Reference to the confidentiality level that shall be applied when handling this model.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">accessRights</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype>dcterms</cims:stereotype>
@@ -201,7 +200,6 @@ Reference to the confidentiality level that shall be applied when handling this 
 [CIM context:
 Reference to the time frame.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">accrualPeriodicity</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype>dcterms</cims:stereotype>
@@ -240,7 +238,6 @@ dcatcim:alternativeVersionOf is a specialisation of dcat:isVersionOf with the re
 An IRI describing the profile that governs this model. It uniquely identifies the profile and its version. Multiple instances of the property describe all standards or specifications to which the model and the document representing this model conform to.
 A document would normally conform to profile definitions, the constraints that relate to the profile and/or the set of business specific constrains. A reference to a machine- readable constraints or specification indicates that the document was tested against these constraints and it conforms to them.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">conformsTo</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -461,7 +458,6 @@ For instance, as the equipment profile can be used for both boundary data and eq
 [CIM context:
 Reference to the license under which the data is made available. If no license holder is defined, then the original data provider holds the license.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">license</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -526,7 +522,6 @@ The notion of version used by this property is limited to versions resulting fro
   <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#processType">
     <rdfs:comment>The exact business nature. Reference to Business Process configurations.</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">processType</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -539,7 +534,6 @@ The notion of version used by this property is limited to versions resulting fro
 [CIM context: 
 The agent that is publishing the dataset on the given platform.]</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">publisher</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -629,7 +623,6 @@ Typically, rights information includes a statement about various property rights
     <rdfs:comment>A related resource from which the described resource is derived.
 This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system.</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">source</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -642,7 +635,6 @@ This property is intended to be used with non-literal values. The described reso
 [CIM context: 
 The responsibility area that multiple model can describe, also referred to frame.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">spatial</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -709,7 +701,6 @@ The human readable name of the dataset that can form the instance file name.]</r
   <rdf:Description rdf:about="http://purl.org/dc/terms/type">
     <rdfs:comment>The nature or genre of the resource. Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format.</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">type</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -719,7 +710,6 @@ The human readable name of the dataset that can form the instance file name.]</r
   <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#usedSettings">
     <rdfs:comment>Reference to a set of parameters describing used settings (e.g. power flow settings, process settings, etc.) applied to the model prior its serialisation.</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">usedSettings</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -752,7 +742,6 @@ The human readable name of the dataset that can form the instance file name.]</r
 [CIM context:
 Reference to an activity or the exact business nature (process, configuration) which produced or uses the model.].</rdfs:comment>
     <cims:dataType rdf:resource="#URI"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">wasGeneratedBy</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
