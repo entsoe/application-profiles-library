@@ -1,0 +1,264 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level5-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l5com:  <https://ap-con.cim4.eu/QoCDC-Level5-IGMCGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l5com:DisconnectedTerminal
+        rdf:type        sh:NodeShape;
+        sh:property     l5com:SvPowerFlow-DisconnectedTerminal;
+        sh:targetClass  cim:SvPowerFlow .
+
+l5com:SvPowerFlow-DisconnectedTerminal
+        rdf:type        sh:PropertyShape;
+        sh:description  "If the associated cim:ACDCTerminal.connected status is false, the flow specified in the cim:SvPowerFlow.p and cim:SvPowerFlow.q shall be zero.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "DisconnectedTerminal";
+        sh:order        5;
+        sh:path         cim:SvPowerFlow.Terminal;
+        sh:severity     sh:Violation;
+        sh:sparql       l5com:SvPowerFlow-DisconnectedTerminalSparql .
+
+l5com:TopologicalIslandCountShape
+        rdf:type       sh:NodeShape;
+        sh:property    l5com:TopologicalIsland-instance;
+        sh:targetNode  cim:TopologicalIsland .
+
+l5com:SvTapStep  rdf:type  sh:NodeShape;
+        sh:property     l5com:SvTapStep-SV__4;
+        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerTabular , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerLinear .
+
+l5com:IDuniqueness  rdf:type  sh:NodeShape;
+        sh:property    l5com:All-GENC1;
+        sh:targetNode  cim:IDuniqueness .
+
+l5com:All-GENC1  rdf:type  sh:PropertyShape;
+        sh:description  "All mRIDs (rdf:ID or rdf:about) in a model shall be unique.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "IDuniqueness";
+        sh:order        10;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l5com:All-GENC1Sparql .
+
+l5com:SvPowerFlow-instanceSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Missing cim:SvPowerFlow for an equipment.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this rdf:type ?value .
+        OPTIONAL {$this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal ?svpowerflow }.
+        FILTER (!bound(?svpowerflow)).
+			}""" .
+
+l5com:SvPowerFlow-SvPowerFlowInstances
+        rdf:type        sh:NodeShape;
+        sh:property     l5com:SvPowerFlow-instance;
+        sh:targetClass  cim:NonConformLoad , cim:ExternalNetworkInjection , cim:EnergySource , cim:EnergyConsumer , cim:StaticVarCompensator , cim:StationSupply , cim:EquivalentInjection , cim:NonlinearShuntCompensator , cim:SynchronousMachine , cim:LinearShuntCompensator , cim:AsynchronousMachine , cim:ConformLoad .
+
+l5com:SynchronousCondenserMode
+        rdf:type        sh:NodeShape;
+        sh:property     l5com:SynchronousMachine-SynchronousCondenserMode , l5com:SynchronousMachine-SMNullP;
+        sh:targetClass  cim:SynchronousMachine .
+
+l5com:All-GENC1Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "mRID (rdf: ID or rdf: about) is not unique within model.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this (COUNT(?value) AS ?counts) ?value
+			WHERE {
+          ?value rdf:type ?o.
+			}
+      GROUP BY $this ?value
+      HAVING(?counts>1)
+      """ .
+
+l5com:SynchronousMachine-SynchronousCondenserModeSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:RotatingMachine.p for a synchronous condenser is different than 0.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this $PATH cim:SynchronousMachineKind.condenser .
+		$this cim:SynchronousMachine.operatingMode ?opmode .
+
+		FILTER (?opmode!=cim:SynchronousMachineOperatingMode.condenser).
+			}""" .
+
+l5com:SvTapStep-SV__4
+        rdf:type        sh:PropertyShape;
+        sh:description  "A cim:SvTapStep instance is expected for all cim:TapChanger instances defined in EQ.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:message      "Missing cim:SvTapStep for a cim:TapChanger.";
+        sh:minCount     1;
+        sh:name         "SvTapStepInstances";
+        sh:order        2;
+        sh:path         [ sh:inversePath  cim:SvTapStep.TapChanger ];
+        sh:severity     sh:Violation .
+
+l5com:SynchronousMachine-SMNullPSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:SynchronousMachine has condenser behaviour but it does not operate as condenser.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:SynchronousMachine.operatingMode ?opmode .
+		$this cim:RotatingMachine.p ?p .
+		$this cim:RotatingMachine.q ?q .
+
+		FILTER (?p=0 && ?q!=0 && ?opmode!=cim:SynchronousMachineOperatingMode.condenser).
+			}""" .
+
+l5com:SvPowerFlow-instance
+        rdf:type        sh:PropertyShape;
+        sh:description  "cim:SvPowerFlow class is required to be instantiated for the following classes:- subclasses of the cim:RotatingMachine\t- subclasses of the cim:EnergyConsumer\t- cim:EquivalentInjection\t- cim:ExternalNetworkInjection\t- cim:ShuntCompensator\t- cim:StaticVarCompensator \t- cim:EnergySource.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "SvPowerFlowInstances";
+        sh:order        3;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l5com:SvPowerFlow-instanceSparql .
+
+l5com:SvPowerFlow-DisconnectedTerminalSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Zero flow expected for disconnected terminal.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this $PATH ?term .
+		?term cim:ACDCTerminal.connected false .
+		?term ^cim:SvPowerFlow.Terminal ?svpowerflow .
+		?svpowerflow cim:SvPowerFlow.p ?p .
+		?svpowerflow cim:SvPowerFlow.q ?q .
+
+		FILTER (abs(?p)>0.000001 && abs(?q)>0.000001).
+			}""" .
+
+l5com:TopologicalIsland-instance
+        rdf:type        sh:PropertyShape;
+        sh:description  "In case a solved model is exchanged for a single MAS the state variables profile must include at least one instance of cim:TopologicalIsland.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:message      "Missing cim:TopologicalIsland.";
+        sh:minCount     1;
+        sh:name         "TopologicalIslandInstance";
+        sh:order        6;
+        sh:path         [ sh:inversePath  rdf:type ];
+        sh:severity     sh:Violation .
+
+l5com:SynchronousMachine-SMNullP
+        rdf:type        sh:PropertyShape;
+        sh:description  "For cim:SynchronousMachine, if cim:RotatingMachine.p equals zero and cim:RotatingMachine.q is different than zero the cim:SynchronousMachine.operatingMode shall be equal to condenser.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "SMNullP";
+        sh:order        12;
+        sh:path         cim:SynchronousMachine.type;
+        sh:severity     sh:Warning;
+        sh:sparql       l5com:SynchronousMachine-SMNullPSparql .
+
+l5com:Level5-IGMCGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level5-IGMCGM";
+        sh:order    0 .
+
+l5com:SvPowerFlow-SvPowerFlowBranchInstances2Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Missing cim:SvPowerFlow for a branch.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this rdf:type ?value .
+        OPTIONAL {$this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal ?svpowerflow }.
+        OPTIONAL {$this  cim:Switch.retained  ?retained} .
+        FILTER ((!bound(?retained) && !bound(?svpowerflow)) || (bound(?retained) && ?retained=true && !bound(?svpowerflow))).
+			}""" .
+
+l5com:SynchronousMachine-SynchronousCondenserMode
+        rdf:type        sh:PropertyShape;
+        sh:description  "For a synchronous condenser ( cim: SynchronousMachine. operationMode equals to condenser) there is no capability for real power output. In this case, cim: RotatingMachine. p should be 0.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "SynchronousCondenserMode";
+        sh:order        11;
+        sh:path         cim:SynchronousMachine.type;
+        sh:severity     sh:Warning;
+        sh:sparql       l5com:SynchronousMachine-SynchronousCondenserModeSparql .
+
+l5com:SvPowerFlow  rdf:type  sh:NodeShape;
+        sh:property     l5com:SvPowerFlow-SvPowerFlowBranchInstances2;
+        sh:targetClass  cim:Fuse , cim:Disconnector , cim:SeriesCompensator , cim:Jumper , cim:Breaker , cim:ACLineSegment , cim:LoadBreakSwitch , cim:GroundDisconnector , cim:PowerTransformer , cim:DisconnectingCircuitBreaker , cim:Switch , cim:EquivalentBranch , cim:Cut .
+
+l5com:SvPowerFlow-SvPowerFlowBranchInstances2
+        rdf:type        sh:PropertyShape;
+        sh:description  "Branches shall have cim: SvPowerFlow instantiated at its cim: Terminals for the following branch classes: - cim: SeriesCompensator - cim: ACLineSegment - cim: PowerTransformer - cim: EquivalentBranch - cim: Switch where cim: Switch. retained is true.";
+        sh:group        l5com:Level5-IGMCGM;
+        sh:name         "SvPowerFlowBranchInstances2";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l5com:SvPowerFlow-SvPowerFlowBranchInstances2Sparql .
+
+l5com:SmallTopologicalIsland
+        a               sh:NodeShape ;
+        sh:property     l5com:TI-SmallTopologicalIsland ;
+        sh:targetClass  cim:TopologicalIsland .
+
+l5com:TI-SmallTopologicalIsland
+        a               sh:PropertyShape ;
+		sh:sparql       l5com:TI-SmallTopologicalIslandSparql ;
+        sh:description  "A small cim:TopologicalIsland with TNs having zero voltage is in most cases meaningless and should not be exchanged. A cim:TopologicalIsland with three or fewer cim:TopologicalNodes is small." ;
+        sh:name         "SmallTopologicalIsland" ;
+        sh:path         cim:TopologicalIsland.TopologicalNodes;
+        sh:order        7 ;
+        sh:group        l5com:Level5-IGMCGM ;
+        sh:severity     sh:Info .
+
+l5com:TI-SmallTopologicalIslandSparql
+    a          sh:SPARQLConstraint ;
+    sh:message "Small cim:TopologicalIsland found with zero voltage for all nodes. The number of TopologicalNodes is: {?nTN}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this (COUNT(DISTINCT ?tn) AS ?nTN) (MAX(?v) AS ?maxV)
+      WHERE {
+            $this cim:TopologicalIsland.TopologicalNodes ?tn.
+            ?tn ^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?v.
+      }
+	  GROUP BY $this
+	  HAVING(?nTN <= 3 && ?maxV = 0.0)
+    """ .

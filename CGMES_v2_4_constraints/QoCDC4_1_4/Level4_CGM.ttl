@@ -1,0 +1,74 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level4-CGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l4cgm:  <https://ap-con.cim4.eu/QoCDC-Level4-CGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l4cgm:CgmSvSshVersionMismatchSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Different fileVersion or effectiveDateTime in SSH and SV from CGM.";
+        sh:prefixes  cim:;
+        sh:select    """
+        SELECT ?this
+        WHERE {
+          ?headersbjSSH rdf:type md:FullModel .
+          ?headersbjSSH md:Model.profile "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"^^xsd:anyURI.
+          ?headersbjSSH md:Model.version ?sshVersion .
+          ?headersbjSSH md:Model.scenarioTime ?sshTime .
+
+          ?headersbjSV rdf:type md:FullModel .
+          ?headersbjSV md:Model.profile "http://iec.ch/TC57/ns/CIM/StateVariables-EU/3.0"^^xsd:anyURI.
+          ?headersbjSV md:Model.version ?svVersion .
+          ?headersbjSV md:Model.scenarioTime ?svTime .
+
+          FILTER( ?sshVersion != ?svVersion || ?sshTime != ?svTime ).
+          } """ .
+
+l4cgm:Level4-CGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level4-CGM";
+        sh:order    0 .
+
+l4cgm:CgmSvSshVersionMismatch
+        rdf:type        sh:NodeShape;
+        sh:description  "A CGM will have updated SSH files (referencing to original data by Supersede statement) for each IGM and a single SV file with the complete solution for the included IGMs. The updated SSH CIMXML files and the resulting CIMXML SV file should have: - the same md:Model.scenarioTime. - a new md:Model.version number that is the same for the SV and SSH CIMXML files.";
+        sh:group        l4cgm:Level4-CGM;
+        sh:message      "Different fileVersion or effectiveDateTime in SSH and SV from CGM.";
+        sh:name         "CgmSvSshVersionMismatch";
+        sh:order        4;
+        sh:severity     sh:Violation;
+        sh:sparql       l4cgm:CgmSvSshVersionMismatchSparql;
+        sh:targetNode  cim:CgmSvSshVersionMismatch .

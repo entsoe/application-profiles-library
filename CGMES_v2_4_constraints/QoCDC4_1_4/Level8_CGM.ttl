@@ -1,0 +1,74 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level8-CGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l8cgm:  <https://ap-con.cim4.eu/QoCDC-Level8-CGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l8cgm:Level8-CGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level8-CGM";
+        sh:order    0 .
+
+l8cgm:CGMTieFlowImbalance  a  sh:NodeShape ;
+        sh:sparql       l8cgm:ControlArea-CGMTieFlowImbalanceSparql ;
+        sh:targetClass  cim:ControlArea ;
+        sh:description  "The sum of the solved tie flows for each cim:ControlArea of type interchange shall equal the cim:ControlArea.netInterchange plus/minus an 2 MW. i.e. - TFS less than or equal to cim:ControlArea.netInterchange + 2 MW - TFS greater than or equal to cim:ControlArea.netInterchange - 2 MW Where TFS (TieFlow sum) is computed as - TFS = sum(cim:SvPowerFlow.p) of cim:EquivalentInjection-s which cim:Terminal connects to the same boundary point (cim:TopologicalNode) where there is a cim:Terminal referenced by the association end cim:TieFlow.Terminal. Note: This rule is built on the fact that the CGM SV instance file and the updated SSH instance files of IGMs are consistent hence contain updated values of cim:SvPowerFlow. i.e. cim:EquivalentInjection has the same output as the flow of the interconnection in the CGM SV instance file." ;
+        sh:name         "CGMTieFlowImbalance" ;
+        sh:group        l8cgm:Level8-CGM ;
+        sh:order        1 ;
+        sh:severity     sh:Warning .
+
+
+
+l8cgm:ControlArea-CGMTieFlowImbalanceSparql
+		a         sh:SPARQLConstraint ;
+		sh:message "The sum of solved tie flows for a cim:ControlArea deviates from the cim:ControlArea interchange tolerance 2 MW. ControlArea.netInterchange= {?value}. Sum of the EquivalentInjections= {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value ?sump
+			WHERE {
+        $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
+        $this cim:ControlArea.netInterchange ?value .
+        {
+        SELECT $this (SUM(?p) AS ?sump)
+        WHERE {
+              ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
+			  ?term ^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p .
+          }
+        GROUP BY $this
+        }
+        FILTER ( (?sump > (?value + 2)) || (?sump < (?value - 2)) ) .
+    
+			} """ .

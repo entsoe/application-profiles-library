@@ -1,0 +1,127 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level7-CGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l7cgm:  <https://ap-con.cim4.eu/QoCDC-Level7-CGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l7cgm:PairedEICompatibility-ps
+        rdf:type        sh:NodeShape;
+        sh:description  "The rule is checking SSH information of a paired boundary point in a CGM. The two cim:EquivalentInjection-s at a boundary cim:TopologicalNode shall have:  - control disabled (cim:EquivalentInjection.regulationStatus = false); - the sum of their active power injections (cim:EquivalentInjection.p) shall be less than or equal to 0.1; - the sum of their reactive power injections (cim:EquivalentInjection.q) shall be less than or equal to 0.1.";
+        sh:group        l7cgm:Level7-CGM;
+        sh:name         "PairedEICompatibility";
+        sh:order        3;
+        sh:targetClass  cim:TopologicalNode;
+        sh:severity     sh:Violation;
+        sh:sparql       l7cgm:PairedEICompatibilitySparql .
+
+l7cgm:PairedEICompatibilitySparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Either any of the cim:EquivalentInjection-s at a paired boundary has control enabled or the sum of active/reactive power is greater than 0.1.";
+        sh:prefixes  cim: ;
+        sh:select    """
+        SELECT $this ?nEI ?sumP ?sumQ ?nEnabled
+        WHERE {
+        {
+        SELECT $this
+                (COUNT(DISTINCT ?ei) AS ?nEI)
+                (SUM(?p) AS ?sumP)
+                (SUM(?q) AS ?sumQ)
+                (SUM(IF(?rs = true, 1, 0)) AS ?nEnabled)
+        WHERE {
+        $this entsoe:TopologicalNode.boundaryPoint true .
+
+        ?t cim:Terminal.TopologicalNode $this ;
+                cim:Terminal.ConductingEquipment ?ei .
+
+        ?ei a cim:EquivalentInjection ;
+                cim:EquivalentInjection.p ?p ;
+                cim:EquivalentInjection.q ?q ;
+                cim:EquivalentInjection.regulationStatus ?rs .
+        }
+        GROUP BY $this
+        }
+
+        FILTER(?nEI = 2)
+
+        FILTER( ?nEnabled > 0 || ABS(?sumP) > 0.1 || ABS(?sumQ) > 0.1 )
+        }
+        """ .
+
+l7cgm:Level7-CGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level7-CGM";
+        sh:order    0 .
+
+l7cgm:TopologicalNode-UnpairedTieFlow
+        rdf:type        sh:PropertyShape;
+        sh:description  "A paired boundary cim:TopologicalNode should be consistent in terms of cim:TieFlow-s associated with cim:Terminal-s connected to this cim:TopologicalNode. If one side of the border has cim:TieFlow the other side should also have one, and vice versa. Note: An AC boundary cim:TopologicalNode which has two branches and two cim:EquivalentInjection-s linking two IGMs is a paired boundary cim:TopologicalNode.";
+        sh:group        l7cgm:Level7-CGM;
+        sh:name         "UnpairedTieFlow";
+        sh:order        2;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l7cgm:TopologicalNode-UnpairedTieFlowSparql .
+
+l7cgm:TopologicalNode
+        rdf:type        sh:NodeShape;
+        sh:property     l7cgm:TopologicalNode-UnpairedTieFlow;
+        sh:targetClass  cim:TopologicalNode .
+
+l7cgm:TopologicalNode-UnpairedTieFlowSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "A paired AC boundary point has inconsistent cim:TieFlow.";
+        sh:prefixes  cim:;
+        sh:select    """
+ 			SELECT $this (COUNT(?tftype) AS ?counttf)
+            WHERE {
+            {
+                SELECT $this (COUNT(?cetype) AS ?countei)
+                WHERE {
+                      $this entsoe:TopologicalNode.boundaryPoint true .
+                      ?ce ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode $this .
+                      ?ce rdf:type  ?cetype .
+
+                      FILTER (?cetype=cim:EquivalentInjection ) .
+                      }
+                      GROUP BY $this ?cetype
+                      HAVING(?countei=2)
+            }
+            ?tf cim:TieFlow.Terminal/cim:Terminal.TopologicalNode $this.
+            ?tf  rdf:type ?tftype .
+            FILTER (?tftype=cim:TieFlow ) .
+            }
+            GROUP BY $this ?tftype
+            HAVING(?counttf<2)
+        """ .

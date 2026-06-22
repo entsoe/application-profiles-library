@@ -1,0 +1,136 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level3-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l3com:  <https://ap-con.cim4.eu/QoCDC-Level3-IGMCGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l3com:IdentifiedObject.shortName-stringLengthSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Length of shortName instance exceeds 12 characters.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value  
+			WHERE {      
+        ?s entsoe:IdentifiedObject.shortName ?value.
+        
+        FILTER (STRLEN(?value)>12) .
+			}""" .
+
+l3com:IdentifiedObjectStringLength
+        rdf:type       sh:NodeShape;
+        sh:property    l3com:IdentifiedObject.shortName-stringLength , l3com:IdentifiedObject.energyIdentCodeEic-stringLength , l3com:IdentifiedObject.name-stringLength , l3com:IdentifiedObject.description-stringLength;
+        sh:targetNode  cim:IdentifiedObjectStringLength .
+
+l3com:IdentifiedObject.description-stringLengthSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Length of description instance exceeds 256 characters.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value  
+			WHERE {      
+        ?s cim:IdentifiedObject.description ?value.
+        
+        FILTER (STRLEN(?value)>256) .
+			}""" .
+
+l3com:IdentifiedObject.shortName-stringLength
+        rdf:type        sh:PropertyShape;
+        sh:description  "In every model instance, the length of all instances of entsoe:IdentifiedObject.shortName shall not exceed 12 characters.";
+        sh:group        l3com:Level3-IGMCGM;
+        sh:name         "ShortNameLength";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l3com:IdentifiedObject.shortName-stringLengthSparql .
+
+l3com:Level3-IGMCGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level3-IGMCGM";
+        sh:order    0 .
+
+l3com:IdentifiedObject.name-stringLengthSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:IdentifiedObject.name is either missing, empty string or exceeds 32 characters.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value  
+			WHERE {      
+        ?s cim:IdentifiedObject.name ?value.
+        
+        FILTER (STRLEN(?value)>32 || STRLEN(?value)=0) .
+			}""" .
+
+l3com:IdentifiedObject.name-stringLength
+        rdf:type        sh:PropertyShape;
+        sh:description  "In cases where cim:IdentifiedObject.name is a required attribute, it shall not be empty string and shall not exceed 32 characters for all instances except for instances of subclasses of cim:ACDCTerminal where cim:IdentifiedObject.name may be omitted. Note: This rule further restricts IEC TS 61970-600-1:2017, IEC TS 61970-600-2:2017 where empty strings are allowed in cim:IdentifiedObject.name.";
+        sh:group        l3com:Level3-IGMCGM;
+        sh:name         "NameLength";
+        sh:order        3;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l3com:IdentifiedObject.name-stringLengthSparql .
+
+l3com:IdentifiedObject.description-stringLength
+        rdf:type        sh:PropertyShape;
+        sh:description  "In every model instance, the length of all instances of cim:IdentifiedObject.description shall not exceed 256 characters.";
+        sh:group        l3com:Level3-IGMCGM;
+        sh:name         "DescriptionLength";
+        sh:order        4;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l3com:IdentifiedObject.description-stringLengthSparql .
+
+l3com:IdentifiedObject.energyIdentCodeEic-stringLength
+        rdf:type        sh:PropertyShape;
+        sh:description  "In every model instance, the length of all instances of entsoe: IdentifiedObject. energyIdentCodeEic must be exactly 16 characters.";
+        sh:group        l3com:Level3-IGMCGM;
+        sh:name         "EICLength";
+        sh:order        2;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l3com:IdentifiedObject.energyIdentCodeEic-stringLengthSparql .
+
+l3com:IdentifiedObject.energyIdentCodeEic-stringLengthSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Length of energyIdentCodeEic instance must be exactly 16 characters.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value  
+			WHERE {      
+        ?s entsoe:IdentifiedObject.energyIdentCodeEic ?value.
+        
+        FILTER (STRLEN(?value)!=16) .
+			}""" .

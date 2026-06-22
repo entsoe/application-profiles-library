@@ -1,0 +1,35 @@
+@base          <https://ap-con.cim4.eu/QoCDC/4.1.4> .
+@prefix main:  <https://ap-con.cim4.eu/QoCDC/4.1.4#> .
+
+
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//DiagramLayoutProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//DynamicsProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//EquipmentBoundaryProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//EquipmentProfile.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//FileHeaderProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//GeographicalLocationProfile.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//StateVariablesProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//SteadyStateHypothesisProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//TopologyBoundaryProfile.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//EnhancedAppLibRDFS24//TopologyProfile.ttl> .
+
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level6_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level7_CGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level7_IGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level7_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level8_CGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level8_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level2_Header.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level2_IGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level2_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level3_DCIGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level3_IGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level3_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level4_CGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level4_IGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level4_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level5_DCIGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level5_IGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level5_IGMCGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level6_CGM.ttl> .
+#main:   owl:imports  <C://SHACL-Constraints//QoCDCv414//Level6_IGM.ttl> .

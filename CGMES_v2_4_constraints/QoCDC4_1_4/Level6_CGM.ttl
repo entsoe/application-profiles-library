@@ -1,0 +1,127 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level6-CGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l6cgm:  <https://ap-con.cim4.eu/QoCDC-Level6-CGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l6cgm:KirchhoffsFirstLawCGM-ps
+        rdf:type        sh:PropertyShape;
+        sh:description  "The sum of cim:SvPowerFlow.p and sum of cim:SvPowerFlow.q for all cim:SvPowerFlow-s connected to a cim:TopologicalNode shall be within the solution tolerance provided by 0.5 MW/Mvar. If solution tolerance is exceeded a cim:SvInjection shall be provided (the association end cim:TopologicalNode.SvInjection is required). Note: cim:SvPowerFlow-s of non-retained cim:Switch (cim:Switch.retained is false) shall be excluded. The power flow in non-retained cim:Switch-es may not have been correctly computed and may be inconsistent with the other power flows on the cim:TopologicalNode. Hence non-retained cim:Switch-es shall be excluded from the summation to achieve a more robust result.";
+        sh:group        l6cgm:Level6-CGM;
+        sh:name         "KirchhoffsFirstLawCGM";
+        sh:order        2;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6cgm:KirchhoffsFirstLawCGMSparql .
+
+l6cgm:KirchhoffsFirstLawCGMrelaxed-ps
+        rdf:type        sh:PropertyShape;
+        sh:description  "The sum of cim:SvPowerFlow.p and sum of cim:SvPowerFlow.q for all cim:SvPowerFlow-s connected to a cim:TopologicalNode is within the range of allowed solution tolerances, i.e. it is greater than or equal to 0.1 MW/Mvar and it is less than or equal to 0.5 MW/Mvar. If solution tolerance is exceeded a cim:SvInjection shall be provided (the association end cim:TopologicalNode.SvInjection is required). Note: cim:SvPowerFlow-s of non-retained cim:Switch (cim:Switch.retained is false) shall be excluded. The power flow in non-retained cim:Switch-es may not have been correctly computed and may be inconsistent with the other power flows on the cim:TopologicalNode. Hence non-retained cim:Switch-es shall be excluded from the summation to achieve a more robust result.";
+        sh:group        l6cgm:Level6-CGM;
+        sh:name         "KirchhoffsFirstLawCGMrelaxed";
+        sh:order        3;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6cgm:KirchhoffsFirstLawCGMrelaxedSparql .
+
+l6cgm:Level6-CGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level6-CGM";
+        sh:order    0 .
+
+l6cgm:KirchhoffsFirstLawCGM
+        rdf:type        sh:NodeShape;
+        sh:property     l6cgm:KirchhoffsFirstLawCGM-ps, l6cgm:KirchhoffsFirstLawCGMrelaxed-ps;
+        sh:targetClass  cim:TopologicalNode .
+
+l6cgm:KirchhoffsFirstLawCGMSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "The sum of the cim:SvPowerFlow-s reported on a cim:TopologicalNode is not within the solution tolerance and there is no SvInjection provided. Sum of P {?sumP}. Sum of Q {?sumQ}.";
+        sh:prefixes  cim:;
+        sh:select    """
+        SELECT $this ?sumP ?sumQ
+        WHERE {
+          {
+           SELECT $this (SUM(?p) AS ?sumP) (SUM(?q) AS ?sumQ)
+            WHERE {
+              $this ^cim:Terminal.TopologicalNode/^cim:SvPowerFlow.Terminal ?svpf .
+              ?svpf cim:SvPowerFlow.p ?p ;
+                    cim:SvPowerFlow.q ?q ;
+                    cim:SvPowerFlow.Terminal ?t .
+              FILTER NOT EXISTS {
+                ?t cim:Terminal.ConductingEquipment ?ce .
+              { ?ce a cim:Switch } UNION { ?ce a cim:Breaker }
+                  ?ce cim:Switch.retained false .
+              }
+            }
+            GROUP BY $this
+          }
+
+          BIND(EXISTS{$this ^cim:SvInjection.TopologicalNode ?svi} AS ?hassvi).
+
+          FILTER( (?hassvi=false && (ABS(?sumP) > 0.5 || ABS(?sumQ) > 0.5))).
+        }
+    """ .
+
+
+l6cgm:KirchhoffsFirstLawCGMrelaxedSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "The sum of the cim:SvPowerFlow-s reported on a cim:TopologicalNode is not within the solution tolerance of primary settings, but it is within the range of relaxed settings and there is no SvInjection provided. Sum of P {?sumP}. Sum of Q {?sumQ}.";
+        sh:prefixes  cim:;
+        sh:select    """
+           SELECT $this ?sumP ?sumQ
+        WHERE {
+          {
+           SELECT $this (SUM(?p) AS ?sumP) (SUM(?q) AS ?sumQ)
+            WHERE {
+              $this ^cim:Terminal.TopologicalNode/^cim:SvPowerFlow.Terminal ?svpf .
+              ?svpf cim:SvPowerFlow.p ?p ;
+                    cim:SvPowerFlow.q ?q ;
+                    cim:SvPowerFlow.Terminal ?t .
+              FILTER NOT EXISTS {
+                ?t cim:Terminal.ConductingEquipment ?ce .
+                  { ?ce a cim:Switch } UNION { ?ce a cim:Breaker }
+                   ?ce cim:Switch.retained false .
+              }
+            }
+            GROUP BY $this
+          }
+
+          BIND(EXISTS{$this ^cim:SvInjection.TopologicalNode ?svi} AS ?hassvi).
+
+          FILTER( (?hassvi=false && ((ABS(?sumP) > 0.1 && ABS(?sumP) < 0.5) || (ABS(?sumQ) > 0.1 && ABS(?sumQ) < 0.5)))).        
+        }
+    """  .
+

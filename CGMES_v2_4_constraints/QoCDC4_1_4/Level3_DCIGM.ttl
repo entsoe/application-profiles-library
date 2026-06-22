@@ -1,0 +1,1121 @@
+@base          <https://ap-con.cim4.eu/QoCDC-Level3-DCIGM/4.1.4> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix cim:   <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix l3dcigm: <https://ap-con.cim4.eu/QoCDC-Level3-DCIGM/4.1.4#> .
+@prefix md:  <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix dm:  <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+
+cim:    
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
+        sh:prefix "cim" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+        sh:prefix "rdf" ;
+    ] ;
+    sh:declare [
+            a sh:PrefixDeclaration ;
+            sh:namespace "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI ;
+            sh:prefix "md" ;
+        ] ;
+    sh:declare [
+            a sh:PrefixDeclaration ;
+            sh:namespace "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI ;
+            sh:prefix "dm" ;
+        ] ;
+    sh:declare [
+            a sh:PrefixDeclaration ;
+            sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ;
+            sh:prefix "xsd" ;
+        ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI ;
+        sh:prefix "entsoe" ;
+    ] .
+
+l3dcigm:Level3-DCIGM
+        a           sh:PropertyGroup ;
+        rdfs:label  "Level3-DCIGM" ;
+        sh:order    0 .
+
+l3dcigm:ACDCConverter
+        a               sh:NodeShape ;
+        sh:property     l3dcigm:ACDCConverter.DCTerminals-numberOfTerminals, l3dcigm:ACDCConverter.PccTerminal-valueType, l3dcigm:NumberOfValves-ps, l3dcigm:PccTerminalBoundary-ps,  l3dcigm:ACDCConverter.ratedUdc-valueRange, l3dcigm:ACDCConverter.poleLossP-valueRange, l3dcigm:ACDCConverter.udc-valueRange , l3dcigm:ACDCConverter.uc-valueRange, l3dcigm:ACDCConverter-containment, l3dcigm:DCConverterUnit.Substation-containment ;
+        sh:targetClass  cim:VsConverter, cim:CsConverter .
+
+
+l3dcigm:ACDCConverter.DCTerminals-numberOfTerminals
+        a               sh:PropertyShape ;
+        sh:class        cim:ACDCConverterDCTerminal ;
+        sh:description  "A converter has two DC converter terminals." ;
+        sh:message      "The converter does not have two terminals, i.e. two instances of ACDCConverterDCTerminal." ;
+        sh:name         "C:301:EQ:ACDCConverter.DCTerminals:numberOfTerminals" ;
+        sh:minCount     2 ;
+        sh:maxCount     2 ;
+        sh:order        0 ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:path         [sh:inversePath  cim:ACDCConverterDCTerminal.DCConductingEquipment] ;
+        sh:severity     sh:Violation .
+
+l3dcigm:ACDCConverter.PccTerminal-valueType
+        a               sh:PropertyShape ;
+        sh:or           ( [sh:class        cim:PowerTransformer ;] [sh:class        cim:Switch ;] [sh:class        cim:Disconnector ;] [sh:class        cim:Fuse ;] [sh:class        cim:GroundDisconnector ;] [sh:class        cim:Jumper ;] [sh:class        cim:Breaker ;] [sh:class        cim:DisconnectingCircuitBreaker ;] [sh:class        cim:LoadBreakSwitch ;] );
+        sh:description  "It is typically the terminal on the power transformer (or switch) closest to the AC network." ;
+        sh:message      "The terminal is not a terminal of a PowerTransformer or a Switch." ;
+        sh:name         "C:301:EQ:ACDCConverter.PccTerminal:valueType" ;
+        sh:path         ( cim:ACDCConverter.PccTerminal cim:Terminal.ConductingEquipment ) ;
+        sh:order        1 ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:severity     sh:Warning .
+
+l3dcigm:VsConverter  a     sh:NodeShape ;
+        sh:property     l3dcigm:ACDCConverter.idleLoss-valueRange , l3dcigm:ACDCConverter.minUdc-valueRange , l3dcigm:ACDCConverter.resistiveLoss-valueRange , l3dcigm:ACDCConverter.maxUdc-valueRange , l3dcigm:VsConverter.maxModulationIndex-valueRangeTypical , l3dcigm:ACDCConverter.switchingLoss-valueRange , l3dcigm:ACDCConverter.baseS-valueRange, l3dcigm:VsConverter.droop-valueRange, l3dcigm:VsConverter.droopCompensation-valueRange, l3dcigm:VsConverter.qShare-valueRange, l3dcigm:VsConverter.targetPhasePcc-valueRange, l3dcigm:VsConverter.targetPowerFactorPcc-valueRange, l3dcigm:VsConverter.targetPWMfactor-valueRange, l3dcigm:VsConverter.targetUpcc-valueRange, l3dcigm:VsConverter.uv-valueRange , l3dcigm:VsConverter.delta-valueRange  , l3dcigm:VsConverter.pPccControl-targetValuephasePcc, l3dcigm:VsConverter.pPccControl-targetValuePpcc , l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroop, l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilot, l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensation, l3dcigm:VsConverter.pPccControl-targetValueUdc ;
+        sh:targetClass  cim:VsConverter .
+
+l3dcigm:ACDCConverter.idleLoss-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.idleLoss:valueRange" ;
+        sh:order         2 ;
+        sh:path          cim:ACDCConverter.idleLoss ;
+        sh:severity      sh:Violation .
+
+
+l3dcigm:ACDCConverter.maxUdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.maxUdc:valueRange" ;
+        sh:order         3 ;
+        sh:path          cim:ACDCConverter.maxUdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.minUdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.minUdc:valueRange" ;
+        sh:order         4 ;
+        sh:path          cim:ACDCConverter.minUdc ;
+        sh:severity      sh:Violation .
+
+
+l3dcigm:CsConverter  rdf:type     sh:NodeShape ;
+        sh:property     l3dcigm:CsConverter.minGamma-valueRange , l3dcigm:ACDCConverter.switchingLoss-valueRange , l3dcigm:ACDCConverter.minUdc-valueRange , l3dcigm:CsConverter.ratedIdc-valueRange , l3dcigm:CsConverter.maxAlpha-valueRange , l3dcigm:ACDCConverter.baseS-valueRange , l3dcigm:ACDCConverter.maxUdc-valueRange , l3dcigm:ACDCConverter.resistiveLoss-valueRange , l3dcigm:CsConverter.minAlpha-valueRange , l3dcigm:CsConverter.maxIdc-valueRange , l3dcigm:CsConverter.minIdc-valueRange , l3dcigm:ACDCConverter.idleLoss-valueRange , l3dcigm:CsConverter.maxGamma-valueRange, l3dcigm:CsConverter.targetIdc-valueRange , l3dcigm:CsConverter.targetGamma-valueRange , l3dcigm:CsConverter.targetAlpha-valueRange , l3dcigm:ACDCConverter.targetUdc-valueRange  , l3dcigm:CsConverter.maxAlpha-valueRangeTypical , l3dcigm:CsConverter.minAlpha-valueRangeTypical , l3dcigm:CsConverter.maxGamma-valueRangeTypical , l3dcigm:CsConverter.minGamma-valueRangeTypical, l3dcigm:CsConverter.targetAlpha-applicability, l3dcigm:CsConverter.targetAlpha-valueRangePairFrom, l3dcigm:CsConverter.targetAlpha-valueRangePairTo, l3dcigm:CsConverter.targetGamma-applicability, l3dcigm:CsConverter.targetGamma-valueRangePairFrom, l3dcigm:CsConverter.targetGamma-valueRangePairTo, l3dcigm:CsConverter.alpha-valueRange, l3dcigm:CsConverter.alpha-valueRangeTypical, l3dcigm:CsConverter.gamma-valueRange, l3dcigm:CsConverter.gamma-valueRangeTypical ;
+        sh:targetClass  cim:CsConverter .
+
+l3dcigm:ACDCConverter.baseS-valueRange
+        rdf:type         sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.baseS:valueRange" ;
+        sh:order         1 ;
+        sh:path          cim:ACDCConverter.baseS ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.ratedUdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.ratedUdc:valueRange" ;
+        sh:order         5 ;
+        sh:path          cim:ACDCConverter.ratedUdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.resistiveLoss-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.resistiveLoss:valueRange" ;
+        sh:order         6 ;
+        sh:path          cim:ACDCConverter.resistiveLoss ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.switchingLoss-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:ACDCConverter.switchingLoss:valueRange" ;
+        sh:order         7 ;
+        sh:path          cim:ACDCConverter.switchingLoss ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCTerminal  a  sh:NodeShape ;
+        sh:property     l3dcigm:ACDCTerminal.sequenceNumber-numbering ;
+        sh:targetClass  cim:CsConverter, cim:VsConverter, cim:Clamp, cim:ACLineSegment, cim:BusbarSection, cim:Junction, cim:GroundingImpedance, cim:PetersenCoil, cim:EnergySource, cim:EnergyConsumer, cim:ConformLoad, cim:NonConformLoad, cim:StationSupply, cim:ExternalNetworkInjection, cim:LinearShuntCompensator, cim:NonlinearShuntCompensator, cim:StaticVarCompensator,  cim:SynchronousMachine, cim:AsynchronousMachine, cim:PowerElectronicsConnection,   cim:EquivalentInjection, cim:EquivalentShunt, cim:EquivalentBranch, cim:Ground, cim:PowerTransformer, cim:SeriesCompensator, cim:Switch, cim:Disconnector, cim:Fuse, cim:GroundDisconnector, cim:Jumper, cim:Breaker, cim:LoadBreakSwitch, cim:DisconnectingCircuitBreaker, cim:Cut, cim:DCBreaker , cim:DCLineSegment , cim:DCBusbar , cim:DCDisconnector , cim:DCSwitch , cim:DCSeriesDevice , cim:DCGround , cim:DCChopper , cim:DCShunt   .
+              
+l3dcigm:ACDCTerminal.sequenceNumber-numbering
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:ACDCTerminal.sequenceNumber-numberingSparql ;
+        sh:path         rdf:type ;
+        sh:description  "The sequence numbering starts with 1 and additional terminals should follow in increasing order. The first terminal is the starting point for a two terminal branch." ;
+        sh:name         "C:301:EQ:ACDCTerminal.sequenceNumber:numbering" ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        22 ;
+        sh:severity     sh:Violation .
+
+l3dcigm:ACDCTerminal.sequenceNumber-numberingSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "There is no terminal with sequenceNumber=1 or the numbering is not unique." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this (COUNT(?sn) AS ?countsn) (COUNT(DISTINCT ?sn) AS ?countdsn) (MIN(?sn) AS ?minsn) (SUM(?sn) AS ?sumsn) (COUNT(?terms) AS ?countterms)
+			WHERE {
+        $this (^cim:Terminal.ConductingEquipment)|(^cim:DCTerminal.DCConductingEquipment) | (^cim:ACDCConverterDCTerminal.DCConductingEquipment) ?terms. 
+        # ?terms rdf:type ?type .
+        ?terms cim:ACDCTerminal.sequenceNumber ?sn .
+			}
+      GROUP BY $this
+      HAVING(?countsn!=?countdsn || ?minsn!=1 || (?countterms=1 && ?sumsn!=1) || (?countterms=2 && (?sumsn/2)!=1.5) || (?countterms=3 && (?sumsn/3)!=2))
+      """ .
+
+l3dcigm:CsConverter.maxAlpha-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.maxAlpha:valueRange" ;
+        sh:order         22 ;
+        sh:path          cim:CsConverter.maxAlpha ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.maxAlpha-valueRangeTypical
+        a                sh:PropertyShape ;
+        sh:description   "The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees." ;
+        sh:sparql       l3dcigm:CsConverter.maxAlpha-valueRangeTypicalSparql ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:name          "C:301:EQ:CsConverter.maxAlpha:valueRangeTypical" ;
+        sh:order         19 ;
+        sh:path          cim:CsConverter.maxAlpha ;
+        sh:severity      sh:Warning .
+
+l3dcigm:CsConverter.maxAlpha-valueRangeTypicalSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message       "The value is greater than 18." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
+        $this $PATH ?value .
+        FILTER (?value>18) .        
+			}""" .     
+
+l3dcigm:CsConverter.maxGamma-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.maxGamma:valueRange" ;
+        sh:order         23 ;
+        sh:path          cim:CsConverter.maxGamma ;
+        sh:severity      sh:Violation .  
+
+l3dcigm:CsConverter.maxGamma-valueRangeTypical
+        a                sh:PropertyShape ;
+        sh:description   "The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:sparql        l3dcigm:CsConverter.maxGamma-valueRangeTypicalSparql ;
+        sh:name          "C:301:EQ:CsConverter.maxGamma:valueRangeTypical" ;
+        sh:order         21 ;
+        sh:path          cim:CsConverter.maxGamma ;
+        sh:severity      sh:Warning .
+
+l3dcigm:CsConverter.maxGamma-valueRangeTypicalSparql
+		a         sh:SPARQLConstraint ;  
+    sh:message       "The value is greater than 20." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
+        $this $PATH ?value .
+        FILTER (?value>20) .        
+			}""" . 
+
+l3dcigm:CsConverter.maxIdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.maxIdc:valueRange" ;
+        sh:order         24 ;
+        sh:path          cim:CsConverter.maxIdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.minAlpha-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.minAlpha:valueRange" ;
+        sh:order         25 ;
+        sh:path          cim:CsConverter.minAlpha ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.minGamma-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.minGamma:valueRange" ;
+        sh:order         26 ;
+        sh:path          cim:CsConverter.minGamma ;
+        sh:severity      sh:Violation .   
+
+l3dcigm:CsConverter.minIdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.minIdc:valueRange" ;
+        sh:order         27 ;
+        sh:path          cim:CsConverter.minIdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.ratedIdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:EQ:CsConverter.ratedIdc:valueRange" ;
+        sh:order         28 ;
+        sh:path          cim:CsConverter.ratedIdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.maxModulationIndex-valueRangeTypical
+        a                sh:PropertyShape ;
+        sh:description   "A factor typically less than 1." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:maxInclusive  "1.0"^^xsd:float ;
+        sh:message       "The value is greater than 1." ;
+        sh:name          "C:301:EQ:VsConverter.maxModulationIndex:valueRangeTypical" ;
+        sh:order         54 ;
+        sh:path          cim:VsConverter.maxModulationIndex ;
+        sh:severity      sh:Warning .
+
+l3dcigm:ACDCConverter.targetUdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:ACDCConverter.targetUdc:valueRange" ;
+        sh:order         1 ;
+        sh:path          cim:ACDCConverter.targetUdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.targetAlpha-applicability
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:CsConverter.targetAlpha-applicabilitySparql ;
+        sh:description  "It is only applicable for rectifier if continuous tap changer control is used." ;
+        sh:name         "C:301:SSH:CsConverter.targetAlpha:applicability" ;
+        sh:path         cim:CsConverter.targetAlpha ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        7 ;
+        sh:severity     sh:Warning .
+
+l3dcigm:CsConverter.targetAlpha-applicabilitySparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "CsConverter.targetAlpha is provided for an inverter or discrete tap changer control is used or RegulatingControl is not provided." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value.
+        $this cim:CsConverter.operatingMode ?opermode .
+
+        FILTER (?opermode!=cim:CsOperatingModeKind.rectifier) .          
+			}""" .
+
+l3dcigm:CsConverter.targetAlpha-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:CsConverter.targetAlpha:valueRange" ;
+        sh:order         6 ;
+        sh:path          cim:CsConverter.targetAlpha ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.targetAlpha-valueRangePairTo
+        a                    sh:PropertyShape ;
+        sh:description       "Allowed values are within the range minAlpha<=targetAlpha<=maxAlpha." ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:lessThanOrEquals  cim:CsConverter.maxAlpha ;
+        sh:message           "The value is greater than CsConverter.maxAlpha." ;
+        sh:name              "C:301:SSH:CsConverter.targetAlpha:valueRangePairTo" ;
+        sh:order             2 ;
+        sh:path              cim:CsConverter.targetAlpha ;
+        sh:severity          sh:Violation .
+
+l3dcigm:CsConverter.targetGamma-applicability
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:CsConverter.targetGamma-applicabilitySparql ;
+        sh:description  "It is only applicable for inverter if continuous tap changer control is used." ;
+        sh:name         "C:301:SSH:CsConverter.targetGamma:applicability" ;
+        sh:path         cim:CsConverter.targetGamma ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        8 ;
+        sh:severity     sh:Warning .
+
+l3dcigm:CsConverter.targetGamma-applicabilitySparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "CsConverter.targetGamma is provided for a rectifier or discrete tap changer control is used." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value.
+        $this cim:CsConverter.operatingMode ?opermode .
+
+        FILTER (?opermode != cim:CsOperatingModeKind.inverter) .        
+			}""" .  
+
+l3dcigm:CsConverter.targetGamma-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:CsConverter.targetGamma:valueRange" ;
+        sh:order         7 ;
+        sh:path          cim:CsConverter.targetGamma ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.targetGamma-valueRangePairTo
+        a                    sh:PropertyShape ;
+        sh:description       "Allowed values are within the range minGamma<=targetGamma<=maxGamma. " ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:lessThanOrEquals  cim:CsConverter.maxGamma ;
+        sh:message           "The value is greater than CsConverter.maxGamma." ;
+        sh:name              "C:301:SSH:CsConverter.targetGamma:valueRangePairTo" ;
+        sh:order             4 ;
+        sh:path              cim:CsConverter.targetGamma ;
+        sh:severity          sh:Violation .
+
+l3dcigm:CsConverter.targetIdc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:CsConverter.targetIdc:valueRange" ;
+        sh:order         8 ;
+        sh:path          cim:CsConverter.targetIdc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.droop-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.droop:valueRange" ;
+        sh:order         17 ;
+        sh:path          cim:VsConverter.droop ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.droopCompensation-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.droopCompensation:valueRange" ;
+        sh:order         18 ;
+        sh:path          cim:VsConverter.droopCompensation ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.qShare-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value or zero." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative." ;
+        sh:minInclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.qShare:valueRange" ;
+        sh:order         19 ;
+        sh:path          cim:VsConverter.qShare ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.targetPWMfactor-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.targetPWMfactor:valueRange" ;
+        sh:order         22 ;
+        sh:path          cim:VsConverter.targetPWMfactor ;
+        sh:severity      sh:Violation .
+
+
+l3dcigm:VsConverter.targetPhasePcc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.targetPhasePcc:valueRange" ;
+        sh:order         20 ;
+        sh:path          cim:VsConverter.targetPhasePcc ;
+        sh:severity      sh:Violation .
+
+
+l3dcigm:VsConverter.targetPowerFactorPcc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.targetPowerFactorPcc:valueRange" ;
+        sh:order         21 ;
+        sh:path          cim:VsConverter.targetPowerFactorPcc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.targetUpcc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SSH:VsConverter.targetUpcc:valueRange" ;
+        sh:order         23 ;
+        sh:path          cim:VsConverter.targetUpcc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.poleLossP-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:ACDCConverter.poleLossP:valueRange" ;
+        sh:order         1 ;
+        sh:path          cim:ACDCConverter.poleLossP ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter.uc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:ACDCConverter.uc:valueRange" ;
+        sh:order         2 ;
+        sh:path          cim:ACDCConverter.uc ;
+        sh:severity      sh:Violation .
+
+
+l3dcigm:ACDCConverter.udc-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:ACDCConverter.udc:valueRange" ;
+        sh:order         3 ;
+        sh:path          cim:ACDCConverter.udc ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.alpha-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:CsConverter.alpha:valueRange" ;
+        sh:order         5 ;
+        sh:path          cim:CsConverter.alpha ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.alpha-valueRangeTypical
+        a                sh:PropertyShape ;
+        sh:description   "Typical value between 10 degrees and 18 degrees for a rectifier. " ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:sparql        l3dcigm:CsConverter.alpha-valueRangeTypicalSparql ;
+        sh:name          "C:301:SV:CsConverter.alpha:valueRangeTypical" ;
+        sh:order         4 ;
+        sh:path          cim:CsConverter.alpha ;
+        sh:severity      sh:Warning .
+
+l3dcigm:CsConverter.alpha-valueRangeTypicalSparql
+		a           sh:SPARQLConstraint ;  
+        sh:message       "The value is outside the range: 10-18 degrees." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
+        $this $PATH ?value .
+        FILTER (?value<10 || ?value>18) .        
+			}""" .
+
+l3dcigm:CsConverter.gamma-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:CsConverter.gamma:valueRange" ;
+        sh:order         7 ;
+        sh:path          cim:CsConverter.gamma ;
+        sh:severity      sh:Violation .
+
+l3dcigm:CsConverter.gamma-valueRangeTypical
+        a                sh:PropertyShape ;
+        sh:description   "Typical value between 17 degrees and 20 degrees for an inverter. " ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:sparql        l3dcigm:CsConverter.gamma-valueRangeTypicalSparql ;
+        sh:name          "C:301:SV:CsConverter.gamma:valueRangeTypical" ;
+        sh:order         6 ;
+        sh:path          cim:CsConverter.gamma ;
+        sh:severity      sh:Warning .
+
+l3dcigm:CsConverter.gamma-valueRangeTypicalSparql
+		a         sh:SPARQLConstraint ;  
+    sh:message       "The value is outside the range: 17-20 degrees." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
+        $this $PATH ?value .
+        FILTER (?value<17 || ?value>20) .        
+			}""" . 
+
+l3dcigm:VsConverter.delta-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value or zero." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative." ;
+        sh:minInclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:VsConverter.delta:valueRange" ;
+        sh:order         10 ;
+        sh:path          cim:VsConverter.delta ;
+        sh:severity      sh:Violation .
+
+l3dcigm:VsConverter.uv-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "The attribute shall be a positive value." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "The value is negative or zero." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "C:301:SV:VsConverter.uv:valueRange" ;
+        sh:order         11 ;
+        sh:path          cim:VsConverter.uv ;
+        sh:severity      sh:Violation .
+
+l3dcigm:ACDCConverter-containment
+        a               sh:PropertyShape ;
+        sh:class        cim:DCConverterUnit ;
+        sh:description  "For ACDCConverter (CsConverter, VsConverter) the association Equipment.EquipmentContainer is required and shall point to DCEquipmentContainer of type DCConverterUnit. In this case the association DCConverterUnit.Substation is required." ;
+        sh:message      "The containment is either missing or it is not DCConverterUnit." ;
+        sh:name         "C:452:EQ:ACDCConverter:containment" ;
+        sh:path         cim:Equipment.EquipmentContainer;
+        sh:maxCount     1 ;
+        sh:minCount     1 ;
+        sh:order        28 ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:severity     sh:Violation .  
+
+l3dcigm:DCConverterUnit.Substation-containment
+        a               sh:PropertyShape ;
+        sh:in           (cim:Substation) ;
+        sh:description  "For ACDCConverter (CsConverter, VsConverter) the association Equipment.EquipmentContainer is required and shall point to DCEquipmentContainer of type DCConverterUnit. In this case the association DCConverterUnit.Substation is required." ;
+        sh:message      "The DCConverterUnit.Substation association is either missing or not pointing to a Substation." ;
+        sh:name         "C:452:EQ:ACDCConverter:containment" ;
+        sh:path         (cim:Equipment.EquipmentContainer cim:DCConverterUnit.Substation rdf:type) ;
+        sh:maxCount     1 ;
+        sh:minCount     1 ;
+        sh:order        29 ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:severity     sh:Violation .    
+
+l3dcigm:VsCapabilityCurve-yvalues
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsCapabilityCurve-yvaluesSparql ;
+        sh:path         rdf:type ;
+        sh:description  "If CurveData.Curve is a VsCapabilityCurve, the CurveData.y2value shall be greater than CurveData.y1value." ;
+        sh:name         "C:452:EQ:CurveData.Curve:VsCapabilityCurve" ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        14 ;
+        sh:severity     sh:Violation .
+
+l3dcigm:VsCapabilityCurve-yvaluesSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "CurveData.y2value is not greater than CurveData.y1value" ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this 
+        WHERE {
+        ?curvedata cim:CurveData.Curve $this .
+        ?curvedata cim:CurveData.y1value ?y1value .
+        ?curvedata cim:CurveData.y2value ?y2value .
+        FILTER (?y2value<=?y1value).
+        }""" .  
+
+l3dcigm:VsCapabilityCurve-VsCapabilityCurveCount
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsCapabilityCurve-VsCapabilityCurveCountSparql ;
+        sh:path         rdf:type ;
+        sh:description  "If CurveData.Curve is a VsCapabilityCurve at least two CurveData shall be associated." ;
+        sh:name         "C:452:EQ:CurveData.Curve:VsCapabilityCurveCount" ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        12 ;
+        sh:severity     sh:Violation .
+
+l3dcigm:VsCapabilityCurve-VsCapabilityCurveCountSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "Less than two instances of CurveData are associated." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (COUNT(?typecd) AS ?curvedatas)
+        WHERE {
+        ?curvedata cim:CurveData.Curve $this .
+        ?curvedata rdf:type ?typecd .
+        }
+        GROUP BY $this ?typecd
+        HAVING(?curvedatas<2)
+      """ .  
+
+l3dcigm:CsConverter.minAlpha-valueRangeTypical
+        a                    sh:PropertyShape ;
+        sh:description       "The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees." ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:sparql            l3dcigm:CsConverter.minAlpha-valueRangeTypicalSparql ;
+        sh:name              "C:301:EQ:CsConverter.minAlpha:valueRangeTypical" ;
+        sh:order             18 ;
+        sh:path              cim:CsConverter.minAlpha ;
+        sh:severity          sh:Warning .
+
+l3dcigm:CsConverter.minAlpha-valueRangeTypicalSparql
+		a         sh:SPARQLConstraint ;
+    sh:message           "The value is less than 10 or greater than CsConverter.maxAlpha." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
+        $this $PATH ?value .
+        OPTIONAL {$this cim:CsConverter.maxAlpha ?maxalpha} .
+        FILTER (?value<10 || ?value>?maxalpha) .
+			}""" .
+
+
+l3dcigm:CsConverter.minGamma-valueRangeTypical
+        a                    sh:PropertyShape ;
+        sh:description       "The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees." ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:sparql            l3dcigm:CsConverter.minGamma-valueRangeTypicalSparql ;
+        sh:name              "C:301:EQ:CsConverter.minGamma:valueRangeTypical" ;
+        sh:order             20 ;
+        sh:path              cim:CsConverter.minGamma ;
+        sh:severity          sh:Warning .
+
+l3dcigm:CsConverter.minGamma-valueRangeTypicalSparql
+		a         sh:SPARQLConstraint ;
+    sh:message           "The value is less than 17 or greater than CsConverter.maxGamma." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
+        $this $PATH ?value .
+        OPTIONAL {$this cim:CsConverter.maxGamma ?maxgamma} .
+        FILTER (?value<17 || ?value>?maxgamma) .
+			}""" .
+
+l3dcigm:CsConverter.targetAlpha-valueRangePairFrom
+        a                    sh:PropertyShape ;
+        sh:description       "Allowed values are within the range minAlpha<=targetAlpha<=maxAlpha." ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:lessThanOrEquals  cim:CsConverter.maxAlpha ;
+        sh:message           "The value is greater than CsConverter.maxAlpha." ;
+        sh:name              "C:301:SSH:CsConverter.targetAlpha:valueRangePairFrom" ;
+        sh:order             2 ;
+        sh:path              cim:CsConverter.targetAlpha ;
+        sh:severity          sh:Violation .
+
+
+l3dcigm:CsConverter.targetGamma-valueRangePairFrom
+        a                    sh:PropertyShape ;
+        sh:description       "Allowed values are within the range minGamma<=targetGamma<=maxGamma. " ;
+        sh:group             l3dcigm:Level3-DCIGM ;
+        sh:lessThanOrEquals  cim:CsConverter.maxGamma ;
+        sh:message           "The value is greater than CsConverter.maxGamma." ;
+        sh:name              "C:301:SSH:CsConverter.targetGamma:valueRangePairFrom" ;
+        sh:order             4 ;
+        sh:path              cim:CsConverter.targetGamma ;
+        sh:severity          sh:Violation .
+
+l3dcigm:DCboundary
+    a               sh:NodeShape ;
+    sh:name         "DCboundary" ;
+    sh:description  "An IGM representing DC MAS shall have connection to even number of ConnectivityNode objects that are designated as BoundaryPoint. The minimum is connection to two BoundaryPoint objects." ;
+    sh:targetNode   md:Dummy;
+    sh:severity     sh:Violation ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:order        6 ;
+    sh:sparql       [
+        a               sh:SPARQLConstraint ;
+        sh:message      "DC IGM must connect to an even number of Boundary Points (minimum 2). Found {?ctn} connected boundary point(s): {?bpList}" ;
+        sh:prefixes     cim: ;
+        sh:select       """
+            SELECT $this (COUNT(DISTINCT ?bp) AS ?ctn) (GROUP_CONCAT(DISTINCT ?bp; separator=", ") AS ?bpList)
+            WHERE {
+                ?bp entsoe:ConnectivityNode.boundaryPoint|entsoe:TopologicalNode.boundaryPoint true .
+
+                # Check connection via Terminal to ACLineSegment
+                ?terminal cim:Terminal.TopologicalNode|cim:Terminal.ConnectivityNode ?bp .
+                ?terminal cim:Terminal.ConductingEquipment ?line .
+                ?line rdf:type cim:ACLineSegment .
+            }
+            GROUP BY $this
+            HAVING (?ctn < 2 || floor(?ctn/2) * 2 != ?ctn)
+            """
+    ] .
+
+l3dcigm:DCEquipmentContainerMapping
+    a               sh:NodeShape ;
+    sh:property     l3dcigm:DCEquipmentContainerMapping-ps ;
+    sh:targetClass  cim:DCConverterUnit , cim:DCLine
+    .
+
+l3dcigm:DCEquipmentContainerMapping-ps
+    a               sh:PropertyShape ;
+    sh:name         "DCEquipmentContainerMapping" ;
+    sh:description  "For each cim:DCConverterUnit and cim:DCLine instance the attribute entsoe:IdentifiedObject.energyIdentCodeEic is required. The third character of the EIC code shall be 'T'." ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:order        3 ;
+    sh:severity     sh:Violation ;
+    sh:path         entsoe:IdentifiedObject.energyIdentCodeEic ;
+    sh:sparql       l3dcigm:DCEquipmentContainerMappingSparql .
+
+l3dcigm:DCEquipmentContainerMappingSparql
+    a          sh:SPARQLConstraint ;
+    sh:message "EIC code for cim:DCConverterUnit or cim:DCLine is either not provided or it is not a 'T' code." ;
+    sh:prefixes cim:   ;
+    sh:select """
+        SELECT $this ?value
+        WHERE {
+          $this $PATH ?value .
+          FILTER ((SUBSTR(?value, 3, 1)!="T" && STRLEN(?value)>=3) || STRLEN(?value)<3).
+            }""" .
+
+
+
+
+l3dcigm:DcIGMControlArea-count
+    a               sh:NodeShape ;
+    sh:property     l3dcigm:DcIGMControlArea-countPS ;
+    sh:targetNode  cim:ControlArea
+    .
+
+l3dcigm:DcIGMControlArea-countPS
+    a               sh:PropertyShape ;
+    sh:name         "DcIGMControlAreaCount" ;
+    sh:description  "A DC IGM shall have exactly one cim:ControlArea defined." ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:minCount     1 ;
+    sh:maxCount     1 ;
+    sh:order        3 ;
+    sh:severity     sh:Violation ;
+    sh:path         [ sh:inversePath  rdf:type ]  
+    .
+
+l3dcigm:DcIGMControlArea
+    a               sh:NodeShape ;
+    sh:property     l3dcigm:DcIGMControlArea-ControlArea ;
+    sh:targetClass  cim:ControlArea
+    .
+
+l3dcigm:DcIGMControlArea-ControlArea
+    a               sh:PropertyShape ;
+    sh:description  "A DC IGM shall have a cim:ControlArea with an entsoe:IdentifiedObject.energyIdentCodeEic which shall be one of the codes defined in the QoCDC Reference Data document in column “RegionEic” representing the Virtual Scheduling Area (VSA) and the HVDC Link losses (sum of the losses for the HVDC Poles in the HVDC Link)." ;
+    sh:message      "A DC IGM either without a cim:ControlArea defined or the EIC is not matching the VirtualScheduling Area." ;
+    sh:path         entsoe:IdentifiedObject.energyIdentCodeEic ;
+    sh:in           ( "10Y1001C--00037Z" "10YDK-1--------W" "10YDK-2--------M" "10Y1001A1001A016" "10Y1001A1001A39I" "10Y1001A1001A49F" "10Y1001A1001A50U" "10Y1001A1001A51S" "10Y1001A1001A65H" "10Y1001C--00100H" "10YAL-KESH-----5" "10YAT-APG------L" "10YBA-JPCC-----D" "10YBE----------2" "10YCA-BULGARIA-R" "10YCH-SWISSGRIDZ" "10YCS-CG-TSO---S" "10YCS-SERBIATSOV" "10YCZ-CEPS-----N" "10YDE-ENBW-----N" "10YDE-EON------1" "10YDE-RWENET---I" "10YDE-VE-------2" "10YES-REE------0" "10YFI-1--------U" "10YFR-RTE------C" "10YGB----------A" "10YGR-HTSO-----Y" "10YHR-HEP------M" "10YHU-MAVIR----U" "10YIE-1001A00010" "10YIT-GRTN-----B" "10YLT-1001A0008Q" "10YLU-CEGEDEL-NQ" "10YLV-1001A00074" "10YMK-MEPSO----8" "10YNL----------L" "10YNO-0--------C" "10YPL-AREA-----S" "10YPT-REN------W" "10YRO-TEL------P" "10YSE-1--------K" "10YSI-ELES-----O" "10YSK-SEPS-----K" "10YTR-TEIAS----W" "10YUA-WEPS-----0" "10YMA-ONE------O" "10Y1001A1001A59C" "10Y1001A1001A91G" "10Y1001A1001A92E" "10Y1001A1001A94A" "10YEU-CONT-SYNC0") ;
+    sh:name         "DcIGMControlArea" ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:order        3 ;
+    sh:severity     sh:Violation .
+
+
+l3dcigm:DcIGMControlAreaForecast
+    a               sh:NodeShape ;
+    sh:property     l3dcigm:DcIGMControlAreaForecast-ps ;
+    sh:targetClass  cim:ControlArea
+    .
+
+l3dcigm:DcIGMControlAreaForecast-ps
+    a               sh:PropertyShape ;
+    sh:name         "DcIGMControlAreaForecast" ;
+    sh:description  "The cim:ControlArea in a DC IGM shall have the type set to Forecast. This is an identification of a VSA and is a temporary solution." ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:in           (cim:ControlAreaTypeKind.Forecast) ;
+    sh:order        3 ;
+    sh:severity     sh:Violation ;
+    sh:path         cim:ControlArea.type ;
+    sh:message      "The cim:ControlArea in a DC IGM does not have the type set to Forecast."  .
+
+l3dcigm:NumberOfValves-ps
+    a               sh:PropertyShape ;
+    sh:name         "NumberOfValves" ;
+    sh:description  "cim:ACDCConverter.numberOfValves shall be a number divisible by 3. Note the value is 6 for a 6-pulse and 12 for a 12-pulse ACDCConverter." ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:order        3 ;
+    sh:severity     sh:Violation ;
+    sh:path         cim:ACDCConverter.numberOfValves ;
+    sh:sparql       l3dcigm:NumberOfValvesSparql   .
+
+l3dcigm:NumberOfValvesSparql
+    a          sh:SPARQLConstraint ;
+    sh:message "The value of cim:ACDCConverter.numberOfValves is not divisible by 3." ;
+    sh:prefixes cim:  ;
+    sh:select """
+        SELECT $this ?value
+        WHERE {
+          $this $PATH ?value .
+          FILTER(floor(?value / 3)*3 != ?value).
+        }""".
+
+l3dcigm:PccTerminalBoundary-ps
+    a               sh:PropertyShape ;
+    sh:name         "PccTerminalBoundary" ;
+    sh:description  "cim:ACDCConverter.PccTerminal shall be associated (connected) with the boundary point." ;
+    sh:group        l3dcigm:Level3-DCIGM ;
+    sh:order        3 ;
+    sh:severity     sh:Violation ;
+    sh:path         cim:ACDCConverter.PccTerminal ;
+    sh:sparql       l3dcigm:PccTerminalBoundarySparql  .
+
+l3dcigm:PccTerminalBoundarySparql
+    a          sh:SPARQLConstraint ;
+    sh:message "cim:ACDCConverter.PccTerminal is not associated (connected) with the boundary point." ;
+    sh:prefixes cim:   ;
+    sh:select """
+        SELECT $this ?value
+        WHERE {
+          $this $PATH ?value .
+          BIND(EXISTS{$this cim:ACDCConverter.PccTerminal/cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint true } AS ?isBP).
+
+         FILTER(?isBP=false).
+        }""".
+
+l3dcigm:VsConverter.pPccControl-targetValuephasePcc
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValuephasePccSparql ;
+        sh:description  "Control is phase at point of common coupling. Target is provided by VsConverter.targetPhasePcc." ;
+        sh:name         "targetValuephasePcc" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        27 ;
+        sh:severity     sh:Violation .
+        
+    
+l3dcigm:VsConverter.pPccControl-targetValuephasePccSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "VsConverter.targetPhasePcc is not provided for a converter with VsPpccControlKind.phasePcc." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
+        FILTER (!bound(?targetphasepcc) && ?value=cim:VsPpccControlKind.phasePcc) .        
+			}""" .
+
+
+l3dcigm:VsConverter.pPccControl-targetValuePpcc
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValuePpccSparql ;
+        sh:description  "Control is real power at point of common coupling. The target value is provided by ACDCConverter.targetPpcc." ;
+        sh:name         "targetValuePpcc" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        28 ;
+        sh:severity     sh:Violation .
+        
+    
+l3dcigm:VsConverter.pPccControl-targetValuePpccSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "ACDCConverter.targetPpcc is not provided for a converter with VsPpccControlKind.pPcc." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
+        FILTER (!bound(?targetppcc) && ?value=cim:VsPpccControlKind.pPcc) .        
+			}""" . 
+
+
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroop
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopSparql ;
+        sh:description  "Target values are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc and VsConverter.droop." ;
+        sh:name         "targetValuepPccAndUdcDroop" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        29 ;
+        sh:severity     sh:Violation .
+        
+    
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroop." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
+        OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
+        OPTIONAL {$this cim:VsConverter.droop ?droop}.
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroop) .        
+			}""" .  
+
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilot
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilotSparql ;
+        sh:description  "Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc and  VsConverter.droop." ;
+        sh:name         "targetValuepPccAndUdcDroopPilot" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        30 ;
+        sh:severity     sh:Violation .
+        
+
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilotSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and  VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopPilot." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
+        OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
+        OPTIONAL {$this cim:VsConverter.droop ?droop}.
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopPilot) .        
+			}""" .   
+
+
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensation
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensationSparql ;
+        sh:description  "Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc, VsConverter.droop and VsConverter.droopCompensation." ;
+        sh:name         "targetValuepPccAndUdcDroopWithCompensation" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        31 ;
+        sh:severity     sh:Violation .
+
+
+l3dcigm:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensationSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc, VsConverter.droop and VsConverter.droopCompensation are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopWithCompensation." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
+        OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
+        OPTIONAL {$this cim:VsConverter.droop ?droop}.
+        OPTIONAL {$this cim:VsConverter.droopCompensation ?droopcompensation}.
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop) || !bound(?droopcompensation)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation) .        
+			}""" .    
+
+l3dcigm:VsConverter.pPccControl-targetValueUdc
+        a               sh:PropertyShape ;
+        sh:sparql       l3dcigm:VsConverter.pPccControl-targetValueUdcSparql ;
+        sh:description  "Control is DC voltage  with target value provided by ACDCConverter.targetUdc." ;
+        sh:name         "targetValueUdc" ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:group        l3dcigm:Level3-DCIGM ;
+        sh:order        32 ;
+        sh:severity     sh:Violation .
+        
+
+l3dcigm:VsConverter.pPccControl-targetValueUdcSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "ACDCConverter.targetUdc is not provided for a converter with VsPpccControlKind.udc." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
+        FILTER (!bound(?targetudc) && ?value=cim:VsPpccControlKind.udc) .        
+			}""" .   
+
+
+l3dcigm:VSCapabilityCurve
+    a               sh:NodeShape ;
+    sh:property     l3dcigm:VsCapabilityCurve-yvalues, l3dcigm:VsCapabilityCurve-VsCapabilityCurveCount ;
+    sh:targetClass  cim:VsCapabilityCurve   .
+
+l3dcigm:DCLineSegment  a  sh:NodeShape ;
+        sh:property     l3dcigm:DCLineSegment.resistance-valueRange, l3dcigm:PerLengthDCLineParameter.resistance-valueRange ;
+        sh:targetClass  cim:DCLineSegment , cim:PerLengthDCLineParameter.
+
+l3dcigm:DCLineSegment.resistance-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "For every instance of cim:DCLineSegment the value of cim:DCLineSegment.resistance and the value of the associated cim:PerLengthDCLineParameter.resistance must be greater than zero." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "A cim:DCLineSegment with negative resistance." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "DCLineSegmentR" ;
+        sh:order         71 ;
+        sh:path          cim:DCLineSegment.resistance ;
+        sh:severity      sh:Violation .
+
+l3dcigm:PerLengthDCLineParameter.resistance-valueRange
+        a                sh:PropertyShape ;
+        sh:description   "For every instance of cim:DCLineSegment the value of cim:DCLineSegment.resistance and the value of the associated cim:PerLengthDCLineParameter.resistance must be greater than zero." ;
+        sh:group         l3dcigm:Level3-DCIGM ;
+        sh:message       "A cim:DCLineSegment with negative resistance." ;
+        sh:minExclusive  "0.0"^^xsd:float ;
+        sh:name          "DCLineSegmentR" ;
+        sh:order         72 ;
+        sh:path          cim:PerLengthDCLineParameter.resistance  ;
+        sh:severity      sh:Violation .

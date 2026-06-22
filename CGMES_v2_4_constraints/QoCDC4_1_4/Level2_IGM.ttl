@@ -1,0 +1,84 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level2-IGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l2igm:  <https://ap-con.cim4.eu/QoCDC-Level2-IGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l2igm:MAS-IGM1  rdf:type  sh:NodeShape;
+        sh:property    l2igm:IGM-MASPersistency;
+        sh:targetNode  cim:MASPersistency .
+
+l2igm:IGM-MASPersistency
+        rdf:type        sh:PropertyShape;
+        sh:description  "The 'md: Model. modelingAuthoritySet' attribute must be persistent for all CIMXML files of an IGM. Note that to test this across CIMXML files this must be done for a model where all files have been included.";
+        sh:group        l2igm:Level2-IGM;
+        sh:name         "MASPersistency";
+        sh:order        2;
+        sh:path         md:Model.modelingAuthoritySet;
+        sh:severity     sh:Violation;
+        sh:sparql       l2igm:IGM-MASPersistencySparql .
+
+l2igm:IGM-MASPersistencySparql
+        rdf:type    sh:SPARQLConstraint;
+        sh:message  "md:Model.modelingAuthoritySet is not persistent across IGM files.";
+        sh:prefixes  cim:;
+        sh:select   """
+	      SELECT $this (COUNT(DISTINCT ?value) AS ?count)
+        WHERE {
+          ?fm $PATH ?value .
+        }
+        GROUP BY $this $PATH
+        HAVING(?count>2)
+        """ .
+
+l2igm:IGM-MAS  rdf:type  sh:PropertyShape;
+        sh:description  "1) md:Model.modelingAuthoritySet is required in the header of all instance files. 2) md:Model.modelingAuthoritySet shall have one of the values specified in the QoCDC Reference Data document. 3) md:Model.modelingAuthoritySet of a CGM SV instance file shall be the MAS that creates the state variables. The value of md:Model.modelingAuthoritySet is not validated against QoCDC Reference Data document, but it is recommended to be constructed as follows: MA/Region/Process, where - MA is the URI of the MergingAgent - Region is the name of the CGMRegion - Process is the name of the ProcessType.";
+        sh:group        l2igm:Level2-IGM;
+        sh:in           ( "http://www.entsoe.eu/OperationalPlanning"^^xsd:anyURI "http://www.entsoe.eu/OperationalPlanning"^^xsd:anyURI "http://www.energinet.dk/west/OperationalPlanning"^^xsd:anyURI "http://www.energinet.dk/east/OperationalPlanning"^^xsd:anyURI "http://www.eirgridgroup.com/ni/OperationalPlanning"^^xsd:anyURI "http://www.elering.ee/OperationalPlanning"^^xsd:anyURI "http://www.energinet.dk/OperationalPlanning"^^xsd:anyURI "http://www.kostt.com/OperationalPlanning"^^xsd:anyURI "http://www.ost.al/OperationalPlanning"^^xsd:anyURI "http://www.apg.at/OperationalPlanning"^^xsd:anyURI "http://www.nosbih.ba/OperationalPlanning"^^xsd:anyURI "http://www.elia.be/OperationalPlanning"^^xsd:anyURI "http://www.eso.bg/OperationalPlanning"^^xsd:anyURI "http://www.swissgrid.ch/OperationalPlanning"^^xsd:anyURI "http://www.cges.me/OperationalPlanning"^^xsd:anyURI "http://www.ems.rs/OperationalPlanning"^^xsd:anyURI "http://www.ceps.cz/OperationalPlanning"^^xsd:anyURI "http://www.transnetbw.de/OperationalPlanning"^^xsd:anyURI "http://www.tennet.eu/de/OperationalPlanning"^^xsd:anyURI "http://www.amprion.net/OperationalPlanning"^^xsd:anyURI "http://www.50hertz.com/OperationalPlanning"^^xsd:anyURI "http://www.ree.es/OperationalPlanning"^^xsd:anyURI "http://www.fingrid.fi/OperationalPlanning"^^xsd:anyURI "http://www.rte-france.com/OperationalPlanning"^^xsd:anyURI "http://www.nationalgrideso.com/OperationalPlanning"^^xsd:anyURI "http://www.admie.gr/OperationalPlanning"^^xsd:anyURI "http://www.hops.hr/OperationalPlanning"^^xsd:anyURI "http://www.mavir.hu/OperationalPlanning"^^xsd:anyURI "http://www.eirgridgroup.com/ie/OperationalPlanning"^^xsd:anyURI "http://www.terna.it/OperationalPlanning"^^xsd:anyURI "http://www.litgrid.eu/OperationalPlanning"^^xsd:anyURI "http://www.creos-net.lu/OperationalPlanning"^^xsd:anyURI "http://www.ast.lv/OperationalPlanning"^^xsd:anyURI "http://www.mepso.com.mk/OperationalPlanning"^^xsd:anyURI "http://www.tennet.eu/nl/OperationalPlanning"^^xsd:anyURI "http://www.statnett.no/OperationalPlanning"^^xsd:anyURI "http://www.pse.pl/OperationalPlanning"^^xsd:anyURI "http://www.ren.pt/OperationalPlanning"^^xsd:anyURI "http://www.transelectrica.ro/OperationalPlanning"^^xsd:anyURI "http://www.svk.se/OperationalPlanning"^^xsd:anyURI "http://www.eles.si/OperationalPlanning"^^xsd:anyURI "http://www.sepsas.sk/OperationalPlanning"^^xsd:anyURI "http://www.teias.gov.tr/OperationalPlanning"^^xsd:anyURI "http://www.ukrenergo.energy.gov.ua/OperationalPlanning"^^xsd:anyURI );
+        sh:message      "Missing or invalid md:Model.modelingAuthoritySet specification.";
+        sh:name         "MAS";
+        sh:order        1;
+        sh:path         md:Model.modelingAuthoritySet;
+        sh:severity     sh:Violation .
+
+l2igm:MAS-IGM  rdf:type  sh:NodeShape;
+        sh:property     l2igm:IGM-MAS;
+        sh:targetClass  md:FullModel , dm:DifferenceModel .
+
+l2igm:Level2-IGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level2-IGM";
+        sh:order    0 .

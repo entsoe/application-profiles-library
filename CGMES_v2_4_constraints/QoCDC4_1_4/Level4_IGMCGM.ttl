@@ -1,0 +1,430 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level4-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l4com:  <https://ap-con.cim4.eu/QoCDC-Level4-IGMCGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l4com:DLEQDLEQDIFFDLTPDLDY-DL
+        rdf:type        sh:PropertyShape;
+        sh:description  "Every DL file shall have 'md: Model. DependentOn' references to the EQ or EQDIFF file, the TP file and to the DY file that were used for the serialization. The reference to the EQ model file is required and the references to TP and DY model files are optional. Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "DLEQDLEQDIFFDLTPDLDY";
+        sh:order        8;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:DLEQDLEQDIFFDLTPDLDY-DLSparql .
+
+l4com:GLEQGLEQBD-GL  rdf:type  sh:PropertyShape;
+        sh:description  "Every GL model file has 'md: Model. DependentOn' references to the EQ model file and EQBD model file that were used for the serialization. The reference to the EQ model file is required and EQBD model file is optional. Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "GLEQGLEQBD";
+        sh:order        7;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:GLEQGLEQBD-GLSparql .
+
+l4com:DLEQDLEQDIFFDLTPDLDY-DLSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md:Model.DependentOn statement(s), DL must have reference to EQ.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT DISTINCT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI } AS ?coprof) .
+         
+          FILTER ( !bound(?profile) ||  ?coprof=false  ).
+        } """ .
+
+l4com:EQEQBD  rdf:type  sh:NodeShape;
+        sh:and          ( [ sh:maxCount  1;
+                            sh:minCount  1;
+                            sh:path      md:Model.DependentOn
+                          ]
+                          [ sh:in    ( "http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentBoundary/3/1"^^xsd:anyURI );
+                            sh:path  ( md:Model.DependentOn md:Model.profile )
+                          ]
+                        );
+        sh:description  "Every EQ file shall have an md:Model.DependentOn reference to the EQBD file that was used for the serialization.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:message      "Invalid md:Model.DependentOn statement(s) in EQ.";
+        sh:name         "EQEQBD";
+        sh:order        2;
+        sh:severity     sh:Warning;
+        sh:target       [ rdf:type     sh:SPARQLTarget;
+                          sh:prefixes  cim:;
+                          sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI.
+                }
+                """
+                        ] .
+
+
+l4com:SSHEQSSHEQDIFF  rdf:type  sh:NodeShape;
+        sh:property  l4com:SSHEQSSHEQDIFF-SSH;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                ?this rdf:type md:FullModel   .
+                ?this md:Model.profile "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+l4com:SVSSHSVTPSVTPBD-SVSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md: Model. DependentOn statement(s), SV does not have reference to TP, SSH and TPBD (used as input data for the power flow calculations).";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT DISTINCT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"^^xsd:anyURI } AS ?sshprof) .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/Topology/4/1"^^xsd:anyURI } AS ?tpprof) .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/TopologyBoundary/3/1"^^xsd:anyURI } AS ?tpbdprof) .
+         
+          FILTER ( !bound(?profile) ||  ?sshprof=false || ?tpprof=false || ?tpbdprof=false).
+        } """ .
+
+l4com:TPEQTPEQDIFF-TP
+        rdf:type        sh:PropertyShape;
+        sh:description  "Every TP file shall have an 'md: Model. DependentOn' reference to a EQ or EQDIFF file. Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "TPEQTPEQDIFF";
+        sh:order        3;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:TPEQTPEQDIFF-TPSparql .
+
+l4com:GLEQGLEQBD  rdf:type  sh:NodeShape;
+        sh:property  l4com:GLEQGLEQBD-GL;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/GeographicalLocation/2/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+l4com:TPEQTPEQDIFF  rdf:type  sh:NodeShape;
+        sh:property  l4com:TPEQTPEQDIFF-TP;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/Topology/4/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+l4com:DYEQDYEQDIFF  rdf:type  sh:NodeShape;
+        sh:property  l4com:DYEQDYEQDIFF-DY;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/Dynamics/3/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+l4com:DYEQDYEQDIFF-DY
+        rdf:type        sh:PropertyShape;
+        sh:description  "Every DY file shall have an md:Model.DependentOn reference to a EQ or EQDIFF file. Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "DYEQDYEQDIFF";
+        sh:order        5;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:DYEQDYEQDIFF-DYSparql .
+
+l4com:GLEQGLEQBD-GLSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md: Model. DependentOn statement(s), GL does not have reference to EQ.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT DISTINCT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI } AS ?coprof) .
+
+          FILTER ( !bound(?profile) ||  ?coprof=false ).
+        } """ .
+
+l4com:TPBDEQBD  rdf:type  sh:NodeShape;
+        sh:and          ( [ sh:maxCount  1;
+                            sh:minCount  1;
+                            sh:path      md:Model.DependentOn
+                          ]
+                          [ sh:in    ( "http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentBoundary/3/1"^^xsd:anyURI );
+                            sh:path  ( md:Model.DependentOn md:Model.profile )
+                          ]
+                        );
+        sh:description  "Every TPBD file shall have an md:Model.DependentOn reference to the EQBD file.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:message      "Invalid md:Model.DependentOn statement(s) in TPBD.";
+        sh:name         "TPBDEQBD";
+        sh:order        1;
+        sh:severity     sh:Violation;
+        sh:target       [ rdf:type     sh:SPARQLTarget;
+                          sh:prefixes  cim:;
+                          sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/TopologyBoundary/3/1"^^xsd:anyURI.
+                }
+                """
+                        ] .
+
+#l4com:DanglingReferences
+#        rdf:type       sh:NodeShape;
+#        sh:property    l4com:All-DanglingReferences;
+#        sh:targetNode  cim:DanglingReferences .
+#
+#l4com:All-DanglingReferences
+#        rdf:type        sh:PropertyShape;
+#        sh:description  "For all references (part of the CGMES profiles and additional, if existing), the mRID specified in every rdf:resource in the assembly of cimxml instance files shall be defined in an existing rdf:ID and rdf:about part of the data exchange.";
+#        sh:group        l4com:Level4-IGMCGM;
+#        sh:name         "DanglingReference";
+#        sh:order        10;
+#        sh:path         rdf:type;
+#        sh:severity     sh:Violation;
+#        sh:sparql       l4com:All-DanglingReferencesSparql .
+#		
+#l4com:All-DanglingReferencesSparql
+#        rdf:type     sh:SPARQLConstraint;
+#        sh:message   "Dangling reference found. The ID of the class is: {?s}.";
+#        sh:prefixes  cim:;
+#        sh:select    """
+#			SELECT  DISTINCT $this ?value ?s 
+#			WHERE {
+#        ?s !rdf:type ?value .
+#        BIND (str(?value) AS ?strvalue).
+#        FILTER(isIRI(?value) && (CONTAINS(?strvalue,"#_") || STRSTARTS(?strvalue,"urn:uuid:") || STRENDS(?strvalue,"#"))).  
+#		#FILTER(isIRI(?value) ). 		
+#        FILTER NOT EXISTS {?value rdf:type ?v }.
+#			}""" .		
+
+l4com:DanglingReferences
+    a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+		sh:prefixes cim: ;
+        sh:select """
+            SELECT DISTINCT ?this
+            WHERE {
+                ?subject ?predicate ?this .
+
+                FILTER(?predicate != rdf:type)
+                FILTER(isIRI(?this))
+
+                FILTER(
+                    STRSTARTS(STR(?this), "urn:uuid:")
+                    || CONTAINS(STR(?this), "#_")
+                    || STRENDS(STR(?this), "#")
+                )
+
+                FILTER NOT EXISTS {
+                    ?this rdf:type ?type .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:property l4com:All-DanglingReferences .
+
+l4com:All-DanglingReferences
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:minCount 1 ;
+	sh:order        10;
+	sh:name         "DanglingReference";
+	sh:severity     sh:Violation;
+	sh:group        l4com:Level4-IGMCGM;
+	sh:description  "For all references (part of the CGMES profiles and additional, if existing), the mRID specified in every rdf:resource in the assembly of cimxml instance files shall be defined in an existing rdf:ID and rdf:about part of the data exchange.";
+    sh:message   "Dangling reference found." .
+
+l4com:SSHEQSSHEQDIFF-SSHSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md:Model.DependentOn statement(s) in SSH.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI } AS ?coprof) .
+         
+          FILTER ( !bound(?profile) ||  ?coprof=false).
+        } """ .
+
+
+l4com:TPEQTPEQDIFF-TPSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md:Model.DependentOn statement(s) in TP.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT DISTINCT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI } AS ?coprof) .
+         
+          FILTER ( !bound(?profile) ||  ?coprof=false).
+        } """ .
+
+l4com:DLEQDLEQDIFFDLTPDLDY
+        rdf:type     sh:NodeShape;
+        sh:property  l4com:DLEQDLEQDIFFDLTPDLDY-DL;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/DiagramLayout/3/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+l4com:DYEQDYEQDIFF-DYSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid md:Model.DependentOn statement(s) in DY.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  
+        WHERE {
+          OPTIONAL {$this md:Model.DependentOn/md:Model.profile ?profile} .
+		  BIND(EXISTS{$this md:Model.DependentOn/md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI } AS ?coprof) .
+         
+          FILTER ( !bound(?profile) ||  ?coprof=false).
+        } """ .
+
+l4com:SVSSHSVTPSVTPBD-SV
+        rdf:type        sh:PropertyShape;
+        sh:description  "Every SV file shall have 'md: Model. DependentOn' references to the files - SSH input files to the power flow calculation. - TP files with the power flow busses used in the power flow calculation. - TPBD files with the power flow busses in the boundary Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "SVSSHSVTPSVTPBD";
+        sh:order        6;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:SVSSHSVTPSVTPBD-SVSparql .
+
+l4com:Level4-IGMCGMCGM
+        rdf:type    sh:PropertyGroup;
+        rdfs:label  "Level4-IGMCGM";
+        sh:order    0 .
+
+l4com:SSHEQSSHEQDIFF-SSH
+        rdf:type        sh:PropertyShape;
+        sh:description  "Every SSH file shall have an 'md:Model.DependentOn' reference to a EQ or EQDIFF file. Note: This is a minimum requirement so more references may be present.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:name         "SSHEQSSHEQDIFF";
+        sh:order        4;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l4com:SSHEQSSHEQDIFF-SSHSparql .
+
+l4com:SVSSHSVTPSVTPBD
+        rdf:type     sh:NodeShape;
+        sh:property  l4com:SVSSHSVTPSVTPBD-SV;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type md:FullModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/StateVariables/4/1"^^xsd:anyURI.
+                }
+                """
+                     ] .
+
+
+#l4com:EQDIFFEQ  rdf:type  sh:NodeShape;
+#        sh:property  l4com:EQDIFFEQ-DL;
+#        sh:target    [ rdf:type     sh:SPARQLTarget;
+#                       sh:prefixes  cim:;
+#                       sh:select    """
+#                SELECT DISTINCT ?this
+#                WHERE {
+#                  ?this rdf:type md:DifferenceModel   .
+#                  ?this md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI.
+#                }
+#                """
+#                     ] .
+#
+
+l4com:EQDIFFEQ  rdf:type  sh:NodeShape;
+        sh:and          ( [ sh:maxCount  1;
+                            sh:minCount  1;
+                            sh:path      md:Model.Supersedes
+                          ]
+                          [ sh:maxCount  0;
+                            sh:path      md:Model.DependentOn
+                          ]
+                          [ sh:in    ( "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI );
+                            sh:path  ( md:Model.Supersedes md:Model.profile )
+                          ]
+                        );
+        sh:description  "Every EQDIFF file shall only have a md:Model.Supersedes references to the EQ file it updates as it is not correct to use md:Model.DependentOn for a CIMXML file that replaces or supersedes another.";
+        sh:group        l4com:Level4-IGMCGM;
+        sh:message      "EQDIFF shall not use md:Model.DependentOn and shall have exactly one md:Model.Supersedes pointing to the superseded EQ model (EquipmentCore profile) present in the dataset." ;
+        sh:name         "EQDIFFEQ";
+        sh:order        5;
+        sh:severity     sh:Violation;
+        sh:target       [ rdf:type     sh:SPARQLTarget;
+                          sh:prefixes  cim:;
+                          sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type dm:DifferenceModel   .
+                  ?this md:Model.profile "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI. 
+                }
+                """
+                        ] .
+

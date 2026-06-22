@@ -1,0 +1,137 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level2-Header/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l2head: <https://ap-con.cim4.eu/QoCDC-Level2-Header/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l2head:ModelHeader-NS
+        rdf:type        sh:NodeShape;
+        sh:property     l2head:Model.created-ModelCreated , l2head:Model.scenarioTime-ScenarioTime, l2head:Model.profile-ProfileSpecification;
+        sh:targetClass  md:FullModel , dm:DifferenceModel .
+
+l2head:Model.profile-ProfileSpecification
+        rdf:type        sh:PropertyShape;
+        sh:description  "The 'md:Model.profile' description in the file header is restricted. Note: The profile declarations in the file header are leading and shall be used as meta data to request data.\tThe enumeration values are centrally maintained in \tQoCDC Reference Data document.";
+        sh:group        l2head:Level2-IGMCGMHeader;
+        sh:in           ( "http://entsoe.eu/CIM/TopologyBoundary/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentBoundaryOperation/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/StateVariables/4/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentCore/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentShortCircuit/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/Topology/4/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentBoundary/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/EquipmentOperation/3/1"^^xsd:anyURI "http://entsoe.eu/CIM/GeographicalLocation/2/1"^^xsd:anyURI "http://entsoe.eu/CIM/DiagramLayout/3/1"^^xsd:anyURI );
+        sh:message      "Invalid profile specification.";
+        sh:name         "ProfileSpecification";
+        sh:order        4;
+        sh:path         md:Model.profile;
+        sh:severity     sh:Violation .
+
+l2head:FileHeaderSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Missing file header.(or multiple headers)  FullModel count: {?countfh}; DifferenceModel count: {?countdh}.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value ?countfh ?countdh
+			WHERE {
+					{
+				SELECT $this (COUNT(?s1) AS ?countfh) (COUNT(?s2) AS ?countdh)
+				WHERE {
+				OPTIONAL {?s1 $PATH md:FullModel }.
+				OPTIONAL {?s2 $PATH dm:DifferenceModel }.
+
+				}
+				GROUP BY $this $PATH
+				}
+			
+          BIND(EXISTS{?s $PATH md:FullModel} AS ?fullm).
+		  BIND(EXISTS{?s $PATH dm:DifferenceModel} AS ?diffm).
+          FILTER((?fullm=false && ?diffm=false) || (?fullm=true && ?diffm=true) || ?countfh>1 || ?countdh>1).
+			}""" .
+
+l2head:FullModel  rdf:type  sh:NodeShape;
+        sh:property    l2head:FileHeader;
+        sh:targetNode  md:Header .
+
+l2head:Model.created-ModelCreatedSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid Model.created attribute.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+          $this $PATH ?value .
+          FILTER(!STRENDS(str(?value),"Z")).
+			}""" .
+
+l2head:Model.created-ModelCreated
+        rdf:type        sh:PropertyShape;
+        sh:description  "The date and time when the model was created. It is the time of the serialization. The format is an extended format according to the ISO 8601-2005.\t\tThe ENTSO-E exchanges should refer to UTC. The 'md:Model.created' attribute must be valid datetime in accordance with ISO 8601, extended format with time designator [T] between date and time ending with UTC designator [Z]. The characters [:-] shall be used. For example, 2018-01-18T11:30:12Z or 2018-01-18T11:30:12.015Z. The restriction describes the minimum required specification that a receiver shall be prepared to consume. A more precisely specified time defined by characters [+YMDHSWP] will be ignored.";
+        sh:group        l2head:Level2-IGMCGMHeader;
+        sh:name         "ModelCreated";
+        sh:order        2;
+        sh:path         md:Model.created;
+        sh:severity     sh:Violation;
+        sh:sparql       l2head:Model.created-ModelCreatedSparql .
+
+l2head:Model.scenarioTime-ScenarioTime
+        rdf:type        sh:PropertyShape;
+        sh:description  "The 'md:Model.scenarioTime' attribute must be valid datetime in accordance with ISO 8601, extended format with time designator [T]\tbetween date and time ending with UTC designator [Z]. The characters [:-] shall be used. For example, 2018-01-18T11:30:00Z, 2018-01-18T11:30:12.000Z or 2018-01-18T11:30Z.\tThe restriction describes the minimum required specification that a receiver shall be prepared to consume. A more precisely specified time defined by characters [+.YMDHSWP] will be ignored.";
+        sh:group        l2head:Level2-IGMCGMHeader;
+        sh:name         "ScenarioTime";
+        sh:order        3;
+        sh:path         md:Model.scenarioTime;
+        sh:severity     sh:Violation;
+        sh:sparql       l2head:Model.scenarioTime-ScenarioTimeSparql .
+
+l2head:FileHeader  rdf:type  sh:PropertyShape;
+        sh:description  "Each type of instance file shall have exactly one file header of type FullModel or DifferenceModel.";
+        sh:group        l2head:Level2-IGMCGMHeader;
+        sh:name         "FileHeader";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l2head:FileHeaderSparql .
+
+l2head:Level2-IGMCGMHeader
+        rdf:type    sh:PropertyGroup;
+        rdfs:label  "Level2-IGMCGMHeader";
+        sh:order    0 .
+
+l2head:Model.scenarioTime-ScenarioTimeSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Invalid Model.scenarioTime attribute.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+          $this $PATH ?value .
+          FILTER(!STRENDS(str(?value),"Z")).
+			}""" .

@@ -1,0 +1,70 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level7-IGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l7igm:  <https://ap-con.cim4.eu/QoCDC-Level7-IGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l7igm:Level7-IGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level7-IGM";
+        sh:order    0 .
+
+l7igm:TopologicalNode
+        rdf:type        sh:NodeShape;
+        sh:property     l7igm:ConductingEquipment-InconsistentTnBaseVoltage ;
+        sh:targetClass  cim:TopologicalNode .
+
+l7igm:ConductingEquipment-InconsistentTnBaseVoltage
+        a               sh:PropertyShape ;
+        sh:sparql       l7igm:ConductingEquipment-InconsistentTnBaseVoltageSparql ;
+        sh:path         rdf:type ;
+        sh:description  "All equipment with a direct association to cim:BaseVoltage connected to a cim:TopologicalNode should have a cim:BaseVoltage.nominalVoltage that deviates no more than 10% from the cim:BaseVoltage.nominalVoltage of the cim:BaseVoltage referenced by the association end cim:TopologicalNode.BaseVoltage." ;
+        sh:name         "InconsistentTnBaseVoltage" ;
+        sh:group        l7igm:Level7-IGM ;
+        sh:order        1 ;
+        sh:severity     sh:Info .
+
+l7igm:ConductingEquipment-InconsistentTnBaseVoltageSparql
+		a         sh:SPARQLConstraint ;
+		sh:message "cim:BaseVoltages.nominalVoltage at a cim:TopologicalNode differs more than 10% from the cim:BaseVoltage.nominalVoltage of the connected equipment. Voltage of ConductingEquipment (rdf:id {?ce}): {?cebvnv}; Voltage of TopologicalNode: {?tnbvnv}" ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?cebvnv ?tnbvnv ?ce
+			WHERE {
+				$this ^cim:Terminal.TopologicalNode/cim:Terminal.ConductingEquipment ?ce.
+				?ce cim:ConductingEquipment.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cebvnv .
+				$this cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tnbvnv .
+
+        FILTER ((?cebvnv<?tnbvnv && (ABS(?cebvnv-?tnbvnv)/?cebvnv)>0.1) || (?cebvnv>?tnbvnv && (ABS(?cebvnv-?tnbvnv)/?tnbvnv)>0.1)) .
+			}""" .

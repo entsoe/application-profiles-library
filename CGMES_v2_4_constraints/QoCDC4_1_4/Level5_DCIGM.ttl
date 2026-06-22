@@ -1,0 +1,34 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level5-DCIGM/4.1.4> .
+@prefix cim:     <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:    <http://datashapes.org/dash#> .
+@prefix dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe:  <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l5dcigm: <https://ap-con.cim4.eu/QoCDC-Level5-DCIGM/4.1.4#> .
+@prefix md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+l5dcigm:Level5-IGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level5-DCIGM";
+        sh:order    0 .
+
+l5dcigm:DCLineSegment
+        a               sh:NodeShape ;
+        sh:property     l5dcigm:DCLineSegment-containment ;
+        sh:targetClass  cim:DCLineSegment .
+
+l5dcigm:DCLineSegment-containment
+        a               sh:PropertyShape ;
+        sh:in           ( cim:DCLine cim:Substation );
+        sh:description  "For every instance of cim:DCLineSegment, the cim:Equipment.EquipmentContainer referred to, must be of type cim:DCLine. In the case of modelling back to back configuration the association shall point to EquipmentContainer of type cim:Substation. Missing containment is not allowed." ;
+        sh:message      "cim:DCLineSegment is not contained in either a cim:DCLine or a cim:Substation." ;
+        sh:name         "DCLineContainment" ;
+        sh:path         (cim:Equipment.EquipmentContainer rdf:type);
+        sh:maxCount     1 ;
+        sh:minCount     1 ;
+        sh:order        27 ;
+        sh:group        l5dcigm:Level5-DCIGM ;
+        sh:severity     sh:Violation .

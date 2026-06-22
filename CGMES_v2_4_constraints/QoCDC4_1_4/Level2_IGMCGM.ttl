@@ -1,0 +1,96 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level2-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix dm:     <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l2com:  <https://ap-con.cim4.eu/QoCDC-Level2-IGMCGM/4.1.4#> .
+@prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l2com:Level2-IGMCGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level2-IGMCGM";
+        sh:order    0 .
+
+l2com:AttributeAndRoleValuesSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Empty attribute or rdf:resource is present. Subject: {?s}; Attribute: {?p}";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value ?s ?p
+			WHERE {
+		  ?s ?p ?value .
+		  BIND(str(?value) AS ?strvalue).
+		  BIND(strlen(?strvalue) AS ?strvaluelen).
+		  BIND(isLiteral(?value) AS ?lit).
+		  FILTER((?lit=true && DATATYPE(?value)!=xsd:string && ?strvaluelen=0) || (?lit=false && strlen(strafter(?strvalue,"#"))=0 && !contains(?strvalue,"urn:uuid:")) || (?lit=false && (strlen(strafter(?strvalue,"urn:uuid:"))=0 || ?strvaluelen=0) && !contains(?strvalue,"#"))).
+			}""" .
+
+l2com:Float  rdf:type  sh:NodeShape;
+        sh:property    l2com:AttributeAndRoleValues;
+        sh:targetNode  cim:AttributeAndRoleValues .
+
+l2com:AttributeAndRoleValues
+        rdf:type        sh:PropertyShape;
+        sh:description  "Attribute and role values appearing in a CIMXML document shall have a value. The rule checks empty attributes that are not of type String. Notes: - Example of empty attribute: [ cim: class. attribute/] or [ cim: class. attribute][/ cim: class. attribute] - Example of empty rdf: resource [ cim: class. attribute rdf: resouce=/], note this is not a valid reference and it is part of rule XMLStructure. Note: the xml angle brackets has been replaced by square parenthesis in above examples.";
+        sh:group        l2com:Level2-IGMCGM;
+        sh:name         "AttributeAndRoleValues";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l2com:AttributeAndRoleValuesSparql .
+
+l2com:MAS  rdf:type  sh:NodeShape;
+        sh:property     l2com:MAS-ps;
+        sh:targetClass  md:FullModel , dm:DifferenceModel .
+
+l2com:MAS-ps  rdf:type  sh:PropertyShape;
+        sh:description  "1) md:Model.modelingAuthoritySet is required in the header of all instance files. 2) md:Model.modelingAuthoritySet shall have one of the values specified in the QoCDC Reference Data document. 3) md:Model.modelingAuthoritySet of a CGM SV instance file shall be the MAS that creates the state variables. The value of md:Model.modelingAuthoritySet is not validated against QoCDC Reference Data document, but it is recommended to be constructed as follows: MA/Region/Process, where - MA is the URI of the MergingAgent - Region is the name of the CGMRegion - Process is the name of the ProcessType.";
+        sh:group        l2com:Level2-IGMCGM;
+        sh:name         "MAS";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l2com:MAS-psSparql .
+
+l2com:MAS-psSparql  rdf:type  sh:SPARQLConstraint;
+        sh:message   "Missing or invalid md:Model.modelingAuthoritySet specification.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT $this ?value
+                WHERE {
+                  $this md:Model.profile ?prof.
+				  $this md:Model.modelingAuthoritySet ?value.
+				  FILTER(str(?prof) NOT IN ("http://entsoe.eu/CIM/StateVariables/4/1")).
+				  FILTER(str(?value) NOT IN ("http://www.entsoe.eu/OperationalPlanning" , "http://www.entsoe.eu/OperationalPlanning" , "http://www.energinet.dk/west/OperationalPlanning" , "http://www.energinet.dk/east/OperationalPlanning" , "http://www.eirgridgroup.com/ni/OperationalPlanning" , "http://www.elering.ee/OperationalPlanning" , "http://www.energinet.dk/OperationalPlanning" , "http://www.kostt.com/OperationalPlanning" , "http://www.ost.al/OperationalPlanning" , "http://www.apg.at/OperationalPlanning" , "http://www.nosbih.ba/OperationalPlanning" , "http://www.elia.be/OperationalPlanning" , "http://www.eso.bg/OperationalPlanning" , "http://www.swissgrid.ch/OperationalPlanning" , "http://www.cges.me/OperationalPlanning" , "http://www.ems.rs/OperationalPlanning" , "http://www.ceps.cz/OperationalPlanning" , "http://www.transnetbw.de/OperationalPlanning" , "http://www.tennet.eu/de/OperationalPlanning" , "http://www.amprion.net/OperationalPlanning" , "http://www.50hertz.com/OperationalPlanning" , "http://www.ree.es/OperationalPlanning" , "http://www.fingrid.fi/OperationalPlanning" , "http://www.rte-france.com/OperationalPlanning" , "http://www.nationalgrideso.com/OperationalPlanning" , "http://www.admie.gr/OperationalPlanning" , "http://www.hops.hr/OperationalPlanning" , "http://www.mavir.hu/OperationalPlanning" , "http://www.eirgridgroup.com/ie/OperationalPlanning" , "http://www.terna.it/OperationalPlanning" , "http://www.litgrid.eu/OperationalPlanning" , "http://www.creos-net.lu/OperationalPlanning" , "http://www.ast.lv/OperationalPlanning" , "http://www.mepso.com.mk/OperationalPlanning" , "http://www.tennet.eu/nl/OperationalPlanning" , "http://www.statnett.no/OperationalPlanning" , "http://www.pse.pl/OperationalPlanning" , "http://www.ren.pt/OperationalPlanning" , "http://www.transelectrica.ro/OperationalPlanning" , "http://www.svk.se/OperationalPlanning" , "http://www.eles.si/OperationalPlanning" , "http://www.sepsas.sk/OperationalPlanning" , "http://www.teias.gov.tr/OperationalPlanning" , "http://www.ukrenergo.energy.gov.ua/OperationalPlanning")).
+			}""" .

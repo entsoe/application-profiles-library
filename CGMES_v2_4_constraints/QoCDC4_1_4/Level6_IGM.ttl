@@ -1,0 +1,126 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level6-IGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l6igm:  <https://ap-con.cim4.eu/QoCDC-Level6-IGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l6igm:Level6-IGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level6-IGM";
+        sh:order    0 .
+
+l6igm:KirchhoffsFirstLaw
+        rdf:type        sh:NodeShape;
+        sh:property     l6igm:KirchhoffsFirstLaw-ps;
+        sh:targetClass  cim:TopologicalNode .
+
+l6igm:RegulatingControl-VoltageTargetConsistencyAtTN
+        rdf:type        sh:NodeShape;
+        sh:name         "VoltageTargetConsistencyAtTN";  
+
+        sh:targetClass  cim:TopologicalNode;  
+        sh:description  "For all cim:RegulatingControl and cim:EquivalentInjection instances regulating on cim:Terminal connected to the same cim:TopologicalNode, all cim:RegulatingControl.targetValue shall be equal in case: -cim:RegulatingControl.enabled equals to true -Associated cim:ConductingEquipment objects are switched on (cim:ACDCTerminal.connected equals to true) -cim:RegulatingCondEq.controlEnabled equals to true for associated cim:ConductingEquipment -cim:TapChanger.ltcFlag equals to true in case the control includes cim:TapChanger -cim:RegulatingControl.mode is cim:RegulatingControlModeKind.voltage -cim:EquivalentInjection.regulatingCapability equals to true in case of cim:EquivalentInjection. This rule is valid for both discrete (cim:RegulatingControl.discrete equals to true) and continuous controls (cim:RegulatingControl.discrete equals to false).";
+        sh:group        l6igm:Level6-IGM;
+        sh:name         "VoltageTargetConsistencyAtTN";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6igm:RegulatingControl-VoltageTargetConsistencyAtTNSparql .
+
+
+l6igm:RegulatingControl-VoltageTargetConsistencyAtTNSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Inconsistent cim:RegulatingControl.targetValue-s (RegulatingControl: {?tv}) at the following cim:TopologicalNode: {?tn}.";
+        sh:prefixes  cim:;
+        sh:select    """
+        SELECT $this (?this AS ?tn) 
+           (COUNT(DISTINCT ?tv) AS ?n)
+    WHERE {
+      $this ^cim:Terminal.TopologicalNode ?term .
+
+      ?ctrl cim:RegulatingControl.Terminal|cim:TapChangerControl.Terminal  ?term . 
+    
+      ?ctrl cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage ;
+            cim:RegulatingControl.enabled true ;
+            cim:RegulatingControl.targetValue ?tv .
+
+      ?term cim:ACDCTerminal.connected true .
+    }
+    GROUP BY $this
+    HAVING (?n > 1)
+  """ .
+
+l6igm:KirchhoffsFirstLaw-ps
+        rdf:type        sh:PropertyShape;
+        sh:description  "The sum of cim:SvPowerFlow.p and sum of cim:SvPowerFlow.q for all cim:SvPowerFlow-s connected to a cim:TopologicalNode shall be within the solution tolerance provided by 0.1 MW/Mvar. If solution tolerance is exceeded a cim:SvInjection shall be provided (the association end cim:TopologicalNode.SvInjection is required). Note: cim:SvPowerFlow-s of non-retained cim:Switch (cim:Switch.retained is false) shall be excluded. The power flow in non-retained cim:Switch-es may not have been correctly computed and may be inconsistent with the other power flows on the cim:TopologicalNode. Hence non-retained cim:Switch-es shall be excluded from the summation to achieve a more robust result.";
+        sh:group        l6igm:Level6-IGM;
+        sh:name         "KirchhoffsFirstLaw";
+        sh:order        2;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6igm:KirchhoffsFirstLawSparql .
+
+
+l6igm:KirchhoffsFirstLawSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "The sum of the cim:SvPowerFlow-s reported on a cim:TopologicalNode is not within the solution tolerance and there is no SvInjection provided. Sum P={?sumP} MW, Sum Q={?sumQ} Mvar.";
+        sh:prefixes  cim:;
+        sh:select    """
+        SELECT $this ?sumP ?sumQ
+        WHERE {
+          {
+           SELECT $this (SUM(?p) AS ?sumP) (SUM(?q) AS ?sumQ)
+            WHERE {
+              $this ^cim:Terminal.TopologicalNode/^cim:SvPowerFlow.Terminal ?svpf .
+              ?svpf cim:SvPowerFlow.p ?p ;
+                    cim:SvPowerFlow.q ?q ;
+                    cim:SvPowerFlow.Terminal ?t .
+              FILTER NOT EXISTS {
+                ?t cim:Terminal.ConductingEquipment ?ce .
+                  { ?ce a cim:Switch } UNION { ?ce a cim:Breaker }
+                   ?ce cim:Switch.retained false .
+              }
+            }
+            GROUP BY $this
+          }
+
+          BIND(EXISTS{$this ^cim:SvInjection.TopologicalNode ?svi} AS ?hassvi).
+
+          FILTER( (?hassvi=false && (ABS(?sumP) > 0.1 || ABS(?sumQ) > 0.1))).
+        }
+    """ .
+
+
+
+

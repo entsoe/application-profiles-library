@@ -1,0 +1,1352 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level6-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l6com:  <https://ap-con.cim4.eu/QoCDC-Level6-IGMCGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l6com:EquivalentInjection.p-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "EquivalentInjection active power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:EquivalentInjection.maxP ?maxp . 
+        $this cim:EquivalentInjection.minP ?minp .
+		OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint ?bp}.
+        FILTER (!bound(?bp) && (((-?value>?maxp || -?value<?minp) && ?value<0) || ((-?value<?maxp || -?value>?minp) && ?value>0 && ?maxp<0 && ?minp<0 && ?maxp<?minp) || ((-?value>?maxp || -?value<?minp) && ?value>0 && ?maxp>0 && ?minp>0 && ?maxp>?minp) || ((?value>?maxp || ?value<?minp) && ?value=0))) .        
+			}""" .
+
+l6com:RotatingMachine.p-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Active power output of the cim:SynchronousMachine is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:RotatingMachine.GeneratingUnit ?genunit.
+		$this cim:SynchronousMachine.operatingMode ?opmode.
+        $this $PATH ?value .
+        ?genunit cim:GeneratingUnit.maxOperatingP ?maxp . 
+        ?genunit cim:GeneratingUnit.minOperatingP ?minp .
+        FILTER ( (abs(?value)>0.00001 && ((?opmode=cim:SynchronousMachineOperatingMode.generator && ((?minp>=0 && !(-?value<=?maxp && -?value>=?minp ) && !(?value<=?maxp && ?value>=?minp && (?value=0 && ?value=-0))) || (?minp<0 && !(-?value<=?maxp && -?value>=0 && (?value!=0 && ?value!=-0)) && !(?value<=?maxp && ?value>=0 && (?value=0 && ?value=-0))))) ||
+		(?opmode=cim:SynchronousMachineOperatingMode.motor && ((?minp<0 && ?maxp<=0 && !(-?value<=?maxp && -?value>=?minp && (?value!=0 && ?value!=-0)) && !(?value<=?maxp && ?value>=?minp && (?value=0 && ?value=-0))) || (?maxp>0 && !(-?value<=0 && -?value>=?minp && (?value!=0 && ?value!=-0)) && !(?value<=0 && ?value>=?minp && (?value=0 && ?value=-0))))))) ||
+		(?opmode=cim:SynchronousMachineOperatingMode.condenser && abs(?value)>0.00001 )
+		) .
+			}""" .
+
+l6com:SvTapStep-SV__4
+        rdf:type        sh:PropertyShape;
+        sh:description  "For a cim:TapChanger that is not used in control (no cim:TapChangerControl associated or if cim:RegulatingControl.enabled equals false) by power flow the value of SvTapStep.position shall be the same as cim:TapChanger.step.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "RequiredSvTapStep";
+        sh:order        47;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvTapStep-SV__4Sparql .
+
+l6com:EnergySource.activePower-DERActivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:EnergySource, the value of cim:EnergySource.activePower should not deviate more than 10 MW from the value of cim:SvPowerFlow.p for the associated terminal. \tNote that disconnected DER should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DERActivePowerInfeedDiffW";
+        sh:order        10;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EnergySource.activePower-DERActivePowerInfeedDiffWSparql .
+
+l6com:TapChanger-ContinuousControlSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:ShuntCompensator or cim:TapChanger are used with a continuous control.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value
+        WHERE {
+          $this cim:TapChanger.TapChangerControl ?value  .
+		  ?value cim:RegulatingControl.discrete false .
+          ?value cim:RegulatingControl.enabled true .
+          BIND(EXISTS{$this cim:TapChanger.TapChangerControl ?valuecheck} AS ?rcexists).
+		  
+          FILTER (?rcexists=true ).
+        }""" .
+
+l6com:ExternalNetworkInjection.q-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The negated value of cim:ExternalNetworkInjection.q should be within the range [cim:ExternalNetworkInjection.minQ, cim:ExternalNetworkInjection.maxQ]. The validation takes into account that both cim:ExternalNetworkInjection.minQ and cim:ExternalNetworkInjection.maxQ will be negative if the equivalent injection is representing load operating range as cim:ExternalNetworkInjection.minQ and cim:ExternalNetworkInjection.maxQ are following generator sign convention (i.e. positive sign when generating power). Note1: Negation is necessary due to the load sign convention.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ENIReactivePowerInfeedLim";
+        sh:order        18;
+        sh:path         cim:ExternalNetworkInjection.q;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ExternalNetworkInjection.q-limitsSparql .
+
+l6com:EnergySource  rdf:type  sh:NodeShape;
+        sh:property     l6com:EnergySource.activePower-consumer , l6com:EnergySource.activePower-DERActivePowerInfeedDiffW , l6com:EnergySource.reactivePower-DERReactivePowerInfeedDiffW, l6com:EnergySource.activePower-DERActivePowerInfeedDiffE;
+        sh:targetClass  cim:EnergySource .
+
+l6com:TopologicalNode
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvVoltage-SV__4, l6com:TopologicalNode-EnergizedBoundaryTN, l6com:TopologicalNode-FakeVoltage;
+        sh:targetClass  cim:TopologicalNode .
+
+l6com:SvVoltage.v-absoluteLimitSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   " Voltage magnitude is outside allowed range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:SvVoltage.v ?value .
+        $this cim:SvVoltage.TopologicalNode/cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?nvoltage .
+
+		FILTER (((?value/?nvoltage)<=0.4 && (?value/?nvoltage)>0) || (?value/?nvoltage)<0).
+			}""" .
+
+l6com:EquivalentInjection.p-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The negated value of non-boundary cim:EquivalentInjection.p should be within the range [cim:EquivalentInjection.minP, cim:EquivalentInjection.maxP]. The validation takes into account that both cim:EquivalentInjection.maxP and cim:EquivalentInjection.minP will be negative if the equivalent injection is representing load operating range as cim:EquivalentInjection.minP and cim:EquivalentInjection.maxP are following generator sign convention (i.e. positive sign when generating power).  Note1: Negation is necessary due to the load sign convention. Note2: An instance with cim:EquivalentInjection.p = 0 is considered out of service.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "EIActivePowerInfeedLim";
+        sh:order        22;
+        sh:path         cim:EquivalentInjection.p;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EquivalentInjection.p-limitsSparql .
+
+l6com:SvShuntCompensatorSections.sections-SV__4
+        rdf:type        sh:PropertyShape;
+        sh:description  "The following shall be satisfied for cim:ShuntCompensator:\t\t1)\tEach instance of cim:ShuntCompensator shall have cim:SvShuntCompensatorSections instantiated.   2)\tFor a cim:ShuntCompensator that is not used in control by power flow (no cim:RegulatingControl associated or if cim:RegulatingControl.enabled equals false) the value of SvShuntCompensatorSections.sections shall be the same as   cim:ShuntCompensator.sections.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "RequiredSvSCSections";
+        sh:order        46;
+        sh:path         cim:ShuntCompensator.sections;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvShuntCompensatorSections.sections-SV__4Sparql .
+
+l6com:TapChangerContinuousControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:TapChanger-ContinuousControl;
+        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerLinear , cim:PhaseTapChangerTabular .
+
+l6com:EquivalentInjection.q-EIReactivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed generation infeed of cim:EquivalentInjection deviates from calculated generation infeed more than 50 MVAr. EquivalentInjection.q: {?value}; SvPowerFlow.q: {?q}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?q
+        WHERE {
+          $this cim:EquivalentInjection.q ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q  .
+
+		  FILTER (abs(?q-?value)>50 ).
+        }""" .
+
+l6com:ShuntCompensatorDiscreteControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:ShuntCompensator.sections-value;
+        sh:targetClass  cim:LinearShuntCompensator , cim:NonlinearShuntCompensator .
+
+l6com:SvVoltage.v-absoluteLimit
+        rdf:type        sh:PropertyShape;
+        sh:description  "cim:SvVoltage.v shall be either 0 per unit or greater than 0.4 per unit.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "InvalidVoltage";
+        sh:order        33;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvVoltage.v-absoluteLimitSparql .
+
+l6com:Level6-IGMCGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level6-IGMCGM";
+        sh:order    0 .
+
+l6com:ShuntCompensator-ContinuousControl
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim: RegulatingControl (SSH) for which the value of cim: RegulatingControl. discrete is false and cim: RegulatingControl. enabled is true means continuous control. For devices natively being discrete this means an imprecise modelling of the behaviour for - cim: ShuntCompensator - cim: TapChanger.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ContinuousControl";
+        sh:order        43;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ShuntCompensator-ContinuousControlSparql .
+
+l6com:SvTapStepDiscreteControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvTapStep.position-value;
+        sh:targetClass  cim:SvTapStep .
+
+l6com:SvInjection-SvInjectionLimit
+        rdf:type        sh:PropertyShape;
+        sh:description  " cim: SvInjection shall not be instantiated if calculated P and Q mismatches are within respective the power flow calculation settings' tolerances. Therefore, - there shall not be an instance of cim: SvInjection if the absolute values of cim: SvInjection. pInjection and cim: SvInjection. qInjection are less than the 0. 1 MW/Mvar. - there shall not be an instance of cim: SvInjection if power flow calculation meets the solution tolerance defined by 0. 1 MW/Mvar.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "SvInjectionLimit";
+        sh:order        31;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:SvInjection-SvInjectionLimitSparql .
+
+l6com:RotatingMachine-pAndQcapabilityCurveP
+        rdf:type        sh:PropertyShape;
+        sh:description  "The power provided to the network by a cim: SynchronousMachine should stay within limits regardless if it is controlling or not. This rule applies when: -a reactive capability curve is present - cim: RotatingMachine. p does not equal 0 - cim: RotatingMachine. q does not equal 0. The negated value of the cim: RotatingMachine. p shall be: - less than or equal to the maximum value of all cim: CurveData. xvalue related to the associated cim: ReactiveCapabilityCurve, and - greater than or equal to the minimum value of all cim: CurveData. xvalue related to the associated cim: ReactiveCapabilityCurve The negated value of the cim: RotatingMachine. q shall be within the reactive capability curve. Linear interpolation is applied between cim: CurveData. y1value (or cim: CurveData. y2value) related to the two nearest to cim: RotatingMachine. p cim: CurveData objects. The obtained value based on the reactive capability curve and related to y1value is denoted as q_rcc_min. The obtained value based on the reactive capability curve and related to y2value is denoted as q_rcc_max. Therefore, the negated value of the cim: RotatingMachine. q shall be: - less than or equal to the q_rcc_max, and - greater than or equal to the q_rcc_min.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenRCCPowerInfeed";
+        sh:order        7;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine-pAndQcapabilityCurvePSparql .
+
+l6com:SvTapStep.position-TapPositionSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Initial tap position deviates more than 2 from calculated.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this ?value 
+        WHERE { 
+          $this $PATH ?value .
+		  $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.enabled true .
+          $this ^cim:SvTapStep.TapChanger/cim:SvTapStep.position ?pos .
+
+          FILTER (abs(?value-?pos)>2) .
+        } """ .
+
+l6com:SCSections  rdf:type  sh:NodeShape;
+        sh:property     l6com:ShuntCompensator.sections-SCSections;
+        sh:targetClass  cim:NonlinearShuntCompensator , cim:LinearShuntCompensator .
+
+l6com:LinearShuntCompensator-ShuntQSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Calculated reactive power output of cim:LinearShuntCompensator differs from cim:SvPowerFlow.q of a cim:LinearShuntCompensator with more than 1 Mvar. {?q}; {?scsections}; {?bpersec}; {?v}";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?q ?scsections ?bpersec ?v
+        WHERE { 
+		  $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.enabled true .
+		  $this ^cim:Terminal.ConductingEquipment/cim:ACDCTerminal.connected true.
+		  $this $PATH ?bpersec .
+		  $this ^cim:SvShuntCompensatorSections.ShuntCompensator/cim:SvShuntCompensatorSections.sections ?scsections .
+		  $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q .
+          $this ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode/^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?v .
+
+          FILTER (?v!=0 && abs(abs(?q)-abs(?scsections*?bpersec*?v*?v))>1) .
+        } """ .
+
+l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed consumption deviates from calculated consumption more than 10 MW. EnergyConsumer.p: {?value}; SvPowerFlow.p: {?p}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?p
+        WHERE {
+          $this cim:EnergyConsumer.p ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          FILTER (abs(?p-?value)>10).
+        }""" .
+
+l6com:ShuntCompensatorContinuousControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:ShuntCompensator-ContinuousControl;
+        sh:targetClass  cim:NonlinearShuntCompensator , cim:LinearShuntCompensator .
+
+l6com:ExternalNetworkInjection.q-ENIReactivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every cim:ExternalNetworkInjection the value of cim:ExternalNetworkInjection.q should not deviate more than 50 MVAr from the value of cim:SvPowerFlow.q for the associated terminal. Note that disconnected loads should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ENIReactivePowerInfeedDiffW";
+        sh:order        20;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ExternalNetworkInjection.q-ENIReactivePowerInfeedDiffWSparql .
+
+l6com:EnergySource.activePower-consumer
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of a DistributedEnergyResource (DER), e.g. cim:EnergySource, the value of cim:EnergySource.activePower should be lower than or equal to zero.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ValidDER";
+        sh:order        9;
+        sh:path         cim:EnergySource.activePower;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EnergySource.activePower-consumerSparql .
+
+l6com:TopologicalNode-EnergizedBoundaryTNSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Boundary cim:TopologicalNode with injecting cim:EquivalentInjection without\tsolved cim:SvVoltage.v.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this entsoe:TopologicalNode.boundaryPoint true .
+        $this ^cim:Terminal.TopologicalNode/cim:Terminal.ConductingEquipment ?ce.
+		?ce rdf:type cim:EquivalentInjection .
+		?ce cim:EquivalentInjection.p ?p .
+		?ce cim:EquivalentInjection.q ?q . 
+		$this ^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?value .
+
+        FILTER ( ?value=0 && (?p!=0 || ?q!=0)).
+
+			}""" .
+
+l6com:ShuntCompensator.sections-valueSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "A discrete control is declared, but the value has non-zero decimals.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:RegulatingCondEq.RegulatingControl ?contr.
+        ?contr cim:RegulatingControl.discrete true . 
+        ?contr cim:RegulatingControl.enabled true .
+        FILTER (CONTAINS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") ) .
+			}""" .
+
+l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed external injection deviates from calculated more than 10 MW. ExternalNetworkInjection.p: {?value}; SvPowerFlow.p: {?p}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?p
+        WHERE {
+          $this cim:ExternalNetworkInjection.p ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+               
+          FILTER (abs(?p-?value)>10).
+        }""" .
+
+l6com:TapChanger.step-valueTypeSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "A discrete control is declared, but the value has non-zero decimals.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.discrete true.
+		$this cim:TapChanger.TapChangerControl/cim:RegulatingControl.enabled true.
+        FILTER (CONTAINS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .
+			}""" .
+
+l6com:RotatingMachine.q-GenReactivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:SynchronousMachine, the value of cim:RotatingMachine.q should not deviate more than 50 MVAr from the value of cim:SvPowerFlow.q for the associated terminal.\tNote that disconnected synchronous machines should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenReactivePowerInfeedDiffW";
+        sh:order        5;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine.q-GenReactivePowerInfeedDiffWSparql .
+
+l6com:EnergyConsumer.p-valueRange
+        rdf:type         sh:PropertyShape;
+        sh:description   "For every instance of cim:StationSupply, cim:ConformLoad and cim:NonConformLoad, the value of cim:EnergyConsumer.p should be greater than or equal to zero.";
+        sh:group         l6com:Level6-IGMCGM;
+        sh:message       "Load infeed acts as a generator.";
+        sh:minInclusive  "0.0"^^xsd:float;
+        sh:name          "ValidLoad";
+        sh:order         13;
+        sh:path          cim:EnergyConsumer.p;
+        sh:severity      sh:Warning .
+
+l6com:ValidLoad  rdf:type  sh:NodeShape;
+        sh:property     l6com:EnergyConsumer.p-valueRange;
+        sh:targetClass  cim:StationSupply , cim:ConformLoad , cim:NonConformLoad , cim:EnergyConsumer .
+
+l6com:SvShuntCompensatorSections.sections-value
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:RegulatingControl (SSH) for which the value of cim:RegulatingControl.discrete is true and cim:RegulatingControl.enabled is true the control variables must move in discrete steps. Hence the values of the following attributes shall not have non-zero decimals considering the precision of xsd:float:- cim:ShuntCompensator.sections - related cim:SvShuntCompensatorSections.sections - cim:TapChanger.step - related cim:SvTapStep.position.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DiscreteControl";
+        sh:order        41;
+        sh:path         cim:SvShuntCompensatorSections.sections;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvShuntCompensatorSections.sections-valueSparql .
+
+l6com:RotatingMachine.q-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The reactive power provided to the network by a cim: SynchronousMachine shall stay within limits regardless if it is controlling or not - negated (due to the load sign convention) cim: RotatingMachine. q greater than or equal to cim: SynchronousMachine. minQ , if provided - negated (due to the load sign convention) cim: RotatingMachine. q less than or equal to cim: SynchronousMachine. maxQ, if provided The rule is applied for all cim: SynchronousMachine objects with and without associated cim: ReactiveCapabilityCurve that have cim: RotatingMachine. p and cim: RotatingMachine. q different than 0.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenReactivePowerInfeedLim";
+        sh:order        3;
+        sh:path         cim:RotatingMachine.q;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine.q-limitsSparql .
+
+l6com:EnergyConsumer.q-LoadReactivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:StationSupply, cim:ConformLoad and cim:NonConformLoad, the value of cim:EnergyConsumer.q should not deviate more than 50 MVAr from the value of cim:SvPowerFlow.q for the associated terminal. Note that disconnected loads should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "LoadReactivePowerInfeedDiffW";
+        sh:order        15;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EnergyConsumer.q-LoadReactivePowerInfeedDiffWSparql .
+
+l6com:ExternalNetworkInjection.p-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The negated value of cim:ExternalNetworkInjection.p should be within the range [cim:ExternalNetworkInjection.minP, cim:ExternalNetworkInjection.maxP]. The validation takes into account that both cim:ExternalNetworkInjection.minP and cim:ExternalNetworkInjection.maxP will be negative if the equivalent injection is representing load operating range as cim:ExternalNetworkInjection.minP and cim:ExternalNetworkInjection.maxP are following generator sign convention (i.e. positive sign when generating power). Note1: Negation is necessary due to the load sign convention. Note2: An instance with cim:ExternalNetworkInjection.p = 0 is considered out of service.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ENIActivePowerInfeedLim";
+        sh:order        17;
+        sh:path         cim:ExternalNetworkInjection.p;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ExternalNetworkInjection.p-limitsSparql .
+
+l6com:ControlArea.netInterchange-NetInterchange1Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Netted Area position not respected more than 50 MW or cim:ControlArea.pTolerance, if provided. ControlArea.netInterchange= {?value}. Sum of the EquivalentInjections= {?sump}.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value ?sump
+			WHERE {
+        $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
+        $this cim:ControlArea.netInterchange ?value .
+		OPTIONAL {$this cim:ControlArea.pTolerance ?ptol }.
+        {
+        SELECT $this (SUM(-?p) AS ?sump)
+        WHERE {
+              ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
+			  ?term cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint true .
+			  ?term cim:Terminal.TopologicalNode ?tn.
+			  ?tn ^cim:Terminal.TopologicalNode ?terms.
+              ?terms cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection .
+              ?terms rdf:type ?termtype.
+              ?terms ^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p .
+          }
+        GROUP BY $this ?termtype
+        }
+        FILTER ((ABS(?value-?sump)>50) || (bound(?ptol) && ABS(?value-?sump)>?ptol)) .
+			} """ .
+
+l6com:RegulatingControl-samePointSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Conflicting target values of cim:RegulatingControl regulating voltage at the same cim:TopologicalNode. RegulatingControl ID: {?rcfail}.";
+        sh:prefixes  cim:;
+        sh:select    """
+    	SELECT $this ?count ?value ?rcfail
+			WHERE {
+          $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal ?rcfail .
+          ?rcfail cim:RegulatingControl.targetValue ?value .
+      {
+      SELECT $this (count(distinct xsd:float(?val)) as ?count)
+      WHERE {
+             $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal ?rc .
+             ?rc cim:RegulatingControl.enabled true .
+             ?rc cim:RegulatingControl.mode ?mode .
+             ?rc cim:RegulatingControl.targetValue ?val .   
+      }
+      GROUP BY $this ?mode
+			}
+      }
+      HAVING (?count>1)
+      #LIMIT 1
+      """ .
+
+l6com:TapChanger-ContinuousControl
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim: RegulatingControl (SSH) for which the value of cim: RegulatingControl. discrete is false and cim: RegulatingControl. enabled is true means continuous control. For devices natively being discrete this means an imprecise modelling of the behaviour for - cim: ShuntCompensator - cim: TapChanger.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ContinuousControl";
+        sh:order        42;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:TapChanger-ContinuousControlSparql .
+
+l6com:SvShuntCompensatorSections.sections-SV__4Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:SvShuntCompensatorSections is missing for shunt compensator or the cim:SvShuntCompensatorSections.sections is not the same as cim:ShuntCompensator.sections. SvShuntCompensatorSections.sections is: {?svshuntsec}; ShuntCompensator.sections is: {?value}.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  DISTINCT $this ?value ?svshuntsec
+			WHERE {
+        $this cim:RegulatingCondEq.controlEnabled ?controlen .
+        $this  ^cim:SvShuntCompensatorSections.ShuntCompensator/cim:SvShuntCompensatorSections.sections  ?svshuntsec .
+        $this $PATH ?value .
+        OPTIONAL {$this  cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.enabled ?rcenabled} .
+        FILTER ((?controlen=false && ?svshuntsec!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svshuntsec!=?value)   ).
+			}""" .
+
+l6com:EnergySource.activePower-DERActivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed generation infeed of cim:EnergySource deviates from calculated generation infeed more than 10 MW. EnergySource.activePower: {?value}; SvPowerFlow.p: {?p}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?p
+        WHERE {
+          $this cim:EnergySource.activePower ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+               
+          FILTER (abs(?p-?value)>10).
+        }""" .
+
+l6com:SvTapStep.position-valueSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "A discrete control is declared, but the value has non-zero decimals.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:SvTapStep.TapChanger/cim:TapChanger.TapChangerControl ?contr .
+        ?contr cim:RegulatingControl.enabled true .
+        ?contr cim:RegulatingControl.discrete true . 
+        FILTER (CONTAINS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .
+			}""" .
+
+l6com:SvVoltage.v-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Calculated voltage is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  DISTINCT $this ?value 
+			WHERE {
+        $this cim:SvVoltage.v ?value .
+        $this cim:SvVoltage.TopologicalNode/^cim:Terminal.TopologicalNode ?term .
+        
+        ?limith cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
+        ?limith cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.high .
+		?limith cim:VoltageLimit.value ?vhigh .
+		?limitl cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
+        ?limitl cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.low .
+        ?limitl cim:VoltageLimit.value ?vlow .
+
+        FILTER ( ?value!=0 && (?value>?vhigh || ?value<?vlow)).
+			}""" .
+
+l6com:ControlArea.netInterchange-NetInterchange2
+        rdf:type        sh:PropertyShape;
+        sh:description  "For a cim: ControlArea of type interchange the aggregated sum of the values of cim: SvPowerFlow. p for cim: Terminals referenced by cim: TieFlow. Terminal shall not deviate from the value of cim: ControlArea. netInterchange with more than 200 MW. There are some implications from other rules to be considered: 1) According to level 5 rule SvPowerFlowBranchInstances the cim: Terminal referenced by a cim: TieFlow. Terminal is located at a boundary cim: TopologicalNode, hence the attribute cim: TieFlow. positiveFlowIn is always true. 2) According to level 5 rule SvPowerFlowBranchInstances2 the cim: Terminal of cim: ACLineSegment, cim: PowerTransformer or retained cim: Switch, etc. should have a cim: SvPowerFlow. 3) According to level 5 rule SvPowerFlowInstances every cim: EquivalentInjection has a cim: SvPowerFlow. As a consequence cim: SvPowerFlow related to boundary cim: EquivalentInjection-s must be used in the summation but with negated value. cim: SvPowerFlow participates in the sum if the cim: Terminal is a terminal of cim: EquivalentInjection, which is connected to a boundary cim: TopologicalNode, referenced by a cim: Terminal, which is also associated to a cim: TieFlow through cim: TieFlow. Terminal. Note 1: cim: ControlArea. netInterchange include AC and DC exchanges. Note 2: An HVDC Boundary TopologicalNode has a cim: IdentifiedObject. description attribute with leading characters 'HVDC'.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "NetInterchange2";
+        sh:order        28;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:ControlArea.netInterchange-NetInterchange2Sparql .
+
+l6com:RotatingMachine.q-GenReactivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Potential reactive power problem located for cim:SynchronousMachine, assumed reactive power generation of cim:SynchronousMachine deviates from calculated more than 50 MVAr. RotatingMachine.q: {?value}; SvPowerFlow.q: {?q}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?q
+        WHERE {
+          $this cim:RotatingMachine.q ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q  .
+
+          FILTER (abs(?q-?value)>50).
+        }""" .
+
+l6com:ControlArea.netInterchange-NetInterchange2Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Netted Area position severely not respected. for more than 200 MW. ControlArea.netInterchange= {?value}. Sum of the EquivalentInjections= {?sump}.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value ?sump
+			WHERE {
+        $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
+        $this cim:ControlArea.netInterchange ?value .
+        {
+        SELECT $this (SUM(-?p) AS ?sump)
+        WHERE {
+              ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
+			  ?term cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint true .
+			  ?term cim:Terminal.TopologicalNode ?tn.
+			  ?tn ^cim:Terminal.TopologicalNode ?terms.
+              ?terms cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection .
+              ?terms rdf:type ?termtype.
+              ?terms ^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p .
+          }
+        GROUP BY $this ?termtype
+        }
+        FILTER (ABS(?value-?sump)>200) .
+			} """ .
+
+l6com:SvShuntCompensatorSections-SV__4
+        rdf:type        sh:PropertyShape;
+        sh:description  "The following shall be satisfied for cim:ShuntCompensator:\t\t1)\tEach instance of cim:ShuntCompensator shall have cim:SvShuntCompensatorSections instantiated.   2)\tFor a cim:ShuntCompensator that is not used in control by power flow (no cim:RegulatingControl associated or if cim:RegulatingControl.enabled equals false) the value of SvShuntCompensatorSections.sections shall be the same as   cim:ShuntCompensator.sections.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "RequiredSvSCSections";
+        sh:order        45;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvShuntCompensatorSections-SV__4Sparql .
+
+l6com:SvTapStep.position
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvTapStep.position-TapPosition;
+        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerLinear , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical .
+
+l6com:RegulatingControl-VoltageTargetAndDeadbandAtTN
+        rdf:type        sh:PropertyShape;
+        sh:description  "For all cim:RegulatingControl (including its subclass cim:TapChangerControl) instances at a cim:TopologicalNode with one or more cim:RegulatingControls that have:   -\tcim:RegulatingControl.discrete set to true   -\tcim:RegulatingControl.enabled set to true, and   -\tcim:RegulatingControl.mode set to cim:RegulatingControlModeKind.voltage,  shall have cim:RegulatingControl.targetValue within the intersection of regulating ranges formed by all discrete cim:RegulatingControl regulating a cim:TopologicalNode. The range for a discrete control (cim:RegulatingControl.discrete set to true) is  {cim:RegulatingControl.targetValue - cim:RegulatingControl.targetDeadband/2, \tcim:RegulatingControl.targetValue + cim:RegulatingControl.targetDeadband/2}  Note: the rule is validating both if the ranges of discrete regulating control form intersection and if the target values of all regulating controls are within the intersection regulating range.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "VoltageTargetAndDeadbandAtTN";
+        sh:order        35;
+        sh:path         cim:RegulatingControl.targetDeadband;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RegulatingControl-VoltageTargetAndDeadbandAtTNSparql .
+
+l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:StationSupply, cim:ConformLoad and cim:NonConformLoad, the value of cim:EnergyConsumer.p should not deviate more than 10 MW from the value of cim:SvPowerFlow.p for the associated terminal. Note that disconnected loads should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "LoadActivePowerInfeedDiffW";
+        sh:order        14;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffWSparql .
+
+l6com:SvTapStep.position-value
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:RegulatingControl (SSH) for which the value of cim:RegulatingControl.discrete is true and cim:RegulatingControl.enabled is true the control variables must move in discrete steps. Hence the values of the following attributes shall not have non-zero decimals considering the precision of xsd:float:- cim:ShuntCompensator.sections - related cim:SvShuntCompensatorSections.sections - cim:TapChanger.step - related cim:SvTapStep.position.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DiscreteControl";
+        sh:order        40;
+        sh:path         cim:SvTapStep.position;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvTapStep.position-valueSparql .
+
+l6com:LinearShuntCompensator-ShuntQ
+        rdf:type        sh:PropertyShape;
+        sh:description  "The rule is checking if cim:SvPowerFlow.q of a cim:LinearShuntCompensator is consistent with cim:SvShuntCompensatorSections.sections. Therefore, for every instance of cim:LinearShuntCompensator, which has cim:RegulatingControl.enabled equals true, the value of cim:SvPowerFlow.q should not deviate more than 1 MVAr from the negated product of the value of cim:SvShuntCompensatorSections.sections, the value of cim:LinearShuntCompensator.bPerSection and the squared value of cim:SvVoltage.v at the cim:TopologicalNode where the cim:LinearShuntCompensator is connected to. The rule applies for cim:LinearShuntCompensator that is: - connected to cim:TopologicalNode with cim:SvVoltage.v greater than 0, and - having its cim:Terminal connected, i.e. cim:ACDCTerminal.connected equals true. ";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ShuntQ";
+        sh:order        30;
+        sh:path         cim:LinearShuntCompensator.bPerSection;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:LinearShuntCompensator-ShuntQSparql .
+
+l6com:ShuntCompensator.sections-value
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:RegulatingControl (SSH) for which the value of cim:RegulatingControl.discrete is true and cim:RegulatingControl.enabled is true the control variables must move in discrete steps. Hence the values of the following attributes shall not have non-zero decimals considering the precision of xsd:float:- cim:ShuntCompensator.sections - related cim:SvShuntCompensatorSections.sections - cim:TapChanger.step - related cim:SvTapStep.position.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DiscreteControl";
+        sh:order        38;
+        sh:path         cim:ShuntCompensator.sections;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:ShuntCompensator.sections-valueSparql .
+
+l6com:EquivalentInjection
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:EquivalentInjection.p-limits , l6com:EquivalentInjection.q-limits , l6com:EquivalentInjection.p-EIActivePowerInfeedDiffW , l6com:EquivalentInjection.q-EIReactivePowerInfeedDiffW, l6com:EquivalentInjection.p-EIActivePowerInfeedDiffE;
+        sh:targetClass  cim:EquivalentInjection .
+
+l6com:ShuntCompensator.sections-SCSections
+        rdf:type             sh:PropertyShape;
+        sh:description       "For every instance of cim:ShuntCompensator, cim:LinearShuntCompensator and\tcim:NonLinearShuntCompensator, the value of cim:ShuntCompensator.sections should be lower than or equal to the value of cim:ShuntCompensator.maximumSections.";
+        sh:group             l6com:Level6-IGMCGM;
+        sh:lessThanOrEquals  cim:ShuntCompensator.maximumSections;
+        sh:message           "Number of sections is out of range.";
+        sh:name              "SCSections";
+        sh:order             1;
+        sh:path              cim:ShuntCompensator.sections;
+        sh:severity          sh:Violation .
+
+l6com:SvInjection  rdf:type  sh:NodeShape;
+        sh:property     l6com:SvInjection-SvInjectionLimit;
+        sh:targetClass  cim:SvInjection .
+
+l6com:SvShuntCompensatorSections.sections-valueSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "A discrete control is declared, but the value has non-zero decimals.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:SvShuntCompensatorSections.ShuntCompensator/cim:RegulatingCondEq.RegulatingControl ?contr .
+        ?contr cim:RegulatingControl.enabled true .
+        ?contr cim:RegulatingControl.discrete true . 
+        FILTER (CONTAINS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") ) .
+			}""" .
+
+l6com:EnergySource.activePower-consumerSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "DER infeed acts as a load.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        FILTER (?value>0) .        
+			}""" .
+
+l6com:EnergyConsumer.q-LoadReactivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Potential reactive power problem located for load instance, assumed reactive power deviates from calculated more than 50 MVAr. EnergyConsumer.q: {?value}; SvPowerFlow.q: {?q}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?q
+        WHERE {
+          $this cim:EnergyConsumer.q ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q  .
+               
+          FILTER (abs(?q-?value)>50).
+        }""" .
+
+l6com:RotatingMachine.p-GenActivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed generation infeed of cim:SynchronousMachine deviates from calculated generation infeed more than 10 MW. RotatingMachine.p: {?value}; SvPowerFlow.p: {?p}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?p
+        WHERE {
+          $this cim:RotatingMachine.p ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+               
+          FILTER (abs(?p-?value)>10).
+        }""" .
+
+l6com:ShuntCompensator-ContinuousControlSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:ShuntCompensator or cim:TapChanger are used with a continuous control.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value
+        WHERE {         
+          $this cim:RegulatingCondEq.RegulatingControl ?value  .
+		  ?value cim:RegulatingControl.discrete false .
+          ?value cim:RegulatingControl.enabled true .
+          BIND(EXISTS{$this cim:RegulatingCondEq.RegulatingControl ?valuecheck} AS ?rcexists).
+        
+          FILTER (?rcexists=true ).
+        }""" .
+
+l6com:SvVoltage  rdf:type  sh:NodeShape;
+        sh:property     l6com:SvVoltage.v-limits , l6com:SvVoltage.v-absoluteLimit;
+        sh:targetClass  cim:SvVoltage .
+
+l6com:SvVoltage.v-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "Where a cim: VoltageLimit exists for an energized cim: TopologicalNode, the value of cim: SvVoltage. v should be lower than or equal to the value of cim: VoltageLimit. value associated with cim: OperationalLimitType. limitType=highVoltage and higher than or equal to the value of cim: VoltageLimit. value associated with cim: OperationalLimitType. limitType=lowVoltage. In case of multiple limits, the most restrictive shall be used.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "VoltageProfile";
+        sh:order        32;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:SvVoltage.v-limitsSparql .
+
+l6com:TopologicalNode-EnergizedBoundaryTN
+        rdf:type        sh:PropertyShape;
+        sh:description  "A boundary cim:TopologicalNode with a non-zero cim:EquivalentInjection.p or cim:EquivalentInjection.q is supposed to be energized and shall have a solved voltage, i.e. cim:SvVoltage.v shall not be zero.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "EnergizedBoundaryTN";
+        sh:order        36;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:TopologicalNode-EnergizedBoundaryTNSparql .
+
+l6com:EquivalentInjection.q-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "EquivalentInjection reactive power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:EquivalentInjection.maxQ ?maxq . 
+        $this cim:EquivalentInjection.minQ ?minq .
+		OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint ?bp}.
+        FILTER (!bound(?bp) && (((-?value>?maxq || -?value<?minq) && ?value<0) || ((-?value<?maxq || -?value>?minq) && ?value>0 && ?maxq<0 && ?minq<0 && ?maxq<?minq) || ((-?value>?maxp || -?value<?minp) && ?value>0 && ?maxp>0 && ?minp>0 && ?maxp>?minp) || ((?value>?maxq || ?value<?minq) && ?value=0))) .        
+			}""" .
+
+l6com:EquivalentInjection.q-EIReactivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:EquivalentInjection, the value of cim:EquivalentInjection.q should not deviate more than 50 Mvar from the value of cim:SvPowerFlow.q for the associated terminal.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "EIReactivePowerInfeedDiffW";
+        sh:order        25;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EquivalentInjection.q-EIReactivePowerInfeedDiffWSparql .
+
+l6com:SvShuntCompensatorSections-SV__4Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:SvShuntCompensatorSections is missing for shunt compensator or the cim:SvShuntCompensatorSections.sections is not the same as cim:ShuntCompensator.sections.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  DISTINCT $this ?value 
+			WHERE {
+        OPTIONAL {$this  ^cim:SvShuntCompensatorSections.ShuntCompensator  ?svshuntcompsec} .
+        FILTER (!bound(?svshuntcompsec)  ).
+			}""" .
+
+l6com:SvInjection-SvInjectionLimitSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   " cim: SvInjection is instantiated. If value is greater than 0. 1 MW/Mvar, it suggests the model did not converge, i. e. , meet the tolerances.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this ?p ?q 
+        WHERE {
+        $this cim:SvInjection.pInjection ?p .
+        $this cim:SvInjection.qInjection ?q .
+        FILTER (abs(?p) > 0.1 || abs(?q)>0.1).
+        }""" .
+
+l6com:ExternalNetworkInjection.q-ENIReactivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Potential reactive power problem located for cim:ExternalNetworkInjection, assumed reactive power deviates from calculated more than 50 MVAr. ExternalNetworkInjection.q: {?value}; SvPowerFlow.q: {?q}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?q
+        WHERE {
+          $this cim:ExternalNetworkInjection.q ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q  .
+               
+          FILTER (abs(?q-?value)>50).
+        }""" .
+
+l6com:TapChangerDiscreteControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:TapChanger.step-valueType;
+        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerLinear , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerTabular .
+
+l6com:RotatingMachine.p-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The negated value of cim: RotatingMachine. p shall be within the following range depending on the value of cim: SynchronousMachine. operatingMode: 1) In case of cim: SynchronousMachineOperatingMode. generator - [ cim: GeneratingUnit. minOperatingP, cim: GeneratingUnit. maxOperatingP] if cim: GeneratingUnit. minOperatingP is greater than or equal to zero. - [0, cim: GeneratingUnit. maxOperatingP] if cim: GeneratingUnit. minOperatingP is less than zero. 2) In case of cim: SynchronousMachineOperatingMode. motor - [ cim: GeneratingUnit. minOperatingP, cim: GeneratingUnit. maxOperatingP] if cim: GeneratingUnit. minOperatingP is less than zero and cim: GeneratingUnit. maxOperatingP is less than or equal to zero. - [ cim: GeneratingUnit. minOperatingP, 0] if cim: GeneratingUnit. maxOperatingP is greater than zero. 3) In case of cim: SynchronousMachineOperatingMode. condenser cim: RotatingMachine. p shall equal to zero as there is no active power output. Note 1: Negation is necessary due to the load sign convention. Note 2: A cim: SynchronousMachine with cim: RotatingMachine. p = 0 is considered out of service if cim: SynchronousMachine. operatingMode is either cim: SynchronousMachineOperatingMode. motor or cim: SynchronousMachineOperatingMode. generator. Note 3: In cases where the operating mode is cim: SynchronousMachineOperatingMode. condenser the synchronous machine might in reality output small amounts of active power. This rule will generate warning that can be assessed. It could then be advised that as such amounts do not have substantial effect on the IGM, condensers shall be modelled with zero active power.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenActivePowerInfeedLim";
+        sh:order        2;
+        sh:path         cim:RotatingMachine.p;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine.p-limitsSparql .
+
+l6com:SvShuntCompensatorSectionsDiscreteControl
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvShuntCompensatorSections.sections-value;
+        sh:targetClass  cim:SvShuntCompensatorSections .
+
+l6com:RotatingMachine
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:RotatingMachine.p-limits , l6com:RotatingMachine.q-limits;
+        sh:targetClass  cim:AsynchronousMachine , cim:SynchronousMachine .
+
+l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:ExternalNetworkInjection, the value of cim:ExternalNetworkInjection.p should not deviate more than 10 MW\tfrom the value of cim:SvPowerFlow.p for the associated terminal.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "ENIActivePowerInfeedDiffW";
+        sh:order        19;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffWSparql .
+
+l6com:SvVoltage-SV__4Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:SvVoltage is missing for cim:TopologicalNode.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this
+			WHERE {
+        OPTIONAL {$this  ^cim:SvVoltage.TopologicalNode ?svvoltage} .
+
+        FILTER (!bound(?svvoltage)).
+			}""" .
+
+l6com:EquivalentInjection.q-limits
+        rdf:type        sh:PropertyShape;
+        sh:description  "The negated value of non-boundary cim:EquivalentInjection.q should be with the range [cim:EquivalentInjection.minQ, cim:EquivalentInjection.maxQ]. The validation takes into account that both cim:EquivalentInjection.maxQ and cim:EquivalentInjection.minQ will be negative if the equivalent injection is representing load operating range as cim:EquivalentInjection.minQ and cim:EquivalentInjection.maxQ are following generator sign convention (i.e. positive sign when generating power). Note1: Negation is necessary due to the load sign convention.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "EIReactivePowerInfeedLim";
+        sh:order        23;
+        sh:path         cim:EquivalentInjection.q;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EquivalentInjection.q-limitsSparql .
+
+l6com:RegulatingControl-VoltageTargetAndDeadbandAtTNSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Either 1) Regulating ranges of discrete regulating controls do not create intersection or 2) the target values of regulating controls are not within the intersection range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this (^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal)|(^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal) ?rcfail .
+        ?rcfail cim:RegulatingControl.targetValue ?tvalue .
+		?rcfail cim:RegulatingControl.targetDeadband ?value .
+
+		FILTER ((?tvalue<(?tvalue-?value/2) || ?tvalue>(?tvalue+?value/2))) .   		
+			}""" .
+
+l6com:ControlArea  rdf:type  sh:NodeShape;
+        sh:property     l6com:ControlArea.netInterchange-NetInterchange1 , l6com:ControlArea.netInterchange-NetInterchange2;
+        sh:targetClass  cim:ControlArea .
+
+l6com:RotatingMachine-pAndQcapabilityCurveQ
+        rdf:type        sh:PropertyShape;
+        sh:description  "The power provided to the network by a cim: SynchronousMachine should stay within limits regardless if it is controlling or not. This rule applies when: -a reactive capability curve is present - cim: RotatingMachine. p does not equal 0 - cim: RotatingMachine. q does not equal 0. The negated value of the cim: RotatingMachine. p shall be: - less than or equal to the maximum value of all cim: CurveData. xvalue related to the associated cim: ReactiveCapabilityCurve, and - greater than or equal to the minimum value of all cim: CurveData. xvalue related to the associated cim: ReactiveCapabilityCurve The negated value of the cim: RotatingMachine. q shall be within the reactive capability curve. Linear interpolation is applied between cim: CurveData. y1value (or cim: CurveData. y2value) related to the two nearest to cim: RotatingMachine. p cim: CurveData objects. The obtained value based on the reactive capability curve and related to y1value is denoted as q_rcc_min. The obtained value based on the reactive capability curve and related to y2value is denoted as q_rcc_max. Therefore, the negated value of the cim: RotatingMachine. q shall be: - less than or equal to the q_rcc_max, and - greater than or equal to the q_rcc_min.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenRCCPowerInfeed";
+        sh:order        8;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine-pAndQcapabilityCurveQSparql .
+
+l6com:RotatingMachine.p-GenActivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:SynchronousMachine, the value of cim:RotatingMachine.p should not deviate more than 10 MW from the value of cim:SvPowerFlow.p for the associated terminal. Note that disconnected synchronous machines should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "GenActivePowerInfeedDiffW";
+        sh:order        4;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RotatingMachine.p-GenActivePowerInfeedDiffWSparql .
+
+l6com:EnergySource.reactivePower-DERReactivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:EnergySource, the value of cim:EnergySource.reactivePower should not deviate more than 50 MVAr from the value of cim:SvPowerFlow.q for the associated terminal. Note that disconnected DER should have zero values in SSH.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DERReactivePowerInfeedDiffW";
+        sh:order        11;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EnergySource.reactivePower-DERReactivePowerInfeedDiffWSparql .
+
+l6com:EnergySource.reactivePower-DERReactivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed generation infeed of cim:EnergySource deviates from calculated generation infeed more than 50 MVAr. EnergySource.reactivePower: {?value}; SvPowerFlow.q: {?q}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?q
+        WHERE {
+          $this cim:EnergySource.reactivePower ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?q  .
+          FILTER (abs(?q-?value)>50).
+        }""" .
+
+l6com:TapChanger.step-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:RegulatingControl (SSH) for which the value of cim:RegulatingControl.discrete is true and cim:RegulatingControl.enabled is true the control variables must move in discrete steps. Hence the values of the following attributes shall not have non-zero decimals considering the precision of xsd:float:- cim:ShuntCompensator.sections - related cim:SvShuntCompensatorSections.sections - cim:TapChanger.step - related cim:SvTapStep.position.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "DiscreteControl";
+        sh:order        39;
+        sh:path         cim:TapChanger.step;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:TapChanger.step-valueTypeSparql .
+
+l6com:SynchronousMachine
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:RotatingMachine.p-GenActivePowerInfeedDiffW , l6com:RotatingMachine.q-GenReactivePowerInfeedDiffW , l6com:RotatingMachine-pAndQcapabilityCurveP , l6com:RotatingMachine-pAndQcapabilityCurveQ;
+        sh:targetClass  cim:SynchronousMachine .
+
+l6com:SvTapStep.position-TapPosition
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every instance of cim:RatioTapChanger, cim:PhaseTapChangerLinear, cim:PhaseTapChangerSymmetrical and cim:PhaseTapChangerAsymmetrical, which has cim:RegulatingControl.enabled equal to true, the value of cim:TapChanger.step should not deviate more than 2 from the value of cim:SvTapStep.position.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "TapPosition";
+        sh:order        29;
+        sh:path         cim:TapChanger.step;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:SvTapStep.position-TapPositionSparql .
+
+l6com:RegulatingControl-samePoint
+        rdf:type        sh:PropertyShape;
+        sh:description  "For all cim:RegulatingControl instances, with cim:RegulatingControl.discrete=false (including its subclass cim:TapchangerControl) regulating the same cim:TopologicalNode their cim:RegulatingControl.targetValues should be equal. This rule is for continuous controls, for which RegulatingControl.mode equals RegulatingControlModeKind.voltage and RegulatingControl.enabled equals true.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "VoltageTargetsAtTN";
+        sh:order        34;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:RegulatingControl-samePointSparql .
+
+l6com:EquivalentInjection.p-EIActivePowerInfeedDiffW
+        rdf:type        sh:PropertyShape;
+        sh:description  "For every non-boundary cim:EquivalentInjection, the value of cim:EquivalentInjection.p should not deviate more than 10 MW from the value of cim:SvPowerFlow.p for the associated terminal.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "EIActivePowerInfeedDiffW";
+        sh:order        24;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:EquivalentInjection.p-EIActivePowerInfeedDiffWSparql .
+
+l6com:ControlArea.netInterchange-NetInterchange1
+        rdf:type        sh:PropertyShape;
+        sh:description  "For a cim:ControlArea of type interchange the aggregated sum of the values\tof cim:SvPowerFlow.p for cim:Terminals referenced by cim:TieFlow.Terminal shall not deviate from the value of cim:ControlArea.netInterchange with more than cim:ControlArea.pTolerance, if provided. In cases where cim:ControlArea.pTolerance is not provided the value of 50 MW is used in the comparison.\tThere are some implications from other rules to be considered:   1)\tAccording to level 5 rule SvPowerFlowBranchInstances the cim:Terminal referenced by a cim:TieFlow.Terminal is located at a boundary cim:TopologicalNode, hence the attribute cim:TieFlow.positiveFlowIn is always true. 2) According to level 5 rule SvPowerFlowBranchInstances2 the cim:Terminal of cim:ACLineSegment, cim:PowerTransformer or retained cim:Switch, etc. should have a cim:SvPowerFlow.\t3) According to level 5 rule SvPowerFlowInstances every cim:EquivalentInjection has a cim:SvPowerFlow.\tAs a consequence cim:SvPowerFlow related to boundary cim:EquivalentInjection-s\tmust be used in the summation but with negated value. cim:SvPowerFlow participates in the sum if the cim:Terminal is a terminal of cim:EquivalentInjection, which is connected to a boundary cim:TopologicalNode, referenced by a cim:Terminal, which is also associated to a cim:TieFlow through cim:TieFlow.Terminal.\tNote1: cim:ControlArea.netInterchange include AC and DC exchanges.\tNote2: An HVDC Boundary cim:TopologicalNode has a cim:IdentifiedObject.description attribute with leading characters 'HVDC'.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "NetInterchange1";
+        sh:order        27;
+        sh:path         rdf:type;
+        sh:severity     sh:Warning;
+        sh:sparql       l6com:ControlArea.netInterchange-NetInterchange1Sparql .
+
+l6com:EquivalentInjection.p-EIActivePowerInfeedDiffWSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Assumed non-boundary cim:EquivalentInjection injection deviates from calculated\tmore than 10 MW. EquivalentInjection.p: {?value}; SvPowerFlow.p: {?p}.";
+        sh:prefixes  cim:;
+        sh:select    """
+	      SELECT $this  ?value ?p
+        WHERE {
+          $this cim:EquivalentInjection.p ?value .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+		  OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint ?bp}.
+               
+          FILTER (abs(?p-?value)>10 && !bound(?bp)).
+        }""" .
+
+l6com:SvTapStepRequiredSvTapStep
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvTapStep-SV__4;
+        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerTabular , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerLinear .
+
+l6com:RotatingMachine-pAndQcapabilityCurvePSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Generation active and/or reactive power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:RotatingMachine.p ?value .
+        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+               
+        {
+        SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+          WHERE {
+            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+            ?rcc1 ^cim:CurveData.Curve ?curvedata .
+            ?curvedata rdf:type ?cdtype .
+            ?curvedata cim:CurveData.xvalue ?xvalue .
+            FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+          }
+          GROUP BY $this ?cdtype
+        }
+
+        FILTER ( bound(?rcc) && !(-?value>=?minxvalue && -?value<=?maxxvalue)).
+			}""" .
+
+l6com:ExternalNetworkInjection.q-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "ExternalNetworkInjection reactive power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:ExternalNetworkInjection.maxQ ?maxq . 
+        $this cim:ExternalNetworkInjection.minQ ?minq .
+        FILTER (((-?value>?maxq || -?value<?minq) && ?value<0) || ((-?value<?maxq || -?value>?minq) && ?value>0 && ?maxq<0 && ?minq<0 && ?maxq<?minq) || ((-?value>?maxq || -?value<?minq) && ?value>0 && ?maxq>0 && ?minq>0 && ?maxq>?minq) ||  ((?value>?maxq || ?value<?minq) && ?value=0)) .        
+			}""" .
+
+l6com:ShuntQ  rdf:type  sh:NodeShape;
+        sh:property     l6com:LinearShuntCompensator-ShuntQ;
+        sh:targetClass  cim:LinearShuntCompensator .
+
+l6com:RotatingMachine-pAndQcapabilityCurveQSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Generation active and/or reactive power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:RotatingMachine.q ?value .
+        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+               
+        {
+        SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+          WHERE {
+            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+            ?rcc1 ^cim:CurveData.Curve ?curvedata .
+            ?curvedata rdf:type ?cdtype .
+            ?curvedata cim:CurveData.y1value ?y1value .
+            ?curvedata cim:CurveData.y2value ?y2value .
+            FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+          }
+          GROUP BY $this ?cdtype
+        }
+
+        FILTER ( bound(?rcc) && !(-?value>=?my1value && -?value<=?my2value)).
+			}""" .
+
+l6com:VoltageTargetAndDeadbandAtTN
+        rdf:type     sh:NodeShape;
+        sh:property  l6com:RegulatingControl-VoltageTargetAndDeadbandAtTN;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type cim:TopologicalNode   .
+				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.mode|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
+				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.discrete	  true.
+                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.enabled	  true.
+                }
+                """  
+                     ] .
+
+l6com:RotatingMachine.q-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "Generation reactive power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:RotatingMachine.p ?valuep .
+        $this cim:SynchronousMachine.maxQ ?maxq.
+        $this cim:SynchronousMachine.minQ ?minq.
+
+		FILTER ( ?value!=0 && ?valuep!=0 && (-?value>?maxq || -?value<?minq)) .
+			}""" .
+
+l6com:SvShuntCompensatorSectionsRequiredSvSCSections
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:SvShuntCompensatorSections-SV__4 , l6com:SvShuntCompensatorSections.sections-SV__4;
+        sh:targetClass  cim:LinearShuntCompensator , cim:NonlinearShuntCompensator .
+
+l6com:ExternalNetworkInjection.p-limitsSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "ExternalNetworkInjection active power infeed is out of range.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:ExternalNetworkInjection.maxP ?maxp . 
+        $this cim:ExternalNetworkInjection.minP ?minp .
+        FILTER (((-?value>?maxp || -?value<?minp) && ?value<0) || ((-?value<?maxp || -?value>?minp) && ?value>0 && ?maxp<0 && ?minp<0 && ?maxp<?minp) || ((-?value>?maxp || -?value<?minp) && ?value>0 && ?maxp>0 && ?minp>0 && ?maxp>?minp) || ((?value>?maxp || ?value<?minp) && ?value=0)) .        
+			}""" .
+
+l6com:VoltageTargetsAtTN
+        rdf:type     sh:NodeShape;
+        sh:property  l6com:RegulatingControl-samePoint;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type cim:TopologicalNode   .
+				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.mode|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
+				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.discrete	  false.
+                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.enabled	  true.
+                }
+                """  
+                     ] .
+
+l6com:SvTapStep-SV__4Sparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "cim:SvTapStep.position is not the same as cim:TapChanger.step.";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  DISTINCT $this ?value 
+			WHERE {
+		$this cim:TapChanger.step ?tcstep .
+        OPTIONAL {$this  ^cim:SvTapStep.TapChanger/cim:SvTapStep.position  ?value} .
+		OPTIONAL {$this  cim:TapChanger.TapChangerControl  ?tcc} .
+		OPTIONAL {$this  cim:TapChanger.TapChangerControl/cim:RegulatingControl.enabled  ?tccreg} .
+        FILTER (((bound(?tcc) && ?tccreg=false) || !bound(?tcc))  && (!bound(?value) || ?value!=?tcstep ) ).
+			}""" .
+
+l6com:SvVoltage-SV__4
+        rdf:type        sh:PropertyShape;
+        sh:description  "Instances of cim:SvVoltage is required for all cim:TopologicalNodes. If power flow didn't create a solution for a cim:TopologicalNode cim:SvVoltage angle and voltage shall be set to zero.";
+        sh:group        l6com:Level6-IGMCGM;
+        sh:name         "RequiredSvVoltage";
+        sh:order        44;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l6com:SvVoltage-SV__4Sparql .
+
+l6com:EnergyConsumer  rdf:type  sh:NodeShape;
+        sh:property     l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffW , l6com:EnergyConsumer.q-LoadReactivePowerInfeedDiffW, l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffE;
+        sh:targetClass  cim:EnergyConsumer , cim:StationSupply , cim:ConformLoad , cim:NonConformLoad .
+
+l6com:ExternalNetworkInjection
+        rdf:type        sh:NodeShape;
+        sh:property     l6com:ExternalNetworkInjection.p-limits , l6com:ExternalNetworkInjection.q-limits , l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffW , l6com:ExternalNetworkInjection.q-ENIReactivePowerInfeedDiffW, l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffE;
+        sh:targetClass  cim:ExternalNetworkInjection .
+
+l6com:SynchronousMachineSumP
+        a               sh:NodeShape ;
+        sh:property     l6com:RotatingMachine.p-GenActivePowerInfeedDiffE ;
+        sh:targetNode  cim:SynchronousMachine  .
+
+
+l6com:RotatingMachine.p-GenActivePowerInfeedDiffE
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:RotatingMachine.p-GenActivePowerInfeedDiffESparql ;
+        sh:path         rdf:type ;
+        sh:description  "The aggregated sum of the values of cim:RotatingMachine.p shall not deviate more than 200 MW from the aggregated sum of the values of cim:SvPowerFlow.p for the terminals connected to synchronous machines. Note that disconnected synchronous machines should have zero values in SSH." ;
+        sh:name         "GenActivePowerInfeedDiffE" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        6 ;
+        sh:severity     sh:Violation .
+
+
+l6com:RotatingMachine.p-GenActivePowerInfeedDiffESparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Assumed aggregated active power generation infeed deviates from calculated generation infeed more than 200 MW. Sum of RotatingMachine.p: {?value}; Sum of SvPowerFlow.p: {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (SUM(?rmp) AS ?value) (SUM(?p) AS ?sump)
+        WHERE {
+          ?sm cim:RotatingMachine.p ?rmp .
+          ?sm ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          ?sm rdf:type ?smtype .
+          FILTER (?smtype=cim:SynchronousMachine) .
+        }
+        GROUP BY $this ?smtype
+        HAVING (abs(?sump-?value)>200)
+        """ .
+
+l6com:EnergySource.activePower-DERActivePowerInfeedDiffE
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:EnergySource.activePower-DERActivePowerInfeedDiffESparql ;
+        sh:path         rdf:type ;
+        sh:description  "The aggregated sum of the values of cim:EnergySource.activePower shall not deviate more than 200 MW from the aggregated sum of the values of cim:SvPowerFlow.p for the terminals connected to cim:EnergySource. Note that disconnected DER should have zero values in SSH." ;
+        sh:name         "DERActivePowerInfeedDiffE" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        12 ;
+        sh:severity     sh:Violation .
+
+
+l6com:EnergySource.activePower-DERActivePowerInfeedDiffESparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Assumed aggregated active power generation infeed deviates from calculated generation infeed more than 200 MW. Sum of EnergySource.activePower: {?value}; Sum of SvPowerFlow.p: {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (SUM(?rmp) AS ?value) (SUM(?p) AS ?sump)
+        WHERE {
+          $this cim:EnergySource.activePower ?rmp .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          $this rdf:type ?smtype .
+
+          FILTER (?smtype=cim:EnergySource) .
+        }
+        GROUP BY $this ?smtype
+        HAVING (abs(?sump-?value)>200)
+        """ .
+
+l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffE
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffESparql ;
+        sh:path         rdf:type ;
+        sh:description  "The aggregated sum of the values of cim:EnergyConsumer.p shall not deviate more than 200 MW from the aggregated sum of the values of cim:SvPowerFlow.p for the associated terminals. Note that disconnected loads should have zero values in SSH." ;
+        sh:name         "LoadActivePowerInfeedDiffE" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        16 ;
+        sh:severity     sh:Violation .
+
+
+l6com:EnergyConsumer.p-LoadActivePowerInfeedDiffESparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Assumed aggregated consumption deviates from calculated consumption more than 200 MW. Sum of EnergyConsumer.p: {?value}; Sum of SvPowerFlow.p: {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (SUM(?rmp) AS ?value) (SUM(?p) AS ?sump)
+        WHERE {
+          $this cim:EnergyConsumer.p ?rmp .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          $this rdf:type ?smtype .
+          FILTER (?smtype=cim:EnergyConsumer) .
+        }
+        GROUP BY $this ?smtype
+        HAVING (abs(?sump-?value)>200)
+        """ .
+
+l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffE
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffESparql ;
+        sh:path         rdf:type ;
+        sh:description  "The aggregated sum of the values of cim:ExternalNetworkInjection.p shall not deviate more than 200 MW from the aggregated sum of the values of cim:SvPowerFlow.p for the associated terminals." ;
+        sh:name         "ENIActivePowerInfeedDiffE" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        21 ;
+        sh:severity     sh:Violation .
+
+
+l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffESparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Assumed aggregated sum of external injections deviates from calculated more than 200 MW. Sum of ExternalNetworkInjection.p: {?value}; Sum of SvPowerFlow.p: {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (SUM(?rmp) AS ?value) (SUM(?p) AS ?sump)
+        WHERE {
+
+          $this cim:ExternalNetworkInjection.p ?rmp .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          $this rdf:type ?smtype .
+          FILTER (?smtype=cim:ExternalNetworkInjection) .
+        }
+        GROUP BY $this ?smtype
+        HAVING (abs(?sump-?value)>200)
+        """ .
+
+l6com:EquivalentInjection.p-EIActivePowerInfeedDiffE
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:EquivalentInjection.p-EIActivePowerInfeedDiffESparql ;
+        sh:path         rdf:type ;
+        sh:description  "The aggregated sum of the values of non-boundary cim:EquivalentInjection.p shall not deviate more than 200 MW from the aggregated sum of the values of cim:SvPowerFlow.p for the associated terminals." ;
+        sh:name         "EIActivePowerInfeedDiffE" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        26 ;
+        sh:severity     sh:Violation .
+
+
+l6com:EquivalentInjection.p-EIActivePowerInfeedDiffESparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Assumed non-boundary cim:EquivalentInjection aggregated injection deviates from calculated more than 200 MW. Sum of EquivalentInjection.p: {?value}; Sum of SvPowerFlow.p: {?sump}." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (SUM(?rmp) AS ?value) (SUM(?p) AS ?sump)
+        WHERE {
+          $this cim:EquivalentInjection.p ?rmp .
+          $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?p  .
+          $this rdf:type ?smtype .
+
+		  BIND(EXISTS{$this ^cim:Terminal.ConductingEquipment/cim:Terminal.TopologicalNode/entsoe:TopologicalNode.boundaryPoint true} AS ?hasbp).
+          FILTER (?smtype=cim:EquivalentInjection && ?hasbp=false) .
+        }
+        GROUP BY $this ?smtype
+        HAVING (abs(?sump-?value)>200)
+        """ .
+
+l6com:TopologicalNode-FakeVoltage
+        a               sh:PropertyShape ;
+        sh:sparql       l6com:TopologicalNode-FakeVoltageSparql ;
+        sh:path         rdf:type ;
+        sh:description  "A cim:TopologicalNode with a solved voltage equal to the cim:BaseVoltage.nominalVoltage is suspected to copy that value rather than solving to power flow." ;
+        sh:name         "FakeVoltage" ;
+        sh:group        l6com:Level6-IGMCGM ;
+        sh:order        37 ;
+        sh:severity     sh:Info .
+
+l6com:TopologicalNode-FakeVoltageSparql
+		a         sh:SPARQLConstraint ;
+		sh:message "Voltage at cim:TopologicalNode reported in SV profile equals cim:BaseVoltage.nominalVoltage." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value
+			WHERE {
+        $this cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?bv .
+		$this ^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?value .
+
+        FILTER (?value=?bv).
+			}""" .

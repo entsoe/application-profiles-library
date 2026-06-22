@@ -1,0 +1,77 @@
+@base   <https://ap-con.cim4.eu/QoCDC-Level7-IGMCGM/4.1.4> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix entsoe: <http://entsoe.eu/CIM/SchemaExtension/3/1#> .
+@prefix l7com:  <https://ap-con.cim4.eu/QoCDC-Level7-IGMCGM/4.1.4#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+cim:    rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI;
+                       sh:prefix     "cim"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI;
+                       sh:prefix     "rdf"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/ModelDescription/1#"^^xsd:anyURI;
+                       sh:prefix     "md"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://iec.ch/TC57/61970-552/DifferenceModel/1#"^^xsd:anyURI;
+                       sh:prefix     "dm"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI;
+                       sh:prefix     "xsd"
+                     ];
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://entsoe.eu/CIM/SchemaExtension/3/1#"^^xsd:anyURI;
+                       sh:prefix     "entsoe"
+                     ] .
+
+l7com:ACLineSegment-BaseVoltageDiff
+        rdf:type        sh:PropertyShape;
+        sh:description  "For a cim: ControlArea of type interchange all cim: TieFlow branches, which: - are not connected to an HVDC boundary point, and - have a direct association to cim: BaseVoltage shall have a cim: BaseVoltage. nominalVoltage that deviates no more than 0. 1 from the cim: BaseVoltage. nominalVoltage of the boundary point obtained from the association end cim: TopologicalNode. BaseVoltage. Note: An HVDC Boundary Point has a cim: IdentifiedObject. description attribute equal to 'HVDC'.";
+        sh:group        l7com:Level7-IGMCGM;
+        sh:name         "ACTielineBV";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Violation;
+        sh:sparql       l7com:ACLineSegment-BaseVoltageDiffSparql .
+
+l7com:Level7-IGMCGM  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Level7-IGMCGM";
+        sh:order    0 .
+
+l7com:ACLineSegmentACTielineBV
+        rdf:type        sh:NodeShape;
+        sh:property     l7com:ACLineSegment-BaseVoltageDiff;
+        sh:targetClass  cim:ACLineSegment .
+
+l7com:ACLineSegment-BaseVoltageDiffSparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "AC Tie line nominalVoltage deviates from the boundary point base voltage more than 10%. Voltage 1: {?tp1nv}; Voltage 2: {?tp2nv}";
+        sh:prefixes  cim:;
+        sh:select    """
+			SELECT  $this ?tp1nv ?tp2nv
+			WHERE {
+        ?term1 cim:Terminal.ConductingEquipment $this .
+        ?term2 cim:Terminal.ConductingEquipment $this .
+        ?term1 cim:ACDCTerminal.sequenceNumber 1.
+        ?term2 cim:ACDCTerminal.sequenceNumber 2.
+        ?tp1  ^cim:Terminal.TopologicalNode ?term1 .
+        ?tp1 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp1nv .
+        ?tp2  ^cim:Terminal.TopologicalNode ?term2 .
+        ?tp2 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp2nv .
+        
+        FILTER ((?tp1nv<?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp1nv)>0.1) || (?tp1nv>?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp2nv)>0.1)) .        
+			}""" .
+
+
