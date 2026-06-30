@@ -1,12 +1,12 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
 @base              <http://iec.ch/TC57/ns/CIM/Topology-EU/Constraints> .
-@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cim:     <https://cim.ucaiug.io/ns#> .
 @prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix dash:    <http://datashapes.org/dash#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 @prefix dcterms:     <http://purl.org/dc/terms/> .
-@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix eu:      <https://cim.ucaiug.io/ns/eu#> .
 @prefix ido:     <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix prof:    <http://iec.ch/TC57/ns/CIM/prof-cim#> .

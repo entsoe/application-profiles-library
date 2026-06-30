@@ -1,11 +1,11 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
 @base              <http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/notSolved/1.0> .
-@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix eu:    <https://cim.ucaiug.io/ns/eu#> .
 @prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
-@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix cim:   <https://cim.ucaiug.io/ns#> .
 @prefix dyn457:  <http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/notSolved/1.0#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
@@ -35,7 +35,7 @@ cim:
     owl:imports sh: ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
     sh:declare [
@@ -45,7 +45,7 @@ cim:
     ] ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100-European#"^^xsd:anyURI ;
+        sh:namespace "https://cim.ucaiug.io/ns/eu#"^^xsd:anyURI ;
         sh:prefix "eu" ;
     ] .
 

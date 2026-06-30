@@ -1,11 +1,11 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
 @base              <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0> .
-@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix eu:    <https://cim.ucaiug.io/ns/eu#> .
 @prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
-@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix cim:   <https://cim.ucaiug.io/ns#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix sshn301: <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
@@ -37,7 +37,7 @@ cim:
     owl:imports sh: ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
     sh:declare [
@@ -47,7 +47,7 @@ cim:
     ] ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100-European#"^^xsd:anyURI ;
+        sh:namespace "https://cim.ucaiug.io/ns/eu#"^^xsd:anyURI ;
         sh:prefix "eu" ;
     ] .
 
@@ -321,32 +321,33 @@ sshn301:ShuntCompensator.sections-valueNonLinear
         
     
 sshn301:ShuntCompensator.sections-valueNonLinearSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "The value does not equal one of the NonlinearShuntCompenstorPoint.sectionNumber." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this ?value (COUNT(?type) AS ?types) ?typesall
-      WHERE {
-        {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
-        WHERE {
-            ?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-            ?nscpointsall rdf:type ?typeall .
-          }
-        GROUP BY $this ?typesall
-        }
-        $this $PATH ?value .
-        #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
-        #$this cim:RegulatingCondEq.controlEnabled ?contrenabled .
-        ?nscpoints cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-        ?nscpoints rdf:type ?type .
-        ?nscpoints cim:NonlinearShuntCompensatorPoint.sectionNumber ?sectionnumber .  
-        #FILTER (bound(?contr) && ?contrenabled=true && ?value!=?sectionnumber) .
-        FILTER (?value!=?sectionnumber) .
-      }
-      GROUP BY $this ?value ?types ?typesall
-      HAVING(?types=?typesall)
-      """ .        
+		a         sh:SPARQLConstraint ;  
+		sh:message "The value does not equal one of the NonlinearShuntCompenstorPoint.sectionNumber." ;
+		sh:prefixes cim: ;
+		sh:select 
+                """
+                SELECT  $this ?value (COUNT(?type) AS ?types) ?typesall
+                WHERE {
+                        {
+                                SELECT $this (COUNT(?typeall) AS ?typesall)
+                                WHERE {
+                                ?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
+                                ?nscpointsall rdf:type ?typeall .
+                                }
+                                GROUP BY $this 
+                        }
+                        $this $PATH ?value .
+                        #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
+                        #$this cim:RegulatingCondEq.controlEnabled ?contrenabled .
+                        ?nscpoints cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
+                        ?nscpoints rdf:type ?type .
+                        ?nscpoints cim:NonlinearShuntCompensatorPoint.sectionNumber ?sectionnumber .
+                        #FILTER (bound(?contr) && ?contrenabled=true && ?value!=?sectionnumber) .
+                        FILTER (?value!=?sectionnumber) .
+                }
+                GROUP BY $this ?value ?typesall
+                HAVING(?types=?typesall)
+                """ .        
  
 sshn301:ControlArea  a  sh:NodeShape ;
         sh:property     sshn301:ControlArea-netInterchangeCalculation ;
