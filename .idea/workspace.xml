@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="67791116-95b8-4752-a0a1-8a306712b982" name="Changes" comment="Upload ER RDFS and SHACL&#10;Upload OR RDFS&#10;Both part of the NCP 2.4.1 release" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="422" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ncp-v2-4-1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="35vUrbOmIRERyj1AieaBXZ40BLh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHubLocalRepos\application-profiles-library\CGMES\CurrentRelease" />
+      <recent name="C:\GitHubLocalRepos\application-profiles-library\CGMES\CurrentRelease\SHACL" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28238.7" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="67791116-95b8-4752-a0a1-8a306712b982" name="Changes" comment="" />
+      <created>1763990239071</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763990239071</updated>
+      <workItem from="1763990240634" duration="64000" />
+      <workItem from="1764148239115" duration="4000" />
+      <workItem from="1764397996840" duration="14000" />
+      <workItem from="1778500210406" duration="3463000" />
+      <workItem from="1778571862036" duration="8496000" />
+      <workItem from="1778588506051" duration="5670000" />
+      <workItem from="1778654337585" duration="8394000" />
+      <workItem from="1778742699397" duration="12000" />
+      <workItem from="1778760809881" duration="6000" />
+      <workItem from="1779086209848" duration="3003000" />
+      <workItem from="1779092905905" duration="4000" />
+      <workItem from="1779429477379" duration="2699000" />
+      <workItem from="1779475572246" duration="4000" />
+      <workItem from="1779913084636" duration="851000" />
+      <workItem from="1779938088422" duration="2501000" />
+      <workItem from="1779944067292" duration="1245000" />
+      <workItem from="1779962080592" duration="81000" />
+      <workItem from="1779984126252" duration="491000" />
+      <workItem from="1780019431043" duration="10000" />
+      <workItem from="1782930087241" duration="3642000" />
+    </task>
+    <task id="LOCAL-00001" summary="Change of the versionIRI">
+      <option name="closed" value="true" />
+      <created>1778500961145</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1778500961145</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update of the versions">
+      <option name="closed" value="true" />
+      <created>1778501440072</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1778501440072</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update of datatype validation of properties that are of datatype URI. They are now sh:IRI instead of sh:Literal. This is to align with DCAT usage of these properties. In addition, attribute generatedAtTime was changed to optional">
+      <option name="closed" value="true" />
+      <created>1778502923643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778502923643</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update the header of the RDFS Dataset Metadata. Create PROF for Dataset Metadata - issue #35">
+      <option name="closed" value="true" />
+      <created>1778572935721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778572935721</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Rename folder Enchanced to Enhanced">
+      <option name="closed" value="true" />
+      <created>1778573707751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778573707751</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update read me - issue #4">
+      <option name="closed" value="true" />
+      <created>1778574415443</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1778574415443</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update read me - issue #31">
+      <option name="closed" value="true" />
+      <created>1778578671036</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1778578671036</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update read me - issue #31">
+      <option name="closed" value="true" />
+      <created>1778578825777</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1778578825777</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update read me - issue #29">
+      <option name="closed" value="true" />
+      <created>1778579091691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1778579091691</updated>
+    </task>
+    <task id="LOCAL-00010" summary="issue fix #17">
+      <option name="closed" value="true" />
+      <created>1778582586258</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778582586258</updated>
+    </task>
+    <task id="LOCAL-00011" summary="issue fix #16">
+      <option name="closed" value="true" />
+      <created>1778588932267</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1778588932267</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update of PROF to include references to the header">
+      <option name="closed" value="true" />
+      <created>1778589987798</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1778589987798</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fix of issue #12">
+      <option name="closed" value="true" />
+      <created>1778591636608</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1778591636608</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Delete the RDF structure for SHACL because it is not used and the conversion from TTL to RDFXML. The primary seriialisation for SHACL is TTL">
+      <option name="closed" value="true" />
+      <created>1778657081477</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1778657081477</updated>
+    </task>
+    <task id="LOCAL-00015" summary="SHACL files are moved in the SHACL folder and TTL folder is deleted. Fix for issue #32">
+      <option name="closed" value="true" />
+      <created>1778657302455</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1778657302455</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Beta_501_Ed2_CD is renamed to RDFS_Beta_501_Ed2_CD Fix for issue #32">
+      <option name="closed" value="true" />
+      <created>1778657386598</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1778657386598</updated>
+    </task>
+    <task id="LOCAL-00017" summary="RDFS_Beta_501_Ed2_CD moved. Fix for issue #32">
+      <option name="closed" value="true" />
+      <created>1778657444491</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1778657444491</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fis of issue https://github.com/entsoe/relicapgrid/issues/266">
+      <option name="closed" value="true" />
+      <created>1778675503586</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1778675503588</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update sh:targetNode cc:ClassCount to sh:targetClass dcat:Dataset as not all SHACL engines are executing the targetNode properly">
+      <option name="closed" value="true" />
+      <created>1779086563353</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1779086563353</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Update sh:targetNode cc:ClassCount to sh:targetClass dcat:Dataset as not all SHACL engines are executing the targetNode properly. Also cleaning a typo">
+      <option name="closed" value="true" />
+      <created>1779086953709</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1779086953709</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fix property shapes for IdentifiedObjectStringLength to use correct path and targetSubjectsOf instead of sh:targetNode">
+      <option name="closed" value="true" />
+      <created>1779087396293</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1779087396293</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fix property shapes for DanglingReferences to use correct path and targetSubjectsOf instead of sh:targetNode">
+      <option name="closed" value="true" />
+      <created>1779087917595</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1779087917595</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix property shapes for DanglingReferences  and IdentofiedObject to use correct path and targetSubjectsOf instead of sh:targetNode">
+      <option name="closed" value="true" />
+      <created>1779088489894</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1779088489894</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fix sh:order that has 2 integer values">
+      <option name="closed" value="true" />
+      <created>1779429549318</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1779429549319</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Fix ra:TopologyAction.Switch-valueType issue #54">
+      <option name="closed" value="true" />
+      <created>1779430694317</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1779430694317</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix profile modellingautorityset and sh:order">
+      <option name="closed" value="true" />
+      <created>1779431579588</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1779431579588</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Correct RDFS for NCP dataset metadata to remove the record   &lt;rdfs:domain rdf:resource=&quot;http://www.w3.org/ns/dcat#Dataset&quot;/&gt; for literal attributes with datatype &lt;cims:dataType rdf:resource=&quot;#URI&quot;/&gt;">
+      <option name="closed" value="true" />
+      <created>1779913455238</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1779913455238</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Update ER RDFS and SHACL - issue #55">
+      <option name="closed" value="true" />
+      <created>1779939025052</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1779939025052</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update SHACL constraints - fix issue #56">
+      <option name="closed" value="true" />
+      <created>1779944710385</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1779944710385</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fix targetNode to fake class on newly generated ER SHACL">
+      <option name="closed" value="true" />
+      <created>1779984159848</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1779984159848</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Upload ER RDFS and SHACL&#10;Upload OR RDFS&#10;Both part of the NCP 2.4.1 release">
+      <option name="closed" value="true" />
+      <created>1782931508378</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1782931508378</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update read me - issue #4" />
+    <MESSAGE value="Update read me - issue #31" />
+    <MESSAGE value="Update read me - issue #29" />
+    <MESSAGE value="issue fix #17" />
+    <MESSAGE value="issue fix #16" />
+    <MESSAGE value="Update of PROF to include references to the header" />
+    <MESSAGE value="Fix of issue #12" />
+    <MESSAGE value="Delete the RDF structure for SHACL because it is not used and the conversion from TTL to RDFXML. The primary seriialisation for SHACL is TTL" />
+    <MESSAGE value="SHACL files are moved in the SHACL folder and TTL folder is deleted. Fix for issue #32" />
+    <MESSAGE value="Beta_501_Ed2_CD is renamed to RDFS_Beta_501_Ed2_CD Fix for issue #32" />
+    <MESSAGE value="RDFS_Beta_501_Ed2_CD moved. Fix for issue #32" />
+    <MESSAGE value="Fis of issue https://github.com/entsoe/relicapgrid/issues/266" />
+    <MESSAGE value="Update sh:targetNode cc:ClassCount to sh:targetClass dcat:Dataset as not all SHACL engines are executing the targetNode properly" />
+    <MESSAGE value="Update sh:targetNode cc:ClassCount to sh:targetClass dcat:Dataset as not all SHACL engines are executing the targetNode properly. Also cleaning a typo" />
+    <MESSAGE value="Fix property shapes for IdentifiedObjectStringLength to use correct path and targetSubjectsOf instead of sh:targetNode" />
+    <MESSAGE value="Fix property shapes for DanglingReferences to use correct path and targetSubjectsOf instead of sh:targetNode" />
+    <MESSAGE value="Fix property shapes for DanglingReferences  and IdentofiedObject to use correct path and targetSubjectsOf instead of sh:targetNode" />
+    <MESSAGE value="Fix sh:order that has 2 integer values" />
+    <MESSAGE value="Fix ra:TopologyAction.Switch-valueType issue #54" />
+    <MESSAGE value="Fix profile modellingautorityset and sh:order" />
+    <MESSAGE value="Correct RDFS for NCP dataset metadata to remove the record   &lt;rdfs:domain rdf:resource=&quot;http://www.w3.org/ns/dcat#Dataset&quot;/&gt; for literal attributes with datatype &lt;cims:dataType rdf:resource=&quot;#URI&quot;/&gt;" />
+    <MESSAGE value="Update ER RDFS and SHACL - issue #55" />
+    <MESSAGE value="Update SHACL constraints - fix issue #56" />
+    <MESSAGE value="Fix targetNode to fake class on newly generated ER SHACL" />
+    <MESSAGE value="Upload ER RDFS and SHACL&#10;Upload OR RDFS&#10;Both part of the NCP 2.4.1 release" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload ER RDFS and SHACL&#10;Upload OR RDFS&#10;Both part of the NCP 2.4.1 release" />
+  </component>
+</project>
