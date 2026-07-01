@@ -2758,7 +2758,7 @@ ra:TopologyAction.Switch-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ra:AssociationsGroup;
-        sh:in           ( cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector );
+        sh:in           ( cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim17:Switch cim16:Switch);
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "TopologyAction.Switch-valueType";
         sh:nodeKind     sh:IRI;
