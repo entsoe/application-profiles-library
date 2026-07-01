@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:prof="http://www.w3.org/ns/dx/prof/"
+         xmlns:role="http://www.w3.org/ns/dx/prof/role/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="https://ap.cim4.eu/DatasetMetadata">
+		<dcterms:creator>ENTSO-E CIM WG NC project </dcterms:creator>
+		<dcterms:description>This profile is describing the Dataset Metadata.</dcterms:description>
+		<dcterms:identifier>f4cbbc64-734c-46e8-9415-7f9f4a2a184e</dcterms:identifier>
+		<dcat:keyword>DM</dcat:keyword>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-02-04</dcterms:modified>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcat:theme>profile</dcat:theme>
+		<dcterms:title>Dataset Metadata Profile</dcterms:title>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<owl:versionIRI rdf:resource="https://ap.cim4.eu/DatasetMetadata/3.0"/>
+		<owl:versionInfo>3.0.0</owl:versionInfo>
+		<prof:hasResource rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata/3.0"/>
+		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0"/>
+		<prof:hasResource rdf:resource="https://ap-spec.cim4.eu/DatasetMetadata/3.0"/>
+		<prof:hasResource rdf:resource="https://ap-val.cim4.eu/DatasetMetadata/3.0"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata/3.0">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata/3.0/DatasetMetadata-AP-Voc-RDFS2020.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>Dataset metadata Vocabulary</dcterms:title>
+		<dcterms:description>Vocabulary for the Dataset metadata profile. It is the RDFS.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0/DatasetMetadata-AP-Con-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>Dataset metadata Simple Constraints</rdfs:label>
+		<dcterms:description>SHACL based constraints used to validate datatypes, cardinality, associations value types.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-val.cim4.eu/DatasetMetadata/3.0">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="https://ap-val.cim4.eu/DatasetMetadata/3.0/DatasetMetadata-AP-Con-Validation-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>Dataset metadata Validation</rdfs:label>
+		<dcterms:description>A set of SHACL based constraints that shall be executed when validating a dataset that conforms to Dataset metadata profile.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-spec.cim4.eu/DatasetMetadata/3.0">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/specification"/>
+		<prof:hasArtifact rdf:resource="https://ap-spec.cim4.eu/DatasetMetadata/3.0/DatasetMetadata_Profile_Specification.pdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+		<rdfs:label>Dataset metadata Specification</rdfs:label>
+		<dcterms:description>The specification of the Dataset metadata profile.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+	</rdf:Description>
+</rdf:RDF>

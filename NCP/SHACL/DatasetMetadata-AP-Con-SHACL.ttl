@@ -26,7 +26,7 @@ dm:Ontology  rdf:type         owl:Ontology;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Dataset metadata vocabulary"@en;
-        owl:versionIRI        <3.0/3.0>;
+        owl:versionIRI        <https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0>;
         owl:versionInfo       "3.0.0"@en;
         dcat:keyword          "DM";
         dcat:theme            "constraint"@en .
@@ -131,7 +131,7 @@ dm:subject-cardinality
         sh:message      "Missing required attribute.";
         sh:minCount     1;
         sh:name         "subject-cardinality";
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcatcim:statement rdf:subject );
         sh:severity     sh:Violation .
 
@@ -165,7 +165,7 @@ dm:title-datatype  rdf:type  sh:PropertyShape;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "title-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcterms:title );
         sh:severity     sh:Violation .
 
@@ -176,7 +176,7 @@ dm:title-cardinality  rdf:type  sh:PropertyShape;
         sh:message      "Missing required attribute.";
         sh:minCount     1;
         sh:name         "title-cardinality";
-        sh:order        -1;
+        sh:order        1;
         sh:path         ( dcatcim:forwardDifference dcterms:title );
         sh:severity     sh:Violation .
 
@@ -214,7 +214,7 @@ dm:isReferencedBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        43 , 41;
+        sh:order        43;
         sh:path         dcterms:isReferencedBy;
         sh:severity     sh:Violation .
 
@@ -230,7 +230,7 @@ dm:seriesMember-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        42 , 40;
+        sh:order        42;
         sh:path         dcat:seriesMember;
         sh:severity     sh:Violation .
 
@@ -487,7 +487,7 @@ dm:hasAlternativeVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        30 , 28;
+        sh:order        30;
         sh:path         dcatcim:hasAlternativeVersion;
         sh:severity     sh:Violation .
 
@@ -536,7 +536,7 @@ dm:hasPreferredVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        27 , 25;
+        sh:order        27;
         sh:path         dcatcim:hasPreferredVersion;
         sh:severity     sh:Violation .
 
@@ -552,7 +552,7 @@ dm:isRequiredBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        26 , 24;
+        sh:order        26;
         sh:path         dcterms:isRequiredBy;
         sh:severity     sh:Violation .
 
@@ -732,7 +732,7 @@ dm:isReplacedBy-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        17 , 15;
+        sh:order        17;
         sh:path         dcterms:isReplacedBy;
         sh:severity     sh:Violation .
 
@@ -846,7 +846,7 @@ dm:isPartOf-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        12 , 10;
+        sh:order        12;
         sh:path         dcterms:isPartOf;
         sh:severity     sh:Violation .
 
@@ -987,7 +987,7 @@ dm:hasVersion-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        5 , 3;
+        sh:order        5;
         sh:path         dcat:hasVersion;
         sh:severity     sh:Violation .
 
