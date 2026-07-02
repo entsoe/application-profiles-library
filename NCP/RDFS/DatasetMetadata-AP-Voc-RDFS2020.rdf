@@ -20,17 +20,17 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the dataset metadata profile.</dcterms:description>
-    <dcterms:identifier>f7bb07f7-8614-4ff5-88da-2b4824b143f1</dcterms:identifier>
+    <dcterms:identifier>bd3a1070-b4e9-4a0f-8e9a-cba679d29179</dcterms:identifier>
     <dcat:keyword>DM</dcat:keyword>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-02-04</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
     <dcat:theme xml:lang="en">vocabulary</dcat:theme>
     <dcterms:title xml:lang="en">Dataset metadata vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata/3.0"/>
-    <owl:versionInfo xml:lang="en">3.0.0</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">3.0.1</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Dataset">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>

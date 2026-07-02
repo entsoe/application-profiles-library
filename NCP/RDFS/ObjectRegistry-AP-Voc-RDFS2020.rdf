@@ -22,11 +22,11 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the object registry profile.</dcterms:description>
-    <dcterms:identifier>5f23093d-a317-486c-9be7-3b1fb5bcafff</dcterms:identifier>
+    <dcterms:identifier>922777db-0c93-4637-9523-53fc59ced40a</dcterms:identifier>
     <dcat:keyword>OR</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-15</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
     <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>

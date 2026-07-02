@@ -20,16 +20,16 @@
 ae:Ontology  rdf:type     owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "e325f0f5-2a44-45e3-8d95-8b37eeca5c8a";
-        dcterms:issued        "2025-09-11T16:29:08.709172500"^^xsd:dateTime;
+        dcterms:identifier    "f8a56cd8-d0ea-4680-8541-957ce748e0f4";
+        dcterms:issued        "2026-05-28T16:29:08.709172500"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2025-09-11"^^xsd:date;
+        dcterms:modified      "2026-05-28"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Assessed Element Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4>;
-        owl:versionInfo   "2.4.0"@en;
+        owl:versionInfo   "2.4.1"@en;
         dcat:keyword      "AE";
         dcat:theme        "constraint"@en .
 

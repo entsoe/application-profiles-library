@@ -20,16 +20,16 @@ sisc:Ontology  rdf:type         owl:Ontology ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for state instruction schedule profile."@en ;
         dcterms:identifier        "fa2ea505-930f-4033-bad6-005d1b401467" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "State instruction schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4> ;
 		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.4.0"@en ;
+        owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
 

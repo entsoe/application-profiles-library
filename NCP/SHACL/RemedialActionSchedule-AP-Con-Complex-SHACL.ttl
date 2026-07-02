@@ -19,17 +19,17 @@ rasc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for remedial action scheule profile."@en ;
-        dcterms:identifier        "657b4a7f-0868-4764-8327-ff7cbb377dd4" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "e831e1cf-b74c-4b22-99e5-0252fe13a29f" ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Remedial Action Schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4> ;
 		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.4.0"@en ;
+        owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
 
