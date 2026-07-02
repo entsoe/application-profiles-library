@@ -78,7 +78,7 @@ io:IdentifiedObject.shortName-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s $PATH ?value .
+        $this $PATH ?value .
         
         FILTER (STRLEN(?value)>12) .
 			}""" .         
@@ -104,7 +104,7 @@ io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s $PATH ?value .
+        $this $PATH ?value .
         
         FILTER (STRLEN(?value)!=16) .
 			}""" .          
@@ -130,7 +130,7 @@ io:IdentifiedObject.name-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s $PATH ?value .
+        $this $PATH ?value .
         
         FILTER (STRLEN(?value)>128) .
 			}""" .        
@@ -156,7 +156,7 @@ io:IdentifiedObject.description-stringLengthSparql
 		sh:select """
 			SELECT  $this ?value  
 			WHERE {      
-        ?s $PATH ?value .
+        $this $PATH ?value .
         
         FILTER (STRLEN(?value)>256) .
 			}""" .    
