@@ -1,0 +1,37 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0#RegulatingControl.targetValue-tapChanger
+# RegulatingControl.targetValue-tapChanger
+# In cases where RequlatingControl.mode is voltage and both TapChanger.controlEnabled and RequlatingControl.enabled are true, The RegulatingControl.targetValue in per unit value is calculated by RegulatingControl.targetValue/BaseVoltage.nominalVoltage. shall be within the regulating capability limits:	The tap changer upper capability limit in per unit value is calculated by 1+RatioTapChanger.stepVoltageIncrement/100*(TapChanger.highStep-TapChanger.neutralStep). The tap changer lower capability limit in per unit value is calculated by 1-RatioTapChanger.stepVoltageIncrement/100*(TapChanger.neutralStep-TapChanger.lowStep).
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT $this ?value
+			WHERE {
+        $this cim:RegulatingControl.targetValue ?value .
+        $this cim:RegulatingControl.mode ?mode .
+        $this ^cim:TapChanger.TapChangerControl/cim:TapChanger.controlEnabled ?contrenabled .
+        $this cim:RegulatingControl.enabled ?enabled .
+        $this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.stepVoltageIncrement ?svi .
+        $this ^cim:TapChanger.TapChangerControl/cim:TapChanger.highStep ?highstep .
+        $this ^cim:TapChanger.TapChangerControl/cim:TapChanger.lowStep ?lowstep .
+        $this ^cim:TapChanger.TapChangerControl/cim:TapChanger.neutralStep ?neutralstep .
+        #$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
+        $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
+        
+				FILTER (?mode=cim:RegulatingControlModeKind.voltage && ?contrenabled=true && ?enabled=true && !( ?value/?valuenomu>=(1-(?svi/100)*(?neutralstep-?lowstep)) && ?value/?valuenomu<=(1+(?svi/100)*(?highstep-?neutralstep)) ) ) .
+			}

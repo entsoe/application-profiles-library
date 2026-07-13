@@ -1,0 +1,35 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600/notSolved/3.0#ACLineSegment-BaseVoltageDiff
+# ACLineSegment-BaseVoltageDiff
+# CGMES exchanges allow 10 % difference of the BaseVoltage.nominalVoltage at the two ends of an ACLineSegment representing a complete tie-line or connecting to a boundary node.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?tp1nv ?tp2nv
+			WHERE {
+        ?term1 cim:Terminal.ConductingEquipment $this .
+        ?term2 cim:Terminal.ConductingEquipment $this .
+        ?term1 cim:ACDCTerminal.sequenceNumber 1.
+        ?term2 cim:ACDCTerminal.sequenceNumber 2.
+        ?tp1  ^cim:Terminal.TopologicalNode ?term1 .
+        ?tp1 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp1nv .
+        ?tp2  ^cim:Terminal.TopologicalNode ?term2 .
+        ?tp2 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp2nv .
+        
+        FILTER ((?tp1nv<?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp1nv)>0.1) || (?tp1nv>?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp2nv)>0.1)) .        
+			}

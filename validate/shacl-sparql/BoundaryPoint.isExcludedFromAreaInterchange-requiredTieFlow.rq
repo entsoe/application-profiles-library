@@ -1,0 +1,39 @@
+# http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/IEC61970-301/notSolved/3.0#BoundaryPoint.isExcludedFromAreaInterchange-requiredTieFlow
+# BoundaryPoint.isExcludedFromAreaInterchange-requiredTieFlow
+# If true, this boundary point is on the interconnection that is excluded from control area interchange calculation and consequently has no related tie flows. Otherwise, the interconnection is included in control area interchange and a TieFlow is required at all sides of the boundary point (default).
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value ?terminal ?tieflow
+			WHERE {
+             ?terminal1 cim:Terminal.ConductingEquipment ?condeq .
+             ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
+             ?terminal1 cim:Terminal.ConnectivityNode ?cn1 .
+             
+             OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?condeq}.
+             OPTIONAL {?terminal2 cim:ACDCTerminal.sequenceNumber 2}.
+             OPTIONAL {?terminal2 cim:Terminal.ConnectivityNode ?cn2}.
+             
+             OPTIONAL {$this $PATH ?value}.
+             $this eu:BoundaryPoint.ConnectivityNode ?cnbp .
+             OPTIONAL {?terminal cim:Terminal.ConnectivityNode ?cnbp }.
+             OPTIONAL {?tieflow cim:TieFlow.Terminal ?terminal }.
+           
+				FILTER ((bound(?value) && ?value=false && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value=true && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
+			}

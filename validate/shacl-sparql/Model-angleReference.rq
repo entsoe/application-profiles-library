@@ -1,0 +1,59 @@
+# http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-456/3.0#Model-angleReference
+# Model-angleReference
+# Angle reference: In cases where it is required to exchange a solved model and compare power flow results (assuming identical/comparable calculation methods and initial conditions) it is required that the angle reference slack is placed within the exported model. The slack generator is the SynchronousMachine connected to the TopologicalNode referenced by TopologicalIsland.AngleRefTopologicalNode and which has the highest SynchronousMachine.referencePriority in the exported MAS’s SSH.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+    	SELECT $this ?sm1 ?tn ?value ?tn1
+			WHERE {
+          {
+          #SELECT $this (COUNT(?smrp) as ?count)
+          SELECT $this (COUNT(?type) as ?count)
+          WHERE {
+              #?sm cim:SynchronousMachine.referencePriority ?smrp .
+              ?sm cim:SynchronousMachine.referencePriority 1 .
+              ?sm rdf:type cim:SynchronousMachine .
+              ?sm rdf:type ?type .
+              #FILTER (?smrp=1).
+            }
+            GROUP BY $this ?type
+          }
+          ?sm1 cim:SynchronousMachine.referencePriority 1 .
+          ?sm1 rdf:type cim:SynchronousMachine .
+          
+          
+          OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode ?tn .
+                    ?tn ^cim:TopologicalIsland.TopologicalNodes ?ti .
+                    }.
+          OPTIONAL {?ti2 cim:TopologicalIsland.AngleRefTopologicalNode ?tn1 .
+                     ?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 .
+                     }.
+          
+          #OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti }.
+          #OPTIONAL {?ti cim:TopologicalIsland.AngleRefTopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti1 .
+          
+          #OPTIONAL {?tn ^cim:TopologicalIsland.TopologicalNodes ?ti }.
+          #OPTIONAL {?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 }.
+          
+          BIND("" as ?value).
+      
+          FILTER (?count!=1 || !bound(?ti) || !bound(?ti1) || (bound(?ti) && bound(?ti1) && ?ti!=?ti1)).
+      } 
+      LIMIT 1
+      

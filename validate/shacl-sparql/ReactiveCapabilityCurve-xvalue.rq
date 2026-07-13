@@ -1,0 +1,44 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapabilityCurve-xvalue
+# ReactiveCapabilityCurve-xvalue
+# All CurveData.xvalue for a given ReactiveCapabilityCurve shall be unique, e.g. it is not allowed for two or more .xvalue to have the same float value for a given ReactiveCapabilityCurve.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT $this  
+        WHERE {
+          {
+          SELECT $this (COUNT(?xvalue1) AS ?c1)
+          WHERE {
+              $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1.
+            }
+            GROUP BY $this ?xvalue1
+          }
+          
+          {
+          SELECT DISTINCT $this (COUNT(?xvalue2) AS ?c2)
+          WHERE {
+              $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue2.
+            }
+            GROUP BY $this ?xvalue2
+          }
+
+          FILTER (?c1!=?c2).
+        }
+        LIMIT 1
+        

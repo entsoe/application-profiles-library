@@ -1,0 +1,35 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformerEnd-secondWindingValues
+# PowerTransformerEnd-secondWindingValues
+# 1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        ?value cim:PowerTransformerEnd.PowerTransformer $this .  
+        ?value cim:TransformerEnd.endNumber 2 .
+        #?value cim:TransformerEnd.endNumber ?endnumber .
+        ?value cim:PowerTransformerEnd.r ?r .
+        ?value cim:PowerTransformerEnd.r0 ?r0 .
+        ?value cim:PowerTransformerEnd.x ?x .
+        ?value cim:PowerTransformerEnd.x0 ?x0 .
+        FILTER (!(?r=0 && ?r0=0 && ?x=0 && ?x0=0)).
+        #FILTER ((!(?r=0 && ?r0=0 && ?x=0 && ?x0=0) && ?endnumber=2) || (!(?r!=0 && ?r0!=0 && ?x!=0 && ?x0!=0) && ?endnumber=1)).
+        #FILTER (?r!=0 || ?r0!=0 || ?x!=0 || ?x0!=0).
+			} 

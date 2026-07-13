@@ -1,0 +1,29 @@
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#HydroPowerPlant-operatingMode
+# HydroPowerPlant-operatingMode
+# The SynchronousMachine.operatingMode of all SynchronousMachine objects part of a HydroPowerPlant shall be consistent.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT $this (COUNT(?value) AS ?countv)
+        WHERE {
+        $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
+        }
+        GROUP BY $this ?value
+        HAVING(?countv>1)
+      

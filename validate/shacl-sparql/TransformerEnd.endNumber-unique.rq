@@ -1,0 +1,45 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#TransformerEnd.endNumber-unique
+# TransformerEnd.endNumber-unique
+# Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        {
+        SELECT $this (COUNT(DISTINCT ?endnumber) as ?countd) (COUNT(?endnumber) as ?count) (MIN(?endnumber) as ?minendnumber) (MAX(?ratedu) as ?maxratedu) 
+        WHERE {
+          $this ^cim:PowerTransformerEnd.PowerTransformer ?ends .
+          ?ends rdf:type ?endtype .
+          ?ends cim:TransformerEnd.endNumber ?endnumber .
+          ?ends cim:PowerTransformerEnd.ratedU ?ratedu .
+        }
+        GROUP BY $this ?endtype
+        }
+        
+        ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
+        ?end1 cim:TransformerEnd.endNumber ?minendnumber.
+        ?end1 cim:PowerTransformerEnd.ratedU ?end1ratedu .
+        
+        ?end2 cim:PowerTransformerEnd.PowerTransformer $this .
+        ?end2 cim:PowerTransformerEnd.ratedU ?maxratedu .
+        BIND("" as ?value).
+        FILTER(?countd!=?count || (?countd=?count && ?end1ratedu!=?maxratedu && ?end1!=?end2) ).
+			} 
+      

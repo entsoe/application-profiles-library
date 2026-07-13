@@ -1,0 +1,47 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine-reactiveLimits
+# SynchronousMachine-reactiveLimits
+# ReactiveCapabilityCurve-s are not required if the reactive power limits of the SynchronousMachine do not vary with real power output. SynchronousMachine.minQ and SynchronousMachine.maxQ are required if SynchronousMachine.InitialReactiveCapabilityCurve is missing. If the association SynchronousMachine.InitialReactiveCapabilityCurve is provided it takes precedence to the information provided by the attributes SynchronousMachine.minQ and SynchronousMachine.maxQ. However, if both SynchronousMachine.minQ, SynchronousMachine.maxQ and ReactiveCapabilityCurve are present, the SynchronousMachine.minQ shall be equal to min of CurveData.y1value-s and SynchronousMachine.maxQ shall be equal to max CurveData.y2value-s.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+        SELECT $this 
+      WHERE {
+        OPTIONAL {$this cim:SynchronousMachine.minQ ?minq } .
+        OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq } .
+        #OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+        BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcca} AS ?hasrcc).
+        
+        {
+        SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+          WHERE {
+            #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+            #?rcc1 ^cim:CurveData.Curve ?curvedata .
+            $this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedata .
+            #BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedataa} AS ?hascurvedata).
+            ?curvedata rdf:type ?cdtype .
+            ?curvedata cim:CurveData.y1value ?y1value .
+            ?curvedata cim:CurveData.y2value ?y2value .
+            #FILTER (?hascurvedata=true && ?cdtype=cim:CurveData ) .
+            FILTER (?cdtype=cim:CurveData ) .
+          }
+          GROUP BY $this ?cdtype
+        }
+
+        FILTER ((?hasrcc=false && !(bound(?minq) && bound(?maxq))) || (?hasrcc=true && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
+        } 

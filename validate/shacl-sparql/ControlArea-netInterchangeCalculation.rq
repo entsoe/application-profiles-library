@@ -1,0 +1,39 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0#ControlArea-netInterchangeCalculation
+# ControlArea-netInterchangeCalculation
+# Control area constraints in power flow are represented as a set of area control equality constraints of the form: Control Area Net Interchange = SUM (control area flow into the area on each tie)
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value ?sump
+			WHERE {
+        $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
+        $this cim:ControlArea.netInterchange ?value .
+        {
+        SELECT $this (SUM(?p) AS ?sump)
+        WHERE {
+              ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
+              ?term cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode/rdf:type eu:BoundaryPoint .
+              ?term cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection .
+              ?term rdf:type ?termtype.
+              ?term cim:Terminal.ConductingEquipment/cim:EquivalentInjection.p ?p .
+          }
+        GROUP BY $this ?termtype
+        }
+        FILTER (?value!=?sump) .
+			} 

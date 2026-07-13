@@ -1,0 +1,31 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0#RegulatingControl-requiredAttributes
+# RegulatingControl-requiredAttributes
+# The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases: - For a power generating module operated in power factor control mode to specify maximum and minimum power factor values; - ....
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this 
+			WHERE {
+        #$this $PATH ?value .
+        $this $PATH cim:RegulatingControlModeKind.powerFactor .
+        OPTIONAL {$this cim:RegulatingControl.minAllowedTargetValue ?minvalue}.
+        OPTIONAL {$this cim:RegulatingControl.maxAllowedTargetValue ?maxvalue}. 
+        #FILTER (?value=cim:RegulatingControlModeKind.powerFactor && (!bound(?minvalue) || !bound(?maxvalue))) .
+        FILTER (!bound(?minvalue) || !bound(?maxvalue)) .        
+			}

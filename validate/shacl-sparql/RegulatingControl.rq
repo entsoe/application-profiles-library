@@ -1,0 +1,28 @@
+# http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0#RegulatingControl
+# RegulatingControl
+# A RegulatingControl will have associations to one or more instances of RegulatingCondEq and an association to a Terminal. The ConnectivityNode associated with the Terminal is the regulated point. It is common to have cases where multiple pieces of equipment regulate ConnectivityNodes that under normal network topology are associated with the same TopologicalNode. In this case, the same instance of RegulatingControl should be used by all of those regulating equipment if possible. If it is not possible, such as the case where a SynchronousMachine and a RatioTapChanger are regulating the same point using associations to instances of RegulatingControl and TapChangerControl, the number of instances of RegulatingControl and TapChangerControl should be minimized. Additionally, the target and deadband values for the same regulated point should not be contradictory. Profile restriction: If multiple instances of RegulatingControl control the same regulation point, the targetValues must not be contradictory.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type cim:TopologicalNode   .
+                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled true.
+                }
+                

@@ -1,0 +1,45 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#AsynchronousMachine-aggregate
+# AsynchronousMachine-aggregate
+# If one AsynchronousMachine is associated with one GeneratingUnit the flag Equipment.aggregate shall be consistent in case it is provided at both AsynchronousMachine and GeneratingUnit.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	    SELECT $this ?sms ?value 
+      WHERE {
+        {
+        SELECT $this (COUNT(?typesm) AS ?sms) 
+        WHERE {
+        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/rdf:type cim:AsynchronousMachine} AS ?hasam).
+        $this ^cim:RotatingMachine.GeneratingUnit/rdf:type ?typesm.
+        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+        #OPTIONAL {?sm rdf:type ?typesm }.
+        #FILTER(?typesm=cim:AsynchronousMachine && ?hasam=true).
+        FILTER(?typesm=cim:AsynchronousMachine).
+        }
+        GROUP BY $this ?typesm 
+        }
+        $this $PATH ?value.
+        #OPTIONAL {$this $PATH ?value }.
+        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+        #OPTIONAL {?sm cim:Equipment.aggregate ?smaggregate }.
+        $this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregate .
+        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregatea} AS ?hasaggr).
+        #FILTER (?sms=1 && bound(?value) && ?hasaggr=true && ?value!=?smaggregate ) .
+        FILTER (?sms=1 && ?value!=?smaggregate ) .
+        } 

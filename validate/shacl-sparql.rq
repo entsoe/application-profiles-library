@@ -1,0 +1,8 @@
+PREFIX afn: <http://jena.apache.org/ARQ/function#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+select ?shape ?shapeLocalname ?descr ?sparql {
+  ?x sh:select ?sparql.
+  ?shape sh:sparql|sh:target ?x.
+  ?shape sh:property?/sh:description ?descr
+  bind(afn:localname(?shape) as ?shapeLocalname)
+}

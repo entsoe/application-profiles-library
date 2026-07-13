@@ -1,0 +1,17 @@
+p,n
+adms,http://www.w3.org/ns/adms#
+cim,https://cim.ucaiug.io/ns#
+cim,http://iec.ch/TC57/CIM100#
+cim16,http://iec.ch/TC57/2013/CIM-schema-cim16#
+cim17,http://iec.ch/TC57/CIM100#
+dcat,http://www.w3.org/ns/dcat#
+dcatcim,https://cim4.eu/ns/dcatcim#
+dcterms,http://purl.org/dc/terms/
+dm,http://iec.ch/TC57/61970-552/DifferenceModel/1#
+eu,https://cim.ucaiug.io/ns/eu#
+eu,http://iec.ch/TC57/CIM100-European#
+md,http://iec.ch/TC57/61970-552/ModelDescription/1#
+nc,https://cim4.eu/ns/nc#
+prov,http://www.w3.org/ns/prov#
+rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xsd,http://www.w3.org/2001/XMLSchema#

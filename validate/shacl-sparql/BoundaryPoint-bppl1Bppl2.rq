@@ -1,0 +1,38 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600/notSolved/3.0#BoundaryPoint-bppl1Bppl2
+# BoundaryPoint-bppl1Bppl2
+# BPPL1 EquivalentInjection classes are used to represent the power flow exchanges through Boundary points. These classes are included in the individual model MAS (e.g. Model Authority MAS) and refer to the Boundary points (ConnectivityNode-s) in the Boundary set. The SvInjection class is not used for this purpose. BPPL2 In case the use cases require the exchange of multiple SSH, TP, SV, etc. instance files (distribution) which are dependent on an EQ instance file, this EQ shall always include an instance of EquivalentInjection per Boundary point. Therefore, in a multi MAS (among TSOs, DSOs or mixed) exchange a Boundary point shall always have two EquivalentInjections per Boundary point which are contained in different MAS connecting to the Boundary point. mRIDs of those EquivalentInjections are kept persistent.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this cim:IdentifiedObject.name ?value .
+        
+        {
+          SELECT $this 
+          WHERE {
+            $this ^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment/rdf:type ?bptype.
+            
+            FILTER (bound(?bptype) && ?bptype IN (cim:ACLineSegment , cim:PowerTransformer, cim:DCLineSegment, cim:DCSeriesDevice, cim:DCSwitch, cim:DCDisconnector, cim:DCBreaker, cim:DCChopper, cim:Switch, cim:Disconnector, cim:Fuse, cim:GroundDisconnector, cim:Jumper, cim:Breaker, cim:LoadBreakSwitch, cim:DisconnectingCircuitBreaker, cim:Cut, cim:SeriesCompensator, cim:EquivalentBranch)) .
+          }
+        }
+        FILTER NOT EXISTS {
+        $this ^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection 
+        }.
+			}

@@ -1,0 +1,46 @@
+# http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvVoltage.v-limits
+# SvVoltage.v-limits
+# The SvVoltage.v shall be less than or equal to VoltageLimit.value associated with OperationalLimitType.limitType=highVoltage and greater than or equal to VoltageLimit.value associated with OperationalLimitType.limitType=lowVoltage.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:SvVoltage.v ?value .
+        $this cim:SvVoltage.ToplogicalNode/^cim:ConnectivityNode.TopologicalNode/^cim:Terminal.ConnectivityNode ?term .
+        
+        ?limith cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
+        ?limitl cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
+        ?limith cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.high .
+        ?limitl cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.low .
+        ?limith cim:VoltageLimit.value ?vhigh .
+        ?limitl cim:VoltageLimit.value ?vlow .
+        
+        #OPTIONAL {?limith cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term} .
+        #OPTIONAL {?limitl cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term} .
+        ##OPTIONAL {?limith rdf:type ?limithtype} .
+        ##OPTIONAL {?limitl rdf:type ?limitltype} .
+        #OPTIONAL {?limith cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.high} .
+        #OPTIONAL {?limitl cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.low} .
+        #OPTIONAL {?limith cim:VoltageLimit.value ?vhigh} .
+        #OPTIONAL {?limitl cim:VoltageLimit.value ?vlow} .
+       
+        FILTER ( ?value>?vhigh || ?value<?vlow).
+        #FILTER ( bound(?vhigh) && bound(?vlow) && ?value<=?vhigh && ?value>=?vlow).
+			}

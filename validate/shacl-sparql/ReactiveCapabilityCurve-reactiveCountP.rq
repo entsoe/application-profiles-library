@@ -1,0 +1,60 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapabilityCurve-reactiveCountP
+# ReactiveCapabilityCurve-reactiveCountP
+# For a SynchronousMachine with a ReactiveCapabilityCurve the number of CurveData instances depends on the attribute SynchronousMachine.type as follows: - condenser, ReactiveCapabilityCurve is given by SynchronousMachine.maxQ and SynchronousMachine.minQ. There shall not be any association to ReactiveCapabilityCurve. - generator or generatorOrCondenser, at least two CurveData instances with CurveData.xvalue greater than or equal to 0. - motor or motorOrCondenser, at least two CurveData instances with CurveData.xvalue less than or equal to 0. - generatorOrMotor or generatorOrCondenserOrMotor, at least three CurveData instances with at least one having CurveData.xvalue greater than or equal to 0 and one having CurveData.xvalue less than or equal to 0. In general, it is required that the points defined by the ReactiveCapabilityCurve form an area of reactive capability different than 0.   
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	    SELECT $this ?curvedatas  ?value
+      WHERE {
+        {
+        SELECT $this (COUNT(?typecd) AS ?curvedatas) (MAX(?xvalue) AS ?maxxvalue) (MIN(?xvalue) AS ?minxvalue)
+        WHERE {
+        $this  ^cim:CurveData.Curve/rdf:type ?typecd .
+        $this  ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue .
+        #?curvedata cim:CurveData.Curve $this .
+        #?curvedata rdf:type ?typecd .
+        #?curvedata cim:CurveData.xvalue ?xvalue .
+        }
+        GROUP BY $this ?typecd 
+        }
+        
+        $this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?type .
+        #BIND(EXISTS{$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?a} AS ?hasrcc).
+        
+        #OPTIONAL {?sm cim:SynchronousMachine.InitialReactiveCapabilityCurve $this }.
+        #OPTIONAL {?sm cim:SynchronousMachine.type ?type }.
+        #OPTIONAL {$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve ?mach }.
+        $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1 .
+        #?curvedata1 cim:CurveData.Curve $this .
+        #?curvedata1 cim:CurveData.xvalue ?xvalue1 .
+        BIND("" as ?value).
+
+
+        #FILTER (?hasrcc=true && ((?type=cim:SynchronousMachineKind.condenser ) ||
+        #((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
+        #((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
+        #((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
+        #) .
+        FILTER (((?type=cim:SynchronousMachineKind.condenser ) ||
+        ((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
+        ((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
+        ((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
+        ) .
+        
+        } 

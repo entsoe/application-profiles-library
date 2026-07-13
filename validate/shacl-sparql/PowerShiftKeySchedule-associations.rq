@@ -1,0 +1,47 @@
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeySchedule-associations
+# PowerShiftKeySchedule-associations
+# PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyGroup, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection and HydroPump.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).	
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyGroup ?eg} AS ?vEG).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EquivalentInjection ?ei} AS ?vEI).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyConsumer ?ec} AS ?vEC).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergySource ?es} AS ?vES).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ExternalNetworkInjection ?eni} AS ?vENI).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.HydroPump ?hp} AS ?vHP).
+        FILTER (
+			(?vSR=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vPEU=true && (?vSR=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vGU=true && (?vPEU=true || ?vSR=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vDCP=true && (?vPEU=true || ?vGU=true || ?vSR=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEG=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vSR=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vSR=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEC=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vSR=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vES=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vSR=true || ?vENI=true || ?vHP=true)) || 
+			(?vENI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vSR=true || ?vHP=true)) || 
+			(?vHP=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vSR=true))
+		).
+			}

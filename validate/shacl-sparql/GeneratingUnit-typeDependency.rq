@@ -1,0 +1,46 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#GeneratingUnit-typeDependency
+# GeneratingUnit-typeDependency
+# GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP shall depend on the SynchronousMachine.type of the associated SynchronousMachine as follows:- condenser: GeneratingUnit.minOperatingP and GeneratingUnit.maxOperatingP shall equal zero.- generator or generatorOrCondenser: GeneratingUnit.minOperatingP shall be greater than or equal to zero and GeneratingUnit.maxOperatingP shall be greater than zero.- motor or motorOrCondenser: GeneratingUnit.minOperatingP shall be a negative value and GeneratingUnit.maxOperatingP shall be a negative value or zero.- generatorOrMotor or generatorOrCondenserOrMotor: GeneratingUnit.minOperatingP shall be a negative value and GeneratingUnit.maxOperatingP shall be greater than zero.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT $this ?value 
+        WHERE {
+        $this $PATH ?value .
+        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp .
+        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp .
+        #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit ?genunit } .
+        #OPTIONAL {?genunit cim:GeneratingUnit.maxOperatingP ?maxp } .
+        #OPTIONAL {?genunit cim:GeneratingUnit.minOperatingP ?minp } .
+        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?a} AS ?hasgenunit).
+        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?b} AS ?hasmaxp).
+        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?c} AS ?hasminp).
+        
+        
+        #FILTER ((?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && ?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
+        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
+        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
+        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
+        #).
+         FILTER ((?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
+        ((?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
+        ((?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
+        ((?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
+        ).
+        }

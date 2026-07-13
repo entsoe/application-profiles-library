@@ -1,0 +1,31 @@
+# https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleDependency-associations
+# RemedialActionScheduleDependency-associations
+# When a RemedialActionScheduleDependency is part of a RemedialActionScheduleGroup, it is required to provide either RemedialActionScheduleDependency.ProposedRemedialActionSchedule or RemedialActionScheduleDependency.ReplacedRemedialActionSchedule (i.e., not both associations). When a RemedialActionScheduleDependency is not part of a RemedialActionScheduleGroup, it is required to provide both RemedialActionScheduleDependency.ProposedRemedialActionSchedule and RemedialActionScheduleDependency.ReplacedRemedialActionSchedule.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this  ?a1 ?a2 ?a3
+			WHERE {  
+		
+		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
+		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
+		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
+		
+        FILTER ((?a1=true && ?a2=true && ?a3=true) || (?a1=false && (?a2=false || ?a3=false))).
+			}

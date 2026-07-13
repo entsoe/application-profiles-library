@@ -1,0 +1,43 @@
+# http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.staticLoadModelType-exponental
+# LoadStatic.staticLoadModelType-exponental
+# This model is an exponential representation of the load. Exponential equations for active and reactive power are used and the following attributes are required: kp1, kp2, kp3, kpf, ep1, ep2, ep3, kq1, kq2, kq3, kqf, eq1, eq2, eq3.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT $this ?value
+			WHERE {
+        $this $PATH ?value .
+          OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
+          OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
+          OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
+          OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
+          OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
+          OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
+          OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
+          OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
+          OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
+          OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
+          OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
+          OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
+          OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
+          OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
+          OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
+          OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
+        FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) || !bound(?ep1) || !bound(?ep2) || !bound(?ep3) || !bound(?eq1) || !bound(?eq2) || !bound(?eq3)) && ?value=cim:StaticLoadModelKind.exponential) || ((bound(?kp4) || bound(?kq4)) && ?value=cim:StaticLoadModelKind.exponential)) .        
+			}

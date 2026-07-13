@@ -1,0 +1,38 @@
+# http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0#RegulatingControl-point
+# RegulatingControl-point
+# The controlled point and the controlling equipment shall be located in the same TopologicalIsland. In cases where the controlling point is a TopologicalNode only one RegulatingControl shall be instantiated following the terms of constraint C:452:EQ:RegulatingControl:samePoint.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+    	SELECT $this ?topislandterminal ?topislandterminalratio ?topislandterminalphase ?topislandterminalcondeq
+			WHERE {
+          $this cim:RegulatingControl.enabled true .
+          $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminal .
+          #BIND(EXISTS{$this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?tnisland } AS ?tni).
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalratio}.
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalphase}.
+          OPTIONAL {$this ^cim:RegulatingCondEq.RegulatingControl/^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalcondeq}.
+          ##FILTER ( ?tni=true && ((bound(?topislandterminalratio) && !bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalratio!=?topislandterminal) ||
+          #(!bound(?topislandterminalratio) && bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalphase!=?topislandterminal) ||
+          #(!bound(?topislandterminalratio) && !bound(?topislandterminalphase) && bound(?topislandterminalcondeq) && ?topislandterminalcondeq!=?topislandterminal) )).
+          FILTER ( ((bound(?topislandterminalratio) && !bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalratio!=?topislandterminal) ||
+          (!bound(?topislandterminalratio) && bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalphase!=?topislandterminal) ||
+          (!bound(?topislandterminalratio) && !bound(?topislandterminalphase) && bound(?topislandterminalcondeq) && ?topislandterminalcondeq!=?topislandterminal) )
+          ).
+      } 

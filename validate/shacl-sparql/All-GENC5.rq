@@ -1,0 +1,31 @@
+# http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC5
+# All-GENC5
+# (deprecated) A requirement to ensure transition until all systems and entities fully comply with GENC4. The CGMES defines the identifier as a non-case sensitive string which conforms to W3C (ISO 8859-1:1998, Information technology — 8-bit single-byte coded graphic character sets — Part 1: Latin alphabet No. 1, http://www.w3.org/MarkUp/html3/specialchars.html). A prefix may be added, if necessary, to ensure global uniqueness. The rdf:ID is the mRID plus an underscore _ added in the beginning of the string. The maximum character limit of the string is 60 characters (including an underscore and a prefix, if any).
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+          ?value rdf:type ?o.
+          #BIND(str(?s) AS ?uuid) .
+          #$this rdf:type ?value .
+          #BIND(str($this) AS ?uuid) .
+          BIND(STRAFTER(str(?value),"#_") AS ?secondpart) .
+          FILTER(STRLEN(?secondpart)>59 && ?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") ).
+			}

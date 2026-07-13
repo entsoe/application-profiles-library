@@ -1,0 +1,42 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine-pAndQcapabilityCurveQ
+# RotatingMachine-pAndQcapabilityCurveQ
+# In cases where a ReactiveCapabilityCurve is associated, the RotatingMachine.p shall be less than or equal to the maximum active power value defined by the curve and it shall be greater than or equal to the minimum active power value defined by the curve. The RotatingMachine.q shall be less than or equal to the maximum reactive power value defined by the curve and it shall be greater than or equal to the minimum reactive power value defined by the curve.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value 
+			WHERE {
+        $this cim:RotatingMachine.q ?value .
+        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+               
+        {
+        SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+          WHERE {
+            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+            ?rcc1 ^cim:CurveData.Curve ?curvedata .
+            ?curvedata rdf:type ?cdtype .
+            ?curvedata cim:CurveData.y1value ?y1value .
+            ?curvedata cim:CurveData.y2value ?y2value .
+            FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+          }
+          GROUP BY $this ?cdtype
+        }
+
+        FILTER ( bound(?rcc) && !(-?value>=?my1value && -?value<=?my2value)).
+			}

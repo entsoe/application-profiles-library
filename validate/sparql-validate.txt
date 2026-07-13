@@ -1,0 +1,3 @@
+
+== shacl-sparql/PowerFlowResult-topologicalNode.rq ==
+Lexical error at line 29, column 43.  Encountered: '32' (32), after prefix "PowerFlowResult.valueA"

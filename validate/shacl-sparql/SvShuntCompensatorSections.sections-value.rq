@@ -1,0 +1,35 @@
+# http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvShuntCompensatorSections.sections-value
+# SvShuntCompensatorSections.sections-value
+# In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, SvShuntCompensatorSections.sections shall be integer.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:SvShuntCompensatorSections.ShuntCompensator/cim:RegulatingCondEq.RegulatingControl ?contr .
+        #$this cim:SvShuntCompensatorSections.ShuntCompensator ?shuntcomp .
+        #OPTIONAL {?shuntcomp cim:RegulatingCondEq.RegulatingControl ?contr}.
+        #?contr cim:RegulatingControl.discrete ?discrete . 
+        #?contr cim:RegulatingControl.enabled ?enabled .
+        ?contr cim:RegulatingControl.enabled true .
+        ?contr cim:RegulatingControl.discrete true . 
+        FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") ) . 
+        #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")  && bound(?contr) && ?discrete=true && ?enabled=true) .          
+			}

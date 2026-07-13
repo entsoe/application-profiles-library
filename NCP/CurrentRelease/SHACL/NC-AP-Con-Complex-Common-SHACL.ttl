@@ -103,6 +103,6 @@ com:All-DanglingReferences
     sh:name         "C:600:ALL:NA:FBOD4" ;
     sh:group        com:CommonConstraints ;
     sh:order        1 ;
-    sh:severity     sh:Violation .
+    sh:severity     sh:Violation ;
     sh:minCount     1 ;
-	sh:message   "Dangling reference is present in the model." .
+    sh:message   "Dangling reference is present in the model." .

@@ -1,0 +1,34 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine.q-limits
+# RotatingMachine.q-limits
+# In case there is no ReactiveCapabilityCurve associated with the SynchronousMachine, the negated value (necessary due to sign convention) of RotatingMachine.q shall be less than or equal to SynchronousMachine.maxQ and shall be greater than or equal to SynchronousMachine.minQ.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this cim:Equipment.inService true .
+        $this $PATH ?value .
+        BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?curve} AS ?hascurve).
+        #OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq}.
+        #OPTIONAL {$this cim:SynchronousMachine.minQ ?minq}.
+        $this cim:SynchronousMachine.maxQ ?maxq.
+        $this cim:SynchronousMachine.minQ ?minq.
+        #FILTER (?hascurve=false && bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
+        FILTER (?hascurve=false && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .           
+			}

@@ -1,0 +1,52 @@
+# http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-301/notSolved/3.0#Terminal.phases-consistencyTopologicalNode
+# Terminal.phases-consistencyTopologicalNode
+# The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value2 ?terms ?value1 ?value
+			WHERE {
+        {
+        SELECT $this (COUNT(?typeterm) AS ?terms) ?value
+        WHERE {
+        $this ^cim:Terminal.TopologicalNode  ?value.
+        ?value rdf:type ?typeterm .
+        #FILTER (?typeterm=cim:Terminal).
+        }
+        GROUP BY $this ?typeterm ?value
+        HAVING (?terms>1)
+        }
+      
+        $this ^cim:Terminal.TopologicalNode ?term2  .
+        ?value cim:Terminal.phases ?value1  .
+        OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
+        
+        #?term1 cim:Terminal.TopologicalNode $this  .
+        #OPTIONAL {?term1 cim:Terminal.phases ?value2 } .
+        #?term2 cim:Terminal.TopologicalNode $this  .
+        #OPTIONAL {?term2 cim:Terminal.phases ?value1 } .        
+        #FILTER ((?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+        #(?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+        #(?terms>1 && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+        #) .
+        FILTER ((?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+        (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+        (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+        ) .
+			}

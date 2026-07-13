@@ -1,0 +1,31 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#TapChangerControl-remoteQcontrol
+# TapChangerControl-remoteQcontrol
+# A power transformer cannot efficiently control reactive power flow on remote terminals. Therefore, a TapChangerControl controlling reactive power flow shall only control the flow at one of the Terminal-s associated with PowerTransformerEnd-s of the PowerTransformer where the TapChanger is located. Control of a remote Terminal not associated with the PowerTransformer that has the TapChanger is not allowed. This constraint defines that multiple TapChanger-s cannot be controlled by the same TapChangerControl.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT $this  
+        WHERE {
+          $this cim:RegulatingControl.mode ?mode .
+          $this cim:RegulatingControl.Terminal ?rcterm .
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm1 }.
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm2 }.
+        
+          FILTER (?mode=cim:RegulatingControlModeKind.reactivePower && ((?rcterm!=?tcterm1 && !bound(?tcterm2) && bound(?tcterm1)) || (?rcterm!=?tcterm2 && !bound(?tcterm1) && bound(?tcterm2)))).
+        }

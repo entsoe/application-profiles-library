@@ -1,0 +1,57 @@
+# http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/notSolved/1.0#TurbineGovernorDynamics-mbaseEquation
+# TurbineGovernorDynamics-mbaseEquation
+# The vast majority of turbine-governor models have mwbase as a parameter. The parameter is specified explicitly in the turbine-governor models to support use of a different value by transient analysis tools, if needed. If this parameter is present it shall correspond to RotatingMachine.ratedPowerFactor * RotatingMachine.ratedS.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT $this ?value
+			WHERE {
+          $this rdf:type ?type .
+          OPTIONAL {$this cim:GovHydroIEEE0.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroIEEE2.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamIEEE1.mwbase ?value }.
+          OPTIONAL {$this cim:GovCT1.mwbase ?value }.
+          OPTIONAL {$this cim:GovCT2.mwbase ?value }.
+          OPTIONAL {$this cim:GovGAST.mwbase ?value }.
+          OPTIONAL {$this cim:GovGAST1.mwbase ?value }.
+          OPTIONAL {$this cim:GovGAST2.mwbase ?value }.
+          OPTIONAL {$this cim:GovGASTWD.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydro1.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydro2.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydro3.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydro4.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroDD.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroPID.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroPID2.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroR.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroWEH.mwbase ?value }.
+          OPTIONAL {$this cim:GovHydroWPID.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteam1.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteam0.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamCC.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamEU.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamFV3.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamSGO.mwbase ?value }.
+          OPTIONAL {$this cim:GovSteamFV2.mwbase ?value }.
+          $this cim:TurbineGovernorDynamics.SynchronousMachineDynamics ?smd .
+          ?smd cim:SynchronousMachineDynamics.SynchronousMachine ?sm .
+          OPTIONAL {?sm cim:RotatingMachine.ratedPowerFactor ?ratedPowerFactor} .
+          OPTIONAL {?sm cim:RotatingMachine.ratedS ?ratedS} .
+        FILTER ((!bound(?ratedPowerFactor) || !bound(?ratedS)) || ?value!=?ratedPowerFactor*?ratedS ) . 
+			}

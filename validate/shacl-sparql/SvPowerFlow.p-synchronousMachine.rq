@@ -1,0 +1,51 @@
+# http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvPowerFlow.p-synchronousMachine
+# SvPowerFlow.p-synchronousMachine
+# The SvPowerFlow.p that is given by the steady state power flow solution for a SynchronousMachine shall normally be within the capability of the machine defined in the ReactiveCapabilityCurve or GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP when ReactiveCapabilityCurve is not present. Active power can be outside the capability as part of start-up or shutdown of the generator. CIM cannot represent different operation mode so this constraint will only give a warning. Note that different data exchange processes can assign more restrictive severity depending on the business needs and power flow algorithm applied by the business process.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value 
+			WHERE {
+        $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?value .
+        $this cim:RotatingMachine.GeneratingUnit ?gu .
+        ?gu cim:GeneratingUnit.minOperatingP ?minp .
+        ?gu cim:GeneratingUnit.maxOperatingP ?maxp .
+        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+               
+        {
+        SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+          WHERE {
+            #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this .
+                      ?rcc1 ^cim:CurveData.Curve ?curvedata .
+                      ?curvedata rdf:type ?cdtype .
+                      ?curvedata cim:CurveData.xvalue ?xvalue .
+                      } .
+            #?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this .
+            #?rcc1 ^cim:CurveData.Curve ?curvedata .
+            #?curvedata rdf:type ?cdtype .
+            #?curvedata cim:CurveData.xvalue ?xvalue .
+            #FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+          }
+          GROUP BY $this ?cdtype
+        }
+
+        #FILTER ( (!bound(?rcc) && !(?value>=?minp && ?value<=?maxp)) || (bound(?rcc) && !(?value>=?minxvalue && ?value<=?maxxvalue))).
+        FILTER ( (!bound(?rcc) && ((?value!=0 && (-?value<?minp || -?value>?maxp)) || (?value=0 && (?value<?minp || ?value>?maxp)))   ) || (bound(?rcc) && ((?value!=0 && (-?value<?minxvalue || -?value>?maxxvalue)) || (?value=0 && (?value<?minxvalue || ?value>?maxxvalue))))).
+			}

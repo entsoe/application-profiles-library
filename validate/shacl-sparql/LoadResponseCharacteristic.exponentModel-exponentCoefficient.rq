@@ -1,0 +1,42 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#LoadResponseCharacteristic.exponentModel-exponentCoefficient
+# LoadResponseCharacteristic.exponentModel-exponentCoefficient
+# Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used. The exponential voltage dependency model consist of the attributes:- pVoltageExponent; - qVoltageExponent; - pFrequencyExponent; - qFrequencyExponent. The coefficient model consist of the attributes:- pConstantImpedance; - pConstantCurrent; - pConstantPower; - qConstantImpedance; - qConstantCurrent; - qConstantPower. The sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1. The sum of qConstantImpedance, qConstantCurrent and qConstantPower shall equal 1.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        
+        OPTIONAL {$this cim:LoadResponseCharacteristic.pFrequencyExponent ?pfe }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.pVoltageExponent ?pve }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.qFrequencyExponent ?qfe }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.qVoltageExponent ?qve }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.pConstantCurrent ?pcc }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.pConstantImpedance ?pci }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.pConstantPower ?pcp }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantCurrent ?qcc }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantImpedance ?qci }.
+        OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantPower ?qcp }.
+ 
+        FILTER ((?value=true && (!bound(?pfe) || !bound(?pve) || !bound(?qfe) || !bound(?qve) || bound(?pcc) || bound(?pci) || bound(?pcp) || bound(?qcc) || bound(?qci) || bound(?qcp))) ||
+                (?value=false && (bound(?pfe) || bound(?pve) || bound(?qfe) || bound(?qve) || !bound(?pcc) || !bound(?pci) || !bound(?pcp) || !bound(?qcc) || !bound(?qci) || !bound(?qcp))) || 
+                (?value=false && bound(?pcc) && bound(?pci) && bound(?pcp) && bound(?qcc) && bound(?qci) && bound(?qcp) && (?pcc+?pci+?pcp!=1 || ?qcc+?qci+?qcp!=1)  )
+        ) .
+			}

@@ -1,0 +1,33 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine.p-limits
+# RotatingMachine.p-limits
+# The negated value (necessary due to sign convention) of RotatingMachine.p shall be less than or equal to GeneratingUnit.maxOperatingP and shall be greater than or equal to GeneratingUnit.minOperatingP of the associated GeneratingUnit.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this cim:Equipment.inService true .
+        $this cim:RotatingMachine.GeneratingUnit ?genunit.
+        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?hasgenunit} AS ?hasgu).
+        $this $PATH ?value .
+        ?genunit cim:GeneratingUnit.maxOperatingP ?maxp . 
+        ?genunit cim:GeneratingUnit.minOperatingP ?minp .
+        FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
+        #FILTER (?hasgu=true && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
+			}

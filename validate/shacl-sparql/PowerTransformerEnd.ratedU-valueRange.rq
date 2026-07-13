@@ -1,0 +1,50 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformerEnd.ratedU-valueRange
+# PowerTransformerEnd.ratedU-valueRange
+# A high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater than or equal to ratedU for the lower voltage sides. The attribute shall be a positive value.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value ?ends
+			WHERE {
+        {
+        SELECT $this (COUNT(?typeend) AS ?ends)
+        WHERE {
+        $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+        }
+        GROUP BY $this ?typeend
+        }
+        
+        ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
+        ?end1 cim:TransformerEnd.endNumber  1.
+        ?end1 cim:PowerTransformerEnd.ratedU  ?value .
+        ?end2 cim:PowerTransformerEnd.PowerTransformer $this  .
+        ?end2 cim:TransformerEnd.endNumber  2 .
+        ?end2 cim:PowerTransformerEnd.ratedU  ?rateduend2 .
+        #BIND(EXISTS{$this cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber  3} AS ?isthreew).
+        #?end3 cim:PowerTransformerEnd.PowerTransformer $this .
+        #?end3 cim:TransformerEnd.endNumber  3 .
+        #?end3 cim:PowerTransformerEnd.ratedU  ?rateduend3 .
+        OPTIONAL {?end3 cim:PowerTransformerEnd.PowerTransformer $this } .
+        OPTIONAL {?end3 cim:TransformerEnd.endNumber  3 }.
+        OPTIONAL {?end3 cim:PowerTransformerEnd.ratedU  ?rateduend3 }.
+
+        FILTER (((?value<?rateduend2 || ?value<=0 || ?rateduend2<=0) && ?ends=2 && ?end1!=?end2 && ?end3=?end1) || (?ends=3 && ?end1!=?end2 && ?end1!=?end3 && ?end2!=?end3 && (?value<?rateduend2 || ?rateduend2<?rateduend3 || ?value<=0 || ?rateduend2<=0 || ?rateduend3<=0))) .        
+			}
+
+      

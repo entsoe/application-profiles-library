@@ -1,0 +1,34 @@
+# http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/constraints/IEC61970-301/notSolved/3.0#MutualCoupling-terminalsAssignment
+# MutualCoupling-terminalsAssignment
+# Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT $this ?typeline1 ?typeline2
+			WHERE {
+        #$this cim:MutualCoupling.First_Terminal ?firstterminal .
+        #$this cim:MutualCoupling.Second_Terminal ?secondterminal .
+        #?firstterminal cim:Terminal.ConductingEquipment ?line1 . 
+        #?secondterminal cim:Terminal.ConductingEquipment ?line2 . 
+        $this cim:MutualCoupling.First_Terminal/cim:Terminal.ConductingEquipment ?line1 .
+        $this cim:MutualCoupling.Second_Terminal/cim:Terminal.ConductingEquipment ?line2 .
+        ?line1 rdf:type ?typeline1 .
+        ?line2 rdf:type ?typeline2 .
+				FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
+			}

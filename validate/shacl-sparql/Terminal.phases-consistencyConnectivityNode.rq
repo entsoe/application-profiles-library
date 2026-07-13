@@ -1,0 +1,59 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#Terminal.phases-consistencyConnectivityNode
+# Terminal.phases-consistencyConnectivityNode
+# The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value2 ?terms ?value1 ?value
+			WHERE {
+        {
+        SELECT $this (COUNT(?typeterm) AS ?terms) ?value
+        WHERE {
+        $this ^cim:Terminal.ConnectivityNode ?value .
+        ?value rdf:type ?typeterm .
+        #?term cim:Terminal.ConnectivityNode $this .
+        #?term rdf:type ?typeterm .
+        }
+        GROUP BY $this ?typeterm ?value
+        HAVING (?terms>1)
+        }
+      
+        #$this ^cim:Terminal.ConnectivityNode ?value  .
+        $this ^cim:Terminal.ConnectivityNode ?term2  .
+        ?value cim:Terminal.phases ?value1  .
+        OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
+      
+        #?value cim:Terminal.ConnectivityNode $this  .
+        #?term1 cim:Terminal.phases ?value1  .
+        #?term2 cim:Terminal.ConnectivityNode $this  .
+        #?term2 cim:Terminal.phases ?value2.
+        
+        #BIND(EXISTS{?term1 cim:Terminal.phases ?v1} AS ?hasvalue1).
+  
+        
+        #BIND(EXISTS{?term2 cim:Terminal.phases ?v2} AS ?hasvalue2).        
+        #FILTER ((?terms>1 && ?hasvalue2=true && ?hasvalue1=true && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+        #(?terms>1 && ?hasvalue2=true && ?hasvalue1=true && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+        #(?terms>1 && ?hasvalue1=true && ?hasvalue2=false && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+        #) .
+        FILTER ((?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+        (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+        (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+        ) .
+			}

@@ -1,0 +1,45 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#PowerTransformerEnd.x-value
+# PowerTransformerEnd.x-value
+# Transformers with zero series reactance do not exist. PowerTransformerEnd.x of high voltage end in case of a two winding transformer shall be a positive value. In case of a three winding transformer the PowerTransformerEnd.x shall not be zero.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT DISTINCT $this  
+        WHERE {
+          
+          $this ^cim:PowerTransformerEnd.PowerTransformer ?end1 ; 
+                ^cim:PowerTransformerEnd.PowerTransformer ?end2 ;
+                ^cim:PowerTransformerEnd.PowerTransformer ?end3 .
+          
+          #?end1 cim:PowerTransformerEnd.PowerTransformer $this .
+          #?end2 cim:PowerTransformerEnd.PowerTransformer $this .
+          #?end3 cim:PowerTransformerEnd.PowerTransformer $this .
+          ?end1 cim:TransformerEnd.endNumber 1.
+          ?end2 cim:TransformerEnd.endNumber 2.
+          ?end1 cim:PowerTransformerEnd.x ?x1 .
+          ?end2 cim:PowerTransformerEnd.x ?x2 .
+          #?end3 cim:TransformerEnd.endNumber 3 .
+          #?end3 cim:PowerTransformerEnd.x ?x3 .
+          OPTIONAL{?end3 cim:TransformerEnd.endNumber 3 .
+                   ?end3 cim:PowerTransformerEnd.x ?x3 } .
+          BIND(EXISTS{$this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3 } AS ?threewin) .
+          
+          #FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
+          FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
+        } 

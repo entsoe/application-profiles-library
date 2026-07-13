@@ -1,0 +1,31 @@
+# http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#SynchronousMachine.operatingMode-matchType
+# SynchronousMachine.operatingMode-matchType
+# The SynchronousMachine.operatingMode shall be consistent with the SynchronousMachine.type. SynchronousMachine.operatingMode = motor shall be provided for SynchronousMachine.type in (motor, generatorOrMotor, motorOrCondenser, generatorOrCondenserOrMotor), SynchronousMachine.operatingMode = condenser shall be provided for SynchronousMachine.type in (condenser, generatorOrCondenser, motorOrCondenser, generatorOrCondenserOrMotor), and SynchronousMachine.operatingMode = generator shall be provided for SynchronousMachine.type in (generator, generatorOrMotor, generatorOrCondenser, generatorOrCondenserOrMotor).
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value
+			WHERE {
+        $this $PATH ?value .
+        $this cim:SynchronousMachine.type ?type .
+         
+        FILTER ((?value=cim:SynchronousMachineOperatingMode.motor && ?type NOT IN (cim:SynchronousMachineKind.motor , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
+        (?value=cim:SynchronousMachineOperatingMode.condenser && ?type NOT IN (cim:SynchronousMachineKind.condenser , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
+        (?value=cim:SynchronousMachineOperatingMode.generator && ?type NOT IN (cim:SynchronousMachineKind.generator , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor))) .        
+			}

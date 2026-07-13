@@ -1,0 +1,30 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#HydroGeneratingUnit.energyConversionCapability-typeConsistency
+# HydroGeneratingUnit.energyConversionCapability-typeConsistency
+# If HydroGeneratingUnit.energyConversionCapability is generator the associated SynchronousMachine shall have SynchronousMachine.type set to generator or generatorOrCondenser. If HydroGeneratingUnit.energyConversionCapability is pumpAndGenerator the associated SynchronousMachine shall have SynchronousMachine.type set to motor, generatorOrMotor or generatorOrCondenserOrMotor.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT $this  ?value
+        WHERE {
+          $this cim:HydroGeneratingUnit.energyConversionCapability ?value .
+          #OPTIONAL {$this cim:HydroGeneratingUnit.energyConversionCapability ?value }.
+          $this ^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.type ?type.
+          #FILTER ((bound(?value) && ?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (bound(?value) && ?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
+          FILTER ((?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
+        } 

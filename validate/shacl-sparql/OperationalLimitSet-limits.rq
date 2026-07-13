@@ -1,0 +1,35 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#OperationalLimitSet-limits
+# OperationalLimitSet-limits
+# In case the OperationalLimitSet is the operational limit of the AuxiliaryEquipment, then the association end OperationalLimitSet.Equipment is also required. In the case where OperationalLimitSet.Equipment is associated with an instance of ConductingEquipment, OperationalLimitSet.Terminal shall be one of the ConductingEquipment’s Terminal-s.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	      SELECT DISTINCT $this ?value
+        WHERE {
+          $this cim:OperationalLimitSet.Terminal ?olsterm .
+          OPTIONAL{$this cim:OperationalLimitSet.Terminal/^cim:AuxiliaryEquipment.Terminal ?auxeq } .
+          OPTIONAL{$this cim:OperationalLimitSet.Equipment ?equipment .
+                   ?equipment rdf:type ?value .
+                   BIND(EXISTS{?equipment ^cim:Terminal.ConductingEquipment ?olsterm} AS ?termmatch).
+                  }.
+          
+          FILTER ((!bound(?equipment) && bound(?auxeq)) ||
+                  (bound(?equipment) && ?termmatch=false && ?value NOT IN (cim:CurrentTransformer, cim:PotentialTransformer, cim:PostLineSensor, cim:SurgeArrester, cim:WaveTrap, cim:FaultIndicator, cim:PowerElectronicsWindUnit, cim:PhotoVoltaicUnit, cim:BatteryUnit, cim:HydroPump, cim:GeneratingUnit, cim:HydroGeneratingUnit, cim:NuclearGeneratingUnit, cim:SolarGeneratingUnit, cim:ThermalGeneratingUnit, cim:WindGeneratingUnit, cim:Equipment) )
+                   ).
+        }

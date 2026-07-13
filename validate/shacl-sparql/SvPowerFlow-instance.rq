@@ -1,0 +1,33 @@
+# http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvPowerFlow-instance
+# SvPowerFlow-instance
+# As a minimum there shall be an instance of SvPowerFlow associated with the Terminal for all the following classes and their specialisation (subclass) that is part of an energized TopologicalIsland: RotatingMachine, EnergyConsumer, EquivalentInjection, ShuntCompensator, StaticVarCompensator, ExternalNetworkInjection, PowerElectronicsConnection and EnergySource. Additional instances of SvPowerFlow may optionally be available for other in service (SvStatus.inService=true) and energised equipment (equipment connected to a TopologicalNode part of the TopologicalIsland).
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value 
+			WHERE {
+        $this  ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService  true .
+        $this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland .
+        $this rdf:type ?value .
+        #OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland }.
+        #OPTIONAL {$this  ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService  ?svstatus} .
+        OPTIONAL {$this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal ?svpowerflow }.
+        #FILTER (bound(?topologicalisland) && bound(?svstatus) && ?svstatus=true && !bound(?svpowerflow)).
+        FILTER (!bound(?svpowerflow)).
+			}

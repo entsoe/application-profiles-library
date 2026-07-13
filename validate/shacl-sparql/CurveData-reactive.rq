@@ -1,0 +1,50 @@
+# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-reactive
+# CurveData-reactive
+# If CurveData.Curve is a ReactiveCapabilityCurve, the CurveData.y2value shall be greater than or equal to CurveData.y1value.It is not allowed that all CurveData.y2value values are equal to CurveData.y1value values.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+	    SELECT $this ?value ?countcd ?sumy1v ?sumy2v
+      WHERE {
+        {
+        SELECT $this (COUNT(?curvedtype) AS ?countcd) (SUM(?y1v) AS ?sumy1v) (SUM(?y2v) AS ?sumy2v)
+        WHERE {
+        $this cim:CurveData.Curve/rdf:type cim:ReactiveCapabilityCurve .
+        $this cim:CurveData.Curve/^cim:CurveData.Curve ?curved .
+        #$this cim:CurveData.Curve ?rcc .
+        #?rcc rdf:type ?curvetype .
+        #?rcc ^cim:CurveData.Curve ?curved .
+        ?curved rdf:type ?curvedtype .
+        ?curved cim:CurveData.y1value ?y1v.
+        ?curved cim:CurveData.y2value ?y2v.
+        #OPTIONAL {?curved cim:CurveData.y2value ?y2v }.
+        #FILTER(bound(?y2v)).
+        }
+        GROUP BY $this ?curvedtype
+        }
+        
+        $this cim:CurveData.Curve ?value .
+        #?value rdf:type ?curvetype .
+        ?value rdf:type cim:ReactiveCapabilityCurve .
+        $this cim:CurveData.y1value ?y1value  .
+        $this cim:CurveData.y2value ?y2value.
+        #OPTIONAL {$this cim:CurveData.y2value ?y2value }.
+        #FILTER (?curvetype=cim:ReactiveCapabilityCurve && bound(?y2value) && (?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
+        FILTER ((?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
+        } 

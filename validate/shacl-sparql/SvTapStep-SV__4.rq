@@ -1,0 +1,33 @@
+# http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvTapStep-SV__4
+# SvTapStep-SV__4
+# All state variables shall be instantiated in the SV instance file (distribution) for all energized elements part of a TopologicalIsland independently of the regulating status of the elements (e.g. for a shunt compensator that is not regulating the SvShuntCompensatorSections.sections shall be the same as ShuntCompensator.sections). All instances shall be representing computed values obtained from a power flow calculation. For SvPowerFlow instances refer to profile constraint on the SvPowerFlow class.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  DISTINCT $this ?value 
+			WHERE {
+        $this (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService) true .
+        $this  (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)  ?topologicalisland .
+        $this rdf:type ?value .
+        #OPTIONAL {$this cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland }.
+        #OPTIONAL {$this cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland }.
+        OPTIONAL {$this  ^cim:SvTapStep.TapChanger  ?svtapstep} .
+        #FILTER (bound(?topologicalisland) && !bound(?svtapstep)  ).
+        FILTER (!bound(?svtapstep)  ).
+			}

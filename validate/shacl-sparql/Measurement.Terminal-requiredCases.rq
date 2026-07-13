@@ -1,0 +1,35 @@
+# http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-452/notSolved/3.0#Measurement.Terminal-requiredCases
+# Measurement.Terminal-requiredCases
+# The association Measurement.Terminal shall reference a Terminal of the Equipment referenced by Measurement.PowerSystemResource except in cases where Measurement.measurementType is either TapPosition or SwitchPosition in which the association is not exchanged.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+			SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
+			WHERE {
+             $this $PATH ?value .
+             OPTIONAL {$this cim:Measurement.Terminal ?terminal}.
+             $this cim:Measurement.measurementType ?meastype . 
+             ?terminal1 cim:Terminal.ConductingEquipment ?value ;
+                        cim:ACDCTerminal.sequenceNumber 1 .
+             OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?value ;
+                        cim:ACDCTerminal.sequenceNumber 2 .}
+             OPTIONAL {?terminal3 cim:Terminal.ConductingEquipment ?value ;
+                        cim:ACDCTerminal.sequenceNumber 3 .}
+				FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
+			}
