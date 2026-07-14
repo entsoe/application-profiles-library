@@ -4451,7 +4451,7 @@ Ref&lt;font color=&quot;#0f0f0f&quot;&gt;erence: IEEE Transactions on Power Appa
 	<rdfs:domain rdf:resource="#GovHydroIEEE0"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
-	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gate minimum (&lt;i&gt;Pmin&lt;/i&gt;) (&amp;lt; GovHydroIEEE.pmax). </rdfs:comment>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gate minimum (&lt;i&gt;Pmin&lt;/i&gt;) (&amp;lt; GovHydroIEEE0.pmax). </rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="#GovHydroIEEE2">
@@ -18932,7 +18932,7 @@ Typical value = true.</rdfs:comment>
 	<rdfs:domain rdf:resource="#ExcDC1A"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
-	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum voltage exciter output limiter (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcDC1A.edfmax).  Typical value = -99.</rdfs:comment>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum voltage exciter output limiter (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcDC1A.efdmax).  Typical value = -99.</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="#ExcDC1A.efdmax">
@@ -24588,7 +24588,7 @@ This model has 2 input signals. They have the following fixed types (expressed i
 	<rdfs:domain rdf:resource="#PssIEEE4B"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
-	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High band output minimum limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;Hmin&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PssIEEE4V.vhmax).  Typical value = -0,6.</rdfs:comment>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High band output minimum limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;Hmin&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PssIEEE4B.vhmax).  Typical value = -0,6.</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="#PssIEEE4B.vimax">
@@ -27259,7 +27259,7 @@ Reference: IEEE 421.5-2005, 11.3.</rdfs:comment>
 	<rdfs:domain rdf:resource="#PFVArType1IEEEVArController"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
-	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum machine terminal voltage needed for pf/VAr controller to be enabled (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; PVFArType1IEEEVArController.vvtmin).</rdfs:comment>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum machine terminal voltage needed for pf/VAr controller to be enabled (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; PFVArType1IEEEVArController.vvtmin).</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="#PFVArType1IEEEVArController.vvtmin">
@@ -27268,7 +27268,7 @@ Reference: IEEE 421.5-2005, 11.3.</rdfs:comment>
 	<rdfs:domain rdf:resource="#PFVArType1IEEEVArController"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
-	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum machine terminal voltage needed to enable pf/var controller (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PVFArType1IEEEVArController.vvtmax).</rdfs:comment>
+	<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minimum machine terminal voltage needed to enable pf/var controller (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PFVArType1IEEEVArController.vvtmax).</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Dynamics-EU#Package_VoltageAdjusterDynamics">

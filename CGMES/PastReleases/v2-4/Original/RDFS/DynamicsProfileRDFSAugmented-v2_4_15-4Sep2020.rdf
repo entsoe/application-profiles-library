@@ -17400,9 +17400,9 @@ Typical Value = true.</rdfs:comment>
 	<rdfs:comment  rdf:parseType="Literal">Minimum voltage exciter output limiter (Efdmin).  Typical Value = -99.</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
-	 <rdf:Description rdf:about="#ExcDC1A.edfmax">
+	 <rdf:Description rdf:about="#ExcDC1A.efdmax">
 	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-	<rdfs:label xml:lang="en">edfmax</rdfs:label>
+	<rdfs:label xml:lang="en">efdmax</rdfs:label>
 	<rdfs:domain rdf:resource="#ExcDC1A"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
@@ -17713,9 +17713,9 @@ false = a lower limit of zero not applied to integrator output.
 Typical Value = true.</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
-	 <rdf:Description rdf:about="#ExcDC3A.edfmax">
+	 <rdf:Description rdf:about="#ExcDC3A.efdmax">
 	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-	<rdfs:label xml:lang="en">edfmax</rdfs:label>
+	<rdfs:label xml:lang="en">efdmax</rdfs:label>
 	<rdfs:domain rdf:resource="#ExcDC3A"/>
 	<cims:dataType rdf:resource="#PU"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />

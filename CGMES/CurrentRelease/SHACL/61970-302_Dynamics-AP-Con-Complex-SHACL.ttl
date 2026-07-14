@@ -1887,10 +1887,10 @@ dyu:ExcAC5A.tf1-valueRange
 
 dyu:GovHydroIEEE0.pmin-valueRangePair
         a               sh:PropertyShape ;
-        sh:description  "Gate minimum (Pmin) (< GovHydroIEEE.pmax). " ;
+        sh:description  "Gate minimum (Pmin) (< GovHydroIEEE0.pmax). " ;
         sh:group        dyu:ValueConstraintsGroup ;
-        sh:lessThan     cim:GovHydroIEEE.pmax ;
-        sh:message      "The value is either equal to or greater than GovHydroIEEE.pmax." ;
+        sh:lessThan     cim:GovHydroIEEE0.pmax ;
+        sh:message      "The value is either equal to or greater than GovHydroIEEE0.pmax." ;
         sh:name         "C:302:DY:GovHydroIEEE0.pmin:valueRangePair" ;
         sh:order        821 ;
         sh:path         cim:GovHydroIEEE0.pmin ;
@@ -3301,10 +3301,10 @@ dyu:WindContQPQULimIEC.tufiltql-valueRange
 
 dyu:PFVArType1IEEEVArController.vvtmin-valueRangePair
         a               sh:PropertyShape ;
-        sh:description  "Minimum machine terminal voltage needed to enable pf/var controller (V<sub>VTMIN</sub>) (< PVFArType1IEEEVArController.vvtmax)." ;
+        sh:description  "Minimum machine terminal voltage needed to enable pf/var controller (V<sub>VTMIN</sub>) (< PFVArType1IEEEVArController.vvtmax)." ;
         sh:group        dyu:ValueConstraintsGroup ;
-        sh:lessThan     cim:PVFArType1IEEEVArController.vvtmax ;
-        sh:message      "The value is either equal to or greater than PVFArType1IEEEVArController.vvtmax." ;
+        sh:lessThan     cim:PFVArType1IEEEVArController.vvtmax ;
+        sh:message      "The value is either equal to or greater than PFVArType1IEEEVArController.vvtmax." ;
         sh:name         "C:302:DY:PFVArType1IEEEVArController.vvtmin:valueRangePair" ;
         sh:order        1010 ;
         sh:path         cim:PFVArType1IEEEVArController.vvtmin ;
@@ -5292,10 +5292,10 @@ dyu:ExcST6B.ts-valueRange
 
 dyu:ExcDC1A.efdmin-valueRangePair
         a               sh:PropertyShape ;
-        sh:description  "Minimum voltage exciter output limiter (Efdmin) (< ExcDC1A.edfmax).  Typical value = -99." ;
+        sh:description  "Minimum voltage exciter output limiter (Efdmin) (< ExcDC1A.efdmax).  Typical value = -99." ;
         sh:group        dyu:ValueConstraintsGroup ;
-        sh:lessThan     cim:ExcDC1A.edfmax ;
-        sh:message      "The value is either equal to or greater than ExcDC1A.edfmax." ;
+        sh:lessThan     cim:ExcDC1A.efdmax ;
+        sh:message      "The value is either equal to or greater than ExcDC1A.efdmax." ;
         sh:name         "C:302:DY:ExcDC1A.efdmin:valueRangePair" ;
         sh:order        189 ;
         sh:path         cim:ExcDC1A.efdmin ;
@@ -10348,10 +10348,10 @@ dyu:ExcIEEEST7B.vrmax-valueRange
 
 dyu:PssIEEE4B.vhmin-valueRangePair
         a               sh:PropertyShape ;
-        sh:description  "High band output minimum limit (V<sub>Hmin</sub>) (< PssIEEE4V.vhmax).  Typical value = -0,6." ;
+        sh:description  "High band output minimum limit (V<sub>Hmin</sub>) (< PssIEEE4B.vhmax).  Typical value = -0,6." ;
         sh:group        dyu:ValueConstraintsGroup ;
-        sh:lessThan     cim:PssIEEE4V.vhmax ;
-        sh:message      "The value is either equal to or greater than PssIEEE4V.vhmax." ;
+        sh:lessThan     cim:PssIEEE4B.vhmax ;
+        sh:message      "The value is either equal to or greater than PssIEEE4B.vhmax." ;
         sh:name         "C:302:DY:PssIEEE4B.vhmin:valueRangePair" ;
         sh:order        1136 ;
         sh:path         cim:PssIEEE4B.vhmin ;

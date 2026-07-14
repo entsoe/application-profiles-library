@@ -298,28 +298,28 @@ dy:ExcDC1A.te-cardinality
         sh:path         cim:ExcDC1A.te;
         sh:severity     sh:Violation .
 
-dy:ExcDC1A.edfmax-datatype
+dy:ExcDC1A.efdmax-datatype
         rdf:type        sh:PropertyShape;
         sh:datatype     xsd:float;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dy:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "ExcDC1A.edfmax-datatype";
+        sh:name         "ExcDC1A.efdmax-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        3322;
-        sh:path         cim:ExcDC1A.edfmax;
+        sh:path         cim:ExcDC1A.efdmax;
         sh:severity     sh:Violation .
 
-dy:ExcDC1A.edfmax-cardinality
+dy:ExcDC1A.efdmax-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        dy:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
-        sh:name         "ExcDC1A.edfmax-cardinality";
+        sh:name         "ExcDC1A.efdmax-cardinality";
         sh:order        4117;
-        sh:path         cim:ExcDC1A.edfmax;
+        sh:path         cim:ExcDC1A.efdmax;
         sh:severity     sh:Violation .
 
 dy:ExcDC1A.ks-datatype
@@ -465,7 +465,7 @@ dy:ExcDC1A-AllowedProperties
         sh:property           [ sh:path  cim:ExcDC1A.exclim ];
         sh:property           [ sh:path  cim:ExcDC1A.ta ];
         sh:property           [ sh:path  cim:ExcDC1A.ks ];
-        sh:property           [ sh:path  cim:ExcDC1A.edfmax ];
+        sh:property           [ sh:path  cim:ExcDC1A.efdmax ];
         sh:property           [ sh:path  cim:ExcDC1A.te ];
         sh:property           [ sh:path  cim:ExcDC1A.vrmax ];
         sh:property           [ sh:path  cim:ExcDC1A.efdmin ];
@@ -478,7 +478,7 @@ dy:ExcDC1A-AllowedProperties
         sh:targetClass        cim:ExcDC1A .
 
 dy:ExcDC1A  rdf:type    sh:NodeShape;
-        sh:property     ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , dy:DynamicsFunctionBlock.enabled-datatype , dy:DynamicsFunctionBlock.enabled-cardinality , dy:ExcitationSystemDynamics.SynchronousMachineDynamics-cardinality , dy:ExcitationSystemDynamics.PowerSystemStabilizerDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType1Dynamics-cardinality , dy:ExcitationSystemDynamics.VoltageCompensatorDynamics-cardinality , dy:ExcitationSystemDynamics.OverexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.DiscontinuousExcitationControlDynamics-cardinality , dy:ExcitationSystemDynamics.UnderexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType2Dynamics-cardinality , dy:ExcDC1A.tf-datatype , dy:ExcDC1A.tf-cardinality , dy:ExcDC1A.efd2-datatype , dy:ExcDC1A.efd2-cardinality , dy:ExcDC1A.efd1-datatype , dy:ExcDC1A.efd1-cardinality , dy:ExcDC1A.ke-datatype , dy:ExcDC1A.ke-cardinality , dy:ExcDC1A.kf-datatype , dy:ExcDC1A.kf-cardinality , dy:ExcDC1A.tc-datatype , dy:ExcDC1A.tc-cardinality , dy:ExcDC1A.tb-datatype , dy:ExcDC1A.tb-cardinality , dy:ExcDC1A.vrmin-datatype , dy:ExcDC1A.vrmin-cardinality , dy:ExcDC1A.ka-datatype , dy:ExcDC1A.ka-cardinality , dy:ExcDC1A.efdmin-datatype , dy:ExcDC1A.efdmin-cardinality , dy:ExcDC1A.vrmax-datatype , dy:ExcDC1A.vrmax-cardinality , dy:ExcDC1A.seefd1-cardinality , dy:ExcDC1A.seefd1-datatype , dy:ExcDC1A.seefd2-cardinality , dy:ExcDC1A.seefd2-datatype , dy:ExcDC1A.exclim-cardinality , dy:ExcDC1A.exclim-datatype , dy:ExcDC1A.ta-cardinality , dy:ExcDC1A.ta-datatype , dy:ExcDC1A.ks-cardinality , dy:ExcDC1A.ks-datatype , dy:ExcDC1A.edfmax-cardinality , dy:ExcDC1A.edfmax-datatype , dy:ExcDC1A.te-cardinality , dy:ExcDC1A.te-datatype;
+        sh:property     ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , dy:DynamicsFunctionBlock.enabled-datatype , dy:DynamicsFunctionBlock.enabled-cardinality , dy:ExcitationSystemDynamics.SynchronousMachineDynamics-cardinality , dy:ExcitationSystemDynamics.PowerSystemStabilizerDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType1Dynamics-cardinality , dy:ExcitationSystemDynamics.VoltageCompensatorDynamics-cardinality , dy:ExcitationSystemDynamics.OverexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.DiscontinuousExcitationControlDynamics-cardinality , dy:ExcitationSystemDynamics.UnderexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType2Dynamics-cardinality , dy:ExcDC1A.tf-datatype , dy:ExcDC1A.tf-cardinality , dy:ExcDC1A.efd2-datatype , dy:ExcDC1A.efd2-cardinality , dy:ExcDC1A.efd1-datatype , dy:ExcDC1A.efd1-cardinality , dy:ExcDC1A.ke-datatype , dy:ExcDC1A.ke-cardinality , dy:ExcDC1A.kf-datatype , dy:ExcDC1A.kf-cardinality , dy:ExcDC1A.tc-datatype , dy:ExcDC1A.tc-cardinality , dy:ExcDC1A.tb-datatype , dy:ExcDC1A.tb-cardinality , dy:ExcDC1A.vrmin-datatype , dy:ExcDC1A.vrmin-cardinality , dy:ExcDC1A.ka-datatype , dy:ExcDC1A.ka-cardinality , dy:ExcDC1A.efdmin-datatype , dy:ExcDC1A.efdmin-cardinality , dy:ExcDC1A.vrmax-datatype , dy:ExcDC1A.vrmax-cardinality , dy:ExcDC1A.seefd1-cardinality , dy:ExcDC1A.seefd1-datatype , dy:ExcDC1A.seefd2-cardinality , dy:ExcDC1A.seefd2-datatype , dy:ExcDC1A.exclim-cardinality , dy:ExcDC1A.exclim-datatype , dy:ExcDC1A.ta-cardinality , dy:ExcDC1A.ta-datatype , dy:ExcDC1A.ks-cardinality , dy:ExcDC1A.ks-datatype , dy:ExcDC1A.efdmax-cardinality , dy:ExcDC1A.efdmax-datatype , dy:ExcDC1A.te-cardinality , dy:ExcDC1A.te-datatype;
         sh:targetClass  cim:ExcDC1A .
 
 dy:TurbineGovernorUserDefined.proprietary-datatype
@@ -5557,28 +5557,28 @@ dy:ExcDC3A.efdlim-cardinality
         sh:path         cim:ExcDC3A.efdlim;
         sh:severity     sh:Violation .
 
-dy:ExcDC3A.edfmax-datatype
+dy:ExcDC3A.efdmax-datatype
         rdf:type        sh:PropertyShape;
         sh:datatype     xsd:float;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dy:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "ExcDC3A.edfmax-datatype";
+        sh:name         "ExcDC3A.efdmax-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        3063;
-        sh:path         cim:ExcDC3A.edfmax;
+        sh:path         cim:ExcDC3A.efdmax;
         sh:severity     sh:Violation .
 
-dy:ExcDC3A.edfmax-cardinality
+dy:ExcDC3A.efdmax-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        dy:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
-        sh:name         "ExcDC3A.edfmax-cardinality";
+        sh:name         "ExcDC3A.efdmax-cardinality";
         sh:order        3803;
-        sh:path         cim:ExcDC3A.edfmax;
+        sh:path         cim:ExcDC3A.efdmax;
         sh:severity     sh:Violation .
 
 dy:ExcDC3A.efd2-datatype
@@ -5722,7 +5722,7 @@ dy:ExcDC3A-AllowedProperties
         sh:property           [ sh:path  cim:ExcDC3A.exclim ];
         sh:property           [ sh:path  cim:ExcDC3A.efd1 ];
         sh:property           [ sh:path  cim:ExcDC3A.efd2 ];
-        sh:property           [ sh:path  cim:ExcDC3A.edfmax ];
+        sh:property           [ sh:path  cim:ExcDC3A.efdmax ];
         sh:property           [ sh:path  cim:ExcDC3A.efdlim ];
         sh:property           [ sh:path  cim:ExcDC3A.kr ];
         sh:property           [ sh:path  cim:ExcDC3A.seefd1 ];
@@ -5735,7 +5735,7 @@ dy:ExcDC3A-AllowedProperties
         sh:targetClass        cim:ExcDC3A .
 
 dy:ExcDC3A  rdf:type    sh:NodeShape;
-        sh:property     ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , dy:DynamicsFunctionBlock.enabled-datatype , dy:DynamicsFunctionBlock.enabled-cardinality , dy:ExcitationSystemDynamics.SynchronousMachineDynamics-cardinality , dy:ExcitationSystemDynamics.PowerSystemStabilizerDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType1Dynamics-cardinality , dy:ExcitationSystemDynamics.VoltageCompensatorDynamics-cardinality , dy:ExcitationSystemDynamics.OverexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.DiscontinuousExcitationControlDynamics-cardinality , dy:ExcitationSystemDynamics.UnderexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType2Dynamics-cardinality , dy:ExcDC3A.efdmin-datatype , dy:ExcDC3A.efdmin-cardinality , dy:ExcDC3A.ks-datatype , dy:ExcDC3A.ks-cardinality , dy:ExcDC3A.ke-datatype , dy:ExcDC3A.ke-cardinality , dy:ExcDC3A.kv-datatype , dy:ExcDC3A.kv-cardinality , dy:ExcDC3A.trh-datatype , dy:ExcDC3A.trh-cardinality , dy:ExcDC3A.te-datatype , dy:ExcDC3A.te-cardinality , dy:ExcDC3A.seefd2-datatype , dy:ExcDC3A.seefd2-cardinality , dy:ExcDC3A.seefd1-datatype , dy:ExcDC3A.seefd1-cardinality , dy:ExcDC3A.kr-datatype , dy:ExcDC3A.kr-cardinality , dy:ExcDC3A.vrmin-cardinality , dy:ExcDC3A.vrmin-datatype , dy:ExcDC3A.vrmax-cardinality , dy:ExcDC3A.vrmax-datatype , dy:ExcDC3A.exclim-cardinality , dy:ExcDC3A.exclim-datatype , dy:ExcDC3A.efd1-cardinality , dy:ExcDC3A.efd1-datatype , dy:ExcDC3A.efd2-cardinality , dy:ExcDC3A.efd2-datatype , dy:ExcDC3A.edfmax-cardinality , dy:ExcDC3A.edfmax-datatype , dy:ExcDC3A.efdlim-cardinality , dy:ExcDC3A.efdlim-datatype;
+        sh:property     ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , dy:DynamicsFunctionBlock.enabled-datatype , dy:DynamicsFunctionBlock.enabled-cardinality , dy:ExcitationSystemDynamics.SynchronousMachineDynamics-cardinality , dy:ExcitationSystemDynamics.PowerSystemStabilizerDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType1Dynamics-cardinality , dy:ExcitationSystemDynamics.VoltageCompensatorDynamics-cardinality , dy:ExcitationSystemDynamics.OverexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.DiscontinuousExcitationControlDynamics-cardinality , dy:ExcitationSystemDynamics.UnderexcitationLimiterDynamics-cardinality , dy:ExcitationSystemDynamics.PFVArControllerType2Dynamics-cardinality , dy:ExcDC3A.efdmin-datatype , dy:ExcDC3A.efdmin-cardinality , dy:ExcDC3A.ks-datatype , dy:ExcDC3A.ks-cardinality , dy:ExcDC3A.ke-datatype , dy:ExcDC3A.ke-cardinality , dy:ExcDC3A.kv-datatype , dy:ExcDC3A.kv-cardinality , dy:ExcDC3A.trh-datatype , dy:ExcDC3A.trh-cardinality , dy:ExcDC3A.te-datatype , dy:ExcDC3A.te-cardinality , dy:ExcDC3A.seefd2-datatype , dy:ExcDC3A.seefd2-cardinality , dy:ExcDC3A.seefd1-datatype , dy:ExcDC3A.seefd1-cardinality , dy:ExcDC3A.kr-datatype , dy:ExcDC3A.kr-cardinality , dy:ExcDC3A.vrmin-cardinality , dy:ExcDC3A.vrmin-datatype , dy:ExcDC3A.vrmax-cardinality , dy:ExcDC3A.vrmax-datatype , dy:ExcDC3A.exclim-cardinality , dy:ExcDC3A.exclim-datatype , dy:ExcDC3A.efd1-cardinality , dy:ExcDC3A.efd1-datatype , dy:ExcDC3A.efd2-cardinality , dy:ExcDC3A.efd2-datatype , dy:ExcDC3A.efdmax-cardinality , dy:ExcDC3A.efdmax-datatype , dy:ExcDC3A.efdlim-cardinality , dy:ExcDC3A.efdlim-datatype;
         sh:targetClass  cim:ExcDC3A .
 
 dy:WindTurbineType4aIEC.WindContPType4aIEC-valueType

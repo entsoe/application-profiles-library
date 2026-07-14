@@ -4913,7 +4913,7 @@ Ref&lt;font color=&quot;#0f0f0f&quot;&gt;erence: IEEE Transactions on Power Appa
 	<rdfs:label xml:lang="en">pmin</rdfs:label>
 	<rdfs:domain rdf:resource="#GovHydroIEEE0"/>
 	<rdfs:range rdf:resource = "#PU" />
-	<skos:definition  xml:lang="en">Gate minimum (&lt;i&gt;Pmin&lt;/i&gt;) (&amp;lt; GovHydroIEEE.pmax). </skos:definition>
+	<skos:definition  xml:lang="en">Gate minimum (&lt;i&gt;Pmin&lt;/i&gt;) (&amp;lt; GovHydroIEEE0.pmax). </skos:definition>
 </rdf:Description>
 <rdf:Description rdf:about="#GovHydroIEEE2">
 	<rdfs:label xml:lang="en">GovHydroIEEE2</rdfs:label>
@@ -16456,7 +16456,7 @@ Typical value = true.
 	<rdfs:label xml:lang="en">efdmin</rdfs:label>
 	<rdfs:domain rdf:resource="#ExcDC1A"/>
 	<rdfs:range rdf:resource = "#PU" />
-	<skos:definition  xml:lang="en">Minimum voltage exciter output limiter (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcDC1A.edfmax).  Typical value = -99.</skos:definition>
+	<skos:definition  xml:lang="en">Minimum voltage exciter output limiter (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcDC1A.efdmax).  Typical value = -99.</skos:definition>
 </rdf:Description>
 <rdf:Description rdf:about="#ExcDC1A.efdmax">
 	<rdf:type rdf:resource = "http://www.w3.org/2002/07/owl#DatatypeProperty" />
@@ -20958,7 +20958,7 @@ This model has 2 input signals. They have the following fixed types (expressed i
 	<rdfs:label xml:lang="en">vhmin</rdfs:label>
 	<rdfs:domain rdf:resource="#PssIEEE4B"/>
 	<rdfs:range rdf:resource = "#PU" />
-	<skos:definition  xml:lang="en">High band output minimum limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;Hmin&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PssIEEE4V.vhmax).  Typical value = -0,6.</skos:definition>
+	<skos:definition  xml:lang="en">High band output minimum limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;Hmin&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PssIEEE4B.vhmax).  Typical value = -0,6.</skos:definition>
 </rdf:Description>
 <rdf:Description rdf:about="#PssIEEE4B.vimax">
 	<rdf:type rdf:resource = "http://www.w3.org/2002/07/owl#DatatypeProperty" />
@@ -23106,14 +23106,14 @@ Reference: IEEE 421.5-2005, 11.3.
 	<rdfs:label xml:lang="en">vvtmax</rdfs:label>
 	<rdfs:domain rdf:resource="#PFVArType1IEEEVArController"/>
 	<rdfs:range rdf:resource = "#PU" />
-	<skos:definition  xml:lang="en">Maximum machine terminal voltage needed for pf/VAr controller to be enabled (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; PVFArType1IEEEVArController.vvtmin).</skos:definition>
+	<skos:definition  xml:lang="en">Maximum machine terminal voltage needed for pf/VAr controller to be enabled (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; PFVArType1IEEEVArController.vvtmin).</skos:definition>
 </rdf:Description>
 <rdf:Description rdf:about="#PFVArType1IEEEVArController.vvtmin">
 	<rdf:type rdf:resource = "http://www.w3.org/2002/07/owl#DatatypeProperty" />
 	<rdfs:label xml:lang="en">vvtmin</rdfs:label>
 	<rdfs:domain rdf:resource="#PFVArType1IEEEVArController"/>
 	<rdfs:range rdf:resource = "#PU" />
-	<skos:definition  xml:lang="en">Minimum machine terminal voltage needed to enable pf/var controller (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PVFArType1IEEEVArController.vvtmax).</skos:definition>
+	<skos:definition  xml:lang="en">Minimum machine terminal voltage needed to enable pf/var controller (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;VTMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; PFVArType1IEEEVArController.vvtmax).</skos:definition>
 </rdf:Description>
 <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Dynamics-EU#Package_VoltageAdjusterDynamics">
 	<rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/Dynamics-EU#Package"/>
