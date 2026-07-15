@@ -35,4 +35,3 @@ Typical validation process:
 2. Load datatype mapping
 3. Load SHACL constraints from this folder
 4. Execute validation
-
