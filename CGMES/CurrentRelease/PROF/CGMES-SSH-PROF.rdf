@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:role="http://www.w3.org/ns/dx/prof/role/" xmlns:dcterms="http://purl.org/dc/terms/" xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU#Ontology">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<dcterms:title>Steady State Hypothesis Vocabulary</dcterms:title>
+		<dcterms:description>This vocabulary is describing the steady state hypothesis profile from IEC 61970-600-2.</dcterms:description>
+		<dcat:keyword>SSH</dcat:keyword>
+		<prof:hasToken>SSH</prof:hasToken>
+		<dcterms:creator>ENTSO-E</dcterms:creator>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:identifier>8faa57aa-fc7b-4970-8ab0-ec77ecbb3430</dcterms:identifier>
+		<owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/3.0"/>
+		<owl:versionInfo>3.0.0</owl:versionInfo>
+		<prof:isProfileOf rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Ontology"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/3.0/vocabulary"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/Constraints/3.0"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/3.0/vocabulary">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>Steady State Hypothesis Vocabulary</dcterms:title>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-301_SteadyStateHypothesis-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 SteadyStateHypothesis-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-301_SteadyStateHypothesis-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 SteadyStateHypothesis-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-456_SteadyStateHypothesis-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-456 SteadyStateHypothesis-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-456_SteadyStateHypothesis-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-456 SteadyStateHypothesis-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/Constraints/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_SteadyStateHypothesis-AP-Con-Simple-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 SteadyStateHypothesis-AP-Con-Simple-SHACL</rdfs:label>
+	</rdf:Description>
+</rdf:RDF>
