@@ -3,29 +3,30 @@
 <rdf:RDF
     xmlns:or="https://ap-voc.cim4.eu/ObjectRegistry#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:eu="https://cim.ucaiug.io/ns/eu#"
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#Ontology">
-    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v19_MS10v03_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the object registry profile.</dcterms:description>
-    <dcterms:identifier>14166b65-abaa-4611-b466-34975c15c27d</dcterms:identifier>
+    <dcterms:identifier>922777db-0c93-4637-9523-53fc59ced40a</dcterms:identifier>
     <dcat:keyword>OR</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-04</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
     <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,7 +34,7 @@
     <dcterms:title xml:lang="en">Object Registry vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry/2.2"/>
-    <owl:versionInfo xml:lang="en">2.2.5</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.2.6</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#Date">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
@@ -120,7 +121,7 @@ The attribute aliasName is retained because of backwards compatibility between C
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.energyIdentCodeEic">
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#IdentifiedObject.energyIdentCodeEic">
     <rdfs:comment>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
     <rdfs:domain rdf:resource="#IdentifiedObject"/>
@@ -150,7 +151,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.shortName">
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#IdentifiedObject.shortName">
     <rdfs:comment>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
     <rdfs:domain rdf:resource="#IdentifiedObject"/>

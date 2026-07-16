@@ -19,17 +19,17 @@ io:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
         dcterms:creator           "ENTSO-E CIM EG"@en ;
         dcterms:description       "The constraints for all NC profiles."@en ;
-        dcterms:identifier        "ace9b76c-e8d4-41d9-92bf-7b8a1a7b1049" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "7be7372b-517a-47a6-b5d2-acbad310e731" ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Common Constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/Common-Complex/1.0> ;
 		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "1.0.0"@en ;
+        owl:versionInfo       "1.0.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
 
@@ -105,4 +105,4 @@ com:All-DanglingReferences
     sh:order        1 ;
     sh:severity     sh:Violation ;
     sh:minCount     1 ;
-    sh:message   "Dangling reference is present in the model." .
+	sh:message   "Dangling reference is present in the model." .

@@ -18,17 +18,17 @@ io:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
         dcterms:creator           "ENTSO-E CIM EG"@en ;
         dcterms:description       "The constraints for the IdentifiedObject."@en ;
-        dcterms:identifier        "ace9b76c-e8d4-41d9-92bf-7b8a1a7b1049" ;
-        dcterms:issued            "2025-01-04T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "06493924-3d07-4467-9066-42601d666a84" ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-01-04"^^xsd:date ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "IdentifiedObject Constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3> ;
 		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.3.1"@en ;
+        owl:versionInfo       "2.3.2"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
 

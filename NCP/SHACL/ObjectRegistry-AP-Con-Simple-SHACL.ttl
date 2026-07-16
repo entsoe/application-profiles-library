@@ -22,16 +22,16 @@
 or:Ontology  rdf:type     owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "5733a5ea-7afd-4216-b114-c6493872541b";
-        dcterms:issued        "2025-09-11T16:33:19.596031700"^^xsd:dateTime;
+        dcterms:identifier    "a8a079d8-e6d8-4564-878a-9fcbb4f97cc3";
+        dcterms:issued        "2026-05-28T16:33:19.596031700"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2025-01-04"^^xsd:date;
+        dcterms:modified      "2026-05-28"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Object Registry vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2>;
-        owl:versionInfo   "2.2.5"@en;
+        owl:versionInfo   "2.2.6"@en;
         dcat:keyword      "OR";
         dcat:theme        "constraint"@en .
 

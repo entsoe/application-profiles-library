@@ -20,16 +20,16 @@
 as:Ontology  rdf:type     owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "d57c73a8-e90e-4ee1-9136-39dfe922d6db";
-        dcterms:issued        "2025-09-11T16:30:07.398727700"^^xsd:dateTime;
+        dcterms:identifier    "59692773-bb3a-4086-9333-23fd7c26b196";
+        dcterms:issued        "2026-06-28T16:30:07.398727700"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2025-01-04"^^xsd:date;
+        dcterms:modified      "2026-06-28"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Availability schedule vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.3>;
-        owl:versionInfo   "2.3.3"@en;
+        owl:versionInfo   "2.3.5"@en;
         dcat:keyword      "AS";
         dcat:theme        "constraint"@en .
 

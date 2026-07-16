@@ -331,4 +331,4 @@ sarc:PowerFlowResult-topologicalNodeSparql
 		BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
         FILTER ( ?hasTN=true && (?hasvalueW=true || ?hasvalueVA=true || ?hasvalueVAR=true || ?hasvalueA=true)).
-			}""" .
+			}""" .  			

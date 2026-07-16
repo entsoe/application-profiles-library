@@ -22,7 +22,7 @@
 er:Ontology  rdf:type     owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v19_MS10v03_DES10v01.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "urn:uuided91acd4-1e47-4bc3-baf4-53199cb69203";
+        dcterms:identifier    "ba8cdadc-ff07-42a8-8cc4-0ed7c32fa984";
         dcterms:issued        "2026-05-28T05:07:36.987195800"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;

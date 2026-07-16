@@ -20,16 +20,16 @@
 sis:Ontology  rdf:type    owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "234f2b40-13ae-4f11-8df9-ca00df8ab352";
-        dcterms:issued        "2025-09-11T16:36:57.751726300"^^xsd:dateTime;
+        dcterms:identifier    "5ebc294f-eba3-4cee-b4a6-b5a5684fee8f";
+        dcterms:issued        "2026-05-28T16:36:57.751726300"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2025-09-11"^^xsd:date;
+        dcterms:modified      "2026-05-28"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "State instruction schedule vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/StateInstructionSchedule-Simple/2.4>;
-        owl:versionInfo   "2.4.0"@en;
+        owl:versionInfo   "2.4.1"@en;
         dcat:keyword      "SIS";
         dcat:theme        "constraint"@en .
 

@@ -19,15 +19,15 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 dm:Ontology  rdf:type         owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "0a80dee4-e743-4ef2-816a-08241688fb39";
-        dcterms:issued        "2025-02-04T20:52:40.541662800"^^xsd:dateTime;
+        dcterms:identifier    "9aa40e6d-b8f0-411b-8768-3b50b36eb382";
+        dcterms:issued        "2026-05-28T20:52:40.541662800"^^xsd:dateTime;
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2025-02-04"^^xsd:date;
+        dcterms:modified      "2026-05-28"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Dataset metadata vocabulary"@en;
         owl:versionIRI        <https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0>;
-        owl:versionInfo       "3.0.0"@en;
+        owl:versionInfo       "3.0.1"@en;
         dcat:keyword          "DM";
         dcat:theme            "constraint"@en .
 
