@@ -98,8 +98,8 @@ sm6002:RegulatingControl-samePointSparql
       }
       GROUP BY $this ?mode
 			}
+      FILTER (?count>1) .
       }
-      HAVING (?count>1)
       #LIMIT 1
       """ .
 
