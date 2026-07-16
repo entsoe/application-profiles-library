@@ -1464,8 +1464,8 @@ equ:PowerTransformerEnd.ratedS-valueRange2windingSparql
         #OPTIONAL {?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 }.
 
         FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .        
+        FILTER (?ends=2) .
 			}
-      HAVING(?ends=2)
       """ .       
       
       

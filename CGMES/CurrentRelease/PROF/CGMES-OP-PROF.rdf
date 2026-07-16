@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:role="http://www.w3.org/ns/dx/prof/role/" xmlns:dcterms="http://purl.org/dc/terms/" xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU#Ontology">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<dcterms:title>Operation Vocabulary</dcterms:title>
+		<dcterms:description>This vocabulary is describing the operation profile from IEC 61970-600-2.</dcterms:description>
+		<dcat:keyword>OP</dcat:keyword>
+		<prof:hasToken>OP</prof:hasToken>
+		<dcterms:creator>ENTSO-E</dcterms:creator>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:identifier>59b998f8-de06-4b51-bba5-663e7ea5e6a6</dcterms:identifier>
+		<owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/3.0"/>
+		<owl:versionInfo>3.0.0</owl:versionInfo>
+		<prof:isProfileOf rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Ontology"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/3.0/vocabulary"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-301/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-452/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-452/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/OP-CrossProfileExplicit/constraints/IEC61970-452/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/OP-CrossProfileImplicit/constraints/IEC61970-452/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/inverseAssociations/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Operation-EU/Constraints/3.0"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/3.0/vocabulary">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Operation-AP-Voc-RDFS2020.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>Operation Vocabulary</dcterms:title>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-301/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-301_Operation-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 Operation-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-452/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-452_Operation-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-452 Operation-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/IEC61970-452/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-452_Operation-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-452 Operation-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/OP-CrossProfileExplicit/constraints/IEC61970-452/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Operation-AP-Con-Complex-Explicit-CrossProfile-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Operation-AP-Con-Complex-Explicit-CrossProfile-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/OP-CrossProfileImplicit/constraints/IEC61970-452/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Operation-AP-Con-Complex-Implicit-CrossProfile-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Operation-AP-Con-Complex-Implicit-CrossProfile-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/constraints/inverseAssociations/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Operation-AP-Con-Complex-InverseAssociation-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Operation-AP-Con-Complex-InverseAssociation-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Operation-EU/Constraints/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Operation-AP-Con-Simple-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Operation-AP-Con-Simple-SHACL</rdfs:label>
+	</rdf:Description>
+</rdf:RDF>
