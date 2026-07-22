@@ -1,0 +1,376 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base          <https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4> .
+@prefix sisc:  <https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#> .
+@prefix cim:     <https://cim.ucaiug.io/ns#> .
+@prefix cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix cim17:   <http://iec.ch/TC57/CIM100#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
+@prefix nc:      <https://cim4.eu/ns/nc#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+
+sisc:Ontology  rdf:type         owl:Ontology ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
+        dcterms:creator           "ENTSO-E CIM WG"@en ;
+        dcterms:description       "The custom constraints for state instruction schedule profile."@en ;
+        dcterms:identifier        "fa2ea505-930f-4033-bad6-005d1b401467" ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "State instruction schedule profile custom constraints"@en ;
+        owl:versionIRI        <https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4> ;
+		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        owl:versionInfo       "2.4.1"@en ;
+        dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+        dcat:theme            "constraints"@en .
+
+cim:    
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
+        sh:prefix "cim" ;
+    ] ;
+	sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
+        sh:prefix "cim16" ;
+    ] ;
+	sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
+        sh:prefix "nc" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+        sh:prefix "rdf" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:prefix "cim17" ;
+    ] .
+
+
+sisc:SISCustomGroup
+        a           sh:PropertyGroup ;
+        rdfs:label  "StateInstructionScheduleGroup" ;
+        sh:order    0 .
+
+sisc:PowerShiftKeySchedule  a          sh:NodeShape ;
+        sh:property      sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency, sisc:PowerShiftKeySchedule-associations;
+        sh:targetClass  nc:PowerShiftKeySchedule .
+
+
+
+sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
+        a               sh:PropertyShape ;
+        sh:description  "The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution." ;
+        sh:sparql       sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerShiftKeySchedule.ParticipationFactorTimePoint:dependency" ;
+        sh:order        1 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).	
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
+        FILTER (?valD=false && ?valP=false ).
+			}""" .        
+
+
+sisc:PowerShiftKeySchedule-associations
+        a               sh:PropertyShape ;
+        sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyGroup, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection and HydroPump." ;
+        sh:sparql       sisc:PowerShiftKeySchedule-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerShiftKeySchedule:associations" ;
+        sh:order        2 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerShiftKeySchedule-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyGroup, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection and HydroPump." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).	
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyGroup ?eg} AS ?vEG).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EquivalentInjection ?ei} AS ?vEI).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyConsumer ?ec} AS ?vEC).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergySource ?es} AS ?vES).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ExternalNetworkInjection ?eni} AS ?vENI).
+		BIND(EXISTS{$this nc:PowerShiftKeySchedule.HydroPump ?hp} AS ?vHP).
+        FILTER (
+			(?vSR=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vPEU=true && (?vSR=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vGU=true && (?vPEU=true || ?vSR=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vDCP=true && (?vPEU=true || ?vGU=true || ?vSR=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEG=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vSR=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vSR=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vEC=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vSR=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
+			(?vES=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vSR=true || ?vENI=true || ?vHP=true)) || 
+			(?vENI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vSR=true || ?vHP=true)) || 
+			(?vHP=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vSR=true))
+		).
+			}""" .   
+
+sisc:PowerShiftKeyDistribution  a          sh:NodeShape ;
+        sh:property      sisc:PowerShiftKeyDistribution-associations;
+        sh:targetClass  nc:PowerShiftKeyDistribution .
+
+sisc:PowerShiftKeyDistribution-associations
+        a               sh:PropertyShape ;
+        sh:description  "PowerShiftKeyDistribution shall include one and only one association to either PowerBidSchedule or PowerShiftKeyStrategy." ;
+        sh:sparql       sisc:PowerShiftKeyDistribution-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerShiftKeyDistribution:associations" ;
+        sh:order        3 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerShiftKeyDistribution-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerShiftKeyDistribution is not associated with either PowerBidSchedule or PowerShiftKeyStrategy or it is associated with both." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).	
+		BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
+
+        FILTER (
+			(?vPBS=true && ?vPSKS=true) || 
+			(?vPBS=false && ?vPSKS=false) 
+		).
+			}""" . 
+
+sisc:GenericSequenceSchedule  a          sh:NodeShape ;
+        sh:property      sisc:GenericSequenceSchedule-associations;
+        sh:targetClass  nc:GenericSequenceSchedule .
+
+sisc:GenericSequenceSchedule-associations
+        a               sh:PropertyShape ;
+        sh:description  "Association end GenericSequenceSchedule.EnergyBlockOrder is required." ;
+		sh:message      "The association end GenericSequenceSchedule.EnergyBlockOrder is not provided." ;
+        sh:path         nc:GenericSequenceSchedule.EnergyBlockOrder ;
+		sh:MinCount		1;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:GenericSequenceSchedule:associations" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
+		
+sisc:PowerBidSchedule  a          sh:NodeShape ;
+        sh:property      sisc:PowerBidSchedule-associations;
+        sh:targetClass  nc:PowerBidSchedule .
+
+sisc:PowerBidSchedule-associations
+        a               sh:PropertyShape ;
+        sh:description  "PowerBidSchedule shall include one and only one association to either ScheduleResource or PowerRemedialAction." ;
+        sh:sparql       sisc:PowerBidSchedule-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidSchedule:associations" ;
+        sh:order        5 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidSchedule-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidSchedule is not associated with either ScheduleResource or PowerRemedialAction or it is associated with both." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).	
+		BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
+
+        FILTER (
+			(?vPBS=true && ?vPRA=true) || 
+			(?vPBS=false && ?vPRA=false) 
+		).
+			}""" . 
+			
+sisc:PowerBidScheduleTimePoint  a          sh:NodeShape ;
+        sh:property      sisc:PowerBidScheduleTimePoint-attributes;
+        sh:targetClass  nc:PowerBidScheduleTimePoint .			
+
+sisc:PowerBidScheduleTimePoint-attributes
+        a               sh:PropertyShape ;
+        sh:description  "PowerBidScheduleTimePoint can have the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP." ;
+        sh:sparql       sisc:PowerBidScheduleTimePoint-attributesSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidScheduleTimePoint:attributes" ;
+        sh:order        6 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidScheduleTimePoint-attributesSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidScheduleTimePoint does not have one of the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).	
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.shutdownCost ?psc} AS ?vpsc).
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.p ?pp} AS ?vpp).
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.minimumActivationP ?pmap} AS ?vmap).
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.price ?pprice} AS ?vpprice).
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.reservePrice ?prp} AS ?vrp).
+		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
+
+        FILTER (
+			(?vpac=true && ?vpsc=true ) || 
+			((?vpac=true || ?vpsc=true) && (?vpp=true || ?vmap=true || ?vpprice=true || ?vrp=true || ?vsip=true))
+		).
+			}""" . 		
+			
+sisc:PowerBidDependency  a          sh:NodeShape ;
+        sh:property      sisc:PowerBidDependency.finishToFinishLagKind-required, sisc:PowerBidDependency.finishToStartLagKind-required, sisc:PowerBidDependency.overlapKind-required, sisc:PowerBidDependency.startToStartLagKind-required, sisc:PowerBidDependency.kind-exclusive;
+        sh:targetClass  nc:PowerBidDependency .			
+
+sisc:PowerBidDependency.finishToFinishLagKind-required
+        a               sh:PropertyShape ;
+        sh:description  "If PowerBidDependency.finishToFinishLag is present PowerBidDependency.finishToFinishLagKind is required." ;
+        sh:sparql       sisc:PowerBidDependency.finishToFinishLagKind-requiredSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidDependency.finishToFinishLagKind:required" ;
+        sh:order        7 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidDependency.finishToFinishLagKind-requiredSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidDependency.finishToFinishLagKind is missing when PowerBidDependency.finishToFinishLag is present." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		 
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLag ?ftf} AS ?hasftf).	
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
+		
+        FILTER (?hasftf=true && ?hasftfk=false).
+			}""" . 		
+
+sisc:PowerBidDependency.finishToStartLagKind-required
+        a               sh:PropertyShape ;
+        sh:description  "If PowerBidDependency.finishToStartLag is present PowerBidDependency.finishToStartLagKind is required." ;
+        sh:sparql       sisc:PowerBidDependency.finishToStartLagKind-requiredSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidDependency.finishToStartLagKind:required" ;
+        sh:order        8 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidDependency.finishToStartLagKind-requiredSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidDependency.finishToStartLagKind is missing when PowerBidDependency.finishToStartLag is present." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		 
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLag ?fts} AS ?hasfts).	
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
+		
+        FILTER (?hasfts=true && ?hasftsk=false).
+			}""" . 			
+			
+sisc:PowerBidDependency.overlapKind-required
+        a               sh:PropertyShape ;
+        sh:description  "If PowerBidDependency.overlap is present PowerBidDependency.overlapKind is required." ;
+        sh:sparql       sisc:PowerBidDependency.overlapKind-requiredSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidDependency.overlapKind:required" ;
+        sh:order        9 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidDependency.overlapKind-requiredSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidDependency.overlapKind is missing when PowerBidDependency.overlap is present." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		 
+		BIND(EXISTS{$this nc:PowerBidDependency.overlap ?op} AS ?hasop).	
+		BIND(EXISTS{$this nc:PowerBidDependency.overlapKind ?opk} AS ?hasopk).
+		
+        FILTER (?hasop=true && ?hasopk=false).
+			}""" . 		
+
+sisc:PowerBidDependency.startToStartLagKind-required
+        a               sh:PropertyShape ;
+        sh:description  "If PowerBidDependency.startToStartLag is present PowerBidDependency.startToStartLagKind is required." ;
+        sh:sparql       sisc:PowerBidDependency.startToStartLagKind-requiredSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidDependency.startToStartLagKind:required" ;
+        sh:order        10 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidDependency.startToStartLagKind-requiredSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "PowerBidDependency.startToStartLagKind is missing when PowerBidDependency.startToStartLag is present." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		 
+		BIND(EXISTS{$this nc:PowerBidDependency.startToStartLag ?sts} AS ?hassts).	
+		BIND(EXISTS{$this nc:PowerBidDependency.startToStartLagKind ?stsk} AS ?hasstsk).
+		
+        FILTER (?hassts=true && ?hasstsk=false).
+			}""" . 				
+			
+sisc:PowerBidDependency.kind-exclusive
+        a               sh:PropertyShape ;
+        sh:description  "If PowerBidDependency.kind is set to PowerBidDependencyKind.exclusive, the following attributes shall not be defined: PowerBidDependency.overlap, PowerBidDependency.startToStartLag, PowerBidDependency.finishToStartLag, PowerBidDependency.finishToFinishLag." ;
+        sh:sparql       sisc:PowerBidDependency.kind-exclusiveSparql ;
+        sh:path         rdf:type ;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:PowerBidDependency.kind:exclusive" ;
+        sh:order        11 ;
+        sh:severity     sh:Violation .
+        
+sisc:PowerBidDependency.kind-exclusiveSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "Some of the following attributes are defined: PowerBidDependency.overlap, PowerBidDependency.startToStartLag, PowerBidDependency.finishToStartLag, PowerBidDependency.finishToFinishLag when PowerBidDependency.kind is set to PowerBidDependencyKind.exclusive." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		$this nc:PowerBidDependency.kind nc:PowerBidDependencyKind.exclusive.
+		
+		BIND(EXISTS{$this nc:PowerBidDependency.overlap ?op} AS ?hasop).	
+		BIND(EXISTS{$this nc:PowerBidDependency.startToStartLag ?sts} AS ?hassts).
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLag ?fts} AS ?hasfts).
+		BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLag ?ftf} AS ?hasftf).
+		
+        FILTER (?hasop=true || ?hassts=true || ?hasfts=true || ?hasftf=true).
+			}""" . 			

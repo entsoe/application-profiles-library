@@ -1,0 +1,164 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base              <http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix io:  <http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+
+
+io:Ontology  rdf:type         owl:Ontology ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "The constraints for the IdentifiedObject."@en ;
+        dcterms:identifier        "ace9b76c-e8d4-41d9-92bf-7b8a1a7b1049" ;
+        dcterms:issued            "2021-10-19T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2020-10-19"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "IdentifiedObject Constraints"@en ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0> ;
+        owl:versionInfo       "3.0.0"@en ;
+        dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+        dcat:theme            "constraints"@en .
+
+cim:    
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:prefix "cim" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+        sh:prefix "rdf" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100-European#"^^xsd:anyURI ;
+        sh:prefix "eu" ;
+    ] .
+
+
+io:IOstringLength
+        a           sh:PropertyGroup ;
+        rdfs:label  "IdentifiedObjectStringLength" ;
+        sh:order    0 .
+
+io:IdentifiedObjectStringLengthshortName  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.shortName-stringLength ;
+        sh:targetSubjectsOf  eu:IdentifiedObject.shortName .
+
+io:IdentifiedObject.shortName-stringLength
+        a               sh:PropertyShape ;
+        sh:sparql       io:IdentifiedObject.shortName-stringLengthSparql ;
+        sh:path         eu:IdentifiedObject.shortName ;
+        sh:description  "Length of the string 12 characters maximum." ;
+        sh:group        io:IOstringLength ;
+        sh:name         "C:301:EQ:IdentifiedObject.shortName:stringLength|C:301:EQBD:IdentifiedObject.shortName:stringLength||C:301:TP:IdentifiedObject.shortName:stringLength" ;
+        sh:order        1 ;
+        sh:severity     sh:Violation .
+        
+        
+io:IdentifiedObject.shortName-stringLengthSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "String length is greater than 12 characters." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value  
+			WHERE {      
+        $this $PATH ?value .
+        
+        FILTER (STRLEN(?value)>12) .
+			}""" .         
+
+io:IdentifiedObjectStringLengthenergyIdentCodeEic  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.energyIdentCodeEic-stringLength ;
+        sh:targetSubjectsOf  eu:IdentifiedObject.energyIdentCodeEic .        
+        
+io:IdentifiedObject.energyIdentCodeEic-stringLength
+        a               sh:PropertyShape ;
+        sh:description  "The length of the string is 16 characters as defined by the EIC code." ;
+        sh:sparql       io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql ;
+        sh:path         eu:IdentifiedObject.energyIdentCodeEic ;
+        sh:group        io:IOstringLength ;
+        sh:name         "C:301:EQ:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:EQBD:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:TP:IdentifiedObject.energyIdentCodeEic:stringLength" ;
+        sh:order        2 ;
+        sh:severity     sh:Violation .       
+
+io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "String length is not 16 characters." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value  
+			WHERE {      
+        $this $PATH ?value .
+        
+        FILTER (STRLEN(?value)!=16) .
+			}""" .          
+
+io:IdentifiedObjectStringLengthName  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.name-stringLength ;
+        sh:targetSubjectsOf  cim:IdentifiedObject.name .
+		
+io:IdentifiedObject.name-stringLength
+        a               sh:PropertyShape ;
+        sh:description  "The string IdentifiedObject.name has a maximum of 128 characters." ;
+        sh:sparql       io:IdentifiedObject.name-stringLengthSparql ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:group        io:IOstringLength ;
+        sh:name         "C:452:ALL:IdentifiedObject.name:stringLength|C:453:DL:IdentifiedObject.name:stringLength|C:456:TP:IdentifiedObject.name:stringLength|C:456:SV:IdentifiedObject.name:stringLength|C:457:DY:IdentifiedObject.name:stringLength|C:600:EQBD:IdentifiedObject.name:stringLength" ;
+        sh:order        3 ;
+        sh:severity     sh:Violation .
+        
+io:IdentifiedObject.name-stringLengthSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "String length is greater than 128 characters." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value  
+			WHERE {      
+        $this $PATH ?value .
+        
+        FILTER (STRLEN(?value)>128) .
+			}""" .        
+
+io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;
+        sh:property     io:IdentifiedObject.description-stringLength;
+        sh:targetSubjectsOf  cim:IdentifiedObject.description .        
+
+io:IdentifiedObject.description-stringLength
+        a               sh:PropertyShape ;
+        sh:description  "The string IdentifiedObject.description is maximum 256 characters." ;
+        sh:sparql       io:IdentifiedObject.description-stringLengthSparql ;
+        sh:path         cim:IdentifiedObject.description ;
+        sh:group        io:IOstringLength ;
+        sh:name         "C:452:ALL:IdentifiedObject.description:stringLength|C:600:EQBD:IdentifiedObject.description:stringLength|C:457:DY:IdentifiedObject.description:stringLength|C:456:TP:IdentifiedObject.description:stringLength" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
+        
+io:IdentifiedObject.description-stringLengthSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "String length is greater than 256 characters." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this ?value  
+			WHERE {      
+        $this $PATH ?value .
+        
+        FILTER (STRLEN(?value)>256) .
+			}""" .    
+
+

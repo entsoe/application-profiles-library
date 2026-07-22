@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:role="http://www.w3.org/ns/dx/prof/role/" xmlns:dcterms="http://purl.org/dc/terms/" xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#Ontology">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<dcterms:title>Core Equipment Vocabulary</dcterms:title>
+		<dcterms:description>This vocabulary is describing the core equipment profile from IEC 61970-600-2.</dcterms:description>
+		<dcat:keyword>EQ</dcat:keyword>
+		<prof:hasToken>EQ</prof:hasToken>
+		<dcterms:creator>ENTSO-E</dcterms:creator>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:identifier>b30f9e9a-7305-454b-a509-d28e5651d662</dcterms:identifier>
+		<owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0"/>
+		<owl:versionInfo>3.0.0</owl:versionInfo>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0/vocabulary"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/IEC61970-301/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/IEC61970-301/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-1/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/inverseAssociations/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-2/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/Constraints/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/inverseAssociations/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/Constraints/3.0"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600/notSolved/3.0"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0/vocabulary">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Equipment-AP-Voc-RDFS2020.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>Core Equipment Vocabulary</dcterms:title>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-301_Equipment-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 Equipment-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-301_Equipment-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 Equipment-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/IEC61970-301/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-301_EquipmentBoundary-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 EquipmentBoundary-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/IEC61970-301/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-301_EquipmentBoundary-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-301 EquipmentBoundary-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-452_Equipment-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-452 Equipment-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-452_Equipment-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-452 Equipment-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-1/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-1_Equipment-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-1 Equipment-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/inverseAssociations/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Equipment-AP-Con-Complex-InverseAssociation-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Equipment-AP-Con-Complex-InverseAssociation-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-2/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Equipment-AP-Con-Complex-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Equipment-AP-Con-Complex-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/Constraints/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_Equipment-AP-Con-Simple-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 Equipment-AP-Con-Simple-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/constraints/inverseAssociations/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_EquipmentBoundary-AP-Con-Complex-InverseAssociation-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 EquipmentBoundary-AP-Con-Complex-InverseAssociation-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/Constraints/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="61970-600-2_EquipmentBoundary-AP-Con-Simple-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600-2 EquipmentBoundary-AP-Con-Simple-SHACL</rdfs:label>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600/notSolved/3.0">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/validation"/>
+		<prof:hasArtifact rdf:resource="61970-600_Equipment-AP-Con-Complex-NotSolvedMAS-SHACL.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>61970-600 Equipment-AP-Con-Complex-NotSolvedMAS-SHACL</rdfs:label>
+	</rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,143 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base              <http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix sm6002:  <http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+
+sm6002:Ontology  rdf:type         owl:Ontology ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "The constraints for solved MAS."@en ;
+        dcterms:identifier        "ca509b68-4b4c-463b-8760-56790d4848ee" ;
+        dcterms:issued            "2021-10-19T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2020-10-19"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "Solved MAS Constraints"@en ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0> ;
+        owl:versionInfo       "3.0.0"@en ;
+        dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+        dcat:theme            "constraints"@en .
+
+cim:    
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:prefix "cim" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+        sh:prefix "rdf" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100-European#"^^xsd:anyURI ;
+        sh:prefix "eu" ;
+    ] .
+
+sm6002:solvedMAS6002
+        a           sh:PropertyGroup ;
+        rdfs:label  "SolvedMASIEC61970-600-2" ;
+        sh:order    0 .
+
+sm6002:RegulatingControl  a  sh:NodeShape ;
+        sh:property     sm6002:RegulatingControl-samePoint ;
+        sh:target  
+        [
+              a sh:SPARQLTarget ;
+              sh:prefixes cim: ;
+              sh:select """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type cim:TopologicalNode   .
+                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled true.
+                }
+                """ ;
+        ] . 
+
+sm6002:RegulatingControl-samePoint
+        a               sh:PropertyShape ;
+        sh:sparql       sm6002:RegulatingControl-samePointSparql ;
+        sh:path         rdf:type ;
+        sh:description  "A RegulatingControl will have associations to one or more instances of RegulatingCondEq and an association to a Terminal. The ConnectivityNode associated with the Terminal is the regulated point. It is common to have cases where multiple pieces of equipment regulate ConnectivityNodes that under normal network topology are associated with the same TopologicalNode. In this case, the same instance of RegulatingControl should be used by all of those regulating equipment if possible. If it is not possible, such as the case where a SynchronousMachine and a RatioTapChanger are regulating the same point using associations to instances of RegulatingControl and TapChangerControl, the number of instances of RegulatingControl and TapChangerControl should be minimized. Additionally, the target and deadband values for the same regulated point should not be contradictory. Profile restriction: If multiple instances of RegulatingControl control the same regulation point, the targetValues must not be contradictory." ;
+        sh:name         "C:452:EQ:RegulatingControl:samePoint" ;
+        sh:group        sm6002:solvedMAS6002 ;
+        sh:order        1 ;
+        sh:severity     sh:Violation .
+        
+sm6002:RegulatingControl-samePointSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "Enabled RegulatingControl-s of the same type associated with the same TopologicalNode have different target values. RegulatingControl ID: {?rcfail}." ;
+		sh:prefixes cim: ;
+		sh:select """
+    	SELECT $this ?count ?value ?rcfail
+			WHERE {
+          $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal ?rcfail .
+          ?rcfail cim:RegulatingControl.targetValue ?value .
+      {
+      SELECT $this (count(distinct ?val) as ?count)
+      WHERE {
+             $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal ?rc .
+             ?rc cim:RegulatingControl.enabled true .
+             ?rc cim:RegulatingControl.mode ?mode .
+             ?rc cim:RegulatingControl.targetValue ?val .   
+      }
+      GROUP BY $this ?mode
+			}
+      FILTER (?count>1) .
+      }
+      #LIMIT 1
+      """ .
+
+
+sm6002:RegulatingControlPoint  a  sh:NodeShape ;
+        sh:property     sm6002:RegulatingControl-point ;
+        sh:targetClass  cim:RegulatingControl , cim:TapChangerControl  .    
+    
+sm6002:RegulatingControl-point
+        a               sh:PropertyShape ;
+        sh:sparql       sm6002:RegulatingControl-pointSparql ;
+        sh:path         rdf:type ;
+        sh:description  "The controlled point and the controlling equipment shall be located in the same TopologicalIsland. In cases where the controlling point is a TopologicalNode only one RegulatingControl shall be instantiated following the terms of constraint C:452:EQ:RegulatingControl:samePoint." ;
+        sh:name         "C:600:EQ:RegulatingControl:point" ;
+        sh:group        sm6002:solvedMAS6002 ;
+        sh:order        2 ;
+        sh:severity     sh:Violation .
+        
+sm6002:RegulatingControl-pointSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message "The controlled point and the controlling equipment are not located in the same TopologicalIsland. TopologicalIsland ID (via RegulatingControl.Terminal):{?topislandterminal} TopologicalIsland ID (via RatioTapChanger):{?topislandterminalratio} TopologicalIsland ID (via PhaseTapChanger):{?topislandterminalphase} TopologicalIsland ID (via ConductingEquipment):{?topislandterminalcondeq}." ;
+		sh:prefixes cim: ;
+		sh:select """
+    	SELECT $this ?topislandterminal ?topislandterminalratio ?topislandterminalphase ?topislandterminalcondeq
+			WHERE {
+          $this cim:RegulatingControl.enabled true .
+          $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminal .
+          #BIND(EXISTS{$this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?tnisland } AS ?tni).
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalratio}.
+          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalphase}.
+          OPTIONAL {$this ^cim:RegulatingCondEq.RegulatingControl/^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminalcondeq}.
+          ##FILTER ( ?tni=true && ((bound(?topislandterminalratio) && !bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalratio!=?topislandterminal) ||
+          #(!bound(?topislandterminalratio) && bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalphase!=?topislandterminal) ||
+          #(!bound(?topislandterminalratio) && !bound(?topislandterminalphase) && bound(?topislandterminalcondeq) && ?topislandterminalcondeq!=?topislandterminal) )).
+          FILTER ( ((bound(?topislandterminalratio) && !bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalratio!=?topislandterminal) ||
+          (!bound(?topislandterminalratio) && bound(?topislandterminalphase) && !bound(?topislandterminalcondeq) && ?topislandterminalphase!=?topislandterminal) ||
+          (!bound(?topislandterminalratio) && !bound(?topislandterminalphase) && bound(?topislandterminalcondeq) && ?topislandterminalcondeq!=?topislandterminal) )
+          ).
+      } """ .    
+    
+    

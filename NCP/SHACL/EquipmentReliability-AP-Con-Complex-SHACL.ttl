@@ -1,0 +1,254 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base          <https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4> .
+@prefix erc:  <https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#> .
+@prefix cim:     <https://cim.ucaiug.io/ns#> .
+@prefix cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix cim17:   <http://iec.ch/TC57/CIM100#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
+@prefix nc:      <https://cim4.eu/ns/nc#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix propref:     <https://energy.referencedata.eu/PropertyReference#> .
+
+
+erc:Ontology  rdf:type         owl:Ontology ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "The custom constraints for the equipment reliability profile."@en ;
+        dcterms:identifier        "bf8ecf5c-f265-4db3-881a-f60dd2382a3a" ;
+        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2026-05-28"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "Equipment Reliability profile custom constraints"@en ;
+        owl:versionIRI        <https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4> ;
+		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        owl:versionInfo       "2.4.1"@en ;
+        dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+        dcat:theme            "constraints"@en .
+
+cim:    
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
+        sh:prefix "cim" ;
+    ] ;
+	sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
+        sh:prefix "cim16" ;
+    ] ;
+	sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
+        sh:prefix "nc" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+        sh:prefix "rdf" ;
+    ] ;
+    sh:declare [
+        a sh:PrefixDeclaration ;
+        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
+        sh:prefix "cim17" ;
+    ] .
+
+
+erc:ERgroup
+        a           sh:PropertyGroup ;
+        rdfs:label  "EquipmentReliabilityGroup" ;
+        sh:order    0 .
+		
+
+erc:AreaDispatchableUnit  a          sh:NodeShape ;
+        sh:property      erc:AreaDispatchableUnit-associations;
+        sh:targetClass  nc:AreaDispatchableUnit .
+
+
+
+erc:AreaDispatchableUnit-associations
+        a               sh:PropertyShape ;
+        sh:description  "The AreaDispatchableUnit shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer, ScheduleResource or HydroPump." ;
+        sh:sparql       erc:AreaDispatchableUnit-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:AreaDispatchableUnit:associations" ;
+        sh:order        1 ;
+        sh:severity     sh:Violation .
+        
+erc:AreaDispatchableUnit-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "AreaDispatchableUnit is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer, ScheduleResource or HydroPump." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:AreaDispatchableUnit.GeneratingUnit ?o1} AS ?adugu).
+		BIND(EXISTS{$this nc:AreaDispatchableUnit.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:AreaDispatchableUnit.EnergyConsumer ?o3} AS ?aduec).
+		BIND(EXISTS{$this nc:AreaDispatchableUnit.ScheduleResource ?o4} AS ?adusr).
+		BIND(EXISTS{$this nc:AreaDispatchableUnit.HydroPump ?o5} AS ?aduhp).
+        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?adusr=false && ?aduhp=false).
+			}""" . 
+			
+erc:EnergyComponent  a          sh:NodeShape ;
+        sh:property      erc:EnergyComponent-associations;
+        sh:targetClass  nc:EnergyComponent .
+
+
+
+erc:EnergyComponent-associations
+        a               sh:PropertyShape ;
+        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:sparql       erc:EnergyComponent-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:EnergyComponent:associations" ;
+        sh:order        2 ;
+        sh:severity     sh:Violation .
+        
+erc:EnergyComponent-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
+		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
+		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
+        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?aduhp=false).
+			}""" . 			
+			
+			
+erc:HydroPowerPlant  a          sh:NodeShape ;
+        sh:property      erc:HydroPowerPlant-operatingMode;
+        sh:targetClass  cim:HydroPowerPlant, cim16:HydroPowerPlant, cim17:HydroPowerPlant .			
+		
+erc:HydroPowerPlant-operatingMode
+        a               sh:PropertyShape ;
+        sh:description  "The SynchronousMachine.operatingMode of all SynchronousMachine objects part of a HydroPowerPlant shall be consistent." ;
+        sh:sparql       erc:HydroPowerPlant-operatingModeSparql ;
+        sh:path         rdf:type ;
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:HydroPowerPlant:operatingMode" ;
+        sh:order        3 ;
+        sh:severity     sh:Violation .
+        
+erc:HydroPowerPlant-operatingModeSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "The SynchronousMachine.operatingMode is not consistent for all SynchronousMachine objects part of a HydroPowerPlant." ;
+		sh:prefixes cim: ;
+		sh:select """
+	      SELECT $this (COUNT(?value) AS ?countv)
+        WHERE {
+        $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
+        }
+        GROUP BY $this ?value
+        HAVING(?countv>1)
+      """ .    
+
+erc:Circuit  a          sh:NodeShape ;
+        sh:property      erc:Circuit-associations;
+        sh:targetClass  nc:LineCircuit, nc:PowerTransformerCircuit .
+
+
+
+erc:Circuit-associations
+        a               sh:PropertyShape ;
+        sh:description  "The Circuit shall be associated with either Equipment or Terminal." ;
+        sh:sparql       erc:Circuit-associationsSparql ;
+        sh:path         rdf:type ;
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:Circuit:associations" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
+        
+erc:Circuit-associationsSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "Circuit is not associated with either Equipment or Terminal." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
+		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
+        FILTER (?ce=false && ?ct=false).
+			}""" . 		
+			
+erc:FunctionOutputVariable  a          sh:NodeShape ;
+        sh:property      erc:FunctionOutputVariable.PropertyReference-value;
+        sh:targetClass  nc:FunctionOutputVariable .
+
+
+
+erc:FunctionOutputVariable.PropertyReference-value
+        a               sh:PropertyShape ;
+        sh:description  "The value of the association end FunctionOutputVariable.PropertyReference shall be one of the values published in the skos:ConceptScheme  https://energy.referencedata.eu/PropertyReference/." ;
+        sh:message      "The value of the PropertyReference is not part of the reference data." ;
+        sh:path         nc:FunctionOutputVariable.PropertyReference ;
+		sh:in			(propref:DCPole.minEconomicP propref:BiddingZoneBorder.totalTransferCapacity propref:Contingency.mustStudy propref:GeneratingUnit.startupCost propref:ThyristorControlledSeriesCompensator.currentSection propref:DCSwitch.open propref:EnergyGroup.p propref:GeneratingUnit.warmStartupCost propref:ACEmulationControlFunction.timeConstant propref:AssessedElement.criticalElementJustification propref:ACEmulationControlFunction.referenceP propref:CurrentDroopControlFunction.targetValueCapacitive propref:EnergyConsumer.participationFactor propref:PowerTransferCorridor.enabled propref:EnergyBlockOrder.sequence propref:PowerRemedialAction.maxRegulatingUp propref:AssessedElement.coordinatedValidationAdjustmentJustification propref:DCPole.participationFactor propref:AssessedElement.targetRemainingAvailableMarginJustification propref:SubstationController.mode propref:EnergyBlockOrder.participationFactor propref:AreaDispatchableUnit.enabled propref:AssessedElement.scannedThresholdMargin propref:AssessedElementWithContingency.enabled propref:RegulatingCondEq.controlEnabled propref:FACTSEquipment.q propref:PowerRemedialAction.maxRegulatingDown propref:PowerElectronicsUnit.participationFactor propref:PowerCapacity.netACInterchange propref:AssessedElement.maxFlow propref:StageTrigger.armed propref:PowerCapacity.minInterchange propref:GeneratingUnit.participationFactor propref:EnergyGroup.participationFactor propref:CurrentControlFunction.targetValue propref:PowerCapacity.maxInterchange propref:RotatingMachineController.mode propref:AssessedElement.individualValidationAdjustmentShare propref:DCVoltageControlFunction.targetValue propref:DCPole.p propref:ImpedanceControlFunction.targetValue propref:CurrentDroopOverride.targetValueCapacitiveI propref:RemedialActionScheme.inService propref:RangeConstraint.value propref:AssessedElement.coordinatedValidationAdjustment propref:PowerCapacity.netACInterchangeTolerance propref:DCPole.maxEconomicP propref:AreaDispatchableUnit.p propref:GeneratingUnit.shutdownCost propref:ScheduleResource.p propref:PowerCapacity.netDCInterchange propref:AssessedElement.positiveVirtualMargin propref:DCTieCorridor.q propref:DCTieCorridor.p propref:AssessedElement.maxMarginAdjustment propref:ContingencyWithRemedialAction.enabled propref:PTCActivePowerSupport.value propref:GridStateAlteration.enabled propref:InfeedLimit.valueA propref:PowerShiftKeyStrategy.enabled propref:BiddingZoneBorder.netTransferCapacity propref:Equipment.networkAnalysisEnabled propref:ScheduleResource.participationFactor propref:CircuitShare.contributionFactor propref:StageTrigger.inService propref:InfeedLimit.valueW propref:FrequencyControlFunction.frequencyBias propref:GridStateAlteration.participationFactor propref:HydroPump.participationFactor propref:ReactivePowerControlFunction.targetValue propref:BaseCaseCurrentLimit.value propref:InjectionController.mode propref:GeneratingUnit.mustRun propref:RemedialActionGroup.maxRegulatingDown propref:BiddingZone.netPosition propref:AssessedElement.individualValidationAdjustment propref:SchedulingArea.p propref:BiddingZoneBorder.alreadyAllocatedCapacity propref:RemedialActionGroup.maxRegulatingUp propref:GeneratingUnit.costCurrency propref:Contingency.probability propref:AssessedElementWithRemedialAction.enabled propref:AssessedElement.enabled propref:PhaseControlFunction.targetValue propref:PowerElectronicsUnit.p propref:PowerShiftKeyStrategy.participationFactor propref:PowerCapacity.regulatingUpAllocation propref:BiddingZoneBorder.availableTransferCapacity propref:CurrentDroopOverride.enabled propref:RemedialActionDependency.enabled propref:SSSCController.mode propref:CurrentDroopControlFunction.targetValueInductive propref:AssessedElement.individualValidationAdjustmentJustification propref:PowerCapacity.regulatingDownAllocation propref:CompensatorController.mode propref:CrossBorderRelevance.enabled propref:DCCurrentControlFunction.targetValue propref:CurrentDroopOverride.targetValueInductiveI propref:DirectCurrentEquipmentController.mode propref:AutomationFunction.enabled propref:VoltageAngleLimit.value propref:VoltageControlFunction.targetValue propref:PowerCapacity.minImportP propref:GeneratingUnit.mustRunQ propref:Reservoir.energyStorage propref:GeneratingUnit.mustRunP propref:GeneratingUnit.isRamping propref:PowerFactorControlFunction.targetValue propref:TCSCController.mode propref:FrequencyControlFunction.targetValue propref:Equipment.inService propref:EnergyBlockOrder.p propref:FuelStorage.energyStorage propref:AssessedElement.appointedMargin propref:BiddingZoneBorder.transmissionReliabilityMargin propref:ThyristorControlledSeriesCompensator.compensationZ propref:SchedulingArea.participationFactor propref:RemedialAction.available propref:ActivePowerControlFunction.targetValue propref:FunctionBlock.enabled propref:VoltageInjectionControlFunction.targetValue propref:BiddingZoneBorder.alreadyAllocatedFlow propref:ACEmulationControlFunction.gain propref:RemedialActionScheme.armed propref:DCSwitch.locked propref:ACDCConverter.targetPpcc propref:EquivalentInjection.regulationTarget propref:TapChanger.step propref:ACDCConverter.p propref:ACDCConverter.q propref:BatteryUnit.storedE propref:CsConverter.operatingMode propref:Equipment.inService propref:EnergySource.voltageMagnitude propref:VsConverter.targetPowerFactorPcc propref:RotatingMachine.q propref:RotatingMachine.p propref:AsynchronousMachine.asynchronousMachineType propref:EnergyConsumer.q propref:EnergyConsumer.p propref:Switch.open propref:EquivalentInjection.p propref:EquivalentInjection.q propref:SynchronousMachine.operatingMode propref:VsConverter.targetQpcc propref:CsConverter.targetIdc propref:VsConverter.qShare propref:EnergySource.reactivePower propref:RegulatingCondEq.controlEnabled propref:ACDCConverter.targetUdc propref:ActivePowerLimit.value propref:EnergySource.voltageAngle propref:ExternalNetworkInjection.referencePriority propref:IdentifiedObject.mRID propref:CsConverter.pPccControl propref:CsConverter.targetAlpha propref:VsConverter.targetPhasePcc propref:VsConverter.pPccControl propref:StaticVarCompensator.q propref:ACDCTerminal.connected propref:ControlArea.pTolerance propref:VsConverter.droop propref:PowerElectronicsConnection.p propref:PowerElectronicsConnection.q propref:EnergySource.activePower propref:RegulatingControl.discrete propref:VsConverter.targetPWMfactor propref:EquivalentInjection.regulationStatus propref:GeneratingUnit.normalPF propref:ApparentPowerLimit.value propref:RegulatingControl.maxAllowedTargetValue propref:VsConverter.qPccControl propref:VoltageLimit.value propref:CurrentLimit.value propref:ExternalNetworkInjection.p propref:ExternalNetworkInjection.q propref:ControlArea.netInterchange propref:RegulatingControl.enabled propref:RegulatingControl.minAllowedTargetValue propref:TapChanger.controlEnabled propref:CsConverter.targetGamma propref:VsConverter.droopCompensation propref:Switch.locked propref:BatteryUnit.batteryState propref:VsConverter.targetUpcc propref:ShuntCompensator.sections propref:SynchronousMachine.referencePriority propref:RegulatingControl.targetDeadband propref:RegulatingControl.targetValueUnitMultiplier propref:RegulatingControl.targetValue  );
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:FunctionOutputVariable.PropertyReference:value" ;
+        sh:order        5 ;
+        sh:severity     sh:Violation .			
+		
+erc:EquivalentGeneratingUnit  a          sh:NodeShape ;
+        sh:property      erc:RotatingMachine.GeneratingUnit-associationApplicability;
+        sh:targetClass  nc:EquivalentGeneratingUnit .
+
+erc:RotatingMachine.GeneratingUnit-associationApplicability
+        a               sh:PropertyShape ;
+        sh:description  "An EquivalentGeneratingUnit shall not be referenced by a RotatingMachine via the association end RotatingMachine.GeneratingUnit." ;
+        sh:message      "A RotatingMachine is associated with a EquivalentGeneratingUnit" ;
+		sh:maxCount		0;
+		sh:path         [ sh:alternativePath  ( [ sh:inversePath  cim:RotatingMachine.GeneratingUnit ]
+                                                [ sh:inversePath  cim17:RotatingMachine.GeneratingUnit ]
+                                                [ sh:inversePath  cim16:RotatingMachine.GeneratingUnit ]
+                                              )
+                        ];
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:RotatingMachine.GeneratingUnit:associationApplicability" ;
+        sh:order        6 ;
+        sh:severity     sh:Violation .			
+
+erc:InfeedLimit  a          sh:NodeShape ;
+        sh:property     erc:InfeedLimit-requiredAttributes;
+        sh:targetClass  nc:InfeedLimit .
+
+erc:InfeedLimit-requiredAttributes
+        a               sh:PropertyShape ;
+        sh:description  "An InfeedLimit shall have either .normalValueA or .normalValueW." ;
+        sh:sparql       erc:InfeedLimit-requiredAttributesSparql ;
+        sh:path         rdf:type ;
+        sh:group        erc:ERgroup ;
+        sh:name         "C:NC:ER:InfeedLimit:requiredAttributes" ;
+        sh:order        7 ;
+        sh:severity     sh:Violation .
+        
+erc:InfeedLimit-requiredAttributesSparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "InfeedLimit does not have either .normalValueA or .normalValueW." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:InfeedLimit.normalValueA ?o1} AS ?hasNVA).
+		BIND(EXISTS{$this nc:InfeedLimit.normalValueW ?o2} AS ?hasNVW).
+        FILTER (?hasNVA=false && ?hasNVW=false).
+			}""" . 			

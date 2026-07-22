@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:cim="https://cim.ucaiug.io/ns#"
+    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+    xmlns:eumd="https://cim4.eu/ns/Metadata-European#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:adms="http://www.w3.org/ns/adms#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:prov="http://www.w3.org/ns/prov#"
+    xmlns:dcatcim="https://cim4.eu/ns/dcatcim#"
+    xmlns:dm="https://ap-voc.cim4.eu/DatasetMetadata#"
+    xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xml:base="https://cim.ucaiug.io/ns" > 
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#Ontology">
+    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
+    <dcterms:creator xml:lang="en">ENTSO-E</dcterms:creator>
+    <dcterms:description xml:lang="en">This vocabulary is describing the dataset metadata profile.</dcterms:description>
+    <dcterms:identifier>bd3a1070-b4e9-4a0f-8e9a-cba679d29179</dcterms:identifier>
+    <dcat:keyword>DM</dcat:keyword>
+    <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
+    <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
+    <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
+    <dcat:theme xml:lang="en">vocabulary</dcat:theme>
+    <dcterms:title xml:lang="en">Dataset metadata vocabulary</dcterms:title>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata/3.0"/>
+    <owl:versionInfo xml:lang="en">3.0.1</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Dataset">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>A collection of data, published or curated by a single source, and available for access or download in one or more representations.</rdfs:comment>
+    <rdfs:label xml:lang="en">Dataset</rdfs:label>
+    <cims:stereotype>dcat</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Date">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
+    <rdfs:label xml:lang="en">Date</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#DateTime">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
+    <rdfs:label xml:lang="en">DateTime</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#DateTimeStamp">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Position of an instant, expressed using xsd:dateTimeStamp, in which the time-zone field is mandatory.</rdfs:comment>
+    <rdfs:label xml:lang="en">DateTimeStamp</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>eumd</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#DifferenceSet">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>A dataset that is represented by statement that describe the difference previous version by using forwardDifference Statement for item that is added and reverseDifference Statement for items that are removed. Items that are updated is described in both the forwardDifference and reversalDifference statements.</rdfs:comment>
+    <rdfs:label xml:lang="en">DifferenceSet</rdfs:label>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Duration">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Duration as "PnYnMnDTnHnMnS" which conforms to ISO 8601, where nY expresses a number of years, nM a number of months, nD a number of days. The letter T separates the date expression from the time expression and, after it, nH identifies a number of hours, nM a number of minutes and nS a number of seconds. The number of seconds could be expressed as a decimal number, but all other numbers are integers.</rdfs:comment>
+    <rdfs:label xml:lang="en">Duration</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">IRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#LangString">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Datatype that conforms to rdf:langString, representing a textual value with an associated language tag, following BCP 47 language conventions (e.g., en, fr-CA, no-NB).</rdfs:comment>
+    <rdfs:label xml:lang="en">LangString</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>rdf</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile">
+    <rdfs:comment>The package describes the profile of metadata for dataset and distribution.</rdfs:comment>
+    <rdfs:label xml:lang="en">DatasetMetadataProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile">
+    <rdfs:comment>This package contains datatypes used only in the RDFS metadata.</rdfs:comment>
+    <rdfs:label xml:lang="en">DocDatasetMetadataProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>rdf:Statement is an instance of rdfs:Class. It is intended to represent the class of RDF statements. An RDF statement is the statement made by a token of an RDF triple. The subject of an RDF statement is the instance of rdfs:Resource identified by the subject of the triple. The predicate of an RDF statement is the instance of rdf:Property identified by the predicate of the triple. The object of an RDF statement is the instance of rdfs:Resource identified by the object of the triple. rdf:Statement is in the domain of the properties rdf:predicate, rdf:subject and rdf:object. Different individual rdf:Statement instances may have the same values for their rdf:predicate, rdf:subject and rdf:object properties.</rdfs:comment>
+    <rdfs:label xml:lang="en">Statement</rdfs:label>
+    <cims:stereotype>Compound</cims:stereotype>
+    <cims:stereotype>rdf</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#Statements">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>One or more facts in the form of an RDF triples that forms a cohesive description of change to a dataset.</rdfs:comment>
+    <rdfs:label xml:lang="en">Statement</rdfs:label>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <cims:stereotype>Compound</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#String">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
+    <rdfs:label xml:lang="en">String</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#URI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Uniform Resource Identifier (URI) or URI Reference as defined by [RFC 3986], including amendments from [RFC 6874] for IPv6 zone identifiers. The value may be absolute or relative and can include an optional fragment identifier. This datatype is used to indicate that the value fulfills the role of a URI or URI Reference, providing a consistent format for referencing abstract or physical resources.</rdfs:comment>
+    <rdfs:label xml:lang="en">URI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
+    <rdfs:label xml:lang="en">URL</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UUID">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Datatype representing a unique identifier in the form of a universally unique identifier (UUID). The value must conform to the UUID format as defined in RFC 4122, allowing for globally unique identification of entities.</rdfs:comment>
+    <rdfs:label xml:lang="en">UUID</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Version">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <rdfs:comment>Datatype representing a version identifier that follows Semantic Versioning (SemVer 2.0.0) principles: MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]. The version consists of a sequence of numbers and optional alphanumeric identifiers that indicate changes in a system, model, or software over time.</rdfs:comment>
+    <rdfs:label xml:lang="en">Version</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/accessRights">
+    <rdfs:comment>Information about who access the resource or an indication of its security status. Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.
+[CIM context:
+Reference to the confidentiality level that shall be applied when handling this model.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">accessRights</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/accrualPeriodicity">
+    <rdfs:comment>The frequency with which items are added to a collection.
+[CIM context:
+Reference to the time frame.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">accrualPeriodicity</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#alternativeVersionOf">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>This resource is an alternative version of a non-versioned or abstract resource.
+This property is intended for relating a versioned resource to a non-versioned or abstract resource at the same time express that multiple versions exist.
+dcatcim:alternativeVersionOf is a specialisation of dcat:isVersionOf with the restriction that the resource shall have a preferred version (dcatcim:preferredVersion) so that the preferred dataset can be used when there is no need to access all alternative versions.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/dcatcim#hasAlternativeVersion"/>
+    <rdfs:label xml:lang="en">alternativeVersionOf</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#applicationSoftware">
+    <rdfs:comment>Identifies the application software which generated this instance file. The application software term is defined in ISO/IEC/IEEE 24765:2017. The application software can be identified either:
+- as a string which contains information on the software name and version, e.g. &amp;lt;tool_name&amp;gt;-&amp;lt;major_version&amp;gt;.&amp;lt;minor_version&amp;gt;.&amp;lt;patch&amp;gt;, or
+- as a reference to a software identification tag as defined by ISO/IEC 19770-2:2015 and ISO/IEC/IEEE 24765:2017.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">applicationSoftware</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>eumd</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/conformsTo">
+    <rdfs:comment>An established standard to which the described resource conforms.
+[CIM context:
+An IRI describing the profile that governs this model. It uniquely identifies the profile and its version. Multiple instances of the property describe all standards or specifications to which the model and the document representing this model conform to.
+A document would normally conform to profile definitions, the constraints that relate to the profile and/or the set of business specific constrains. A reference to a machine- readable constraints or specification indicates that the document was tested against these constraints and it conforms to them.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">conformsTo</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdfs:comment>A free-text account of the resource.
+Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</rdfs:comment>
+    <cims:dataType rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#LangString"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#endDate">
+    <rdfs:comment>This property contains the end of the period.
+[CIM context:
+The end date and time of the validity period of the model that it is serialized in the document where the header is located. It is only used in relation to the startDate property which indicates the beginning of the validity period of the model.].</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/Metadata-European#DateTimeStamp"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">endDate</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#forwardDifference">
+    <rdfs:comment>Statement that describes facts that has been added from previous version of the dataset.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/dcatcim#Statements"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/dcatcim#DifferenceSet"/>
+    <rdfs:label xml:lang="en">forwardDifference</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#generatedAtTime">
+    <rdfs:comment>Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+[CIM context:
+The date and time when the model was serialized in the document where the header is located. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/Metadata-European#DateTimeStamp"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">generatedAtTime</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>prov</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#hasAlternativeVersion">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>This resource has a more specific, versioned alternative resource.
+This property is intended for relating a non-versioned or abstract resource to several versioned alternative resources, e.g. snapshots.
+
+dcatcim:hasAlternativeVersion is a specialisation of dcat:hasVersion with the restriction that the resource shall have a preferred version (dcatcim:preferredVersion) so that the preferred dataset can be used when there is no need to access all alternative versions.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/dcatcim#alternativeVersionOf"/>
+    <rdfs:label xml:lang="en">hasAlternativeVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasPart">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The dataset which is part of another dataset.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+    <rdfs:label xml:lang="en">hasPart</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#hasPreferredVersion">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The resource that has a preferred version.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/dcatcim#preferredVersion"/>
+    <rdfs:label xml:lang="en">hasPreferredVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#hasVersion">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>This resource is a version of a non-versioned or abstract resource.
+This property is intended for relating a versioned resource to a non-versioned or abstract resource.
+
+The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#isVersionOf"/>
+    <rdfs:label xml:lang="en">hasVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/identifier">
+    <rdfs:comment>A unique identifier of the resource being described or cataloged.
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.
+[CIM context:
+A unique identifier of the model which is serialised in the document where the header is located. The identifier is persistent for a given version of the model and shall change when the model changes.
+If a model is serialized as complete (full) model or as difference model exchange the identifier shall be the same. The identifier shall not be used as an identifier of the document which can be different for a given version of a model.].</rdfs:comment>
+    <rdfs:comment>A unique identifier of the resource being described or cataloged.
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.</rdfs:comment>
+    <cims:dataType rdf:resource="#UUID"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/dcatcim#Statements"/>
+    <rdfs:label xml:lang="en">identifier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#inSeries">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>A dataset series of which the dataset is part.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#seriesMember"/>
+    <rdfs:label xml:lang="en">inSeries</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isPartOf">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The dataset which this datatset is part of.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/hasPart"/>
+    <rdfs:label xml:lang="en">isPartOf</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isReferencedBy">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>A related resource, such as a publication, that references, cites, or otherwise points to the cataloged resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/references"/>
+    <rdfs:label xml:lang="en">isReferencedBy</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isReplacedBy">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>A related resource that supplants, displaces, or supersedes the described resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/replaces"/>
+    <rdfs:label xml:lang="en">isReplacedBy</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/isRequiredBy">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>A related resource that requires the described resource to support its function, delivery, or coherence.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/references"/>
+    <rdfs:label xml:lang="en">isRequiredBy</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#isVersionOf">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>This resource has a more specific, versioned resource. This property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g., snapshots.
+
+The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:hasVersion, which makes use of a broader notion of version, including editions and adaptations.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
+    <rdfs:label xml:lang="en">isVersionOf</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
+    <rdfs:comment>Date of formal issuance of the resource.
+Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.
+[CIM context:
+Reference to the date that the complete data set was made valid/available.].</rdfs:comment>
+    <cims:dataType rdf:resource="#DateTime"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">issued</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#keyword">
+    <rdfs:comment>A keyword or tag describing a resource.
+[CIM context:
+The intended content type of the model, usually the profile keyword. Used to identify what profiles and content is expected in the document, e.g., Equipment, Boundary, SSH, AE, etc. The same keyword is used for different versions of same profile. It can be also used to identify different content based on the same profile.
+For instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dcterms:conformsTo.].</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">keyword</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdfs:comment>A legal document giving official permission to do something with the resource. Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.
+[CIM context:
+Reference to the license under which the data is made available. If no license holder is defined, then the original data provider holds the license.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">license</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#nextVersion">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The next version for the resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#previousVersion"/>
+    <rdfs:label xml:lang="en">nextVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">
+    <rdfs:comment>rdf:object is an instance of rdf:Property that is used to state the object of a statement.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:label xml:lang="en">object</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">
+    <rdfs:comment>rdf:predicate is an instance of rdf:Property that is used to state the predicate of a statement.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:label xml:lang="en">predicate</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#preferredVersion">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The preferred version of a resource in a lineage of alternative versions.
+This property is used to specify a specific version to be the preference in a chain of alternatives, consisting of snapshots of a resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/dcatcim#hasPreferredVersion"/>
+    <rdfs:label xml:lang="en">preferredVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#previousVersion">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The previous version of a resource in a lineage.
+This property is meant to be used to specify a version chain, consisting of snapshots of a resource.
+
+The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. One of the typical cases here is representing the history of the versions of a dataset that have been released over time.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#nextVersion"/>
+    <rdfs:label xml:lang="en">previousVersion</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#processType">
+    <rdfs:comment>The exact business nature. Reference to Business Process configurations.</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">processType</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>eumd</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/publisher">
+    <rdfs:comment>An entity responsible for making the resource available.
+[CIM context: 
+The agent that is publishing the dataset on the given platform.]</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">publisher</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/references">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>A related resource that is referenced, cited, or otherwise pointed to by the described resource[.
+[CIM context: 
+The referenced resource that is being complemented in this dataset, e.g. SSH is referencing EQ.]</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/isReferencedBy"/>
+    <rdfs:label xml:lang="en">references</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/replaces">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>A related resource that is supplanted, displaced, or superseded by the described resource
+[CIM context: 
+The referenced dataset is being replaced by this dataset.]</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/isReplacedBy"/>
+    <rdfs:label xml:lang="en">replaces</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/requires">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>A related resource that is required by the described resource to support its function, delivery, or coherence.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://purl.org/dc/terms/isRequiredBy"/>
+    <rdfs:label xml:lang="en">requires</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#reverseDifference">
+    <rdfs:comment>Statement that describes facts that has been removed from previous version of the dataset.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/dcatcim#Statements"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/dcatcim#DifferenceSet"/>
+    <rdfs:label xml:lang="en">reverseDifference</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/rights">
+    <rdfs:comment>A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">rights</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/rightsHolder">
+    <rdfs:comment>Information about rights held in and over the resource.
+Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">rightsHolder</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#seriesMember">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>A dataset that is member of this series. </rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
+    <rdfs:label xml:lang="en">seriesMember</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/source">
+    <rdfs:comment>A related resource from which the described resource is derived.
+This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system.</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">source</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/spatial">
+    <rdfs:comment>The geographical area covered by the dataset.
+[CIM context: 
+The responsibility area that multiple model can describe, also referred to frame.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">spatial</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#startDate">
+    <rdfs:comment>This property contains the start of the period.
+[CIM context:
+The date and time that this model represents, i.e. for which the model is (or was) valid. It indicates the beginning of the validity period. It is indicating either an instant (in cases where the model is only valid for a point in time) or the start time of a period. If not provided the model is considered valid for any time stamp. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/Metadata-European#DateTimeStamp"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">startDate</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#statement">
+    <rdfs:comment>A name given to the resource.</rdfs:comment>
+    <cims:dataType rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/dcatcim#Statements"/>
+    <rdfs:label xml:lang="en">statement</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcatcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">
+    <rdfs:comment>rdf:subject is an instance of rdf:Property that is used to state the subject of a statement.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:label xml:lang="en">subject</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#temporalResolution">
+    <rdfs:comment>Minimum time period resolvable in a dataset.
+[CIM context: 
+Describes the Market Time Unit (MTU), e.g. hourly, 15 min., etc.]</rdfs:comment>
+    <cims:dataType rdf:resource="#Duration"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">temporalResolution</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:comment>A name given to the resource.</rdfs:comment>
+    <rdfs:comment>A name given to the resource.
+[CIM context: 
+The human readable name of the dataset that can form the instance file name.]</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/dcatcim#Statements"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">title</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/type">
+    <rdfs:comment>The nature or genre of the resource. Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format.</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcterms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#usedSettings">
+    <rdfs:comment>Reference to a set of parameters describing used settings (e.g. power flow settings, process settings, etc.) applied to the model prior its serialisation.</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">usedSettings</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>eumd</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/dcat#version">
+    <rdfs:comment>The version indicator (name or identifier) of a resource.</rdfs:comment>
+    <cims:dataType rdf:resource="#Version"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">version</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>dcat</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/adms#versionNotes">
+    <rdfs:comment>A description of changes between this version and the previous version of the resource.</rdfs:comment>
+    <cims:dataType rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#LangString"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label xml:lang="en">versionNotes</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>adms</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy">
+    <rdfs:comment>Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.
+[CIM context:
+Reference to an activity or the exact business nature (process, configuration) which produced or uses the model.].</rdfs:comment>
+    <cims:dataType rdf:resource="#URI"/>
+    <rdfs:label xml:lang="en">wasGeneratedBy</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>prov</cims:stereotype>
+    <cims:stereotype>deprecated</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+</rdf:RDF>

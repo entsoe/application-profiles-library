@@ -1,0 +1,1613 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base   <https://ap-con.cim4.eu/AssessedElement-Simple/2.4> .
+@prefix ae:    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4#> .
+@prefix cc:    <https://common-constraints.eu/> .
+@prefix cim:   <https://cim.ucaiug.io/ns#> .
+@prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+@prefix cim17: <http://iec.ch/TC57/CIM100#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:   <http://purl.org/dc/terms/> .
+@prefix dm:    <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
+@prefix md:    <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix nc:    <https://cim4.eu/ns/nc#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+ae:Ontology  rdf:type     owl:Ontology;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1";
+        dcterms:description   "Describing constraints extracted from RDFS.";
+        dcterms:identifier    "f8a56cd8-d0ea-4680-8541-957ce748e0f4";
+        dcterms:issued        "2026-05-28T16:29:08.709172500"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Assessed Element Vocabulary"@en;
+        owl:versionIRI    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4>;
+        owl:versionInfo   "2.4.1"@en;
+        dcat:keyword      "AE";
+        dcat:theme        "constraint"@en .
+
+ae:CrossBorderRelevance.AssessedElement-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AssessedElement;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AssessedElement";
+        sh:name         "CrossBorderRelevance.AssessedElement-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        17;
+        sh:path         nc:CrossBorderRelevance.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.AssessedElement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "CrossBorderRelevance.AssessedElement-cardinality";
+        sh:order        59;
+        sh:path         nc:CrossBorderRelevance.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.BiddingZoneBorder-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:BiddingZoneBorder;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:BiddingZoneBorder";
+        sh:name         "CrossBorderRelevance.BiddingZoneBorder-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        16;
+        sh:path         nc:CrossBorderRelevance.BiddingZoneBorder;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.BiddingZoneBorder-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "CrossBorderRelevance.BiddingZoneBorder-cardinality";
+        sh:order        58;
+        sh:path         nc:CrossBorderRelevance.BiddingZoneBorder;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "CrossBorderRelevance.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        35;
+        sh:path         nc:CrossBorderRelevance.mRID;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "CrossBorderRelevance.mRID-cardinality";
+        sh:order        57;
+        sh:path         nc:CrossBorderRelevance.mRID;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.normalEnabled-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "CrossBorderRelevance.normalEnabled-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        34;
+        sh:path         nc:CrossBorderRelevance.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance.normalEnabled-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "CrossBorderRelevance.normalEnabled-cardinality";
+        sh:order        56;
+        sh:path         nc:CrossBorderRelevance.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:CrossBorderRelevance-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              6;
+        sh:property           [ sh:path  nc:CrossBorderRelevance.AssessedElement ];
+        sh:property           [ sh:path  nc:CrossBorderRelevance.BiddingZoneBorder ];
+        sh:property           [ sh:path  nc:CrossBorderRelevance.mRID ];
+        sh:property           [ sh:path  nc:CrossBorderRelevance.normalEnabled ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:CrossBorderRelevance .
+
+ae:CrossBorderRelevance
+        rdf:type        sh:NodeShape;
+        sh:property     ae:CrossBorderRelevance.AssessedElement-valueType , ae:CrossBorderRelevance.AssessedElement-cardinality , ae:CrossBorderRelevance.BiddingZoneBorder-valueType , ae:CrossBorderRelevance.BiddingZoneBorder-cardinality , ae:CrossBorderRelevance.mRID-datatype , ae:CrossBorderRelevance.mRID-cardinality , ae:CrossBorderRelevance.normalEnabled-datatype , ae:CrossBorderRelevance.normalEnabled-cardinality;
+        sh:targetClass  nc:CrossBorderRelevance .
+
+ae:OperationalLimit.AssessedElement-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ae:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        5;
+        sh:path         nc:OperationalLimit.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:OperationalLimit.AssessedElement-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ae:OperationalLimit.AssessedElement-propertyInverse;
+        sh:targetSubjectsOf  nc:OperationalLimit.AssessedElement .
+
+ae:OperationalLimit.OperationalLimitSet-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        cim:OperationalLimitSet;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:OperationalLimitSet";
+        sh:name         "OperationalLimit.OperationalLimitSet-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        15;
+        sh:path         cim:OperationalLimit.OperationalLimitSet;
+        sh:severity     sh:Violation .
+
+ae:OperationalLimit.OperationalLimitSet-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OperationalLimit.OperationalLimitSet-cardinality";
+        sh:order        54;
+        sh:path         cim:OperationalLimit.OperationalLimitSet;
+        sh:severity     sh:Violation .
+
+ae:BaseCaseCurrentLimit.normalValue-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "BaseCaseCurrentLimit.normalValue-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        33;
+        sh:path         nc:BaseCaseCurrentLimit.normalValue;
+        sh:severity     sh:Violation .
+
+ae:BaseCaseCurrentLimit.normalValue-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "BaseCaseCurrentLimit.normalValue-cardinality";
+        sh:order        53;
+        sh:path         nc:BaseCaseCurrentLimit.normalValue;
+        sh:severity     sh:Violation .
+
+ae:BaseCaseCurrentLimit-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              5;
+        sh:property           [ sh:path  cim:OperationalLimit.OperationalLimitSet ];
+        sh:property           [ sh:path  nc:BaseCaseCurrentLimit.normalValue ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:BaseCaseCurrentLimit .
+
+ae:BaseCaseCurrentLimit
+        rdf:type        sh:NodeShape;
+        sh:property     ae:OperationalLimit.OperationalLimitSet-valueType , ae:OperationalLimit.OperationalLimitSet-cardinality , ae:BaseCaseCurrentLimit.normalValue-datatype , ae:BaseCaseCurrentLimit.normalValue-cardinality;
+        sh:targetClass  nc:BaseCaseCurrentLimit .
+
+ae:OperationalLimitSet.OperationalLimitValue-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ae:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        4;
+        sh:path         cim:OperationalLimitSet.OperationalLimitValue;
+        sh:severity     sh:Violation .
+
+ae:OperationalLimitSet.OperationalLimitValue-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ae:OperationalLimitSet.OperationalLimitValue-propertyInverse;
+        sh:targetSubjectsOf  cim:OperationalLimitSet.OperationalLimitValue .
+
+ae:OperationalLimitSet-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              4;
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:severity           sh:Info;
+        sh:targetClass        cim:OperationalLimitSet .
+
+ae:OperationalLimitSet
+        rdf:type        sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality;
+        sh:targetClass  cim:OperationalLimitSet .
+
+ae:AssessedElementWithContingency.AssessedElement-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AssessedElement;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AssessedElement";
+        sh:name         "AssessedElementWithContingency.AssessedElement-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        14;
+        sh:path         nc:AssessedElementWithContingency.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.AssessedElement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithContingency.AssessedElement-cardinality";
+        sh:order        49;
+        sh:path         nc:AssessedElementWithContingency.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.Contingency-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElementWithContingency.Contingency-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        13;
+        sh:path         ( nc:AssessedElementWithContingency.Contingency rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.Contingency-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElementWithContingency.Contingency-valueType;
+        sh:targetClass  nc:AssessedElementWithContingency .
+
+ae:AssessedElementWithContingency.Contingency-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithContingency.Contingency-cardinality";
+        sh:order        48;
+        sh:path         nc:AssessedElementWithContingency.Contingency;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.combinationConstraintKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:in           ( nc:ElementCombinationConstraintKind.excluded nc:ElementCombinationConstraintKind.considered nc:ElementCombinationConstraintKind.included );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AssessedElementWithContingency.combinationConstraintKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        30;
+        sh:path         nc:AssessedElementWithContingency.combinationConstraintKind;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.combinationConstraintKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithContingency.combinationConstraintKind-cardinality";
+        sh:order        47;
+        sh:path         nc:AssessedElementWithContingency.combinationConstraintKind;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElementWithContingency.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        29;
+        sh:path         nc:AssessedElementWithContingency.mRID;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithContingency.mRID-cardinality";
+        sh:order        46;
+        sh:path         nc:AssessedElementWithContingency.mRID;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.normalEnabled-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElementWithContingency.normalEnabled-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        28;
+        sh:path         nc:AssessedElementWithContingency.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency.normalEnabled-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElementWithContingency.normalEnabled-cardinality";
+        sh:order        45;
+        sh:path         nc:AssessedElementWithContingency.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithContingency-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              3;
+        sh:property           [ sh:path  nc:AssessedElementWithContingency.AssessedElement ];
+        sh:property           [ sh:path  nc:AssessedElementWithContingency.Contingency ];
+        sh:property           [ sh:path  nc:AssessedElementWithContingency.combinationConstraintKind ];
+        sh:property           [ sh:path  nc:AssessedElementWithContingency.mRID ];
+        sh:property           [ sh:path  nc:AssessedElementWithContingency.normalEnabled ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AssessedElementWithContingency .
+
+ae:AssessedElementWithContingency
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElementWithContingency.AssessedElement-valueType , ae:AssessedElementWithContingency.AssessedElement-cardinality , ae:AssessedElementWithContingency.Contingency-cardinality , ae:AssessedElementWithContingency.combinationConstraintKind-datatype , ae:AssessedElementWithContingency.combinationConstraintKind-cardinality , ae:AssessedElementWithContingency.mRID-datatype , ae:AssessedElementWithContingency.mRID-cardinality , ae:AssessedElementWithContingency.normalEnabled-datatype , ae:AssessedElementWithContingency.normalEnabled-cardinality;
+        sh:targetClass  nc:AssessedElementWithContingency .
+
+ido:IdentifiedObject.description-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ido:DatatypesGroupIO;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "IdentifiedObject.description-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.description;
+        sh:severity     sh:Violation .
+
+ido:IdentifiedObject.description-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ido:CardinalityIO;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "IdentifiedObject.description-cardinality";
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.description;
+        sh:severity     sh:Violation .
+
+ido:IdentifiedObject.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ido:DatatypesGroupIO;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "IdentifiedObject.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.mRID;
+        sh:severity     sh:Violation .
+
+ido:IdentifiedObject.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ido:CardinalityIO;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "IdentifiedObject.mRID-cardinality";
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.mRID;
+        sh:severity     sh:Violation .
+
+ido:IdentifiedObject.name-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ido:DatatypesGroupIO;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "IdentifiedObject.name-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.name;
+        sh:severity     sh:Violation .
+
+ido:IdentifiedObject.name-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ido:CardinalityIO;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "IdentifiedObject.name-cardinality";
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.name;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCriticalForCapacityCalculation-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.isCriticalForCapacityCalculation-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        24;
+        sh:path         nc:AssessedElement.isCriticalForCapacityCalculation;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCriticalForCapacityCalculation-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.isCriticalForCapacityCalculation-cardinality";
+        sh:order        41;
+        sh:path         nc:AssessedElement.isCriticalForCapacityCalculation;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedSystemOperator-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.AssessedSystemOperator-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        12;
+        sh:path         ( nc:AssessedElement.AssessedSystemOperator rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedSystemOperator-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.AssessedSystemOperator-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.AssessedSystemOperator-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AssessedElement.AssessedSystemOperator-cardinality";
+        sh:order        40;
+        sh:path         nc:AssessedElement.AssessedSystemOperator;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.OverlappingZone-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OverlappingZone;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OverlappingZone";
+        sh:name         "AssessedElement.OverlappingZone-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        11;
+        sh:path         nc:AssessedElement.OverlappingZone;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.OverlappingZone-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.OverlappingZone-cardinality";
+        sh:order        39;
+        sh:path         nc:AssessedElement.OverlappingZone;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.NativeRegion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.NativeRegion-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        10;
+        sh:path         ( nc:AssessedElement.NativeRegion rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.NativeRegion-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.NativeRegion-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.NativeRegion-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.NativeRegion-cardinality";
+        sh:order        38;
+        sh:path         nc:AssessedElement.NativeRegion;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalScannedThresholdMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalScannedThresholdMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        23;
+        sh:path         nc:AssessedElement.normalScannedThresholdMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalScannedThresholdMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalScannedThresholdMargin-cardinality";
+        sh:order        37;
+        sh:path         nc:AssessedElement.normalScannedThresholdMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustment-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustment-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        22;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustment-cardinality";
+        sh:order        36;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustmentJustification-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustmentJustification-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        21;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustmentJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustmentJustification-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustmentJustification-cardinality";
+        sh:order        35;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustmentJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCoordinatedValidationAdjustment-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalCoordinatedValidationAdjustment-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        20;
+        sh:path         nc:AssessedElement.normalCoordinatedValidationAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCoordinatedValidationAdjustment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalCoordinatedValidationAdjustment-cardinality";
+        sh:order        34;
+        sh:path         nc:AssessedElement.normalCoordinatedValidationAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalAppointedMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalAppointedMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        19;
+        sh:path         nc:AssessedElement.normalAppointedMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalAppointedMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalAppointedMargin-cardinality";
+        sh:order        33;
+        sh:path         nc:AssessedElement.normalAppointedMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustmentShare-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustmentShare-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        18;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustmentShare;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalIndividualValidationAdjustmentShare-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalIndividualValidationAdjustmentShare-cardinality";
+        sh:order        32;
+        sh:path         nc:AssessedElement.normalIndividualValidationAdjustmentShare;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.SecuredForRegion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.SecuredForRegion-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        9;
+        sh:path         ( nc:AssessedElement.SecuredForRegion rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.SecuredForRegion-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.SecuredForRegion-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.SecuredForRegion-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.SecuredForRegion-cardinality";
+        sh:order        31;
+        sh:path         nc:AssessedElement.SecuredForRegion;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.targetRemainingAvailableMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.targetRemainingAvailableMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        17;
+        sh:path         nc:AssessedElement.targetRemainingAvailableMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.targetRemainingAvailableMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.targetRemainingAvailableMargin-cardinality";
+        sh:order        30;
+        sh:path         nc:AssessedElement.targetRemainingAvailableMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalMaxFlow-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalMaxFlow-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        16;
+        sh:path         nc:AssessedElement.normalMaxFlow;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalMaxFlow-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalMaxFlow-cardinality";
+        sh:order        29;
+        sh:path         nc:AssessedElement.normalMaxFlow;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalTargetRemainingAvailableMarginJustification-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalTargetRemainingAvailableMarginJustification-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        15;
+        sh:path         nc:AssessedElement.normalTargetRemainingAvailableMarginJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalTargetRemainingAvailableMarginJustification-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalTargetRemainingAvailableMarginJustification-cardinality";
+        sh:order        28;
+        sh:path         nc:AssessedElement.normalTargetRemainingAvailableMarginJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCombinableWithContingency-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.isCombinableWithContingency-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        14;
+        sh:path         nc:AssessedElement.isCombinableWithContingency;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCombinableWithContingency-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.isCombinableWithContingency-cardinality";
+        sh:order        27;
+        sh:path         nc:AssessedElement.isCombinableWithContingency;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.outsideCapacityMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.outsideCapacityMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        13;
+        sh:path         nc:AssessedElement.outsideCapacityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.outsideCapacityMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.outsideCapacityMargin-cardinality";
+        sh:order        26;
+        sh:path         nc:AssessedElement.outsideCapacityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCriticalElementJustification-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalCriticalElementJustification-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        12;
+        sh:path         nc:AssessedElement.normalCriticalElementJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCriticalElementJustification-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalCriticalElementJustification-cardinality";
+        sh:order        25;
+        sh:path         nc:AssessedElement.normalCriticalElementJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.inBaseCase-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.inBaseCase-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        11;
+        sh:path         nc:AssessedElement.inBaseCase;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.inBaseCase-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AssessedElement.inBaseCase-cardinality";
+        sh:order        24;
+        sh:path         nc:AssessedElement.inBaseCase;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.ConductingEquipment-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.ConductingEquipment-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        8;
+        sh:path         ( nc:AssessedElement.ConductingEquipment rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.ConductingEquipment-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.ConductingEquipment-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.ConductingEquipment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.ConductingEquipment-cardinality";
+        sh:order        23;
+        sh:path         nc:AssessedElement.ConductingEquipment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.DCTieCorridor-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:DCTieCorridor;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DCTieCorridor";
+        sh:name         "AssessedElement.DCTieCorridor-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        7;
+        sh:path         nc:AssessedElement.DCTieCorridor;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.DCTieCorridor-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.DCTieCorridor-cardinality";
+        sh:order        22;
+        sh:path         nc:AssessedElement.DCTieCorridor;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCombinableWithRemedialAction-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.isCombinableWithRemedialAction-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        10;
+        sh:path         nc:AssessedElement.isCombinableWithRemedialAction;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.isCombinableWithRemedialAction-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.isCombinableWithRemedialAction-cardinality";
+        sh:order        21;
+        sh:path         nc:AssessedElement.isCombinableWithRemedialAction;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.OperationalLimit-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:BaseCaseCurrentLimit nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit cim17:ApparentPowerLimit );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.OperationalLimit-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        6;
+        sh:path         ( nc:AssessedElement.OperationalLimit rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.OperationalLimit-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.OperationalLimit-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.OperationalLimit-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.OperationalLimit-cardinality";
+        sh:order        20;
+        sh:path         nc:AssessedElement.OperationalLimit;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.Line-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        cim:Line;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:Line";
+        sh:name         "AssessedElement.Line-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        5;
+        sh:path         nc:AssessedElement.Line;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.Line-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.Line-cardinality";
+        sh:order        19;
+        sh:path         nc:AssessedElement.Line;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.ScannedForRegion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.ScannedForRegion-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        4;
+        sh:path         ( nc:AssessedElement.ScannedForRegion rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.ScannedForRegion-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.ScannedForRegion-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.ScannedForRegion-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.ScannedForRegion-cardinality";
+        sh:order        18;
+        sh:path         nc:AssessedElement.ScannedForRegion;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedElementWithContingency-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ae:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        3;
+        sh:path         nc:AssessedElement.AssessedElementWithContingency;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedElementWithContingency-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ae:AssessedElement.AssessedElementWithContingency-propertyInverse;
+        sh:targetSubjectsOf  nc:AssessedElement.AssessedElementWithContingency .
+
+ae:AssessedElement.exclusionReason-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:in           ( nc:SecuredExclusionReasonKind.systemOperator nc:SecuredExclusionReasonKind.nonNativeCapacityCalculationRegion nc:SecuredExclusionReasonKind.capacityCalculationRegion );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AssessedElement.exclusionReason-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        9;
+        sh:path         nc:AssessedElement.exclusionReason;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.exclusionReason-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.exclusionReason-cardinality";
+        sh:order        16;
+        sh:path         nc:AssessedElement.exclusionReason;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalPositiveVirtualMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalPositiveVirtualMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        8;
+        sh:path         nc:AssessedElement.normalPositiveVirtualMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalPositiveVirtualMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalPositiveVirtualMargin-cardinality";
+        sh:order        15;
+        sh:path         nc:AssessedElement.normalPositiveVirtualMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedElementWithRemedialAction-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ae:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        2;
+        sh:path         nc:AssessedElement.AssessedElementWithRemedialAction;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedElementWithRemedialAction-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ae:AssessedElement.AssessedElementWithRemedialAction-propertyInverse;
+        sh:targetSubjectsOf  nc:AssessedElement.AssessedElementWithRemedialAction .
+
+ae:AssessedElement.AssessedPowerTransferCorridor-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElement.AssessedPowerTransferCorridor-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        3;
+        sh:path         ( nc:AssessedElement.AssessedPowerTransferCorridor rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.AssessedPowerTransferCorridor-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElement.AssessedPowerTransferCorridor-valueType;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElement.AssessedPowerTransferCorridor-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.AssessedPowerTransferCorridor-cardinality";
+        sh:order        13;
+        sh:path         nc:AssessedElement.AssessedPowerTransferCorridor;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalEnabled-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalEnabled-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        7;
+        sh:path         nc:AssessedElement.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalEnabled-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalEnabled-cardinality";
+        sh:order        12;
+        sh:path         nc:AssessedElement.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.insideCapacityMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.insideCapacityMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        6;
+        sh:path         nc:AssessedElement.insideCapacityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.insideCapacityMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.insideCapacityMargin-cardinality";
+        sh:order        11;
+        sh:path         nc:AssessedElement.insideCapacityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.maxMarginAdjustment-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.maxMarginAdjustment-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        5;
+        sh:path         nc:AssessedElement.maxMarginAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.maxMarginAdjustment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.maxMarginAdjustment-cardinality";
+        sh:order        10;
+        sh:path         nc:AssessedElement.maxMarginAdjustment;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCoordinatedValidationAdjustmentJustification-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.normalCoordinatedValidationAdjustmentJustification-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        4;
+        sh:path         nc:AssessedElement.normalCoordinatedValidationAdjustmentJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.normalCoordinatedValidationAdjustmentJustification-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.normalCoordinatedValidationAdjustmentJustification-cardinality";
+        sh:order        9;
+        sh:path         nc:AssessedElement.normalCoordinatedValidationAdjustmentJustification;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.CrossBorderRelevance-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ae:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        1;
+        sh:path         nc:AssessedElement.CrossBorderRelevance;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.CrossBorderRelevance-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ae:AssessedElement.CrossBorderRelevance-propertyInverse;
+        sh:targetSubjectsOf  nc:AssessedElement.CrossBorderRelevance .
+
+ae:AssessedElement.criticalElement-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:in           ( nc:CriticalElementKind.criticalAndMonitored nc:CriticalElementKind.validation nc:CriticalElementKind.critical nc:CriticalElementKind.monitored );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AssessedElement.criticalElement-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        3;
+        sh:path         nc:AssessedElement.criticalElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.criticalElement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.criticalElement-cardinality";
+        sh:order        7;
+        sh:path         nc:AssessedElement.criticalElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.flowReliabilityMargin-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:float;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElement.flowReliabilityMargin-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        2;
+        sh:path         nc:AssessedElement.flowReliabilityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement.flowReliabilityMargin-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElement.flowReliabilityMargin-cardinality";
+        sh:order        6;
+        sh:path         nc:AssessedElement.flowReliabilityMargin;
+        sh:severity     sh:Violation .
+
+ae:AssessedElement-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              2;
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  nc:AssessedElement.isCriticalForCapacityCalculation ];
+        sh:property           [ sh:path  nc:AssessedElement.AssessedSystemOperator ];
+        sh:property           [ sh:path  nc:AssessedElement.OverlappingZone ];
+        sh:property           [ sh:path  nc:AssessedElement.NativeRegion ];
+        sh:property           [ sh:path  nc:AssessedElement.normalScannedThresholdMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.normalIndividualValidationAdjustment ];
+        sh:property           [ sh:path  nc:AssessedElement.normalIndividualValidationAdjustmentJustification ];
+        sh:property           [ sh:path  nc:AssessedElement.normalCoordinatedValidationAdjustment ];
+        sh:property           [ sh:path  nc:AssessedElement.normalAppointedMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.normalIndividualValidationAdjustmentShare ];
+        sh:property           [ sh:path  nc:AssessedElement.SecuredForRegion ];
+        sh:property           [ sh:path  nc:AssessedElement.targetRemainingAvailableMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.normalMaxFlow ];
+        sh:property           [ sh:path  nc:AssessedElement.normalTargetRemainingAvailableMarginJustification ];
+        sh:property           [ sh:path  nc:AssessedElement.isCombinableWithContingency ];
+        sh:property           [ sh:path  nc:AssessedElement.outsideCapacityMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.normalCriticalElementJustification ];
+        sh:property           [ sh:path  nc:AssessedElement.inBaseCase ];
+        sh:property           [ sh:path  nc:AssessedElement.ConductingEquipment ];
+        sh:property           [ sh:path  nc:AssessedElement.flowReliabilityMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.criticalElement ];
+        sh:property           [ sh:path  nc:AssessedElement.normalCoordinatedValidationAdjustmentJustification ];
+        sh:property           [ sh:path  nc:AssessedElement.maxMarginAdjustment ];
+        sh:property           [ sh:path  nc:AssessedElement.insideCapacityMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.normalEnabled ];
+        sh:property           [ sh:path  nc:AssessedElement.AssessedPowerTransferCorridor ];
+        sh:property           [ sh:path  nc:AssessedElement.normalPositiveVirtualMargin ];
+        sh:property           [ sh:path  nc:AssessedElement.exclusionReason ];
+        sh:property           [ sh:path  nc:AssessedElement.ScannedForRegion ];
+        sh:property           [ sh:path  nc:AssessedElement.Line ];
+        sh:property           [ sh:path  nc:AssessedElement.OperationalLimit ];
+        sh:property           [ sh:path  nc:AssessedElement.isCombinableWithRemedialAction ];
+        sh:property           [ sh:path  nc:AssessedElement.DCTieCorridor ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AssessedElement .
+
+ae:AssessedElement  rdf:type  sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , ae:AssessedElement.isCriticalForCapacityCalculation-datatype , ae:AssessedElement.isCriticalForCapacityCalculation-cardinality , ae:AssessedElement.AssessedSystemOperator-cardinality , ae:AssessedElement.OverlappingZone-valueType , ae:AssessedElement.OverlappingZone-cardinality , ae:AssessedElement.NativeRegion-cardinality , ae:AssessedElement.normalScannedThresholdMargin-datatype , ae:AssessedElement.normalScannedThresholdMargin-cardinality , ae:AssessedElement.normalIndividualValidationAdjustment-datatype , ae:AssessedElement.normalIndividualValidationAdjustment-cardinality , ae:AssessedElement.normalIndividualValidationAdjustmentJustification-datatype , ae:AssessedElement.normalIndividualValidationAdjustmentJustification-cardinality , ae:AssessedElement.normalCoordinatedValidationAdjustment-datatype , ae:AssessedElement.normalCoordinatedValidationAdjustment-cardinality , ae:AssessedElement.normalAppointedMargin-datatype , ae:AssessedElement.normalAppointedMargin-cardinality , ae:AssessedElement.normalIndividualValidationAdjustmentShare-datatype , ae:AssessedElement.normalIndividualValidationAdjustmentShare-cardinality , ae:AssessedElement.SecuredForRegion-cardinality , ae:AssessedElement.targetRemainingAvailableMargin-datatype , ae:AssessedElement.targetRemainingAvailableMargin-cardinality , ae:AssessedElement.normalMaxFlow-datatype , ae:AssessedElement.normalMaxFlow-cardinality , ae:AssessedElement.normalTargetRemainingAvailableMarginJustification-datatype , ae:AssessedElement.normalTargetRemainingAvailableMarginJustification-cardinality , ae:AssessedElement.isCombinableWithContingency-datatype , ae:AssessedElement.isCombinableWithContingency-cardinality , ae:AssessedElement.outsideCapacityMargin-datatype , ae:AssessedElement.outsideCapacityMargin-cardinality , ae:AssessedElement.normalCriticalElementJustification-datatype , ae:AssessedElement.normalCriticalElementJustification-cardinality , ae:AssessedElement.inBaseCase-datatype , ae:AssessedElement.inBaseCase-cardinality , ae:AssessedElement.ConductingEquipment-cardinality , ae:AssessedElement.DCTieCorridor-valueType , ae:AssessedElement.DCTieCorridor-cardinality , ae:AssessedElement.isCombinableWithRemedialAction-datatype , ae:AssessedElement.isCombinableWithRemedialAction-cardinality , ae:AssessedElement.OperationalLimit-cardinality , ae:AssessedElement.Line-valueType , ae:AssessedElement.Line-cardinality , ae:AssessedElement.ScannedForRegion-cardinality , ae:AssessedElement.exclusionReason-datatype , ae:AssessedElement.exclusionReason-cardinality , ae:AssessedElement.normalPositiveVirtualMargin-datatype , ae:AssessedElement.flowReliabilityMargin-cardinality , ae:AssessedElement.flowReliabilityMargin-datatype , ae:AssessedElement.criticalElement-cardinality , ae:AssessedElement.criticalElement-datatype , ae:AssessedElement.normalCoordinatedValidationAdjustmentJustification-cardinality , ae:AssessedElement.normalCoordinatedValidationAdjustmentJustification-datatype , ae:AssessedElement.maxMarginAdjustment-cardinality , ae:AssessedElement.maxMarginAdjustment-datatype , ae:AssessedElement.insideCapacityMargin-cardinality , ae:AssessedElement.insideCapacityMargin-datatype , ae:AssessedElement.normalEnabled-cardinality , ae:AssessedElement.normalEnabled-datatype , ae:AssessedElement.AssessedPowerTransferCorridor-cardinality , ae:AssessedElement.normalPositiveVirtualMargin-cardinality;
+        sh:targetClass  nc:AssessedElement .
+
+ae:AssessedElementWithRemedialAction.AssessedElement-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AssessedElement;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AssessedElement";
+        sh:name         "AssessedElementWithRemedialAction.AssessedElement-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        2;
+        sh:path         nc:AssessedElementWithRemedialAction.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.AssessedElement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithRemedialAction.AssessedElement-cardinality";
+        sh:order        5;
+        sh:path         nc:AssessedElementWithRemedialAction.AssessedElement;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.RemedialAction-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ae:AssociationsGroup;
+        sh:in           ( nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AssessedElementWithRemedialAction.RemedialAction-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        1;
+        sh:path         ( nc:AssessedElementWithRemedialAction.RemedialAction rdf:type );
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.RemedialAction-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElementWithRemedialAction.RemedialAction-valueType;
+        sh:targetClass  nc:AssessedElementWithRemedialAction .
+
+ae:AssessedElementWithRemedialAction.RemedialAction-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithRemedialAction.RemedialAction-cardinality";
+        sh:order        4;
+        sh:path         nc:AssessedElementWithRemedialAction.RemedialAction;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.combinationConstraintKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:in           ( nc:ElementCombinationConstraintKind.excluded nc:ElementCombinationConstraintKind.considered nc:ElementCombinationConstraintKind.included );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AssessedElementWithRemedialAction.combinationConstraintKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        1;
+        sh:path         nc:AssessedElementWithRemedialAction.combinationConstraintKind;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.combinationConstraintKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithRemedialAction.combinationConstraintKind-cardinality";
+        sh:order        3;
+        sh:path         nc:AssessedElementWithRemedialAction.combinationConstraintKind;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElementWithRemedialAction.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        0;
+        sh:path         nc:AssessedElementWithRemedialAction.mRID;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AssessedElementWithRemedialAction.mRID-cardinality";
+        sh:order        2;
+        sh:path         nc:AssessedElementWithRemedialAction.mRID;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.normalEnabled-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ae:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AssessedElementWithRemedialAction.normalEnabled-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        -1;
+        sh:path         nc:AssessedElementWithRemedialAction.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction.normalEnabled-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ae:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AssessedElementWithRemedialAction.normalEnabled-cardinality";
+        sh:order        1;
+        sh:path         nc:AssessedElementWithRemedialAction.normalEnabled;
+        sh:severity     sh:Violation .
+
+ae:AssessedElementWithRemedialAction-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ae:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              1;
+        sh:property           [ sh:path  nc:AssessedElementWithRemedialAction.AssessedElement ];
+        sh:property           [ sh:path  nc:AssessedElementWithRemedialAction.RemedialAction ];
+        sh:property           [ sh:path  nc:AssessedElementWithRemedialAction.combinationConstraintKind ];
+        sh:property           [ sh:path  nc:AssessedElementWithRemedialAction.mRID ];
+        sh:property           [ sh:path  nc:AssessedElementWithRemedialAction.normalEnabled ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AssessedElementWithRemedialAction .
+
+ae:AssessedElementWithRemedialAction
+        rdf:type        sh:NodeShape;
+        sh:property     ae:AssessedElementWithRemedialAction.AssessedElement-valueType , ae:AssessedElementWithRemedialAction.AssessedElement-cardinality , ae:AssessedElementWithRemedialAction.RemedialAction-cardinality , ae:AssessedElementWithRemedialAction.combinationConstraintKind-datatype , ae:AssessedElementWithRemedialAction.combinationConstraintKind-cardinality , ae:AssessedElementWithRemedialAction.mRID-datatype , ae:AssessedElementWithRemedialAction.mRID-cardinality , ae:AssessedElementWithRemedialAction.normalEnabled-datatype , ae:AssessedElementWithRemedialAction.normalEnabled-cardinality;
+        sh:targetClass  nc:AssessedElementWithRemedialAction .
+
+cc:     rdf:type     owl:Ontology;
+        owl:imports  sh:;
+        sh:declare   [ rdf:type      sh:PrefixDeclaration;
+                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+                       sh:prefix     "rdf"
+                     ] .
+
+cc:ClassCount-propertySparql
+        rdf:type     sh:SPARQLConstraint;
+        sh:message   "The class {?class} appears {?value} times in the data graph.";
+        sh:prefixes  cc:;
+        sh:select    """ 
+            SELECT $this ?class (COUNT(?instance) AS ?value)
+            WHERE {
+                    ?instance rdf:type ?class .
+                   }
+            GROUP BY $this ?class
+             """ .
+
+cc:ClassCount-property
+        rdf:type        sh:PropertyShape;
+        sh:description  "Counts instance of classes present in the data graph.";
+        sh:group        cc:ClassesCountGroup;
+        sh:name         "ClassCount";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Info;
+        sh:sparql       cc:ClassCount-propertySparql .
+
+cc:ClassCount-node  rdf:type  sh:NodeShape;
+        sh:property    cc:ClassCount-property;
+        sh:targetClass  dcat:Dataset .
+
+cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
+        rdfs:label  "ClassesCount";
+        sh:order    1 .
+
+ae:AllowedClasses-property
+        rdf:type        sh:PropertyShape;
+        sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
+        sh:group        ae:ProfileClassesGroup;
+        sh:in           ( nc:AssessedElementWithRemedialAction nc:AssessedElement nc:AssessedElementWithContingency cim:OperationalLimitSet nc:BaseCaseCurrentLimit nc:CrossBorderRelevance nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit cim17:ApparentPowerLimit md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:message      "This class is not part of the profile to which this dataset conforms to.";
+        sh:name         "ClassNotInProfile";
+        sh:order        1;
+        sh:path         rdf:type;
+        sh:severity     sh:Info .
+
+ae:AllowedClasses-node
+        rdf:type             sh:NodeShape;
+        sh:property          ae:AllowedClasses-property;
+        sh:targetSubjectsOf  rdf:type .
+
+ae:ProfilePropertiesGroup
+        rdf:type    sh:PropertyGroup;
+        rdfs:label  "ProfileProperties";
+        sh:order    1 .
+
+ae:AssociationsGroup  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Associations";
+        sh:order    2 .
+
+ido:DatatypesGroupIO  rdf:type  sh:PropertyGroup;
+        rdfs:label  "DatatypesIO";
+        sh:order    1 .
+
+ae:ProfileClassesGroup
+        rdf:type    sh:PropertyGroup;
+        rdfs:label  "ProfileClasses";
+        sh:order    1 .
+
+ae:InverseAssociationsGroup
+        rdf:type    sh:PropertyGroup;
+        rdfs:label  "InverseAssociations";
+        sh:order    1 .
+
+ae:DatatypesGroup  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Datatypes";
+        sh:order    1 .
+
+ido:CardinalityGroup  rdf:type  sh:PropertyGroup;
+        rdfs:label  "CardinalityIO";
+        sh:order    0 .
+
+ae:CardinalityGroup  rdf:type  sh:PropertyGroup;
+        rdfs:label  "Cardinality";
+        sh:order    0 .
