@@ -158,16 +158,16 @@ scu:SeriesCompensator.varistorRatedCurrent-usage
         
     
 scu:SeriesCompensator.varistorRatedCurrent-usageSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The attribute is present and SeriesCompensator.varistorPresent is false." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The attribute is present and SeriesCompensator.varistorPresent is false." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         OPTIONAL {$this $PATH ?value }. 
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
         FILTER (bound(?value) && ?varpresent=false) .        
-			}""" .       
+      }""" .       
       
 scu:SeriesCompensator.varistorVoltageThreshold-usage
         a               sh:PropertyShape ;
@@ -181,13 +181,13 @@ scu:SeriesCompensator.varistorVoltageThreshold-usage
         
     
 scu:SeriesCompensator.varistorVoltageThreshold-usageSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The attribute is present and SeriesCompensator.varistorPresent is false." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The attribute is present and SeriesCompensator.varistorPresent is false." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         OPTIONAL {$this $PATH ?value }. 
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
         FILTER (bound(?value) && ?varpresent=false) .        
-			}""" .        
+      }""" .        

@@ -146,12 +146,12 @@ sshn301:CsConverter.targetAlpha-applicability
         
     
 sshn301:CsConverter.targetAlpha-applicabilitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "CsConverter.targetAlpha is provided for an inverter or discrete tap changer control is used or RegulatingControl is not provided." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "CsConverter.targetAlpha is provided for an inverter or discrete tap changer control is used or RegulatingControl is not provided." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         #OPTIONAL {$this $PATH ?value}.
         $this $PATH ?value.
         $this cim:CsConverter.operatingMode ?opermode .
@@ -170,7 +170,7 @@ sshn301:CsConverter.targetAlpha-applicabilitySparql
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
         #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .   
         FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete=true) || !bound(?discrete) )) .          
-			}""" .
+      }""" .
       
 sshn301:CsConverter.targetGamma-applicability
         a               sh:PropertyShape ;
@@ -184,12 +184,12 @@ sshn301:CsConverter.targetGamma-applicability
         
     
 sshn301:CsConverter.targetGamma-applicabilitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "CsConverter.targetGamma is provided for a rectifier or discrete tap changer control is used." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "CsConverter.targetGamma is provided for a rectifier or discrete tap changer control is used." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         #OPTIONAL {$this $PATH ?value}.
         $this $PATH ?value.
         $this cim:CsConverter.operatingMode ?opermode .
@@ -207,7 +207,7 @@ sshn301:CsConverter.targetGamma-applicabilitySparql
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
         #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) . 
         FILTER ((?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?discrete=true ) || !bound(?discrete))) .        
-			}""" .      
+      }""" .      
 
 sshn301:RegulatingControl  a  sh:NodeShape ;
         sh:property     sshn301:RegulatingControl-requiredAttributes;
@@ -227,19 +227,19 @@ sshn301:RegulatingControl-requiredAttributes
         
     
 sshn301:RegulatingControl-requiredAttributesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Both minAllowedTargetValue and maxAllowedTargetValue are not provided for RegulatingControl in mode powerFactor." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Both minAllowedTargetValue and maxAllowedTargetValue are not provided for RegulatingControl in mode powerFactor." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this 
+      WHERE {
         #$this $PATH ?value .
         $this $PATH cim:RegulatingControlModeKind.powerFactor .
         OPTIONAL {$this cim:RegulatingControl.minAllowedTargetValue ?minvalue}.
         OPTIONAL {$this cim:RegulatingControl.maxAllowedTargetValue ?maxvalue}. 
         #FILTER (?value=cim:RegulatingControlModeKind.powerFactor && (!bound(?minvalue) || !bound(?maxvalue))) .
         FILTER (!bound(?minvalue) || !bound(?maxvalue)) .        
-			}""" .
+      }""" .
       
       
 sshn301:TapChanger  a  sh:NodeShape ;
@@ -259,19 +259,19 @@ sshn301:TapChanger.step-valueType
         
     
 sshn301:TapChanger.step-valueTypeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Non-integer value for a discrete TapChangerControl." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Non-integer value for a discrete TapChangerControl." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.discrete true.
         #OPTIONAL {$this cim:TapChanger.TapChangerControl ?contr}.
         #?contr cim:RegulatingControl.discrete ?discrete . 
         #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") && bound(?contr) && ?discrete=true) .  
         FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .        
-			}""" .   
+      }""" .   
 
 
 sshn301:LinearShuntCompensator  a  sh:NodeShape ;
@@ -290,12 +290,12 @@ sshn301:ShuntCompensator.sections-valueLinear
         
     
 sshn301:ShuntCompensator.sections-valueLinearSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not between zero and ShuntCompensator.maximumSections." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The value is not between zero and ShuntCompensator.maximumSections." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         $this cim:ShuntCompensator.maximumSections ?maxsections .
         #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
@@ -303,7 +303,7 @@ sshn301:ShuntCompensator.sections-valueLinearSparql
         
         #FILTER (bound(?contr) && ?contrenabled=true && !(?value>=0 && ?value<=?maxsections)) . 
         FILTER ( !(?value>=0 && ?value<=?maxsections)) .        
-			}""" .       
+      }""" .       
       
 sshn301:NonlinearShuntCompensator  a  sh:NodeShape ;
         sh:property     sshn301:ShuntCompensator.sections-valueNonLinear ;
@@ -321,12 +321,12 @@ sshn301:ShuntCompensator.sections-valueNonLinear
         
     
 sshn301:ShuntCompensator.sections-valueNonLinearSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value does not equal one of the NonlinearShuntCompenstorPoint.sectionNumber." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value (COUNT(?type) AS ?types) ?typesall
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The value does not equal one of the NonlinearShuntCompenstorPoint.sectionNumber." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value (COUNT(?type) AS ?types) ?typesall
+      WHERE {
         {
         SELECT $this (COUNT(?typeall) AS ?typesall)
         WHERE {
@@ -343,7 +343,7 @@ sshn301:ShuntCompensator.sections-valueNonLinearSparql
         ?nscpoints cim:NonlinearShuntCompensatorPoint.sectionNumber ?sectionnumber .  
         #FILTER (bound(?contr) && ?contrenabled=true && ?value!=?sectionnumber) .
         FILTER (?value!=?sectionnumber) .
-			}
+      }
       GROUP BY $this ?value ?types ?typesall
       HAVING(?types=?typesall)
       """ .        
@@ -364,12 +364,12 @@ sshn301:ControlArea-netInterchangeCalculation
         
     
 sshn301:ControlArea-netInterchangeCalculationSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The sum of the EquivalentInjections which are connected to the BoundaryPoint-s differes from the ControlArea.netInterchange. ControlArea.netInterchange= {?value}. Sum of the EquivalentInjections= {?sump}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value ?sump
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The sum of the EquivalentInjections which are connected to the BoundaryPoint-s differes from the ControlArea.netInterchange. ControlArea.netInterchange= {?value}. Sum of the EquivalentInjections= {?sump}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value ?sump
+      WHERE {
         $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
         $this cim:ControlArea.netInterchange ?value .
         {
@@ -384,7 +384,7 @@ sshn301:ControlArea-netInterchangeCalculationSparql
         GROUP BY $this ?termtype
         }
         FILTER (?value!=?sump) .
-			} """ . 
+      } """ . 
 
  
             

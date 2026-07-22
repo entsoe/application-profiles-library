@@ -28,7 +28,7 @@ psc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Power schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/PowerSchedule-Complex/2.4> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -41,12 +41,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -84,16 +84,16 @@ psc:PowerSchedule-dcassociations
         sh:severity     sh:Violation .
         
 psc:PowerSchedule-dcassociationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "PowerSchedule is associated with both DCTieCorridor and DCPole." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:AvailabilityEnabled.DCTieCorridor ?dctc.} AS ?vDCTC).	
-		BIND(EXISTS{$this nc:AvailabilityEnabled.DCPole ?dcp.} AS ?vDCP).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "PowerSchedule is associated with both DCTieCorridor and DCPole." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.DCTieCorridor ?dctc.} AS ?vDCTC).  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.DCPole ?dcp.} AS ?vDCP).
 
         FILTER (?vDCTC=true && ?vDCP=true).
-			}""" . 
+      }""" . 
 
 

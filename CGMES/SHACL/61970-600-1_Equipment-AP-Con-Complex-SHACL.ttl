@@ -70,7 +70,7 @@ eq6001:Terminal
 
 eq6001:Terminal-EXCH8ConnectivityNode
         a               sh:PropertyShape ;
-        sh:description  "ConnectivityNode object instances shall be included in Core Equipment profile instance. The association end Terminal.ConnectivityNode is optional in the Core Equipment profile instance. However, a model including topology requires Terminals to have an association to either ConnectivityNode, TopologyNode or both.	The association end Terminal.TopologicalNode is required in cases where a RegulatingControl is associated with a Terminal." ;
+        sh:description  "ConnectivityNode object instances shall be included in Core Equipment profile instance. The association end Terminal.ConnectivityNode is optional in the Core Equipment profile instance. However, a model including topology requires Terminals to have an association to either ConnectivityNode, TopologyNode or both.  The association end Terminal.TopologicalNode is required in cases where a RegulatingControl is associated with a Terminal." ;
         sh:name         "C:600:EQ:Terminal:EXCH8ConnectivityNode" ;
         sh:minCount     1 ;
         sh:maxCount     1 ;

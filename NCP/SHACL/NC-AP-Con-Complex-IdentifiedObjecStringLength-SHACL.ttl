@@ -27,7 +27,7 @@ io:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "IdentifiedObject Constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.3.2"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -40,12 +40,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -82,16 +82,16 @@ io:IdentifiedObject.name-stringLength
         sh:severity     sh:Violation .
         
 io:IdentifiedObject.name-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is greater than 128 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
+    a         sh:SPARQLConstraint ;  
+    sh:message      "String length is greater than 128 characters." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value  
+      WHERE {      
         ?s $PATH ?value .
         
         FILTER (STRLEN(?value)>128) .
-			}""" .        
+      }""" .        
 
 io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;
         sh:property      io:IdentifiedObject.description-stringLength;
@@ -108,15 +108,15 @@ io:IdentifiedObject.description-stringLength
         sh:severity     sh:Violation .
         
 io:IdentifiedObject.description-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is greater than 256 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
+    a         sh:SPARQLConstraint ;  
+    sh:message      "String length is greater than 256 characters." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value  
+      WHERE {      
         ?s $PATH ?value .
         
         FILTER (STRLEN(?value)>256) .
-			}""" .    
+      }""" .    
 
 

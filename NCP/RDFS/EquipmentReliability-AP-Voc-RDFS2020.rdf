@@ -5790,11 +5790,11 @@ The MobileElectricalUnit abstracts the system-side functionality of mobile energ
 
 Examples include, but are not limited to:
 &lt;ul&gt;
-	&lt;li&gt;Electric vehicles (EVs)&lt;/li&gt;
-	&lt;li&gt;Electrically powered ferries&lt;/li&gt;
-	&lt;li&gt;Trailer-based battery storage units&lt;/li&gt;
-	&lt;li&gt;Mobile battery systems for backup or temporary grid support&lt;/li&gt;
-	&lt;li&gt;This concept supports consistent modeling of mobile energy systems in grid studies by treating the grid-facing connection as a stable power system element, while the associated physical unit is managed as an asset.&lt;/li&gt;
+  &lt;li&gt;Electric vehicles (EVs)&lt;/li&gt;
+  &lt;li&gt;Electrically powered ferries&lt;/li&gt;
+  &lt;li&gt;Trailer-based battery storage units&lt;/li&gt;
+  &lt;li&gt;Mobile battery systems for backup or temporary grid support&lt;/li&gt;
+  &lt;li&gt;This concept supports consistent modeling of mobile energy systems in grid studies by treating the grid-facing connection as a stable power system element, while the associated physical unit is managed as an asset.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <rdfs:label xml:lang="en">MobileElectricalUnit</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>

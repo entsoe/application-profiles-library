@@ -69,18 +69,18 @@ eqn600:EquivalentInjection.regulationCapability-notHVDC
         sh:severity     sh:Violation .
         
 eqn600:EquivalentInjection.regulationCapability-notHVDCSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "EquivalentInjection connects to a BoundaryPoint with flag isDirectCurrent=false (meaning this is not HVDC), but either EquivalentInjection.regulationCapability is set to true or there is a ReactiveCapabilityCurve associated." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "EquivalentInjection connects to a BoundaryPoint with flag isDirectCurrent=false (meaning this is not HVDC), but either EquivalentInjection.regulationCapability is set to true or there is a ReactiveCapabilityCurve associated." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value.
         OPTIONAL {$this cim:EquivalentInjection.ReactiveCapabilityCurve ?curve}.
         OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode ?bp } .
         OPTIONAL {?bp eu:BoundaryPoint.isDirectCurrent ?ishvdc } .
         FILTER (bound(?bp) && bound(?ishvdc) && ?ishvdc=false && (bound(?curve) || ?value=true)) .        
-			}""" .
+      }""" .
 
 
 eqn600:BoundaryPoint  a  sh:NodeShape ;
@@ -110,12 +110,12 @@ eqn600:BoundaryPoint-bppl1Bppl2
         sh:severity     sh:Violation .
         
 eqn600:BoundaryPoint-bppl1Bppl2Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ConnectivityNode which is designated as BoundaryPoint does not have EquivalentInjection connected to it." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ConnectivityNode which is designated as BoundaryPoint does not have EquivalentInjection connected to it." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:IdentifiedObject.name ?value .
         
         {
@@ -129,7 +129,7 @@ eqn600:BoundaryPoint-bppl1Bppl2Sparql
         FILTER NOT EXISTS {
         $this ^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection 
         }.
-			}""" . 
+      }""" . 
      
 
 eqn600:BoundaryPoint-bppl3
@@ -143,12 +143,12 @@ eqn600:BoundaryPoint-bppl3
         sh:severity     sh:Info .
         
 eqn600:BoundaryPoint-bppl3Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ConnectivityNode which is designated as BoundaryPoint does not have a two-Terminal ConductingEquipment connected to it." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ConnectivityNode which is designated as BoundaryPoint does not have a two-Terminal ConductingEquipment connected to it." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:IdentifiedObject.name ?value .
         
         FILTER NOT EXISTS {
@@ -208,7 +208,7 @@ eqn600:BoundaryPoint-bppl3Sparql
         FILTER NOT EXISTS {
         $this ^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentBranch 
         }.
-			}""" .        
+      }""" .        
 
 eqn600:ACLineSegment  a  sh:NodeShape ;
         sh:property     eqn600:ACLineSegment-BaseVoltageDiff ;
@@ -225,12 +225,12 @@ eqn600:ACLineSegment-BaseVoltageDiff
         sh:severity     sh:Violation .
 
 eqn600:ACLineSegment-BaseVoltageDiffSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "More that 10% difference of the BaseVoltage.nominalVoltage at the two ends of an ACLineSegment. Voltage 1: {?tp1nv}; Voltage 2: {?tp2nv}" ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?tp1nv ?tp2nv
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "More that 10% difference of the BaseVoltage.nominalVoltage at the two ends of an ACLineSegment. Voltage 1: {?tp1nv}; Voltage 2: {?tp2nv}" ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?tp1nv ?tp2nv
+      WHERE {
         ?term1 cim:Terminal.ConductingEquipment $this .
         ?term2 cim:Terminal.ConductingEquipment $this .
         ?term1 cim:ACDCTerminal.sequenceNumber 1.
@@ -241,5 +241,5 @@ eqn600:ACLineSegment-BaseVoltageDiffSparql
         ?tp2 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp2nv .
         
         FILTER ((?tp1nv<?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp1nv)>0.1) || (?tp1nv>?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp2nv)>0.1)) .        
-			}""" .
+      }""" .
 

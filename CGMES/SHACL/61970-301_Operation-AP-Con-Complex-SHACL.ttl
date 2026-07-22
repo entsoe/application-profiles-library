@@ -107,15 +107,15 @@ opu:AccumulatorLimit.value-valueRange
 #        
 #    
 #opu:Control.controlType-valueRangeSparql
-#		a         sh:SPARQLConstraint ;  
-#		sh:message "The value is not unique." ;
-#		sh:prefixes cim: ;
-#		sh:select """
-#			SELECT  $this ?value (count(distinct ?i) as ?count)
-#			WHERE {
+#    a         sh:SPARQLConstraint ;  
+#    sh:message "The value is not unique." ;
+#    sh:prefixes cim: ;
+#    sh:select """
+#      SELECT  $this ?value (count(distinct ?i) as ?count)
+#      WHERE {
 #             $this $PATH ?value .
 #             ?i $PATH ?value .
-#			}
+#      }
 #      GROUP BY $this ?value
 #      HAVING (?count>1)
 #      """ .

@@ -69,12 +69,12 @@ sm456:Model-angleReference
         sh:severity     sh:Violation .
         
 sm456:Model-angleReferenceSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The angle reference slack is located outside the model or the SynchronousMachine with the highest SynchronousMachine.referencePriority (ID: {?sm1}) is not in the SSH or the TopologicalNode (ID: {?tn}) is not the one referenced by TopologicalIsland.AngleRefTopologicalNode (TopologicalNode ID: {?tn1}) or there are multiple machines with SynchronousMachine.referencePriority=1." ;
-		sh:prefixes cim: ;
-		sh:select """
-    	SELECT $this ?sm1 ?tn ?value ?tn1
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The angle reference slack is located outside the model or the SynchronousMachine with the highest SynchronousMachine.referencePriority (ID: {?sm1}) is not in the SSH or the TopologicalNode (ID: {?tn}) is not the one referenced by TopologicalIsland.AngleRefTopologicalNode (TopologicalNode ID: {?tn1}) or there are multiple machines with SynchronousMachine.referencePriority=1." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?sm1 ?tn ?value ?tn1
+      WHERE {
           {
           #SELECT $this (COUNT(?smrp) as ?count)
           SELECT $this (COUNT(?type) as ?count)

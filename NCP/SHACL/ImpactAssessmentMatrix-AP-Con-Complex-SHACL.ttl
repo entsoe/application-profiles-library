@@ -27,7 +27,7 @@ iamc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Impact Assessment Matrix profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.4.0"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -40,12 +40,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -66,24 +66,24 @@ iamc:IAMgroup
         a           sh:PropertyGroup ;
         rdfs:label  "ImpactAssessmentMatrixGroup" ;
         sh:order    0 .
-		
+    
 
 iamc:ListBasedImpactAssessmentMatrix  a          sh:NodeShape ;
         sh:property      iamc:OutcomeValue.ImpactAssessmentMatrix-listBasedImpactAssessmentMatrix;
         sh:targetClass  nc:ListBasedImpactAssessmentMatrix .
-		
-		
+    
+    
 iamc:OutcomeValue.ImpactAssessmentMatrix-listBasedImpactAssessmentMatrix
         a               sh:PropertyShape ;
         sh:description  "For a ListBasedImpactAssessmentMatrix, RemedialActionScheduleOutcomeValue shall not be exchanged." ;
-		sh:message      "RemedialActionScheduleOutcomeValue is instantiated for a ListBasedImpactAssessmentMatrix." ;
+    sh:message      "RemedialActionScheduleOutcomeValue is instantiated for a ListBasedImpactAssessmentMatrix." ;
         sh:path         ([sh:inversePath  nc:OutcomeValue.ImpactAssessmentMatrix] rdf:type);
-		sh:in 			(nc:RemedialActionOutcomeValue);
+    sh:in       (nc:RemedialActionOutcomeValue);
         sh:group        iamc:IAMgroup ;
         sh:name         "C:NC:IAM:ListBasedImpactAssessmentMatrix:outcomeValue" ;
         sh:order        1 ;
-        sh:severity     sh:Violation .		
-		
+        sh:severity     sh:Violation .    
+    
 iamc:CalculationBasedImpactAssessmentMatrix  a          sh:NodeShape ;
         sh:property      iamc:OutcomeValue.ImpactAssessmentMatrix-CalculationBasedImpactAssessmentMatrix;
         sh:targetClass  nc:CalculationBasedImpactAssessmentMatrix .
@@ -91,13 +91,13 @@ iamc:CalculationBasedImpactAssessmentMatrix  a          sh:NodeShape ;
 iamc:OutcomeValue.ImpactAssessmentMatrix-CalculationBasedImpactAssessmentMatrix
         a               sh:PropertyShape ;
         sh:description  "For a CalculationBasedImpactAssessmentMatrix, RemedialActionOutcomeValue shall not be exchanged." ;
-		sh:message      "RemedialActionOutcomeValue is instantiated for a CalculationBasedImpactAssessmentMatrix." ;
+    sh:message      "RemedialActionOutcomeValue is instantiated for a CalculationBasedImpactAssessmentMatrix." ;
         sh:path         ([sh:inversePath  nc:OutcomeValue.ImpactAssessmentMatrix] rdf:type);
-		sh:in 			(nc:RemedialActionScheduleOutcomeValue);
+    sh:in       (nc:RemedialActionScheduleOutcomeValue);
         sh:group        iamc:IAMgroup ;
         sh:name         "C:NC:IAM:OutcomeValue.RemedialActionSchedule:calculationBasedImpactAssessmentMatrix" ;
         sh:order        2 ;
-        sh:severity     sh:Violation .		
+        sh:severity     sh:Violation .    
 
 iamc:ConnectingImpactAssessmentMatrix  a          sh:NodeShape ;
         sh:property      iamc:OutcomeValue.ImpactAssessmentMatrix-ConnectingImpactAssessmentMatrix;
@@ -108,10 +108,10 @@ iamc:ConnectingImpactAssessmentMatrix  a          sh:NodeShape ;
 iamc:OutcomeValue.ImpactAssessmentMatrix-ConnectingImpactAssessmentMatrix
         a               sh:PropertyShape ;
         sh:description  "For a ConnectingImpactAssessmentMatrix, shall have either RemedialActionScheduleOutcomeValue or RemedialActionOutcomeValue.";
-		sh:message      "RemedialActionScheduleOutcomeValue or RemedialActionOutcomeValue is not instantiated for a ConnectingImpactAssessmentMatrix." ;
+    sh:message      "RemedialActionScheduleOutcomeValue or RemedialActionOutcomeValue is not instantiated for a ConnectingImpactAssessmentMatrix." ;
         sh:path         ([sh:inversePath  nc:OutcomeValue.ImpactAssessmentMatrix] rdf:type);
-		sh:in 			(nc:RemedialActionScheduleOutcomeValue nc:RemedialActionOutcomeValue);
-		sh:minCount		1;
+    sh:in       (nc:RemedialActionScheduleOutcomeValue nc:RemedialActionOutcomeValue);
+    sh:minCount    1;
         sh:group        iamc:IAMgroup ;
         sh:name         "C:NC:IAM:ConnectingImpactAssessmentMatrix:outcomeValue" ;
         sh:order        3 ;
@@ -132,18 +132,18 @@ iamc:RemedialActionImpact-associations
         sh:severity     sh:Violation .
         
 iamc:RemedialActionImpact-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "A RemedialActionImpact does not have either RemedialActionGroup or RemedialAction associated with it." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
+    a         sh:SPARQLConstraint ;  
+    sh:message      "A RemedialActionImpact does not have either RemedialActionGroup or RemedialAction associated with it." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {      
        
-		BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
-		BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
+    BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
+    BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
         FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
-			}""" . 			
-			
+      }""" .       
+      
 iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
         sh:property     iamc:RemedialActionOutcomeValue-associations;
         sh:targetClass  nc:RemedialActionOutcomeValue .
@@ -159,14 +159,14 @@ iamc:RemedialActionOutcomeValue-associations
         sh:severity     sh:Violation .
         
 iamc:RemedialActionOutcomeValue-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "A RemedialActionOutcomeValue does not have either RemedialActionGroup or RemedialAction associated with it." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
+    a         sh:SPARQLConstraint ;  
+    sh:message      "A RemedialActionOutcomeValue does not have either RemedialActionGroup or RemedialAction associated with it." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {      
        
-		BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
-		BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
+    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
+    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
         FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
-			}""" . 			
+      }""" .       

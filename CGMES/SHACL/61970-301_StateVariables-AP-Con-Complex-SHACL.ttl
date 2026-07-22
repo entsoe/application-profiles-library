@@ -73,16 +73,16 @@ svu:CsConverter.gamma-valueRangeTypical
         sh:severity      sh:Warning .
         
 svu:CsConverter.gamma-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message       "The value is outside the range: 17-20 degrees." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
         FILTER (?value<17 || ?value>20) .        
-			}""" .         
+      }""" .         
 
 svu:CsConverter.alpha-valueRangeTypical
         a                sh:PropertyShape ;
@@ -95,16 +95,16 @@ svu:CsConverter.alpha-valueRangeTypical
         sh:severity      sh:Warning .
         
 svu:CsConverter.alpha-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message       "The value is outside the range: 10-18 degrees." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
         FILTER (?value<10 || ?value>18) .        
-			}""" .        
+      }""" .        
 
 svu:CsConverter.gamma-valueRange
         a                sh:PropertyShape ;

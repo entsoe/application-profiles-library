@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?tp1nv ?tp2nv
-			WHERE {
+      SELECT  $this ?tp1nv ?tp2nv
+      WHERE {
         ?term1 cim:Terminal.ConductingEquipment $this .
         ?term2 cim:Terminal.ConductingEquipment $this .
         ?term1 cim:ACDCTerminal.sequenceNumber 1.
@@ -32,4 +32,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         ?tp2 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?tp2nv .
         
         FILTER ((?tp1nv<?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp1nv)>0.1) || (?tp1nv>?tp2nv && (ABS(?tp1nv-?tp2nv)/?tp2nv)>0.1)) .        
-			}
+      }

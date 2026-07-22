@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         #OPTIONAL {$this $PATH ?value}.
         $this $PATH ?value.
         $this cim:CsConverter.operatingMode ?opermode .
@@ -40,4 +40,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
         #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .   
         FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete=true) || !bound(?discrete) )) .          
-			}
+      }

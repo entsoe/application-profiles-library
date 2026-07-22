@@ -63,7 +63,7 @@ sm600:DanglingReferences
     a sh:NodeShape ;
     sh:target [
         a sh:SPARQLTarget ;
-		sh:prefixes cim: ;
+    sh:prefixes cim: ;
         sh:select """
             SELECT DISTINCT ?this
             WHERE {
@@ -113,19 +113,19 @@ sm600:SvVoltage-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvVoltage-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvVoltage is not instantiated for a TopologicalNode which is referenced by a TopologicalIsland." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvVoltage is not instantiated for a TopologicalNode which is referenced by a TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this
+      WHERE {
         $this  ^cim:TopologicalIsland.TopologicalNodes ?topologicalisland.
         #OPTIONAL {$this  ^cim:TopologicalIsland.TopologicalNodes ?topologicalisland}.
         OPTIONAL {$this  ^cim:SvVoltage.TopologicalNode ?svvoltage} .
 
         FILTER (!bound(?svvoltage)).
         #FILTER (bound(?topologicalisland) && !bound(?svvoltage)).
-			}""" . 
+      }""" . 
 
 sm600:SvSwitch  a  sh:NodeShape ;
         sh:property     sm600:SvSwitch-SV__4;
@@ -142,12 +142,12 @@ sm600:SvSwitch-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvSwitch-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvSwitch is not instantiated for a retained Switch (or any of the subtypes) connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvSwitch is not instantiated for a retained Switch (or any of the subtypes) connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService true .
         $this cim:Switch.retained true .
         $this rdf:type ?value .
@@ -156,7 +156,7 @@ sm600:SvSwitch-SV__4Sparql
         OPTIONAL {$this  ^cim:SvSwitch.Switch  ?svswitch} .
         #FILTER (bound(?topologicalisland) && !bound(?svswitch)  ).
         FILTER (!bound(?svswitch)  ).
-			}""" . 
+      }""" . 
 
 sm600:SvStatus  a  sh:NodeShape ;
         sh:property     sm600:SvStatus-SV__4;
@@ -186,12 +186,12 @@ sm600:SvStatus-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvStatus-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvStatus is not instantiated for a ConductingEquipment connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this cim:TopologicalIsland.TopologicalNodes ?tn.
         ?tn ^cim:ConnectivityNode.TopologicalNode/^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment ?value.
         OPTIONAL {?value  ^cim:SvStatus.ConductingEquipment  ?svstatus} .
@@ -200,7 +200,7 @@ sm600:SvStatus-SV__4Sparql
         #OPTIONAL {$this  ^cim:SvStatus.ConductingEquipment  ?svstatus} .
         #FILTER (bound(?topologicalisland) && !bound(?svstatus) && ?value!=cim:Equipment ).
         FILTER (!bound(?svstatus) && ?value!=cim:Equipment ).
-			}""" . 
+      }""" . 
 
 sm600:SvShuntCompensatorSections  a  sh:NodeShape ;
         sh:property     sm600:SvShuntCompensatorSections-SV__4 , sm600:SvShuntCompensatorSections.sections-SV__4;
@@ -217,12 +217,12 @@ sm600:SvShuntCompensatorSections-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvShuntCompensatorSections-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvShuntCompensatorSections is not instantiated for a ShuntCompensator (or any of the subtypes) connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvShuntCompensatorSections is not instantiated for a ShuntCompensator (or any of the subtypes) connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService true .
         $this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland.
         $this rdf:type ?value .
@@ -230,7 +230,7 @@ sm600:SvShuntCompensatorSections-SV__4Sparql
         OPTIONAL {$this  ^cim:SvShuntCompensatorSections.ShuntCompensator  ?svshuntcompsec} .
         #FILTER (bound(?topologicalisland) && !bound(?svshuntcompsec)  ).
         FILTER (!bound(?svshuntcompsec)  ).
-			}""" . 
+      }""" . 
 
 sm600:SvTapStep  a  sh:NodeShape ;
         sh:property     sm600:SvTapStep-SV__4 , sm600:SvTapStep.position-SV__4;
@@ -247,12 +247,12 @@ sm600:SvTapStep-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvTapStep-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvTapStep is not instantiated for a RatioTapChanger or PhaseTapChanger (or any of the subtypes)  connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvTapStep is not instantiated for a RatioTapChanger or PhaseTapChanger (or any of the subtypes)  connected to a TopologicalNode which is referenced by a TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService) true .
         $this  (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)  ?topologicalisland .
         $this rdf:type ?value .
@@ -261,7 +261,7 @@ sm600:SvTapStep-SV__4Sparql
         OPTIONAL {$this  ^cim:SvTapStep.TapChanger  ?svtapstep} .
         #FILTER (bound(?topologicalisland) && !bound(?svtapstep)  ).
         FILTER (!bound(?svtapstep)  ).
-			}""" . 
+      }""" . 
 
 sm600:SvTapStep.position-SV__4
         a               sh:PropertyShape ;
@@ -274,12 +274,12 @@ sm600:SvTapStep.position-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvTapStep.position-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvTapStep.position is not the same as TapChanger.step for non-regulating TapChanger. SvTapStep.position is: {?svtapsteppos}; TapChanger.step is: {?value}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value ?svtapsteppos
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvTapStep.position is not the same as TapChanger.step for non-regulating TapChanger. SvTapStep.position is: {?svtapsteppos}; TapChanger.step is: {?value}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value ?svtapsteppos
+      WHERE {
         $this (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService) true .
         $this cim:TapChanger.controlEnabled ?controlen .
         $this  ^cim:SvTapStep.TapChanger/cim:SvTapStep.position  ?svtapsteppos.
@@ -288,7 +288,7 @@ sm600:SvTapStep.position-SV__4Sparql
         #OPTIONAL {$this  ^cim:SvTapStep.TapChanger/cim:SvTapStep.position  ?svtapsteppos} .
         #FILTER (bound(?svtapsteppos) && ((?controlen=false && ?svtapsteppos!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svtapsteppos!=?value) )  ).
         FILTER ((?controlen=false && ?svtapsteppos!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svtapsteppos!=?value)  ).
-			}""" . 
+      }""" . 
 
 sm600:SvShuntCompensatorSections.sections-SV__4
         a               sh:PropertyShape ;
@@ -301,12 +301,12 @@ sm600:SvShuntCompensatorSections.sections-SV__4
         sh:severity     sh:Violation .
         
 sm600:SvShuntCompensatorSections.sections-SV__4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SvShuntCompensatorSections.sections is not the same as ShuntCompensator.sections for non-regulating ShuntCompensator. SvShuntCompensatorSections.sections is: {?svshuntsec}; ShuntCompensator.sections is: {?value}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  DISTINCT $this ?value ?svshuntsec
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "SvShuntCompensatorSections.sections is not the same as ShuntCompensator.sections for non-regulating ShuntCompensator. SvShuntCompensatorSections.sections is: {?svshuntsec}; ShuntCompensator.sections is: {?value}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  DISTINCT $this ?value ?svshuntsec
+      WHERE {
         $this ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService true .
         $this cim:RegulatingCondEq.controlEnabled ?controlen .
         $this  ^cim:SvShuntCompensatorSections.ShuntCompensator/cim:SvShuntCompensatorSections.sections  ?svshuntsec .
@@ -315,7 +315,7 @@ sm600:SvShuntCompensatorSections.sections-SV__4Sparql
         #OPTIONAL {$this  ^cim:SvShuntCompensatorSections.ShuntCompensator/cim:SvShuntCompensatorSections.sections  ?svshuntsec} .
         #FILTER (bound(?svshuntsec) && ((?controlen=false && ?svshuntsec!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svshuntsec!=?value) )  ).
         FILTER ((?controlen=false && ?svshuntsec!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svshuntsec!=?value)   ).
-			}""" .
+      }""" .
 
 
 

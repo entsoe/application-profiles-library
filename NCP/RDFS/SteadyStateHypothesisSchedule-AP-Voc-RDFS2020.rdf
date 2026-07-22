@@ -3355,9 +3355,9 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SwitchRegularSchedule.locked">
     <rdfs:comment>If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:
 &lt;ul&gt;
-	&lt;li&gt;locked=true and Switch.open=true. The resulting state is open and locked;&lt;/li&gt;
-	&lt;li&gt;locked=false and Switch.open=true. The resulting state is open;&lt;/li&gt;
-	&lt;li&gt;locked=false and Switch.open=false. The resulting state is closed.&lt;/li&gt;
+  &lt;li&gt;locked=true and Switch.open=true. The resulting state is open and locked;&lt;/li&gt;
+  &lt;li&gt;locked=false and Switch.open=true. The resulting state is open;&lt;/li&gt;
+  &lt;li&gt;locked=false and Switch.open=false. The resulting state is closed.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <cims:dataType rdf:resource="#Boolean"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SwitchRegularSchedule"/>
@@ -3439,9 +3439,9 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SwitchTimePoint.locked">
     <rdfs:comment>If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:
 &lt;ul&gt;
-	&lt;li&gt;locked=true and Switch.open=true. The resulting state is open and locked;&lt;/li&gt;
-	&lt;li&gt;locked=false and Switch.open=true. The resulting state is open;&lt;/li&gt;
-	&lt;li&gt;locked=false and Switch.open=false. The resulting state is closed.&lt;/li&gt;
+  &lt;li&gt;locked=true and Switch.open=true. The resulting state is open and locked;&lt;/li&gt;
+  &lt;li&gt;locked=false and Switch.open=true. The resulting state is open;&lt;/li&gt;
+  &lt;li&gt;locked=false and Switch.open=false. The resulting state is closed.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <cims:dataType rdf:resource="#Boolean"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SwitchTimePoint"/>

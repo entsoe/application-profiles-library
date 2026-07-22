@@ -89,11 +89,11 @@ eq600:TapChanger.neutralU-valueRangePair
         
     
 eq600:TapChanger.neutralU-valueRangePairSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not the same as the PowerTransformerEnd.ratedU." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
+    a         sh:SPARQLConstraint ;  
+    sh:message "The value is not the same as the PowerTransformerEnd.ratedU." ;
+    sh:prefixes cim: ;
+    sh:select """
+        SELECT $this ?value 
         WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:RatioTapChanger.TransformerEnd/cim:PowerTransformerEnd.ratedU ?rratedu } .
@@ -118,11 +118,11 @@ eq600:Substation-count
         
     
 eq600:Substation-countSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The model has either one Substation or a Substation per VoltageLevel. Number of Substation-s: {?substations}. Number of VoltageLevel-s: {?voltagelevels}." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  ?substations ?voltagelevels
+    a         sh:SPARQLConstraint ;  
+    sh:message "The model has either one Substation or a Substation per VoltageLevel. Number of Substation-s: {?substations}. Number of VoltageLevel-s: {?voltagelevels}." ;
+    sh:prefixes cim: ;
+    sh:select """
+        SELECT $this  ?substations ?voltagelevels
         WHERE {
         {
           SELECT $this (COUNT(?ss) AS ?substations)
@@ -175,11 +175,11 @@ eq600:ReactiveCapabilityCurve-units
         
     
 eq600:ReactiveCapabilityCurve-unitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Not correct or not provided units of a ReactiveCapabilityCurve of a SynchronousMachine." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  
+    a         sh:SPARQLConstraint ;  
+    sh:message "Not correct or not provided units of a ReactiveCapabilityCurve of a SynchronousMachine." ;
+    sh:prefixes cim: ;
+    sh:select """
+        SELECT $this  
         WHERE {
         $this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/rdf:type cim:SynchronousMachine .
         $this cim:Curve.xUnit ?xunit .

@@ -2322,9 +2322,9 @@ In the case of priority strategy, the item with the lowest number gets allocated
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCSwitch.locked">
     <rdfs:comment>If true, the switch is locked. The resulting switch state is a combination of locked and DCSwitch.open attributes as follows:
 &lt;ul&gt;
-	&lt;li&gt;locked=true and DCSwitch.open=true. The resulting state is open and locked;&lt;/li&gt;
-	&lt;li&gt;locked=false and DCSwitch.open=true. The resulting state is open;&lt;/li&gt;
-	&lt;li&gt;locked=false and DCSwitch.open=false. The resulting state is closed.&lt;/li&gt;
+  &lt;li&gt;locked=true and DCSwitch.open=true. The resulting state is open and locked;&lt;/li&gt;
+  &lt;li&gt;locked=false and DCSwitch.open=true. The resulting state is open;&lt;/li&gt;
+  &lt;li&gt;locked=false and DCSwitch.open=false. The resulting state is closed.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <cims:dataType rdf:resource="#Boolean"/>
     <rdfs:domain rdf:resource="#DCSwitch"/>
@@ -3332,11 +3332,11 @@ The MobileElectricalUnit abstracts the system-side functionality of mobile energ
 
 Examples include, but are not limited to:
 &lt;ul&gt;
-	&lt;li&gt;Electric vehicles (EVs)&lt;/li&gt;
-	&lt;li&gt;Electrically powered ferries&lt;/li&gt;
-	&lt;li&gt;Trailer-based battery storage units&lt;/li&gt;
-	&lt;li&gt;Mobile battery systems for backup or temporary grid support&lt;/li&gt;
-	&lt;li&gt;This concept supports consistent modeling of mobile energy systems in grid studies by treating the grid-facing connection as a stable power system element, while the associated physical unit is managed as an asset.&lt;/li&gt;
+  &lt;li&gt;Electric vehicles (EVs)&lt;/li&gt;
+  &lt;li&gt;Electrically powered ferries&lt;/li&gt;
+  &lt;li&gt;Trailer-based battery storage units&lt;/li&gt;
+  &lt;li&gt;Mobile battery systems for backup or temporary grid support&lt;/li&gt;
+  &lt;li&gt;This concept supports consistent modeling of mobile energy systems in grid studies by treating the grid-facing connection as a stable power system element, while the associated physical unit is managed as an asset.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <rdfs:label xml:lang="en">MobileElectricalUnit</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -3998,9 +3998,9 @@ If the valueKind is incrementalPercentage, then the attribute value “100” sh
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SteadyStateInstruction#Package_SteadyStateInstructionProfile"/>
     <rdfs:comment>Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.
 &lt;ul&gt;
-	&lt;li&gt;The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).&lt;/li&gt;
-	&lt;li&gt;The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).&lt;/li&gt;
-	&lt;li&gt;The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.&lt;/li&gt;
+  &lt;li&gt;The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).&lt;/li&gt;
+  &lt;li&gt;The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).&lt;/li&gt;
+  &lt;li&gt;The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <rdfs:label xml:lang="en">RemedialActionDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>

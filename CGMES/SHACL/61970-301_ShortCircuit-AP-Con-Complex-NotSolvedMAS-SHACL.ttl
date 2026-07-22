@@ -73,12 +73,12 @@ scn301:MutualCoupling-terminalsAssignment
         
     
 scn301:MutualCoupling-terminalsAssignmentSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The terminals are either not related to ACLineSegment or the first and the second terminal associations are not pointing to different ACLineSegments. Type line 1: {?typeline1}. Type line 2: {?typeline2}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?typeline1 ?typeline2
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The terminals are either not related to ACLineSegment or the first and the second terminal associations are not pointing to different ACLineSegments. Type line 1: {?typeline1}. Type line 2: {?typeline2}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?typeline1 ?typeline2
+      WHERE {
         #$this cim:MutualCoupling.First_Terminal ?firstterminal .
         #$this cim:MutualCoupling.Second_Terminal ?secondterminal .
         #?firstterminal cim:Terminal.ConductingEquipment ?line1 . 
@@ -87,5 +87,5 @@ scn301:MutualCoupling-terminalsAssignmentSparql
         $this cim:MutualCoupling.Second_Terminal/cim:Terminal.ConductingEquipment ?line2 .
         ?line1 rdf:type ?typeline1 .
         ?line2 rdf:type ?typeline2 .
-				FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
-			}""" .      
+        FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
+      }""" .      
