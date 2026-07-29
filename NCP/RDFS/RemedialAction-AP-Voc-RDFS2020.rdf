@@ -3263,9 +3263,9 @@ If preventive remedial action, RemedialAction class shall not have association w
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialAction#Package_RemedialActionProfile"/>
     <rdfs:comment>Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.
 &lt;ul&gt;
-	&lt;li&gt;The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).&lt;/li&gt;
-	&lt;li&gt;The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).&lt;/li&gt;
-	&lt;li&gt;The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.&lt;/li&gt;
+  &lt;li&gt;The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).&lt;/li&gt;
+  &lt;li&gt;The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).&lt;/li&gt;
+  &lt;li&gt;The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.&lt;/li&gt;
 &lt;/ul&gt;</rdfs:comment>
     <rdfs:label xml:lang="en">RemedialActionDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>

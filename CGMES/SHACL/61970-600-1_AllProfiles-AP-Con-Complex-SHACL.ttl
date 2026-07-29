@@ -90,19 +90,19 @@ all600:All-GENC1
         sh:description  "All IdentifiedObject-s shall have a persistent and globally unique identifier (Master Resource Identifier - mRID)." ;
         sh:name         "C:600:ALL:NA:GENC1" ;
         sh:group        all600:All6001Group ;
-        sh:order        2 ;	
+        sh:order        2 ;  
         sh:severity     sh:Violation .
         
 all600:All-GENC1Sparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message      "Not an unique identifier." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this (COUNT(?value) AS ?counts) ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this (COUNT(?value) AS ?counts) ?value
+      WHERE {
           ?value rdf:type ?o.
           FILTER(?o!=cim:Equipment).
-			}
+      }
       GROUP BY $this ?value
       HAVING(?counts>1)
       """ . 
@@ -135,18 +135,18 @@ all600:All-GENC4
         sh:severity     sh:Info .
         
 all600:All-GENC4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Invalid syntax of ID (rdf:ID or rdf:about)." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Invalid syntax of ID (rdf:ID or rdf:about)." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
           ?value rdf:type ?o.
           BIND(str(?value) AS ?uuid) .
           #BIND(str($this) AS ?uuid) .
           BIND(STRAFTER(?uuid,"#_") AS ?secondpart) .
           FILTER(!REGEX(?secondpart, "^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i")).
-			}""" . 
+      }""" . 
         
 #all600:IDlen a  sh:NodeShape ;
 #        sh:property     all600:All-GENC5;
@@ -174,19 +174,19 @@ all600:All-GENC5
         sh:severity     sh:Violation .
         
 all600:All-GENC5Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The ID string is more than 60 characters or the string does not begin with underscore." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The ID string is more than 60 characters or the string does not begin with underscore." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
           ?value rdf:type ?o.
           #BIND(str(?s) AS ?uuid) .
           #$this rdf:type ?value .
           #BIND(str($this) AS ?uuid) .
           BIND(STRAFTER(str(?value),"#_") AS ?secondpart) .
           FILTER(STRLEN(?secondpart)>59 && ?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") ).
-			}""" . 
+      }""" . 
 
 
 #all600:IDunderscore a  sh:NodeShape ;
@@ -213,18 +213,18 @@ all600:All-GENC5Sparql
 #        sh:severity     sh:Violation .
 #        
 #all600:All-GENC5underscoreSparql
-#		a         sh:SPARQLConstraint ;  
-#		sh:message "The ID string does not begin with underscore." ;
-#		sh:prefixes cim: ;
-#		sh:select """
-#			SELECT  $this
-#			WHERE {
+#    a         sh:SPARQLConstraint ;  
+#    sh:message "The ID string does not begin with underscore." ;
+#    sh:prefixes cim: ;
+#    sh:select """
+#      SELECT  $this
+#      WHERE {
 #          ?s rdf:type ?o.
 #          BIND(str(?s) AS ?uuid) .
 #          #BIND(str($this) AS ?uuid) .
 #          BIND(STRAFTER(?uuid,"#_") AS ?secondpart) .
 #          FILTER(?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i")).
-#			}""" .   
+#      }""" .   
 
 all600:FullModelDateTime a  sh:NodeShape ;
         sh:property     all600:Model.created-HGEN4 , all600:Model.scenarioTime-HGEN4;
@@ -241,15 +241,15 @@ all600:Model.created-HGEN4
         sh:severity     sh:Violation .
         
 all600:Model.created-HGEN4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "File header Model.created is not a valid UTC date time." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "File header Model.created is not a valid UTC date time." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
           $this $PATH ?value .
           FILTER(!STRENDS(str(?value),"Z")).
-			}""" .    
+      }""" .    
 
 all600:Model.scenarioTime-HGEN4
         a               sh:PropertyShape ;
@@ -262,15 +262,15 @@ all600:Model.scenarioTime-HGEN4
         sh:severity     sh:Violation .
         
 all600:Model.scenarioTime-HGEN4Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "File header Model.scenarioTime is not a valid UTC date time." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "File header Model.scenarioTime is not a valid UTC date time." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
           $this $PATH ?value .
           FILTER(!STRENDS(str(?value),"Z")).
-			}""" .  
+      }""" .  
 
 all600:Float a  sh:NodeShape ;
         sh:property     all600:Float-specialValues;
@@ -299,17 +299,17 @@ all600:Float-specialValues
         sh:severity     sh:Violation .
         
 all600:Float-specialValuesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "INF or NaN used in an attributes defined as float or the values is not a numeric value." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "INF or NaN used in an attributes defined as float or the values is not a numeric value." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
           ?s ?p ?value .
           #BIND(str($this) AS ?value).
           FILTER(isLiteral(?this) && DATATYPE(?value)=xsd:float && (!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF"))).
           #FILTER(!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF")).
-			}""" . 
+      }""" . 
     
 all600:FullModelProf11 a  sh:NodeShape ;
         sh:property     all600:Model.profile-allowedValues ;
@@ -343,14 +343,14 @@ all600:Model.modelingAuthoritySet-marp10-12
 
         
 all600:Model.modelingAuthoritySet-marp10-12Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The property is defined as empty property." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value 
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The property is defined as empty property." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value 
+      WHERE {
           $this $PATH ?value .
           FILTER(STRLEN(str(?value))=0).
-			}""" .         
+      }""" .         
         
         

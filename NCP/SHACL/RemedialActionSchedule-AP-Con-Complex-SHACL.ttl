@@ -28,7 +28,7 @@ rasc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Remedial Action Schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -41,12 +41,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -87,21 +87,21 @@ rasc:RemedialActionSchedule-proposingEntity
         sh:severity     sh:Violation .
         
 rasc:RemedialActionSchedule-proposingEntitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The RemedialActionSchedule does not have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:RemedialActionSchedule.ProposingEntity ?o1} AS ?pesc).
-		BIND(EXISTS{$this ^nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ?o2} AS ?peso).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "The RemedialActionSchedule does not have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:RemedialActionSchedule.ProposingEntity ?o1} AS ?pesc).
+    BIND(EXISTS{$this ^nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ?o2} AS ?peso).
         FILTER (?pesc=false && ?peso=false ).
-			}""" .        
+      }""" .        
 
 rasc:RemedialActionScheduleGroup  a          sh:NodeShape ;
         sh:property      rasc:RemedialActionScheduleGroup.GroupDependency-cardinality, rasc:RemedialActionScheduleGroup-dependency, rasc:RemedialActionScheduleDependency.kind-cardinality;
         sh:targetClass  nc:RemedialActionScheduleGroup.
-		
+    
 rasc:RemedialActionScheduleGroup.GroupDependency-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "A RemedialActionScheduleGroup shall have at least 3 RemedialActionScheduleDependency referenced.";
@@ -112,7 +112,7 @@ rasc:RemedialActionScheduleGroup.GroupDependency-cardinality
         sh:order        2;
         sh:path         [ sh:inversePath  nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ];
         sh:severity     sh:Violation .
-		
+    
 rasc:RemedialActionScheduleGroup-dependency
         a               sh:PropertyShape ;
         sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
@@ -124,17 +124,17 @@ rasc:RemedialActionScheduleGroup-dependency
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleGroup-dependencySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o1} AS ?a1).
-		BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o2} AS ?a2).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o1} AS ?a1).
+    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o2} AS ?a2).
         FILTER (?a1=false && ?a2=false ).
-			}""" .		
-			
+      }""" .    
+      
 rasc:RemedialActionScheduleDependency.kind-cardinality
         a               sh:PropertyShape ;
         sh:description  "RemedialActionScheduleDependency.kind is required for all RemedialActionScheduleDependency objects part of a RemedialActionScheduleGroup." ;
@@ -146,16 +146,16 @@ rasc:RemedialActionScheduleDependency.kind-cardinality
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "RemedialActionScheduleDependency.kind is not provided for RemedialActionScheduleDependency objects part of a RemedialActionScheduleGroup." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		
-		BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "RemedialActionScheduleDependency.kind is not provided for RemedialActionScheduleDependency objects part of a RemedialActionScheduleGroup." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    
+    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
         FILTER (?a1=false  ).
-			}""" .			
+      }""" .      
 
 rasc:RemedialActionScheduleDependency  a          sh:NodeShape ;
         sh:property     rasc:RemedialActionScheduleDependency.kind-applicability, rasc:RemedialActionScheduleDependency-associations;
@@ -172,18 +172,18 @@ rasc:RemedialActionScheduleDependency.kind-applicability
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "RemedialActionScheduleDependency.kind is provided for RemedialActionScheduleDependency objects not part of a RemedialActionScheduleGroup." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "RemedialActionScheduleDependency.kind is provided for RemedialActionScheduleDependency objects not part of a RemedialActionScheduleGroup." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
         FILTER (?a1=true && ?a2=false ).
-			}""" .						
-			
+      }""" .            
+      
 rasc:RemedialActionScheduleDependency-associations
         a               sh:PropertyShape ;
         sh:description  "When a RemedialActionScheduleDependency is part of a RemedialActionScheduleGroup, it is required to provide either RemedialActionScheduleDependency.ProposedRemedialActionSchedule or RemedialActionScheduleDependency.ReplacedRemedialActionSchedule (i.e., not both associations). When a RemedialActionScheduleDependency is not part of a RemedialActionScheduleGroup, it is required to provide both RemedialActionScheduleDependency.ProposedRemedialActionSchedule and RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
@@ -195,19 +195,19 @@ rasc:RemedialActionScheduleDependency-associations
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "RemedialActionScheduleDependency associations are not consistant.{?a1} {?a2} {?a3}" ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  ?a1 ?a2 ?a3
-			WHERE {  
-		
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
-		
+    a         sh:SPARQLConstraint ;  
+    sh:message      "RemedialActionScheduleDependency associations are not consistant.{?a1} {?a2} {?a3}" ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  ?a1 ?a2 ?a3
+      WHERE {  
+    
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
+    
         FILTER ((?a1=true && ?a2=true && ?a3=true) || (?a1=false && (?a2=false || ?a3=false))).
-			}""" .		
+      }""" .    
 
 
 rasc:RemedialActionScheduleResponse  a          sh:NodeShape ;
@@ -225,17 +225,17 @@ rasc:RemedialActionScheduleResponse.rejectionReasonKind-required
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleResponse.rejectionReasonKind-requiredSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "RemedialActionScheduleResponse.rejectionReasonKind is missing when RemedialActionScheduleResponse.kind equals RemedialActionScheduleResponseKind.refused." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		
-		BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
-		BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "RemedialActionScheduleResponse.rejectionReasonKind is missing when RemedialActionScheduleResponse.kind equals RemedialActionScheduleResponseKind.refused." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    
+    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
+    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
         FILTER (?hasRK=false && ?hasR=true ).
-			}""" .		
+      }""" .    
 
 rasc:RemedialActionScheduleResponse.rejectionReason-applicability
         a               sh:PropertyShape ;
@@ -248,14 +248,14 @@ rasc:RemedialActionScheduleResponse.rejectionReason-applicability
         sh:severity     sh:Warning .
         
 rasc:RemedialActionScheduleResponse.rejectionReason-applicabilitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "RemedialActionScheduleResponse.rejectionReason is missing when RemedialActionScheduleResponse.rejectionReasonKind equals RejectionReasonKind.other." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		
-		BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
-		BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "RemedialActionScheduleResponse.rejectionReason is missing when RemedialActionScheduleResponse.rejectionReasonKind equals RejectionReasonKind.other." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    
+    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
+    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
         FILTER (?hasRR=false && ?hasR=true ).
-			}""" .				
+      }""" .        

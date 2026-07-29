@@ -83,11 +83,11 @@ dl453cpe:DiagramObject.IdentifiedObject-valueType
 #        sh:severity     sh:Violation .
         
 #dl453cpe:DiagramObject.IdentifiedObject-valueTypeSparql
-#		a         sh:SPARQLConstraint ;  
-#		sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type is not an instance of the class IdentifiedObject or its subclass." ;
-#		sh:prefixes cim: ;
-#		sh:select """
-#	      SELECT $this  ?value
+#    a         sh:SPARQLConstraint ;  
+#    sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type is not an instance of the class IdentifiedObject or its subclass." ;
+#    sh:prefixes cim: ;
+#    sh:select """
+#        SELECT $this  ?value
 #        WHERE {
 #          ?value rdf:type cim:DiagramObject .
 #          ?value cim:DiagramObject.IdentifiedObject/rdf:type ?valueType .  

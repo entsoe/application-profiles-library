@@ -72,17 +72,17 @@ sc452:TransformerEnd-grounding
         
     
 sc452:TransformerEnd-groundingSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Missing required properties .rground or .xground." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Missing required properties .rground or .xground." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:TransformerEnd.rground ?rground} .
         OPTIONAL {$this cim:TransformerEnd.xground ?xground} .
         FILTER (?value=true && (!bound(?xground) || !bound(?rground))) .        
-			}""" .
+      }""" .
 
 sc452:SynchronousMachine
         a               sh:NodeShape ;
@@ -102,15 +102,15 @@ sc452:SynchronousMachine-attributes
         
     
 sc452:SynchronousMachine-attributesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Missing required properties .earthingStarPointR or .earthingStarPointX." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Missing required properties .earthingStarPointR or .earthingStarPointX." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:SynchronousMachine.earthingStarPointR ?earthingStarPointR} .
         OPTIONAL {$this cim:SynchronousMachine.earthingStarPointX ?earthingStarPointX} .
         FILTER (?value=true && (!bound(?earthingStarPointR) || !bound(?earthingStarPointX))) .        
-			}""" .
+      }""" .
 

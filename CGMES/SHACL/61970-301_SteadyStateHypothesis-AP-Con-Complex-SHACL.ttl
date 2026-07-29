@@ -344,16 +344,16 @@ sshu:CsConverter.maxAlpha-valueRangeTypical
         sh:severity      sh:Warning .
 
 sshu:CsConverter.maxAlpha-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message       "The value is greater than 18." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message       "The value is greater than 18." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
         FILTER (?value>18) .        
-			}""" .        
+      }""" .        
         
 sshu:CsConverter.minAlpha-valueRangeTypical
         a                    sh:PropertyShape ;
@@ -366,17 +366,17 @@ sshu:CsConverter.minAlpha-valueRangeTypical
         sh:severity          sh:Warning .
 
 sshu:CsConverter.minAlpha-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message           "The value is less than 10 or greater than CsConverter.maxAlpha" ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.maxAlpha ?maxalpha} .
         FILTER (?value<10 || ?value>?maxalpha) .        
-			}""" .         
+      }""" .         
 
 sshu:CsConverter.maxGamma-valueRangeTypical
         a                sh:PropertyShape ;
@@ -389,16 +389,16 @@ sshu:CsConverter.maxGamma-valueRangeTypical
         sh:severity      sh:Warning .
         
 sshu:CsConverter.maxGamma-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message       "The value is greater than 20." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
         FILTER (?value>20) .        
-			}""" .        
+      }""" .        
 
 sshu:CsConverter.minGamma-valueRangeTypical
         a                    sh:PropertyShape ;
@@ -411,17 +411,17 @@ sshu:CsConverter.minGamma-valueRangeTypical
         sh:severity          sh:Warning .   
 
 sshu:CsConverter.minGamma-valueRangeTypicalSparql
-		a         sh:SPARQLConstraint ;  
+    a         sh:SPARQLConstraint ;  
     sh:message           "The value is less than 17 or greater than CsConverter.maxGamma" ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.maxGamma ?maxgamma} .
         FILTER (?value<17 || ?value>?maxgamma) .        
-			}""" .        
+      }""" .        
 
 sshu:ShuntCompensator.sections-valueRange
         a                sh:PropertyShape ;
@@ -503,16 +503,16 @@ sshu:CsConverter.pPccControl-targetValuePpcc
         
     
 sshu:CsConverter.pPccControl-targetValuePpccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ACDCConverter.targetPpcc is not provided for a converter with CsPpccControlKind.activePower." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ACDCConverter.targetPpcc is not provided for a converter with CsPpccControlKind.activePower." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         FILTER (!bound(?targetppcc) && ?value=cim:CsPpccControlKind.activePower) .        
-			}""" .
+      }""" .
       
 
 sshu:CsConverter.pPccControl-targetValueIdc
@@ -527,16 +527,16 @@ sshu:CsConverter.pPccControl-targetValueIdc
         
     
 sshu:CsConverter.pPccControl-targetValueIdcSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "CsConverter.targetIdc is not provided for a converter with CsPpccControlKind.dcCurrent." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "CsConverter.targetIdc is not provided for a converter with CsPpccControlKind.dcCurrent." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.targetIdc ?targetidc}.
         FILTER (!bound(?targetidc) && ?value=cim:CsPpccControlKind.dcCurrent) .        
-			}""" .  
+      }""" .  
 
 sshu:CsConverter.pPccControl-targetValueUdc
         a               sh:PropertyShape ;
@@ -550,16 +550,16 @@ sshu:CsConverter.pPccControl-targetValueUdc
         
     
 sshu:CsConverter.pPccControl-targetValueUdcSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ACDCConverter.targetUdc is not provided for a converter with CsPpccControlKind.dcVoltage." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ACDCConverter.targetUdc is not provided for a converter with CsPpccControlKind.dcVoltage." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         FILTER (!bound(?targetudc) && ?value=cim:CsPpccControlKind.dcVoltage) .        
-			}""" .      
+      }""" .      
       
 
 sshu:VsConverter.pPccControl-targetValuephasePcc
@@ -574,16 +574,16 @@ sshu:VsConverter.pPccControl-targetValuephasePcc
         
     
 sshu:VsConverter.pPccControl-targetValuephasePccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "VsConverter.targetPhasePcc is not provided for a converter with VsPpccControlKind.phasePcc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "VsConverter.targetPhasePcc is not provided for a converter with VsPpccControlKind.phasePcc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
         FILTER (!bound(?targetphasepcc) && ?value=cim:VsPpccControlKind.phasePcc) .        
-			}""" .    
+      }""" .    
       
 sshu:VsConverter.pPccControl-targetValuePpcc
         a               sh:PropertyShape ;
@@ -597,16 +597,16 @@ sshu:VsConverter.pPccControl-targetValuePpcc
         
     
 sshu:VsConverter.pPccControl-targetValuePpccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ACDCConverter.targetPpcc is not provided for a converter with VsPpccControlKind.pPcc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ACDCConverter.targetPpcc is not provided for a converter with VsPpccControlKind.pPcc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         FILTER (!bound(?targetppcc) && ?value=cim:VsPpccControlKind.pPcc) .        
-			}""" .       
+      }""" .       
       
 
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroop
@@ -621,18 +621,18 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroop
         
     
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroop." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroop." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
         FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroop) .        
-			}""" .   
+      }""" .   
 
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilot
         a               sh:PropertyShape ;
@@ -646,18 +646,18 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilot
         
     
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilotSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and  VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopPilot." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc and  VsConverter.droop are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopPilot." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
         FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopPilot) .        
-			}""" .         
+      }""" .         
  
       
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensation
@@ -672,19 +672,19 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensation
         
     
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensationSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc, VsConverter.droop and VsConverter.droopCompensation are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopWithCompensation." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "One or all among ACDCConverter.targetPpcc, ACDCConverter.targetUdc, VsConverter.droop and VsConverter.droopCompensation are not provided for a converter with VsPpccControlKind.pPccAndUdcDroopWithCompensation." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
         OPTIONAL {$this cim:VsConverter.droopCompensation ?droopcompensation}.
         FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop) || !bound(?droopcompensation)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation) .        
-			}""" .       
+      }""" .       
            
 sshu:VsConverter.pPccControl-targetValueUdc
         a               sh:PropertyShape ;
@@ -698,16 +698,16 @@ sshu:VsConverter.pPccControl-targetValueUdc
         
     
 sshu:VsConverter.pPccControl-targetValueUdcSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "ACDCConverter.targetUdc is not provided for a converter with VsPpccControlKind.udc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "ACDCConverter.targetUdc is not provided for a converter with VsPpccControlKind.udc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         FILTER (!bound(?targetudc) && ?value=cim:VsPpccControlKind.udc) .        
-			}""" .    
+      }""" .    
 
 sshu:VsConverter.qPccControl-targetValuepowerFactorPcc
         a               sh:PropertyShape ;
@@ -721,16 +721,16 @@ sshu:VsConverter.qPccControl-targetValuepowerFactorPcc
         
     
 sshu:VsConverter.qPccControl-targetValuepowerFactorPccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "VsConverter.targetPowerFactorPcc is not provided for a converter with VsQpccControlKind.powerFactorPcc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "VsConverter.targetPowerFactorPcc is not provided for a converter with VsQpccControlKind.powerFactorPcc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPowerFactorPcc ?targetpowerfactorpcc}.
         FILTER (!bound(?targetpowerfactorpcc) && ?value=cim:VsQpccControlKind.powerFactorPcc) .        
-			}""" .
+      }""" .
 
 
 sshu:VsConverter.qPccControl-targetValuepulseWidthModulation
@@ -745,17 +745,17 @@ sshu:VsConverter.qPccControl-targetValuepulseWidthModulation
         
     
 sshu:VsConverter.qPccControl-targetValuepulseWidthModulationSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "VsConverter.targetPWMfactor and/or VsConverter.targetPhasePcc are not provided for a converter with VsQpccControlKind.pulseWidthModulation." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "VsConverter.targetPWMfactor and/or VsConverter.targetPhasePcc are not provided for a converter with VsQpccControlKind.pulseWidthModulation." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPWMfactor ?targetpwmfactor}.
         OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
         FILTER ((!bound(?targetpwmfactor) || !bound(?targetphasepcc)) && ?value=cim:VsQpccControlKind.pulseWidthModulation) .        
-			}""" .
+      }""" .
 
 
 sshu:VsConverter.qPccControl-targetValuereactivePcc
@@ -770,16 +770,16 @@ sshu:VsConverter.qPccControl-targetValuereactivePcc
         
     
 sshu:VsConverter.qPccControl-targetValuereactivePccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "VsConverter.targetQpcc is not provided for a converter with VsQpccControlKind.reactivePcc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "VsConverter.targetQpcc is not provided for a converter with VsQpccControlKind.reactivePcc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetQpcc ?targetqpcc}.
         FILTER (!bound(?targetqpcc) && ?value=cim:VsQpccControlKind.reactivePcc) .        
-			}""" .
+      }""" .
 
 
 sshu:VsConverter.qPccControl-targetValuevoltagePcc
@@ -794,16 +794,16 @@ sshu:VsConverter.qPccControl-targetValuevoltagePcc
         
     
 sshu:VsConverter.qPccControl-targetValuevoltagePccSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "VsConverter.targetUpcc is not provided for a converter with VsQpccControlKind.voltagePcc." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "VsConverter.targetUpcc is not provided for a converter with VsQpccControlKind.voltagePcc." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetUpcc ?targetupcc}.
         FILTER (!bound(?targetupcc) && ?value=cim:VsQpccControlKind.voltagePcc) .        
-			}""" .
+      }""" .
 
 sshu:RegulatingControl.targetDeadband-applicability
         a               sh:PropertyShape ;
@@ -817,16 +817,16 @@ sshu:RegulatingControl.targetDeadband-applicability
         
     
 sshu:RegulatingControl.targetDeadband-applicabilitySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Either RegulatingControl.targetDeadband is provided for a continuous control or it is not provided for a discrete control." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Either RegulatingControl.targetDeadband is provided for a continuous control or it is not provided for a discrete control." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:RegulatingControl.targetDeadband ?targetdeadband}.
         FILTER ((bound(?targetdeadband) && ?value=false) || (!bound(?targetdeadband) && ?value=true)) .        
-			}""" .      
+      }""" .      
       
       
 sshu:EnergySource.activePower-consumer
@@ -841,15 +841,15 @@ sshu:EnergySource.activePower-consumer
         
     
 sshu:EnergySource.activePower-consumerSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "EnergySource that is a consumer." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "EnergySource that is a consumer." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         FILTER (?value>0) .        
-			}""" .      
+      }""" .      
       
       
       

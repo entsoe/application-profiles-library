@@ -71,12 +71,12 @@ eqn301:ACLineSegment-baseVoltage
         sh:severity     sh:Warning .
     
 eqn301:ACLineSegmentSparqlBaseVoltage
-		a         sh:SPARQLConstraint ;  
-		sh:message "The ACLineSegment has different BaseVoltage.nominalVoltage at the two end of the ACLineSegment. Voltage at end 1 is: {?voltage1}. Voltage at end 2 is: {?voltage2}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?voltage1 ?voltage2
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The ACLineSegment has different BaseVoltage.nominalVoltage at the two end of the ACLineSegment. Voltage at end 1 is: {?voltage1}. Voltage at end 2 is: {?voltage2}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?voltage1 ?voltage2
+      WHERE {
         ?terminal1 cim:Terminal.ConductingEquipment $this .
         ?terminal2 cim:Terminal.ConductingEquipment $this .
         ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
@@ -85,5 +85,5 @@ eqn301:ACLineSegmentSparqlBaseVoltage
         ?terminal2 cim:Terminal.TopologicalNode ?topologicalnode2 .
         ?topologicalnode1 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?voltage1 .
         ?topologicalnode2 cim:TopologicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?voltage2 .
-				FILTER (?terminal1 != ?terminal2 && ?voltage1 != ?voltage2 && ?topologicalnode1 != ?topologicalnode2) .
-			}""" .
+        FILTER (?terminal1 != ?terminal2 && ?voltage1 != ?voltage2 && ?topologicalnode1 != ?topologicalnode2) .
+      }""" .

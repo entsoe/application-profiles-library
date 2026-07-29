@@ -80,12 +80,12 @@ sm6002:RegulatingControl-samePoint
         sh:severity     sh:Violation .
         
 sm6002:RegulatingControl-samePointSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Enabled RegulatingControl-s of the same type associated with the same TopologicalNode have different target values. RegulatingControl ID: {?rcfail}." ;
-		sh:prefixes cim: ;
-		sh:select """
-    	SELECT $this ?count ?value ?rcfail
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Enabled RegulatingControl-s of the same type associated with the same TopologicalNode have different target values. RegulatingControl ID: {?rcfail}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?count ?value ?rcfail
+      WHERE {
           $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal ?rcfail .
           ?rcfail cim:RegulatingControl.targetValue ?value .
       {
@@ -97,7 +97,7 @@ sm6002:RegulatingControl-samePointSparql
              ?rc cim:RegulatingControl.targetValue ?val .   
       }
       GROUP BY $this ?mode
-			}
+      }
       FILTER (?count>1) .
       }
       #LIMIT 1
@@ -119,12 +119,12 @@ sm6002:RegulatingControl-point
         sh:severity     sh:Violation .
         
 sm6002:RegulatingControl-pointSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The controlled point and the controlling equipment are not located in the same TopologicalIsland. TopologicalIsland ID (via RegulatingControl.Terminal):{?topislandterminal} TopologicalIsland ID (via RatioTapChanger):{?topislandterminalratio} TopologicalIsland ID (via PhaseTapChanger):{?topislandterminalphase} TopologicalIsland ID (via ConductingEquipment):{?topislandterminalcondeq}." ;
-		sh:prefixes cim: ;
-		sh:select """
-    	SELECT $this ?topislandterminal ?topislandterminalratio ?topislandterminalphase ?topislandterminalcondeq
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "The controlled point and the controlling equipment are not located in the same TopologicalIsland. TopologicalIsland ID (via RegulatingControl.Terminal):{?topislandterminal} TopologicalIsland ID (via RatioTapChanger):{?topislandterminalratio} TopologicalIsland ID (via PhaseTapChanger):{?topislandterminalphase} TopologicalIsland ID (via ConductingEquipment):{?topislandterminalcondeq}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT $this ?topislandterminal ?topislandterminalratio ?topislandterminalphase ?topislandterminalcondeq
+      WHERE {
           $this cim:RegulatingControl.enabled true .
           $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topislandterminal .
           #BIND(EXISTS{$this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?tnisland } AS ?tni).

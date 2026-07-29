@@ -28,7 +28,7 @@ asc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Availability schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.3> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.3.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -41,12 +41,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -84,19 +84,19 @@ asc:AvailabilityEnabled-associations
         sh:severity     sh:Violation .
         
 asc:AvailabilityEnabled-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "AvailabilityEnabled is not associated with either GridStateAlteration or AssessedElement or it is associated with both." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:AvailabilityEnabled.GridStateAlteration ?gsa.} AS ?vGSA).	
-		BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
+    a         sh:SPARQLConstraint ;  
+    sh:message      "AvailabilityEnabled is not associated with either GridStateAlteration or AssessedElement or it is associated with both." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.GridStateAlteration ?gsa.} AS ?vGSA).  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
 
         FILTER (
-			(?vGSA=true && ?vAE=true) || 
-			(?vGSA=false && ?vAE=false) 
-		).
-			}""" . 
+      (?vGSA=true && ?vAE=true) || 
+      (?vGSA=false && ?vAE=false) 
+    ).
+      }""" . 
 
 

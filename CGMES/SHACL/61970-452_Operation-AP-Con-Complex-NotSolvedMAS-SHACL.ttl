@@ -72,12 +72,12 @@ opn452:Measurement.Terminal-requiredCases
         
     
 opn452:Measurement.Terminal-requiredCasesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Either the Terminal associated by Measurement.Terminal is not a terminal of the equipment associated via Measurement.PowerSystemResource or the association is present for Measurement.measurementType TapPosition or SwitchPosition. Details: Associated terminal ID:{?terminal}; Equipment's Terminal 1 ID:{?terminal1}; Equipment's Terminal 2 ID:{?terminal2}; Equipment's Terminal 3 ID:{?terminal3}; Measurement type:{?meastype}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
-			WHERE {
+    a         sh:SPARQLConstraint ;  
+    sh:message "Either the Terminal associated by Measurement.Terminal is not a terminal of the equipment associated via Measurement.PowerSystemResource or the association is present for Measurement.measurementType TapPosition or SwitchPosition. Details: Associated terminal ID:{?terminal}; Equipment's Terminal 1 ID:{?terminal1}; Equipment's Terminal 2 ID:{?terminal2}; Equipment's Terminal 3 ID:{?terminal3}; Measurement type:{?meastype}." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
+      WHERE {
              $this $PATH ?value .
              OPTIONAL {$this cim:Measurement.Terminal ?terminal}.
              $this cim:Measurement.measurementType ?meastype . 
@@ -87,8 +87,8 @@ opn452:Measurement.Terminal-requiredCasesSparql
                         cim:ACDCTerminal.sequenceNumber 2 .}
              OPTIONAL {?terminal3 cim:Terminal.ConductingEquipment ?value ;
                         cim:ACDCTerminal.sequenceNumber 3 .}
-				FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
-			}""" .
+        FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
+      }""" .
 
 
 

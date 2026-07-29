@@ -28,7 +28,7 @@ io:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Common Constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/Common-Complex/1.0> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "1.0.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -41,12 +41,12 @@ cim:
         sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
         sh:prefix "cim16" ;
     ] ;
-	sh:declare [
+  sh:declare [
         a sh:PrefixDeclaration ;
         sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
         sh:prefix "nc" ;
@@ -72,7 +72,7 @@ com:DanglingReferences
     a sh:NodeShape ;
     sh:target [
         a sh:SPARQLTarget ;
-		sh:prefixes cim: ;
+    sh:prefixes cim: ;
         sh:select """
             SELECT DISTINCT ?this
             WHERE {
@@ -105,4 +105,4 @@ com:All-DanglingReferences
     sh:order        1 ;
     sh:severity     sh:Violation ;
     sh:minCount     1 ;
-	sh:message   "Dangling reference is present in the model." .
+  sh:message   "Dangling reference is present in the model." .

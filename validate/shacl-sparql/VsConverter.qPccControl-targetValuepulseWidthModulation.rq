@@ -20,10 +20,10 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPWMfactor ?targetpwmfactor}.
         OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
         FILTER ((!bound(?targetpwmfactor) || !bound(?targetphasepcc)) && ?value=cim:VsQpccControlKind.pulseWidthModulation) .        
-			}
+      }
