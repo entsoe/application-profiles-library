@@ -336,7 +336,7 @@ dcatcim:hasAlternativeVersion is a specialisation of dcat:hasVersion with the re
 This property is intended for relating a versioned resource to a non-versioned or abstract resource.
 
 The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.</rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#isVersionOf"/>
     <rdfs:label xml:lang="en">hasVersion</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
@@ -366,7 +366,7 @@ The identifier is a text string which is assigned to the resource to provide an 
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#inSeries">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>A dataset series of which the dataset is part.</rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#seriesMember"/>
     <rdfs:label xml:lang="en">inSeries</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -423,7 +423,7 @@ The identifier is a text string which is assigned to the resource to provide an 
     <rdfs:comment>This resource has a more specific, versioned resource. This property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g., snapshots.
 
 The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:hasVersion, which makes use of a broader notion of version, including editions and adaptations.</rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#hasVersion"/>
     <rdfs:label xml:lang="en">isVersionOf</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
@@ -450,7 +450,7 @@ Reference to the date that the complete data set was made valid/available.].</rd
 The intended content type of the model, usually the profile keyword. Used to identify what profiles and content is expected in the document, e.g., Equipment, Boundary, SSH, AE, etc. The same keyword is used for different versions of same profile. It can be also used to identify different content based on the same profile.
 For instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dcterms:conformsTo.].</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">keyword</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -472,7 +472,7 @@ Reference to the license under which the data is made available. If no license h
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#nextVersion">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>The next version for the resource.</rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#previousVersion"/>
     <rdfs:label xml:lang="en">nextVersion</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -483,7 +483,7 @@ Reference to the license under which the data is made available. If no license h
   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">
     <rdfs:comment>rdf:object is an instance of rdf:Property that is used to state the object of a statement.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
     <rdfs:label xml:lang="en">object</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -492,7 +492,7 @@ Reference to the license under which the data is made available. If no license h
   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">
     <rdfs:comment>rdf:predicate is an instance of rdf:Property that is used to state the predicate of a statement.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
     <rdfs:label xml:lang="en">predicate</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -516,7 +516,7 @@ This property is used to specify a specific version to be the preference in a ch
 This property is meant to be used to specify a version chain, consisting of snapshots of a resource.
 
 The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. One of the typical cases here is representing the history of the versions of a dataset that have been released over time.</rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#nextVersion"/>
     <rdfs:label xml:lang="en">previousVersion</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -618,7 +618,7 @@ Typically, rights information includes a statement about various property rights
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#seriesMember">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>A dataset that is member of this series. </rdfs:comment>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <cims:inverseRoleName rdf:resource="http://www.w3.org/ns/dcat#inSeries"/>
     <rdfs:label xml:lang="en">seriesMember</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
@@ -675,7 +675,7 @@ The date and time that this model represents, i.e. for which the model is (or wa
   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">
     <rdfs:comment>rdf:subject is an instance of rdf:Property that is used to state the subject of a statement.</rdfs:comment>
     <cims:dataType rdf:resource="#String"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
     <rdfs:label xml:lang="en">subject</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -686,7 +686,7 @@ The date and time that this model represents, i.e. for which the model is (or wa
 [CIM context: 
 Describes the Market Time Unit (MTU), e.g. hourly, 15 min., etc.]</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">temporalResolution</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -731,7 +731,7 @@ The human readable name of the dataset that can form the instance file name.]</r
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#version">
     <rdfs:comment>The version indicator (name or identifier) of a resource.</rdfs:comment>
     <cims:dataType rdf:resource="#Version"/>
-    <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:label xml:lang="en">version</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>

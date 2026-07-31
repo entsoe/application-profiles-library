@@ -81,14 +81,25 @@ The RDFS2020 vocabulary is the **self-standing structural schema** of the exchan
 
 - **Classes and attributes** — which classes exist and which attributes each class carries. This structural backbone lives here, and only here.
 - **The class ↔ attribute linkage**, expressed so that reused vocabularies are not altered:
-  - attributes **owned in a CIM namespace** (`https://cim4.eu/ns/dcatcim#`, `https://cim4.eu/ns/Metadata-European#`, `https://cim.ucaiug.io/ns#`, …) use **`rdfs:domain`** — CIM owns the term, so a strict domain is correct;
-  - **reused external terms** (`dcterms:`, `prov:`, `dcat:`, `adms:`, RDF reification) use **`schema:domainIncludes`** — schema.org's non-inferential counterpart to `rdfs:domain`, which records "expected on this class" **without** the RDFS entailment. Asserting `rdfs:domain` on a term the profile does not own is ontology hijacking (`dcterms:title rdfs:domain dcat:Dataset` would entail that every titled resource, including an ontology, is a `dcat:Dataset`); Dublin Core leaves these terms domain-free for exactly that reason. See [#92](https://github.com/entsoe/application-profiles-library/issues/92).
+  - attributes **owned in a CIM namespace** (`https://cim4.eu/ns/dcatcim#`, `https://cim4.eu/ns/Metadata-European#`, `https://cim.ucaiug.io/ns#`, …) use **`rdfs:domain`** — CIM owns the term, so a strict domain is correct, even when the domain class is external (e.g. `dcatcim:preferredVersion rdfs:domain dcat:Dataset`);
+  - **reused external terms attached to a class of the same vocabulary** (`dcat:keyword` on `dcat:Dataset`, `rdf:subject`/`rdf:predicate`/`rdf:object` on `rdf:Statement`) also use **`rdfs:domain`** — the linkage stays inside the owner's own vocabulary, so it restates rather than alters the owner's intent (RDF Schema itself declares `rdfs:domain rdf:Statement` for the reification properties);
+  - **reused external terms attached to a foreign class** (`dcterms:`, `prov:`, `adms:` on `dcat:Dataset` or `dcatcim:Statements`) use **`schema:domainIncludes`** — schema.org's non-inferential counterpart to `rdfs:domain`, which records "expected on this class" **without** the RDFS entailment. Asserting `rdfs:domain` on a term the profile does not own is ontology hijacking (`dcterms:title rdfs:domain dcat:Dataset` would entail that every titled resource, including an ontology, is a `dcat:Dataset`); Dublin Core leaves these terms domain-free for exactly that reason. See [#92](https://github.com/entsoe/application-profiles-library/issues/92).
+  - **Exception**: `dcat:startDate` and `dcat:endDate` keep **`schema:domainIncludes`** although property and class share the `dcat:` namespace — DCAT itself declares `rdfs:domain dcterms:PeriodOfTime` for both, so asserting `rdfs:domain dcat:Dataset` would contradict the owner's own declaration. The general test is: `rdfs:domain` may only be asserted where it matches, or at least cannot conflict with, what the owning vocabulary declares.
 - **Simple, attribute-local constraints** — datatype (`cims:dataType`) and multiplicity (`cims:multiplicity`).
 
-> **NB — BREAKING for `rdfs:domain`-driven tooling.** For reused external terms the class linkage is now `schema:domainIncludes`, not `rdfs:domain`. Tooling that derives attribute-to-class membership must read both — `rdfs:domain` for CIM-owned terms and `schema:domainIncludes` for external ones. The `https://schema.org/` namespace is declared on the root `rdf:RDF` element.
+> **NB — BREAKING for `rdfs:domain`-driven tooling.** For reused external terms attached to a foreign class the linkage is now `schema:domainIncludes`, not `rdfs:domain`. Tooling that derives attribute-to-class membership must read both predicates. The `https://schema.org/` namespace is declared on the root `rdf:RDF` element.
 
 ```xml
-<!-- reused (external) term — non-inferential class linkage, no hijacking -->
+<!-- reused external term on a same-vocabulary class — rdfs:domain restates the owner -->
+<rdf:Description rdf:about="http://www.w3.org/ns/dcat#keyword">
+  <cims:dataType rdf:resource="#String"/>
+  <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+  <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+  <cims:stereotype>dcat</cims:stereotype>
+  <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+</rdf:Description>
+
+<!-- reused external term on a foreign class — non-inferential class linkage, no hijacking -->
 <rdf:Description rdf:about="http://purl.org/dc/terms/accessRights">
   <cims:dataType rdf:resource="#URI"/>
   <schema:domainIncludes rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
