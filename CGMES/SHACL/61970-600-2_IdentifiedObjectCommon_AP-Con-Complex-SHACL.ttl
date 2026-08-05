@@ -63,6 +63,7 @@ io:IdentifiedObjectStringLengthshortName  a          sh:NodeShape ;
 io:IdentifiedObject.shortName-stringLength
         a               sh:PropertyShape ;
         sh:description  "Length of the string 12 characters maximum." ;
+        sh:message     "String length is greater than 12 characters." ;     
         sh:path         eu:IdentifiedObject.shortName ;
         sh:maxLength    12 ;
         sh:group        io:IOstringLength ;
@@ -79,6 +80,7 @@ io:IdentifiedObject.energyIdentCodeEic-stringLength
         sh:description  "The length of the string is 16 characters as defined by the EIC code." ;
         sh:path         eu:IdentifiedObject.energyIdentCodeEic ;
         sh:length       16 ;
+        sh:message      "String length is not 16 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:EQBD:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:TP:IdentifiedObject.energyIdentCodeEic:stringLength" ;
         sh:order        2 ;
@@ -93,6 +95,7 @@ io:IdentifiedObject.name-stringLength
         sh:description  "The string IdentifiedObject.name has a maximum of 128 characters." ;
         sh:path         cim:IdentifiedObject.name ;
         sh:maxLength    128 ;
+        sh:message      "String length is greater than 128 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.name:stringLength|C:453:DL:IdentifiedObject.name:stringLength|C:456:TP:IdentifiedObject.name:stringLength|C:456:SV:IdentifiedObject.name:stringLength|C:457:DY:IdentifiedObject.name:stringLength|C:600:EQBD:IdentifiedObject.name:stringLength" ;
         sh:order        3 ;
@@ -107,6 +110,7 @@ io:IdentifiedObject.description-stringLength
         sh:description  "The string IdentifiedObject.description is maximum 256 characters." ;
         sh:path         cim:IdentifiedObject.description ;
         sh:maxLength    256 ;
+        sh:message      "String length is greater than 256 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.description:stringLength|C:600:EQBD:IdentifiedObject.description:stringLength|C:457:DY:IdentifiedObject.description:stringLength|C:456:TP:IdentifiedObject.description:stringLength" ;
         sh:order        4 ;
