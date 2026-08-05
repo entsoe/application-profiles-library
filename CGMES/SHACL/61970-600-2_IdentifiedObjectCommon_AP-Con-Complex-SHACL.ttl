@@ -78,8 +78,7 @@ io:IdentifiedObject.energyIdentCodeEic-stringLength
         a               sh:PropertyShape ;
         sh:description  "The length of the string is 16 characters as defined by the EIC code." ;
         sh:path         eu:IdentifiedObject.energyIdentCodeEic ;
-        sh:minLength    16 ;
-        sh:maxLength    16 ;
+        sh:length       16 ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:EQBD:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:TP:IdentifiedObject.energyIdentCodeEic:stringLength" ;
         sh:order        2 ;
