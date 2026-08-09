@@ -6,7 +6,6 @@
 @prefix cim17:   <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
 @prefix nc:      <https://cim4.eu/ns/nc#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
