@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF
     xmlns:or="https://ap-voc.cim4.eu/ObjectRegistry#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -15,43 +14,105 @@
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#Ontology">
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v19_MS10v03_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the object registry profile.</dcterms:description>
-    <dcterms:identifier>922777db-0c93-4637-9523-53fc59ced40a</dcterms:identifier>
+    <dcterms:identifier>3a768a04-d289-496a-9b72-fca30006bfc2</dcterms:identifier>
     <dcat:keyword>OR</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
-    <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-05</dcterms:modified>
+    <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.2"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
     <dcat:theme xml:lang="en">vocabulary</dcat:theme>
     <dcterms:title xml:lang="en">Object Registry vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry/2.2"/>
-    <owl:versionInfo xml:lang="en">2.2.6</owl:versionInfo>
+    <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry/3.0"/>
+    <owl:versionInfo xml:lang="en">3.0.0</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
     <rdfs:label xml:lang="en">Date</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
     <rdfs:label xml:lang="en">DateTime</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>A designation is a string assigned to an IdentifiedObject to support recognition, presentation, search, and interoperability with external systems. A designation may be a human-readable label (e.g., display name, alias) or a system-issued code (e.g., EIC, IEC 61850 name, RDS reference designation). Designations can be typed and scoped by a designation authority.
+Note: 
+Inter-object relationships in exchanged models shall reference the target object using its IdentifiedObject.mRID (or equivalent resolvable identifier), not by designation strings.
+A designation value may be unique within a stated scope (e.g., globally, within an authority, or within an exchange context), but such uniqueness does not change the requirement to reference objects by mRID in relationships.
+During transition and integration, multiple designations may be carried to support legacy identifiers, vendor/system naming, and user-facing labels.</rdfs:comment>
+    <rdfs:label xml:lang="en">Designation</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#Identity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>An organisation, system, or community responsible for defining, issuing, or managing designations or designation types within a particular designation scheme or namespace.
+Note:
+A designation authority may define:
+- designation schemes or namespaces
+- designation type specifications
+- rules for generating or validating designation values
+
+Examples include standards organisations, market operators, manufacturers, utilities, or enterprise systems.
+
+The designation authority may also provide a service or registry through which designation values or type definitions can be resolved or validated.
+Example: 
+ENTSO-E
+Designation authority responsible for issuing Energy Identification Codes (EIC).
+
+GS1
+Designation authority managing GS1 identifiers used for asset and product identification in Digital Product Passport and supply-chain contexts.
+
+Equipment manufacturer
+A vendor may act as designation authority for identifiers assigned to devices or assets within its monitoring or asset management systems.</rdfs:comment>
+    <rdfs:label xml:lang="en">DesignationAuthority</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#Identity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>A standardised classification of designation values used to refer to an IdentifiedObject in different contexts. DesignationKind values are intended to be stable and directly usable in profiles and implementation guidance without requiring external reference data.</rdfs:comment>
+    <rdfs:label xml:lang="en">DesignationKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>A specification that defines an additional, non-standard designation type used to classify and constrain Designation values beyond the standardised DesignationKind enumeration. A DesignationType may be published by a designation authority and may provide validation and usage rules (e.g., maximum length, pattern, and intended uniqueness scope).
+Note:
+DesignationKind provides standardised categories that can be referenced directly in profiles (e.g., a diagram profile may require DesignationKind.local or DesignationKind.label).
+DesignationType is used only when the designation required is not covered by the standardised DesignationKind list, or when a community needs to define additional constraints or sub-typing within a kind.
+DesignationType is optional and should not be required for basic interoperability; consumers should be able to interpret Designation.kind without resolving external reference data.
+If both are present, Designation.kind carries the standard category, while Designation.DesignationType carries the additional or more specific classification.</rdfs:comment>
+    <rdfs:label xml:lang="en">DesignationType</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#Identity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as rdf:resource in RDFXML.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -63,355 +124,45 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
     <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
     <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#IdentifiedObject.AlternativeIdentifier">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>All alternative identifiers of this identified object. No two identified objects can have the same alternative identifier.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Name.UniqueIdentifiedObject"/>
-    <rdfs:label xml:lang="en">AlternativeIdentifier</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#Name"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#IdentifiedObject.Name">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>All names of this identified object. Names may be but are not guaranteed to be unique.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Name.IdentifiedObject"/>
-    <rdfs:label xml:lang="en">Name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#Name"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#IdentifiedObject.ObjectType">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>The object type of the IdentifiedObject.</rdfs:comment>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#ObjectType.IdentifiedObject"/>
-    <rdfs:label xml:lang="en">ObjectType</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#ObjectType"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.aliasName">
-    <rdfs:comment>The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.
-The attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">aliasName</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.description">
-    <rdfs:comment>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">description</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#IdentifiedObject.energyIdentCodeEic">
-    <rdfs:comment>The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">energyIdentCodeEic</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>European</cims:stereotype>
-    <cims:stereotype>deprecated</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.mRID">
-    <rdfs:comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">mRID</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject.name">
-    <rdfs:comment>The name is any free human readable and possibly non unique text naming the object.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#IdentifiedObject.shortName">
-    <rdfs:comment>The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">shortName</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>European</cims:stereotype>
-    <cims:stereotype>deprecated</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Name">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
-    <rdfs:comment>The Name class provides the means to define any number of human readable  names for an object. A name is &lt;b&gt;not&lt;/b&gt; to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.</rdfs:comment>
-    <rdfs:label xml:lang="en">Name</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.IdentifiedObject">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Identified object that this name designates.</rdfs:comment>
-    <rdfs:domain rdf:resource="#Name"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#IdentifiedObject.Name"/>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#IdentifiedObject"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.NameType">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Type of this name.</rdfs:comment>
-    <rdfs:domain rdf:resource="#Name"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#NameType.Name"/>
-    <rdfs:label xml:lang="en">NameType</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#NameType"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.NamingAuthority">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Authority responsible for managing this name.</rdfs:comment>
-    <rdfs:domain rdf:resource="#Name"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#NamingAuthority.Name"/>
-    <rdfs:label xml:lang="en">NamingAuthority</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.UniqueIdentifiedObject">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Identified object that this alternative identifier designates.</rdfs:comment>
-    <rdfs:domain rdf:resource="#Name"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#IdentifiedObject.AlternativeIdentifier"/>
-    <rdfs:label xml:lang="en">UniqueIdentifiedObject</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#IdentifiedObject"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.language">
-    <rdfs:comment>Shall be specified as an IETF BCP 47 language tag (e.g. en-US).  Applies to the Name.name attribute. 
-IETF language tags combine subtags from other standards such as ISO 639, ISO 15924, ISO 3166-1, and UN M.49. The tag structure has been standardized by the IETF in Best Current Practice (BCP) 47; the subtags are maintained by the IANA Language Subtag Registry.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#Name"/>
-    <rdfs:label xml:lang="en">language</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Name.mRID">
-    <rdfs:comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#Name"/>
-    <rdfs:label xml:lang="en">mRID</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Name.name">
-    <rdfs:comment>Any free text that used as a name or alternative identifier of the object.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#Name"/>
-    <rdfs:label xml:lang="en">name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#NameType">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
-    <rdfs:comment>Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:
-The localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.</rdfs:comment>
-    <rdfs:label xml:lang="en">NameType</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NameType.Name">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>All names of this type.</rdfs:comment>
-    <rdfs:domain rdf:resource="#NameType"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Name.NameType"/>
-    <rdfs:label xml:lang="en">Name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#Name"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NameType.NamingAuthority">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Authority responsible for managing this name type.</rdfs:comment>
-    <rdfs:domain rdf:resource="#NameType"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#NamingAuthority.NameType"/>
-    <rdfs:label xml:lang="en">NamingAuthority</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#NameType.description">
-    <rdfs:comment>Description of the name type.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#NameType"/>
-    <rdfs:label xml:lang="en">description</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NameType.mRID">
-    <rdfs:comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#NameType"/>
-    <rdfs:label xml:lang="en">mRID</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#NameType.name">
-    <rdfs:comment>Name of the name type.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="#NameType"/>
-    <rdfs:label xml:lang="en">name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
-    <rdfs:comment>Authority responsible for creation and management of names of a given name type and/or name; typically an organization or an enterprise system.</rdfs:comment>
-    <rdfs:label xml:lang="en">NamingAuthority</rdfs:label>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Identity">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>The Identity class represents the persistent identity of an object. It provides a globally unique and stable identifier used to support lifecycle management, change tracking, cross-system referencing, and model comparison.
+Note: The identifier represents the enduring identity of the object and should remain stable throughout the object’s lifecycle. In distributed systems this identifier is typically represented using a UUID to ensure global uniqueness.
+The Identity class is intended to provide the stable identifier for an object, whereas classes such as IdentifiedObject and Designation provide human-readable names, labels, or external identifiers that may vary depending on context or system usage.</rdfs:comment>
+    <rdfs:label xml:lang="en">Identity</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority.Name">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>All names managed by this authority.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Name.NamingAuthority"/>
-    <rdfs:label xml:lang="en">Name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#Name"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority.NameType">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>All name types managed by this authority.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#NameType.NamingAuthority"/>
-    <rdfs:label xml:lang="en">NameType</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#NameType"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority.description">
-    <rdfs:comment>Description of the name authority.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <rdfs:label xml:lang="en">description</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority.mRID">
-    <rdfs:comment>Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <rdfs:label xml:lang="en">mRID</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#NamingAuthority.name">
-    <rdfs:comment>Name of the name authority.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#NamingAuthority"/>
-    <rdfs:label xml:lang="en">name</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ObjectType">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
-    <rdfs:comment>Identifies the specialised type of an object when the instance object is serialised using a generalised class. It may be useful when the object type is not otherwise included in the exchange. For example, a Meter may be serialised as an EndDevice in message exchanges and need to have the ObjectType.type be specified as 'Meter' to provide context to the message receiver.</rdfs:comment>
-    <rdfs:label xml:lang="en">ObjectType</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+  <rdf:Description rdf:about="#Integer">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Integer</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ObjectType.IdentifiedObject">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>The IdentifiedObject whose type is identified by ObjectType.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ObjectType"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#IdentifiedObject.ObjectType"/>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="#IdentifiedObject"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ObjectType.type">
-    <rdfs:comment>The specialised type of an object when the instance object is serialised using a generalised class. For example, a Meter being serialised as an EndDevice in a message exchange should have the type attribute specified as 'Meter'.</rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ObjectType"/>
-    <rdfs:label xml:lang="en">type</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile">
-    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
-    <rdfs:label xml:lang="en">DocObjectRegistryProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile">
-    <rdfs:comment>This package contains the equipment object registry profile.</rdfs:comment>
-    <rdfs:label xml:lang="en">ObjectRegistryProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  <rdf:Description rdf:about="#Language">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>Represents textual values that identifier a language based on a structured format that includes language codes, optional region codes, and script subtags. This ensures consistency in multilingual data processing, localization, metadata tagging, and content negotiation.
+Example: Valid examples: "en", "fr", "es-ES", "zh-Hans", "nb-NO". Not valid examples: "english", "Fran&amp;#231;ais", "norwegian", "zh-hant-cn" (invalid format).</rdfs:comment>
+    <rdfs:label xml:lang="en">Language</rdfs:label>
+    <cims:stereotype>ConstrainedPrimitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_ObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
     <rdfs:label xml:lang="en">String</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
 The primitive is serialized as literal without language support.</rdfs:comment>
     <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
@@ -420,7 +171,7 @@ The primitive is serialized as literal without language support.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as literal without language support.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -431,12 +182,392 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <cims:stereotype>profcim</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/eu#URI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>URI is a string following the rules defined by the W3C/IETF URI Planning Interest Group in a set of RFCs of which one is RFC 3305.</rdfs:comment>
+    <rdfs:label xml:lang="en">URI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>European</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#Package_DocObjectRegistryProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile"/>
     <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
     <rdfs:label xml:lang="en">URL</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <cims:stereotype>profcim</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#UniquenessScopeKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile"/>
+    <rdfs:comment>Specifies the intended scope within which a class attribute value is unique.</rdfs:comment>
+    <rdfs:label xml:lang="en">UniquenessScopeKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#DocObjectRegistryProfile">
+    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
+    <rdfs:label xml:lang="en">DocObjectRegistryProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/ObjectRegistry#ObjectRegistryProfile">
+    <rdfs:comment>This package contains the equipment object registry profile.</rdfs:comment>
+    <rdfs:label xml:lang="en">ObjectRegistryProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.alias">
+    <rdfs:comment>An alternative designation used by a system, project, or user community that differs from the default or preferred designation.</rdfs:comment>
+    <rdfs:label xml:lang="en">alias</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.device">
+    <rdfs:comment>A designation used to identify a device, component, or object instance within a vendor system, device platform, or operational system.
+
+Such designations are typically assigned by manufacturers, device firmware, automation systems, metering systems, or enterprise applications (e.g., ERP, asset management, monitoring platforms) and are used for configuration, monitoring, or asset tracking.
+Note: Device designations are often defined within the scope of a particular vendor, system, or installation and are therefore typically unique only within that system context.
+Example: "IED_BAY3_01", "Meter_102394", "SAP_EQ_000457812"</rdfs:comment>
+    <rdfs:label xml:lang="en">device</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.eic">
+    <rdfs:comment>An Energy Identification Code designation, typically used in European energy market and interoperability contexts.
+Example: "10YNO-0--------C"</rdfs:comment>
+    <rdfs:label xml:lang="en">eic</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.iec61850">
+    <rdfs:comment>A designation used in IEC 61850 contexts (e.g., IED name, logical node naming, object references, or related 61850 naming forms as specified by the profile).
+Example: "LD0/XCBR1.Pos.stVal"</rdfs:comment>
+    <rdfs:label xml:lang="en">iec61850</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.label">
+    <rdfs:comment>A short designation primarily intended for local display, compact user interfaces, and single-line diagrams. A label is generally preferred to be short and readable rather than globally unique.
+Example: "T1", "Bay3"</rdfs:comment>
+    <rdfs:label xml:lang="en">label</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.local">
+    <rdfs:comment>A designation used within a local naming scope (site, system, organisation, or sub-hierarchy) where meaning is derived from the local context. The name shall be unique inside the container, e.g. substation. </rdfs:comment>
+    <rdfs:label xml:lang="en">local</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.path">
+    <rdfs:comment>A hierarchical designation constructed from a sequence of name segments representing containment, structure, or functional decomposition.
+Example: "SubstationA/Bay3/Breakder1"</rdfs:comment>
+    <rdfs:label xml:lang="en">path</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.rds">
+    <rdfs:comment>A designation following the Reference Designation System (RDS) defined in IEC 81346, used to uniquely identify systems, functions, and equipment within engineering documentation and technical installations.
+
+RDS designations express the position or role of an object within a structured engineering hierarchy and are widely used in electrical engineering documentation, drawings, and plant documentation.
+Note: 
+The Reference Designation System (RDS) provides a structured identification scheme where each segment represents an aspect of an object such as function ("="), product ("-"), or location ("+").
+Example: "=N01+SA1-Q01"</rdfs:comment>
+    <rdfs:label xml:lang="en">rds</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.urn">
+    <rdfs:comment>A designation expressed as a Uniform Resource Name (URN), a persistent identifier defined using a registered namespace according to IETF RFC 8141.
+
+URN namespaces provide globally unique identifiers without requiring a resolvable URL and are commonly defined by standards bodies, industry communities, or organisations.
+Note: URN identifiers use the general structure: "urn:&amp;lt;namespace&amp;gt;:&amp;lt;identifier&amp;gt;" where &amp;lt;namespace&amp;gt; identifies a registered namespace and &amp;lt;identifier&amp;gt; is the value assigned within that namespace.
+Example: Object Identifier (OID) "urn:oid:1.3.6.1.4.1.4555", UUID namespace "urn:uuid:550e8400-e29b-41d4-a716-446655440000", EIC namespace "urn:eic:10YNO-0--------C"</rdfs:comment>
+    <rdfs:label xml:lang="en">urn</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationKind.uuid">
+    <rdfs:comment>A designation expressed as a Universally Unique Identifier (UUID) as defined in IETF RFC 4122 (and its successor RFC 9562). UUIDs are 128-bit identifiers designed to be globally unique without requiring a central registration authority.
+
+UUID designations are commonly used in software systems and data exchanges to provide stable identifiers across distributed systems.
+Note: A UUID is typically represented as a 36-character string consisting of hexadecimal digits grouped in five sections separated by hyphens.
+Example: "550e8400-e29b-41d4-a716-446655440000"</rdfs:comment>
+    <rdfs:label xml:lang="en">uuid</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation.DesignationAuthority">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The authority responsible for issuing, assigning, or governing the designation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority.Designation"/>
+    <rdfs:label xml:lang="en">DesignationAuthority</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation.DesignationType">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>Reference to a non-standard type specification that further classifies or constrains this designation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DesignationType.Designation"/>
+    <rdfs:label xml:lang="en">DesignationType</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation.IdentifiedObject">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The IdentifiedObject that is referred to in the Designation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#IdentifiedObject.Designation"/>
+    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdfs:range rdf:resource="#IdentifiedObject"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation.kind">
+    <rdfs:comment>Classification indicating the general type or intended usage of the designation.
+Note: The classification allows systems and profiles to interpret designation values consistently. Additional constraints or specialisations may be defined through DesignationType.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <rdfs:label xml:lang="en">kind</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DesignationKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Designation.value">
+    <rdfs:comment>The textual value of the designation assigned to an IdentifiedObject.
+Note:
+The value may represent a name, label, code, or identifier used to refer to the object in a particular context. Designations may be used for display, engineering documentation, system integration, or external identification.
+
+Object relationships in exchanged models shall reference objects using IdentifiedObject.mRID, not designation values.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.Designation">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Designations issued, assigned, or managed by this designation authority.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Designation.DesignationAuthority"/>
+    <rdfs:label xml:lang="en">Designation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.DesignationType">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The Designation type that is publishes or governs by the given Designation Authrority. </rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DesignationType.DesignationAuthority"/>
+    <rdfs:label xml:lang="en">DesignationType</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.authorityRef">
+    <rdfs:comment>URI reference identifying the designation authority.
+Note: The URI may refer to an organisation identifier, registry entry, or other authoritative source describing the authority.
+Example: "https://www.gs1.org", "https://www.entsoe.eu/data/energy-identification-codes-eic/"</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim.ucaiug.io/ns/eu#URI"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <rdfs:label xml:lang="en">authorityRef</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.description">
+    <rdfs:comment>Textual description of the designation authority.
+Note: Provides additional information about the role, scope, or responsibilities of the authority managing the designation scheme.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.lookupServiceRef">
+    <rdfs:comment>URI reference to a service or endpoint that can be used to resolve, validate, or obtain additional information about designations issued by this authority.
+Note: The lookup service may provide information about designation values, identifier registries, or related metadata.
+Example: "https://id.gs1.org/"</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim.ucaiug.io/ns/eu#URI"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <rdfs:label xml:lang="en">lookupServiceRef</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationAuthority.name">
+    <rdfs:comment>Human-readable name of the designation authority.
+Note: Identifies the organisation, system, or community responsible for defining, issuing, or managing the designation scheme or designation types.
+Example: "ENTSO-E", "GS1", "Statnett Asset Registry"</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.Designation">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Designations that are classified by this designation type.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Designation.DesignationType"/>
+    <rdfs:label xml:lang="en">Designation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.DesignationAuthority">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The authority that publishes or governs this type specification.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority.DesignationType"/>
+    <rdfs:label xml:lang="en">DesignationAuthority</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DesignationAuthority"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.description">
+    <rdfs:comment>Textual description of the designation type.
+Note: Explains the intended usage, scope, or rules associated with designations of this type.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.languageTag">
+    <rdfs:comment>Language tag identifying the language used for the name and description.
+Note: Language tags should follow BCP 47 (e.g., en, nb, en-GB).</rdfs:comment>
+    <cims:dataType rdf:resource="#Language"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">languageTag</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.maxLength">
+    <rdfs:comment>Maximum allowed length of designation values of this type, expressed as number of characters.</rdfs:comment>
+    <cims:dataType rdf:resource="#Integer"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">maxLength</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.name">
+    <rdfs:comment>Human-readable name of the designation type.
+Note: Provides a short label describing the purpose or usage of the designation type.
+Example: "DiagramLabel", "AssetIdentifier", "SCADAName"</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.regularExpression">
+    <rdfs:comment>Regular expression that a designation value shall conform to when this type is used.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">regularExpression</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.typeRef">
+    <rdfs:comment>URI reference to an external definition or specification describing the designation type.
+Note: The referenced resource may provide additional documentation, constraints, or governance information for the designation type.
+Example: https://energy.referencedata.eu/DesignationType/DiagramLabel</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim.ucaiug.io/ns/eu#URI"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">typeRef</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DesignationType.uniquenessScope">
+    <rdfs:comment>Intended scope within which designation value of this type are unique.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DesignationType"/>
+    <rdfs:label xml:lang="en">uniquenessScope</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#UniquenessScopeKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#IdentifiedObject.Designation">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Links an IdentifiedObject to one or more designations that can be used to refer to it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IdentifiedObject"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#Designation.IdentifiedObject"/>
+    <rdfs:label xml:lang="en">Designation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#Designation"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Identity.identifier">
+    <rdfs:comment>Globally unique identifier representing the persistent identity of the object.
+Note: The identifier is used to support lifecycle management, cross-system referencing, and comparison of objects across model exchanges and business processes. The identifier is expressed as a URI to allow compatibility with different identifier schemes.
+Profiles commonly restrict the identifier to a UUID to ensure global uniqueness and stable identity across distributed systems.
+Example: "urn:uuid:550e8400-e29b-41d4-a716-446655440000"</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim.ucaiug.io/ns/eu#URI"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Identity"/>
+    <rdfs:label xml:lang="en">identifier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#UniquenessScopeKind.authority">
+    <rdfs:comment>Unique within the scope of the associated authority.</rdfs:comment>
+    <rdfs:label xml:lang="en">authority</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#UniquenessScopeKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#UniquenessScopeKind.exchangeContext">
+    <rdfs:comment>Unique only within the scope of a single exchange package/context (file set, model exchange).</rdfs:comment>
+    <rdfs:label xml:lang="en">exchangeContext</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#UniquenessScopeKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#UniquenessScopeKind.global">
+    <rdfs:comment>Intended to be globally unique (across organisations and exchanges).</rdfs:comment>
+    <rdfs:label xml:lang="en">global</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#UniquenessScopeKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#UniquenessScopeKind.unspecified">
+    <rdfs:comment>Uniqueness is not stated (do not assume uniqueness).</rdfs:comment>
+    <rdfs:label xml:lang="en">unspecified</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#UniquenessScopeKind"/>
   </rdf:Description>
 </rdf:RDF>

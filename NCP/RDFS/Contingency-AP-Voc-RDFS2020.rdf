@@ -2,7 +2,6 @@
 <!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:co="https://ap-voc.cim4.eu/Contingency#"
@@ -11,21 +10,22 @@
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/Contingency#Ontology">
-    <dcterms:conformsTo>file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the contingency profile.</dcterms:description>
-    <dcterms:identifier>8947de1c-6e53-4f1f-82c3-99ef118db9eb</dcterms:identifier>
+    <dcterms:identifier>cedb9de6-01a3-45aa-95e7-2331dce2d4de</dcterms:identifier>
     <dcat:keyword>CO</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-04</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-05</dcterms:modified>
     <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/Contingency-EU/2.2"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,21 +33,254 @@
     <dcterms:title xml:lang="en">Contingency Vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/Contingency/2.3"/>
-    <owl:versionInfo xml:lang="en">2.3.4</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.3.5</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#Boolean">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
     <rdfs:comment>A type with the value space "true" and "false".</rdfs:comment>
     <rdfs:label xml:lang="en">Boolean</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Contingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
     <rdfs:comment>An event threatening system reliability, consisting of one or more contingency elements.</rdfs:comment>
     <rdfs:label xml:lang="en">Contingency</rdfs:label>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Kinds of occurrence criteria of application.</rdfs:comment>
+    <rdfs:label xml:lang="en">ContingencyConditionKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ContingencyElement">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>An element of a system event to be studied by contingency analysis, representing a change in status of a single piece of equipment. </rdfs:comment>
+    <rdfs:label xml:lang="en">ContingencyElement</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ContingencyEquipment">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Equipment whose in service status is to change, such as a power transformer or AC line segment.</rdfs:comment>
+    <rdfs:label xml:lang="en">ContingencyEquipment</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#ContingencyElement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Indicates the state which the contingency equipment is to be in when the contingency is applied.</rdfs:comment>
+    <rdfs:label xml:lang="en">ContingencyEquipmentStatusKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Date">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
+    <rdfs:label xml:lang="en">Date</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#DateTime">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
+    <rdfs:label xml:lang="en">DateTime</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Equipment">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
+    <rdfs:label xml:lang="en">Equipment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ExceptionalContingency">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Exceptional contingency means the simultaneous occurrence of multiple contingencies with a common cause.</rdfs:comment>
+    <rdfs:label xml:lang="en">ExceptionalContingency</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#Contingency"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Float">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Float</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">IRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IdentifiedObject">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
+    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#OrdinaryContingency">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Ordinary contingency means the occurrence of a contingency of a single branch or injection.</rdfs:comment>
+    <rdfs:label xml:lang="en">OrdinaryContingency</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#Contingency"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#OutOfRangeContingency">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Out of range means the simultaneous occurrence of multiple contingencies without a common cause, or a loss of power generating modules with a total loss of generation capacity exceeding the reference incident.</rdfs:comment>
+    <rdfs:label xml:lang="en">OutOfRangeContingency</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#Contingency"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#PerCent">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.</rdfs:comment>
+    <rdfs:label xml:lang="en">PerCent</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#SimulationEvents">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>A configuration or a set of events executed during a simulation.</rdfs:comment>
+    <rdfs:label xml:lang="en">SimulationEvents</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#String">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
+    <rdfs:label xml:lang="en">String</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>A power system operation post responsible for performing and coordinating the real-time and planning functions required to maintain the secure, reliable, and efficient operation of the power system within a defined operational scope.
+Note: SystemOperator represents the execution of power system operational responsibilities in practice. While the operational post exists independently at the ecosystem level, SystemOperator identifies the specific agent fulfilling that responsibility at a given time. The operational scope may correspond to a control area, network, voltage domain, or other defined boundary.</rdfs:comment>
+    <rdfs:label xml:lang="en">SystemOperator</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile"/>
+    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
+    <rdfs:label xml:lang="en">URL</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitMultiplier">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitSymbol">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#ContingencyProfile"/>
+    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/Contingency#ContingencyProfile">
+    <rdfs:comment>This package contains contingency profile.</rdfs:comment>
+    <rdfs:label xml:lang="en">ContingencyProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/Contingency#DocContingencyProfile">
+    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
+    <rdfs:label xml:lang="en">DocContingencyProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.design">
+    <rdfs:comment>Permanent occurrence factor which is design condition.</rdfs:comment>
+    <rdfs:label xml:lang="en">design</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.environmental">
+    <rdfs:comment>Temporary occurrence factor which is weather or environmental condition (e.g. storm).</rdfs:comment>
+    <rdfs:label xml:lang="en">environmental</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.geographicalLocation">
+    <rdfs:comment>Permanent occurrence factor which is specific geographical location.</rdfs:comment>
+    <rdfs:label xml:lang="en">geographicalLocation</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.malfunction">
+    <rdfs:comment>Temporary occurrence factor which is life time or generic malfunction affecting the risk of failure condition.</rdfs:comment>
+    <rdfs:label xml:lang="en">malfunction</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.operational">
+    <rdfs:comment>Temporary occurrence factor which is operational condition.</rdfs:comment>
+    <rdfs:label xml:lang="en">operational</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind.inService">
+    <rdfs:comment>The equipment is to be put into service.</rdfs:comment>
+    <rdfs:label xml:lang="en">inService</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="#ContingencyEquipmentStatusKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind.outOfService">
+    <rdfs:comment>The equipment is to be taken out of service.</rdfs:comment>
+    <rdfs:label xml:lang="en">outOfService</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="#ContingencyEquipmentStatusKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Contingency.ContingencyElement">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -103,51 +336,6 @@ The allowed value range is [0,100].</rdfs:comment>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Kinds of occurrence criteria of application.</rdfs:comment>
-    <rdfs:label xml:lang="en">ContingencyConditionKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.design">
-    <rdfs:comment>Permanent occurrence factor which is design condition.</rdfs:comment>
-    <rdfs:label xml:lang="en">design</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.environmental">
-    <rdfs:comment>Temporary occurrence factor which is weather or environmental condition (e.g. storm).</rdfs:comment>
-    <rdfs:label xml:lang="en">environmental</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.geographicalLocation">
-    <rdfs:comment>Permanent occurrence factor which is specific geographical location.</rdfs:comment>
-    <rdfs:label xml:lang="en">geographicalLocation</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.malfunction">
-    <rdfs:comment>Temporary occurrence factor which is life time or generic malfunction affecting the risk of failure condition.</rdfs:comment>
-    <rdfs:label xml:lang="en">malfunction</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyConditionKind.operational">
-    <rdfs:comment>Temporary occurrence factor which is operational condition.</rdfs:comment>
-    <rdfs:label xml:lang="en">operational</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ContingencyConditionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ContingencyElement">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>An element of a system event to be studied by contingency analysis, representing a change in status of a single piece of equipment. </rdfs:comment>
-    <rdfs:label xml:lang="en">ContingencyElement</rdfs:label>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#ContingencyElement.Contingency">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>A contingency element belongs to one contingency.</rdfs:comment>
@@ -157,14 +345,6 @@ The allowed value range is [0,100].</rdfs:comment>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
     <rdfs:range rdf:resource="#Contingency"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ContingencyEquipment">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Equipment whose in service status is to change, such as a power transformer or AC line segment.</rdfs:comment>
-    <rdfs:label xml:lang="en">ContingencyEquipment</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#ContingencyElement"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ContingencyEquipment.Equipment">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -185,45 +365,6 @@ The allowed value range is [0,100].</rdfs:comment>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Indicates the state which the contingency equipment is to be in when the contingency is applied.</rdfs:comment>
-    <rdfs:label xml:lang="en">ContingencyEquipmentStatusKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind.inService">
-    <rdfs:comment>The equipment is to be put into service.</rdfs:comment>
-    <rdfs:label xml:lang="en">inService</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="#ContingencyEquipmentStatusKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ContingencyEquipmentStatusKind.outOfService">
-    <rdfs:comment>The equipment is to be taken out of service.</rdfs:comment>
-    <rdfs:label xml:lang="en">outOfService</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="#ContingencyEquipmentStatusKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
-    <rdfs:label xml:lang="en">Date</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
-    <rdfs:label xml:lang="en">DateTime</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Equipment">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
-    <rdfs:label xml:lang="en">Equipment</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#Equipment.ContingencyEquipment">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The contingency equipments in which this equipment participates.</rdfs:comment>
@@ -234,15 +375,6 @@ The allowed value range is [0,100].</rdfs:comment>
     <rdfs:range rdf:resource="#ContingencyEquipment"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ExceptionalContingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Exceptional contingency means the simultaneous occurrence of multiple contingencies with a common cause.</rdfs:comment>
-    <rdfs:label xml:lang="en">ExceptionalContingency</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#Contingency"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ExceptionalContingency.kind">
     <rdfs:comment>Defines the kind of relevance and criteria of application of the exceptional contingency.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ExceptionalContingency"/>
@@ -252,31 +384,6 @@ The allowed value range is [0,100].</rdfs:comment>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Float">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Float</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">IRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject.description">
     <rdfs:comment>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
@@ -306,41 +413,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#OrdinaryContingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Ordinary contingency means the occurrence of a contingency of a single branch or injection.</rdfs:comment>
-    <rdfs:label xml:lang="en">OrdinaryContingency</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#Contingency"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#OutOfRangeContingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Out of range means the simultaneous occurrence of multiple contingencies without a common cause, or a loss of power generating modules with a total loss of generation capacity exceeding the reference incident.</rdfs:comment>
-    <rdfs:label xml:lang="en">OutOfRangeContingency</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#Contingency"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile">
-    <rdfs:comment>This package contains contingency profile.</rdfs:comment>
-    <rdfs:label xml:lang="en">ContingencyProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile">
-    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
-    <rdfs:label xml:lang="en">DocContingencyProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#PerCent">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.</rdfs:comment>
-    <rdfs:label xml:lang="en">PerCent</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#PerCent.multiplier">
     <rdfs:domain rdf:resource="#PerCent"/>
     <cims:isFixed>none</cims:isFixed>
@@ -368,12 +440,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#SimulationEvents">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>A configuration or a set of events executed during a simulation.</rdfs:comment>
-    <rdfs:label xml:lang="en">SimulationEvents</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SimulationEvents.Contingency">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Contingency part of this simulation event.</rdfs:comment>
@@ -384,41 +450,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:range rdf:resource="#Contingency"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
-    <rdfs:label xml:lang="en">String</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>System operator.</rdfs:comment>
-    <rdfs:label xml:lang="en">SystemOperator</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator.Contingency">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -431,41 +462,11 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_DocContingencyProfile"/>
-    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
-    <rdfs:label xml:lang="en">URL</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitMultiplier">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#UnitMultiplier.none">
     <rdfs:comment>No multiplier or equivalently multiply by 1.</rdfs:comment>
     <rdfs:label xml:lang="en">none</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#UnitMultiplier"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitSymbol">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/Contingency#Package_ContingencyProfile"/>
-    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitSymbol.none">
     <rdfs:comment>Dimension less quantity, e.g. count, per unit, etc.</rdfs:comment>

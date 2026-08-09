@@ -21,20 +21,20 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the dataset metadata profile.</dcterms:description>
-    <dcterms:identifier>bd3a1070-b4e9-4a0f-8e9a-cba679d29179</dcterms:identifier>
+    <dcterms:identifier>2028a9f0-2092-44d5-8858-dd856cc05626</dcterms:identifier>
     <dcat:keyword>DM</dcat:keyword>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-28</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-09</dcterms:modified>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
     <dcat:theme xml:lang="en">vocabulary</dcat:theme>
     <dcterms:title xml:lang="en">Dataset metadata vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata/3.0"/>
-    <owl:versionInfo xml:lang="en">3.0.1</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">3.0.2</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#Dataset">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>A collection of data, published or curated by a single source, and available for access or download in one or more representations.</rdfs:comment>
     <rdfs:label xml:lang="en">Dataset</rdfs:label>
     <cims:stereotype>dcat</cims:stereotype>
@@ -42,21 +42,21 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile"/>
     <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
     <rdfs:label xml:lang="en">Date</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
     <rdfs:label xml:lang="en">DateTime</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/Metadata-European#DateTimeStamp">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Position of an instant, expressed using xsd:dateTimeStamp, in which the time-zone field is mandatory.</rdfs:comment>
     <rdfs:label xml:lang="en">DateTimeStamp</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
@@ -64,7 +64,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#DifferenceSet">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>A dataset that is represented by statement that describe the difference previous version by using forwardDifference Statement for item that is added and reverseDifference Statement for items that are removed. Items that are updated is described in both the forwardDifference and reversalDifference statements.</rdfs:comment>
     <rdfs:label xml:lang="en">DifferenceSet</rdfs:label>
     <cims:stereotype>dcatcim</cims:stereotype>
@@ -73,14 +73,14 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Duration">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Duration as "PnYnMnDTnHnMnS" which conforms to ISO 8601, where nY expresses a number of years, nM a number of months, nD a number of days. The letter T separates the date expression from the time expression and, after it, nH identifies a number of hours, nM a number of minutes and nS a number of seconds. The number of seconds could be expressed as a decimal number, but all other numbers are integers.</rdfs:comment>
     <rdfs:label xml:lang="en">Duration</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -94,25 +94,25 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#LangString">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Datatype that conforms to rdf:langString, representing a textual value with an associated language tag, following BCP 47 language conventions (e.g., en, fr-CA, no-NB).</rdfs:comment>
     <rdfs:label xml:lang="en">LangString</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <cims:stereotype>rdf</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile">
     <rdfs:comment>The package describes the profile of metadata for dataset and distribution.</rdfs:comment>
     <rdfs:label xml:lang="en">DatasetMetadataProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile">
     <rdfs:comment>This package contains datatypes used only in the RDFS metadata.</rdfs:comment>
     <rdfs:label xml:lang="en">DocDatasetMetadataProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>rdf:Statement is an instance of rdfs:Class. It is intended to represent the class of RDF statements. An RDF statement is the statement made by a token of an RDF triple. The subject of an RDF statement is the instance of rdfs:Resource identified by the subject of the triple. The predicate of an RDF statement is the instance of rdf:Property identified by the predicate of the triple. The object of an RDF statement is the instance of rdfs:Resource identified by the object of the triple. rdf:Statement is in the domain of the properties rdf:predicate, rdf:subject and rdf:object. Different individual rdf:Statement instances may have the same values for their rdf:predicate, rdf:subject and rdf:object properties.</rdfs:comment>
     <rdfs:label xml:lang="en">Statement</rdfs:label>
     <cims:stereotype>Compound</cims:stereotype>
@@ -120,7 +120,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/dcatcim#Statements">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>One or more facts in the form of an RDF triples that forms a cohesive description of change to a dataset.</rdfs:comment>
     <rdfs:label xml:lang="en">Statement</rdfs:label>
     <cims:stereotype>dcatcim</cims:stereotype>
@@ -129,14 +129,14 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
     <rdfs:label xml:lang="en">String</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
 The primitive is serialized as literal without language support.</rdfs:comment>
     <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
@@ -145,7 +145,7 @@ The primitive is serialized as literal without language support.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as literal without language support.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -157,14 +157,14 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#URI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Uniform Resource Identifier (URI) or URI Reference as defined by [RFC 3986], including amendments from [RFC 6874] for IPv6 zone identifiers. The value may be absolute or relative and can include an optional fragment identifier. This datatype is used to indicate that the value fulfills the role of a URI or URI Reference, providing a consistent format for referencing abstract or physical resources.</rdfs:comment>
     <rdfs:label xml:lang="en">URI</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DocDatasetMetadataProfile"/>
     <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
     <rdfs:label xml:lang="en">URL</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
@@ -172,14 +172,14 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UUID">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Datatype representing a unique identifier in the form of a universally unique identifier (UUID). The value must conform to the UUID format as defined in RFC 4122, allowing for globally unique identification of entities.</rdfs:comment>
     <rdfs:label xml:lang="en">UUID</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Version">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/DatasetMetadata#DatasetMetadataProfile"/>
     <rdfs:comment>Datatype representing a version identifier that follows Semantic Versioning (SemVer 2.0.0) principles: MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]. The version consists of a sequence of numbers and optional alphanumeric identifiers that indicate changes in a system, model, or software over time.</rdfs:comment>
     <rdfs:label xml:lang="en">Version</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
