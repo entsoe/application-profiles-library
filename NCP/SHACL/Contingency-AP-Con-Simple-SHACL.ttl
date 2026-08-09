@@ -18,18 +18,18 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 co:Ontology  rdf:type     owl:Ontology;
-        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "66b0532e-f15f-4a75-ad92-8e5438abe461";
-        dcterms:issued        "2026-05-28T16:30:36.310062400"^^xsd:dateTime;
+        dcterms:identifier    "e9039800-1799-45bc-9f64-040ae4e9f1d7";
+        dcterms:issued        "2026-08-09T12:37:10.716658400"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Contingency Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/Contingency-Simple/2.3>;
-        owl:versionInfo   "2.3.5"@en;
+        owl:versionInfo   "2.3.6"@en;
         dcat:keyword      "CO";
         dcat:theme        "constraint"@en .
 
@@ -109,7 +109,7 @@ co:Contingency.EquipmentOperator-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        co:AssociationsGroup;
-        sh:in           ( nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator );
+        sh:in           ( nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "Contingency.EquipmentOperator-valueType";
         sh:nodeKind     sh:IRI;
@@ -361,7 +361,7 @@ co:ContingencyEquipment.Equipment-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        co:AssociationsGroup;
-        sh:in           ( cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester );
+        sh:in           ( cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ContingencyEquipment.Equipment-valueType";
         sh:nodeKind     sh:IRI;
@@ -463,7 +463,7 @@ cc:ClassCount-property
         sh:sparql       cc:ClassCount-propertySparql .
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
+        sh:property     cc:ClassCount-property;
         sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;

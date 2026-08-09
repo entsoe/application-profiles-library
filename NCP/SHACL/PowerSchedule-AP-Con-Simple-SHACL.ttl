@@ -1,5 +1,5 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
-@base   <https://ap-con.cim4.eu/PowerSchedule-Simple/2.4> .
+@base   <https://ap-con.cim4.eu/PowerSchedule-Simple/2.5> .
 @prefix cc:    <https://common-constraints.eu/> .
 @prefix cim:   <https://cim.ucaiug.io/ns#> .
 @prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
@@ -11,25 +11,25 @@
 @prefix md:    <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 @prefix nc:    <https://cim4.eu/ns/nc#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix ps:    <https://ap-con.cim4.eu/PowerSchedule-Simple/2.4#> .
+@prefix ps:    <https://ap-con.cim4.eu/PowerSchedule-Simple/2.5#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 ps:Ontology  rdf:type     owl:Ontology;
-        dcterms:conformsTo    "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2";
+        dcterms:conformsTo    "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "3e8b2b72-ef5a-4851-8efb-c975c0e8496d";
-        dcterms:issued        "2026-05-28T16:33:51.729686700"^^xsd:dateTime;
+        dcterms:identifier    "73f32ccb-02a5-4d19-af16-7e10f5779e0d";
+        dcterms:issued        "2026-08-09T12:37:31.177865"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Power schedule vocabulary"@en;
-        owl:versionIRI    <https://ap-con.cim4.eu/PowerSchedule-Simple/2.4>;
-        owl:versionInfo   "2.4.1"@en;
+        owl:versionIRI    <https://ap-con.cim4.eu/PowerSchedule-Simple/2.5>;
+        owl:versionInfo   "2.5.0"@en;
         dcat:keyword      "PS";
         dcat:theme        "constraint"@en .
 
@@ -41,7 +41,7 @@ ps:MustRunTimePoint.MustRunSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:MustRunSchedule";
         sh:name         "MustRunTimePoint.MustRunSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        17;
+        sh:order        19;
         sh:path         nc:MustRunTimePoint.MustRunSchedule;
         sh:severity     sh:Violation .
 
@@ -53,7 +53,7 @@ ps:MustRunTimePoint.MustRunSchedule-cardinality
         sh:message      "Association with cardinality violation at the used direction.";
         sh:minCount     1;
         sh:name         "MustRunTimePoint.MustRunSchedule-cardinality";
-        sh:order        50;
+        sh:order        54;
         sh:path         nc:MustRunTimePoint.MustRunSchedule;
         sh:severity     sh:Violation .
 
@@ -65,7 +65,7 @@ ps:MustRunTimePoint.atTime-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "MustRunTimePoint.atTime-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        29;
+        sh:order        30;
         sh:path         nc:MustRunTimePoint.atTime;
         sh:severity     sh:Violation .
 
@@ -77,7 +77,7 @@ ps:MustRunTimePoint.atTime-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "MustRunTimePoint.atTime-cardinality";
-        sh:order        49;
+        sh:order        53;
         sh:path         nc:MustRunTimePoint.atTime;
         sh:severity     sh:Violation .
 
@@ -89,7 +89,7 @@ ps:MustRunTimePoint.mustRun-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "MustRunTimePoint.mustRun-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        28;
+        sh:order        29;
         sh:path         nc:MustRunTimePoint.mustRun;
         sh:severity     sh:Violation .
 
@@ -100,7 +100,7 @@ ps:MustRunTimePoint.mustRun-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "MustRunTimePoint.mustRun-cardinality";
-        sh:order        48;
+        sh:order        52;
         sh:path         nc:MustRunTimePoint.mustRun;
         sh:severity     sh:Violation .
 
@@ -112,7 +112,7 @@ ps:MustRunTimePoint.mustRunP-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "MustRunTimePoint.mustRunP-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        27;
+        sh:order        28;
         sh:path         nc:MustRunTimePoint.mustRunP;
         sh:severity     sh:Violation .
 
@@ -123,7 +123,7 @@ ps:MustRunTimePoint.mustRunP-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "MustRunTimePoint.mustRunP-cardinality";
-        sh:order        47;
+        sh:order        51;
         sh:path         nc:MustRunTimePoint.mustRunP;
         sh:severity     sh:Violation .
 
@@ -135,7 +135,7 @@ ps:MustRunTimePoint.mustRunQ-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "MustRunTimePoint.mustRunQ-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        26;
+        sh:order        27;
         sh:path         nc:MustRunTimePoint.mustRunQ;
         sh:severity     sh:Violation .
 
@@ -146,7 +146,7 @@ ps:MustRunTimePoint.mustRunQ-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "MustRunTimePoint.mustRunQ-cardinality";
-        sh:order        46;
+        sh:order        50;
         sh:path         nc:MustRunTimePoint.mustRunQ;
         sh:severity     sh:Violation .
 
@@ -158,7 +158,7 @@ ps:MustRunTimePoint-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              4;
+        sh:order              5;
         sh:property           [ sh:path  nc:MustRunTimePoint.MustRunSchedule ];
         sh:property           [ sh:path  nc:MustRunTimePoint.atTime ];
         sh:property           [ sh:path  nc:MustRunTimePoint.mustRun ];
@@ -170,6 +170,123 @@ ps:MustRunTimePoint-AllowedProperties
 ps:MustRunTimePoint  rdf:type  sh:NodeShape;
         sh:property     ps:MustRunTimePoint.MustRunSchedule-valueType , ps:MustRunTimePoint.MustRunSchedule-cardinality , ps:MustRunTimePoint.atTime-datatype , ps:MustRunTimePoint.atTime-cardinality , ps:MustRunTimePoint.mustRun-datatype , ps:MustRunTimePoint.mustRun-cardinality , ps:MustRunTimePoint.mustRunP-datatype , ps:MustRunTimePoint.mustRunP-cardinality , ps:MustRunTimePoint.mustRunQ-datatype , ps:MustRunTimePoint.mustRunQ-cardinality;
         sh:targetClass  nc:MustRunTimePoint .
+
+ps:DCTieCorridorDirectionTimePoint.BiddingZoneBorder-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:BiddingZoneBorder;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ps:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:BiddingZoneBorder";
+        sh:name         "DCTieCorridorDirectionTimePoint.BiddingZoneBorder-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        18;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.BiddingZoneBorder;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.BiddingZoneBorder-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ps:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "DCTieCorridorDirectionTimePoint.BiddingZoneBorder-cardinality";
+        sh:order        49;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.BiddingZoneBorder;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.DCTieCorridor-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:DCTieCorridor;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ps:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DCTieCorridor";
+        sh:name         "DCTieCorridorDirectionTimePoint.DCTieCorridor-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        17;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.DCTieCorridor;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.DCTieCorridor-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ps:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "DCTieCorridorDirectionTimePoint.DCTieCorridor-cardinality";
+        sh:order        48;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.DCTieCorridor;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.PowerSchedule-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:PowerSchedule;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ps:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:PowerSchedule";
+        sh:name         "DCTieCorridorDirectionTimePoint.PowerSchedule-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        16;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.PowerSchedule;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.PowerSchedule-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ps:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "DCTieCorridorDirectionTimePoint.PowerSchedule-cardinality";
+        sh:order        47;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.PowerSchedule;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.atTime-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        ps:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DCTieCorridorDirectionTimePoint.atTime-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        26;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.atTime;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint.atTime-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ps:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "DCTieCorridorDirectionTimePoint.atTime-cardinality";
+        sh:order        46;
+        sh:path         nc:DCTieCorridorDirectionTimePoint.atTime;
+        sh:severity     sh:Violation .
+
+ps:DCTieCorridorDirectionTimePoint-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              ps:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              4;
+        sh:property           [ sh:path  nc:DCTieCorridorDirectionTimePoint.BiddingZoneBorder ];
+        sh:property           [ sh:path  nc:DCTieCorridorDirectionTimePoint.DCTieCorridor ];
+        sh:property           [ sh:path  nc:DCTieCorridorDirectionTimePoint.PowerSchedule ];
+        sh:property           [ sh:path  nc:DCTieCorridorDirectionTimePoint.atTime ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:DCTieCorridorDirectionTimePoint .
+
+ps:DCTieCorridorDirectionTimePoint
+        rdf:type        sh:NodeShape;
+        sh:property     ps:DCTieCorridorDirectionTimePoint.BiddingZoneBorder-valueType , ps:DCTieCorridorDirectionTimePoint.BiddingZoneBorder-cardinality , ps:DCTieCorridorDirectionTimePoint.DCTieCorridor-valueType , ps:DCTieCorridorDirectionTimePoint.DCTieCorridor-cardinality , ps:DCTieCorridorDirectionTimePoint.PowerSchedule-valueType , ps:DCTieCorridorDirectionTimePoint.PowerSchedule-cardinality , ps:DCTieCorridorDirectionTimePoint.atTime-datatype , ps:DCTieCorridorDirectionTimePoint.atTime-cardinality;
+        sh:targetClass  nc:DCTieCorridorDirectionTimePoint .
 
 ps:PowerTimePoint.p-datatype
         rdf:type        sh:PropertyShape;
@@ -363,7 +480,7 @@ ps:PowerTimePoint.PowerSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:PowerSchedule";
         sh:name         "PowerTimePoint.PowerSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        16;
+        sh:order        15;
         sh:path         nc:PowerTimePoint.PowerSchedule;
         sh:severity     sh:Violation .
 
@@ -412,7 +529,7 @@ ps:MustRunSchedule.DCTieCorridor-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DCTieCorridor";
         sh:name         "MustRunSchedule.DCTieCorridor-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        15;
+        sh:order        14;
         sh:path         nc:MustRunSchedule.DCTieCorridor;
         sh:severity     sh:Violation .
 
@@ -431,11 +548,11 @@ ps:MustRunSchedule.GeneratingUnit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:in           ( cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit );
+        sh:in           ( cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "MustRunSchedule.GeneratingUnit-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        14;
+        sh:order        13;
         sh:path         ( nc:MustRunSchedule.GeneratingUnit rdf:type );
         sh:severity     sh:Violation .
 
@@ -473,7 +590,7 @@ ps:MustRunSchedule.MustRunTimePoint-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        2;
+        sh:order        3;
         sh:path         nc:MustRunSchedule.MustRunTimePoint;
         sh:severity     sh:Violation .
 
@@ -699,11 +816,11 @@ ps:PowerSchedule.PowerElectronicsUnit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:in           ( nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit );
+        sh:in           ( nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerSchedule.PowerElectronicsUnit-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        13;
+        sh:order        12;
         sh:path         ( nc:PowerSchedule.PowerElectronicsUnit rdf:type );
         sh:severity     sh:Violation .
 
@@ -727,11 +844,11 @@ ps:PowerSchedule.EnergyConnection-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:in           ( cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim:EnergyConsumer );
+        sh:in           ( cim17:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerSchedule.EnergyConnection-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        12;
+        sh:order        11;
         sh:path         ( nc:PowerSchedule.EnergyConnection rdf:type );
         sh:severity     sh:Violation .
 
@@ -782,7 +899,7 @@ ps:PowerSchedule.HydroPump-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:HydroPump";
         sh:name         "PowerSchedule.HydroPump-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        11;
+        sh:order        10;
         sh:path         nc:PowerSchedule.HydroPump;
         sh:severity     sh:Violation .
 
@@ -801,11 +918,11 @@ ps:PowerSchedule.GeneratingUnit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:in           ( cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit );
+        sh:in           ( cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerSchedule.GeneratingUnit-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        10;
+        sh:order        9;
         sh:path         ( nc:PowerSchedule.GeneratingUnit rdf:type );
         sh:severity     sh:Violation .
 
@@ -823,52 +940,6 @@ ps:PowerSchedule.GeneratingUnit-cardinality
         sh:name         "PowerSchedule.GeneratingUnit-cardinality";
         sh:order        13;
         sh:path         nc:PowerSchedule.GeneratingUnit;
-        sh:severity     sh:Violation .
-
-ps:PowerSchedule.DCTieCorridor-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:DCTieCorridor;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        ps:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DCTieCorridor";
-        sh:name         "PowerSchedule.DCTieCorridor-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        9;
-        sh:path         nc:PowerSchedule.DCTieCorridor;
-        sh:severity     sh:Violation .
-
-ps:PowerSchedule.DCTieCorridor-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        ps:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "PowerSchedule.DCTieCorridor-cardinality";
-        sh:order        12;
-        sh:path         nc:PowerSchedule.DCTieCorridor;
-        sh:severity     sh:Violation .
-
-ps:PowerSchedule.AreaDispatchableUnit-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:AreaDispatchableUnit;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        ps:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AreaDispatchableUnit";
-        sh:name         "PowerSchedule.AreaDispatchableUnit-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        8;
-        sh:path         nc:PowerSchedule.AreaDispatchableUnit;
-        sh:severity     sh:Violation .
-
-ps:PowerSchedule.AreaDispatchableUnit-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        ps:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "PowerSchedule.AreaDispatchableUnit-cardinality";
-        sh:order        11;
-        sh:path         nc:PowerSchedule.AreaDispatchableUnit;
         sh:severity     sh:Violation .
 
 ps:PowerSchedule.direction-datatype
@@ -890,7 +961,7 @@ ps:PowerSchedule.direction-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.direction-cardinality";
-        sh:order        10;
+        sh:order        12;
         sh:path         nc:PowerSchedule.direction;
         sh:severity     sh:Violation .
 
@@ -902,7 +973,7 @@ ps:PowerSchedule.SchedulingArea-valueType
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerSchedule.SchedulingArea-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        7;
+        sh:order        8;
         sh:path         ( nc:PowerSchedule.SchedulingArea rdf:type );
         sh:severity     sh:Violation .
 
@@ -918,7 +989,7 @@ ps:PowerSchedule.SchedulingArea-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.SchedulingArea-cardinality";
-        sh:order        9;
+        sh:order        11;
         sh:path         nc:PowerSchedule.SchedulingArea;
         sh:severity     sh:Violation .
 
@@ -929,7 +1000,7 @@ ps:PowerSchedule.PowerTimePoint-propertyInverse
         sh:maxCount     0;
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
-        sh:order        1;
+        sh:order        2;
         sh:path         nc:PowerSchedule.PowerTimePoint;
         sh:severity     sh:Violation .
 
@@ -946,7 +1017,7 @@ ps:PowerSchedule.BiddingZone-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:BiddingZone";
         sh:name         "PowerSchedule.BiddingZone-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        6;
+        sh:order        7;
         sh:path         nc:PowerSchedule.BiddingZone;
         sh:severity     sh:Violation .
 
@@ -957,7 +1028,7 @@ ps:PowerSchedule.BiddingZone-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.BiddingZone-cardinality";
-        sh:order        7;
+        sh:order        9;
         sh:path         nc:PowerSchedule.BiddingZone;
         sh:severity     sh:Violation .
 
@@ -969,7 +1040,7 @@ ps:PowerSchedule.EquivalentInjection-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:EquivalentInjection";
         sh:name         "PowerSchedule.EquivalentInjection-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        5;
+        sh:order        6;
         sh:path         nc:PowerSchedule.EquivalentInjection;
         sh:severity     sh:Violation .
 
@@ -980,7 +1051,7 @@ ps:PowerSchedule.EquivalentInjection-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.EquivalentInjection-cardinality";
-        sh:order        6;
+        sh:order        8;
         sh:path         nc:PowerSchedule.EquivalentInjection;
         sh:severity     sh:Violation .
 
@@ -992,7 +1063,7 @@ ps:PowerSchedule.BiddingZoneBorder-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:BiddingZoneBorder";
         sh:name         "PowerSchedule.BiddingZoneBorder-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        4;
+        sh:order        5;
         sh:path         nc:PowerSchedule.BiddingZoneBorder;
         sh:severity     sh:Violation .
 
@@ -1003,8 +1074,31 @@ ps:PowerSchedule.BiddingZoneBorder-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.BiddingZoneBorder-cardinality";
-        sh:order        5;
+        sh:order        7;
         sh:path         nc:PowerSchedule.BiddingZoneBorder;
+        sh:severity     sh:Violation .
+
+ps:PowerSchedule.AreaReserveResource-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AreaReserveResource;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        ps:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AreaReserveResource";
+        sh:name         "PowerSchedule.AreaReserveResource-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        4;
+        sh:path         nc:PowerSchedule.AreaReserveResource;
+        sh:severity     sh:Violation .
+
+ps:PowerSchedule.AreaReserveResource-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ps:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PowerSchedule.AreaReserveResource-cardinality";
+        sh:order        6;
+        sh:path         nc:PowerSchedule.AreaReserveResource;
         sh:severity     sh:Violation .
 
 ps:PowerSchedule.powerScheduleKind-datatype
@@ -1027,7 +1121,7 @@ ps:PowerSchedule.powerScheduleKind-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "PowerSchedule.powerScheduleKind-cardinality";
-        sh:order        4;
+        sh:order        5;
         sh:path         nc:PowerSchedule.powerScheduleKind;
         sh:severity     sh:Violation .
 
@@ -1050,16 +1144,16 @@ ps:PowerSchedule.DCPole-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.DCPole-cardinality";
-        sh:order        3;
+        sh:order        4;
         sh:path         nc:PowerSchedule.DCPole;
         sh:severity     sh:Violation .
 
 ps:PowerSchedule.EnergyGroup-valueType
         rdf:type        sh:PropertyShape;
-        sh:class        nc:EnergyGroup;
+        sh:class        nc:EnergyResourceGroupCapacity;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:EnergyGroup";
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:EnergyResourceGroupCapacity";
         sh:name         "PowerSchedule.EnergyGroup-valueType";
         sh:nodeKind     sh:IRI;
         sh:order        2;
@@ -1073,7 +1167,7 @@ ps:PowerSchedule.EnergyGroup-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.EnergyGroup-cardinality";
-        sh:order        2;
+        sh:order        3;
         sh:path         nc:PowerSchedule.EnergyGroup;
         sh:severity     sh:Violation .
 
@@ -1081,7 +1175,7 @@ ps:PowerSchedule.PowerRemedialAction-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ps:AssociationsGroup;
-        sh:in           ( nc:RedispatchRemedialAction nc:CountertradeRemedialAction );
+        sh:in           ( nc:CountertradeRemedialAction nc:RedispatchRemedialAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerSchedule.PowerRemedialAction-valueType";
         sh:nodeKind     sh:IRI;
@@ -1101,9 +1195,25 @@ ps:PowerSchedule.PowerRemedialAction-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "PowerSchedule.PowerRemedialAction-cardinality";
-        sh:order        1;
+        sh:order        2;
         sh:path         nc:PowerSchedule.PowerRemedialAction;
         sh:severity     sh:Violation .
+
+ps:PowerSchedule.DCTieCorridorTimePoint-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        ps:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        1;
+        sh:path         nc:PowerSchedule.DCTieCorridorTimePoint;
+        sh:severity     sh:Violation .
+
+ps:PowerSchedule.DCTieCorridorTimePoint-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          ps:PowerSchedule.DCTieCorridorTimePoint-propertyInverse;
+        sh:targetSubjectsOf  nc:PowerSchedule.DCTieCorridorTimePoint .
 
 ps:PowerSchedule-AllowedProperties
         rdf:type              sh:NodeShape;
@@ -1123,26 +1233,25 @@ ps:PowerSchedule-AllowedProperties
         sh:property           [ sh:path  nc:BaseTimeSeries.percentile ];
         sh:property           [ sh:path  nc:BaseTimeSeries.timeSeriesKind ];
         sh:property           [ sh:path  nc:PowerSchedule.PowerElectronicsUnit ];
-        sh:property           [ sh:path  nc:PowerSchedule.EnergyConnection ];
         sh:property           [ sh:path  nc:PowerSchedule.PowerRemedialAction ];
         sh:property           [ sh:path  nc:PowerSchedule.EnergyGroup ];
         sh:property           [ sh:path  nc:PowerSchedule.DCPole ];
         sh:property           [ sh:path  nc:PowerSchedule.powerScheduleKind ];
+        sh:property           [ sh:path  nc:PowerSchedule.AreaReserveResource ];
         sh:property           [ sh:path  nc:PowerSchedule.BiddingZoneBorder ];
         sh:property           [ sh:path  nc:PowerSchedule.EquivalentInjection ];
         sh:property           [ sh:path  nc:PowerSchedule.BiddingZone ];
         sh:property           [ sh:path  nc:PowerSchedule.SchedulingArea ];
         sh:property           [ sh:path  nc:PowerSchedule.direction ];
-        sh:property           [ sh:path  nc:PowerSchedule.AreaDispatchableUnit ];
-        sh:property           [ sh:path  nc:PowerSchedule.DCTieCorridor ];
         sh:property           [ sh:path  nc:PowerSchedule.GeneratingUnit ];
         sh:property           [ sh:path  nc:PowerSchedule.HydroPump ];
         sh:property           [ sh:path  nc:PowerSchedule.currency ];
+        sh:property           [ sh:path  nc:PowerSchedule.EnergyConnection ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerSchedule .
 
 ps:PowerSchedule  rdf:type  sh:NodeShape;
-        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , ps:BaseTimeSeries.actionMethod-datatype , ps:BaseTimeSeries.actionMethod-cardinality , ps:BaseTimeSeries.generatedAtTime-datatype , ps:BaseTimeSeries.generatedAtTime-cardinality , ps:BaseTimeSeries.interpolationKind-datatype , ps:BaseTimeSeries.interpolationKind-cardinality , ps:BaseTimeSeries.percentile-datatype , ps:BaseTimeSeries.percentile-cardinality , ps:BaseTimeSeries.timeSeriesKind-datatype , ps:BaseTimeSeries.timeSeriesKind-cardinality , ps:PowerSchedule.PowerElectronicsUnit-cardinality , ps:PowerSchedule.EnergyConnection-cardinality , ps:PowerSchedule.currency-datatype , ps:PowerSchedule.currency-cardinality , ps:PowerSchedule.HydroPump-valueType , ps:PowerSchedule.HydroPump-cardinality , ps:PowerSchedule.GeneratingUnit-cardinality , ps:PowerSchedule.DCTieCorridor-valueType , ps:PowerSchedule.DCTieCorridor-cardinality , ps:PowerSchedule.AreaDispatchableUnit-valueType , ps:PowerSchedule.AreaDispatchableUnit-cardinality , ps:PowerSchedule.direction-datatype , ps:PowerSchedule.direction-cardinality , ps:PowerSchedule.PowerRemedialAction-cardinality , ps:PowerSchedule.EnergyGroup-cardinality , ps:PowerSchedule.EnergyGroup-valueType , ps:PowerSchedule.DCPole-cardinality , ps:PowerSchedule.DCPole-valueType , ps:PowerSchedule.powerScheduleKind-cardinality , ps:PowerSchedule.powerScheduleKind-datatype , ps:PowerSchedule.BiddingZoneBorder-cardinality , ps:PowerSchedule.BiddingZoneBorder-valueType , ps:PowerSchedule.EquivalentInjection-cardinality , ps:PowerSchedule.EquivalentInjection-valueType , ps:PowerSchedule.BiddingZone-cardinality , ps:PowerSchedule.BiddingZone-valueType , ps:PowerSchedule.SchedulingArea-cardinality;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , ps:BaseTimeSeries.actionMethod-datatype , ps:BaseTimeSeries.actionMethod-cardinality , ps:BaseTimeSeries.generatedAtTime-datatype , ps:BaseTimeSeries.generatedAtTime-cardinality , ps:BaseTimeSeries.interpolationKind-datatype , ps:BaseTimeSeries.interpolationKind-cardinality , ps:BaseTimeSeries.percentile-datatype , ps:BaseTimeSeries.percentile-cardinality , ps:BaseTimeSeries.timeSeriesKind-datatype , ps:BaseTimeSeries.timeSeriesKind-cardinality , ps:PowerSchedule.PowerElectronicsUnit-cardinality , ps:PowerSchedule.EnergyConnection-cardinality , ps:PowerSchedule.currency-datatype , ps:PowerSchedule.currency-cardinality , ps:PowerSchedule.HydroPump-valueType , ps:PowerSchedule.HydroPump-cardinality , ps:PowerSchedule.GeneratingUnit-cardinality , ps:PowerSchedule.direction-datatype , ps:PowerSchedule.direction-cardinality , ps:PowerSchedule.SchedulingArea-cardinality , ps:PowerSchedule.BiddingZone-valueType , ps:PowerSchedule.PowerRemedialAction-cardinality , ps:PowerSchedule.EnergyGroup-cardinality , ps:PowerSchedule.EnergyGroup-valueType , ps:PowerSchedule.DCPole-cardinality , ps:PowerSchedule.DCPole-valueType , ps:PowerSchedule.powerScheduleKind-cardinality , ps:PowerSchedule.powerScheduleKind-datatype , ps:PowerSchedule.AreaReserveResource-cardinality , ps:PowerSchedule.AreaReserveResource-valueType , ps:PowerSchedule.BiddingZoneBorder-cardinality , ps:PowerSchedule.BiddingZoneBorder-valueType , ps:PowerSchedule.EquivalentInjection-cardinality , ps:PowerSchedule.EquivalentInjection-valueType , ps:PowerSchedule.BiddingZone-cardinality;
         sh:targetClass  nc:PowerSchedule .
 
 cc:     rdf:type     owl:Ontology;
@@ -1175,7 +1284,7 @@ cc:ClassCount-property
         sh:sparql       cc:ClassCount-propertySparql .
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
+        sh:property     cc:ClassCount-property;
         sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
@@ -1186,7 +1295,7 @@ ps:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        ps:ProfileClassesGroup;
-        sh:in           ( nc:PowerSchedule nc:MustRunSchedule nc:PowerTimePoint nc:MustRunTimePoint md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:PowerSchedule nc:MustRunSchedule nc:PowerTimePoint nc:DCTieCorridorDirectionTimePoint nc:MustRunTimePoint md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;

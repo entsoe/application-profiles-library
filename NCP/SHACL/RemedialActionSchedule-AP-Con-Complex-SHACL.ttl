@@ -6,7 +6,6 @@
 @prefix cim17:   <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
 @prefix nc:      <https://cim4.eu/ns/nc#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -19,49 +18,19 @@ rasc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for remedial action scheule profile."@en ;
-        dcterms:identifier        "e831e1cf-b74c-4b22-99e5-0252fe13a29f" ;
-        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "58cef103-6454-4793-8436-606e4142e421" ;
+        dcterms:issued            "2026-08-09T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2026-05-28"^^xsd:date ;
+        dcterms:modified          "2026-08-09"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Remedial Action Schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4> ;
     dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.4.1"@en ;
+        owl:versionInfo       "2.4.2"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
-
-cim:    
-    a           owl:Ontology ;
-    owl:imports sh: ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
-        sh:prefix "cim" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
-        sh:prefix "cim16" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
-        sh:prefix "nc" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
-        sh:prefix "rdf" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
-        sh:prefix "cim17" ;
-    ] .
-
 
 rasc:RASgroup
         a           sh:PropertyGroup ;
@@ -95,7 +64,7 @@ rasc:RemedialActionSchedule-proposingEntitySparql
       WHERE {  
     BIND(EXISTS{$this nc:RemedialActionSchedule.ProposingEntity ?o1} AS ?pesc).
     BIND(EXISTS{$this ^nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ?o2} AS ?peso).
-        FILTER (?pesc=false && ?peso=false ).
+        FILTER (?pesc="false"^^xsd:boolean && ?peso="false"^^xsd:boolean ).
       }""" .        
 
 rasc:RemedialActionScheduleGroup  a          sh:NodeShape ;
@@ -132,7 +101,7 @@ rasc:RemedialActionScheduleGroup-dependencySparql
       WHERE {  
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o1} AS ?a1).
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o2} AS ?a2).
-        FILTER (?a1=false && ?a2=false ).
+        FILTER (?a1="false"^^xsd:boolean && ?a2="false"^^xsd:boolean ).
       }""" .    
       
 rasc:RemedialActionScheduleDependency.kind-cardinality
@@ -154,7 +123,7 @@ rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
       WHERE {  
     
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-        FILTER (?a1=false  ).
+        FILTER (?a1="false"^^xsd:boolean  ).
       }""" .      
 
 rasc:RemedialActionScheduleDependency  a          sh:NodeShape ;
@@ -181,7 +150,7 @@ rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
-        FILTER (?a1=true && ?a2=false ).
+        FILTER (?a1="true"^^xsd:boolean && ?a2="false"^^xsd:boolean ).
       }""" .            
       
 rasc:RemedialActionScheduleDependency-associations
@@ -206,7 +175,7 @@ rasc:RemedialActionScheduleDependency-associationsSparql
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
     
-        FILTER ((?a1=true && ?a2=true && ?a3=true) || (?a1=false && (?a2=false || ?a3=false))).
+        FILTER ((?a1="true"^^xsd:boolean && ?a2="true"^^xsd:boolean && ?a3="true"^^xsd:boolean) || (?a1="false"^^xsd:boolean && (?a2="false"^^xsd:boolean || ?a3="false"^^xsd:boolean))).
       }""" .    
 
 
@@ -234,7 +203,7 @@ rasc:RemedialActionScheduleResponse.rejectionReasonKind-requiredSparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
-        FILTER (?hasRK=false && ?hasR=true ).
+        FILTER (?hasRK="false"^^xsd:boolean && ?hasR="true"^^xsd:boolean ).
       }""" .    
 
 rasc:RemedialActionScheduleResponse.rejectionReason-applicability
@@ -257,5 +226,108 @@ rasc:RemedialActionScheduleResponse.rejectionReason-applicabilitySparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
-        FILTER (?hasRR=false && ?hasR=true ).
-      }""" .        
+        FILTER (?hasRR="false"^^xsd:boolean && ?hasR="true"^^xsd:boolean ).
+      }""" .   
+
+
+rasc:PowerSchedule  a          sh:NodeShape ;
+        sh:property     rasc:PowerSchedule-currencyConsistency, rasc:PowerSchedule-currency-property ;
+        sh:targetClass  nc:PowerSchedule .
+
+rasc:PowerSchedule-currencyConsistency
+        a               sh:PropertyShape ;
+        sh:description  "If PowerTimePoint.price is provided and PowerSchedule is associated with PowerScheduleAction either PowerScheduleAction.currency or PowerSchedule.currency shall be provided." ;
+        sh:sparql       rasc:PowerSchedule-currencyConsistencySparql ;
+        sh:path         nc:PowerSchedule.currency ;
+        sh:group        rasc:RASgroup ;
+        sh:name         "C:NC:RAS:PowerSchedule:currencyConsistency" ;
+        sh:order        9 ;
+        sh:severity     sh:Violation .
+
+rasc:PowerSchedule-currencyConsistencySparql
+        a               sh:SPARQLConstraint ;
+        sh:message      "Currency is missing. If PowerTimePoint.price is provided, currency shall be provided either on PowerSchedule or on the associated PowerScheduleAction." ;
+        sh:prefixes     cim: ;
+        sh:select       """
+            SELECT DISTINCT $this
+            WHERE {
+                $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+
+                $this ^nc:PowerScheduleAction.PowerSchedule ?powerScheduleAction .
+                ?powerScheduleAction rdf:type ?actionType .
+
+                FILTER (
+                    ?actionType IN (
+                        nc:CountertradeScheduleAction,
+                        nc:RedispatchScheduleAction
+                    )
+                )
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?powerScheduleCurrency .
+                }
+
+                FILTER NOT EXISTS {
+                    ?powerScheduleAction nc:PowerScheduleAction.currency ?powerScheduleActionCurrency .
+                }
+            }
+        """ .
+
+
+rasc:PowerSchedule-currency-property
+        a               sh:PropertyShape ;
+        sh:path         nc:PowerSchedule.currency ;
+        sh:name         "C:NC:RAS:PowerSchedule:currency" ;
+        sh:description  "If PowerTimePoint.price is provided, PowerSchedule.currency is required." ;
+        sh:group        rasc:RASgroup ;
+        sh:order        2 ;
+        sh:severity     sh:Violation ;
+        sh:sparql       rasc:PowerSchedule-currencySparql .
+
+rasc:PowerSchedule-currencySparql
+        a               sh:SPARQLConstraint ;
+        sh:prefixes     cim: ;
+        sh:message      "PowerSchedule.currency is not provided but a PowerTimePoint.price is provided." ;
+        sh:select       """
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        """ .		
+
+rasc:PowerScheduleAction-currencyNS  a          sh:NodeShape ;
+        sh:property     rasc:PowerScheduleAction-currency-property ;
+        sh:targetClass  nc:CountertradeScheduleAction, nc:RedispatchScheduleAction .	  
+
+rasc:PowerScheduleAction-currency-property
+        a               sh:PropertyShape ;
+        sh:path         nc:PowerScheduleAction.currency ;
+        sh:name         "C:NC:RAS:PowerScheduleAction:currency" ;
+        sh:description  "If PowerScheduleAction.energyPrice is provided, the PowerScheduleAction.currency is required." ;
+        sh:group        rasc:RASgroup ;
+        sh:order        2 ;
+        sh:severity     sh:Violation ;
+        sh:sparql       rasc:PowerScheduleAction-currency-propertySparql .
+
+rasc:PowerScheduleAction-currency-propertySparql
+        a               sh:SPARQLConstraint ;
+        sh:prefixes     cim: ;
+        sh:message      "PowerScheduleAction.currency is not provided but a PowerScheduleAction.energyPrice is provided." ;
+        sh:select       """
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this nc:PowerScheduleAction.energyPrice ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        """ .			

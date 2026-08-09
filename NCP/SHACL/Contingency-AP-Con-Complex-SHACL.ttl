@@ -18,49 +18,19 @@ coc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
         dcterms:creator           "ENTSO-E CIM EG"@en ;
         dcterms:description       "The custom constraints for the Contingency profile."@en ;
-        dcterms:identifier        "91e7e323-f35f-40fd-bf03-55fc6dd05e9c" ;
-        dcterms:issued            "2026-05-28T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "32660a75-459b-4ea5-ba43-518495266586" ;
+        dcterms:issued            "2026-08-09T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2026-05-28"^^xsd:date ;
+        dcterms:modified          "2026-08-09"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Contingency profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/Contingency-Complex/2.3> ;
     dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.3.1"@en ;
+        owl:versionInfo       "2.3.2"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
-
-cim:    
-    a           owl:Ontology ;
-    owl:imports sh: ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
-        sh:prefix "cim" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
-        sh:prefix "cim16" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
-        sh:prefix "nc" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
-        sh:prefix "rdf" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
-        sh:prefix "cim17" ;
-    ] .
-
 
 coc:COgroup
         a           sh:PropertyGroup ;

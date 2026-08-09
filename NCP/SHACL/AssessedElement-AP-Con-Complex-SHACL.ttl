@@ -6,7 +6,6 @@
 @prefix cim17:   <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
 @prefix nc:      <https://cim4.eu/ns/nc#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -18,50 +17,19 @@ aec:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
         dcterms:creator           "ENTSO-E CIM EG"@en ;
         dcterms:description       "The custom constraints for assessed element profile."@en ;
-        dcterms:identifier        "c70cc892-68ed-4ff2-8eb1-6da1fa24a310" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "0e44c68a-36e6-4f0e-bb55-446b596f47d9" ;
+        dcterms:issued            "2026-08-09T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-08-09"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Assessed element profile custom Constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/AssessedElement-Complex/2.4> ;
     dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.4.0"@en ;
+        owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
-
-cim:    
-    a           owl:Ontology ;
-    owl:imports sh: ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
-        sh:prefix "cim" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
-        sh:prefix "cim16" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
-        sh:prefix "nc" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
-        sh:prefix "rdf" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
-        sh:prefix "cim17" ;
-    ] .
-
-
 
 aec:AEgroup
         a           sh:PropertyGroup ;
@@ -71,8 +39,6 @@ aec:AEgroup
 aec:AssessedElement  a          sh:NodeShape ;
         sh:property      aec:AssessedElement-associations;
         sh:targetClass  nc:AssessedElement .
-
-
 
 aec:AssessedElement-associations
         a               sh:PropertyShape ;
@@ -92,11 +58,11 @@ aec:AssessedElement-associationsSparql
       SELECT  $this  
       WHERE {      
         BIND(EXISTS{$this nc:AssessedElement.ConductingEquipment ?o1} AS ?aeo1).
-    BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
-    BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
-    BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
-    BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
-        FILTER (?aeo1=false && ?aeo2=false && ?aeo3=false && ?aeo4=false && ?aeo5=false).
+        BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
+        BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
+        BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
+        BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
+        FILTER (?aeo1="false"^^xsd:boolean && ?aeo2="false"^^xsd:boolean && ?aeo3="false"^^xsd:boolean && ?aeo4="false"^^xsd:boolean && ?aeo5="false"^^xsd:boolean).
       }""" .        
 
 aec:AssessedElementWithContingency
@@ -139,5 +105,5 @@ aec:OperationalLimit.AssessedElement-requiredSparql
       WHERE {      
     BIND(EXISTS{$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true} AS ?hasBCtrue).
 
-        FILTER (?hasBCtrue=false ).
+        FILTER (?hasBCtrue="false"^^xsd:boolean ).
       }""" .      

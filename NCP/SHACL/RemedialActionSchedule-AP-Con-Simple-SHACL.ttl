@@ -16,18 +16,18 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 ras:Ontology  rdf:type    owl:Ontology;
-        dcterms:conformsTo    "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "92daeada-c4c3-47aa-b629-82f3986630bd";
-        dcterms:issued        "2026-05-28T16:35:17.504885"^^xsd:dateTime;
+        dcterms:identifier    "414f5c0a-4f79-43e2-bb5a-a7c75d3eda41";
+        dcterms:issued        "2026-08-09T12:37:31.548369200"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Remedial Action Schedule Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/RemedialActionSchedule-Simple/2.4>;
-        owl:versionInfo   "2.4.1"@en;
+        owl:versionInfo   "2.4.2"@en;
         dcat:keyword      "RAS";
         dcat:theme        "constraint"@en .
 
@@ -35,7 +35,7 @@ ras:ProposingRemedialActionScheduleShare.ProposingEntity-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator );
+        sh:in           ( nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ProposingRemedialActionScheduleShare.ProposingEntity-valueType";
         sh:nodeKind     sh:IRI;
@@ -391,7 +391,7 @@ ras:GridStateIntensitySchedule.GridStateAlteration-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction );
+        sh:in           ( nc:ACDCConverterAction nc:EquivalentInjectionAction nc:StaticVarCompensatorAction nc:RotatingMachineAction nc:BatteryUnitAction nc:LoadAction nc:ExternalNetworkInjectionAction nc:BiddingZoneAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:EnergySourceModification nc:EquipmentControllerAction nc:ShuntCompensatorModification nc:RegulatingControlAction nc:InServiceAction nc:TopologyAction nc:TapPositionAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "GridStateIntensitySchedule.GridStateAlteration-valueType";
         sh:nodeKind     sh:IRI;
@@ -516,7 +516,7 @@ ras:RemedialActionScheduleResponse.RespondingEntity-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator );
+        sh:in           ( nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RemedialActionScheduleResponse.RespondingEntity-valueType";
         sh:nodeKind     sh:IRI;
@@ -1483,7 +1483,7 @@ ras:RemedialActionSchedule.AssignedRegion-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:in           ( nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RemedialActionSchedule.AssignedRegion-valueType";
         sh:nodeKind     sh:IRI;
@@ -1527,7 +1527,7 @@ ras:RemedialActionSchedule.Contingency-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency );
+        sh:in           ( nc:ExceptionalContingency nc:OutOfRangeContingency nc:OrdinaryContingency );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RemedialActionSchedule.Contingency-valueType";
         sh:nodeKind     sh:IRI;
@@ -1700,7 +1700,7 @@ ras:RemedialActionSchedule.RemedialAction-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ras:AssociationsGroup;
-        sh:in           ( nc:SchemeRemedialAction nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:AvailabilityRemedialAction );
+        sh:in           ( nc:SchemeRemedialAction nc:AvailabilityRemedialAction nc:GridStateAlterationRemedialAction nc:CountertradeRemedialAction nc:RedispatchRemedialAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RemedialActionSchedule.RemedialAction-valueType";
         sh:nodeKind     sh:IRI;
@@ -2268,7 +2268,7 @@ cc:ClassCount-property
         sh:sparql       cc:ClassCount-propertySparql .
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
+        sh:property     cc:ClassCount-property;
         sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;

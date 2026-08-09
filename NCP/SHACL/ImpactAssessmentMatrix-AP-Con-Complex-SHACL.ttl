@@ -18,49 +18,19 @@ iamc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
         dcterms:creator           "ENTSO-E CIM EG"@en ;
         dcterms:description       "The custom constraints for the Impact Assessment Matrix profile."@en ;
-        dcterms:identifier        "1eb3eeaa-5e82-4f33-980b-e8599dc3bcd1" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "e2303ba2-4086-4a7c-b9d2-80b081eb59ff" ;
+        dcterms:issued            "2026-08-09T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-08-09"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Impact Assessment Matrix profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4> ;
-    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.4.0"@en ;
+        dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        owl:versionInfo       "2.4.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
-
-cim:    
-    a           owl:Ontology ;
-    owl:imports sh: ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
-        sh:prefix "cim" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
-        sh:prefix "cim16" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
-        sh:prefix "nc" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
-        sh:prefix "rdf" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
-        sh:prefix "cim17" ;
-    ] .
-
 
 iamc:IAMgroup
         a           sh:PropertyGroup ;
@@ -141,7 +111,7 @@ iamc:RemedialActionImpact-associationsSparql
        
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
+        FILTER ((?hasRAG="false"^^xsd:boolean && ?hasRA="false"^^xsd:boolean) || (?hasRAG="true"^^xsd:boolean && ?hasRA="true"^^xsd:boolean)).
       }""" .       
       
 iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
@@ -168,5 +138,5 @@ iamc:RemedialActionOutcomeValue-associationsSparql
        
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
+        FILTER ((?hasRAG="false"^^xsd:boolean && ?hasRA="false"^^xsd:boolean) || (?hasRAG="true"^^xsd:boolean && ?hasRA="true"^^xsd:boolean)).
       }""" .       

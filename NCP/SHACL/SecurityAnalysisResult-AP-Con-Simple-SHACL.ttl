@@ -20,16 +20,16 @@
 sar:Ontology  rdf:type    owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "227078a5-6f59-4913-97be-60ed16f399a4";
-        dcterms:issued        "2026-05-28T16:35:41.483683"^^xsd:dateTime;
+        dcterms:identifier    "fd78e6db-16a7-4a86-8c84-b07ce5e9e161";
+        dcterms:issued        "2026-08-09T12:37:31.562906"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-09"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Security Analysis Result Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/SecurityAnalysisResult-Simple/2.5>;
-        owl:versionInfo   "2.5.1"@en;
+        owl:versionInfo   "2.5.2"@en;
         dcat:keyword      "SAR";
         dcat:theme        "constraint"@en .
 
@@ -98,7 +98,7 @@ sar:RemedialActionApplied.RemedialAction-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction );
+        sh:in           ( nc:AvailabilityRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:CountertradeRemedialAction nc:RedispatchRemedialAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RemedialActionApplied.RemedialAction-valueType";
         sh:nodeKind     sh:IRI;
@@ -195,7 +195,7 @@ sar:PowerFlowResult.ACDCTerminal-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( cim16:ACDCConverterDCTerminal cim16:DCTerminal cim17:ACDCConverterDCTerminal cim17:DCTerminal cim16:Terminal cim17:Terminal );
+        sh:in           ( cim17:Terminal cim17:DCTerminal cim16:DCTerminal cim:DCTerminal cim16:ACDCConverterDCTerminal cim17:ACDCConverterDCTerminal cim16:Terminal );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerFlowResult.ACDCTerminal-valueType";
         sh:nodeKind     sh:IRI;
@@ -246,7 +246,7 @@ sar:PowerFlowResult.ReportedByRegion-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:in           ( nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerFlowResult.ReportedByRegion-valueType";
         sh:nodeKind     sh:IRI;
@@ -360,7 +360,7 @@ sar:PowerFlowResult.OperationalLimit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit nc:BaseCaseCurrentLimit cim17:ApparentPowerLimit );
+        sh:in           ( cim16:ActivePowerLimit cim17:ApparentPowerLimit cim17:VoltageLimit nc:InfeedLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim16:CurrentLimit cim17:ActivePowerLimit nc:BaseCaseCurrentLimit cim16:VoltageLimit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerFlowResult.OperationalLimit-valueType";
         sh:nodeKind     sh:IRI;
@@ -434,7 +434,7 @@ sar:PowerFlowResult.PowerTransferCorridor-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor );
+        sh:in           ( nc:OrdinaryPowerTransferCorridor nc:ExceptionalPowerTransferCorridor );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "PowerFlowResult.PowerTransferCorridor-valueType";
         sh:nodeKind     sh:IRI;
@@ -578,7 +578,7 @@ sar:ContingencyPowerFlowResult.Contingency-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sar:AssociationsGroup;
-        sh:in           ( nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency );
+        sh:in           ( nc:ExceptionalContingency nc:OutOfRangeContingency nc:OrdinaryContingency );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ContingencyPowerFlowResult.Contingency-valueType";
         sh:nodeKind     sh:IRI;
@@ -666,7 +666,7 @@ cc:ClassCount-property
         sh:sparql       cc:ClassCount-propertySparql .
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
+        sh:property     cc:ClassCount-property;
         sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;

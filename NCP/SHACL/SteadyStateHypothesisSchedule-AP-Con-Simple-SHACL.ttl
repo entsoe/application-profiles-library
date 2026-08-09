@@ -18,18 +18,18 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 shs:Ontology  rdf:type    owl:Ontology;
-        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "df8d49a4-e073-421e-b3e1-b40b95a73b96";
-        dcterms:issued        "2026-05-28T16:37:30.036203800"^^xsd:dateTime;
+        dcterms:identifier    "b63f3048-be0d-4554-975a-332d047a490f";
+        dcterms:issued        "2026-08-09T12:37:31.879665100"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Steady State Hypothesis Schedule Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/SteadyStateHypothesisSchedule-Simple/1.1>;
-        owl:versionInfo   "1.1.1"@en;
+        owl:versionInfo   "1.1.2"@en;
         dcat:keyword      "SHS";
         dcat:theme        "constraint"@en .
 
@@ -129,7 +129,7 @@ shs:ShuntCompensatorSchedule.ShuntCompensator-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator );
+        sh:in           ( cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ShuntCompensatorSchedule.ShuntCompensator-valueType";
         sh:nodeKind     sh:IRI;
@@ -1446,7 +1446,7 @@ shs:TapSchedule.TapChanger-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim16:PhaseTapChangerTabular cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerLinear cim17:PhaseTapChangerLinear cim17:PhaseTapChangerTabular cim17:RatioTapChanger cim16:RatioTapChanger );
+        sh:in           ( cim16:RatioTapChanger cim16:PhaseTapChangerLinear cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerTabular cim17:PhaseTapChangerTabular cim17:PhaseTapChangerLinear cim17:RatioTapChanger );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "TapSchedule.TapChanger-valueType";
         sh:nodeKind     sh:IRI;
@@ -1798,7 +1798,7 @@ shs:TapRegularSchedule.TapChanger-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim16:PhaseTapChangerTabular cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerLinear cim17:PhaseTapChangerLinear cim17:PhaseTapChangerTabular cim17:RatioTapChanger cim16:RatioTapChanger );
+        sh:in           ( cim16:RatioTapChanger cim16:PhaseTapChangerLinear cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerTabular cim17:PhaseTapChangerTabular cim17:PhaseTapChangerLinear cim17:RatioTapChanger );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "TapRegularSchedule.TapChanger-valueType";
         sh:nodeKind     sh:IRI;
@@ -2148,7 +2148,7 @@ shs:InServiceSchedule.Equipment-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester );
+        sh:in           ( cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "InServiceSchedule.Equipment-valueType";
         sh:nodeKind     sh:IRI;
@@ -2817,7 +2817,7 @@ shs:EnergyConnectionRegularSchedule.EnergyConnection-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim:EnergyConsumer );
+        sh:in           ( cim17:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "EnergyConnectionRegularSchedule.EnergyConnection-valueType";
         sh:nodeKind     sh:IRI;
@@ -3400,7 +3400,7 @@ shs:InServiceRegularSchedule.Equipment-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester );
+        sh:in           ( cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "InServiceRegularSchedule.Equipment-valueType";
         sh:nodeKind     sh:IRI;
@@ -3484,7 +3484,7 @@ shs:SwitchSchedule.Switch-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector );
+        sh:in           ( cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "SwitchSchedule.Switch-valueType";
         sh:nodeKind     sh:IRI;
@@ -3564,7 +3564,7 @@ shs:GeneratingUnitSchedule.GeneratingUnit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit );
+        sh:in           ( cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "GeneratingUnitSchedule.GeneratingUnit-valueType";
         sh:nodeKind     sh:IRI;
@@ -3643,10 +3643,10 @@ shs:GeneratingUnitSchedule
 
 shs:VsConverterSchedule.VsConverter-valueType
         rdf:type        sh:PropertyShape;
-        sh:class        cim:VsConverter;
+        sh:class        nc:ModularMultilevelConverter;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:VsConverter";
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:ModularMultilevelConverter";
         sh:name         "VsConverterSchedule.VsConverter-valueType";
         sh:nodeKind     sh:IRI;
         sh:order        39;
@@ -3987,10 +3987,10 @@ shs:VsConverterRegularSchedule.targetUpcc-cardinality
 
 shs:VsConverterRegularSchedule.VsConverter-valueType
         rdf:type        sh:PropertyShape;
-        sh:class        cim:VsConverter;
+        sh:class        nc:ModularMultilevelConverter;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:VsConverter";
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:ModularMultilevelConverter";
         sh:name         "VsConverterRegularSchedule.VsConverter-valueType";
         sh:nodeKind     sh:IRI;
         sh:order        35;
@@ -4275,7 +4275,7 @@ shs:EnergyConnectionSchedule.EnergyConnection-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim:EnergyConsumer );
+        sh:in           ( cim17:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "EnergyConnectionSchedule.EnergyConnection-valueType";
         sh:nodeKind     sh:IRI;
@@ -6118,7 +6118,7 @@ shs:SwitchRegularSchedule.Switch-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector );
+        sh:in           ( cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "SwitchRegularSchedule.Switch-valueType";
         sh:nodeKind     sh:IRI;
@@ -6471,7 +6471,7 @@ shs:RegulatingControlSchedule.RegulatingControl-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim17:TapChangerControl cim16:TapChangerControl );
+        sh:in           ( cim16:TapChangerControl cim17:TapChangerControl );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RegulatingControlSchedule.RegulatingControl-valueType";
         sh:nodeKind     sh:IRI;
@@ -6947,7 +6947,7 @@ shs:RegulatingControlRegularSchedule.RegulatingControl-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        shs:AssociationsGroup;
-        sh:in           ( cim17:TapChangerControl cim16:TapChangerControl );
+        sh:in           ( cim16:TapChangerControl cim17:TapChangerControl );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "RegulatingControlRegularSchedule.RegulatingControl-valueType";
         sh:nodeKind     sh:IRI;
@@ -7155,7 +7155,7 @@ cc:ClassCount-property
         sh:sparql       cc:ClassCount-propertySparql .
 
 cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
+        sh:property     cc:ClassCount-property;
         sh:targetClass  dcat:Dataset .
 
 cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
@@ -7166,7 +7166,7 @@ shs:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        shs:ProfileClassesGroup;
-        sh:in           ( nc:TapChangerControlRegularSchedule nc:SwitchTimePoint nc:RegulatingControlSchedule nc:CurrentLimitTimePoint nc:FuelStorageSchedule nc:BaseIrregularTimeSeries nc:RemedialActionSchemeSchedule nc:GridStateIntensitySchedule nc:EventSchedule nc:PowerSchedule nc:ApparentPowerLimitSchedule nc:SwitchRegularSchedule nc:BatteryUnitSchedule nc:TapScheduleTimePoint nc:StaticVarCompensatorSchedule nc:SynchronousMachineSchedule nc:CsConverterTimePoint nc:StaticVarCompensatorTimePoint nc:AsynchronousMachineTimePoint nc:ReservoirTimePoint nc:VsConverterTimePoint nc:EquivalentInjectionRegularSchedule nc:HourPeriod nc:AsynchronousMachineSchedule nc:SynchronousMachineRegularSchedule nc:SynchronousMachineTimePoint nc:EnergyConnectionSchedule nc:AsynchronousMachineRegularSchedule nc:VsConverterRegularSchedule nc:ControlAreaSchedule nc:VsConverterSchedule nc:GeneratingUnitSchedule nc:SwitchSchedule nc:InServiceRegularSchedule nc:ExternalNetworkInjectionRegularSchedule cim:Season nc:VoltageLimitTimePoint nc:CsConverterSchedule nc:ApparentPowerLimitTimePoint nc:EnergyConnectionRegularSchedule nc:FuelStorageRegularSchedule nc:ControlAreaTimePoint nc:ShuntCompensatorTimePoint nc:EnergyConnectionTimePoint nc:ExternalNetworkInjectionSchedule nc:ControlAreaRegularSchedule nc:InServiceSchedule nc:CurrentLimitSchedule nc:EquivalentInjectionTimePoint nc:TapRegularSchedule nc:ReservoirSchedule nc:BatteryUnitTimePoint nc:ReservoirRegularSchedule nc:TapSchedule nc:HourPattern nc:VoltageLimitSchedule nc:ExternalNetworkInjectionTimePoint nc:RegulatingControlRegularSchedule nc:InServiceTimePoint nc:EquivalentInjectionSchedule nc:FuelStorageTimePoint nc:RegulatingControlTimePoint nc:GeneratingUnitTimePoint nc:CsConverterRegularSchedule nc:TapChangerControlSchedule nc:ActivePowerLimitSchedule nc:ShuntCompensatorSchedule nc:ActivePowerLimitTimePoint md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:TapChangerControlRegularSchedule nc:SwitchTimePoint nc:RegulatingControlSchedule nc:CurrentLimitTimePoint nc:FuelStorageSchedule nc:ApparentPowerLimitSchedule nc:SwitchRegularSchedule nc:BatteryUnitSchedule nc:TapScheduleTimePoint nc:StaticVarCompensatorSchedule nc:SynchronousMachineSchedule nc:CsConverterTimePoint nc:StaticVarCompensatorTimePoint nc:AsynchronousMachineTimePoint nc:ReservoirTimePoint nc:VsConverterTimePoint nc:EquivalentInjectionRegularSchedule nc:HourPeriod nc:AsynchronousMachineSchedule nc:SynchronousMachineRegularSchedule nc:SynchronousMachineTimePoint nc:EnergyConnectionSchedule nc:AsynchronousMachineRegularSchedule nc:VsConverterRegularSchedule nc:ControlAreaSchedule nc:VsConverterSchedule nc:GeneratingUnitSchedule nc:SwitchSchedule nc:InServiceRegularSchedule nc:ExternalNetworkInjectionRegularSchedule cim:Season nc:VoltageLimitTimePoint nc:CsConverterSchedule nc:ApparentPowerLimitTimePoint nc:EnergyConnectionRegularSchedule nc:FuelStorageRegularSchedule nc:ControlAreaTimePoint nc:ShuntCompensatorTimePoint nc:EnergyConnectionTimePoint nc:ExternalNetworkInjectionSchedule nc:ControlAreaRegularSchedule nc:InServiceSchedule nc:CurrentLimitSchedule nc:EquivalentInjectionTimePoint nc:TapRegularSchedule nc:ReservoirSchedule nc:BatteryUnitTimePoint nc:ReservoirRegularSchedule nc:TapSchedule nc:HourPattern nc:VoltageLimitSchedule nc:ExternalNetworkInjectionTimePoint nc:RegulatingControlRegularSchedule nc:InServiceTimePoint nc:EquivalentInjectionSchedule nc:FuelStorageTimePoint nc:RegulatingControlTimePoint nc:GeneratingUnitTimePoint nc:CsConverterRegularSchedule nc:TapChangerControlSchedule nc:ActivePowerLimitSchedule nc:ShuntCompensatorSchedule nc:ActivePowerLimitTimePoint md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;
