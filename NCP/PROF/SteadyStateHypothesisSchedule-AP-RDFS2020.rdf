@@ -1,4 +1,5 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
          xmlns:dcat="http://www.w3.org/ns/dcat#"
@@ -10,23 +11,27 @@
   <rdf:Description rdf:about="https://ap.cim4.eu/SteadyStateHypothesisSchedule">
     <dcterms:creator>ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description>This profile is describing the Steady State Hypothesis Schedule.</dcterms:description>
-    <dcterms:identifier>7b7c3d46-881e-4239-9332-e11501d54aac</dcterms:identifier>
+    <dcterms:identifier>d8ca01aa-2791-4f0b-aa26-9d0fe470e9d0</dcterms:identifier>
     <dcat:keyword>SHS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-10</dcterms:modified>
     <dcterms:publisher>ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
     <dcat:theme>profile</dcat:theme>
     <dcterms:title>Steady State Hypothesis Schedule Profile</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
     <owl:versionIRI rdf:resource="https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1"/>
-    <owl:versionInfo>1.1.0</owl:versionInfo>
+    <owl:versionInfo>1.1.1</owl:versionInfo>
     <prof:hasResource rdf:resource="https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule/1.1"/>
     <prof:hasResource rdf:resource="https://ap-con.cim4.eu/SteadyStateHypothesisSchedule-Simple/1.1"/>
     <prof:hasResource rdf:resource="https://ap-spec.cim4.eu/SteadyStateHypothesisSchedule/1.1"/>
     <prof:hasResource rdf:resource="https://ap-val.cim4.eu/SteadyStateHypothesisSchedule/1.1"/>
     <prof:hasResource rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/ClassCount-Complex/2.5"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/Common-Complex/1.1"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule/1.1">
     <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
@@ -71,4 +76,40 @@
         <dcterms:description>SHACL based constraints used to validate datatypes, cardinality, associations value types.</dcterms:description>
         <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
       </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/ClassCount-Complex/2.5">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/ClassCount-Complex/2.5/NC-AP-Con-ClassCount-Complex-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Class count constraints</rdfs:label>
+    <dcterms:description>Class count constraints.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/Common-Complex/1.1">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/Common-Complex/1.1/NC-AP-Con-Complex-Common-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Common Constraints</rdfs:label>
+    <dcterms:description>The constraints for all NC profiles.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4/NC-AP-Con-Complex-IdentifiedObjecStringLength-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>IdentifiedObject Constraints</rdfs:label>
+    <dcterms:description>The constraints for the IdentifiedObject.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5/NC-AP-Con-PrefixDeclaration-Complex-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Prefix declaration</rdfs:label>
+    <dcterms:description>Prefix declaration dataset.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
 </rdf:RDF>
