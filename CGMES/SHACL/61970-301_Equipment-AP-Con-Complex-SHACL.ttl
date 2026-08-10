@@ -1,11 +1,11 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
 @base              <http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0> .
-@prefix eu:    <https://cim.ucaiug.io/ns/eu#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
 @prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
-@prefix cim:   <https://cim.ucaiug.io/ns#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
 @prefix equ:  <http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
@@ -35,7 +35,7 @@ cim:
     owl:imports sh: ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
+        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
         sh:prefix "cim" ;
     ] ;
     sh:declare [
@@ -45,7 +45,7 @@ cim:
     ] ;
     sh:declare [
         a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns/eu#"^^xsd:anyURI ;
+        sh:namespace "http://iec.ch/TC57/CIM100-European#"^^xsd:anyURI ;
         sh:prefix "eu" ;
     ] .
 
@@ -1438,38 +1438,35 @@ equ:PowerTransformerEnd.ratedS-valueRange2winding
         
     
 equ:PowerTransformerEnd.ratedS-valueRange2windingSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is different for a two-winding transformer." ;
-		sh:prefixes cim: ;
-		sh:select 
-                """
-                SELECT  $this $value $ends
-                WHERE {
-                {
-                        SELECT $this (COUNT($typeend) AS $ends)
-                        WHERE {
-                        $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type $typeend .
-                        }
-                        GROUP BY $this 
-                }
-                $end1 cim:PowerTransformerEnd.PowerTransformer $this .
-                $end1 cim:TransformerEnd.endNumber  1.
-                $end1 cim:PowerTransformerEnd.ratedS  $value .
-                #OPTIONAL {$end1 cim:PowerTransformerEnd.ratedS  $value }.
-                BIND(EXISTS{
-                        $end1 cim:PowerTransformerEnd.ratedS  $v
-                        } AS $hasvalue).
-                $end2 cim:PowerTransformerEnd.PowerTransformer $this  .
-                $end2 cim:TransformerEnd.endNumber  2 .
-                $end2 cim:PowerTransformerEnd.ratedS  $ratedsend2 .
-                BIND(EXISTS{
-                        $end2 cim:PowerTransformerEnd.ratedS  $r
-                        } AS $hasratedsend2).
-                #OPTIONAL {$end2 cim:PowerTransformerEnd.ratedS  $ratedsend2 }.
-                FILTER ($hasvalue=true && $hasratedsend2=true && $end1!=$end2 && $value!=$ratedsend2) .
-                } GROUP BY $this $value $ends
-                HAVING($ends=2)
-                """ .       
+    a         sh:SPARQLConstraint ;  
+    sh:message "The value is different for a two-winding transformer." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value ?ends
+      WHERE {
+        {
+        SELECT $this (COUNT(?typeend) AS ?ends)
+        WHERE {
+        $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+        }
+        GROUP BY $this ?typeend
+        }
+        
+        ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
+        ?end1 cim:TransformerEnd.endNumber  1.
+        ?end1 cim:PowerTransformerEnd.ratedS  ?value .
+        #OPTIONAL {?end1 cim:PowerTransformerEnd.ratedS  ?value }.
+        BIND(EXISTS{?end1 cim:PowerTransformerEnd.ratedS  ?v} AS ?hasvalue).
+        ?end2 cim:PowerTransformerEnd.PowerTransformer $this  .
+        ?end2 cim:TransformerEnd.endNumber  2 .
+        ?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 .
+        BIND(EXISTS{?end2 cim:PowerTransformerEnd.ratedS  ?r} AS ?hasratedsend2).
+        #OPTIONAL {?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 }.
+
+        FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .        
+        FILTER (?ends=2) .
+      }
+      """ .       
       
       
 equ:PowerTransformerEnd.ratedU-valueRange
@@ -1647,26 +1644,24 @@ equ:ShuntCompensator.maximumSections-numberOfInstances
         
     
 equ:ShuntCompensator.maximumSections-numberOfInstancesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator does not equal to ShuntCompensator.maximumSections." ;
-		sh:prefixes cim: ;
-		sh:select 
-                """
-                SELECT  $this ?value ?typesall
-                WHERE {
-                        {
-                                SELECT $this (COUNT(?typeall) AS ?typesall)
-                                WHERE {
-                                $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
-                                #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-                                #?nscpointsall rdf:type ?typeall .
-                                }
-                                GROUP BY $this 
-                        }
-                        $this $PATH ?value .
-                        FILTER (?value!=?typesall) .
-                }	
-                """ .        
+    a         sh:SPARQLConstraint ;  
+    sh:message "The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator does not equal to ShuntCompensator.maximumSections." ;
+    sh:prefixes cim: ;
+    sh:select """
+      SELECT  $this ?value ?typesall
+      WHERE {
+        {
+        SELECT $this (COUNT(?typeall) AS ?typesall)
+        WHERE {
+            $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
+            #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
+            #?nscpointsall rdf:type ?typeall .
+          }
+        GROUP BY $this ?typesall
+        }
+        $this $PATH ?value .  
+        FILTER (?value!=?typesall) .
+      }""" .        
       
 #equ:Clamp
 #        a               sh:NodeShape ;
