@@ -333,24 +333,13 @@ all600:MarpRule a  sh:NodeShape ;
 
 all600:Model.modelingAuthoritySet-marp10-12
         a               sh:PropertyShape ;
-        sh:sparql       all600:Model.modelingAuthoritySet-marp10-12Sparql ;
+        sh:path         md:Model.modelingAuthoritySet ;
+        sh:minLength    1 ;
         sh:description  "MARP10: The model authority set defined in file header of a state variable instance file of a merged model is the model authority set which creates the state variables. MARP11:The model authority set defined in file header of a diagram layout instance file of a merged model is the model authority set which creates the diagram layout. MARP12:The model authority set defined in file header of a topology instance file of a merged model is the model authority set which creates the topology as an output of topology processing." ;
         sh:name         "C:600:ALL:Model.modelingAuthoritySet:marp10-12" ;
+        sh:message      "The property is defined as empty property." ;
         sh:group        all600:All6001Group ;
-        sh:path         md:Model.modelingAuthoritySet ;
         sh:order        10 ;
-        sh:severity     sh:Violation . 
-
-        
-all600:Model.modelingAuthoritySet-marp10-12Sparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "The property is defined as empty property." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this ?value 
-      WHERE {
-          $this $PATH ?value .
-          FILTER(STRLEN(str(?value))=0).
-      }""" .         
+        sh:severity     sh:Violation .
         
         

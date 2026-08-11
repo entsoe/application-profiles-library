@@ -62,27 +62,15 @@ io:IdentifiedObjectStringLengthshortName  a          sh:NodeShape ;
 
 io:IdentifiedObject.shortName-stringLength
         a               sh:PropertyShape ;
-        sh:sparql       io:IdentifiedObject.shortName-stringLengthSparql ;
-        sh:path         eu:IdentifiedObject.shortName ;
         sh:description  "Length of the string 12 characters maximum." ;
+        sh:message     "String length is greater than 12 characters." ;     
+        sh:path         eu:IdentifiedObject.shortName ;
+        sh:maxLength    12 ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.shortName:stringLength|C:301:EQBD:IdentifiedObject.shortName:stringLength||C:301:TP:IdentifiedObject.shortName:stringLength" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
         
-        
-io:IdentifiedObject.shortName-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is greater than 12 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
-        $this $PATH ?value .
-        
-        FILTER (STRLEN(?value)>12) .
-			}""" .         
-
 io:IdentifiedObjectStringLengthenergyIdentCodeEic  a          sh:NodeShape ;
         sh:property     io:IdentifiedObject.energyIdentCodeEic-stringLength ;
         sh:targetSubjectsOf  eu:IdentifiedObject.energyIdentCodeEic .        
@@ -90,24 +78,13 @@ io:IdentifiedObjectStringLengthenergyIdentCodeEic  a          sh:NodeShape ;
 io:IdentifiedObject.energyIdentCodeEic-stringLength
         a               sh:PropertyShape ;
         sh:description  "The length of the string is 16 characters as defined by the EIC code." ;
-        sh:sparql       io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql ;
         sh:path         eu:IdentifiedObject.energyIdentCodeEic ;
+        sh:length       16 ;
+        sh:message      "String length is not 16 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:301:EQ:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:EQBD:IdentifiedObject.energyIdentCodeEic:stringLength|C:301:TP:IdentifiedObject.energyIdentCodeEic:stringLength" ;
         sh:order        2 ;
         sh:severity     sh:Violation .       
-
-io:IdentifiedObject.energyIdentCodeEic-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is not 16 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
-        $this $PATH ?value .
-        
-        FILTER (STRLEN(?value)!=16) .
-			}""" .          
 
 io:IdentifiedObjectStringLengthName  a          sh:NodeShape ;
         sh:property     io:IdentifiedObject.name-stringLength ;
@@ -116,25 +93,14 @@ io:IdentifiedObjectStringLengthName  a          sh:NodeShape ;
 io:IdentifiedObject.name-stringLength
         a               sh:PropertyShape ;
         sh:description  "The string IdentifiedObject.name has a maximum of 128 characters." ;
-        sh:sparql       io:IdentifiedObject.name-stringLengthSparql ;
         sh:path         cim:IdentifiedObject.name ;
+        sh:maxLength    128 ;
+        sh:message      "String length is greater than 128 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.name:stringLength|C:453:DL:IdentifiedObject.name:stringLength|C:456:TP:IdentifiedObject.name:stringLength|C:456:SV:IdentifiedObject.name:stringLength|C:457:DY:IdentifiedObject.name:stringLength|C:600:EQBD:IdentifiedObject.name:stringLength" ;
         sh:order        3 ;
         sh:severity     sh:Violation .
         
-io:IdentifiedObject.name-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is greater than 128 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
-        $this $PATH ?value .
-        
-        FILTER (STRLEN(?value)>128) .
-			}""" .        
-
 io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;
         sh:property     io:IdentifiedObject.description-stringLength;
         sh:targetSubjectsOf  cim:IdentifiedObject.description .        
@@ -142,23 +108,13 @@ io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;
 io:IdentifiedObject.description-stringLength
         a               sh:PropertyShape ;
         sh:description  "The string IdentifiedObject.description is maximum 256 characters." ;
-        sh:sparql       io:IdentifiedObject.description-stringLengthSparql ;
         sh:path         cim:IdentifiedObject.description ;
+        sh:maxLength    256 ;
+        sh:message      "String length is greater than 256 characters." ;
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.description:stringLength|C:600:EQBD:IdentifiedObject.description:stringLength|C:457:DY:IdentifiedObject.description:stringLength|C:456:TP:IdentifiedObject.description:stringLength" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
         
-io:IdentifiedObject.description-stringLengthSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "String length is greater than 256 characters." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value  
-			WHERE {      
-        $this $PATH ?value .
-        
-        FILTER (STRLEN(?value)>256) .
-			}""" .    
 
 
