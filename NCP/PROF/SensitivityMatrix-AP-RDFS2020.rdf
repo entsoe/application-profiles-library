@@ -1,4 +1,5 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
          xmlns:dcat="http://www.w3.org/ns/dcat#"
@@ -10,11 +11,11 @@
   <rdf:Description rdf:about="https://ap.cim4.eu/SensitivityMatrix">
     <dcterms:creator>ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description>This profile is describing the Sensitivity Matrix.</dcterms:description>
-    <dcterms:identifier>8d67e498-9a42-453e-bbb1-dccd8554eabb</dcterms:identifier>
+    <dcterms:identifier>c0aec936-e3f6-427d-b9de-e7d0876a52b5</dcterms:identifier>
     <dcat:keyword>SM</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-10</dcterms:modified>
     <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/SensitivityMatrix-EU/2.2"/>
     <dcterms:publisher>ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
@@ -28,6 +29,10 @@
     <prof:hasResource rdf:resource="https://ap-spec.cim4.eu/SensitivityMatrix/2.3"/>
     <prof:hasResource rdf:resource="https://ap-val.cim4.eu/SensitivityMatrix/2.3"/>
     <prof:hasResource rdf:resource="https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/ClassCount-Complex/2.5"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/Common-Complex/1.1"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4"/>
+    <prof:hasResource rdf:resource="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/SensitivityMatrix/2.3">
     <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
@@ -72,4 +77,40 @@
         <dcterms:description>SHACL based constraints used to validate datatypes, cardinality, associations value types.</dcterms:description>
         <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
       </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/ClassCount-Complex/2.5">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/ClassCount-Complex/2.5/NC-AP-Con-ClassCount-Complex-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Class count constraints</rdfs:label>
+    <dcterms:description>Class count constraints.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/Common-Complex/1.1">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/Common-Complex/1.1/NC-AP-Con-Complex-Common-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Common Constraints</rdfs:label>
+    <dcterms:description>The constraints for all NC profiles.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/IdentifiedObject-Complex/2.4/NC-AP-Con-Complex-IdentifiedObjecStringLength-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>IdentifiedObject Constraints</rdfs:label>
+    <dcterms:description>The constraints for the IdentifiedObject.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5">
+    <prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+    <prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5/NC-AP-Con-PrefixDeclaration-Complex-SHACL.ttl"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+    <dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+    <rdfs:label>Prefix declaration</rdfs:label>
+    <dcterms:description>Prefix declaration dataset.</dcterms:description>
+    <rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+  </rdf:Description>
 </rdf:RDF>

@@ -2,7 +2,6 @@
 <!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:ras="https://ap-voc.cim4.eu/RemedialActionSchedule#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
@@ -11,21 +10,22 @@
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialActionSchedule#Ontology">
-    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the remedial action schedule profile.</dcterms:description>
-    <dcterms:identifier>6e90c546-3c6c-471b-8040-e05037081c59</dcterms:identifier>
+    <dcterms:identifier>ccae8acb-e4e6-44e6-9879-8bfcbe2a8985</dcterms:identifier>
     <dcat:keyword>RAS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-05</dcterms:modified>
     <owl:priorVersion rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule/2.3"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,62 +33,25 @@
     <dcterms:title xml:lang="en">Remedial Action Schedule Vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule/2.4"/>
-    <owl:versionInfo xml:lang="en">2.4.0</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.4.1</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#ActivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
     <rdfs:label xml:lang="en">ActivePower</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.multiplier">
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <cims:isFixed>M</cims:isFixed>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitMultiplier"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.unit">
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <cims:isFixed>W</cims:isFixed>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitSymbol"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.value">
-    <cims:dataType rdf:resource="#Float"/>
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilityRemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>Availability remedial action is a remedial action that cancels or reschedules an availability schedule.</rdfs:comment>
     <rdfs:label xml:lang="en">AvailabilityRemedialAction</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#RemedialAction"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilityRemedialAction.AvailabilitySchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Availability schedule that is part of the remedial action.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule.RemedialAction"/>
-    <rdfs:label xml:lang="en">AvailabilitySchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods.</rdfs:comment>
     <rdfs:label xml:lang="en">AvailabilitySchedule</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -97,39 +60,8 @@
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.RemedialAction">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Remedial action that is cancelling this availability schedule.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction.AvailabilitySchedule"/>
-    <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.isCancelled">
-    <rdfs:comment>Defines the cancelling of the availability schedule. True means that is cancelling, False means that it is not cancelling.</rdfs:comment>
-    <cims:dataType rdf:resource="#Boolean"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
-    <rdfs:label xml:lang="en">isCancelled</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.priority">
-    <rdfs:comment>Value 0 means ignore priority. 1 means the highest priority, 2 is the second highest priority.</rdfs:comment>
-    <cims:dataType rdf:resource="#Integer"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
-    <rdfs:label xml:lang="en">priority</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseIrregularTimeSeries">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>Time series that has irregular points in time.</rdfs:comment>
     <rdfs:label xml:lang="en">BaseIrregularTimeSeries</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -137,54 +69,438 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>Time series of values at points in time.</rdfs:comment>
     <rdfs:label xml:lang="en">BaseTimeSeries</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.interpolationKind">
-    <rdfs:comment>Kind of interpolation done between time point.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">interpolationKind</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#Boolean">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>A type with the value space "true" and "false".</rdfs:comment>
     <rdfs:label xml:lang="en">Boolean</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Contingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>An event threatening system reliability, consisting of one or more contingency elements.</rdfs:comment>
     <rdfs:label xml:lang="en">Contingency</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Contingency.CurativeRemedialActionSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Curative remedial action schedule linked to this contingency.</rdfs:comment>
-    <rdfs:domain rdf:resource="#Contingency"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule.Contingency"/>
-    <rdfs:label xml:lang="en">CurativeRemedialActionSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CostSettledKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
     <rdfs:comment>Kind describing how settled the cost is in regards to changes.</rdfs:comment>
     <rdfs:label xml:lang="en">CostSettledKind</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountertradeScheduleAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Countertrade schedule action is an action to rearrange power schedules based on a Generation and Load Shift Key (GLSK) strategy.</rdfs:comment>
+    <rdfs:label xml:lang="en">CountertradeScheduleAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#PowerScheduleAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Currency">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Monetary currencies.  ISO 4217 standard including 3-character currency code.</rdfs:comment>
+    <rdfs:label xml:lang="en">Currency</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Date">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile"/>
+    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
+    <rdfs:label xml:lang="en">Date</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#DateTime">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
+    <rdfs:label xml:lang="en">DateTime</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Decimal">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Decimal is the base-10 notational system for representing real numbers.</rdfs:comment>
+    <rdfs:label xml:lang="en">Decimal</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Duration">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Duration as "PnYnMnDTnHnMnS" which conforms to ISO 8601, where nY expresses a number of years, nM a number of months, nD a number of days. The letter T separates the date expression from the time expression and, after it, nH identifies a number of hours, nM a number of minutes and nS a number of seconds. The number of seconds could be expressed as a decimal number, but all other numbers are integers.</rdfs:comment>
+    <rdfs:label xml:lang="en">Duration</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular event described by event points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">EventSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Event valid for a given point in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">EventTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Float">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Float</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular generic value at given points in time. The type of value is given by the reference association.  </rdfs:comment>
+    <rdfs:label xml:lang="en">GenericValueSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Generic value for a given point in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">GenericValueTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateAlteration">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.</rdfs:comment>
+    <rdfs:label xml:lang="en">GridStateAlteration</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateIntensitySchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Defines the intensity applied for a given grid state alteration. It is primarily used in exchanges related to the remedial action schedule. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.</rdfs:comment>
+    <rdfs:label xml:lang="en">GridStateIntensitySchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#GenericValueSchedule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">IRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IdentifiedObject">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
+    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Integer">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Integer</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerBidSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Power bid or offer related to a redispatch or countertrading measures. In the case of market place for economic efficiency of the bids and offers, this is equivalent to BidTimeSeries class in 62325 package.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerBidSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular power, active and reactive, values at given points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Power schedule action is an action to rearrange power schedules.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerScheduleAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular values at given points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Proposing entity (System Operator) with a proper cost share for a given remedial action schedule.</rdfs:comment>
+    <rdfs:label xml:lang="en">ProposingRemedialActionScheduleShare</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ReactivePower">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</rdfs:comment>
+    <rdfs:label xml:lang="en">ReactivePower</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#RealEnergy">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Real electrical energy.</rdfs:comment>
+    <rdfs:label xml:lang="en">RealEnergy</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RedispatchScheduleAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Redispatch schedule action is an action to rearrange power schedules for a scheduled resource to obtain a feasible and secure operational state of the power electricity system.</rdfs:comment>
+    <rdfs:label xml:lang="en">RedispatchScheduleAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#PowerScheduleAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Region">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A region where the system operator belongs to.</rdfs:comment>
+    <rdfs:label xml:lang="en">Region</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The kind of rejection reason.</rdfs:comment>
+    <rdfs:label xml:lang="en">RejectionReasonKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. </rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionCost">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Remedial action cost is the total cost itemised cost by category and type for the remedial action.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionCost</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A schedule for a determined remedial action.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependency">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Remedial action schedule dependency is making two remedial action schedules depending on each other. </rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleDependency</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Kind of dependency between remedial action schedules.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleDependencyKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleGroup">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Remedial action schedule group collects two or more remedial action schedules together. The remedial action schedule group needs to be set up for the same remedial action or proposing alternative remedial action by including a reference to another remedial action.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleGroup</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponse">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The response on the remedial action schedule by a given system operator.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleResponse</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponseKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The kind of response for a remedial action schedule.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleResponseKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleStatusKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Remedial action schedule status kinds.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleStatusKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The schedule for a remedial action scheme.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionSchemeSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype>Description</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchemeRemedialAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this. </rdfs:comment>
+    <rdfs:label xml:lang="en">SchemeRemedialAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype>Description</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#RemedialAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Seconds">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Time, in seconds.</rdfs:comment>
+    <rdfs:label xml:lang="en">Seconds</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SecurityCoordinator">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A post that coordinates the relevant remedial actions and their optimisation to ensure efficient use to achieve required operational security of the power system.</rdfs:comment>
+    <rdfs:label xml:lang="en">SecurityCoordinator</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#String">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
+    <rdfs:label xml:lang="en">String</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>A power system operation post responsible for performing and coordinating the real-time and planning functions required to maintain the secure, reliable, and efficient operation of the power system within a defined operational scope.
+Note: SystemOperator represents the execution of power system operational responsibilities in practice. While the operational post exists independently at the ecosystem level, SystemOperator identifies the specific agent fulfilling that responsibility at a given time. The operational scope may correspond to a control area, network, voltage domain, or other defined boundary.</rdfs:comment>
+    <rdfs:label xml:lang="en">SystemOperator</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>Kinds of interpolation of values between two time point. </rdfs:comment>
+    <rdfs:label xml:lang="en">TimeSeriesInterpolationKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile"/>
+    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
+    <rdfs:label xml:lang="en">URL</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitMultiplier">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitSymbol">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ValueOffsetKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile"/>
+    <rdfs:comment>The kind of the value offset.</rdfs:comment>
+    <rdfs:label xml:lang="en">ValueOffsetKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialActionSchedule#DocRemedialActionScheduleProfile">
+    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
+    <rdfs:label xml:lang="en">DocRemedialActionScheduleProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialActionSchedule#RemedialActionScheduleProfile">
+    <rdfs:comment>This package contains remedial action schedule profile.</rdfs:comment>
+    <rdfs:label xml:lang="en">RemedialActionScheduleProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CostSettledKind.final">
     <rdfs:comment>Final cost. For instance, the cost is not expected to be changed on a later stage.</rdfs:comment>
@@ -203,22 +519,6 @@
     <rdfs:label xml:lang="en">provisional</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#CostSettledKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountertradeScheduleAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Countertrade schedule action is an action to rearrange power schedules based on a Generation and Load Shift Key (GLSK) strategy.</rdfs:comment>
-    <rdfs:label xml:lang="en">CountertradeScheduleAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#PowerScheduleAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Currency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Monetary currencies.  ISO 4217 standard including 3-character currency code.</rdfs:comment>
-    <rdfs:label xml:lang="en">Currency</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Currency.AED">
     <rdfs:comment>United Arab Emirates dirham.</rdfs:comment>
@@ -1186,42 +1486,94 @@
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#Currency"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile"/>
-    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
-    <rdfs:label xml:lang="en">Date</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  <rdf:Description rdf:about="#ActivePower.multiplier">
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <cims:isFixed>M</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
-    <rdfs:label xml:lang="en">DateTime</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  <rdf:Description rdf:about="#ActivePower.unit">
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <cims:isFixed>W</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Decimal">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Decimal is the base-10 notational system for representing real numbers.</rdfs:comment>
-    <rdfs:label xml:lang="en">Decimal</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  <rdf:Description rdf:about="#ActivePower.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Duration">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Duration as "PnYnMnDTnHnMnS" which conforms to ISO 8601, where nY expresses a number of years, nM a number of months, nD a number of days. The letter T separates the date expression from the time expression and, after it, nH identifies a number of hours, nM a number of minutes and nS a number of seconds. The number of seconds could be expressed as a decimal number, but all other numbers are integers.</rdfs:comment>
-    <rdfs:label xml:lang="en">Duration</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Time series represent irregular event described by event points in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">EventSchedule</rdfs:label>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilityRemedialAction.AvailabilitySchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Availability schedule that is part of the remedial action.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule.RemedialAction"/>
+    <rdfs:label xml:lang="en">AvailabilitySchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
     <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.RemedialAction">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>Remedial action that is cancelling this availability schedule.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction.AvailabilitySchedule"/>
+    <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AvailabilityRemedialAction"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.isCancelled">
+    <rdfs:comment>Defines the cancelling of the availability schedule. True means that is cancelling, False means that it is not cancelling.</rdfs:comment>
+    <cims:dataType rdf:resource="#Boolean"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
+    <rdfs:label xml:lang="en">isCancelled</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AvailabilitySchedule.priority">
+    <rdfs:comment>Value 0 means ignore priority. 1 means the highest priority, 2 is the second highest priority.</rdfs:comment>
+    <cims:dataType rdf:resource="#Integer"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AvailabilitySchedule"/>
+    <rdfs:label xml:lang="en">priority</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.interpolationKind">
+    <rdfs:comment>Kind of interpolation done between time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">interpolationKind</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Contingency.CurativeRemedialActionSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Curative remedial action schedule linked to this contingency.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Contingency"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule.Contingency"/>
+    <rdfs:label xml:lang="en">CurativeRemedialActionSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventSchedule.EventTimePoint">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1244,14 +1596,6 @@
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventTimePoint">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Event valid for a given point in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">EventTimePoint</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EventTimePoint.EventSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1284,21 +1628,6 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Float">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Float</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Time series represent irregular generic value at given points in time. The type of value is given by the reference association.  </rdfs:comment>
-    <rdfs:label xml:lang="en">GenericValueSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueSchedule.GenericValueTimePoint">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Value for the point in time.</rdfs:comment>
@@ -1322,14 +1651,6 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueTimePoint">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Generic value for a given point in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">GenericValueTimePoint</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueTimePoint.GenericValueSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Time series the time point values belongs to.</rdfs:comment>
@@ -1352,7 +1673,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GenericValueTimePoint.value">
-    <rdfs:comment>The value at the time. The meaning of the value is defined by the derived type of the associated schedule. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false.</rdfs:comment>
+    <rdfs:comment>The value at the time. The meaning of the value is defined by the derived type of the associated schedule. The value can be integer, float or boolean. In case of boolean 1.0 equals true and 0.0 equals false. In case of integer the 0 should be included as a decimal, e.g. 2.0.</rdfs:comment>
     <cims:dataType rdf:resource="#Float"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#GenericValueTimePoint"/>
     <rdfs:label xml:lang="en">value</rdfs:label>
@@ -1360,14 +1681,6 @@
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateAlteration">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.</rdfs:comment>
-    <rdfs:label xml:lang="en">GridStateAlteration</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateAlteration.GridStateIntensitySchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1379,15 +1692,6 @@
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#GridStateIntensitySchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateIntensitySchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Defines the intensity applied for a given grid state alteration. It is primarily used in exchanges related to the remedial action schedule. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.</rdfs:comment>
-    <rdfs:label xml:lang="en">GridStateIntensitySchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#GenericValueSchedule"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateIntensitySchedule.GridStateAlteration">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1409,24 +1713,6 @@
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">IRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject.description">
     <rdfs:comment>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
@@ -1456,31 +1742,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Integer">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Integer</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile">
-    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
-    <rdfs:label xml:lang="en">DocRemedialActionScheduleProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile">
-    <rdfs:comment>This package contains remedial action schedule profile.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerBidSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Power bid or offer related to a redispatch or countertrading measures. In the case of market place for economic efficiency of the bids and offers, this is equivalent to BidTimeSeries class in 62325 package.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerBidSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerBidSchedule.PowerSchedulelAction">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The power schedule action pointed by the power bid schedule.</rdfs:comment>
@@ -1491,15 +1752,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerScheduleAction"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Time series represent irregular power, active and reactive, values at given points in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.PowerScheduleAction">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1533,14 +1785,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Power schedule action is an action to rearrange power schedules.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerScheduleAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleAction.PowerBidSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1595,14 +1839,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Power, active and reactive, value at a given point in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerTimePoint</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.PowerSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Time series the time point values belongs to.</rdfs:comment>
@@ -1645,7 +1881,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.p">
-    <rdfs:comment>Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.</rdfs:comment>
+    <rdfs:comment>Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node or area.</rdfs:comment>
     <cims:dataType rdf:resource="#ActivePower"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerTimePoint"/>
     <rdfs:label xml:lang="en">p</rdfs:label>
@@ -1665,7 +1901,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.q">
-    <rdfs:comment>Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.</rdfs:comment>
+    <rdfs:comment>Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node or area.</rdfs:comment>
     <cims:dataType rdf:resource="#ReactivePower"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerTimePoint"/>
     <rdfs:label xml:lang="en">q</rdfs:label>
@@ -1673,14 +1909,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Proposing entity (System Operator) with a proper cost share for a given remedial action schedule.</rdfs:comment>
-    <rdfs:label xml:lang="en">ProposingRemedialActionScheduleShare</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare.ProposingEntity">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1725,13 +1953,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ReactivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</rdfs:comment>
-    <rdfs:label xml:lang="en">ReactivePower</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#ReactivePower.multiplier">
     <rdfs:domain rdf:resource="#ReactivePower"/>
     <cims:isFixed>M</cims:isFixed>
@@ -1757,13 +1978,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#RealEnergy">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Real electrical energy.</rdfs:comment>
-    <rdfs:label xml:lang="en">RealEnergy</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#RealEnergy.multiplier">
     <rdfs:domain rdf:resource="#RealEnergy"/>
@@ -1791,22 +2005,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RedispatchScheduleAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Redispatch schedule action is an action to rearrange power schedules for a scheduled resource to obtain a feasible and secure operational state of the power electricity system.</rdfs:comment>
-    <rdfs:label xml:lang="en">RedispatchScheduleAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#PowerScheduleAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Region">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>A region where the system operator belongs to.</rdfs:comment>
-    <rdfs:label xml:lang="en">Region</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#Region.RemedialActionSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The remedial action schedule relevant for this region.</rdfs:comment>
@@ -1818,52 +2016,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The kind of rejection reason.</rdfs:comment>
-    <rdfs:label xml:lang="en">RejectionReasonKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.madeAlternative">
-    <rdfs:comment>The rejection is due to a proposal of an alternative remedial action.</rdfs:comment>
-    <rdfs:label xml:lang="en">madeAlternative</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.noTimeToImplement">
-    <rdfs:comment>The rejection is due to lack of time to realise the proposed remedial action.</rdfs:comment>
-    <rdfs:label xml:lang="en">noTimeToImplement</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.notAvailable">
-    <rdfs:comment>The rejection is due to unavailability of the object.</rdfs:comment>
-    <rdfs:label xml:lang="en">notAvailable</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.other">
-    <rdfs:comment>The rejection is due to other more complex reason or the details are unknown.</rdfs:comment>
-    <rdfs:label xml:lang="en">other</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.securityLimit">
-    <rdfs:comment>The rejection is due to security limit violation.</rdfs:comment>
-    <rdfs:label xml:lang="en">securityLimit</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. </rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialAction.RemedialActionSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The remedial action schedule associated with a remedial action, i.e. the assigning a schedule to a remedial action.</rdfs:comment>
@@ -1874,14 +2026,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionCost">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Remedial action cost is the total cost itemised cost by category and type for the remedial action.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionCost</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionCost.RemedialActionSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1994,15 +2138,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>A schedule for a determined remedial action.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchedule.AssignedRegion">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -2165,14 +2300,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Remedial action schedule dependency is making two remedial action schedules depending on each other. </rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleDependency</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependency.ProposedRemedialActionSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Proposed remedial action schedule that has dependency.</rdfs:comment>
@@ -2227,41 +2354,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Kind of dependency between remedial action schedules.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleDependencyKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.exclusive">
-    <rdfs:comment>Remedial action schedules are exclusive depending on each other. e.g. Only one of the remedial action schedules can be selected at the same time.</rdfs:comment>
-    <rdfs:label xml:lang="en">exclusive</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.inclusive">
-    <rdfs:comment>Remedial action schedules are inclusive depending on each other. e.g. Both remedial action schedules need to be picked if one of them is needed.</rdfs:comment>
-    <rdfs:label xml:lang="en">inclusive</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.none">
-    <rdfs:comment>Remedial action schedules are not depending on each other. However, the two remedial action schedules should be evaluated together.</rdfs:comment>
-    <rdfs:label xml:lang="en">none</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleGroup">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Remedial action schedule group collects two or more remedial action schedules together. The remedial action schedule group needs to be set up for the same remedial action or proposing alternative remedial action by including a reference to another remedial action.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleGroup</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleGroup.GroupDependency">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Group dependency for this remedial action schedule group.</rdfs:comment>
@@ -2272,14 +2364,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependency"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponse">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The response on the remedial action schedule by a given system operator.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleResponse</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponse.RemedialActionSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -2344,13 +2428,135 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponseKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The kind of response for a remedial action schedule.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleResponseKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule.SchemeRemedialAction">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>Remedial action scheme which has remedial action scheme schedules.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction.RemedialActionSchemeSchedule"/>
+    <rdfs:label xml:lang="en">SchemeRemedialAction</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction"/>
     <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchemeRemedialAction.RemedialActionSchemeSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Remedial action scheme schedule associated with a remedial action scheme.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule.SchemeRemedialAction"/>
+    <rdfs:label xml:lang="en">RemedialActionSchemeSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Seconds.multiplier">
+    <rdfs:domain rdf:resource="#Seconds"/>
+    <cims:isFixed>none</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Seconds.unit">
+    <rdfs:domain rdf:resource="#Seconds"/>
+    <cims:isFixed>s</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Seconds.value">
+    <rdfs:comment>Time, in seconds</rdfs:comment>
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#Seconds"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SecurityCoordinator.RemedialActionSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Remedial action schedule for this security coordinator.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SecurityCoordinator"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule.ProposingEntity"/>
+    <rdfs:label xml:lang="en">RemedialActionSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator.ProposingRemedialActionScheduleShare">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Proposing remedial action schedule share which is made by the proposing entity.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SystemOperator"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare.ProposingEntity"/>
+    <rdfs:label xml:lang="en">ProposingRemedialActionScheduleShare</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator.RemedialActionScheduleResponse">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Remedial action schedule response related to a system operator.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SystemOperator"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleResponse.RespondingEntity"/>
+    <rdfs:label xml:lang="en">RemedialActionScheduleResponse</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleResponse"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.madeAlternative">
+    <rdfs:comment>The rejection is due to a proposal of an alternative remedial action.</rdfs:comment>
+    <rdfs:label xml:lang="en">madeAlternative</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.noTimeToImplement">
+    <rdfs:comment>The rejection is due to lack of time to realise the proposed remedial action.</rdfs:comment>
+    <rdfs:label xml:lang="en">noTimeToImplement</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.notAvailable">
+    <rdfs:comment>The rejection is due to unavailability of the object.</rdfs:comment>
+    <rdfs:label xml:lang="en">notAvailable</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.other">
+    <rdfs:comment>The rejection is due to other more complex reason or the details are unknown.</rdfs:comment>
+    <rdfs:label xml:lang="en">other</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RejectionReasonKind.securityLimit">
+    <rdfs:comment>The rejection is due to security limit violation.</rdfs:comment>
+    <rdfs:label xml:lang="en">securityLimit</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RejectionReasonKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.exclusive">
+    <rdfs:comment>Remedial action schedules are exclusive depending on each other. e.g. Only one of the remedial action schedules can be selected at the same time.</rdfs:comment>
+    <rdfs:label xml:lang="en">exclusive</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.inclusive">
+    <rdfs:comment>Remedial action schedules are inclusive depending on each other. e.g. Both remedial action schedules need to be picked if one of them is needed.</rdfs:comment>
+    <rdfs:label xml:lang="en">inclusive</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind.none">
+    <rdfs:comment>Remedial action schedules are not depending on each other. However, the two remedial action schedules should be evaluated together.</rdfs:comment>
+    <rdfs:label xml:lang="en">none</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleDependencyKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleResponseKind.accepted">
     <rdfs:comment>The acceptance of remedial action schedule is concluded and accepted.</rdfs:comment>
@@ -2375,14 +2581,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:label xml:lang="en">waiting</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleResponseKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleStatusKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Remedial action schedule status kinds.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionScheduleStatusKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionScheduleStatusKind.activated">
     <rdfs:comment>Activated remedial action schedule.</rdfs:comment>
@@ -2444,165 +2642,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleStatusKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The schedule for a remedial action scheme.</rdfs:comment>
-    <rdfs:label xml:lang="en">RemedialActionSchemeSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype>Description</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule.SchemeRemedialAction">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>Remedial action scheme which has remedial action scheme schedules.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction.RemedialActionSchemeSchedule"/>
-    <rdfs:label xml:lang="en">SchemeRemedialAction</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchemeRemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this. </rdfs:comment>
-    <rdfs:label xml:lang="en">SchemeRemedialAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype>Description</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#RemedialAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchemeRemedialAction.RemedialActionSchemeSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Remedial action scheme schedule associated with a remedial action scheme.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SchemeRemedialAction"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule.SchemeRemedialAction"/>
-    <rdfs:label xml:lang="en">RemedialActionSchemeSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchemeSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Seconds">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Time, in seconds.</rdfs:comment>
-    <rdfs:label xml:lang="en">Seconds</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Seconds.multiplier">
-    <rdfs:domain rdf:resource="#Seconds"/>
-    <cims:isFixed>none</cims:isFixed>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitMultiplier"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Seconds.unit">
-    <rdfs:domain rdf:resource="#Seconds"/>
-    <cims:isFixed>s</cims:isFixed>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitSymbol"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Seconds.value">
-    <rdfs:comment>Time, in seconds</rdfs:comment>
-    <cims:dataType rdf:resource="#Float"/>
-    <rdfs:domain rdf:resource="#Seconds"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SecurityCoordinator">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>A role that coordinates the relevant remedial actions and their optimisation to ensure efficient use to achieve required operational security of the power system.</rdfs:comment>
-    <rdfs:label xml:lang="en">SecurityCoordinator</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SecurityCoordinator.RemedialActionSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Remedial action schedule for this security coordinator.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SecurityCoordinator"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule.ProposingEntity"/>
-    <rdfs:label xml:lang="en">RemedialActionSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
-    <rdfs:label xml:lang="en">String</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>System operator.</rdfs:comment>
-    <rdfs:label xml:lang="en">SystemOperator</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator.ProposingRemedialActionScheduleShare">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Proposing remedial action schedule share which is made by the proposing entity.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SystemOperator"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare.ProposingEntity"/>
-    <rdfs:label xml:lang="en">ProposingRemedialActionScheduleShare</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#ProposingRemedialActionScheduleShare"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SystemOperator.RemedialActionScheduleResponse">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Remedial action schedule response related to a system operator.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SystemOperator"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleResponse.RespondingEntity"/>
-    <rdfs:label xml:lang="en">RemedialActionScheduleResponse</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#RemedialActionScheduleResponse"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>Kinds of interpolation of values between two time point. </rdfs:comment>
-    <rdfs:label xml:lang="en">TimeSeriesInterpolationKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind.next">
     <rdfs:comment>The value between two time points is set to next value.</rdfs:comment>
     <rdfs:label xml:lang="en">next</rdfs:label>
@@ -2615,25 +2654,6 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_DocRemedialActionScheduleProfile"/>
-    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
-    <rdfs:label xml:lang="en">URL</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitMultiplier">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#UnitMultiplier.M">
     <rdfs:comment>Mega 10**6.</rdfs:comment>
     <rdfs:label xml:lang="en">M</rdfs:label>
@@ -2645,17 +2665,6 @@ For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is de
     <rdfs:label xml:lang="en">none</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#UnitMultiplier"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitSymbol">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitSymbol.VAr">
     <rdfs:comment>Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
@@ -2681,14 +2690,6 @@ Note: Different meter designs use different methods to arrive at their results. 
     <rdfs:label xml:lang="en">s</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#UnitSymbol"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ValueOffsetKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/RemedialActionSchedule#Package_RemedialActionScheduleProfile"/>
-    <rdfs:comment>The kind of the value offset.</rdfs:comment>
-    <rdfs:label xml:lang="en">ValueOffsetKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ValueOffsetKind.absolute">
     <rdfs:comment>Value of the range constraint is replacing the attribute value referenced by the PropertyReference in a determined operational scenario.</rdfs:comment>

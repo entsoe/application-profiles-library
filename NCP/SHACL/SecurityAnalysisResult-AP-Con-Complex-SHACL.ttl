@@ -6,7 +6,6 @@
 @prefix cim17:   <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ido:     <https://ap-con.cim4.eu/NC-IdentifiedObject/2.3#> .
 @prefix nc:      <https://cim4.eu/ns/nc#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -19,49 +18,19 @@ sarc:Ontology  rdf:type         owl:Ontology ;
         dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1"  ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for security analysis result profile."@en ;
-        dcterms:identifier        "44dd9e65-6a29-4308-91e4-06c385f17edd" ;
-        dcterms:issued            "2025-09-11T12:09:21Z"^^xsd:dateTime ;
+        dcterms:identifier        "c3b82679-b05a-4142-a45c-db9c08c67f5c" ;
+        dcterms:issued            "2026-08-09T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2025-09-11"^^xsd:date ;
+        dcterms:modified          "2026-08-09"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Security analysis result profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5> ;
-    dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.5.0"@en ;
+        dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        owl:versionInfo       "2.5.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
-
-cim:    
-    a           owl:Ontology ;
-    owl:imports sh: ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim.ucaiug.io/ns#"^^xsd:anyURI ;
-        sh:prefix "cim" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/2013/CIM-schema-cim16#"^^xsd:anyURI ;
-        sh:prefix "cim16" ;
-    ] ;
-  sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "https://cim4.eu/ns/nc#"^^xsd:anyURI ;
-        sh:prefix "nc" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
-        sh:prefix "rdf" ;
-    ] ;
-    sh:declare [
-        a sh:PrefixDeclaration ;
-        sh:namespace "http://iec.ch/TC57/CIM100#"^^xsd:anyURI ;
-        sh:prefix "cim17" ;
-    ] .
-
 
 sarc:SARgroup
         a           sh:PropertyGroup ;
@@ -95,7 +64,7 @@ sarc:PowerFlowResult.valueSparql
         #BIND(EXISTS{$this nc:PowerFlowResult.OperationalLimit ?o1} AS ?ol1).
     BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
     BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
-        FILTER (?val=false || ?aval=false ).
+        FILTER (?val="false"^^xsd:boolean || ?aval="false"^^xsd:boolean ).
       }""" .        
 
 sarc:PowerFlowResult-ApparentPowerLimit
@@ -117,7 +86,7 @@ sarc:PowerFlowResult-ApparentPowerLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val=false ).
+        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val="false"^^xsd:boolean ).
       }""" .        
 
 sarc:PowerFlowResult-ActivePowerLimit
@@ -139,7 +108,7 @@ sarc:PowerFlowResult-ActivePowerLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val=false ).
+        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val="false"^^xsd:boolean ).
       }""" .       
       
 sarc:PowerFlowResult-ReactivePowerLimit
@@ -161,7 +130,7 @@ sarc:PowerFlowResult-ReactivePowerLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val=false ).
+        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val="false"^^xsd:boolean ).
       }""" .       
       
 sarc:PowerFlowResult-VoltageLimit
@@ -183,7 +152,7 @@ sarc:PowerFlowResult-VoltageLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val=false ).
+        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val="false"^^xsd:boolean ).
       }""" .   
 
 sarc:PowerFlowResult-VoltageAngleLimit
@@ -205,7 +174,7 @@ sarc:PowerFlowResult-VoltageAngleLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER (?oltype=nc:VoltageAngleLimit && ?val=false ).
+        FILTER (?oltype=nc:VoltageAngleLimit && ?val="false"^^xsd:boolean ).
       }""" .      
       
 sarc:PowerFlowResult-CurrentLimit
@@ -227,7 +196,7 @@ sarc:PowerFlowResult-CurrentLimitSparql
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val=false ).
+        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val="false"^^xsd:boolean ).
       }""" .      
       
 sarc:RemedialActionApplied  a          sh:NodeShape ;
@@ -256,7 +225,7 @@ sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql
     $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
         BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
 
-        FILTER ((?stage=false && ?ra=cim:SchemeRemedialAction) || (?stage=true && ?ra!=cim:SchemeRemedialAction) ).
+        FILTER ((?stage="false"^^xsd:boolean && ?ra=cim:SchemeRemedialAction) || (?stage="true"^^xsd:boolean && ?ra!=cim:SchemeRemedialAction) ).
       }""" .          
       
 sarc:PowerFlowResult-voltageAndAngle
@@ -282,7 +251,7 @@ sarc:PowerFlowResult-voltageAndAngleSparql
     BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
     BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
 
-        FILTER ((?hasvalueV=true || ?hasvalueAngle=true) && (?hasT=true || ?hasPTC=true) ).
+        FILTER ((?hasvalueV="true"^^xsd:boolean || ?hasvalueAngle="true"^^xsd:boolean) && (?hasT="true"^^xsd:boolean || ?hasPTC="true"^^xsd:boolean) ).
       }""" .    
 
 sarc:PowerFlowResult-association
@@ -330,5 +299,5 @@ sarc:PowerFlowResult-topologicalNodeSparql
     BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
     BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
-        FILTER ( ?hasTN=true && (?hasvalueW=true || ?hasvalueVA=true || ?hasvalueVAR=true || ?hasvalueA=true)).
+        FILTER ( ?hasTN="true"^^xsd:boolean && (?hasvalueW="true"^^xsd:boolean || ?hasvalueVA="true"^^xsd:boolean || ?hasvalueVAR="true"^^xsd:boolean || ?hasvalueA="true"^^xsd:boolean)).
       }""" .        

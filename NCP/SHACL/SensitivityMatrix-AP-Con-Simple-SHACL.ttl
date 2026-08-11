@@ -1,6 +1,5 @@
-#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.
 @base   <https://ap-con.cim4.eu/SensitivityMatrix-Simple/2.3> .
-@prefix cc:   <https://common-constraints.eu/> .
 @prefix cim:  <https://cim.ucaiug.io/ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms:  <http://purl.org/dc/terms/> .
@@ -18,16 +17,16 @@
 sm:Ontology  rdf:type     owl:Ontology;
         dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "a6af0e76-1a22-4c30-a4c3-0f7cff33b926";
-        dcterms:issued        "2026-05-28T16:36:20.018391700"^^xsd:dateTime;
+        dcterms:identifier    "c65d8780-aa00-4b7e-835a-d004b2c153d5";
+        dcterms:issued        "2026-08-09T12:37:31.568900700"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-09"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Sensitivity Matrix Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/SensitivityMatrix-Simple/2.3>;
-        owl:versionInfo   "2.3.5"@en;
+        owl:versionInfo   "2.3.6"@en;
         dcat:keyword      "SM";
         dcat:theme        "constraint"@en .
 
@@ -59,7 +58,7 @@ sm:ObservableQuantity.Contingency-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sm:AssociationsGroup;
-        sh:in           ( nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency );
+        sh:in           ( nc:ExceptionalContingency nc:OutOfRangeContingency nc:OrdinaryContingency );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ObservableQuantity.Contingency-valueType";
         sh:nodeKind     sh:IRI;
@@ -274,7 +273,7 @@ sm:ControllableQuantity.GridStateAlteration-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sm:AssociationsGroup;
-        sh:in           ( nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction );
+        sh:in           ( nc:ACDCConverterAction nc:EquivalentInjectionAction nc:StaticVarCompensatorAction nc:RotatingMachineAction nc:BatteryUnitAction nc:LoadAction nc:ExternalNetworkInjectionAction nc:BiddingZoneAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:EnergySourceModification nc:EquipmentControllerAction nc:ShuntCompensatorModification nc:RegulatingControlAction nc:InServiceAction nc:TopologyAction nc:TapPositionAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ControllableQuantity.GridStateAlteration-valueType";
         sh:nodeKind     sh:IRI;
@@ -302,7 +301,7 @@ sm:ControllableQuantity.RemedialAction-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        sm:AssociationsGroup;
-        sh:in           ( nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction );
+        sh:in           ( nc:AvailabilityRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:CountertradeRemedialAction nc:RedispatchRemedialAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "ControllableQuantity.RemedialAction-valueType";
         sh:nodeKind     sh:IRI;
@@ -536,43 +535,6 @@ sm:SensitivityMatrix-AllowedProperties
 sm:SensitivityMatrix  rdf:type  sh:NodeShape;
         sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , sm:SensitivityMatrix.SensitivityFactor-cardinality , sm:SensitivityMatrix.kind-datatype , sm:SensitivityMatrix.kind-cardinality;
         sh:targetClass  nc:SensitivityMatrix .
-
-cc:     rdf:type     owl:Ontology;
-        owl:imports  sh:;
-        sh:declare   [ rdf:type      sh:PrefixDeclaration;
-                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-                       sh:prefix     "rdf"
-                     ] .
-
-cc:ClassCount-propertySparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "The class {?class} appears {?value} times in the data graph.";
-        sh:prefixes  cc:;
-        sh:select    """ 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             """ .
-
-cc:ClassCount-property
-        rdf:type        sh:PropertyShape;
-        sh:description  "Counts instance of classes present in the data graph.";
-        sh:group        cc:ClassesCountGroup;
-        sh:name         "ClassCount";
-        sh:order        1;
-        sh:path         rdf:type;
-        sh:severity     sh:Info;
-        sh:sparql       cc:ClassCount-propertySparql .
-
-cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
-        sh:targetClass  dcat:Dataset .
-
-cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
-        rdfs:label  "ClassesCount";
-        sh:order    1 .
 
 sm:AllowedClasses-property
         rdf:type        sh:PropertyShape;

@@ -1,7 +1,6 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
 @base   <https://ap-con.cim4.eu/AssessedElement-Simple/2.4> .
 @prefix ae:    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4#> .
-@prefix cc:    <https://common-constraints.eu/> .
 @prefix cim:   <https://cim.ucaiug.io/ns#> .
 @prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 @prefix cim17: <http://iec.ch/TC57/CIM100#> .
@@ -18,18 +17,18 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 ae:Ontology  rdf:type     owl:Ontology;
-        dcterms:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-401:draft:ed-1";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "f8a56cd8-d0ea-4680-8541-957ce748e0f4";
-        dcterms:issued        "2026-05-28T16:29:08.709172500"^^xsd:dateTime;
+        dcterms:identifier    "b1a7fb91-6b1a-4e42-9297-a65db018b161";
+        dcterms:issued        "2026-08-09T12:37:10.120958700"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Assessed Element Vocabulary"@en;
         owl:versionIRI    <https://ap-con.cim4.eu/AssessedElement-Simple/2.4>;
-        owl:versionInfo   "2.4.1"@en;
+        owl:versionInfo   "2.4.2"@en;
         dcat:keyword      "AE";
         dcat:theme        "constraint"@en .
 
@@ -294,7 +293,7 @@ ae:AssessedElementWithContingency.Contingency-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency );
+        sh:in           ( nc:ExceptionalContingency nc:OutOfRangeContingency nc:OrdinaryContingency );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElementWithContingency.Contingency-valueType";
         sh:nodeKind     sh:IRI;
@@ -509,7 +508,7 @@ ae:AssessedElement.AssessedSystemOperator-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator );
+        sh:in           ( nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.AssessedSystemOperator-valueType";
         sh:nodeKind     sh:IRI;
@@ -561,7 +560,7 @@ ae:AssessedElement.NativeRegion-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:in           ( nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.NativeRegion-valueType";
         sh:nodeKind     sh:IRI;
@@ -727,7 +726,7 @@ ae:AssessedElement.SecuredForRegion-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:in           ( nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.SecuredForRegion-valueType";
         sh:nodeKind     sh:IRI;
@@ -917,7 +916,7 @@ ae:AssessedElement.ConductingEquipment-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator );
+        sh:in           ( cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.ConductingEquipment-valueType";
         sh:nodeKind     sh:IRI;
@@ -991,7 +990,7 @@ ae:AssessedElement.OperationalLimit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:BaseCaseCurrentLimit nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit cim17:ApparentPowerLimit );
+        sh:in           ( nc:BaseCaseCurrentLimit cim16:ActivePowerLimit cim17:ApparentPowerLimit cim17:VoltageLimit nc:InfeedLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim16:CurrentLimit cim17:ActivePowerLimit cim16:VoltageLimit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.OperationalLimit-valueType";
         sh:nodeKind     sh:IRI;
@@ -1042,7 +1041,7 @@ ae:AssessedElement.ScannedForRegion-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion );
+        sh:in           ( nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.ScannedForRegion-valueType";
         sh:nodeKind     sh:IRI;
@@ -1148,7 +1147,7 @@ ae:AssessedElement.AssessedPowerTransferCorridor-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor );
+        sh:in           ( nc:OrdinaryPowerTransferCorridor nc:ExceptionalPowerTransferCorridor );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElement.AssessedPowerTransferCorridor-valueType";
         sh:nodeKind     sh:IRI;
@@ -1406,7 +1405,7 @@ ae:AssessedElementWithRemedialAction.RemedialAction-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        ae:AssociationsGroup;
-        sh:in           ( nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction );
+        sh:in           ( nc:AvailabilityRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:CountertradeRemedialAction nc:RedispatchRemedialAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AssessedElementWithRemedialAction.RemedialAction-valueType";
         sh:nodeKind     sh:IRI;
@@ -1524,48 +1523,11 @@ ae:AssessedElementWithRemedialAction
         sh:property     ae:AssessedElementWithRemedialAction.AssessedElement-valueType , ae:AssessedElementWithRemedialAction.AssessedElement-cardinality , ae:AssessedElementWithRemedialAction.RemedialAction-cardinality , ae:AssessedElementWithRemedialAction.combinationConstraintKind-datatype , ae:AssessedElementWithRemedialAction.combinationConstraintKind-cardinality , ae:AssessedElementWithRemedialAction.mRID-datatype , ae:AssessedElementWithRemedialAction.mRID-cardinality , ae:AssessedElementWithRemedialAction.normalEnabled-datatype , ae:AssessedElementWithRemedialAction.normalEnabled-cardinality;
         sh:targetClass  nc:AssessedElementWithRemedialAction .
 
-cc:     rdf:type     owl:Ontology;
-        owl:imports  sh:;
-        sh:declare   [ rdf:type      sh:PrefixDeclaration;
-                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-                       sh:prefix     "rdf"
-                     ] .
-
-cc:ClassCount-propertySparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "The class {?class} appears {?value} times in the data graph.";
-        sh:prefixes  cc:;
-        sh:select    """ 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             """ .
-
-cc:ClassCount-property
-        rdf:type        sh:PropertyShape;
-        sh:description  "Counts instance of classes present in the data graph.";
-        sh:group        cc:ClassesCountGroup;
-        sh:name         "ClassCount";
-        sh:order        1;
-        sh:path         rdf:type;
-        sh:severity     sh:Info;
-        sh:sparql       cc:ClassCount-propertySparql .
-
-cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
-        sh:targetClass  dcat:Dataset .
-
-cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
-        rdfs:label  "ClassesCount";
-        sh:order    1 .
-
 ae:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        ae:ProfileClassesGroup;
-        sh:in           ( nc:AssessedElementWithRemedialAction nc:AssessedElement nc:AssessedElementWithContingency cim:OperationalLimitSet nc:BaseCaseCurrentLimit nc:CrossBorderRelevance nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit cim17:ApparentPowerLimit md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:AssessedElementWithRemedialAction nc:AssessedElement nc:AssessedElementWithContingency cim:OperationalLimitSet nc:BaseCaseCurrentLimit nc:CrossBorderRelevance cim16:ActivePowerLimit cim17:ApparentPowerLimit cim17:VoltageLimit nc:InfeedLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim16:CurrentLimit cim17:ActivePowerLimit cim16:VoltageLimit md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;

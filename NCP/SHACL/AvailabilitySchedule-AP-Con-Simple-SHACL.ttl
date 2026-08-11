@@ -1,13 +1,13 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
-@base   <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.3> .
-@prefix as:    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.3#> .
-@prefix cc:    <https://common-constraints.eu/> .
+@base   <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.4> .
+@prefix as:    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.4#> .
 @prefix cim:   <https://cim.ucaiug.io/ns#> .
 @prefix cim16: <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 @prefix cim17: <http://iec.ch/TC57/CIM100#> .
 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
 @prefix dcterms:   <http://purl.org/dc/terms/> .
 @prefix dm:    <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
 @prefix ido:   <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix md:    <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 @prefix nc:    <https://cim4.eu/ns/nc#> .
@@ -18,20 +18,806 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
 as:Ontology  rdf:type     owl:Ontology;
-        dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-501:draft:ed-2";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-501:draft:ed-2";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "59692773-bb3a-4086-9333-23fd7c26b196";
-        dcterms:issued        "2026-06-28T16:30:07.398727700"^^xsd:dateTime;
+        dcterms:identifier    "82a6470c-d1e7-441a-bc20-aec7042f0017";
+        dcterms:issued        "2026-08-09T12:37:10.616953100"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-06-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Availability schedule vocabulary"@en;
-        owl:versionIRI    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.3>;
-        owl:versionInfo   "2.3.5"@en;
+        owl:versionIRI    <https://ap-con.cim4.eu/AvailabilitySchedule-Simple/2.4>;
+        owl:versionInfo   "2.4.0"@en;
         dcat:keyword      "AS";
         dcat:theme        "constraint"@en .
+
+as:AvailabilityContainer.EquipmentContainer-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:in           ( cim:Substation nc:SecondarySubstation cim17:Substation cim16:DCEquipmentContainer nc:DCSubstationBipole nc:DCSubstationPole cim16:DCConverterUnit cim17:DCConverterUnit cim16:DCLine cim:DCConverterUnit nc:DCSubstation cim17:DCLine cim16:Substation cim16:Line cim:Line cim17:Line cim16:Bay cim16:VoltageLevel cim17:Bay cim17:VoltageLevel );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AvailabilityContainer.EquipmentContainer-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        38;
+        sh:path         ( nc:AvailabilityContainer.EquipmentContainer rdf:type );
+        sh:severity     sh:Violation .
+
+as:AvailabilityContainer.EquipmentContainer-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     as:AvailabilityContainer.EquipmentContainer-valueType;
+        sh:targetClass  nc:AvailabilityContainer .
+
+as:AvailabilityContainer.EquipmentContainer-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AvailabilityContainer.EquipmentContainer-cardinality";
+        sh:order        139;
+        sh:path         nc:AvailabilityContainer.EquipmentContainer;
+        sh:severity     sh:Violation .
+
+as:AvailabilityContainer-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              16;
+        sh:property           [ sh:path  nc:AvailabilityContainer.EquipmentContainer ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.kind ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilityGroup ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AvailabilityContainer .
+
+as:AvailabilityContainer
+        rdf:type        sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityContainer.EquipmentContainer-cardinality;
+        sh:targetClass  nc:AvailabilityContainer .
+
+as:PeerTemporalDependency.startToStartLag-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "PeerTemporalDependency.startToStartLag-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        83;
+        sh:path         nc:PeerTemporalDependency.startToStartLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.startToStartLag-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.startToStartLag-cardinality";
+        sh:order        138;
+        sh:path         nc:PeerTemporalDependency.startToStartLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.overlapKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:ReferenceValueKind.minimum nc:ReferenceValueKind.maximum nc:ReferenceValueKind.exact );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "PeerTemporalDependency.overlapKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        82;
+        sh:path         nc:PeerTemporalDependency.overlapKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.overlapKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.overlapKind-cardinality";
+        sh:order        137;
+        sh:path         nc:PeerTemporalDependency.overlapKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToFinishLag-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "PeerTemporalDependency.finishToFinishLag-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        81;
+        sh:path         nc:PeerTemporalDependency.finishToFinishLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToFinishLag-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.finishToFinishLag-cardinality";
+        sh:order        136;
+        sh:path         nc:PeerTemporalDependency.finishToFinishLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToStartLagKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:ReferenceValueKind.minimum nc:ReferenceValueKind.maximum nc:ReferenceValueKind.exact );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "PeerTemporalDependency.finishToStartLagKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        80;
+        sh:path         nc:PeerTemporalDependency.finishToStartLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToStartLagKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.finishToStartLagKind-cardinality";
+        sh:order        135;
+        sh:path         nc:PeerTemporalDependency.finishToStartLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToStartLag-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "PeerTemporalDependency.finishToStartLag-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        79;
+        sh:path         nc:PeerTemporalDependency.finishToStartLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToStartLag-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.finishToStartLag-cardinality";
+        sh:order        134;
+        sh:path         nc:PeerTemporalDependency.finishToStartLag;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToFinishLagKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:ReferenceValueKind.minimum nc:ReferenceValueKind.maximum nc:ReferenceValueKind.exact );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "PeerTemporalDependency.finishToFinishLagKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        78;
+        sh:path         nc:PeerTemporalDependency.finishToFinishLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.finishToFinishLagKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.finishToFinishLagKind-cardinality";
+        sh:order        133;
+        sh:path         nc:PeerTemporalDependency.finishToFinishLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.overlap-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "PeerTemporalDependency.overlap-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        77;
+        sh:path         nc:PeerTemporalDependency.overlap;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.overlap-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.overlap-cardinality";
+        sh:order        132;
+        sh:path         nc:PeerTemporalDependency.overlap;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.constraintKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:DependencyConstraintKind.exclusive nc:DependencyConstraintKind.restrictive nc:DependencyConstraintKind.inclusive );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "PeerTemporalDependency.constraintKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        76;
+        sh:path         nc:PeerTemporalDependency.constraintKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.constraintKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "PeerTemporalDependency.constraintKind-cardinality";
+        sh:order        131;
+        sh:path         nc:PeerTemporalDependency.constraintKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.startToStartLagKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:ReferenceValueKind.minimum nc:ReferenceValueKind.maximum nc:ReferenceValueKind.exact );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "PeerTemporalDependency.startToStartLagKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        75;
+        sh:path         nc:PeerTemporalDependency.startToStartLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.startToStartLagKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "PeerTemporalDependency.startToStartLagKind-cardinality";
+        sh:order        130;
+        sh:path         nc:PeerTemporalDependency.startToStartLagKind;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "PeerTemporalDependency.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        74;
+        sh:path         nc:PeerTemporalDependency.mRID;
+        sh:severity     sh:Violation .
+
+as:PeerTemporalDependency.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "PeerTemporalDependency.mRID-cardinality";
+        sh:order        129;
+        sh:path         nc:PeerTemporalDependency.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageDependency.DependeeOutageRequest-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageRequest;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageRequest";
+        sh:name         "OutageDependency.DependeeOutageRequest-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        37;
+        sh:path         nc:OutageDependency.DependeeOutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageDependency.DependeeOutageRequest-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageDependency.DependeeOutageRequest-cardinality";
+        sh:order        128;
+        sh:path         nc:OutageDependency.DependeeOutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageDependency.DependentOutageRequest-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageRequest;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageRequest";
+        sh:name         "OutageDependency.DependentOutageRequest-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        36;
+        sh:path         nc:OutageDependency.DependentOutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageDependency.DependentOutageRequest-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageDependency.DependentOutageRequest-cardinality";
+        sh:order        127;
+        sh:path         nc:OutageDependency.DependentOutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageDependency-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              15;
+        sh:property           [ sh:path  nc:OutageDependency.DependentOutageRequest ];
+        sh:property           [ sh:path  nc:OutageDependency.DependeeOutageRequest ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.mRID ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.startToStartLagKind ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.constraintKind ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.overlap ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.finishToFinishLagKind ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.finishToStartLag ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.finishToStartLagKind ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.finishToFinishLag ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.overlapKind ];
+        sh:property           [ sh:path  nc:PeerTemporalDependency.startToStartLag ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:OutageDependency .
+
+as:OutageDependency  rdf:type  sh:NodeShape;
+        sh:property     as:PeerTemporalDependency.startToStartLag-datatype , as:PeerTemporalDependency.startToStartLag-cardinality , as:PeerTemporalDependency.overlapKind-datatype , as:PeerTemporalDependency.overlapKind-cardinality , as:PeerTemporalDependency.finishToFinishLag-datatype , as:PeerTemporalDependency.finishToFinishLag-cardinality , as:PeerTemporalDependency.finishToStartLagKind-datatype , as:PeerTemporalDependency.finishToStartLagKind-cardinality , as:PeerTemporalDependency.finishToStartLag-datatype , as:PeerTemporalDependency.finishToStartLag-cardinality , as:OutageDependency.DependentOutageRequest-cardinality , as:OutageDependency.DependentOutageRequest-valueType , as:OutageDependency.DependeeOutageRequest-cardinality , as:OutageDependency.DependeeOutageRequest-valueType , as:PeerTemporalDependency.mRID-cardinality , as:PeerTemporalDependency.mRID-datatype , as:PeerTemporalDependency.startToStartLagKind-cardinality , as:PeerTemporalDependency.startToStartLagKind-datatype , as:PeerTemporalDependency.constraintKind-cardinality , as:PeerTemporalDependency.constraintKind-datatype , as:PeerTemporalDependency.overlap-cardinality , as:PeerTemporalDependency.overlap-datatype , as:PeerTemporalDependency.finishToFinishLagKind-cardinality , as:PeerTemporalDependency.finishToFinishLagKind-datatype;
+        sh:targetClass  nc:OutageDependency .
+
+as:OutageRequestResource.OutageRequest-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageRequest;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageRequest";
+        sh:name         "OutageRequestResource.OutageRequest-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        35;
+        sh:path         nc:OutageRequestResource.OutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.OutageRequest-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageRequestResource.OutageRequest-cardinality";
+        sh:order        126;
+        sh:path         nc:OutageRequestResource.OutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.PowerSystemResource-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:in           ( nc:TieCorridor nc:ACTieCorridor nc:DCTieCorridor nc:PowerFrequencyController nc:AreaInterchangeController nc:TCSCController nc:TapChangerController nc:ScheduleResourceController nc:PowerPlantController nc:DirectCurrentBipoleController nc:DirectCurrentMasterController nc:ACDCConverterController nc:DirectCurrentPoleController nc:DirectCurrentSubstationPoleController nc:DirectCurrentSubstationBipoleController nc:PowerElectronicsUnitController nc:CompensatorController nc:InjectionController nc:SSSCController nc:UnifiedPowerFlowController nc:PowerElectronicsConnectionController nc:RotatingMachineController nc:SubstationController cim17:CogenerationPlant nc:ScheduleResource nc:BiddingZone cim17:EquivalentNetwork cim16:EquivalentNetwork cim:Substation nc:SecondarySubstation cim17:Substation cim16:DCEquipmentContainer nc:DCSubstationBipole nc:DCSubstationPole cim16:DCConverterUnit cim17:DCConverterUnit cim16:DCLine cim:DCConverterUnit nc:DCSubstation cim17:DCLine cim16:Substation cim16:Line cim:Line cim17:Line cim16:Bay cim16:VoltageLevel cim17:Bay cim17:VoltageLevel nc:OrdinaryPowerTransferCorridor nc:ExceptionalPowerTransferCorridor cim17:HydroPowerPlant nc:BipolarDCSystem nc:MonopolarDCSystem nc:LineCircuit nc:DirectCurrentCircuit nc:PowerTransformerCircuit nc:RemedialActionScheme cim:ControlArea nc:SubControlArea nc:EdgeControlArea nc:DCBiPole cim16:HydroPowerPlant cim17:CombinedCyclePlant eu:BoundaryPoint nc:StageTrigger cim17:RegulatingControl cim16:TapChangerControl cim17:TapChangerControl cim16:RegulatingControl nc:SynchronousArea cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit eu:WindPowerPlant nc:DCPole cim17:ControlArea nc:GridPowerCapacity nc:LoadFrequencyControlBlock cim16:ControlArea cim16:RatioTapChanger cim16:PhaseTapChangerLinear cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerTabular cim17:PhaseTapChangerTabular cim17:PhaseTapChangerLinear cim17:RatioTapChanger nc:AreaReserveResource nc:LoadFrequencyControlArea nc:FuelStorage cim17:CAESPlant nc:ThermalPowerPlant nc:CogenerationPlant nc:CombinedCyclePlant nc:CompressedAirEnergyStoragePlant nc:EquivalentPowerPlant nc:EnergyResourceGroupCapacity nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:BiddingZoneBorder eu:SolarPowerPlant nc:SchedulingArea nc:SubSchedulingArea nc:EdgeSchedulingArea cim:Reservoir );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "OutageRequestResource.PowerSystemResource-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        34;
+        sh:path         ( nc:OutageRequestResource.PowerSystemResource rdf:type );
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.PowerSystemResource-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     as:OutageRequestResource.PowerSystemResource-valueType;
+        sh:targetClass  nc:OutageRequestResource .
+
+as:OutageRequestResource.PowerSystemResource-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageRequestResource.PowerSystemResource-cardinality";
+        sh:order        125;
+        sh:path         nc:OutageRequestResource.PowerSystemResource;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.kind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:AvailabilityFunctionKind.inService nc:AvailabilityFunctionKind.underTesting nc:AvailabilityFunctionKind.outOfService );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "OutageRequestResource.kind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        73;
+        sh:path         nc:OutageRequestResource.kind;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.kind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageRequestResource.kind-cardinality";
+        sh:order        124;
+        sh:path         nc:OutageRequestResource.kind;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequestResource.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        72;
+        sh:path         nc:OutageRequestResource.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageRequestResource.mRID-cardinality";
+        sh:order        123;
+        sh:path         nc:OutageRequestResource.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageRequestResource-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              14;
+        sh:property           [ sh:path  nc:OutageRequestResource.OutageRequest ];
+        sh:property           [ sh:path  nc:OutageRequestResource.PowerSystemResource ];
+        sh:property           [ sh:path  nc:OutageRequestResource.kind ];
+        sh:property           [ sh:path  nc:OutageRequestResource.mRID ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:OutageRequestResource .
+
+as:OutageRequestResource
+        rdf:type        sh:NodeShape;
+        sh:property     as:OutageRequestResource.OutageRequest-valueType , as:OutageRequestResource.OutageRequest-cardinality , as:OutageRequestResource.PowerSystemResource-cardinality , as:OutageRequestResource.kind-datatype , as:OutageRequestResource.kind-cardinality , as:OutageRequestResource.mRID-datatype , as:OutageRequestResource.mRID-cardinality;
+        sh:targetClass  nc:OutageRequestResource .
+
+as:OutageAvailability.AvailabilitySchedule-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailabilitySchedule;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilitySchedule";
+        sh:name         "OutageAvailability.AvailabilitySchedule-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        33;
+        sh:path         nc:OutageAvailability.AvailabilitySchedule;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability.AvailabilitySchedule-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageAvailability.AvailabilitySchedule-cardinality";
+        sh:order        122;
+        sh:path         nc:OutageAvailability.AvailabilitySchedule;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability.OutageRequest-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageRequest;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageRequest";
+        sh:name         "OutageAvailability.OutageRequest-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        32;
+        sh:path         nc:OutageAvailability.OutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability.OutageRequest-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageAvailability.OutageRequest-cardinality";
+        sh:order        121;
+        sh:path         nc:OutageAvailability.OutageRequest;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageAvailability.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        71;
+        sh:path         nc:OutageAvailability.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageAvailability.mRID-cardinality";
+        sh:order        120;
+        sh:path         nc:OutageAvailability.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageAvailability-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              13;
+        sh:property           [ sh:path  nc:OutageAvailability.AvailabilitySchedule ];
+        sh:property           [ sh:path  nc:OutageAvailability.OutageRequest ];
+        sh:property           [ sh:path  nc:OutageAvailability.mRID ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:OutageAvailability .
+
+as:OutageAvailability
+        rdf:type        sh:NodeShape;
+        sh:property     as:OutageAvailability.AvailabilitySchedule-valueType , as:OutageAvailability.AvailabilitySchedule-cardinality , as:OutageAvailability.OutageRequest-valueType , as:OutageAvailability.OutageRequest-cardinality , as:OutageAvailability.mRID-datatype , as:OutageAvailability.mRID-cardinality;
+        sh:targetClass  nc:OutageAvailability .
+
+as:AvailabilityRemedialActionScheme.RemedialActionScheme-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:RemedialActionScheme;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:RemedialActionScheme";
+        sh:name         "AvailabilityRemedialActionScheme.RemedialActionScheme-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        29;
+        sh:path         nc:AvailabilityRemedialActionScheme.RemedialActionScheme;
+        sh:severity     sh:Violation .
+
+as:AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality";
+        sh:order        113;
+        sh:path         nc:AvailabilityRemedialActionScheme.RemedialActionScheme;
+        sh:severity     sh:Violation .
+
+as:AvailabilityRemedialActionScheme-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              12;
+        sh:property           [ sh:path  nc:AvailabilityRemedialActionScheme.RemedialActionScheme ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.kind ];
+        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilityGroup ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AvailabilityRemedialActionScheme .
+
+as:AvailabilityRemedialActionScheme
+        rdf:type        sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityRemedialActionScheme.RemedialActionScheme-valueType , as:AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality;
+        sh:targetClass  nc:AvailabilityRemedialActionScheme .
+
+as:OutageResponse.AffectedAgent-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutagePlanningAgent;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutagePlanningAgent";
+        sh:name         "OutageResponse.AffectedAgent-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        28;
+        sh:path         nc:OutageResponse.AffectedAgent;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.AffectedAgent-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageResponse.AffectedAgent-cardinality";
+        sh:order        112;
+        sh:path         nc:OutageResponse.AffectedAgent;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.AffectedCoordinator-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageCoordinator;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageCoordinator";
+        sh:name         "OutageResponse.AffectedCoordinator-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        27;
+        sh:path         nc:OutageResponse.AffectedCoordinator;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.AffectedCoordinator-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageResponse.AffectedCoordinator-cardinality";
+        sh:order        111;
+        sh:path         nc:OutageResponse.AffectedCoordinator;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.OutageRequestVersion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageRequestVersion;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageRequestVersion";
+        sh:name         "OutageResponse.OutageRequestVersion-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        26;
+        sh:path         nc:OutageResponse.OutageRequestVersion;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.OutageRequestVersion-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "OutageResponse.OutageRequestVersion-cardinality";
+        sh:order        110;
+        sh:path         nc:OutageResponse.OutageRequestVersion;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.comment-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageResponse.comment-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        66;
+        sh:path         nc:OutageResponse.comment;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.comment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageResponse.comment-cardinality";
+        sh:order        109;
+        sh:path         nc:OutageResponse.comment;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageResponse.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        65;
+        sh:path         nc:OutageResponse.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageResponse.mRID-cardinality";
+        sh:order        108;
+        sh:path         nc:OutageResponse.mRID;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.status-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:RequestResponseKind.noResponseTimeout nc:RequestResponseKind.alternativeProposal nc:RequestResponseKind.accepted nc:RequestResponseKind.acceptedWithConditions nc:RequestResponseKind.refused nc:RequestResponseKind.acknowledged );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "OutageResponse.status-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        64;
+        sh:path         nc:OutageResponse.status;
+        sh:severity     sh:Violation .
+
+as:OutageResponse.status-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageResponse.status-cardinality";
+        sh:order        107;
+        sh:path         nc:OutageResponse.status;
+        sh:severity     sh:Violation .
+
+as:OutageResponse-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              11;
+        sh:property           [ sh:path  nc:OutageResponse.AffectedAgent ];
+        sh:property           [ sh:path  nc:OutageResponse.AffectedCoordinator ];
+        sh:property           [ sh:path  nc:OutageResponse.OutageRequestVersion ];
+        sh:property           [ sh:path  nc:OutageResponse.comment ];
+        sh:property           [ sh:path  nc:OutageResponse.mRID ];
+        sh:property           [ sh:path  nc:OutageResponse.status ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:OutageResponse .
+
+as:OutageResponse  rdf:type  sh:NodeShape;
+        sh:property     as:OutageResponse.AffectedAgent-valueType , as:OutageResponse.AffectedAgent-cardinality , as:OutageResponse.AffectedCoordinator-valueType , as:OutageResponse.AffectedCoordinator-cardinality , as:OutageResponse.OutageRequestVersion-valueType , as:OutageResponse.OutageRequestVersion-cardinality , as:OutageResponse.comment-datatype , as:OutageResponse.comment-cardinality , as:OutageResponse.mRID-datatype , as:OutageResponse.mRID-cardinality , as:OutageResponse.status-datatype , as:OutageResponse.status-cardinality;
+        sh:targetClass  nc:OutageResponse .
 
 as:AvailabilityEnabled.AssessedElement-valueType
         rdf:type        sh:PropertyShape;
@@ -41,7 +827,7 @@ as:AvailabilityEnabled.AssessedElement-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AssessedElement";
         sh:name         "AvailabilityEnabled.AssessedElement-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        21;
+        sh:order        23;
         sh:path         nc:AvailabilityEnabled.AssessedElement;
         sh:severity     sh:Violation .
 
@@ -52,7 +838,7 @@ as:AvailabilityEnabled.AssessedElement-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilityEnabled.AssessedElement-cardinality";
-        sh:order        67;
+        sh:order        100;
         sh:path         nc:AvailabilityEnabled.AssessedElement;
         sh:severity     sh:Violation .
 
@@ -60,11 +846,11 @@ as:AvailabilityEnabled.GridStateAlteration-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        as:AssociationsGroup;
-        sh:in           ( nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction );
+        sh:in           ( nc:ACDCConverterAction nc:EquivalentInjectionAction nc:StaticVarCompensatorAction nc:RotatingMachineAction nc:BatteryUnitAction nc:LoadAction nc:ExternalNetworkInjectionAction nc:BiddingZoneAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:EnergySourceModification nc:EquipmentControllerAction nc:ShuntCompensatorModification nc:RegulatingControlAction nc:InServiceAction nc:TopologyAction nc:TapPositionAction );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AvailabilityEnabled.GridStateAlteration-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        20;
+        sh:order        22;
         sh:path         ( nc:AvailabilityEnabled.GridStateAlteration rdf:type );
         sh:severity     sh:Violation .
 
@@ -80,7 +866,7 @@ as:AvailabilityEnabled.GridStateAlteration-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilityEnabled.GridStateAlteration-cardinality";
-        sh:order        66;
+        sh:order        99;
         sh:path         nc:AvailabilityEnabled.GridStateAlteration;
         sh:severity     sh:Violation .
 
@@ -92,7 +878,7 @@ as:AvailabilityEnabled.enabled-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilityEnabled.enabled-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        37;
+        sh:order        59;
         sh:path         nc:AvailabilityEnabled.enabled;
         sh:severity     sh:Violation .
 
@@ -104,7 +890,7 @@ as:AvailabilityEnabled.enabled-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "AvailabilityEnabled.enabled-cardinality";
-        sh:order        65;
+        sh:order        98;
         sh:path         nc:AvailabilityEnabled.enabled;
         sh:severity     sh:Violation .
 
@@ -116,7 +902,7 @@ as:AvailabilityEnabled-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              9;
+        sh:order              10;
         sh:property           [ sh:path  nc:AvailabilityEnabled.enabled ];
         sh:property           [ sh:path  nc:AvailabilityEnabled.GridStateAlteration ];
         sh:property           [ sh:path  nc:AvailabilityEnabled.AssessedElement ];
@@ -138,11 +924,11 @@ as:AvailabilityExceptionalLimit.OperationalLimit-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        as:AssociationsGroup;
-        sh:in           ( nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit nc:BaseCaseCurrentLimit cim17:ApparentPowerLimit );
+        sh:in           ( cim16:ActivePowerLimit cim17:ApparentPowerLimit cim17:VoltageLimit nc:InfeedLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim16:CurrentLimit cim17:ActivePowerLimit nc:BaseCaseCurrentLimit cim16:VoltageLimit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AvailabilityExceptionalLimit.OperationalLimit-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        17;
+        sh:order        19;
         sh:path         ( nc:AvailabilityExceptionalLimit.OperationalLimit rdf:type );
         sh:severity     sh:Violation .
 
@@ -159,7 +945,7 @@ as:AvailabilityExceptionalLimit.OperationalLimit-cardinality
         sh:message      "Association with cardinality violation at the used direction.";
         sh:minCount     1;
         sh:name         "AvailabilityExceptionalLimit.OperationalLimit-cardinality";
-        sh:order        58;
+        sh:order        91;
         sh:path         nc:AvailabilityExceptionalLimit.OperationalLimit;
         sh:severity     sh:Violation .
 
@@ -171,7 +957,7 @@ as:AvailabilityExceptionalLimit.value-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilityExceptionalLimit.value-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        32;
+        sh:order        54;
         sh:path         nc:AvailabilityExceptionalLimit.value;
         sh:severity     sh:Violation .
 
@@ -183,7 +969,7 @@ as:AvailabilityExceptionalLimit.value-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "AvailabilityExceptionalLimit.value-cardinality";
-        sh:order        57;
+        sh:order        90;
         sh:path         nc:AvailabilityExceptionalLimit.value;
         sh:severity     sh:Violation .
 
@@ -195,7 +981,7 @@ as:AvailabilityExceptionalLimit-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              8;
+        sh:order              9;
         sh:property           [ sh:path  nc:AvailabilityExceptionalLimit.value ];
         sh:property           [ sh:path  nc:AvailabilityExceptionalLimit.OperationalLimit ];
         sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
@@ -212,59 +998,6 @@ as:AvailabilityExceptionalLimit
         sh:property     ido:IdentifiedObject.description-datatype , as:AvailabilityExceptionalLimit.value-cardinality , as:AvailabilityExceptionalLimit.value-datatype , as:AvailabilityExceptionalLimit.OperationalLimit-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , ido:IdentifiedObject.name-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.description-cardinality;
         sh:targetClass  nc:AvailabilityExceptionalLimit .
 
-as:AvailabilityContainer.EquipmentContainer-valueType
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        as:AssociationsGroup;
-        sh:in           ( nc:DCSubstationPole cim16:DCLine cim17:DCConverterUnit cim16:DCConverterUnit cim17:DCLine nc:DCSubstation nc:DCSubstationBipole cim:DCConverterUnit cim16:Substation nc:SecondarySubstation cim16:DCEquipmentContainer cim16:VoltageLevel cim17:Bay cim16:Bay cim:Substation cim17:Substation cim17:VoltageLevel cim17:Line cim:Line cim16:Line );
-        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
-        sh:name         "AvailabilityContainer.EquipmentContainer-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        14;
-        sh:path         ( nc:AvailabilityContainer.EquipmentContainer rdf:type );
-        sh:severity     sh:Violation .
-
-as:AvailabilityContainer.EquipmentContainer-valueTypeNodeShape
-        rdf:type        sh:NodeShape;
-        sh:property     as:AvailabilityContainer.EquipmentContainer-valueType;
-        sh:targetClass  nc:AvailabilityContainer .
-
-as:AvailabilityContainer.EquipmentContainer-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        as:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Association with cardinality violation at the used direction.";
-        sh:minCount     1;
-        sh:name         "AvailabilityContainer.EquipmentContainer-cardinality";
-        sh:order        50;
-        sh:path         nc:AvailabilityContainer.EquipmentContainer;
-        sh:severity     sh:Violation .
-
-as:AvailabilityContainer-AllowedProperties
-        rdf:type              sh:NodeShape;
-        sh:closed             true;
-        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
-        sh:group              as:ProfilePropertiesGroup;
-        sh:ignoredProperties  ( rdf:type );
-        sh:message            "This property is not part of the profile to which this dataset conforms to.";
-        sh:name               "PropertyNotInProfile";
-        sh:order              7;
-        sh:property           [ sh:path  nc:AvailabilityContainer.EquipmentContainer ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.kind ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilityGroup ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:severity           sh:Info;
-        sh:targetClass        nc:AvailabilityContainer .
-
-as:AvailabilityContainer
-        rdf:type        sh:NodeShape;
-        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityContainer.EquipmentContainer-cardinality;
-        sh:targetClass  nc:AvailabilityContainer .
-
 as:EventTimePoint.EventSchedule-valueType
         rdf:type        sh:PropertyShape;
         sh:class        nc:EventSchedule;
@@ -273,7 +1006,7 @@ as:EventTimePoint.EventSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:EventSchedule";
         sh:name         "EventTimePoint.EventSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        13;
+        sh:order        18;
         sh:path         nc:EventTimePoint.EventSchedule;
         sh:severity     sh:Violation .
 
@@ -285,7 +1018,7 @@ as:EventTimePoint.EventSchedule-cardinality
         sh:message      "Association with cardinality violation at the used direction.";
         sh:minCount     1;
         sh:name         "EventTimePoint.EventSchedule-cardinality";
-        sh:order        49;
+        sh:order        89;
         sh:path         nc:EventTimePoint.EventSchedule;
         sh:severity     sh:Violation .
 
@@ -297,7 +1030,7 @@ as:EventTimePoint.atTime-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "EventTimePoint.atTime-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        27;
+        sh:order        53;
         sh:path         nc:EventTimePoint.atTime;
         sh:severity     sh:Violation .
 
@@ -309,7 +1042,7 @@ as:EventTimePoint.atTime-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "EventTimePoint.atTime-cardinality";
-        sh:order        48;
+        sh:order        88;
         sh:path         nc:EventTimePoint.atTime;
         sh:severity     sh:Violation .
 
@@ -321,7 +1054,7 @@ as:EventTimePoint.isActive-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "EventTimePoint.isActive-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        26;
+        sh:order        52;
         sh:path         nc:EventTimePoint.isActive;
         sh:severity     sh:Violation .
 
@@ -333,7 +1066,7 @@ as:EventTimePoint.isActive-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "EventTimePoint.isActive-cardinality";
-        sh:order        47;
+        sh:order        87;
         sh:path         nc:EventTimePoint.isActive;
         sh:severity     sh:Violation .
 
@@ -345,7 +1078,7 @@ as:EventTimePoint-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              6;
+        sh:order              8;
         sh:property           [ sh:path  nc:EventTimePoint.EventSchedule ];
         sh:property           [ sh:path  nc:EventTimePoint.atTime ];
         sh:property           [ sh:path  nc:EventTimePoint.isActive ];
@@ -356,15 +1089,677 @@ as:EventTimePoint  rdf:type  sh:NodeShape;
         sh:property     as:EventTimePoint.EventSchedule-valueType , as:EventTimePoint.EventSchedule-cardinality , as:EventTimePoint.atTime-datatype , as:EventTimePoint.atTime-cardinality , as:EventTimePoint.isActive-datatype , as:EventTimePoint.isActive-cardinality;
         sh:targetClass  nc:EventTimePoint .
 
+as:OutageRequest.weekendReinstatementDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.weekendReinstatementDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        48;
+        sh:path         nc:OutageRequest.weekendReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.weekendReinstatementDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.weekendReinstatementDuration-cardinality";
+        sh:order        83;
+        sh:path         nc:OutageRequest.weekendReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.daytimeReinstatementDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.daytimeReinstatementDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        47;
+        sh:path         nc:OutageRequest.daytimeReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.daytimeReinstatementDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.daytimeReinstatementDuration-cardinality";
+        sh:order        82;
+        sh:path         nc:OutageRequest.daytimeReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.DependencyAsDependent-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        16;
+        sh:path         nc:OutageRequest.DependencyAsDependent;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.DependencyAsDependent-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:OutageRequest.DependencyAsDependent-propertyInverse;
+        sh:targetSubjectsOf  nc:OutageRequest.DependencyAsDependent .
+
+as:OutageRequest.weekendReinstatement-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.weekendReinstatement-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        46;
+        sh:path         nc:OutageRequest.weekendReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.weekendReinstatement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.weekendReinstatement-cardinality";
+        sh:order        80;
+        sh:path         nc:OutageRequest.weekendReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.expectedWorkDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.expectedWorkDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        45;
+        sh:path         nc:OutageRequest.expectedWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.expectedWorkDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.expectedWorkDuration-cardinality";
+        sh:order        79;
+        sh:path         nc:OutageRequest.expectedWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.eveningReinstatementDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.eveningReinstatementDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        44;
+        sh:path         nc:OutageRequest.eveningReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.eveningReinstatementDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.eveningReinstatementDuration-cardinality";
+        sh:order        78;
+        sh:path         nc:OutageRequest.eveningReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.RequestedBy-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutagePlanningAgent;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutagePlanningAgent";
+        sh:name         "OutageRequest.RequestedBy-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        17;
+        sh:path         nc:OutageRequest.RequestedBy;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.RequestedBy-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.RequestedBy-cardinality";
+        sh:order        77;
+        sh:path         nc:OutageRequest.RequestedBy;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.priority-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:integer;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.priority-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        43;
+        sh:path         nc:OutageRequest.priority;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.priority-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "OutageRequest.priority-cardinality";
+        sh:order        76;
+        sh:path         nc:OutageRequest.priority;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.causeDescription-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.causeDescription-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        42;
+        sh:path         nc:OutageRequest.causeDescription;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.causeDescription-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.causeDescription-cardinality";
+        sh:order        75;
+        sh:path         nc:OutageRequest.causeDescription;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestResource-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the inverse direction.";
+        sh:group        as:CardinalityGroup;
+        sh:message      "Cardinality violation. Lower bound shall be 1";
+        sh:minCount     1;
+        sh:name         "OutageRequest.OutageRequestResource-cardinality";
+        sh:order        74;
+        sh:path         [ sh:inversePath  nc:OutageRequestResource.OutageRequest ];
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestResource-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        15;
+        sh:path         nc:OutageRequest.OutageRequestResource;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestResource-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:OutageRequest.OutageRequestResource-propertyInverse;
+        sh:targetSubjectsOf  nc:OutageRequest.OutageRequestResource .
+
+as:OutageRequest.maxWorkDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.maxWorkDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        41;
+        sh:path         nc:OutageRequest.maxWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.maxWorkDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.maxWorkDuration-cardinality";
+        sh:order        73;
+        sh:path         nc:OutageRequest.maxWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.DependencyAsDependee-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        14;
+        sh:path         nc:OutageRequest.DependencyAsDependee;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.DependencyAsDependee-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:OutageRequest.DependencyAsDependee-propertyInverse;
+        sh:targetSubjectsOf  nc:OutageRequest.DependencyAsDependee .
+
+as:OutageRequest.earlyStart-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.earlyStart-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        40;
+        sh:path         nc:OutageRequest.earlyStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.earlyStart-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.earlyStart-cardinality";
+        sh:order        71;
+        sh:path         nc:OutageRequest.earlyStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.daytimeReinstatement-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.daytimeReinstatement-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        39;
+        sh:path         nc:OutageRequest.daytimeReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.daytimeReinstatement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.daytimeReinstatement-cardinality";
+        sh:order        70;
+        sh:path         nc:OutageRequest.daytimeReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.lateStart-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.lateStart-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        38;
+        sh:path         nc:OutageRequest.lateStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.lateStart-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.lateStart-cardinality";
+        sh:order        69;
+        sh:path         nc:OutageRequest.lateStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestApprover-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageCoordinator;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageCoordinator";
+        sh:name         "OutageRequest.OutageRequestApprover-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        16;
+        sh:path         nc:OutageRequest.OutageRequestApprover;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestApprover-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.OutageRequestApprover-cardinality";
+        sh:order        68;
+        sh:path         nc:OutageRequest.OutageRequestApprover;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.requestedStart-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.requestedStart-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        37;
+        sh:path         nc:OutageRequest.requestedStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.requestedStart-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.requestedStart-cardinality";
+        sh:order        67;
+        sh:path         nc:OutageRequest.requestedStart;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageAvailability-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        13;
+        sh:path         nc:OutageRequest.OutageAvailability;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageAvailability-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:OutageRequest.OutageAvailability-propertyInverse;
+        sh:targetSubjectsOf  nc:OutageRequest.OutageAvailability .
+
+as:OutageRequest.maxReinstatementDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.maxReinstatementDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        36;
+        sh:path         nc:OutageRequest.maxReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.maxReinstatementDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.maxReinstatementDuration-cardinality";
+        sh:order        65;
+        sh:path         nc:OutageRequest.maxReinstatementDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.eveningReinstatement-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.eveningReinstatement-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        35;
+        sh:path         nc:OutageRequest.eveningReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.eveningReinstatement-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.eveningReinstatement-cardinality";
+        sh:order        64;
+        sh:path         nc:OutageRequest.eveningReinstatement;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.causeKind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:AvailabilityScheduleCauseKind.refurbishment nc:AvailabilityScheduleCauseKind.functionalControl nc:AvailabilityScheduleCauseKind.maintenance nc:AvailabilityScheduleCauseKind.environmentalCondition nc:AvailabilityScheduleCauseKind.other nc:AvailabilityScheduleCauseKind.commissioning nc:AvailabilityScheduleCauseKind.decommissioning nc:AvailabilityScheduleCauseKind.worksInProximity );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "OutageRequest.causeKind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        34;
+        sh:path         nc:OutageRequest.causeKind;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.causeKind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.causeKind-cardinality";
+        sh:order        63;
+        sh:path         nc:OutageRequest.causeKind;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.minWorkDuration-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:duration;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.minWorkDuration-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        33;
+        sh:path         nc:OutageRequest.minWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.minWorkDuration-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.minWorkDuration-cardinality";
+        sh:order        62;
+        sh:path         nc:OutageRequest.minWorkDuration;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestVersion-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        12;
+        sh:path         nc:OutageRequest.OutageRequestVersion;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.OutageRequestVersion-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:OutageRequest.OutageRequestVersion-propertyInverse;
+        sh:targetSubjectsOf  nc:OutageRequest.OutageRequestVersion .
+
+as:OutageRequest.workDayStartTime-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:time;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.workDayStartTime-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        32;
+        sh:path         nc:OutageRequest.workDayStartTime;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.workDayStartTime-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.workDayStartTime-cardinality";
+        sh:order        60;
+        sh:path         nc:OutageRequest.workDayStartTime;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.workDayEndTime-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:time;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "OutageRequest.workDayEndTime-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        31;
+        sh:path         nc:OutageRequest.workDayEndTime;
+        sh:severity     sh:Violation .
+
+as:OutageRequest.workDayEndTime-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "OutageRequest.workDayEndTime-cardinality";
+        sh:order        59;
+        sh:path         nc:OutageRequest.workDayEndTime;
+        sh:severity     sh:Violation .
+
+as:OutageRequest-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              7;
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  nc:OutageRequest.weekendReinstatementDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.daytimeReinstatementDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.weekendReinstatement ];
+        sh:property           [ sh:path  nc:OutageRequest.expectedWorkDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.eveningReinstatementDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.RequestedBy ];
+        sh:property           [ sh:path  nc:OutageRequest.workDayEndTime ];
+        sh:property           [ sh:path  nc:OutageRequest.workDayStartTime ];
+        sh:property           [ sh:path  nc:OutageRequest.minWorkDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.causeKind ];
+        sh:property           [ sh:path  nc:OutageRequest.eveningReinstatement ];
+        sh:property           [ sh:path  nc:OutageRequest.maxReinstatementDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.requestedStart ];
+        sh:property           [ sh:path  nc:OutageRequest.OutageRequestApprover ];
+        sh:property           [ sh:path  nc:OutageRequest.lateStart ];
+        sh:property           [ sh:path  nc:OutageRequest.daytimeReinstatement ];
+        sh:property           [ sh:path  nc:OutageRequest.earlyStart ];
+        sh:property           [ sh:path  nc:OutageRequest.maxWorkDuration ];
+        sh:property           [ sh:path  nc:OutageRequest.causeDescription ];
+        sh:property           [ sh:path  nc:OutageRequest.priority ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:OutageRequest .
+
+as:OutageRequest  rdf:type  sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:OutageRequest.weekendReinstatementDuration-datatype , as:OutageRequest.weekendReinstatementDuration-cardinality , as:OutageRequest.daytimeReinstatementDuration-datatype , as:OutageRequest.daytimeReinstatementDuration-cardinality , as:OutageRequest.weekendReinstatement-datatype , as:OutageRequest.weekendReinstatement-cardinality , as:OutageRequest.expectedWorkDuration-datatype , as:OutageRequest.expectedWorkDuration-cardinality , as:OutageRequest.eveningReinstatementDuration-datatype , as:OutageRequest.eveningReinstatementDuration-cardinality , as:OutageRequest.RequestedBy-valueType , as:OutageRequest.RequestedBy-cardinality , as:OutageRequest.priority-datatype , as:OutageRequest.priority-cardinality , as:OutageRequest.causeDescription-datatype , as:OutageRequest.causeDescription-cardinality , as:OutageRequest.OutageRequestResource-cardinality , as:OutageRequest.maxWorkDuration-datatype , as:OutageRequest.maxWorkDuration-cardinality , as:OutageRequest.earlyStart-datatype , as:OutageRequest.earlyStart-cardinality , as:OutageRequest.daytimeReinstatement-datatype , as:OutageRequest.daytimeReinstatement-cardinality , as:OutageRequest.lateStart-datatype , as:OutageRequest.lateStart-cardinality , as:OutageRequest.OutageRequestApprover-valueType , as:OutageRequest.OutageRequestApprover-cardinality , as:OutageRequest.workDayEndTime-cardinality , as:OutageRequest.workDayEndTime-datatype , as:OutageRequest.workDayStartTime-cardinality , as:OutageRequest.workDayStartTime-datatype , as:OutageRequest.minWorkDuration-cardinality , as:OutageRequest.minWorkDuration-datatype , as:OutageRequest.causeKind-cardinality , as:OutageRequest.causeKind-datatype , as:OutageRequest.eveningReinstatement-cardinality , as:OutageRequest.eveningReinstatement-datatype , as:OutageRequest.maxReinstatementDuration-cardinality , as:OutageRequest.maxReinstatementDuration-datatype , as:OutageRequest.requestedStart-cardinality , as:OutageRequest.requestedStart-datatype;
+        sh:targetClass  nc:OutageRequest .
+
+as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailabilityGroup;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilityGroup";
+        sh:name         "AvailabilityPowerSystemFunction.AvailabilityGroup-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        15;
+        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilityGroup;
+        sh:severity     sh:Violation .
+
+as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality";
+        sh:order        55;
+        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilityGroup;
+        sh:severity     sh:Violation .
+
+as:AvailabilityPowerSystemFunction.kind-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:AvailabilityFunctionKind.inService nc:AvailabilityFunctionKind.underTesting nc:AvailabilityFunctionKind.outOfService );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AvailabilityPowerSystemFunction.kind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        27;
+        sh:path         nc:AvailabilityPowerSystemFunction.kind;
+        sh:severity     sh:Violation .
+
+as:AvailabilityPowerSystemFunction.kind-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AvailabilityPowerSystemFunction.kind-cardinality";
+        sh:order        54;
+        sh:path         nc:AvailabilityPowerSystemFunction.kind;
+        sh:severity     sh:Violation .
+
+as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailabilitySchedule;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilitySchedule";
+        sh:name         "AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        14;
+        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilitySchedule;
+        sh:severity     sh:Violation .
+
+as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality";
+        sh:order        53;
+        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilitySchedule;
+        sh:severity     sh:Violation .
+
 as:AvailabilityEquipment.Equipment-valueType
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the value of the association at the used direction.";
         sh:group        as:AssociationsGroup;
-        sh:in           ( cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester );
+        sh:in           ( cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit );
         sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
         sh:name         "AvailabilityEquipment.Equipment-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        10;
+        sh:order        13;
         sh:path         ( nc:AvailabilityEquipment.Equipment rdf:type );
         sh:severity     sh:Violation .
 
@@ -381,7 +1776,7 @@ as:AvailabilityEquipment.Equipment-cardinality
         sh:message      "Association with cardinality violation at the used direction.";
         sh:minCount     1;
         sh:name         "AvailabilityEquipment.Equipment-cardinality";
-        sh:order        40;
+        sh:order        52;
         sh:path         nc:AvailabilityEquipment.Equipment;
         sh:severity     sh:Violation .
 
@@ -393,7 +1788,7 @@ as:AvailabilityEquipment-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              5;
+        sh:order              6;
         sh:property           [ sh:path  nc:AvailabilityEquipment.Equipment ];
         sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
         sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.kind ];
@@ -409,6 +1804,341 @@ as:AvailabilityEquipment
         sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityEquipment.Equipment-cardinality;
         sh:targetClass  nc:AvailabilityEquipment .
 
+as:AvailablityPlan.SystemOperator-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:in           ( nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "AvailablityPlan.SystemOperator-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        12;
+        sh:path         ( nc:AvailablityPlan.SystemOperator rdf:type );
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.SystemOperator-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     as:AvailablityPlan.SystemOperator-valueType;
+        sh:targetClass  nc:AvailablityPlan .
+
+as:AvailablityPlan.SystemOperator-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AvailablityPlan.SystemOperator-cardinality";
+        sh:order        48;
+        sh:path         nc:AvailablityPlan.SystemOperator;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.validFrom-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AvailablityPlan.validFrom-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        23;
+        sh:path         nc:AvailablityPlan.validFrom;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.validFrom-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AvailablityPlan.validFrom-cardinality";
+        sh:order        47;
+        sh:path         nc:AvailablityPlan.validFrom;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.AvailablityPlanVersion-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        11;
+        sh:path         nc:AvailablityPlan.AvailablityPlanVersion;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.AvailablityPlanVersion-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:AvailablityPlan.AvailablityPlanVersion-propertyInverse;
+        sh:targetSubjectsOf  nc:AvailablityPlan.AvailablityPlanVersion .
+
+as:AvailablityPlan.AvailablityPlanApprover-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageCoordinator;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageCoordinator";
+        sh:name         "AvailablityPlan.AvailablityPlanApprover-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        11;
+        sh:path         nc:AvailablityPlan.AvailablityPlanApprover;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.AvailablityPlanApprover-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailablityPlan.AvailablityPlanApprover-cardinality";
+        sh:order        45;
+        sh:path         nc:AvailablityPlan.AvailablityPlanApprover;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.PartOf-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailablityPlan;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailablityPlan";
+        sh:name         "AvailablityPlan.PartOf-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        10;
+        sh:path         nc:AvailablityPlan.PartOf;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.PartOf-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailablityPlan.PartOf-cardinality";
+        sh:order        44;
+        sh:path         nc:AvailablityPlan.PartOf;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.HasPart-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        10;
+        sh:path         nc:AvailablityPlan.HasPart;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.HasPart-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:AvailablityPlan.HasPart-propertyInverse;
+        sh:targetSubjectsOf  nc:AvailablityPlan.HasPart .
+
+as:AvailablityPlan.validTo-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:dateTime;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AvailablityPlan.validTo-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        22;
+        sh:path         nc:AvailablityPlan.validTo;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.validTo-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AvailablityPlan.validTo-cardinality";
+        sh:order        42;
+        sh:path         nc:AvailablityPlan.validTo;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.AvailabilitySchedule-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        9;
+        sh:path         nc:AvailablityPlan.AvailabilitySchedule;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlan.AvailabilitySchedule-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:AvailablityPlan.AvailabilitySchedule-propertyInverse;
+        sh:targetSubjectsOf  nc:AvailablityPlan.AvailabilitySchedule .
+
+as:AvailablityPlan-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              5;
+        sh:property           [ sh:path  nc:AvailablityPlan.validTo ];
+        sh:property           [ sh:path  nc:AvailablityPlan.PartOf ];
+        sh:property           [ sh:path  nc:AvailablityPlan.AvailablityPlanApprover ];
+        sh:property           [ sh:path  nc:AvailablityPlan.validFrom ];
+        sh:property           [ sh:path  nc:AvailablityPlan.SystemOperator ];
+        sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
+        sh:property           [ sh:path  cim:IdentifiedObject.description ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AvailablityPlan .
+
+as:AvailablityPlan  rdf:type  sh:NodeShape;
+        sh:property     ido:IdentifiedObject.description-datatype , as:AvailablityPlan.validTo-cardinality , as:AvailablityPlan.validTo-datatype , as:AvailablityPlan.PartOf-cardinality , as:AvailablityPlan.PartOf-valueType , as:AvailablityPlan.AvailablityPlanApprover-cardinality , as:AvailablityPlan.AvailablityPlanApprover-valueType , as:AvailablityPlan.validFrom-cardinality , as:AvailablityPlan.validFrom-datatype , as:AvailablityPlan.SystemOperator-cardinality , ido:IdentifiedObject.name-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.description-cardinality;
+        sh:targetClass  nc:AvailablityPlan .
+
+as:AvailablityPlanResponse.AffectedCoordinator-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:OutageCoordinator;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:OutageCoordinator";
+        sh:name         "AvailablityPlanResponse.AffectedCoordinator-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        9;
+        sh:path         nc:AvailablityPlanResponse.AffectedCoordinator;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.AffectedCoordinator-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailablityPlanResponse.AffectedCoordinator-cardinality";
+        sh:order        40;
+        sh:path         nc:AvailablityPlanResponse.AffectedCoordinator;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.AvailablityPlanVersion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailablityPlanVersion;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailablityPlanVersion";
+        sh:name         "AvailablityPlanResponse.AvailablityPlanVersion-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        8;
+        sh:path         nc:AvailablityPlanResponse.AvailablityPlanVersion;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.AvailablityPlanVersion-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "AvailablityPlanResponse.AvailablityPlanVersion-cardinality";
+        sh:order        39;
+        sh:path         nc:AvailablityPlanResponse.AvailablityPlanVersion;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.comment-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AvailablityPlanResponse.comment-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        21;
+        sh:path         nc:AvailablityPlanResponse.comment;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.comment-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailablityPlanResponse.comment-cardinality";
+        sh:order        38;
+        sh:path         nc:AvailablityPlanResponse.comment;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.mRID-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AvailablityPlanResponse.mRID-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        20;
+        sh:path         nc:AvailablityPlanResponse.mRID;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.mRID-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AvailablityPlanResponse.mRID-cardinality";
+        sh:order        37;
+        sh:path         nc:AvailablityPlanResponse.mRID;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.status-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:in           ( nc:RequestResponseKind.noResponseTimeout nc:RequestResponseKind.alternativeProposal nc:RequestResponseKind.accepted nc:RequestResponseKind.acceptedWithConditions nc:RequestResponseKind.refused nc:RequestResponseKind.acknowledged );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "AvailablityPlanResponse.status-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        19;
+        sh:path         nc:AvailablityPlanResponse.status;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse.status-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "AvailablityPlanResponse.status-cardinality";
+        sh:order        36;
+        sh:path         nc:AvailablityPlanResponse.status;
+        sh:severity     sh:Violation .
+
+as:AvailablityPlanResponse-AllowedProperties
+        rdf:type              sh:NodeShape;
+        sh:closed             true;
+        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
+        sh:group              as:ProfilePropertiesGroup;
+        sh:ignoredProperties  ( rdf:type );
+        sh:message            "This property is not part of the profile to which this dataset conforms to.";
+        sh:name               "PropertyNotInProfile";
+        sh:order              4;
+        sh:property           [ sh:path  nc:AvailablityPlanResponse.AffectedCoordinator ];
+        sh:property           [ sh:path  nc:AvailablityPlanResponse.AvailablityPlanVersion ];
+        sh:property           [ sh:path  nc:AvailablityPlanResponse.comment ];
+        sh:property           [ sh:path  nc:AvailablityPlanResponse.mRID ];
+        sh:property           [ sh:path  nc:AvailablityPlanResponse.status ];
+        sh:severity           sh:Info;
+        sh:targetClass        nc:AvailablityPlanResponse .
+
+as:AvailablityPlanResponse
+        rdf:type        sh:NodeShape;
+        sh:property     as:AvailablityPlanResponse.AffectedCoordinator-valueType , as:AvailablityPlanResponse.AffectedCoordinator-cardinality , as:AvailablityPlanResponse.AvailablityPlanVersion-valueType , as:AvailablityPlanResponse.AvailablityPlanVersion-cardinality , as:AvailablityPlanResponse.comment-datatype , as:AvailablityPlanResponse.comment-cardinality , as:AvailablityPlanResponse.mRID-datatype , as:AvailablityPlanResponse.mRID-cardinality , as:AvailablityPlanResponse.status-datatype , as:AvailablityPlanResponse.status-cardinality;
+        sh:targetClass  nc:AvailablityPlanResponse .
+
 as:AvailabilitySchedule.maxRestitutionDuration-datatype
         rdf:type        sh:PropertyShape;
         sh:datatype     xsd:duration;
@@ -417,7 +2147,7 @@ as:AvailabilitySchedule.maxRestitutionDuration-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.maxRestitutionDuration-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        18;
+        sh:order        15;
         sh:path         nc:AvailabilitySchedule.maxRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -428,8 +2158,47 @@ as:AvailabilitySchedule.maxRestitutionDuration-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.maxRestitutionDuration-cardinality";
-        sh:order        36;
+        sh:order        32;
         sh:path         nc:AvailabilitySchedule.maxRestitutionDuration;
+        sh:severity     sh:Violation .
+
+as:AvailabilitySchedule.OutageAvailability-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        as:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        8;
+        sh:path         nc:AvailabilitySchedule.OutageAvailability;
+        sh:severity     sh:Violation .
+
+as:AvailabilitySchedule.OutageAvailability-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          as:AvailabilitySchedule.OutageAvailability-propertyInverse;
+        sh:targetSubjectsOf  nc:AvailabilitySchedule.OutageAvailability .
+
+as:AvailabilitySchedule.isCancelled-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:boolean;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        as:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "AvailabilitySchedule.isCancelled-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        14;
+        sh:path         nc:AvailabilitySchedule.isCancelled;
+        sh:severity     sh:Violation .
+
+as:AvailabilitySchedule.isCancelled-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailabilitySchedule.isCancelled-cardinality";
+        sh:order        30;
+        sh:path         nc:AvailabilitySchedule.isCancelled;
         sh:severity     sh:Violation .
 
 as:AvailabilitySchedule.RemedialAction-valueType
@@ -440,7 +2209,7 @@ as:AvailabilitySchedule.RemedialAction-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilityRemedialAction";
         sh:name         "AvailabilitySchedule.RemedialAction-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        9;
+        sh:order        7;
         sh:path         nc:AvailabilitySchedule.RemedialAction;
         sh:severity     sh:Violation .
 
@@ -451,7 +2220,7 @@ as:AvailabilitySchedule.RemedialAction-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.RemedialAction-cardinality";
-        sh:order        35;
+        sh:order        29;
         sh:path         nc:AvailabilitySchedule.RemedialAction;
         sh:severity     sh:Violation .
 
@@ -463,7 +2232,7 @@ as:AvailabilitySchedule.priority-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.priority-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        17;
+        sh:order        13;
         sh:path         nc:AvailabilitySchedule.priority;
         sh:severity     sh:Violation .
 
@@ -475,7 +2244,7 @@ as:AvailabilitySchedule.priority-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "AvailabilitySchedule.priority-cardinality";
-        sh:order        34;
+        sh:order        28;
         sh:path         nc:AvailabilitySchedule.priority;
         sh:severity     sh:Violation .
 
@@ -487,7 +2256,7 @@ as:AvailabilitySchedule.causeDescription-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.causeDescription-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        16;
+        sh:order        12;
         sh:path         nc:AvailabilitySchedule.causeDescription;
         sh:severity     sh:Violation .
 
@@ -498,7 +2267,7 @@ as:AvailabilitySchedule.causeDescription-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.causeDescription-cardinality";
-        sh:order        33;
+        sh:order        27;
         sh:path         nc:AvailabilitySchedule.causeDescription;
         sh:severity     sh:Violation .
 
@@ -525,7 +2294,7 @@ as:AvailabilitySchedule.AvailabilityPowerSystemFunction-cardinality
         sh:message      "Cardinality violation. Lower bound shall be 1";
         sh:minCount     1;
         sh:name         "AvailabilitySchedule.AvailabilityPowerSystemFunction-cardinality";
-        sh:order        31;
+        sh:order        25;
         sh:path         [ sh:inversePath  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
         sh:severity     sh:Violation .
 
@@ -553,7 +2322,7 @@ as:AvailabilitySchedule.cancelledDateTime-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.cancelledDateTime-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        15;
+        sh:order        11;
         sh:path         nc:AvailabilitySchedule.cancelledDateTime;
         sh:severity     sh:Violation .
 
@@ -564,7 +2333,7 @@ as:AvailabilitySchedule.cancelledDateTime-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.cancelledDateTime-cardinality";
-        sh:order        30;
+        sh:order        24;
         sh:path         nc:AvailabilitySchedule.cancelledDateTime;
         sh:severity     sh:Violation .
 
@@ -576,7 +2345,7 @@ as:AvailabilitySchedule.PlannedSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:EventSchedule";
         sh:name         "AvailabilitySchedule.PlannedSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        8;
+        sh:order        6;
         sh:path         nc:AvailabilitySchedule.PlannedSchedule;
         sh:severity     sh:Violation .
 
@@ -587,7 +2356,7 @@ as:AvailabilitySchedule.PlannedSchedule-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.PlannedSchedule-cardinality";
-        sh:order        29;
+        sh:order        23;
         sh:path         nc:AvailabilitySchedule.PlannedSchedule;
         sh:severity     sh:Violation .
 
@@ -599,7 +2368,7 @@ as:AvailabilitySchedule.causeKind-datatype
         sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
         sh:name         "AvailabilitySchedule.causeKind-datatype";
         sh:nodeKind     sh:IRI;
-        sh:order        14;
+        sh:order        10;
         sh:path         nc:AvailabilitySchedule.causeKind;
         sh:severity     sh:Violation .
 
@@ -611,7 +2380,7 @@ as:AvailabilitySchedule.causeKind-cardinality
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
         sh:name         "AvailabilitySchedule.causeKind-cardinality";
-        sh:order        28;
+        sh:order        22;
         sh:path         nc:AvailabilitySchedule.causeKind;
         sh:severity     sh:Violation .
 
@@ -639,7 +2408,7 @@ as:AvailabilitySchedule.PrioritySchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilitySchedule";
         sh:name         "AvailabilitySchedule.PrioritySchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        7;
+        sh:order        5;
         sh:path         nc:AvailabilitySchedule.PrioritySchedule;
         sh:severity     sh:Violation .
 
@@ -650,8 +2419,31 @@ as:AvailabilitySchedule.PrioritySchedule-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.PrioritySchedule-cardinality";
-        sh:order        26;
+        sh:order        20;
         sh:path         nc:AvailabilitySchedule.PrioritySchedule;
+        sh:severity     sh:Violation .
+
+as:AvailabilitySchedule.AvailablityPlan-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:AvailablityPlan;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        as:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailablityPlan";
+        sh:name         "AvailabilitySchedule.AvailablityPlan-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        4;
+        sh:path         nc:AvailabilitySchedule.AvailablityPlan;
+        sh:severity     sh:Violation .
+
+as:AvailabilitySchedule.AvailablityPlan-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        as:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "AvailabilitySchedule.AvailablityPlan-cardinality";
+        sh:order        19;
+        sh:path         nc:AvailabilitySchedule.AvailablityPlan;
         sh:severity     sh:Violation .
 
 as:AvailabilitySchedule.DependentOnSchedule-valueType
@@ -662,7 +2454,7 @@ as:AvailabilitySchedule.DependentOnSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilitySchedule";
         sh:name         "AvailabilitySchedule.DependentOnSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        6;
+        sh:order        3;
         sh:path         nc:AvailabilitySchedule.DependentOnSchedule;
         sh:severity     sh:Violation .
 
@@ -673,7 +2465,7 @@ as:AvailabilitySchedule.DependentOnSchedule-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.DependentOnSchedule-cardinality";
-        sh:order        25;
+        sh:order        18;
         sh:path         nc:AvailabilitySchedule.DependentOnSchedule;
         sh:severity     sh:Violation .
 
@@ -685,7 +2477,7 @@ as:AvailabilitySchedule.weekendRestitutionDuration-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.weekendRestitutionDuration-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        13;
+        sh:order        9;
         sh:path         nc:AvailabilitySchedule.weekendRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -696,7 +2488,7 @@ as:AvailabilitySchedule.weekendRestitutionDuration-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.weekendRestitutionDuration-cardinality";
-        sh:order        24;
+        sh:order        17;
         sh:path         nc:AvailabilitySchedule.weekendRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -708,7 +2500,7 @@ as:AvailabilitySchedule.ActualSchedule-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:EventSchedule";
         sh:name         "AvailabilitySchedule.ActualSchedule-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        5;
+        sh:order        2;
         sh:path         nc:AvailabilitySchedule.ActualSchedule;
         sh:severity     sh:Violation .
 
@@ -719,7 +2511,7 @@ as:AvailabilitySchedule.ActualSchedule-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.ActualSchedule-cardinality";
-        sh:order        23;
+        sh:order        16;
         sh:path         nc:AvailabilitySchedule.ActualSchedule;
         sh:severity     sh:Violation .
 
@@ -731,7 +2523,7 @@ as:AvailabilitySchedule.GridStateAlterationCollection-valueType
         sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:GridStateAlterationCollection";
         sh:name         "AvailabilitySchedule.GridStateAlterationCollection-valueType";
         sh:nodeKind     sh:IRI;
-        sh:order        4;
+        sh:order        1;
         sh:path         nc:AvailabilitySchedule.GridStateAlterationCollection;
         sh:severity     sh:Violation .
 
@@ -742,7 +2534,7 @@ as:AvailabilitySchedule.GridStateAlterationCollection-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.GridStateAlterationCollection-cardinality";
-        sh:order        22;
+        sh:order        15;
         sh:path         nc:AvailabilitySchedule.GridStateAlterationCollection;
         sh:severity     sh:Violation .
 
@@ -754,7 +2546,7 @@ as:AvailabilitySchedule.eveningRestitutionDuration-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.eveningRestitutionDuration-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        12;
+        sh:order        8;
         sh:path         nc:AvailabilitySchedule.eveningRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -765,7 +2557,7 @@ as:AvailabilitySchedule.eveningRestitutionDuration-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.eveningRestitutionDuration-cardinality";
-        sh:order        21;
+        sh:order        14;
         sh:path         nc:AvailabilitySchedule.eveningRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -777,7 +2569,7 @@ as:AvailabilitySchedule.daytimeRestitutionDuration-datatype
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "AvailabilitySchedule.daytimeRestitutionDuration-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        11;
+        sh:order        7;
         sh:path         nc:AvailabilitySchedule.daytimeRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -788,7 +2580,7 @@ as:AvailabilitySchedule.daytimeRestitutionDuration-cardinality
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
         sh:name         "AvailabilitySchedule.daytimeRestitutionDuration-cardinality";
-        sh:order        20;
+        sh:order        13;
         sh:path         nc:AvailabilitySchedule.daytimeRestitutionDuration;
         sh:severity     sh:Violation .
 
@@ -800,16 +2592,19 @@ as:AvailabilitySchedule-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              4;
+        sh:order              3;
         sh:property           [ sh:path  cim:IdentifiedObject.description ];
         sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
         sh:property           [ sh:path  cim:IdentifiedObject.name ];
+        sh:property           [ sh:path  nc:AvailabilitySchedule.maxRestitutionDuration ];
+        sh:property           [ sh:path  nc:AvailabilitySchedule.isCancelled ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.daytimeRestitutionDuration ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.eveningRestitutionDuration ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.GridStateAlterationCollection ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.ActualSchedule ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.weekendRestitutionDuration ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.DependentOnSchedule ];
+        sh:property           [ sh:path  nc:AvailabilitySchedule.AvailablityPlan ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.PrioritySchedule ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.causeKind ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.PlannedSchedule ];
@@ -817,13 +2612,12 @@ as:AvailabilitySchedule-AllowedProperties
         sh:property           [ sh:path  nc:AvailabilitySchedule.causeDescription ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.priority ];
         sh:property           [ sh:path  nc:AvailabilitySchedule.RemedialAction ];
-        sh:property           [ sh:path  nc:AvailabilitySchedule.maxRestitutionDuration ];
         sh:severity           sh:Info;
         sh:targetClass        nc:AvailabilitySchedule .
 
 as:AvailabilitySchedule
         rdf:type        sh:NodeShape;
-        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilitySchedule.maxRestitutionDuration-datatype , as:AvailabilitySchedule.maxRestitutionDuration-cardinality , as:AvailabilitySchedule.RemedialAction-valueType , as:AvailabilitySchedule.RemedialAction-cardinality , as:AvailabilitySchedule.priority-datatype , as:AvailabilitySchedule.priority-cardinality , as:AvailabilitySchedule.causeDescription-datatype , as:AvailabilitySchedule.causeDescription-cardinality , as:AvailabilitySchedule.AvailabilityPowerSystemFunction-cardinality , as:AvailabilitySchedule.cancelledDateTime-datatype , as:AvailabilitySchedule.cancelledDateTime-cardinality , as:AvailabilitySchedule.PlannedSchedule-valueType , as:AvailabilitySchedule.PlannedSchedule-cardinality , as:AvailabilitySchedule.causeKind-datatype , as:AvailabilitySchedule.causeKind-cardinality , as:AvailabilitySchedule.daytimeRestitutionDuration-cardinality , as:AvailabilitySchedule.daytimeRestitutionDuration-datatype , as:AvailabilitySchedule.eveningRestitutionDuration-cardinality , as:AvailabilitySchedule.eveningRestitutionDuration-datatype , as:AvailabilitySchedule.GridStateAlterationCollection-cardinality , as:AvailabilitySchedule.GridStateAlterationCollection-valueType , as:AvailabilitySchedule.ActualSchedule-cardinality , as:AvailabilitySchedule.ActualSchedule-valueType , as:AvailabilitySchedule.weekendRestitutionDuration-cardinality , as:AvailabilitySchedule.weekendRestitutionDuration-datatype , as:AvailabilitySchedule.DependentOnSchedule-cardinality , as:AvailabilitySchedule.DependentOnSchedule-valueType , as:AvailabilitySchedule.PrioritySchedule-cardinality , as:AvailabilitySchedule.PrioritySchedule-valueType;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilitySchedule.maxRestitutionDuration-datatype , as:AvailabilitySchedule.maxRestitutionDuration-cardinality , as:AvailabilitySchedule.isCancelled-datatype , as:AvailabilitySchedule.isCancelled-cardinality , as:AvailabilitySchedule.RemedialAction-valueType , as:AvailabilitySchedule.RemedialAction-cardinality , as:AvailabilitySchedule.priority-datatype , as:AvailabilitySchedule.priority-cardinality , as:AvailabilitySchedule.causeDescription-datatype , as:AvailabilitySchedule.causeDescription-cardinality , as:AvailabilitySchedule.AvailabilityPowerSystemFunction-cardinality , as:AvailabilitySchedule.cancelledDateTime-datatype , as:AvailabilitySchedule.cancelledDateTime-cardinality , as:AvailabilitySchedule.PlannedSchedule-valueType , as:AvailabilitySchedule.PlannedSchedule-cardinality , as:AvailabilitySchedule.causeKind-datatype , as:AvailabilitySchedule.causeKind-cardinality , as:AvailabilitySchedule.PrioritySchedule-valueType , as:AvailabilitySchedule.PrioritySchedule-cardinality , as:AvailabilitySchedule.daytimeRestitutionDuration-cardinality , as:AvailabilitySchedule.daytimeRestitutionDuration-datatype , as:AvailabilitySchedule.eveningRestitutionDuration-cardinality , as:AvailabilitySchedule.eveningRestitutionDuration-datatype , as:AvailabilitySchedule.GridStateAlterationCollection-cardinality , as:AvailabilitySchedule.GridStateAlterationCollection-valueType , as:AvailabilitySchedule.ActualSchedule-cardinality , as:AvailabilitySchedule.ActualSchedule-valueType , as:AvailabilitySchedule.weekendRestitutionDuration-cardinality , as:AvailabilitySchedule.weekendRestitutionDuration-datatype , as:AvailabilitySchedule.DependentOnSchedule-cardinality , as:AvailabilitySchedule.DependentOnSchedule-valueType , as:AvailabilitySchedule.AvailablityPlan-cardinality , as:AvailabilitySchedule.AvailablityPlan-valueType;
         sh:targetClass  nc:AvailabilitySchedule .
 
 as:AvailabilityGroup.AvailabilityPowerSystemFunction-propertyInverse
@@ -850,7 +2644,7 @@ as:AvailabilityGroup-AllowedProperties
         sh:ignoredProperties  ( rdf:type );
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
-        sh:order              3;
+        sh:order              2;
         sh:property           [ sh:path  cim:IdentifiedObject.description ];
         sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
         sh:property           [ sh:path  cim:IdentifiedObject.name ];
@@ -860,125 +2654,6 @@ as:AvailabilityGroup-AllowedProperties
 as:AvailabilityGroup  rdf:type  sh:NodeShape;
         sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality;
         sh:targetClass  nc:AvailabilityGroup .
-
-as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:AvailabilityGroup;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        as:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilityGroup";
-        sh:name         "AvailabilityPowerSystemFunction.AvailabilityGroup-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        3;
-        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilityGroup;
-        sh:severity     sh:Violation .
-
-as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        as:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality";
-        sh:order        12;
-        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilityGroup;
-        sh:severity     sh:Violation .
-
-as:AvailabilityPowerSystemFunction.kind-datatype
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        as:DatatypesGroup;
-        sh:in           ( nc:AvailabilityFunctionKind.inService nc:AvailabilityFunctionKind.underTesting nc:AvailabilityFunctionKind.outOfService );
-        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
-        sh:name         "AvailabilityPowerSystemFunction.kind-datatype";
-        sh:nodeKind     sh:IRI;
-        sh:order        4;
-        sh:path         nc:AvailabilityPowerSystemFunction.kind;
-        sh:severity     sh:Violation .
-
-as:AvailabilityPowerSystemFunction.kind-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        as:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
-        sh:name         "AvailabilityPowerSystemFunction.kind-cardinality";
-        sh:order        11;
-        sh:path         nc:AvailabilityPowerSystemFunction.kind;
-        sh:severity     sh:Violation .
-
-as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:AvailabilitySchedule;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        as:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:AvailabilitySchedule";
-        sh:name         "AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        2;
-        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilitySchedule;
-        sh:severity     sh:Violation .
-
-as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        as:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Association with cardinality violation at the used direction.";
-        sh:minCount     1;
-        sh:name         "AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality";
-        sh:order        10;
-        sh:path         nc:AvailabilityPowerSystemFunction.AvailabilitySchedule;
-        sh:severity     sh:Violation .
-
-as:AvailabilityRemedialActionScheme.RemedialActionScheme-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:RemedialActionScheme;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        as:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:RemedialActionScheme";
-        sh:name         "AvailabilityRemedialActionScheme.RemedialActionScheme-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        1;
-        sh:path         nc:AvailabilityRemedialActionScheme.RemedialActionScheme;
-        sh:severity     sh:Violation .
-
-as:AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        as:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Association with cardinality violation at the used direction.";
-        sh:minCount     1;
-        sh:name         "AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality";
-        sh:order        9;
-        sh:path         nc:AvailabilityRemedialActionScheme.RemedialActionScheme;
-        sh:severity     sh:Violation .
-
-as:AvailabilityRemedialActionScheme-AllowedProperties
-        rdf:type              sh:NodeShape;
-        sh:closed             true;
-        sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
-        sh:group              as:ProfilePropertiesGroup;
-        sh:ignoredProperties  ( rdf:type );
-        sh:message            "This property is not part of the profile to which this dataset conforms to.";
-        sh:name               "PropertyNotInProfile";
-        sh:order              2;
-        sh:property           [ sh:path  nc:AvailabilityRemedialActionScheme.RemedialActionScheme ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilitySchedule ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.kind ];
-        sh:property           [ sh:path  nc:AvailabilityPowerSystemFunction.AvailabilityGroup ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:severity           sh:Info;
-        sh:targetClass        nc:AvailabilityRemedialActionScheme .
-
-as:AvailabilityRemedialActionScheme
-        rdf:type        sh:NodeShape;
-        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:AvailabilityPowerSystemFunction.AvailabilityGroup-valueType , as:AvailabilityPowerSystemFunction.AvailabilityGroup-cardinality , as:AvailabilityPowerSystemFunction.kind-datatype , as:AvailabilityPowerSystemFunction.kind-cardinality , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-valueType , as:AvailabilityPowerSystemFunction.AvailabilitySchedule-cardinality , as:AvailabilityRemedialActionScheme.RemedialActionScheme-valueType , as:AvailabilityRemedialActionScheme.RemedialActionScheme-cardinality;
-        sh:targetClass  nc:AvailabilityRemedialActionScheme .
 
 ido:IdentifiedObject.description-datatype
         rdf:type        sh:PropertyShape;
@@ -1074,28 +2749,28 @@ as:BaseTimeSeries.interpolationKind-cardinality
         sh:path         nc:BaseTimeSeries.interpolationKind;
         sh:severity     sh:Violation .
 
-as:BaseTimeSeries.kind-datatype
+as:BaseTimeSeries.timeSeriesKind-datatype
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        as:DatatypesGroup;
         sh:in           ( nc:BaseTimeSeriesKind.actual nc:BaseTimeSeriesKind.schedule );
         sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
-        sh:name         "BaseTimeSeries.kind-datatype";
+        sh:name         "BaseTimeSeries.timeSeriesKind-datatype";
         sh:nodeKind     sh:IRI;
         sh:order        -1;
-        sh:path         nc:BaseTimeSeries.kind;
+        sh:path         nc:BaseTimeSeries.timeSeriesKind;
         sh:severity     sh:Violation .
 
-as:BaseTimeSeries.kind-cardinality
+as:BaseTimeSeries.timeSeriesKind-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        as:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
-        sh:name         "BaseTimeSeries.kind-cardinality";
+        sh:name         "BaseTimeSeries.timeSeriesKind-cardinality";
         sh:order        4;
-        sh:path         nc:BaseTimeSeries.kind;
+        sh:path         nc:BaseTimeSeries.timeSeriesKind;
         sh:severity     sh:Violation .
 
 as:EventSchedule.ActualAvailabilitySchedule-cardinality
@@ -1192,56 +2867,19 @@ as:EventSchedule-AllowedProperties
         sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
         sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:property           [ sh:path  nc:BaseTimeSeries.interpolationKind ];
-        sh:property           [ sh:path  nc:BaseTimeSeries.kind ];
+        sh:property           [ sh:path  nc:BaseTimeSeries.timeSeriesKind ];
         sh:severity           sh:Info;
         sh:targetClass        nc:EventSchedule .
 
 as:EventSchedule  rdf:type  sh:NodeShape;
-        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:BaseTimeSeries.interpolationKind-datatype , as:BaseTimeSeries.interpolationKind-cardinality , as:BaseTimeSeries.kind-datatype , as:BaseTimeSeries.kind-cardinality , as:EventSchedule.ActualAvailabilitySchedule-cardinality , as:EventSchedule.EventTimePoint-cardinality , as:EventSchedule.PlannedAvailabilitySchedule-cardinality;
+        sh:property     ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , as:BaseTimeSeries.interpolationKind-datatype , as:BaseTimeSeries.interpolationKind-cardinality , as:BaseTimeSeries.timeSeriesKind-datatype , as:BaseTimeSeries.timeSeriesKind-cardinality , as:EventSchedule.ActualAvailabilitySchedule-cardinality , as:EventSchedule.EventTimePoint-cardinality , as:EventSchedule.PlannedAvailabilitySchedule-cardinality;
         sh:targetClass  nc:EventSchedule .
-
-cc:     rdf:type     owl:Ontology;
-        owl:imports  sh:;
-        sh:declare   [ rdf:type      sh:PrefixDeclaration;
-                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-                       sh:prefix     "rdf"
-                     ] .
-
-cc:ClassCount-propertySparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "The class {?class} appears {?value} times in the data graph.";
-        sh:prefixes  cc:;
-        sh:select    """ 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             """ .
-
-cc:ClassCount-property
-        rdf:type        sh:PropertyShape;
-        sh:description  "Counts instance of classes present in the data graph.";
-        sh:group        cc:ClassesCountGroup;
-        sh:name         "ClassCount";
-        sh:order        1;
-        sh:path         rdf:type;
-        sh:severity     sh:Info;
-        sh:sparql       cc:ClassCount-propertySparql .
-
-cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
-        sh:targetClass  dcat:Dataset .
-
-cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
-        rdfs:label  "ClassesCount";
-        sh:order    1 .
 
 as:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        as:ProfileClassesGroup;
-        sh:in           ( nc:EventSchedule nc:AvailabilityRemedialActionScheme nc:AvailabilityExceptionalLimit nc:AvailabilityContainer nc:AvailabilityEnabled nc:AvailabilityEquipment nc:AvailabilityGroup nc:AvailabilitySchedule nc:EventTimePoint md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:EventSchedule nc:AvailabilityContainer nc:AvailabilityEquipment nc:AvailabilityEnabled nc:AvailabilityExceptionalLimit nc:AvailabilityRemedialActionScheme nc:AvailabilityGroup nc:AvailabilitySchedule nc:AvailablityPlanResponse nc:AvailablityPlan nc:OutageRequest nc:EventTimePoint nc:OutageResponse nc:OutageAvailability nc:OutageRequestResource nc:OutageDependency md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;

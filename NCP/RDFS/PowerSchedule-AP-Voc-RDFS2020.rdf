@@ -3,7 +3,6 @@
 <rdf:RDF
     xmlns:ps="https://ap-voc.cim4.eu/PowerSchedule#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -11,154 +10,30 @@
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#Ontology">
-    <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
-    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+    <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the object registry profile.</dcterms:description>
-    <dcterms:identifier>470c9792-7798-4eb6-b7f2-6e18293c5f7b</dcterms:identifier>
+    <dcterms:identifier>80e1ef45-703d-4e4b-95e4-cacbb8feed8c</dcterms:identifier>
     <dcat:keyword>PS</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
-    <owl:priorVersion rdf:resource="https://ap-voc.cim4.eu/PowerSchedule/2.3"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-05</dcterms:modified>
+    <owl:priorVersion rdf:resource="https://ap-voc.cim4.eu/PowerSchedule/2.4"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
     <dcat:theme xml:lang="en">vocabulary</dcat:theme>
     <dcterms:title xml:lang="en">Power schedule vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/PowerSchedule/2.4"/>
-    <owl:versionInfo xml:lang="en">2.4.0</owl:versionInfo>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
-    <rdfs:label xml:lang="en">ActivePower</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.multiplier">
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <cims:isFixed>M</cims:isFixed>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitMultiplier"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.unit">
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <cims:isFixed>W</cims:isFixed>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="#UnitSymbol"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ActivePower.value">
-    <cims:dataType rdf:resource="#Float"/>
-    <rdfs:domain rdf:resource="#ActivePower"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AreaDispatchableUnit">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction. </rdfs:comment>
-    <rdfs:label xml:lang="en">AreaDispatchableUnit</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AreaDispatchableUnit.PowerSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Power schedule which has area dispatchable units.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AreaDispatchableUnit"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.AreaDispatchableUnit"/>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseIrregularTimeSeries">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Time series that has irregular points in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">BaseIrregularTimeSeries</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Time series of values at points in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">BaseTimeSeries</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.actionMethod">
-    <rdfs:comment>Action method used to create the value. This is used for identification in the case where there is multiple time series for the same validity period and kind. </rdfs:comment>
-    <cims:dataType rdf:resource="#String"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">actionMethod</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.generatedAtTime">
-    <rdfs:comment>The time this time series (entity) come to existents and available for use.</rdfs:comment>
-    <cims:dataType rdf:resource="#DateTime"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">generatedAtTime</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.interpolationKind">
-    <rdfs:comment>Kind of interpolation done between time point.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">interpolationKind</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.percentile">
-    <rdfs:comment>The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided.</rdfs:comment>
-    <cims:dataType rdf:resource="#Integer"/>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">percentile</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.timeSeriesKind">
-    <rdfs:comment>Kind of base time series.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
-    <rdfs:label xml:lang="en">timeSeriesKind</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeriesKind"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeriesKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Kind of time series. </rdfs:comment>
-    <rdfs:label xml:lang="en">BaseTimeSeriesKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/PowerSchedule/2.5"/>
+    <owl:versionInfo xml:lang="en">2.5.0</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeriesKind.actual">
     <rdfs:comment>Time series is actual data. The values represent measured or calculated values that represent the actual behaviour. </rdfs:comment>
@@ -184,55 +59,336 @@
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeriesKind"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#ActivePower">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
+    <rdfs:label xml:lang="en">ActivePower</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AreaReserveResource">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A resource representation for a specific balancing reserve product, associated with either a scheduling area or a tie corridor, and used to represent reserve capability made available to a control area for market and operational purposes.
+Note: An AreaReserveResource shall be associated with either a SchedulingArea or a TieCorridor, but not both.
+When associated with a SchedulingArea, the resource represents reserve capability made available within that area context.
+When associated with a TieCorridor, the resource represents reserve capability provided across an inter-area connection to support a control area other than the one in which the underlying resource is located.
+A single physical or logical resource (for example a GeneratingUnit, HydroPump, PowerElectronicsUnit, or equivalent) may be represented by multiple AreaReserveResource instances, each corresponding to a different balancing reserve product (e.g. FCR, aFRR, mFRR).</rdfs:comment>
+    <rdfs:label xml:lang="en">AreaReserveResource</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseIrregularTimeSeries">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series that has irregular points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">BaseIrregularTimeSeries</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series of values at points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">BaseTimeSeries</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeriesKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Kind of time series. </rdfs:comment>
+    <rdfs:label xml:lang="en">BaseTimeSeriesKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZone">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
     <rdfs:comment>A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation.</rdfs:comment>
     <rdfs:label xml:lang="en">BiddingZone</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZone.PowerSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Power schedule which belongs to the power bidding zone.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZone"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.BiddingZone"/>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZoneBorder">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
     <rdfs:comment>A unidirectional interface between two adjacent Bidding Zones, representing the available transmission capacity from the Bidding Zone defined by the association FromBiddingZone (source) to the Bidding Zone defined by the association ToBiddingZone (sink). It defines the capacity constraints and market-based allocation mechanisms for cross-zonal electricity exchange in the specified direction, considering potential transmission congestion and market price differences.</rdfs:comment>
     <rdfs:label xml:lang="en">BiddingZoneBorder</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZoneBorder.PowerSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Power schedule which has bidding zone border.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.BiddingZoneBorder"/>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#Boolean">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
     <rdfs:comment>A type with the value space "true" and "false".</rdfs:comment>
     <rdfs:label xml:lang="en">Boolean</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Currency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
     <rdfs:comment>Monetary currencies.  ISO 4217 standard including 3-character currency code.</rdfs:comment>
     <rdfs:label xml:lang="en">Currency</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCPole">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth.
+It includes active power, reactive power and participation factor to be able to schedule top down (using DCTieCorridor and participation factor to provide schedule on the DCPole) and bottom up (aggregation of DCPole to DCTieCorridor). Only one approach can be used at a time.</rdfs:comment>
+    <rdfs:label xml:lang="en">DCPole</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridor">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A collection of one or more direct current poles that connect two different control areas.
+DCTieCorridor is linked to its own SchedulingArea. The active and reactive power is given by the SchedulingArea. The flow direction is provided by the link with the directional bidding zone.</rdfs:comment>
+    <rdfs:label xml:lang="en">DCTieCorridor</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular values at given points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">DCTieCorridorDirectionTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Date">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile"/>
+    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
+    <rdfs:label xml:lang="en">Date</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#DateTime">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
+    <rdfs:label xml:lang="en">DateTime</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Decimal">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Decimal is the base-10 notational system for representing real numbers.</rdfs:comment>
+    <rdfs:label xml:lang="en">Decimal</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#EnergyConnection">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A connection of energy generation or consumption on the power system model.</rdfs:comment>
+    <rdfs:label xml:lang="en">EnergyConnection</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Energy resource capacity represents the installed, available, or effective capacity of energy-producing or energy-consuming group of resources. It supports both static snapshot values and dynamic time-series reflecting forecast, scheduled, actual, or hindcast availability under meteorological or hydrological conditions. The capacity value is associated with a specific energy kind and, where applicable, linked to weather information relevant for weather-dependent resources.“</rdfs:comment>
+    <rdfs:label xml:lang="en">EnergyResourceGroupCapacity</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#EquivalentInjection">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.</rdfs:comment>
+    <rdfs:label xml:lang="en">EquivalentInjection</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Float">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Float</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#GeneratingUnit">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.</rdfs:comment>
+    <rdfs:label xml:lang="en">GeneratingUnit</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#HydroPump">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A synchronous motor-driven pump, typically associated with a pumped storage plant.</rdfs:comment>
+    <rdfs:label xml:lang="en">HydroPump</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">IRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IdentifiedObject">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
+    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Integer">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
+    <rdfs:label xml:lang="en">Integer</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular must-run instruction values at given points in time. This could be instruction to a reliability must-run (RMR) generation facility that is necessary to run to meet certain operating conditions in order to maintain the security of power systems in a competitive environment.</rdfs:comment>
+    <rdfs:label xml:lang="en">MustRunSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Must-run instruction value at a given point in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">MustRunTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#PowerElectronicsUnit">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerElectronicsUnit</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerRemedialAction">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Energy remedial action describes actions to rearrange power schedules.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerRemedialAction</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular power, active and reactive, values at given points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Kind of power schedule.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerScheduleKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Time series represent irregular values at given points in time.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerTimePoint</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ReactivePower">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</rdfs:comment>
+    <rdfs:label xml:lang="en">ReactivePower</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RelativeDirectionKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Kind of direction for the changes.</rdfs:comment>
+    <rdfs:label xml:lang="en">RelativeDirectionKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchedulingArea">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island.</rdfs:comment>
+    <rdfs:label xml:lang="en">SchedulingArea</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#String">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
+    <rdfs:label xml:lang="en">String</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile"/>
+    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile"/>
+    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
+    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>Kinds of interpolation of values between two time point. </rdfs:comment>
+    <rdfs:label xml:lang="en">TimeSeriesInterpolationKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile"/>
+    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
+    <rdfs:label xml:lang="en">URL</rdfs:label>
+    <cims:stereotype>Primitive</cims:stereotype>
+    <cims:stereotype>profcim</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitMultiplier">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#UnitSymbol">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
+    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.</rdfs:comment>
+    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#DocPowerScheduleProfile">
+    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
+    <rdfs:label xml:lang="en">DocPowerScheduleProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile">
+    <rdfs:comment>This package contains the power schedule profile.</rdfs:comment>
+    <rdfs:label xml:lang="en">PowerScheduleProfile</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Currency.AED">
     <rdfs:comment>United Arab Emirates dirham.</rdfs:comment>
@@ -1200,12 +1356,149 @@
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#Currency"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCPole">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth.</rdfs:comment>
-    <rdfs:label xml:lang="en">DCPole</rdfs:label>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.meritOrder">
+    <rdfs:comment>Power schedule is a merit order that includes ranking of the power block. Power block provides the maximum power allocation possible.</rdfs:comment>
+    <rdfs:label xml:lang="en">meritOrder</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.mustRun">
+    <rdfs:comment>Power schedule is a must run schedule that identifies the unit that must run for a given time point.</rdfs:comment>
+    <rdfs:label xml:lang="en">mustRun</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.power">
+    <rdfs:comment>Power schedule that has no additional meaning than allocating power to unit for a given time point.</rdfs:comment>
+    <rdfs:label xml:lang="en">power</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.price">
+    <rdfs:comment>Power schedule includes prices for a given a power per time point.</rdfs:comment>
+    <rdfs:label xml:lang="en">price</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ActivePower.multiplier">
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <cims:isFixed>M</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ActivePower.unit">
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <cims:isFixed>W</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#ActivePower.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#ActivePower"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#AreaReserveResource.PowerSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Power schedule which has area dispatchable units.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#AreaReserveResource"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.AreaReserveResource"/>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.actionMethod">
+    <rdfs:comment>Action method used to create the value. This is used for identification in the case where there is multiple time series for the same validity period and kind. </rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">actionMethod</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.generatedAtTime">
+    <rdfs:comment>The time this time series (entity) come to existents and available for use.</rdfs:comment>
+    <cims:dataType rdf:resource="#DateTime"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">generatedAtTime</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.interpolationKind">
+    <rdfs:comment>Kind of interpolation done between time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">interpolationKind</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.percentile">
+    <rdfs:comment>The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided.</rdfs:comment>
+    <cims:dataType rdf:resource="#Integer"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">percentile</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseTimeSeries.timeSeriesKind">
+    <rdfs:comment>Kind of base time series.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeries"/>
+    <rdfs:label xml:lang="en">timeSeriesKind</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BaseTimeSeriesKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZone.PowerSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Power schedule which belongs to the power bidding zone.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZone"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.BiddingZone"/>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZoneBorder.DCTieCorridorDirectionTimePoint">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The DC tie corridor time point related to the bidding zone border.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.BiddingZoneBorder"/>
+    <rdfs:label xml:lang="en">DCTieCorridorDirectionTimePoint</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#BiddingZoneBorder.PowerSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Power schedule which has bidding zone border.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.BiddingZoneBorder"/>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCPole.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1218,12 +1511,16 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridor">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A collection of one or more direct current poles that connect two different control areas.</rdfs:comment>
-    <rdfs:label xml:lang="en">DCTieCorridor</rdfs:label>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridor.DCTieCorridorDirectionTimePoint">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The bidding zone border that has this time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.DCTieCorridor"/>
+    <rdfs:label xml:lang="en">DCTieCorridorDirectionTimePoint</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
     <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridor.MustRunSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1236,43 +1533,48 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridor.PowerSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Power schedule which has DC tie corridors.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.DCTieCorridor"/>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.BiddingZoneBorder">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The bidding zone border that has this time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder.DCTieCorridorDirectionTimePoint"/>
+    <rdfs:label xml:lang="en">BiddingZoneBorder</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#BiddingZoneBorder"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.DCTieCorridor">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The DC tie corridor that has DC tie corridor direction time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor.DCTieCorridorDirectionTimePoint"/>
+    <rdfs:label xml:lang="en">DCTieCorridor</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.PowerSchedule">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The power schedule that has this DC tie corridor time point.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.DCTieCorridorTimePoint"/>
     <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile"/>
-    <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
-    <rdfs:label xml:lang="en">Date</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
-    <rdfs:label xml:lang="en">DateTime</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Decimal">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Decimal is the base-10 notational system for representing real numbers.</rdfs:comment>
-    <rdfs:label xml:lang="en">Decimal</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#EnergyConnection">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A connection of energy generation or consumption on the power system model.</rdfs:comment>
-    <rdfs:label xml:lang="en">EnergyConnection</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.atTime">
+    <rdfs:comment>The time the data is valid for.</rdfs:comment>
+    <cims:dataType rdf:resource="#DateTime"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
+    <rdfs:label xml:lang="en">atTime</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyConnection.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1285,29 +1587,16 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyGroup">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy. </rdfs:comment>
-    <rdfs:label xml:lang="en">EnergyGroup</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyGroup.PowerSchedule">
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Power schedule which is associated with an energy group.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#EnergyGroup"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.EnergyGroup"/>
     <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#EquivalentInjection">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.</rdfs:comment>
-    <rdfs:label xml:lang="en">EquivalentInjection</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EquivalentInjection.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1319,19 +1608,6 @@
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Float">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Float</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#GeneratingUnit">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.</rdfs:comment>
-    <rdfs:label xml:lang="en">GeneratingUnit</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GeneratingUnit.MustRunSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1355,12 +1631,6 @@
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#HydroPump">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A synchronous motor-driven pump, typically associated with a pumped storage plant.</rdfs:comment>
-    <rdfs:label xml:lang="en">HydroPump</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#HydroPump.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Power schedule which has hydro pump.</rdfs:comment>
@@ -1371,24 +1641,6 @@
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">IRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#IdentifiedObject">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject.description">
     <rdfs:comment>The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
@@ -1417,22 +1669,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#Integer">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Integer</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Time series represent irregular must-run instruction values at given points in time. This could be instruction to a reliability must-run (RMR) generation facility that is necessary to run to meet certain operating conditions in order to maintain the security of power systems in a competitive environment.</rdfs:comment>
-    <rdfs:label xml:lang="en">MustRunSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunSchedule.DCTieCorridor">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1467,14 +1703,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#ofAggregate"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunTimePoint">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Must-run instruction value at a given point in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">MustRunTimePoint</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#MustRunTimePoint.MustRunSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1527,22 +1755,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile">
-    <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
-    <rdfs:label xml:lang="en">DocPowerScheduleProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile">
-    <rdfs:comment>This package contains the power schedule profile.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerScheduleProfile</rdfs:label>
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#PowerElectronicsUnit">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerElectronicsUnit</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerElectronicsUnit.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>Power schedule which has power electronics unit.</rdfs:comment>
@@ -1553,13 +1765,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerRemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Energy remedial action describes actions to rearrange power schedules.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerRemedialAction</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerRemedialAction.PowerSchedule">
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -1572,23 +1777,14 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Time series represent irregular power, active and reactive, values at given points in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#BaseIrregularTimeSeries"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.AreaDispatchableUnit">
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.AreaReserveResource">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Area disptachable unit which belongs to the power schedule.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AreaDispatchableUnit.PowerSchedule"/>
-    <rdfs:label xml:lang="en">AreaDispatchableUnit</rdfs:label>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#AreaReserveResource.PowerSchedule"/>
+    <rdfs:label xml:lang="en">AreaReserveResource</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AreaDispatchableUnit"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#AreaReserveResource"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
@@ -1625,14 +1821,14 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.DCTieCorridor">
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>DC tie corridor which belongs to the power schedule.</rdfs:comment>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.DCTieCorridorTimePoint">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The DC tie corridor time point for the power schedule.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor.PowerSchedule"/>
-    <rdfs:label xml:lang="en">DCTieCorridor</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DCTieCorridor"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint.PowerSchedule"/>
+    <rdfs:label xml:lang="en">DCTieCorridorTimePoint</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#DCTieCorridorDirectionTimePoint"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
@@ -1651,10 +1847,10 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Energy group which belongs to a power schedule.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#EnergyGroup.PowerSchedule"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.PowerSchedule"/>
     <rdfs:label xml:lang="en">EnergyGroup</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#EnergyGroup"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
@@ -1733,6 +1929,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:label xml:lang="en">SchedulingArea</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#SchedulingArea"/>
+    <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerSchedule.currency">
@@ -1764,46 +1961,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Kind of power schedule.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerScheduleKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.meritOrder">
-    <rdfs:comment>Power schedule is a merit order that includes ranking of the power block. Power block provides the maximum power allocation possible.</rdfs:comment>
-    <rdfs:label xml:lang="en">meritOrder</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.mustRun">
-    <rdfs:comment>Power schedule is a must run schedule that identifies the unit that must run for a given time point.</rdfs:comment>
-    <rdfs:label xml:lang="en">mustRun</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.power">
-    <rdfs:comment>Power schedule that has no additional meaning than allocating power to unit for a given time point.</rdfs:comment>
-    <rdfs:label xml:lang="en">power</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerScheduleKind.price">
-    <rdfs:comment>Power schedule includes prices for a given a power per time point.</rdfs:comment>
-    <rdfs:label xml:lang="en">price</rdfs:label>
-    <cims:stereotype>enum</cims:stereotype>
-    <rdf:type rdf:resource="https://cim4.eu/ns/nc#PowerScheduleKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Power, active and reactive, value at a given point in time.</rdfs:comment>
-    <rdfs:label xml:lang="en">PowerTimePoint</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.PowerSchedule">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
@@ -1867,7 +2024,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.p">
-    <rdfs:comment>Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.</rdfs:comment>
+    <rdfs:comment>Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node or area.</rdfs:comment>
     <cims:dataType rdf:resource="#ActivePower"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerTimePoint"/>
     <rdfs:label xml:lang="en">p</rdfs:label>
@@ -1887,7 +2044,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTimePoint.q">
-    <rdfs:comment>Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.</rdfs:comment>
+    <rdfs:comment>Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node or area.</rdfs:comment>
     <cims:dataType rdf:resource="#ReactivePower"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerTimePoint"/>
     <rdfs:label xml:lang="en">q</rdfs:label>
@@ -1895,13 +2052,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#ReactivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</rdfs:comment>
-    <rdfs:label xml:lang="en">ReactivePower</rdfs:label>
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ReactivePower.multiplier">
     <rdfs:domain rdf:resource="#ReactivePower"/>
@@ -1929,13 +2079,16 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#RelativeDirectionKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Kind of direction for the changes.</rdfs:comment>
-    <rdfs:label xml:lang="en">RelativeDirectionKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchedulingArea.PowerSchedule">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>Power schedule which belongs to the scheduling area.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SchedulingArea"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.SchedulingArea"/>
+    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
     <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RelativeDirectionKind.down">
     <rdfs:comment>Down signifies that the changes are decreasing from the current status.</rdfs:comment>
@@ -1960,59 +2113,6 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdfs:label xml:lang="en">upAndDown</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#RelativeDirectionKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchedulingArea">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island.</rdfs:comment>
-    <rdfs:label xml:lang="en">SchedulingArea</rdfs:label>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#SchedulingArea.PowerSchedule">
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <rdfs:comment>Power schedule which belongs to the scheduling area.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#SchedulingArea"/>
-    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#PowerSchedule.SchedulingArea"/>
-    <rdfs:label xml:lang="en">PowerSchedule</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#PowerSchedule"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
-    <rdfs:label xml:lang="en">String</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile"/>
-    <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile"/>
-    <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.</rdfs:comment>
-    <rdfs:label xml:lang="en">StringIRI</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>Kinds of interpolation of values between two time point. </rdfs:comment>
-    <rdfs:label xml:lang="en">TimeSeriesInterpolationKind</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:stereotype>NC</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind.linear">
     <rdfs:comment>Linear interpolation is applied for values between two time points.</rdfs:comment>
@@ -2044,41 +2144,11 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#TimeSeriesInterpolationKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_DocPowerScheduleProfile"/>
-    <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
-    <rdfs:label xml:lang="en">URL</rdfs:label>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <cims:stereotype>profcim</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitMultiplier">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#UnitMultiplier.M">
     <rdfs:comment>Mega 10**6.</rdfs:comment>
     <rdfs:label xml:lang="en">M</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="#UnitMultiplier"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#UnitSymbol">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#Package_PowerScheduleProfile"/>
-    <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitSymbol.VAr">
     <rdfs:comment>Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).

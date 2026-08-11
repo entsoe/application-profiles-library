@@ -1,6 +1,5 @@
 #Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
-@base   <https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2> .
-@prefix cc:     <https://common-constraints.eu/> .
+@base   <https://ap-con.cim4.eu/ObjectRegistry-Simple/3.0> .
 @prefix cim:    <https://cim.ucaiug.io/ns#> .
 @prefix cim16:  <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 @prefix cim17:  <http://iec.ch/TC57/CIM100#> .
@@ -12,7 +11,7 @@
 @prefix ido:    <http://iec.ch/TC57/ns/CIM/IdentifiedObject/constraints/3.0#> .
 @prefix md:     <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 @prefix nc:     <https://cim4.eu/ns/nc#> .
-@prefix or:     <https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2#> .
+@prefix or:     <https://ap-con.cim4.eu/ObjectRegistry-Simple/3.0#> .
 @prefix owl:    <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
@@ -20,194 +19,22 @@
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
 or:Ontology  rdf:type     owl:Ontology;
-        dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
+        dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap";
         dcterms:description   "Describing constraints extracted from RDFS.";
-        dcterms:identifier    "a8a079d8-e6d8-4564-878a-9fcbb4f97cc3";
-        dcterms:issued        "2026-05-28T16:33:19.596031700"^^xsd:dateTime;
+        dcterms:identifier    "6fffc8f4-7982-4a65-a7bc-67a8476275ec";
+        dcterms:issued        "2026-08-09T12:37:31.160938"^^xsd:dateTime;
         dcterms:language      "en-GB";
         dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
-        dcterms:modified      "2026-05-28"^^xsd:date;
+        dcterms:modified      "2026-08-05"^^xsd:date;
         dcterms:publisher     "ENTSO-E"@en;
         dcterms:rightsHolder  "ENTSO-E"@en;
         dcterms:title         "Object Registry vocabulary"@en;
-        owl:versionIRI    <https://ap-con.cim4.eu/ObjectRegistry-Simple/2.2>;
-        owl:versionInfo   "2.2.6"@en;
+        owl:versionIRI    <https://ap-con.cim4.eu/ObjectRegistry-Simple/3.0>;
+        owl:versionInfo   "3.0.0"@en;
         dcat:keyword      "OR";
         dcat:theme        "constraint"@en .
 
-or:Name.language-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "Name.language-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        8;
-        sh:path         nc:Name.language;
-        sh:severity     sh:Violation .
-
-or:Name.language-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.language-cardinality";
-        sh:order        19;
-        sh:path         nc:Name.language;
-        sh:severity     sh:Violation .
-
-or:Name.NamingAuthority-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        nc:NamingAuthority;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        or:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:NamingAuthority";
-        sh:name         "Name.NamingAuthority-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        5;
-        sh:path         nc:Name.NamingAuthority;
-        sh:severity     sh:Violation .
-
-or:Name.NamingAuthority-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.NamingAuthority-cardinality";
-        sh:order        18;
-        sh:path         nc:Name.NamingAuthority;
-        sh:severity     sh:Violation .
-
-or:Name.NameType-valueType
-        rdf:type        sh:PropertyShape;
-        sh:class        cim:NameType;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        or:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: cim18:NameType";
-        sh:name         "Name.NameType-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        4;
-        sh:path         nc:Name.NameType;
-        sh:severity     sh:Violation .
-
-or:Name.NameType-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.NameType-cardinality";
-        sh:order        17;
-        sh:path         nc:Name.NameType;
-        sh:severity     sh:Violation .
-
-or:Name.UniqueIdentifiedObject-valueType
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        or:AssociationsGroup;
-        sh:in           ( cim:IdentifiedObject cim17:Season cim16:RegulationSchedule cim17:NonConformLoadSchedule cim16:SwitchSchedule cim16:ConformLoadSchedule cim16:NonConformLoadSchedule cim17:TapSchedule cim17:RegulationSchedule cim16:TapSchedule cim17:ConformLoadSchedule cim17:SwitchSchedule cim17:BaseVoltage cim:DCNode nc:StaticPropertyRange nc:IntertemporalPropertyRange nc:AvailabilitySchedule cim16:LoadResponseCharacteristic cim16:Season cim17:ConformLoadGroup cim16:ConformLoadGroup cim17:NonConformLoadGroup cim16:NonConformLoadGroup nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency nc:CountertradeScheduleAction nc:RedispatchScheduleAction cim16:FossilFuel cim16:ACDCConverterDCTerminal cim16:DCTerminal cim17:ACDCConverterDCTerminal cim17:DCTerminal cim16:Terminal cim17:Terminal nc:OutagePlanningAgent nc:LoadFrequencyControlOperator nc:SecurityCoordinator nc:OutageCoordinator nc:CoordinatedCapacityCalculator nc:EnergyAlignmentCoordinator nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator cim17:AccumulatorLimitSet cim16:AnalogLimitSet cim17:AnalogLimitSet cim16:AccumulatorLimitSet entsoe:EnergySchedulingType nc:FunctionOutputVariable cim17:PhaseTapChangerTable nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit nc:BaseCaseCurrentLimit cim17:ApparentPowerLimit cim17:BusNameMarker cim17:OperationalLimitType cim16:SubLoadArea cim17:LoadArea cim16:LoadArea cim17:SubLoadArea nc:TieCorridor nc:DCTieCorridor nc:ACTieCorridor cim17:HydroPowerPlant cim17:RegulatingControl cim17:TapChangerControl cim16:TapChangerControl nc:DCSubstationPole cim16:DCLine cim17:DCConverterUnit cim16:DCConverterUnit cim17:DCLine nc:DCSubstation nc:DCSubstationBipole cim:DCConverterUnit cim16:Substation nc:SecondarySubstation cim16:DCEquipmentContainer cim16:VoltageLevel cim17:Bay cim16:Bay cim:Substation cim17:Substation cim17:VoltageLevel cim17:Line cim:Line cim16:Line cim16:EquivalentNetwork cim17:EquivalentNetwork nc:LoadFrequencyControlArea nc:DirectCurrentCircuit nc:LineCircuit nc:PowerTransformerCircuit nc:RemedialActionScheme cim16:PhaseTapChangerTabular cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerLinear cim17:PhaseTapChangerLinear cim17:PhaseTapChangerTabular cim17:RatioTapChanger cim16:RatioTapChanger nc:SchedulingArea nc:SubSchedulingArea nc:EdgeSchedulingArea cim16:ControlArea nc:SubControlArea nc:EdgeControlArea nc:StageTrigger nc:SSSCController nc:PowerElectronicsUnitController nc:PowerElectronicsConnectionController nc:TapChangerController nc:RotatingMachineController nc:SubstationController nc:ScheduleResourceController nc:InjectionController nc:TCSCController nc:DirectCurrentPoleController nc:DirectCurrentSubstationBipoleController nc:DirectCurrentSubstationPoleController nc:DirectCurrentBipoleController nc:DirectCurrentMasterController nc:ACDCConverterController nc:CompensatorController nc:PowerPlantController nc:UnifiedPowerFlowController nc:AreaInterchangeController nc:PowerFrequencyController cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester nc:BiddingZone nc:FuelStorage cim17:ControlArea cim:ControlArea cim17:CogenerationPlant nc:AreaDispatchableUnit cim16:RegulatingControl nc:DCBiPole nc:EquivalentPowerPlant cim16:HydroPowerPlant cim:Reservoir nc:BiddingZoneBorder cim17:CAESPlant nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion nc:EnergyGroup eu:SolarPowerPlant nc:BipolarDCSystem nc:MonopolarDCSystem nc:LoadFrequencyControlBlock nc:DCPole nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor cim17:CombinedCyclePlant nc:ScheduleResource eu:BoundaryPoint eu:WindPowerPlant nc:SynchronousArea cim16:ReportingGroup cim17:MutualCoupling cim17:PowerTransformerEnd cim16:PowerTransformerEnd nc:AvailabilityExceptionalLimit nc:AvailabilityRemedialActionScheme nc:AvailabilityContainer nc:AvailabilityEnabled nc:AvailabilityEquipment nc:GateInputPin nc:PinPowerTransferCorridor nc:PinMeasurement nc:PinDCTerminal nc:PinEquipmentTripping nc:PinOperationalLimit nc:PinContingency nc:PinGate nc:PinEquipment nc:PinTerminal cim:TieFlow cim17:SubGeographicalRegion nc:TriggerCondition nc:VoltageInjectionControlFunction nc:DCCurrentControlFunction nc:DCVoltageControlFunction nc:ACEmulationControlFunction nc:ImpedanceControlFunction nc:ReactivePowerControlFunction nc:ActivePowerControlFunction nc:PowerFactorControlFunction nc:CurrentControlFunction nc:FrequencyControlFunction nc:PhaseControlFunction nc:VoltageControlFunction nc:CurrentDroopControlFunction cim17:ValueToAlias nc:EnergyBlockComponent nc:ProportionalEnergyComponent cim17:AnalogLimit cim16:AccumulatorLimit cim17:AccumulatorLimit cim16:AnalogLimit cim16:Discrete cim16:Accumulator cim17:Accumulator cim17:Analog cim17:StringMeasurement cim16:StringMeasurement cim17:Discrete cim16:Analog nc:CircuitShare cim17:Command cim16:AccumulatorReset cim17:SetPoint cim16:SetPoint cim17:RaiseLowerCommand cim16:RaiseLowerCommand cim17:AccumulatorReset cim16:Command cim16:SubGeographicalRegion nc:RemedialActionScheduleGroup nc:OverlappingZone cim16:BusNameMarker cim17:GrossToNetActivePowerCurve cim16:GrossToNetActivePowerCurve nc:LossCurve nc:DurationOverloadLimitCurve nc:AmbientTemperatureDependencyCurve nc:BaseOverloadLimitCurve nc:SolarRadiationDependencyCurve nc:RecoveryOverloadLimitCurve cim16:VsCapabilityCurve cim:ReactiveCapabilityCurve cim17:VsCapabilityCurve cim:VsCapabilityCurve cim16:ReactiveCapabilityCurve cim17:ReactiveCapabilityCurve cim16:MutualCoupling cim17:ReportingGroup cim16:DayType cim:OperationalLimitType cim16:BaseVoltage nc:AvailabilityGroup nc:RemedialActionSchemeSchedule nc:GridStateIntensitySchedule nc:EventSchedule nc:PowerSchedule cim17:OperationalLimitSet cim16:ConnectivityNode cim16:ValueAliasSet cim17:RatioTapChangerTable cim17:ControlAreaGeneratingUnit nc:GridStateAlterationCollection cim16:PhaseTapChangerTable cim:ConnectivityNode cim:ContingencyEquipment nc:Gate cim17:GeographicalRegion cim17:TieFlow nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction cim:Organisation cim17:DCNode cim17:DayType nc:PTCTriggeredEquipment cim16:GeographicalRegion cim17:MeasurementValueSource nc:EnergyBlockOrder nc:MeasurementCalculatorInput cim:OperationalLimitSet cim16:AccumulatorValue cim17:DiscreteValue cim17:StringMeasurementValue cim17:AccumulatorValue cim17:AnalogValue cim16:DiscreteValue cim16:AnalogValue cim16:StringMeasurementValue nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction cim17:ValueAliasSet cim16:OperationalLimitType cim17:FossilFuel cim16:DCNode cim17:LoadResponseCharacteristic nc:MeasurementCalculator nc:ACPointOfCommonCoupling nc:GridConnectionPoint nc:EnergyExchangePoint nc:DCPointOfCommonCoupling cim16:RatioTapChangerTable cim16:ValueToAlias cim17:EnergySchedulingType nc:RemedialActionGroup cim17:ConnectivityNode nc:Stage nc:EnergyType cim16:ControlAreaGeneratingUnit nc:RemedialActionSchedule nc:PowerShiftKeyStrategy cim16:MeasurementValueSource cim16:OperationalLimitSet nc:AssessedElement );
-        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
-        sh:name         "Name.UniqueIdentifiedObject-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        3;
-        sh:path         ( nc:Name.UniqueIdentifiedObject rdf:type );
-        sh:severity     sh:Violation .
-
-or:Name.UniqueIdentifiedObject-valueTypeNodeShape
-        rdf:type        sh:NodeShape;
-        sh:property     or:Name.UniqueIdentifiedObject-valueType;
-        sh:targetClass  cim:Name .
-
-ido:Name.UniqueIdentifiedObject-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        ido:CardinalityIO;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.UniqueIdentifiedObject-cardinality";
-        sh:order        0.1;
-        sh:path         nc:Name.UniqueIdentifiedObject;
-        sh:severity     sh:Violation .
-
-or:Name.mRID-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "Name.mRID-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        7;
-        sh:path         nc:Name.mRID;
-        sh:severity     sh:Violation .
-
-or:Name.mRID-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.mRID-cardinality";
-        sh:order        15;
-        sh:path         nc:Name.mRID;
-        sh:severity     sh:Violation .
-
-or:Name.IdentifiedObject-valueType
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        or:AssociationsGroup;
-        sh:in           ( cim:IdentifiedObject cim17:Season cim16:RegulationSchedule cim17:NonConformLoadSchedule cim16:SwitchSchedule cim16:ConformLoadSchedule cim16:NonConformLoadSchedule cim17:TapSchedule cim17:RegulationSchedule cim16:TapSchedule cim17:ConformLoadSchedule cim17:SwitchSchedule cim17:BaseVoltage cim:DCNode nc:StaticPropertyRange nc:IntertemporalPropertyRange nc:AvailabilitySchedule cim16:LoadResponseCharacteristic cim16:Season cim17:ConformLoadGroup cim16:ConformLoadGroup cim17:NonConformLoadGroup cim16:NonConformLoadGroup nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency nc:CountertradeScheduleAction nc:RedispatchScheduleAction cim16:FossilFuel cim16:ACDCConverterDCTerminal cim16:DCTerminal cim17:ACDCConverterDCTerminal cim17:DCTerminal cim16:Terminal cim17:Terminal nc:OutagePlanningAgent nc:LoadFrequencyControlOperator nc:SecurityCoordinator nc:OutageCoordinator nc:CoordinatedCapacityCalculator nc:EnergyAlignmentCoordinator nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator cim17:AccumulatorLimitSet cim16:AnalogLimitSet cim17:AnalogLimitSet cim16:AccumulatorLimitSet entsoe:EnergySchedulingType nc:FunctionOutputVariable cim17:PhaseTapChangerTable nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit nc:BaseCaseCurrentLimit cim17:ApparentPowerLimit cim17:BusNameMarker cim17:OperationalLimitType cim16:SubLoadArea cim17:LoadArea cim16:LoadArea cim17:SubLoadArea nc:TieCorridor nc:DCTieCorridor nc:ACTieCorridor cim17:HydroPowerPlant cim17:RegulatingControl cim17:TapChangerControl cim16:TapChangerControl nc:DCSubstationPole cim16:DCLine cim17:DCConverterUnit cim16:DCConverterUnit cim17:DCLine nc:DCSubstation nc:DCSubstationBipole cim:DCConverterUnit cim16:Substation nc:SecondarySubstation cim16:DCEquipmentContainer cim16:VoltageLevel cim17:Bay cim16:Bay cim:Substation cim17:Substation cim17:VoltageLevel cim17:Line cim:Line cim16:Line cim16:EquivalentNetwork cim17:EquivalentNetwork nc:LoadFrequencyControlArea nc:DirectCurrentCircuit nc:LineCircuit nc:PowerTransformerCircuit nc:RemedialActionScheme cim16:PhaseTapChangerTabular cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerLinear cim17:PhaseTapChangerLinear cim17:PhaseTapChangerTabular cim17:RatioTapChanger cim16:RatioTapChanger nc:SchedulingArea nc:SubSchedulingArea nc:EdgeSchedulingArea cim16:ControlArea nc:SubControlArea nc:EdgeControlArea nc:StageTrigger nc:SSSCController nc:PowerElectronicsUnitController nc:PowerElectronicsConnectionController nc:TapChangerController nc:RotatingMachineController nc:SubstationController nc:ScheduleResourceController nc:InjectionController nc:TCSCController nc:DirectCurrentPoleController nc:DirectCurrentSubstationBipoleController nc:DirectCurrentSubstationPoleController nc:DirectCurrentBipoleController nc:DirectCurrentMasterController nc:ACDCConverterController nc:CompensatorController nc:PowerPlantController nc:UnifiedPowerFlowController nc:AreaInterchangeController nc:PowerFrequencyController cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester nc:BiddingZone nc:FuelStorage cim17:ControlArea cim:ControlArea cim17:CogenerationPlant nc:AreaDispatchableUnit cim16:RegulatingControl nc:DCBiPole nc:EquivalentPowerPlant cim16:HydroPowerPlant cim:Reservoir nc:BiddingZoneBorder cim17:CAESPlant nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion nc:EnergyGroup eu:SolarPowerPlant nc:BipolarDCSystem nc:MonopolarDCSystem nc:LoadFrequencyControlBlock nc:DCPole nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor cim17:CombinedCyclePlant nc:ScheduleResource eu:BoundaryPoint eu:WindPowerPlant nc:SynchronousArea cim16:ReportingGroup cim17:MutualCoupling cim17:PowerTransformerEnd cim16:PowerTransformerEnd nc:AvailabilityExceptionalLimit nc:AvailabilityRemedialActionScheme nc:AvailabilityContainer nc:AvailabilityEnabled nc:AvailabilityEquipment nc:GateInputPin nc:PinPowerTransferCorridor nc:PinMeasurement nc:PinDCTerminal nc:PinEquipmentTripping nc:PinOperationalLimit nc:PinContingency nc:PinGate nc:PinEquipment nc:PinTerminal cim:TieFlow cim17:SubGeographicalRegion nc:TriggerCondition nc:VoltageInjectionControlFunction nc:DCCurrentControlFunction nc:DCVoltageControlFunction nc:ACEmulationControlFunction nc:ImpedanceControlFunction nc:ReactivePowerControlFunction nc:ActivePowerControlFunction nc:PowerFactorControlFunction nc:CurrentControlFunction nc:FrequencyControlFunction nc:PhaseControlFunction nc:VoltageControlFunction nc:CurrentDroopControlFunction cim17:ValueToAlias nc:EnergyBlockComponent nc:ProportionalEnergyComponent cim17:AnalogLimit cim16:AccumulatorLimit cim17:AccumulatorLimit cim16:AnalogLimit cim16:Discrete cim16:Accumulator cim17:Accumulator cim17:Analog cim17:StringMeasurement cim16:StringMeasurement cim17:Discrete cim16:Analog nc:CircuitShare cim17:Command cim16:AccumulatorReset cim17:SetPoint cim16:SetPoint cim17:RaiseLowerCommand cim16:RaiseLowerCommand cim17:AccumulatorReset cim16:Command cim16:SubGeographicalRegion nc:RemedialActionScheduleGroup nc:OverlappingZone cim16:BusNameMarker cim17:GrossToNetActivePowerCurve cim16:GrossToNetActivePowerCurve nc:LossCurve nc:DurationOverloadLimitCurve nc:AmbientTemperatureDependencyCurve nc:BaseOverloadLimitCurve nc:SolarRadiationDependencyCurve nc:RecoveryOverloadLimitCurve cim16:VsCapabilityCurve cim:ReactiveCapabilityCurve cim17:VsCapabilityCurve cim:VsCapabilityCurve cim16:ReactiveCapabilityCurve cim17:ReactiveCapabilityCurve cim16:MutualCoupling cim17:ReportingGroup cim16:DayType cim:OperationalLimitType cim16:BaseVoltage nc:AvailabilityGroup nc:RemedialActionSchemeSchedule nc:GridStateIntensitySchedule nc:EventSchedule nc:PowerSchedule cim17:OperationalLimitSet cim16:ConnectivityNode cim16:ValueAliasSet cim17:RatioTapChangerTable cim17:ControlAreaGeneratingUnit nc:GridStateAlterationCollection cim16:PhaseTapChangerTable cim:ConnectivityNode cim:ContingencyEquipment nc:Gate cim17:GeographicalRegion cim17:TieFlow nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction cim:Organisation cim17:DCNode cim17:DayType nc:PTCTriggeredEquipment cim16:GeographicalRegion cim17:MeasurementValueSource nc:EnergyBlockOrder nc:MeasurementCalculatorInput cim:OperationalLimitSet cim16:AccumulatorValue cim17:DiscreteValue cim17:StringMeasurementValue cim17:AccumulatorValue cim17:AnalogValue cim16:DiscreteValue cim16:AnalogValue cim16:StringMeasurementValue nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction cim17:ValueAliasSet cim16:OperationalLimitType cim17:FossilFuel cim16:DCNode cim17:LoadResponseCharacteristic nc:MeasurementCalculator nc:ACPointOfCommonCoupling nc:GridConnectionPoint nc:EnergyExchangePoint nc:DCPointOfCommonCoupling cim16:RatioTapChangerTable cim16:ValueToAlias cim17:EnergySchedulingType nc:RemedialActionGroup cim17:ConnectivityNode nc:Stage nc:EnergyType cim16:ControlAreaGeneratingUnit nc:RemedialActionSchedule nc:PowerShiftKeyStrategy cim16:MeasurementValueSource cim16:OperationalLimitSet nc:AssessedElement );
-        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
-        sh:name         "Name.IdentifiedObject-valueType";
-        sh:nodeKind     sh:IRI;
-        sh:order        2;
-        sh:path         ( nc:Name.IdentifiedObject rdf:type );
-        sh:severity     sh:Violation .
-
-or:Name.IdentifiedObject-valueTypeNodeShape
-        rdf:type        sh:NodeShape;
-        sh:property     or:Name.IdentifiedObject-valueType;
-        sh:targetClass  cim:Name .
-
-ido:Name.IdentifiedObject-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        ido:CardinalityIO;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "Name.IdentifiedObject-cardinality";
-        sh:order        0.1;
-        sh:path         nc:Name.IdentifiedObject;
-        sh:severity     sh:Violation .
-
-or:Name.name-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "Name.name-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        6;
-        sh:path         cim:Name.name;
-        sh:severity     sh:Violation .
-
-or:Name.name-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
-        sh:name         "Name.name-cardinality";
-        sh:order        13;
-        sh:path         cim:Name.name;
-        sh:severity     sh:Violation .
-
-or:Name-AllowedProperties
+or:Identity-AllowedProperties
         rdf:type              sh:NodeShape;
         sh:closed             true;
         sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
@@ -216,61 +43,215 @@ or:Name-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              4;
-        sh:property           [ sh:path  cim:Name.name ];
-        sh:property           [ sh:path  nc:Name.IdentifiedObject ];
-        sh:property           [ sh:path  nc:Name.mRID ];
-        sh:property           [ sh:path  nc:Name.UniqueIdentifiedObject ];
-        sh:property           [ sh:path  nc:Name.NameType ];
-        sh:property           [ sh:path  nc:Name.NamingAuthority ];
-        sh:property           [ sh:path  nc:Name.language ];
+        sh:property           [ sh:path  nc:Identity.identifier ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:Name .
+        sh:targetClass        nc:Identity .
 
-or:Name  rdf:type       sh:NodeShape;
-        sh:property     or:Name.language-datatype , or:Name.language-cardinality , or:Name.NamingAuthority-valueType , or:Name.NamingAuthority-cardinality , or:Name.NameType-valueType , or:Name.NameType-cardinality , ido:Name.UniqueIdentifiedObject-cardinality , or:Name.mRID-datatype , or:Name.mRID-cardinality , ido:Name.IdentifiedObject-cardinality , or:Name.name-datatype , or:Name.name-cardinality;
-        sh:targetClass  cim:Name .
+or:Identity  rdf:type   sh:NodeShape;
+        sh:property     or:Identity.identifier-datatype , or:Identity.identifier-cardinality;
+        sh:targetClass  nc:Identity .
 
-or:ObjectType.IdentifiedObject-propertyInverse
+or:DesignationType.DesignationAuthority-valueType
         rdf:type        sh:PropertyShape;
-        sh:description  "Inverse associations shall not be instantiated.";
-        sh:group        or:InverseAssociationsGroup;
-        sh:maxCount     0;
-        sh:message      "Inverse association is present.";
-        sh:name         "InverseAssociationPresent";
+        sh:class        nc:DesignationAuthority;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        or:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DesignationAuthority";
+        sh:name         "DesignationType.DesignationAuthority-valueType";
+        sh:nodeKind     sh:IRI;
         sh:order        4;
-        sh:path         nc:ObjectType.IdentifiedObject;
+        sh:path         nc:DesignationType.DesignationAuthority;
         sh:severity     sh:Violation .
 
-or:ObjectType.IdentifiedObject-inverseNodePresent
-        rdf:type             sh:NodeShape;
-        sh:property          or:ObjectType.IdentifiedObject-propertyInverse;
-        sh:targetSubjectsOf  nc:ObjectType.IdentifiedObject .
+or:DesignationType.DesignationAuthority-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.DesignationAuthority-cardinality";
+        sh:order        22;
+        sh:path         nc:DesignationType.DesignationAuthority;
+        sh:severity     sh:Violation .
 
-or:ObjectType.type-datatype
+or:DesignationType.languageTag-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     rdf:langString ;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.languageTag-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        13;
+        sh:path         nc:DesignationType.languageTag;
+        sh:severity     sh:Violation .
+
+or:DesignationType.languageTag-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.languageTag-cardinality";
+        sh:order        21;
+        sh:path         nc:DesignationType.languageTag;
+        sh:severity     sh:Violation .
+
+or:DesignationType.maxLength-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:integer;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationType.maxLength-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        12;
+        sh:path         nc:DesignationType.maxLength;
+        sh:severity     sh:Violation .
+
+or:DesignationType.maxLength-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.maxLength-cardinality";
+        sh:order        20;
+        sh:path         nc:DesignationType.maxLength;
+        sh:severity     sh:Violation .
+
+or:DesignationType.uniquenessScope-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:in           ( nc:UniquenessScopeKind.unspecified nc:UniquenessScopeKind.exchangeContext nc:UniquenessScopeKind.authority nc:UniquenessScopeKind.global );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "DesignationType.uniquenessScope-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        11;
+        sh:path         nc:DesignationType.uniquenessScope;
+        sh:severity     sh:Violation .
+
+or:DesignationType.uniquenessScope-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.uniquenessScope-cardinality";
+        sh:order        19;
+        sh:path         nc:DesignationType.uniquenessScope;
+        sh:severity     sh:Violation .
+
+or:DesignationType.description-datatype
         rdf:type        sh:PropertyShape;
         sh:datatype     xsd:string;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        or:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "ObjectType.type-datatype";
+        sh:name         "DesignationType.description-datatype";
         sh:nodeKind     sh:Literal;
-        sh:order        5;
-        sh:path         nc:ObjectType.type;
+        sh:order        10;
+        sh:path         nc:DesignationType.description;
         sh:severity     sh:Violation .
 
-or:ObjectType.type-cardinality
+or:DesignationType.description-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.description-cardinality";
+        sh:order        18;
+        sh:path         nc:DesignationType.description;
+        sh:severity     sh:Violation .
+
+or:DesignationType.name-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationType.name-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        9;
+        sh:path         nc:DesignationType.name;
+        sh:severity     sh:Violation .
+
+or:DesignationType.name-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        or:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
-        sh:name         "ObjectType.type-cardinality";
-        sh:order        11;
-        sh:path         nc:ObjectType.type;
+        sh:name         "DesignationType.name-cardinality";
+        sh:order        17;
+        sh:path         nc:DesignationType.name;
         sh:severity     sh:Violation .
 
-or:ObjectType-AllowedProperties
+or:DesignationType.Designation-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        or:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        3;
+        sh:path         nc:DesignationType.Designation;
+        sh:severity     sh:Violation .
+
+or:DesignationType.Designation-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          or:DesignationType.Designation-propertyInverse;
+        sh:targetSubjectsOf  nc:DesignationType.Designation .
+
+or:DesignationType.regularExpression-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationType.regularExpression-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        8;
+        sh:path         nc:DesignationType.regularExpression;
+        sh:severity     sh:Violation .
+
+or:DesignationType.regularExpression-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.regularExpression-cardinality";
+        sh:order        15;
+        sh:path         nc:DesignationType.regularExpression;
+        sh:severity     sh:Violation .
+
+or:DesignationType.typeRef-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationType.typeRef-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        7;
+        sh:path         nc:DesignationType.typeRef;
+        sh:severity     sh:Violation .
+
+or:DesignationType.typeRef-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationType.typeRef-cardinality";
+        sh:order        14;
+        sh:path         nc:DesignationType.typeRef;
+        sh:severity     sh:Violation .
+
+or:DesignationType-AllowedProperties
         rdf:type              sh:NodeShape;
         sh:closed             true;
         sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
@@ -279,118 +260,145 @@ or:ObjectType-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              3;
-        sh:property           [ sh:path  nc:ObjectType.type ];
+        sh:property           [ sh:path  nc:DesignationType.typeRef ];
+        sh:property           [ sh:path  nc:DesignationType.regularExpression ];
+        sh:property           [ sh:path  nc:DesignationType.name ];
+        sh:property           [ sh:path  nc:DesignationType.description ];
+        sh:property           [ sh:path  nc:DesignationType.uniquenessScope ];
+        sh:property           [ sh:path  nc:DesignationType.maxLength ];
+        sh:property           [ sh:path  nc:DesignationType.languageTag ];
+        sh:property           [ sh:path  nc:DesignationType.DesignationAuthority ];
+        sh:property           [ sh:path  nc:Identity.identifier ];
         sh:severity           sh:Info;
-        sh:targetClass        nc:ObjectType .
+        sh:targetClass        nc:DesignationType .
 
-or:ObjectType  rdf:type  sh:NodeShape;
-        sh:property     or:ObjectType.type-datatype , or:ObjectType.type-cardinality;
-        sh:targetClass  nc:ObjectType .
+or:DesignationType  rdf:type  sh:NodeShape;
+        sh:property     or:Identity.identifier-datatype , or:Identity.identifier-cardinality , or:DesignationType.DesignationAuthority-valueType , or:DesignationType.DesignationAuthority-cardinality , or:DesignationType.typeRef-cardinality , or:DesignationType.typeRef-datatype , or:DesignationType.regularExpression-cardinality , or:DesignationType.regularExpression-datatype , or:DesignationType.name-cardinality , or:DesignationType.name-datatype , or:DesignationType.description-cardinality , or:DesignationType.description-datatype , or:DesignationType.uniquenessScope-cardinality , or:DesignationType.uniquenessScope-datatype , or:DesignationType.maxLength-cardinality , or:DesignationType.maxLength-datatype , or:DesignationType.languageTag-cardinality , or:DesignationType.languageTag-datatype;
+        sh:targetClass  nc:DesignationType .
 
-or:NamingAuthority.Name-propertyInverse
+or:Designation.DesignationAuthority-valueType
         rdf:type        sh:PropertyShape;
-        sh:description  "Inverse associations shall not be instantiated.";
-        sh:group        or:InverseAssociationsGroup;
-        sh:maxCount     0;
-        sh:message      "Inverse association is present.";
-        sh:name         "InverseAssociationPresent";
+        sh:class        nc:DesignationAuthority;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        or:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DesignationAuthority";
+        sh:name         "Designation.DesignationAuthority-valueType";
+        sh:nodeKind     sh:IRI;
         sh:order        3;
-        sh:path         nc:NamingAuthority.Name;
+        sh:path         nc:Designation.DesignationAuthority;
         sh:severity     sh:Violation .
 
-or:NamingAuthority.Name-inverseNodePresent
-        rdf:type             sh:NodeShape;
-        sh:property          or:NamingAuthority.Name-propertyInverse;
-        sh:targetSubjectsOf  nc:NamingAuthority.Name .
-
-or:NamingAuthority.NameType-propertyInverse
+or:Designation.DesignationAuthority-cardinality
         rdf:type        sh:PropertyShape;
-        sh:description  "Inverse associations shall not be instantiated.";
-        sh:group        or:InverseAssociationsGroup;
-        sh:maxCount     0;
-        sh:message      "Inverse association is present.";
-        sh:name         "InverseAssociationPresent";
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "Designation.DesignationAuthority-cardinality";
+        sh:order        12;
+        sh:path         nc:Designation.DesignationAuthority;
+        sh:severity     sh:Violation .
+
+or:Designation.DesignationType-valueType
+        rdf:type        sh:PropertyShape;
+        sh:class        nc:DesignationType;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        or:AssociationsGroup;
+        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:DesignationType";
+        sh:name         "Designation.DesignationType-valueType";
+        sh:nodeKind     sh:IRI;
         sh:order        2;
-        sh:path         nc:NamingAuthority.NameType;
+        sh:path         nc:Designation.DesignationType;
         sh:severity     sh:Violation .
 
-or:NamingAuthority.NameType-inverseNodePresent
-        rdf:type             sh:NodeShape;
-        sh:property          or:NamingAuthority.NameType-propertyInverse;
-        sh:targetSubjectsOf  nc:NamingAuthority.NameType .
-
-or:NamingAuthority.description-datatype
+or:Designation.DesignationType-cardinality
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "Designation.DesignationType-cardinality";
+        sh:order        11;
+        sh:path         nc:Designation.DesignationType;
+        sh:severity     sh:Violation .
+
+or:Designation.IdentifiedObject-valueType
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the value of the association at the used direction.";
+        sh:group        or:AssociationsGroup;
+        sh:in           ( cim16:OperationalLimitSet cim17:ControlAreaGeneratingUnit cim17:NonConformLoadSchedule cim17:ConformLoadSchedule cim17:SwitchSchedule cim16:NonConformLoadSchedule cim16:TapSchedule cim16:ConformLoadSchedule cim17:TapSchedule cim16:RegulationSchedule cim16:SwitchSchedule cim17:RegulationSchedule cim:TieFlow cim17:VsCapabilityCurve nc:LossCurve nc:BaseOverloadLimitCurve nc:SolarRadiationDependencyCurve nc:AmbientTemperatureDependencyCurve nc:RecoveryOverloadLimitCurve nc:DurationOverloadLimitCurve cim16:GrossToNetActivePowerCurve cim:VsCapabilityCurve cim17:ReactiveCapabilityCurve cim:ReactiveCapabilityCurve cim16:VsCapabilityCurve cim17:GrossToNetActivePowerCurve cim16:ReactiveCapabilityCurve cim16:ActivePowerLimit cim17:ApparentPowerLimit cim17:VoltageLimit nc:InfeedLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim16:CurrentLimit cim17:ActivePowerLimit nc:BaseCaseCurrentLimit cim16:VoltageLimit nc:OverlappingZone entsoe:EnergySchedulingType cim:OperationalLimitType cim17:PhaseTapChangerTable cim16:AnalogValue cim16:DiscreteValue cim17:AccumulatorValue cim17:AnalogValue cim16:StringMeasurementValue cim16:AccumulatorValue cim17:DiscreteValue cim17:StringMeasurementValue cim17:Terminal cim17:DCTerminal cim16:DCTerminal cim:DCTerminal cim16:ACDCConverterDCTerminal cim17:ACDCConverterDCTerminal cim16:Terminal nc:GridStateAlterationCollection nc:StaticPropertyRange nc:IntertemporalPropertyRange nc:MeasurementCalculatorInput cim17:ValueAliasSet nc:AvailablityPlan cim17:SubGeographicalRegion cim16:GeographicalRegion cim16:Command cim17:AccumulatorReset cim17:Command cim16:RaiseLowerCommand cim17:RaiseLowerCommand cim17:SetPoint cim16:SetPoint cim16:AccumulatorReset nc:EnergyResourceType cim17:ConnectivityNode cim16:ReportingGroup cim16:Season nc:TieCorridor nc:ACTieCorridor nc:DCTieCorridor nc:PowerFrequencyController nc:AreaInterchangeController nc:TCSCController nc:TapChangerController nc:ScheduleResourceController nc:PowerPlantController nc:DirectCurrentBipoleController nc:DirectCurrentMasterController nc:ACDCConverterController nc:DirectCurrentPoleController nc:DirectCurrentSubstationPoleController nc:DirectCurrentSubstationBipoleController nc:PowerElectronicsUnitController nc:CompensatorController nc:InjectionController nc:SSSCController nc:UnifiedPowerFlowController nc:PowerElectronicsConnectionController nc:RotatingMachineController nc:SubstationController cim17:CogenerationPlant nc:ScheduleResource nc:BiddingZone cim17:EquivalentNetwork cim16:EquivalentNetwork cim:Substation nc:SecondarySubstation cim17:Substation cim16:DCEquipmentContainer nc:DCSubstationBipole nc:DCSubstationPole cim16:DCConverterUnit cim17:DCConverterUnit cim16:DCLine cim:DCConverterUnit nc:DCSubstation cim17:DCLine cim16:Substation cim16:Line cim:Line cim17:Line cim16:Bay cim16:VoltageLevel cim17:Bay cim17:VoltageLevel nc:OrdinaryPowerTransferCorridor nc:ExceptionalPowerTransferCorridor cim17:HydroPowerPlant nc:BipolarDCSystem nc:MonopolarDCSystem nc:LineCircuit nc:DirectCurrentCircuit nc:PowerTransformerCircuit nc:RemedialActionScheme cim:ControlArea nc:SubControlArea nc:EdgeControlArea nc:DCBiPole cim16:HydroPowerPlant cim17:CombinedCyclePlant eu:BoundaryPoint nc:StageTrigger cim17:RegulatingControl cim16:TapChangerControl cim17:TapChangerControl cim16:RegulatingControl nc:SynchronousArea cim17:GeneratingUnit cim17:ThermalGeneratingUnit cim:ThermalGeneratingUnit nc:GeothermalGeneratingUnit cim17:NuclearGeneratingUnit cim17:HydroGeneratingUnit cim:NuclearGeneratingUnit nc:IndustryUnit cim16:SolarGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:ThermalGeneratingUnit cim17:SolarGeneratingUnit cim17:WindGeneratingUnit cim16:WindGeneratingUnit nc:EquivalentGeneratingUnit cim17:SurgeArrester cim17:PostLineSensor cim17:CurrentTransformer cim17:PotentialTransformer cim17:WaveTrap cim17:FaultIndicator cim17:HydroPump nc:Installation cim:GeneratingUnit cim16:DCSwitch cim:DCBreaker cim16:DCBreaker cim17:DCBreaker cim17:DCDisconnector cim16:DCDisconnector nc:DCBypassSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusSwitch nc:DCEarthReturnTransferSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCConverterParallelingSwitch cim:DCDisconnector cim17:DCBusbar cim:DCBusbar cim:DCChopper nc:DiodeValve nc:ThyristorValve nc:GateTurnOffThyristorValve nc:InsulatedGateBipolarTransistorValve nc:ModularMultilevelConverterValve cim:DCLineSegment nc:DCVoltageSource cim:DCSeriesDevice nc:DCSmoothingReactor nc:DCSmoothingReactorArrester nc:DCHarmonicFilter cim17:DCShunt cim17:DCGround cim16:DCShunt cim16:DCGround cim:DCShunt cim16:DCLineSegment cim17:DCChopper cim17:DCSeriesDevice cim17:DCSwitch cim17:DCLineSegment cim16:DCBusbar cim16:DCChopper cim16:DCSeriesDevice cim:DCGround cim:DCSwitch nc:DCEquivalentInjection cim:HydroPump nc:ElectricalChargingUnit nc:FlexibleEnergyUnit nc:PowerElectronicsMarineUnit nc:PowerElectricalChemicalUnit cim:BatteryUnit nc:MobileElectricalUnit cim17:PowerElectronicsWindUnit nc:EquivalentPowerElectronicsUnit cim17:BatteryUnit cim17:PhotoVoltaicUnit cim16:SeriesCompensator cim16:ACLineSegment cim17:ACLineSegment cim16:EnergyConsumer cim17:StationSupply cim16:ConformLoad cim16:StationSupply cim17:ConformLoad cim16:NonConformLoad cim17:NonConformLoad cim16:CsConverter nc:ModularMultilevelConverter cim17:VsConverter cim16:VsConverter nc:EquivalentACDCConverter cim17:CsConverter cim16:PowerTransformer cim17:EnergyConsumer cim:ExternalNetworkInjection cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:NonlinearShuntCompensator cim16:LinearShuntCompensator cim17:LinearShuntCompensator cim16:NonlinearShuntCompensator cim16:ExternalNetworkInjection cim17:StaticVarCompensator cim17:PowerElectronicsConnection cim17:ExternalNetworkInjection nc:ModularStaticSynchronousSeriesCompensator nc:ThyristorControlledSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:StaticSynchronousSeriesCompensator cim16:StaticVarCompensator cim:EnergyConsumer cim17:EnergySource cim17:Clamp cim16:Junction cim17:Junction cim16:BusbarSection cim17:BusbarSection cim17:Ground cim17:SeriesCompensator cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim16:EquivalentBranch cim17:EquivalentInjection cim17:EquivalentBranch cim17:Switch cim17:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:LoadBreakSwitch cim16:Breaker cim16:Disconnector cim17:Cut cim17:GroundDisconnector cim16:GroundDisconnector cim17:Disconnector cim17:Fuse cim17:Jumper cim16:EnergySource cim17:GroundingImpedance cim16:GroundingImpedance cim16:PetersenCoil cim17:PetersenCoil cim16:Switch cim16:Ground cim17:PowerTransformer cim:PowerElectronicsUnit cim16:HydroPump cim16:GeneratingUnit eu:WindPowerPlant nc:DCPole cim17:ControlArea nc:GridPowerCapacity nc:LoadFrequencyControlBlock cim16:ControlArea cim16:RatioTapChanger cim16:PhaseTapChangerLinear cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerTabular cim17:PhaseTapChangerTabular cim17:PhaseTapChangerLinear cim17:RatioTapChanger nc:AreaReserveResource nc:LoadFrequencyControlArea nc:FuelStorage cim17:CAESPlant nc:ThermalPowerPlant nc:CogenerationPlant nc:CombinedCyclePlant nc:CompressedAirEnergyStoragePlant nc:EquivalentPowerPlant nc:EnergyResourceGroupCapacity nc:OutageCoordinationRegion nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:BiddingZoneBorder eu:SolarPowerPlant nc:SchedulingArea nc:SubSchedulingArea nc:EdgeSchedulingArea cim:Reservoir nc:Gate cim17:DayType cim:OperationalLimitSet nc:AvailabilityContainer nc:AvailabilityEquipment nc:AvailabilityEnabled nc:AvailabilityExceptionalLimit nc:AvailabilityRemedialActionScheme cim17:RatioTapChangerTable cim16:SubGeographicalRegion cim16:FossilFuel nc:FunctionOutputVariable nc:RemedialActionScheduleGroup nc:MeasurementCalculator cim17:MeasurementValueSource cim17:TieFlow cim16:ConnectivityNode cim17:LoadArea cim16:SubLoadArea cim17:SubLoadArea cim16:LoadArea nc:AvailabilitySchedule cim17:DCNode cim17:OperationalLimitType cim:DCNode cim17:PowerTransformerEnd cim16:PowerTransformerEnd cim16:RatioTapChangerTable cim17:AccumulatorLimit cim16:AccumulatorLimit cim16:AnalogLimit cim17:AnalogLimit cim16:BusNameMarker nc:BoundaryPointBorder cim17:BusNameMarker nc:CircuitShare cim:ConnectivityNode cim16:DayType cim17:ReportingGroup cim17:EnergySchedulingType cim16:OperationalLimitType nc:Stage cim16:ValueToAlias cim17:OperationalLimitSet cim:ContingencyEquipment nc:RemedialActionGroup cim16:PhaseTapChangerTable cim17:ValueToAlias cim16:BaseVoltage nc:GridStateIntensitySchedule nc:PowerSchedule nc:RemedialActionSchemeSchedule nc:EventSchedule nc:PTCTriggeredEquipment cim17:MutualCoupling nc:TriggerCondition nc:FrequencyControlFunction nc:PhaseControlFunction nc:DCCurrentControlFunction nc:ACEmulationControlFunction nc:ActivePowerControlFunction nc:CurrentDroopControlFunction nc:DCActivePowerControlFunction nc:VoltageAngleControlFunction nc:DCPulseWidthModulationControlFunction nc:VoltageControlFunction nc:VoltageInjectionControlFunction nc:ImpedanceControlFunction nc:DCVoltageControlFunction nc:DCFiringAngleControlFunction nc:ReactivePowerControlFunction nc:CurrentControlFunction nc:DCExtinctionAngleControlFunction nc:PowerFactorControlFunction nc:OutageRequest nc:RemedialActionSchedule nc:PointOfCommonCoupling nc:BoundaryPoint nc:GridConnectionPoint nc:EnergyExchangePoint cim17:FossilFuel cim17:AnalogLimitSet cim17:AccumulatorLimitSet cim16:AnalogLimitSet cim16:AccumulatorLimitSet cim16:MeasurementValueSource cim:Organisation nc:GateInputPin nc:PinGate nc:PinDCTerminal nc:PinContingency nc:PinEquipmentTripping nc:PinOperationalLimit nc:PinTerminal nc:PinEquipment nc:PinPowerTransferCorridor nc:PinMeasurement nc:EnergyBlockOrder cim17:Season nc:RedispatchScheduleAction nc:CountertradeScheduleAction cim16:Analog cim16:Discrete cim17:Discrete cim17:Accumulator cim16:Accumulator cim16:StringMeasurement cim17:Analog cim17:StringMeasurement nc:ProportionalEnergyComponent nc:EnergyBlockComponent cim17:LoadResponseCharacteristic cim17:BaseVoltage nc:ExceptionalContingency nc:OutOfRangeContingency nc:OrdinaryContingency cim16:DCNode cim17:ConformLoadGroup cim17:NonConformLoadGroup cim16:NonConformLoadGroup cim16:ConformLoadGroup nc:AssessedElement nc:AvailabilityGroup cim16:ValueAliasSet nc:PowerShiftKeyStrategy cim16:MutualCoupling nc:AvailabilityRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:CountertradeRemedialAction nc:RedispatchRemedialAction cim17:GeographicalRegion cim16:LoadResponseCharacteristic cim16:ControlAreaGeneratingUnit nc:OutagePlanningAgent nc:EnergyAlignmentCoordinator nc:SecurityCoordinator nc:CoordinatedCapacityCalculator nc:OutageCoordinator nc:LoadFrequencyControlOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DirectCurrentSystemOperator nc:DistributionSystemOperator nc:ACDCConverterAction nc:EquivalentInjectionAction nc:StaticVarCompensatorAction nc:RotatingMachineAction nc:BatteryUnitAction nc:LoadAction nc:ExternalNetworkInjectionAction nc:BiddingZoneAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:EnergySourceModification nc:EquipmentControllerAction nc:ShuntCompensatorModification nc:RegulatingControlAction nc:InServiceAction nc:TopologyAction nc:TapPositionAction );
+        sh:message      "One of the following occurs: 1) The value is not IRI; 2) The value is not the right class.";
+        sh:name         "Designation.IdentifiedObject-valueType";
+        sh:nodeKind     sh:IRI;
+        sh:order        1;
+        sh:path         ( nc:Designation.IdentifiedObject rdf:type );
+        sh:severity     sh:Violation .
+
+or:Designation.IdentifiedObject-valueTypeNodeShape
+        rdf:type        sh:NodeShape;
+        sh:property     or:Designation.IdentifiedObject-valueType;
+        sh:targetClass  nc:Designation .
+
+ido:Designation.IdentifiedObject-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the association at the used direction.";
+        sh:group        ido:CardinalityIO;
+        sh:maxCount     1;
+        sh:message      "Association with cardinality violation at the used direction.";
+        sh:minCount     1;
+        sh:name         "Designation.IdentifiedObject-cardinality";
+        sh:order        0.1;
+        sh:path         nc:Designation.IdentifiedObject;
+        sh:severity     sh:Violation .
+
+or:Designation.kind-datatype
+        rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NamingAuthority.description-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        4;
-        sh:path         nc:NamingAuthority.description;
+        sh:in           ( nc:DesignationKind.uuid nc:DesignationKind.local nc:DesignationKind.label nc:DesignationKind.iec61850 nc:DesignationKind.alias nc:DesignationKind.device nc:DesignationKind.eic nc:DesignationKind.path nc:DesignationKind.urn nc:DesignationKind.rds );
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile.";
+        sh:name         "Designation.kind-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        5;
+        sh:path         nc:Designation.kind;
         sh:severity     sh:Violation .
 
-or:NamingAuthority.description-cardinality
+or:Designation.kind-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        or:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "NamingAuthority.description-cardinality";
+        sh:name         "Designation.kind-cardinality";
+        sh:order        9;
+        sh:path         nc:Designation.kind;
+        sh:severity     sh:Violation .
+
+or:Designation.value-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "Designation.value-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        4;
+        sh:path         nc:Designation.value;
+        sh:severity     sh:Violation .
+
+or:Designation.value-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "Designation.value-cardinality";
         sh:order        8;
-        sh:path         nc:NamingAuthority.description;
+        sh:path         nc:Designation.value;
         sh:severity     sh:Violation .
 
-or:NamingAuthority.mRID-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NamingAuthority.mRID-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        3;
-        sh:path         nc:NamingAuthority.mRID;
-        sh:severity     sh:Violation .
-
-or:NamingAuthority.mRID-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
-        sh:name         "NamingAuthority.mRID-cardinality";
-        sh:order        7;
-        sh:path         nc:NamingAuthority.mRID;
-        sh:severity     sh:Violation .
-
-or:NamingAuthority.name-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NamingAuthority.name-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        2;
-        sh:path         nc:NamingAuthority.name;
-        sh:severity     sh:Violation .
-
-or:NamingAuthority.name-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
-        sh:name         "NamingAuthority.name-cardinality";
-        sh:order        6;
-        sh:path         nc:NamingAuthority.name;
-        sh:severity     sh:Violation .
-
-or:NamingAuthority-AllowedProperties
+or:Designation-AllowedProperties
         rdf:type              sh:NodeShape;
         sh:closed             true;
         sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
@@ -399,17 +407,59 @@ or:NamingAuthority-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              2;
-        sh:property           [ sh:path  nc:NamingAuthority.description ];
-        sh:property           [ sh:path  nc:NamingAuthority.mRID ];
-        sh:property           [ sh:path  nc:NamingAuthority.name ];
+        sh:property           [ sh:path  nc:Identity.identifier ];
+        sh:property           [ sh:path  nc:Designation.DesignationAuthority ];
+        sh:property           [ sh:path  nc:Designation.DesignationType ];
+        sh:property           [ sh:path  nc:Designation.IdentifiedObject ];
+        sh:property           [ sh:path  nc:Designation.kind ];
+        sh:property           [ sh:path  nc:Designation.value ];
         sh:severity           sh:Info;
-        sh:targetClass        nc:NamingAuthority .
+        sh:targetClass        nc:Designation .
 
-or:NamingAuthority  rdf:type  sh:NodeShape;
-        sh:property     or:NamingAuthority.description-datatype , or:NamingAuthority.description-cardinality , or:NamingAuthority.mRID-datatype , or:NamingAuthority.mRID-cardinality , or:NamingAuthority.name-datatype , or:NamingAuthority.name-cardinality;
-        sh:targetClass  nc:NamingAuthority .
+or:Designation  rdf:type  sh:NodeShape;
+        sh:property     or:Identity.identifier-datatype , or:Identity.identifier-cardinality , or:Designation.DesignationAuthority-valueType , or:Designation.DesignationAuthority-cardinality , or:Designation.DesignationType-valueType , or:Designation.DesignationType-cardinality , ido:Designation.IdentifiedObject-cardinality , or:Designation.kind-datatype , or:Designation.kind-cardinality , or:Designation.value-datatype , or:Designation.value-cardinality;
+        sh:targetClass  nc:Designation .
 
-or:NameType.Name-propertyInverse
+or:Identity.identifier-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "Identity.identifier-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        3;
+        sh:path         nc:Identity.identifier;
+        sh:severity     sh:Violation .
+
+or:Identity.identifier-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Missing required property (attribute).";
+        sh:minCount     1;
+        sh:name         "Identity.identifier-cardinality";
+        sh:order        7;
+        sh:path         nc:Identity.identifier;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.Designation-propertyInverse
+        rdf:type        sh:PropertyShape;
+        sh:description  "Inverse associations shall not be instantiated.";
+        sh:group        or:InverseAssociationsGroup;
+        sh:maxCount     0;
+        sh:message      "Inverse association is present.";
+        sh:name         "InverseAssociationPresent";
+        sh:order        2;
+        sh:path         nc:DesignationAuthority.Designation;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.Designation-inverseNodePresent
+        rdf:type             sh:NodeShape;
+        sh:property          or:DesignationAuthority.Designation-propertyInverse;
+        sh:targetSubjectsOf  nc:DesignationAuthority.Designation .
+
+or:DesignationAuthority.DesignationType-propertyInverse
         rdf:type        sh:PropertyShape;
         sh:description  "Inverse associations shall not be instantiated.";
         sh:group        or:InverseAssociationsGroup;
@@ -417,109 +467,106 @@ or:NameType.Name-propertyInverse
         sh:message      "Inverse association is present.";
         sh:name         "InverseAssociationPresent";
         sh:order        1;
-        sh:path         nc:NameType.Name;
+        sh:path         nc:DesignationAuthority.DesignationType;
         sh:severity     sh:Violation .
 
-or:NameType.Name-inverseNodePresent
+or:DesignationAuthority.DesignationType-inverseNodePresent
         rdf:type             sh:NodeShape;
-        sh:property          or:NameType.Name-propertyInverse;
-        sh:targetSubjectsOf  nc:NameType.Name .
+        sh:property          or:DesignationAuthority.DesignationType-propertyInverse;
+        sh:targetSubjectsOf  nc:DesignationAuthority.DesignationType .
 
-or:NameType.NamingAuthority-valueType
+or:DesignationAuthority.authorityRef-datatype
         rdf:type        sh:PropertyShape;
-        sh:class        nc:NamingAuthority;
-        sh:description  "This constraint validates the value of the association at the used direction.";
-        sh:group        or:AssociationsGroup;
-        sh:message      "One of the following does not conform: 1) The value shall be IRI; 2) The value shall be an instance of the class: nc:NamingAuthority";
-        sh:name         "NameType.NamingAuthority-valueType";
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationAuthority.authorityRef-datatype";
         sh:nodeKind     sh:IRI;
-        sh:order        1;
-        sh:path         nc:NameType.NamingAuthority;
-        sh:severity     sh:Violation .
-
-or:NameType.NamingAuthority-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the association at the used direction.";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "NameType.NamingAuthority-cardinality";
-        sh:order        4;
-        sh:path         nc:NameType.NamingAuthority;
-        sh:severity     sh:Violation .
-
-or:NameType.description-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NameType.description-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        1;
-        sh:path         cim:NameType.description;
-        sh:severity     sh:Violation .
-
-or:NameType.description-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Cardinality violation. Upper bound shall be 1";
-        sh:name         "NameType.description-cardinality";
-        sh:order        3;
-        sh:path         cim:NameType.description;
-        sh:severity     sh:Violation .
-
-or:NameType.mRID-datatype
-        rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:string;
-        sh:description  "This constraint validates the datatype of the property (attribute).";
-        sh:group        or:DatatypesGroup;
-        sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NameType.mRID-datatype";
-        sh:nodeKind     sh:Literal;
-        sh:order        0;
-        sh:path         nc:NameType.mRID;
-        sh:severity     sh:Violation .
-
-or:NameType.mRID-cardinality
-        rdf:type        sh:PropertyShape;
-        sh:description  "This constraint validates the cardinality of the property (attribute).";
-        sh:group        or:CardinalityGroup;
-        sh:maxCount     1;
-        sh:message      "Missing required property (attribute).";
-        sh:minCount     1;
-        sh:name         "NameType.mRID-cardinality";
         sh:order        2;
-        sh:path         nc:NameType.mRID;
+        sh:path         nc:DesignationAuthority.authorityRef;
         sh:severity     sh:Violation .
 
-or:NameType.name-datatype
+or:DesignationAuthority.authorityRef-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationAuthority.authorityRef-cardinality";
+        sh:order        4;
+        sh:path         nc:DesignationAuthority.authorityRef;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.description-datatype
         rdf:type        sh:PropertyShape;
         sh:datatype     xsd:string;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        or:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
-        sh:name         "NameType.name-datatype";
+        sh:name         "DesignationAuthority.description-datatype";
+        sh:nodeKind     sh:Literal;
+        sh:order        1;
+        sh:path         nc:DesignationAuthority.description;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.description-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationAuthority.description-cardinality";
+        sh:order        3;
+        sh:path         nc:DesignationAuthority.description;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.lookupServiceRef-datatype
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationAuthority.lookupServiceRef-datatype";
+        sh:nodeKind     sh:IRI;
+        sh:order        0;
+        sh:path         nc:DesignationAuthority.lookupServiceRef;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.lookupServiceRef-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        or:CardinalityGroup;
+        sh:maxCount     1;
+        sh:message      "Cardinality violation. Upper bound shall be 1";
+        sh:name         "DesignationAuthority.lookupServiceRef-cardinality";
+        sh:order        2;
+        sh:path         nc:DesignationAuthority.lookupServiceRef;
+        sh:severity     sh:Violation .
+
+or:DesignationAuthority.name-datatype
+        rdf:type        sh:PropertyShape;
+        sh:datatype     xsd:string;
+        sh:description  "This constraint validates the datatype of the property (attribute).";
+        sh:group        or:DatatypesGroup;
+        sh:message      "The datatype is not literal or it violates the xsd datatype.";
+        sh:name         "DesignationAuthority.name-datatype";
         sh:nodeKind     sh:Literal;
         sh:order        -1;
-        sh:path         cim:NameType.name;
+        sh:path         nc:DesignationAuthority.name;
         sh:severity     sh:Violation .
 
-or:NameType.name-cardinality
+or:DesignationAuthority.name-cardinality
         rdf:type        sh:PropertyShape;
         sh:description  "This constraint validates the cardinality of the property (attribute).";
         sh:group        or:CardinalityGroup;
         sh:maxCount     1;
         sh:message      "Missing required property (attribute).";
         sh:minCount     1;
-        sh:name         "NameType.name-cardinality";
+        sh:name         "DesignationAuthority.name-cardinality";
         sh:order        1;
-        sh:path         cim:NameType.name;
+        sh:path         nc:DesignationAuthority.name;
         sh:severity     sh:Violation .
 
-or:NameType-AllowedProperties
+or:DesignationAuthority-AllowedProperties
         rdf:type              sh:NodeShape;
         sh:closed             true;
         sh:description        "Checks if the dataset contains properties which are not defined in the profile to which this dataset conforms to.";
@@ -528,59 +575,24 @@ or:NameType-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              1;
-        sh:property           [ sh:path  nc:NameType.NamingAuthority ];
-        sh:property           [ sh:path  cim:NameType.description ];
-        sh:property           [ sh:path  nc:NameType.mRID ];
-        sh:property           [ sh:path  cim:NameType.name ];
+        sh:property           [ sh:path  nc:Identity.identifier ];
+        sh:property           [ sh:path  nc:DesignationAuthority.authorityRef ];
+        sh:property           [ sh:path  nc:DesignationAuthority.description ];
+        sh:property           [ sh:path  nc:DesignationAuthority.lookupServiceRef ];
+        sh:property           [ sh:path  nc:DesignationAuthority.name ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:NameType .
+        sh:targetClass        nc:DesignationAuthority .
 
-or:NameType  rdf:type   sh:NodeShape;
-        sh:property     or:NameType.NamingAuthority-valueType , or:NameType.NamingAuthority-cardinality , or:NameType.description-datatype , or:NameType.description-cardinality , or:NameType.mRID-datatype , or:NameType.mRID-cardinality , or:NameType.name-datatype , or:NameType.name-cardinality;
-        sh:targetClass  cim:NameType .
-
-cc:     rdf:type     owl:Ontology;
-        owl:imports  sh:;
-        sh:declare   [ rdf:type      sh:PrefixDeclaration;
-                       sh:namespace  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-                       sh:prefix     "rdf"
-                     ] .
-
-cc:ClassCount-propertySparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "The class {?class} appears {?value} times in the data graph.";
-        sh:prefixes  cc:;
-        sh:select    """ 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             """ .
-
-cc:ClassCount-property
-        rdf:type        sh:PropertyShape;
-        sh:description  "Counts instance of classes present in the data graph.";
-        sh:group        cc:ClassesCountGroup;
-        sh:name         "ClassCount";
-        sh:order        1;
-        sh:path         rdf:type;
-        sh:severity     sh:Info;
-        sh:sparql       cc:ClassCount-propertySparql .
-
-cc:ClassCount-node  rdf:type  sh:NodeShape;
-        sh:property    cc:ClassCount-property;
-        sh:targetClass  dcat:Dataset .
-
-cc:ClassesCountGroup  rdf:type  sh:PropertyGroup;
-        rdfs:label  "ClassesCount";
-        sh:order    1 .
+or:DesignationAuthority
+        rdf:type        sh:NodeShape;
+        sh:property     or:Identity.identifier-datatype , or:Identity.identifier-cardinality , or:DesignationAuthority.authorityRef-datatype , or:DesignationAuthority.authorityRef-cardinality , or:DesignationAuthority.description-datatype , or:DesignationAuthority.description-cardinality , or:DesignationAuthority.lookupServiceRef-datatype , or:DesignationAuthority.lookupServiceRef-cardinality , or:DesignationAuthority.name-datatype , or:DesignationAuthority.name-cardinality;
+        sh:targetClass  nc:DesignationAuthority .
 
 or:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        or:ProfileClassesGroup;
-        sh:in           ( cim:IdentifiedObject cim17:Season cim16:RegulationSchedule cim17:NonConformLoadSchedule cim16:SwitchSchedule cim16:ConformLoadSchedule cim16:NonConformLoadSchedule cim17:TapSchedule cim17:RegulationSchedule cim16:TapSchedule cim17:ConformLoadSchedule cim17:SwitchSchedule cim17:BaseVoltage cim:DCNode nc:StaticPropertyRange nc:IntertemporalPropertyRange nc:AvailabilitySchedule cim16:LoadResponseCharacteristic cim16:Season cim17:ConformLoadGroup cim16:ConformLoadGroup cim17:NonConformLoadGroup cim16:NonConformLoadGroup nc:ExceptionalContingency nc:OrdinaryContingency nc:OutOfRangeContingency nc:CountertradeScheduleAction nc:RedispatchScheduleAction cim16:FossilFuel cim16:ACDCConverterDCTerminal cim16:DCTerminal cim17:ACDCConverterDCTerminal cim17:DCTerminal cim16:Terminal cim17:Terminal nc:OutagePlanningAgent nc:LoadFrequencyControlOperator nc:SecurityCoordinator nc:OutageCoordinator nc:CoordinatedCapacityCalculator nc:EnergyAlignmentCoordinator nc:DirectCurrentSystemOperator nc:TransmissionSystemOperator nc:ClosedDistributionSystemOperator nc:DistributionSystemOperator cim17:AccumulatorLimitSet cim16:AnalogLimitSet cim17:AnalogLimitSet cim16:AccumulatorLimitSet entsoe:EnergySchedulingType nc:FunctionOutputVariable cim17:PhaseTapChangerTable nc:InfeedLimit cim16:CurrentLimit cim16:ActivePowerLimit nc:VoltageAngleLimit cim17:CurrentLimit cim16:ApparentPowerLimit cim17:VoltageLimit cim17:ActivePowerLimit cim16:VoltageLimit nc:BaseCaseCurrentLimit cim17:ApparentPowerLimit cim17:BusNameMarker cim17:OperationalLimitType cim16:SubLoadArea cim17:LoadArea cim16:LoadArea cim17:SubLoadArea nc:TieCorridor nc:DCTieCorridor nc:ACTieCorridor cim17:HydroPowerPlant cim17:RegulatingControl cim17:TapChangerControl cim16:TapChangerControl nc:DCSubstationPole cim16:DCLine cim17:DCConverterUnit cim16:DCConverterUnit cim17:DCLine nc:DCSubstation nc:DCSubstationBipole cim:DCConverterUnit cim16:Substation nc:SecondarySubstation cim16:DCEquipmentContainer cim16:VoltageLevel cim17:Bay cim16:Bay cim:Substation cim17:Substation cim17:VoltageLevel cim17:Line cim:Line cim16:Line cim16:EquivalentNetwork cim17:EquivalentNetwork nc:LoadFrequencyControlArea nc:DirectCurrentCircuit nc:LineCircuit nc:PowerTransformerCircuit nc:RemedialActionScheme cim16:PhaseTapChangerTabular cim17:PhaseTapChangerAsymmetrical cim17:PhaseTapChangerSymmetrical cim16:PhaseTapChangerAsymmetrical cim16:PhaseTapChangerSymmetrical cim16:PhaseTapChangerLinear cim17:PhaseTapChangerLinear cim17:PhaseTapChangerTabular cim17:RatioTapChanger cim16:RatioTapChanger nc:SchedulingArea nc:SubSchedulingArea nc:EdgeSchedulingArea cim16:ControlArea nc:SubControlArea nc:EdgeControlArea nc:StageTrigger nc:SSSCController nc:PowerElectronicsUnitController nc:PowerElectronicsConnectionController nc:TapChangerController nc:RotatingMachineController nc:SubstationController nc:ScheduleResourceController nc:InjectionController nc:TCSCController nc:DirectCurrentPoleController nc:DirectCurrentSubstationBipoleController nc:DirectCurrentSubstationPoleController nc:DirectCurrentBipoleController nc:DirectCurrentMasterController nc:ACDCConverterController nc:CompensatorController nc:PowerPlantController nc:UnifiedPowerFlowController nc:AreaInterchangeController nc:PowerFrequencyController cim:DCChopper cim17:DCBusbar cim16:DCSeriesDevice nc:DCHarmonicFilter nc:DCSmoothingReactor nc:DCSmoothingReactorArrester cim16:DCBusbar cim17:DCShunt cim16:DCChopper cim16:DCShunt cim16:DCLineSegment cim:DCShunt cim16:DCGround cim16:DCSwitch cim:DCBreaker cim:DCDisconnector cim16:DCBreaker cim17:DCBreaker cim16:DCDisconnector cim17:DCDisconnector nc:DCConverterParallelingSwitch nc:DCBypassSwitch nc:DCEarthReturnTransferSwitch nc:DCLineParallelingSwitch nc:DCNeutralBusGroundingSwitch nc:DCMetalicReturnSwitch nc:DCNeutralBusSwitch cim17:DCSeriesDevice cim17:DCGround cim:DCSwitch cim17:DCChopper cim:DCLineSegment cim:DCBusbar cim:DCGround cim17:DCLineSegment cim:DCSeriesDevice cim17:DCSwitch cim:GeneratingUnit cim17:WindGeneratingUnit cim16:NuclearGeneratingUnit cim16:HydroGeneratingUnit cim16:SolarGeneratingUnit cim16:ThermalGeneratingUnit cim16:WindGeneratingUnit nc:GeothermalGeneratingUnit cim17:HydroGeneratingUnit cim17:ThermalGeneratingUnit nc:EquivalentGeneratingUnit cim:NuclearGeneratingUnit cim17:SolarGeneratingUnit cim17:NuclearGeneratingUnit nc:Installation cim16:PowerTransformer cim17:EquivalentInjection cim16:EquivalentBranch cim16:EquivalentShunt cim16:EquivalentInjection cim17:EquivalentShunt cim17:EquivalentBranch cim16:EnergyConsumer cim16:ConformLoad cim17:NonConformLoad cim16:StationSupply cim17:StationSupply cim16:NonConformLoad cim17:ConformLoad cim17:Switch cim17:LoadBreakSwitch cim16:LoadBreakSwitch cim17:Breaker cim17:DisconnectingCircuitBreaker cim16:Breaker cim17:GroundDisconnector cim16:GroundDisconnector cim17:Jumper cim16:Disconnector cim17:Fuse cim17:Cut cim17:Disconnector cim16:StaticVarCompensator cim17:PowerElectronicsConnection cim16:NonlinearShuntCompensator cim17:LinearShuntCompensator cim16:LinearShuntCompensator cim17:NonlinearShuntCompensator nc:StaticSynchronousSeriesCompensator nc:StaticVarCompensator nc:StaticSynchronousCompensator nc:ThyristorControlledSeriesCompensator nc:ModularStaticSynchronousSeriesCompensator cim17:AsynchronousMachine cim17:SynchronousMachine cim16:AsynchronousMachine cim16:SynchronousMachine cim17:StaticVarCompensator cim16:ExternalNetworkInjection cim:ExternalNetworkInjection cim17:ExternalNetworkInjection cim17:EnergySource cim17:EnergyConsumer cim:EnergyConsumer cim17:Clamp cim17:BusbarSection cim16:BusbarSection cim16:Junction cim17:Junction cim16:PetersenCoil cim17:GroundingImpedance cim17:PetersenCoil cim16:GroundingImpedance cim16:CsConverter cim16:VsConverter cim17:VsConverter cim17:CsConverter cim17:ACLineSegment cim16:ACLineSegment cim17:SeriesCompensator cim17:Ground cim16:Ground cim16:EnergySource cim16:Switch cim17:PowerTransformer cim16:SeriesCompensator cim17:HydroPump cim16:HydroPump cim:HydroPump cim17:GeneratingUnit cim16:GeneratingUnit cim:PowerElectronicsUnit nc:ElectricalChargingUnit nc:EquivalentPowerElectronicsUnit cim17:PhotoVoltaicUnit cim:BatteryUnit nc:MobileElectricalUnit nc:FlexibleEnergyUnit cim17:PowerElectronicsWindUnit nc:PowerElectronicsMarineUnit cim17:BatteryUnit nc:PowerElectricalChemicalUnit cim17:WaveTrap cim17:PotentialTransformer cim17:PostLineSensor cim17:CurrentTransformer cim17:FaultIndicator cim17:SurgeArrester nc:BiddingZone nc:FuelStorage cim17:ControlArea cim:ControlArea cim17:CogenerationPlant nc:AreaDispatchableUnit cim16:RegulatingControl nc:DCBiPole nc:EquivalentPowerPlant cim16:HydroPowerPlant cim:Reservoir nc:BiddingZoneBorder cim17:CAESPlant nc:EnergyCoordinationRegion nc:CapacityCalculationRegion nc:OutageCoordinationRegion nc:EnergyGroup eu:SolarPowerPlant nc:BipolarDCSystem nc:MonopolarDCSystem nc:LoadFrequencyControlBlock nc:DCPole nc:ExceptionalPowerTransferCorridor nc:OrdinaryPowerTransferCorridor cim17:CombinedCyclePlant nc:ScheduleResource eu:BoundaryPoint eu:WindPowerPlant nc:SynchronousArea cim16:ReportingGroup cim17:MutualCoupling cim17:PowerTransformerEnd cim16:PowerTransformerEnd nc:AvailabilityExceptionalLimit nc:AvailabilityRemedialActionScheme nc:AvailabilityContainer nc:AvailabilityEnabled nc:AvailabilityEquipment nc:GateInputPin nc:PinPowerTransferCorridor nc:PinMeasurement nc:PinDCTerminal nc:PinEquipmentTripping nc:PinOperationalLimit nc:PinContingency nc:PinGate nc:PinEquipment nc:PinTerminal cim:TieFlow cim17:SubGeographicalRegion nc:TriggerCondition nc:VoltageInjectionControlFunction nc:DCCurrentControlFunction nc:DCVoltageControlFunction nc:ACEmulationControlFunction nc:ImpedanceControlFunction nc:ReactivePowerControlFunction nc:ActivePowerControlFunction nc:PowerFactorControlFunction nc:CurrentControlFunction nc:FrequencyControlFunction nc:PhaseControlFunction nc:VoltageControlFunction nc:CurrentDroopControlFunction cim17:ValueToAlias nc:EnergyBlockComponent nc:ProportionalEnergyComponent cim17:AnalogLimit cim16:AccumulatorLimit cim17:AccumulatorLimit cim16:AnalogLimit cim16:Discrete cim16:Accumulator cim17:Accumulator cim17:Analog cim17:StringMeasurement cim16:StringMeasurement cim17:Discrete cim16:Analog nc:CircuitShare cim17:Command cim16:AccumulatorReset cim17:SetPoint cim16:SetPoint cim17:RaiseLowerCommand cim16:RaiseLowerCommand cim17:AccumulatorReset cim16:Command cim16:SubGeographicalRegion nc:RemedialActionScheduleGroup nc:OverlappingZone cim16:BusNameMarker cim17:GrossToNetActivePowerCurve cim16:GrossToNetActivePowerCurve nc:LossCurve nc:DurationOverloadLimitCurve nc:AmbientTemperatureDependencyCurve nc:BaseOverloadLimitCurve nc:SolarRadiationDependencyCurve nc:RecoveryOverloadLimitCurve cim16:VsCapabilityCurve cim:ReactiveCapabilityCurve cim17:VsCapabilityCurve cim:VsCapabilityCurve cim16:ReactiveCapabilityCurve cim17:ReactiveCapabilityCurve cim16:MutualCoupling cim17:ReportingGroup cim16:DayType cim:OperationalLimitType cim16:BaseVoltage nc:AvailabilityGroup nc:RemedialActionSchemeSchedule nc:GridStateIntensitySchedule nc:EventSchedule nc:PowerSchedule cim17:OperationalLimitSet cim16:ConnectivityNode cim16:ValueAliasSet cim17:RatioTapChangerTable cim17:ControlAreaGeneratingUnit nc:GridStateAlterationCollection cim16:PhaseTapChangerTable cim:ConnectivityNode cim:ContingencyEquipment nc:Gate cim17:GeographicalRegion cim17:TieFlow nc:RedispatchRemedialAction nc:CountertradeRemedialAction nc:GridStateAlterationRemedialAction nc:SchemeRemedialAction nc:AvailabilityRemedialAction cim:Organisation cim17:DCNode cim17:DayType nc:PTCTriggeredEquipment cim16:GeographicalRegion cim17:MeasurementValueSource nc:EnergyBlockOrder nc:MeasurementCalculatorInput cim:OperationalLimitSet cim16:AccumulatorValue cim17:DiscreteValue cim17:StringMeasurementValue cim17:AccumulatorValue cim17:AnalogValue cim16:DiscreteValue cim16:AnalogValue cim16:StringMeasurementValue nc:TopologyAction nc:InServiceAction nc:ACDCConverterAction nc:BatteryUnitAction nc:ExternalNetworkInjectionAction nc:ControlFunctionBlockAction nc:PowerElectronicsConnectionAction nc:StaticVarCompensatorAction nc:ShuntCompensatorModification nc:RotatingMachineAction nc:EquivalentInjectionAction nc:EnergySourceModification nc:BiddingZoneAction nc:LoadAction nc:EquipmentControllerAction nc:TapPositionAction nc:RegulatingControlAction cim17:ValueAliasSet cim16:OperationalLimitType cim17:FossilFuel cim16:DCNode cim17:LoadResponseCharacteristic nc:MeasurementCalculator nc:ACPointOfCommonCoupling nc:GridConnectionPoint nc:EnergyExchangePoint nc:DCPointOfCommonCoupling cim16:RatioTapChangerTable cim16:ValueToAlias cim17:EnergySchedulingType nc:RemedialActionGroup cim17:ConnectivityNode nc:Stage nc:EnergyType cim16:ControlAreaGeneratingUnit nc:RemedialActionSchedule nc:PowerShiftKeyStrategy cim16:MeasurementValueSource cim16:OperationalLimitSet nc:AssessedElement cim:NameType nc:NamingAuthority nc:ObjectType cim:Name md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:DesignationAuthority nc:Designation nc:DesignationType nc:Identity md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;

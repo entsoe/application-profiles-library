@@ -21,11 +21,11 @@
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the sensitivity matrix.</dcterms:description>
-    <dcterms:identifier>d89a8510-528b-49a9-81f1-c51be51caa6f</dcterms:identifier>
+    <dcterms:identifier>d08ee034-d684-4675-9964-851d547642a5</dcterms:identifier>
     <dcat:keyword>SM</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-04</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-09</dcterms:modified>
     <owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/SensitivityMatrix-EU/2.2"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,10 +33,10 @@
     <dcterms:title xml:lang="en">Sensitivity Matrix Vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix/2.3"/>
-    <owl:versionInfo xml:lang="en">2.3.3</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.3.4</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#AssessedElement">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
 The measurements and limits are as defined in the steady state hypothesis.</rdfs:comment>
     <rdfs:label xml:lang="en">AssessedElement</rdfs:label>
@@ -55,7 +55,7 @@ The measurements and limits are as defined in the steady state hypothesis.</rdfs
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Contingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>An event threatening system reliability, consisting of one or more contingency elements.</rdfs:comment>
     <rdfs:label xml:lang="en">Contingency</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -72,7 +72,7 @@ The measurements and limits are as defined in the steady state hypothesis.</rdfs
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ControllableQuantity">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Controllable quantity is a set point quantity on a grid state alteration or on a remedial action.</rdfs:comment>
     <rdfs:label xml:lang="en">ControllableQuantity</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -123,28 +123,28 @@ The measurements and limits are as defined in the steady state hypothesis.</rdfs
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
     <rdfs:label xml:lang="en">Date</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
     <rdfs:label xml:lang="en">DateTime</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Float">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
     <rdfs:label xml:lang="en">Float</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#GridStateAlteration">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.</rdfs:comment>
     <rdfs:label xml:lang="en">GridStateAlteration</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -162,7 +162,7 @@ The measurements and limits are as defined in the steady state hypothesis.</rdfs
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as rdf:resource in RDFXML.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -174,7 +174,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
     <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -208,7 +208,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ObservableQuantity">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Observable quantity is an electrical quantity on an assessed element or an assessed element with contingency.</rdfs:comment>
     <rdfs:label xml:lang="en">ObservableQuantity</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -259,7 +259,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ObservableQuantityKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Kind of observable quantity.</rdfs:comment>
     <rdfs:label xml:lang="en">ObservableQuantityKind</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
@@ -290,18 +290,18 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ObservableQuantityKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile">
     <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
     <rdfs:label xml:lang="en">DocSensitivityMatrixProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile">
     <rdfs:comment>This package contains sensitivity matrix profile.</rdfs:comment>
     <rdfs:label xml:lang="en">SensitivityMatrixProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. </rdfs:comment>
     <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -319,7 +319,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SensitivityFactor">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>The sensitivity factor which represents the sensitivity between observable and controllable elements. </rdfs:comment>
     <rdfs:label xml:lang="en">SensitivityFactor</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -370,7 +370,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SensitivityMatrix">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>The sensitivity matrix which represents the sensitivity factors between observable and controllable elements. </rdfs:comment>
     <rdfs:label xml:lang="en">SensitivityMatrix</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -400,7 +400,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SensitivityMatrixKind">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>Kinds of sensitivity matrix.</rdfs:comment>
     <rdfs:label xml:lang="en">SensitivityMatrixKind</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
@@ -432,14 +432,14 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#SensitivityMatrixKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_SensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#SensitivityMatrixProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
     <rdfs:label xml:lang="en">String</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
 The primitive is serialized as literal without language support.</rdfs:comment>
     <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
@@ -448,7 +448,7 @@ The primitive is serialized as literal without language support.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as literal without language support.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -460,7 +460,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#Package_DocSensitivityMatrixProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SensitivityMatrix#DocSensitivityMatrixProfile"/>
     <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
     <rdfs:label xml:lang="en">URL</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>

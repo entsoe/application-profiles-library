@@ -21,11 +21,11 @@
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the security analysis result profile.</dcterms:description>
-    <dcterms:identifier>7d53a1b2-0dcc-4556-b868-6ed099bd9ac9</dcterms:identifier>
+    <dcterms:identifier>66fe34bd-50a7-475e-bb76-a3b5231c82ac</dcterms:identifier>
     <dcat:keyword>SAR</dcat:keyword>
     <dcterms:language>en-GB</dcterms:language>
     <dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-11</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-09</dcterms:modified>
     <owl:priorVersion rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult/2.4"/>
     <dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
     <dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
@@ -33,10 +33,10 @@
     <dcterms:title xml:lang="en">Security Analysis Result Vocabulary</dcterms:title>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult/2.5"/>
-    <owl:versionInfo xml:lang="en">2.5.0</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">2.5.1</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="#ACDCTerminal">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.</rdfs:comment>
     <rdfs:label xml:lang="en">ACDCTerminal</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -52,7 +52,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ActivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
     <rdfs:label xml:lang="en">ActivePower</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -85,7 +85,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#AngleDegrees">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Measurement of angle in degrees.</rdfs:comment>
     <rdfs:label xml:lang="en">AngleDegrees</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -118,7 +118,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ApparentPower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Product of the RMS value of the voltage and the RMS value of the current.</rdfs:comment>
     <rdfs:label xml:lang="en">ApparentPower</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -151,7 +151,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#BaseCasePowerFlowResult">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Base case power flow result for a given terminal.</rdfs:comment>
     <rdfs:label xml:lang="en">BaseCasePowerFlowResult</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -160,14 +160,14 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Boolean">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A type with the value space "true" and "false".</rdfs:comment>
     <rdfs:label xml:lang="en">Boolean</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Contingency">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>An event threatening system reliability, consisting of one or more contingency elements.</rdfs:comment>
     <rdfs:label xml:lang="en">Contingency</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -184,7 +184,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ContingencyPowerFlowResult">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Contingency power flow result on a given terminal for a given contingency.</rdfs:comment>
     <rdfs:label xml:lang="en">ContingencyPowerFlowResult</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -204,7 +204,7 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#CurrentFlow">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.</rdfs:comment>
     <rdfs:label xml:lang="en">CurrentFlow</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -237,28 +237,28 @@
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Date">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile"/>
     <rdfs:comment>Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
     <rdfs:label xml:lang="en">Date</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DateTime">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</rdfs:comment>
     <rdfs:label xml:lang="en">DateTime</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Float">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A floating point number. The range is unspecified and not limited.</rdfs:comment>
     <rdfs:label xml:lang="en">Float</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#IRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as rdf:resource in RDFXML.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -270,7 +270,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#OperationalLimit">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A value and normal value associated with a specific kind of limit. 
 The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  
 If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration. </rdfs:comment>
@@ -288,12 +288,12 @@ If a particular piece of equipment has multiple operational limits of the same k
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile">
     <rdfs:comment>This package contains datatypes used only in the RDFS header.</rdfs:comment>
     <rdfs:label xml:lang="en">DocSecurityAnalysisResultProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile">
+  <rdf:Description rdf:about="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile">
     <rdfs:comment>This package contains the security analysis result profile.
 This profile is not intended to replace the Topology (TP) and State Variables (SV) profiles. Its intention is to exchange power flow result that is relevant for security optimization, either through violation or through a loading threshold. Systems should not use this profile for dumping a full database. The modeling is optimized to have the minimum size in addition to a well defined value definition (e.g. active power, apparent power,etc.).
 Recommendation: If the terminals are connected with zero impedance, it is recommended to export only one terminal with a voltage (e.g. the terminal of a BusbarSection).
@@ -302,7 +302,7 @@ The connection between Contingency and Remedial Action is given by the Remedial 
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="#PerCent">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.</rdfs:comment>
     <rdfs:label xml:lang="en">PerCent</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -336,7 +336,7 @@ The connection between Contingency and Remedial Action is given by the Remedial 
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerFlowResult">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Power flow result including any operational limit violation.</rdfs:comment>
     <rdfs:label xml:lang="en">PowerFlowResult</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -508,7 +508,7 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerTransferCorridor">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system.</rdfs:comment>
     <rdfs:label xml:lang="en">PowerTransferCorridor</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -525,7 +525,7 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ReactivePower">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Product of RMS value of the voltage and the RMS value of the quadrature component of the current.</rdfs:comment>
     <rdfs:label xml:lang="en">ReactivePower</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
@@ -558,7 +558,7 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#Region">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A region where the system operator belongs to.</rdfs:comment>
     <rdfs:label xml:lang="en">Region</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -576,7 +576,7 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialAction">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. </rdfs:comment>
     <rdfs:label xml:lang="en">RemedialAction</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -594,7 +594,7 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#RemedialActionApplied">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Remedial Action or Remedial Action Stage that has been applied to the power flow case which has the associated power flow result. </rdfs:comment>
     <rdfs:label xml:lang="en">RemedialActionApplied</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -646,7 +646,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#Stage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Stage of a remedial action scheme.</rdfs:comment>
     <rdfs:label xml:lang="en">Stage</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
@@ -664,14 +664,14 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="#String">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
     <rdfs:label xml:lang="en">String</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringFixedLanguage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile"/>
     <rdfs:comment>A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
 The primitive is serialized as literal without language support.</rdfs:comment>
     <rdfs:label xml:lang="en">StringFixedLanguage</rdfs:label>
@@ -680,7 +680,7 @@ The primitive is serialized as literal without language support.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#StringIRI">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile"/>
     <rdfs:comment>An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
 The primitive is serialized as literal without language support.
 IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
@@ -692,7 +692,7 @@ IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicod
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#TopologicalNode">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).
 For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called "busses".</rdfs:comment>
     <rdfs:label xml:lang="en">TopologicalNode</rdfs:label>
@@ -709,7 +709,7 @@ For a planning model, switch statuses are not used to form topological nodes. In
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim.ucaiug.io/ns/prof-cim#URL">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_DocSecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#DocSecurityAnalysisResultProfile"/>
     <rdfs:comment>A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications.</rdfs:comment>
     <rdfs:label xml:lang="en">URL</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
@@ -717,7 +717,7 @@ For a planning model, switch statuses are not used to form topological nodes. In
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitMultiplier">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
@@ -746,7 +746,7 @@ For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is de
     <rdf:type rdf:resource="#UnitMultiplier"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitSymbol">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
 Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
@@ -800,7 +800,7 @@ Note: Different meter designs use different methods to arrive at their results. 
     <rdf:type rdf:resource="#UnitSymbol"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Voltage">
-    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#Package_SecurityAnalysisResultProfile"/>
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/SecurityAnalysisResult#SecurityAnalysisResultProfile"/>
     <rdfs:comment>Electrical voltage, can be both AC and DC.</rdfs:comment>
     <rdfs:label xml:lang="en">Voltage</rdfs:label>
     <cims:stereotype>CIMDatatype</cims:stereotype>
