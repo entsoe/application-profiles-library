@@ -1272,6 +1272,8 @@ equ:PhaseTapChangerNonLinear.xMin-valueRangePair
         sh:group        equ:EQ301UML ;
         sh:order        73 ;
         sh:severity     sh:Violation .
+
+equ:PowerTransformer-associationNotUsed
         a               sh:PropertyShape ;
         sh:sparql       equ:PowerTransformer-associationNotUsedSparql ;
         sh:path         rdf:type ;
