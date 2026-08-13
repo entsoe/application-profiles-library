@@ -72,34 +72,39 @@ eq600:RotatingMachine.ratedS-required
         sh:path         cim:RotatingMachine.ratedS ;
         sh:severity     sh:Violation .
 
-eq600:TapChanger
+eq600:RatioTapChanger.neutralU
         a               sh:NodeShape ;
-        sh:property     eq600:TapChanger.neutralU-valueRangePair ;
-        sh:targetClass  cim:RatioTapChanger , cim:PhaseTapChangerTabular , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerLinear .
+        sh:property     eq600:RatioTapChanger.neutralU-valueRangePair ;
+        sh:targetClass  cim:RatioTapChanger .
 
-eq600:TapChanger.neutralU-valueRangePair
+eq600:RatioTapChanger.neutralU-valueRangePair
         a               sh:PropertyShape ;
-        sh:sparql       eq600:TapChanger.neutralU-valueRangePairSparql ;
+        sh:path         cim:RatioTapChanger.TransformerEnd ;
+        sh:node         [ sh:property [ sh:path      ( [ sh:inversePath cim:RatioTapChanger.TransformerEnd ] cim:TapChanger.neutralU ) ;
+                                         sh:equals    cim:PowerTransformerEnd.ratedU ] ] ;
         sh:description  "The TapChanger.neutralU shall be the same as PowerTransformerEnd.ratedU." ;
-        sh:name         "C:600:EQ:TapChanger.neutralU:ValueRangePair" ;
-        sh:path         cim:TapChanger.neutralU ;
+        sh:message      "The value is not the same as the PowerTransformerEnd.ratedU." ;
+        sh:name         "C:600:EQ:RatioTapChanger.neutralU:ValueRangePair" ;
         sh:group        eq600:6002EQGroup ;
         sh:order        2 ;
         sh:severity     sh:Violation .
-        
-    
-eq600:TapChanger.neutralU-valueRangePairSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "The value is not the same as the PowerTransformerEnd.ratedU." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-        $this $PATH ?value .
-        OPTIONAL {$this cim:RatioTapChanger.TransformerEnd/cim:PowerTransformerEnd.ratedU ?rratedu } .
-        OPTIONAL {$this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.ratedU ?pratedu } .
-        FILTER ((bound(?rratedu) && ?value!=?rratedu) || (bound(?pratedu) && ?value!=?pratedu)).
-        }""" . 
+
+eq600:PhaseTapChanger.neutralU
+        a               sh:NodeShape ;
+        sh:property     eq600:PhaseTapChanger.neutralU-valueRangePair ;
+        sh:targetClass  cim:PhaseTapChangerTabular , cim:PhaseTapChangerSymmetrical , cim:PhaseTapChangerAsymmetrical , cim:PhaseTapChangerLinear .
+
+eq600:PhaseTapChanger.neutralU-valueRangePair
+        a               sh:PropertyShape ;
+        sh:path         cim:PhaseTapChanger.TransformerEnd ;
+        sh:node         [ sh:property [ sh:path      ( [ sh:inversePath cim:PhaseTapChanger.TransformerEnd ] cim:TapChanger.neutralU ) ;
+                                         sh:equals    cim:PowerTransformerEnd.ratedU ] ] ;
+        sh:description  "The TapChanger.neutralU shall be the same as PowerTransformerEnd.ratedU." ;
+        sh:message      "The value is not the same as the PowerTransformerEnd.ratedU." ;
+        sh:name         "C:600:EQ:PhaseTapChanger.neutralU:ValueRangePair" ;
+        sh:group        eq600:6002EQGroup ;
+        sh:order        3 ;
+        sh:severity     sh:Violation .
         
 eq600:SubstationCountShape
        a sh:NodeShape ;
@@ -113,7 +118,7 @@ eq600:Substation-count
         sh:description  "The number of Substation-s shall reflect the design of the power system. Cases of a single Substation in a power system model or having a Substation per VoltageLevel are reported as warnings." ;
         sh:name         "C:600:EQ:Substation:count" ;
         sh:group        eq600:6002EQGroup ;
-        sh:order        3 ;
+        sh:order        4 ;
         sh:severity     sh:Warning .
         
     
@@ -155,7 +160,7 @@ eq600:GeographicalRegion-EQ__4
            sh:group        eq600:6002EQGroup ;
            sh:message      "Muliple GeographicalRegion-s are present." ;
            sh:name         "C:600:EQ:GeographicalRegion:EQ__4" ;
-           sh:order        4 ;
+           sh:order        5 ;
            sh:severity     sh:Violation .
            
 eq600:ReactiveCapabilityCurve
@@ -170,7 +175,7 @@ eq600:ReactiveCapabilityCurve-units
         sh:description  "For a ReactiveCapabilityCurve associated with SynchronousMachine, the Curve.xUnit shall be set to UnitSymbol.W and both Curve.y1Unit and Curve.y2Unit shall be set to UnitSymbol.VAr. As the multiplier is not included in the profile it is defined the same as the multiplier used for datatype ActivePower and ReactivePower, i.e. UnitMultiplier.M." ;
         sh:name         "C:600:EQ:ReactiveCapabilityCurve:units" ;
         sh:group        eq600:6002EQGroup ;
-        sh:order        5 ;
+        sh:order        6 ;
         sh:severity     sh:Violation .
         
     
