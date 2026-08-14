@@ -1657,7 +1657,7 @@ equ:ShuntCompensator.maximumSections-numberOfInstancesSparql
             #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
             #?nscpointsall rdf:type ?typeall .
           }
-        GROUP BY $this ?typeall
+        GROUP BY $this
         }
         $this $PATH ?value .  
         FILTER (?value!=?typesall) .
