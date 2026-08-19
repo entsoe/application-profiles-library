@@ -1240,7 +1240,7 @@ equ:GeneratingUnit.nominalP-valueRangePair
         sh:path         [ sh:inversePath cim:RotatingMachine.GeneratingUnit ] ;
         sh:node         [ sh:property [ sh:path ( cim:RotatingMachine.GeneratingUnit cim:GeneratingUnit.nominalP ) ;
                                                           sh:lessThanOrEquals  cim:RotatingMachine.ratedS ] ] ;
-        sh:description  "The attribute shall be equal to or less than RotatingMachine.ratedS." ;
+        sh:description  "The attribute  cim:GeneratingUnit.nominalP shall be equal to or less than RotatingMachine.ratedS." ;
         sh:message      "The value is greater than RotatingMachine.ratedS for the associated RotatingMachine." ;
         sh:name         "C:301:EQ:GeneratingUnit.nominalP:valueRangePair" ;
         sh:group        equ:EQ301UML ;
