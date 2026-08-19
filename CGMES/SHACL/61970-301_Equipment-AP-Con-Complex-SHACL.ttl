@@ -1635,7 +1635,7 @@ equ:NonlinearShuntCompensator  a  sh:NodeShape ;
 equ:ShuntCompensator.maximumSections-numberOfInstances
         a               sh:PropertyShape ;
         sh:sparql       equ:ShuntCompensator.maximumSections-numberOfInstancesSparql ;
-        sh:description  "The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. " ;
+        sh:description  "The number of NonlinearShuntCompensatorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. " ;
         sh:name         "C:301:EQ:NonlinearShuntCompensatorPoint:numberOfInstances" ;
         sh:path         cim:ShuntCompensator.maximumSections ;
         sh:group        equ:EQ301UMLvarious ;
