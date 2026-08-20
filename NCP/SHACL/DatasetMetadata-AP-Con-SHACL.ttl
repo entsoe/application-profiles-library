@@ -1349,7 +1349,7 @@ dm:alternativeVersionAndPreferredVersion-dependencySparql
 dm:forwardReverse-dependency
         a               sh:PropertyShape ;
         sh:sparql       dm:forwardReverse-dependencySparql ;
-        sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:referseDifference is present." ;
+        sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:name         "forwardReverse-dependency" ;
         sh:path         rdf:type;
         sh:group        dm:CardinalityGroupCustom ;
@@ -1359,13 +1359,13 @@ dm:forwardReverse-dependency
     
 dm:forwardReverse-dependencySparql
     a         sh:SPARQLConstraint ;  
-    sh:message "None of the properties dcatcim:forwardDifference, dcatcim:referseDifference is present." ;
+    sh:message "None of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
     sh:prefixes cim: ;
     sh:select """
         SELECT $this ?value 
         WHERE {
     BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
-    BIND(EXISTS{$this dcatcim:referseDifference ?value1} AS ?hasprefv).
+    BIND(EXISTS{$this dcatcim:reverseDifference ?value1} AS ?hasprefv).
 
         FILTER ((?hasaltv="false"^^xsd:boolean && ?hasprefv="false"^^xsd:boolean) ).
         }""" .
