@@ -48,27 +48,16 @@ rasc:RemedialActionSchedule  a          sh:NodeShape ;
 rasc:RemedialActionSchedule-proposingEntity
         a               sh:PropertyShape ;
         sh:description  "The RemedialActionSchedule shall have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
-        sh:sparql       rasc:RemedialActionSchedule-proposingEntitySparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath ( nc:RemedialActionSchedule.ProposingEntity [ sh:inversePath nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ] ) ] ;
+        sh:minCount     1 ;
+        sh:message      "The RemedialActionSchedule does not have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionSchedule:proposingEntity" ;
         sh:order        1 ;
-        sh:severity     sh:Violation .
-        
-rasc:RemedialActionSchedule-proposingEntitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "The RemedialActionSchedule does not have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:RemedialActionSchedule.ProposingEntity ?o1} AS ?pesc).
-    BIND(EXISTS{$this ^nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ?o2} AS ?peso).
-        FILTER (?pesc="false"^^xsd:boolean && ?peso="false"^^xsd:boolean ).
-      }""" .        
+        sh:severity     sh:Violation .        
 
 rasc:RemedialActionScheduleGroup  a          sh:NodeShape ;
-        sh:property      rasc:RemedialActionScheduleGroup.GroupDependency-cardinality, rasc:RemedialActionScheduleGroup-dependency, rasc:RemedialActionScheduleDependency.kind-cardinality;
+        sh:property      rasc:RemedialActionScheduleGroup.GroupDependency-cardinality, rasc:RemedialActionScheduleGroup-proposedDependency, rasc:RemedialActionScheduleGroup-replacedDependency, rasc:RemedialActionScheduleDependency.kind-cardinality;
         sh:targetClass  nc:RemedialActionScheduleGroup.
     
 rasc:RemedialActionScheduleGroup.GroupDependency-cardinality
@@ -82,27 +71,27 @@ rasc:RemedialActionScheduleGroup.GroupDependency-cardinality
         sh:path         [ sh:inversePath  nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ];
         sh:severity     sh:Violation .
     
-rasc:RemedialActionScheduleGroup-dependency
+rasc:RemedialActionScheduleGroup-proposedDependency
         a               sh:PropertyShape ;
-        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
-        sh:sparql       rasc:RemedialActionScheduleGroup-dependencySparql ;
-        sh:path         rdf:type ;
+        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule." ;
+        sh:path         ( [ sh:inversePath nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ] nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ) ;
+        sh:minCount     1 ;
+        sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule." ;
         sh:group        rasc:RASgroup ;
-        sh:name         "C:NC:RAS:RemedialActionScheduleGroup:dependency" ;
+        sh:name         "C:NC:RAS:RemedialActionScheduleGroup:proposedDependency" ;
         sh:order        3 ;
         sh:severity     sh:Violation .
-        
-rasc:RemedialActionScheduleGroup-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o1} AS ?a1).
-    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o2} AS ?a2).
-        FILTER (?a1="false"^^xsd:boolean && ?a2="false"^^xsd:boolean ).
-      }""" .    
+
+rasc:RemedialActionScheduleGroup-replacedDependency
+        a               sh:PropertyShape ;
+        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
+        sh:path         ( [ sh:inversePath nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ] nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ) ;
+        sh:minCount     1 ;
+        sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
+        sh:group        rasc:RASgroup ;
+        sh:name         "C:NC:RAS:RemedialActionScheduleGroup:replacedDependency" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .    
       
 rasc:RemedialActionScheduleDependency.kind-cardinality
         a               sh:PropertyShape ;
@@ -111,7 +100,7 @@ rasc:RemedialActionScheduleDependency.kind-cardinality
         sh:path         rdf:type ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleDependency.kind:cardinality" ;
-        sh:order        4 ;
+        sh:order        5 ;
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
@@ -137,7 +126,7 @@ rasc:RemedialActionScheduleDependency.kind-applicability
         sh:path         rdf:type ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleDependency.kind:applicability" ;
-        sh:order        5 ;
+        sh:order        6 ;
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
@@ -160,7 +149,7 @@ rasc:RemedialActionScheduleDependency-associations
         sh:path         rdf:type ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleDependency:associations" ;
-        sh:order        6 ;
+        sh:order        7 ;
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleDependency-associationsSparql
@@ -190,7 +179,7 @@ rasc:RemedialActionScheduleResponse.rejectionReasonKind-required
         sh:path         rdf:type ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleResponse.rejectionReasonKind:required" ;
-        sh:order        7 ;
+        sh:order        8 ;
         sh:severity     sh:Violation .
         
 rasc:RemedialActionScheduleResponse.rejectionReasonKind-requiredSparql
@@ -213,7 +202,7 @@ rasc:RemedialActionScheduleResponse.rejectionReason-applicability
         sh:path         rdf:type ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleResponse.rejectionReason:applicability" ;
-        sh:order        8 ;
+        sh:order        9 ;
         sh:severity     sh:Warning .
         
 rasc:RemedialActionScheduleResponse.rejectionReason-applicabilitySparql
@@ -241,7 +230,7 @@ rasc:PowerSchedule-currencyConsistency
         sh:path         nc:PowerSchedule.currency ;
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:PowerSchedule:currencyConsistency" ;
-        sh:order        9 ;
+        sh:order        10 ;
         sh:severity     sh:Violation .
 
 rasc:PowerSchedule-currencyConsistencySparql
