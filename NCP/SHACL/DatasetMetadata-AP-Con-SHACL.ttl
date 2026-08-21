@@ -1350,7 +1350,10 @@ dm:forwardReverse-dependency
         a               sh:PropertyShape ;
         sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:name         "forwardReverse-dependency" ;
-        sh:path         [ sh:alternativePath ( dcatcim:forwardDifference dcatcim:reverseDifference ) ] ;
+        sh:path         [ sh:alternativePath (
+            dcatcim:forwardDifference
+            dcatcim:reverseDifference
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "None of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:group        dm:CardinalityGroupCustom ;

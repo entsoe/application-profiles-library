@@ -48,7 +48,12 @@ erc:AreaReserveResource  a          sh:NodeShape ;
 erc:AreaReserveResource-associations
         a               sh:PropertyShape ;
         sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-        sh:path         [ sh:alternativePath ( nc:AreaReserveResource.GeneratingUnit nc:AreaReserveResource.PowerElecronicsUnit nc:AreaReserveResource.ScheduleResource nc:AreaReserveResource.HydroPump ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:AreaReserveResource.GeneratingUnit
+            nc:AreaReserveResource.PowerElecronicsUnit
+            nc:AreaReserveResource.ScheduleResource
+            nc:AreaReserveResource.HydroPump
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
         sh:group        erc:ERgroup ;
@@ -59,7 +64,10 @@ erc:AreaReserveResource-associations
 erc:AreaReserveResource-interconnection
         a               sh:PropertyShape ;
         sh:description  "An AreaReserveResource shall be associated with either a SchedulingArea or a TieCorridor, but not both." ;
-        sh:path         [ sh:alternativePath ( nc:AreaReserveResource.SchedulingArea nc:AreaReserveResource.TieCorridor ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:AreaReserveResource.SchedulingArea
+            nc:AreaReserveResource.TieCorridor
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "AreaReserveResource is not associated with either TieCorridor or SchedulingArea." ;
         sh:group        erc:ERgroup ;
@@ -76,7 +84,12 @@ erc:EnergyComponent  a          sh:NodeShape ;
 erc:EnergyComponent-associations
         a               sh:PropertyShape ;
         sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-        sh:path         [ sh:alternativePath ( nc:EnergyComponent.GeneratingUnit nc:EnergyComponent.PowerElecronicsUnit nc:EnergyComponent.EnergyConsumer nc:EnergyComponent.HydroPump ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:EnergyComponent.GeneratingUnit
+            nc:EnergyComponent.PowerElecronicsUnit
+            nc:EnergyComponent.EnergyConsumer
+            nc:EnergyComponent.HydroPump
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
         sh:group        erc:ERgroup ;
@@ -121,7 +134,10 @@ erc:Circuit  a          sh:NodeShape ;
 erc:Circuit-associations
         a               sh:PropertyShape ;
         sh:description  "The Circuit shall be associated with either Equipment or Terminal." ;
-        sh:path         [ sh:alternativePath ( nc:Equipment.Circuit nc:Circuit.IdentifyingTerminal ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:Equipment.Circuit
+            nc:Circuit.IdentifyingTerminal
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "Circuit is not associated with either Equipment or Terminal." ;
         sh:group        erc:ERgroup ;
@@ -172,7 +188,10 @@ erc:InfeedLimit  a          sh:NodeShape ;
 erc:InfeedLimit-requiredAttributes
         a               sh:PropertyShape ;
         sh:description  "An InfeedLimit shall have either .normalValueA or .normalValueW." ;
-        sh:path         [ sh:alternativePath ( nc:InfeedLimit.normalValueA nc:InfeedLimit.normalValueW ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:InfeedLimit.normalValueA
+            nc:InfeedLimit.normalValueW
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "InfeedLimit does not have either .normalValueA or .normalValueW." ;
         sh:group        erc:ERgroup ;
@@ -430,7 +449,10 @@ erc:BoundaryPointBorder-requiredAssociation
     a sh:PropertyShape ;
     sh:name "C:NC:ER:BoundaryPointBorder:requiredAssociation" ;
     sh:description "A BoundaryPointBorder shall have minimum one BoundaryPoint or one BoundaryPointBorderLink." ;
-    sh:path [ sh:alternativePath ( [ sh:inversePath nc:BoundaryPoint.BoundaryPointBorder ] [ sh:inversePath nc:BoundaryPointBorderLink.BoundaryPointBorder ] ) ] ;
+    sh:path [ sh:alternativePath (
+        [ sh:inversePath nc:BoundaryPoint.BoundaryPointBorder ]
+        [ sh:inversePath nc:BoundaryPointBorderLink.BoundaryPointBorder ]
+      ) ] ;
     sh:minCount 1 ;
     sh:message "BoundaryPointBorder is not associated with a BoundaryPoint or a BoundaryPointBorderLink." ;
     sh:group erc:ERgroup ;

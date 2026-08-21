@@ -48,7 +48,10 @@ rasc:RemedialActionSchedule  a          sh:NodeShape ;
 rasc:RemedialActionSchedule-proposingEntity
         a               sh:PropertyShape ;
         sh:description  "The RemedialActionSchedule shall have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
-        sh:path         [ sh:alternativePath ( nc:RemedialActionSchedule.ProposingEntity [ sh:inversePath nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ] ) ] ;
+        sh:path         [ sh:alternativePath (
+            nc:RemedialActionSchedule.ProposingEntity
+            [ sh:inversePath nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ]
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "The RemedialActionSchedule does not have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare." ;
         sh:group        rasc:RASgroup ;

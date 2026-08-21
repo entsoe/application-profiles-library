@@ -46,7 +46,10 @@ sisc:PowerShiftKeySchedule  a          sh:NodeShape ;
 sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
         a               sh:PropertyShape ;
         sh:description  "The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution." ;
-        sh:path         [ sh:alternativePath ( [ sh:inversePath nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ] nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ) ] ;
+        sh:path         [ sh:alternativePath (
+            [ sh:inversePath nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ]
+            nc:PowerShiftKeySchedule.ParticipationFactorTimePoint
+          ) ] ;
         sh:minCount     1 ;
         sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
         sh:group        sisc:SISCustomGroup ;
