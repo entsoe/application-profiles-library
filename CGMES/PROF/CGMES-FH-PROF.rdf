@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:role="http://www.w3.org/ns/dx/prof/role/" xmlns:dcterms="http://purl.org/dc/terms/" xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<dcterms:title>File Header</dcterms:title>
+		<dcterms:description>CGMES 2.4 File Header profile.</dcterms:description>
+		<dcat:keyword>FH</dcat:keyword>
+		<prof:hasToken>FH</prof:hasToken>
+		<dcterms:creator>ENTSO-E</dcterms:creator>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:identifier>6ca8e494-9ebb-4b75-ad09-d8a4e7985ab5</dcterms:identifier>
+		<owl:versionIRI rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1"/>
+		<owl:versionInfo>2.4.15</owl:versionInfo>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/1/vocabulary"/>
+		<prof:hasResource rdf:resource="http://iec.ch/TC57/61970-552/ModelDescription/Constraints"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/1/vocabulary">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="FileHeader.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>File Header</dcterms:title>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://iec.ch/TC57/61970-552/ModelDescription/Constraints">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="FileHeaderProfile.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>FileHeaderProfile</rdfs:label>
+	</rdf:Description>
+</rdf:RDF>

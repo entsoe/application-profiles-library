@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:role="http://www.w3.org/ns/dx/prof/role/" xmlns:dcterms="http://purl.org/dc/terms/" xml:base="http://www.w3.org/ns/dx/prof">
+	<rdf:Description rdf:about="http://entsoe.eu/CIM/GeographicalLocation/2/1">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/Profile"/>
+		<dcterms:title>Geographical Location</dcterms:title>
+		<dcterms:description>CGMES 2.4 Geographical Location profile.</dcterms:description>
+		<dcat:keyword>GL</dcat:keyword>
+		<prof:hasToken>GL</prof:hasToken>
+		<dcterms:creator>ENTSO-E</dcterms:creator>
+		<dcterms:publisher>ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder>ENTSO-E</dcterms:rightsHolder>
+		<dcterms:license>https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:identifier>52bde251-7262-4035-b021-697e6170e7d0</dcterms:identifier>
+		<owl:versionIRI rdf:resource="http://entsoe.eu/CIM/GeographicalLocation/2/1"/>
+		<owl:versionInfo>2.4.15</owl:versionInfo>
+		<prof:isProfileOf rdf:resource="http://entsoe.eu/CIM/EquipmentCore/3/1"/>
+		<prof:hasResource rdf:resource="http://entsoe.eu/CIM/GeographicalLocation/2/1/vocabulary"/>
+		<prof:hasResource rdf:resource="http://entsoe.eu/CIM/GeographicalLocation/2/1/Constraints"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://entsoe.eu/CIM/GeographicalLocation/2/1/vocabulary">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/vocabulary"/>
+		<prof:hasArtifact rdf:resource="GeographicalLocationProfileRDFSAugmented-v2_4_15-4Sep2020.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title>Geographical Location</dcterms:title>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://entsoe.eu/CIM/GeographicalLocation/2/1/Constraints">
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/ResourceDescriptor"/>
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/constraints"/>
+		<prof:hasArtifact rdf:resource="GeographicalLocationProfile.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label>GeographicalLocationProfile</rdfs:label>
+	</rdf:Description>
+</rdf:RDF>
