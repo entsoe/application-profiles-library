@@ -73,7 +73,7 @@ rasc:RemedialActionScheduleGroup.GroupDependency-cardinality
     
 rasc:RemedialActionScheduleGroup-proposedDependency
         a               sh:PropertyShape ;
-        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule." ;
+        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
         sh:path         ( [ sh:inversePath nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ] nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ) ;
         sh:minCount     1 ;
         sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule." ;
@@ -84,7 +84,7 @@ rasc:RemedialActionScheduleGroup-proposedDependency
 
 rasc:RemedialActionScheduleGroup-replacedDependency
         a               sh:PropertyShape ;
-        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
+        sh:description  "A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
         sh:path         ( [ sh:inversePath nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ] nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ) ;
         sh:minCount     1 ;
         sh:message      "The RemedialActionScheduleGroup does not have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
