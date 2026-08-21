@@ -1,0 +1,46 @@
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#CrossZonalNetworkElement.BiddingZoneBorder-usage
+# CrossZonalNetworkElement.BiddingZoneBorder-usage
+# A CrossZonalNetworkElement shall be associated with exactly two BiddingZoneBorder instances. The two associated BiddingZoneBorder instances shall represent the same pair of bidding zones, but in opposite directions. This means that the FromBiddingZone of one BiddingZoneBorder shall be equal to the ToBiddingZone of the other BiddingZoneBorder, and the ToBiddingZone of the first BiddingZoneBorder shall be equal to the FromBiddingZone of the other. The two bidding zones shall be different.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+        SELECT DISTINCT $this
+        WHERE {
+            $this $PATH ?border1 .
+            $this $PATH ?border2 .
+
+            FILTER (?border1 != ?border2)
+
+            ?border1
+                nc:BiddingZoneBorder.FromBiddingZone ?from1 ;
+                nc:BiddingZoneBorder.ToBiddingZone   ?to1 .
+
+            ?border2
+                nc:BiddingZoneBorder.FromBiddingZone ?from2 ;
+                nc:BiddingZoneBorder.ToBiddingZone   ?to2 .
+
+            FILTER (
+                ?from1 = ?to1
+                ||
+                ?from1 != ?to2
+                ||
+                ?to1 != ?from2
+            )
+        }
+    

@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value2 ?value1
-			WHERE {      
+      SELECT  $this ?value2 ?value1
+      WHERE {      
         $this ^cim:Terminal.ConductingEquipment ?term1  .
         ?term1 cim:ACDCTerminal.sequenceNumber 1 .
         $this ^cim:Terminal.ConductingEquipment ?term2  .
@@ -32,4 +32,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         (bound(?value1) && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
         (bound(?value1) && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         ) .
-			}
+      }

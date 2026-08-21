@@ -20,11 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this (COUNT(?value) AS ?counts) ?value
-			WHERE {
+      SELECT  $this (COUNT(?value) AS ?counts) ?value
+      WHERE {
           ?value rdf:type ?o.
           FILTER(?o!=cim:Equipment).
-			}
+      }
       GROUP BY $this ?value
       HAVING(?counts>1)
       

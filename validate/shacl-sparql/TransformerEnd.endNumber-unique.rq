@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         {
         SELECT $this (COUNT(DISTINCT ?endnumber) as ?countd) (COUNT(?endnumber) as ?count) (MIN(?endnumber) as ?minendnumber) (MAX(?ratedu) as ?maxratedu) 
         WHERE {
@@ -41,5 +41,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         ?end2 cim:PowerTransformerEnd.ratedU ?maxratedu .
         BIND("" as ?value).
         FILTER(?countd!=?count || (?countd=?count && ?end1ratedu!=?maxratedu && ?end1!=?end2) ).
-			} 
+      } 
       

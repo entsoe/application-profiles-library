@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value ?terminal ?tieflow
-			WHERE {
+      SELECT  $this ?value ?terminal ?tieflow
+      WHERE {
              ?terminal1 cim:Terminal.ConductingEquipment ?condeq .
              ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
              ?terminal1 cim:Terminal.ConnectivityNode ?cn1 .
@@ -35,5 +35,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
              OPTIONAL {?terminal cim:Terminal.ConnectivityNode ?cnbp }.
              OPTIONAL {?tieflow cim:TieFlow.Terminal ?terminal }.
            
-				FILTER ((bound(?value) && ?value=false && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value=true && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
-			}
+        FILTER ((bound(?value) && ?value=false && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value=true && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
+      }

@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
-			WHERE {
+      SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
+      WHERE {
              $this $PATH ?value .
              OPTIONAL {$this cim:Measurement.Terminal ?terminal}.
              $this cim:Measurement.measurementType ?meastype . 
@@ -31,5 +31,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
                         cim:ACDCTerminal.sequenceNumber 2 .}
              OPTIONAL {?terminal3 cim:Terminal.ConductingEquipment ?value ;
                         cim:ACDCTerminal.sequenceNumber 3 .}
-				FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
-			}
+        FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
+      }

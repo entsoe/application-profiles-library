@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#ShuntCompensator.maximumSections-numberOfInstances
-# ShuntCompensator.maximumSections-numberOfInstances
-# The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. 
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#CommonResponsibilityPoint-requiredAssociation
+# CommonResponsibilityPoint-requiredAssociation
+# CommonResponsibilityPoint shall have association to either DCNode or ConnectivityNode and not both.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,17 +20,20 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-      SELECT  $this ?value ?typesall
-      WHERE {
-        {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
+        SELECT $this
         WHERE {
-            $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
-            #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-            #?nscpointsall rdf:type ?typeall .
-          }
-        GROUP BY $this ?typesall
+            BIND(EXISTS {
+                $this nc:CommonResponsibilityPoint.DCNode ?dcNode .
+            } AS ?hasDCNode)
+
+            BIND(EXISTS {
+                $this nc:CommonResponsibilityPoint.ConnectivityNode ?connectivityNode .
+            } AS ?hasConnectivityNode)
+
+            FILTER (
+                (?hasDCNode="true"^^xsd:boolean && ?hasConnectivityNode="true"^^xsd:boolean)
+                ||
+                (?hasDCNode="false"^^xsd:boolean && ?hasConnectivityNode="false"^^xsd:boolean)
+            )
         }
-        $this $PATH ?value .  
-        FILTER (?value!=?typesall) .
-      }
+    

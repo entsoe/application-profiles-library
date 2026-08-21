@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT $this ?value
-			WHERE {
+      SELECT $this ?value
+      WHERE {
         $this $PATH ?value .
         #?value rdf:type ?type .
         ?value rdf:type cim:VoltageLevel .
@@ -30,4 +30,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         #$this cim:ConductingEquipment.BaseVoltage ?basevoltage .
         #FILTER (!isLiteral(?basevoltage) && ?type=cim:VoltageLevel && ?condeqtype!=cim:ACLineSegment && ?condeqtype!=cim:EquivalentBranch && ?condeqtype!=cim:SeriesCompensator) .
         FILTER (?hasbv=true && ?condeqtype!=cim:ACLineSegment && ?condeqtype!=cim:EquivalentBranch && ?condeqtype!=cim:SeriesCompensator && ?condeqtype!=cim:Equipment) .        
-			}
+      }

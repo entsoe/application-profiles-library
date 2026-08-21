@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#ShuntCompensator.maximumSections-numberOfInstances
-# ShuntCompensator.maximumSections-numberOfInstances
-# The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. 
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorderLink-usage
+# BoundaryPointBorderLink-usage
+# BoundaryPointBorderLink shall only be used when a BoundaryPoint is associated with more than one BoundaryPointBorder. If a BoundaryPoint is associated with exactly one BoundaryPointBorder, the BoundaryPointBorderLink class shall not be used.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,17 +20,19 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-      SELECT  $this ?value ?typesall
-      WHERE {
-        {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
+        SELECT DISTINCT $this
         WHERE {
-            $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
-            #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-            #?nscpointsall rdf:type ?typeall .
-          }
-        GROUP BY $this ?typesall
+            $this $PATH  ?boundaryPoint.
+
+            FILTER NOT EXISTS {
+                ?boundaryPoint ^nc:BoundaryPointBorderLink.BoundaryPoint ?link1, ?link2 .
+
+                FILTER (?link1 != ?link2)
+
+                ?link1 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border1 .
+                ?link2 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border2 .
+
+                FILTER (?border1 != ?border2)
+            }
         }
-        $this $PATH ?value .  
-        FILTER (?value!=?typesall) .
-      }
+    

@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value2 ?terms ?value1 ?value
-			WHERE {
+      SELECT  $this ?value2 ?terms ?value1 ?value
+      WHERE {
         {
         SELECT $this (COUNT(?typeterm) AS ?terms) ?value
         WHERE {
@@ -56,4 +56,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
         (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         ) .
-			}
+      }
