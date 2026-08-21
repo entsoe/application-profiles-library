@@ -1036,7 +1036,7 @@ dm:Dataset  rdf:type  sh:NodeShape ;
         sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet.    
     
 dm:DifferenceSet  rdf:type  sh:NodeShape ;
-        sh:property     dm:forwardReverse-dependency,dm:reverseDifferencePreviousVersion-dependency ;
+        sh:property     dm:forwardReverse-dependency ;
         sh:targetClass  dcatcim:DifferenceSet.    
     
 
@@ -1371,25 +1371,12 @@ dm:forwardReverse-dependencySparql
         }""" .
     
 dm:reverseDifferencePreviousVersion-dependency
-        a               sh:PropertyShape ;
-        sh:sparql       dm:reverseDifferencePreviousVersion-dependencySparql ;
-        sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
-        sh:name         "reverseDifferencePreviousVersion-dependency" ;
-        sh:path         rdf:type;
-        sh:group        dm:CardinalityGroupCustom ;
-        sh:order        19 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:reverseDifferencePreviousVersion-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:reverseDifference ?value} AS ?hasrd).
-    BIND(EXISTS{$this dcat:previousVersion ?value1} AS ?haspv).
-
-        FILTER (?hasrd="true"^^xsd:boolean && ?haspv="false"^^xsd:boolean).
-        }""" .      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  dcatcim:reverseDifference ;
+        sh:property          [ sh:path      dcat:previousVersion ;
+                                sh:minCount  1 ;
+                                sh:message   "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
+                                sh:name      "reverseDifferencePreviousVersion-dependency" ;
+                                sh:group     dm:CardinalityGroupCustom ;
+                                sh:order     19 ;
+                                sh:severity  sh:Violation ] .
