@@ -522,105 +522,57 @@ erc:BoundaryPointBorder-requiredAssociationSparql
     """ .
 	
 erc:ThermalGeneratingUnitDependency  a          sh:NodeShape ;
-        sh:property      erc:PeerTemporalDependency.finishToFinishLagKind-required, erc:PeerTemporalDependency.finishToStartLagKind-required, erc:PeerTemporalDependency.overlapKind-required, erc:PeerTemporalDependency.startToStartLagKind-required, erc:PeerTemporalDependency.constraintKind-exclusive;
+        sh:property      erc:PeerTemporalDependency.constraintKind-exclusive;
         sh:targetClass  nc:ThermalGeneratingUnitDependency .      
 
 erc:PeerTemporalDependency.finishToFinishLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.finishToFinishLagKind:required" ;
-        sh:order        7 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
-    
-        FILTER (?hasftf="true"^^xsd:boolean && ?hasftfk="false"^^xsd:boolean).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToFinishLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToFinishLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.finishToFinishLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     7 ;
+                                sh:severity  sh:Violation ] .
 
 erc:PeerTemporalDependency.finishToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.finishToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.finishToStartLagKind:required" ;
-        sh:order        8 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
-    
-        FILTER (?hasfts="true"^^xsd:boolean && ?hasftsk="false"^^xsd:boolean).
-      }""" .       
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.finishToStartLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     8 ;
+                                sh:severity  sh:Violation ] .
+
 erc:PeerTemporalDependency.overlapKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.overlapKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.overlapKind:required" ;
-        sh:order        9 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.overlapKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
-    
-        FILTER (?hasop="true"^^xsd:boolean && ?hasopk="false"^^xsd:boolean).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.overlap ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.overlapKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
+                                sh:message   "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.overlapKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     9 ;
+                                sh:severity  sh:Violation ] .
 
 erc:PeerTemporalDependency.startToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.startToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.startToStartLagKind:required" ;
-        sh:order        10 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.startToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
-    
-        FILTER (?hassts="true"^^xsd:boolean && ?hasstsk="false"^^xsd:boolean).
-      }""" .         
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.startToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.startToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.startToStartLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     10 ;
+                                sh:severity  sh:Violation ] .
+
 erc:PeerTemporalDependency.constraintKind-exclusive
         a               sh:PropertyShape ;
         sh:description  "If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag." ;
