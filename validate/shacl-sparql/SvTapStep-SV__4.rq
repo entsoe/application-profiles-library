@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.PowerTransformer/^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService) true .
         $this  (cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)|(cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes)  ?topologicalisland .
         $this rdf:type ?value .
@@ -30,4 +30,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         OPTIONAL {$this  ^cim:SvTapStep.TapChanger  ?svtapstep} .
         #FILTER (bound(?topologicalisland) && !bound(?svtapstep)  ).
         FILTER (!bound(?svtapstep)  ).
-			}
+      }

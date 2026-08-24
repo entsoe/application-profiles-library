@@ -20,11 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		$this nc:PowerFlowResult.OperationalLimit ?o1.
+      SELECT  $this  
+      WHERE {  
+    $this nc:PowerFlowResult.OperationalLimit ?o1.
         #BIND(EXISTS{$this nc:PowerFlowResult.OperationalLimit ?o1} AS ?ol1).
-		BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
-		BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
-        FILTER (?val=false || ?aval=false ).
-			}
+    BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
+    BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
+        FILTER (?val="false"^^xsd:boolean || ?aval="false"^^xsd:boolean ).
+      }

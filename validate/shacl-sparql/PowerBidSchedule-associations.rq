@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidSchedule-associations
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerBidSchedule-associations
 # PowerBidSchedule-associations
 # PowerBidSchedule shall include one and only one association to either ScheduleResource or PowerRemedialAction.
 
@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).	
-		BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).  
+    BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
 
         FILTER (
-			(?vPBS=true && ?vPRA=true) || 
-			(?vPBS=false && ?vPRA=false) 
-		).
-			}
+      (?vPBS="true"^^xsd:boolean && ?vPRA="true"^^xsd:boolean) || 
+      (?vPBS="false"^^xsd:boolean && ?vPRA="false"^^xsd:boolean) 
+    ).
+      }

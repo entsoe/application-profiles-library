@@ -30,5 +30,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/ImpactAssessmentMatrix/2.3> , <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4> )).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/ImpactAssessmentMatrix/2.4> , <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5> )).
         }

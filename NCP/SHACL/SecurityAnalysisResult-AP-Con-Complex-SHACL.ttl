@@ -38,7 +38,7 @@ sarc:SARgroup
         sh:order    0 .
 
 sarc:PowerFlowResult  a          sh:NodeShape ;
-        sh:property      sarc:PowerFlowResult.value, sarc:PowerFlowResult-ApparentPowerLimit, sarc:PowerFlowResult-ActivePowerLimit, sarc:PowerFlowResult-ReactivePowerLimit, sarc:PowerFlowResult-VoltageLimit, sarc:PowerFlowResult-VoltageAngleLimit, sarc:PowerFlowResult-CurrentLimit, sarc:PowerFlowResult-voltageAndAngle, sarc:PowerFlowResult-association, sarc:PowerFlowResult-topologicalNode;
+        sh:property      sarc:PowerFlowResult.value, sarc:PowerFlowResult-ApparentPowerLimit, sarc:PowerFlowResult-ActivePowerLimit, sarc:PowerFlowResult-ReactivePowerLimit, sarc:PowerFlowResult-VoltageAngleLimit, sarc:PowerFlowResult-CurrentLimit, sarc:PowerFlowResult-voltageAndAngle, sarc:PowerFlowResult-association, sarc:PowerFlowResult-topologicalNode;
         sh:targetClass  nc:BaseCasePowerFlowResult , nc:ContingencyPowerFlowResult.
 
 
@@ -134,26 +134,29 @@ sarc:PowerFlowResult-ReactivePowerLimitSparql
       }""" .       
       
 sarc:PowerFlowResult-VoltageLimit
-        a               sh:PropertyShape ;
+        a               sh:NodeShape ;
         sh:description  "PowerFlowResult.valueV is required attribute if a VoltageLimit is referenced by the association end PowerFlowResult.OperationalLimit." ;
-        sh:sparql       sarc:PowerFlowResult-VoltageLimitSparql ;
-        sh:path         nc:PowerFlowResult.valueV ;
+        sh:target       
+        [
+              a sh:SPARQLTarget ;
+              sh:prefixes cim: ;
+              sh:select    """
+              SELECT  $this  
+              WHERE {      
+                     $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
+                     FILTER (?oltype IN (cim:VoltageLimit, cim16:VoltageLimit, cim17:VoltageLimit)).
+                     FILTER NOT EXISTS {$this nc:PowerFlowResult.valueV ?value}
+                    }
+                  """
+        ] ;
+        sh:property     [ sh:path      nc:PowerFlowResult.valueV ;
+                          sh:minCount  1 ;
+                          sh:message   "PowerFlowResult.valueV is required attribute when a VoltageLimit is referenced by the association end PowerFlowResult.OperationalLimit." ] ;
         sh:group        sarc:SARgroup ;
         sh:name         "C:NC:SAR:PowerFlowResult:VoltageLimit" ;
         sh:order        5 ;
         sh:severity     sh:Violation .
-        
-sarc:PowerFlowResult-VoltageLimitSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerFlowResult.valueV is not provided for VoltageLimit." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {      
-        $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val="false"^^xsd:boolean ).
-      }""" .   
+
 
 sarc:PowerFlowResult-VoltageAngleLimit
         a               sh:PropertyShape ;

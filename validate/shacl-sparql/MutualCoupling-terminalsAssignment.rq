@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT $this ?typeline1 ?typeline2
-			WHERE {
+      SELECT $this ?typeline1 ?typeline2
+      WHERE {
         #$this cim:MutualCoupling.First_Terminal ?firstterminal .
         #$this cim:MutualCoupling.Second_Terminal ?secondterminal .
         #?firstterminal cim:Terminal.ConductingEquipment ?line1 . 
@@ -30,5 +30,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         $this cim:MutualCoupling.Second_Terminal/cim:Terminal.ConductingEquipment ?line2 .
         ?line1 rdf:type ?typeline1 .
         ?line2 rdf:type ?typeline2 .
-				FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
-			}
+        FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
+      }

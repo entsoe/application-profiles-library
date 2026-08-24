@@ -20,19 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-	      SELECT $this ?value 
+        SELECT $this ?value 
         WHERE {
 
-		#{
-		#	SELECT $this (count(?value) as ?v)
-		#	WHERE {
-		#	OPTIONAL {$this $PATH ?value } .
-		#	}
-		#	GROUP BY $this $PATH 
-		#}
-		$this dcterms:spatial ?spatial .
-		OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
-		
-        #FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> ) && ?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && bound(?conformsTo)).
-		FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
+    $this dcterms:spatial ?spatial .
+    OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
+    
+    FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
         }

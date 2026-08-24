@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-    	SELECT $this ?sm1 ?tn ?value ?tn1
-			WHERE {
+      SELECT $this ?sm1 ?tn ?value ?tn1
+      WHERE {
           {
           #SELECT $this (COUNT(?smrp) as ?count)
           SELECT $this (COUNT(?type) as ?count)

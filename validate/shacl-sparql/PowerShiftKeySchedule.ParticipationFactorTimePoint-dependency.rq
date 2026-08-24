@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
 # PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
 # The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution.
 
@@ -20,9 +20,9 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).	
-		BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
-        FILTER (?valD=false && ?valP=false ).
-			}
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).  
+    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
+        FILTER (?valD="false"^^xsd:boolean && ?valP="false"^^xsd:boolean ).
+      }

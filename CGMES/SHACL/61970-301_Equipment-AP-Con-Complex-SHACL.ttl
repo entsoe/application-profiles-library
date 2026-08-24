@@ -1317,26 +1317,14 @@ equ:PhaseTapChangerNonLinear.xMin-valueRangePairSparql
 
 equ:PowerTransformer-associationNotUsed
         a               sh:PropertyShape ;
-        sh:sparql       equ:PowerTransformer-associationNotUsedSparql ;
-        sh:path         rdf:type ;
+        sh:path         cim:ConductingEquipment.BaseVoltage ;
+        sh:maxCount     0 ;
         sh:description  "The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead." ;
+        sh:message      "The inherited association ConductingEquipment.BaseVoltage is used." ;
         sh:name         "C:301:EQ:PowerTransformer:associationNotUsed" ;
         sh:group        equ:EQ301UML ;
         sh:order        74 ;
         sh:severity     sh:Violation .
-        
-    
-equ:PowerTransformer-associationNotUsedSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "The inherited association ConductingEquipment.BaseVoltage is used." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this ?value
-      WHERE {
-        $this cim:ConductingEquipment.BaseVoltage ?value .
-        BIND(EXISTS{$this cim:ConductingEquipment.BaseVoltage ?v } AS ?hasvalue). 
-        FILTER (?hasvalue=true) .        
-      }""" .  
 
 
 equ:Switch-numberOfTerminals

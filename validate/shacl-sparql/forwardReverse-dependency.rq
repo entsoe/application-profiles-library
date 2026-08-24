@@ -20,10 +20,10 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-	      SELECT $this ?value 
+        SELECT $this ?value 
         WHERE {
-		BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
-		BIND(EXISTS{$this dcatcim:referseDifference ?value1} AS ?hasprefv).
+    BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
+    BIND(EXISTS{$this dcatcim:referseDifference ?value1} AS ?hasprefv).
 
-        FILTER ((?hasaltv=false && ?hasprefv=false) ).
+        FILTER ((?hasaltv="false"^^xsd:boolean && ?hasprefv="false"^^xsd:boolean) ).
         }

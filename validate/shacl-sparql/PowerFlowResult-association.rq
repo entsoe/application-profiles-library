@@ -20,9 +20,9 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		$this (nc:PowerFlowResult.ACDCTerminal/rdf:type)|(nc:PowerFlowResult.TopologicalNode/rdf:type)|(nc:PowerFlowResult.PowerTransferCorridor/rdf:type) ?assocType.
+      SELECT  $this  
+      WHERE {  
+    $this (nc:PowerFlowResult.ACDCTerminal/rdf:type)|(nc:PowerFlowResult.TopologicalNode/rdf:type)|(nc:PowerFlowResult.PowerTransferCorridor/rdf:type) ?assocType.
 
         FILTER (?assocType NOT IN (cim:DCTerminal, cim17:DCTerminal, cim16:DCTerminal, cim:Terminal, cim17:Terminal, cim16:Terminal, cim:TopologicalNode, cim17:TopologicalNode, cim16:TopologicalNode, nc:PowerTransferCorridor) ).
-			}
+      }

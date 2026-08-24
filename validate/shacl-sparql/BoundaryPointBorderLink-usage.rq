@@ -1,0 +1,38 @@
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorderLink-usage
+# BoundaryPointBorderLink-usage
+# BoundaryPointBorderLink shall only be used when a BoundaryPoint is associated with more than one BoundaryPointBorder. If a BoundaryPoint is associated with exactly one BoundaryPointBorder, the BoundaryPointBorderLink class shall not be used.
+
+PREFIX adms:    <http://www.w3.org/ns/adms#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+#PREFIX cim:    <http://iec.ch/TC57/CIM100#>
+PREFIX cim16:   <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX cim17:   <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+#PREFIX eu:     <http://iec.ch/TC57/CIM100-European#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+
+        SELECT DISTINCT $this
+        WHERE {
+            $this $PATH  ?boundaryPoint.
+
+            FILTER NOT EXISTS {
+                ?boundaryPoint ^nc:BoundaryPointBorderLink.BoundaryPoint ?link1, ?link2 .
+
+                FILTER (?link1 != ?link2)
+
+                ?link1 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border1 .
+                ?link2 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border2 .
+
+                FILTER (?border1 != ?border2)
+            }
+        }
+    

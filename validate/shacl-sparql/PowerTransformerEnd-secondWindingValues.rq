@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         ?value cim:PowerTransformerEnd.PowerTransformer $this .  
         ?value cim:TransformerEnd.endNumber 2 .
         #?value cim:TransformerEnd.endNumber ?endnumber .
@@ -32,4 +32,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         FILTER (!(?r=0 && ?r0=0 && ?x=0 && ?x0=0)).
         #FILTER ((!(?r=0 && ?r0=0 && ?x=0 && ?x0=0) && ?endnumber=2) || (!(?r!=0 && ?r0!=0 && ?x!=0 && ?x0!=0) && ?endnumber=1)).
         #FILTER (?r!=0 || ?r0!=0 || ?x!=0 || ?x0!=0).
-			} 
+      } 

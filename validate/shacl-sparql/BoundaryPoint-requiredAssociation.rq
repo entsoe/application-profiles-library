@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.finishToFinishLagKind-required
-# PowerBidDependency.finishToFinishLagKind-required
-# If PowerBidDependency.finishToFinishLag is present PowerBidDependency.finishToFinishLagKind is required.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPoint-requiredAssociation
+# BoundaryPoint-requiredAssociation
+# A BoundaryPoint shall have association to BoundaryPointBorder or BoundaryPointBorderLink and not both.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,11 +20,20 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		 
-		BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLag ?ftf} AS ?hasftf).	
-		BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
-		
-        FILTER (?hasftf=true && ?hasftfk=false).
-			}
+        SELECT $this
+        WHERE {
+            BIND(EXISTS {
+                $this nc:BoundaryPoint.BoundaryPointBorder ?border .
+            } AS ?hasBorder)
+
+            BIND(EXISTS {
+                $this ^nc:BoundaryPointBorderLink.BoundaryPoint ?borderLink .
+            } AS ?hasBorderLink)
+
+            FILTER (
+                (?hasBorder="true"^^xsd:boolean && ?hasBorderLink="true"^^xsd:boolean)
+                ||
+                (?hasBorder="false"^^xsd:boolean && ?hasBorderLink="false"^^xsd:boolean)
+            )
+        }
+    

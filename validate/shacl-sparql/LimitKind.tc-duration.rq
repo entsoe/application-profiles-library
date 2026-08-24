@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this (COUNT(?ol) AS ?tcs) ?adur ?value
-			WHERE {      
+      SELECT  $this (COUNT(?ol) AS ?tcs) ?adur ?value
+      WHERE {      
         $this eu:OperationalLimitType.kind eu:LimitKind.tc .
         $this ^cim:OperationalLimit.OperationalLimitType ?ol .
         ?ol cim:OperationalLimit.OperationalLimitSet ?value .
         OPTIONAL {$this cim:OperationalLimitType.acceptableDuration ?adur }.
-			}
+      }
       GROUP BY $this ?value ?adur ?value
       HAVING (?tcs>1 || (bound(?adur) && ?adur!=0))
       

@@ -20,15 +20,15 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this 
-			WHERE {
+      SELECT  $this 
+      WHERE {
              #OPTIONAL {$this ^cim:RegulatingControl.Terminal ?rc}.
              #OPTIONAL {$this cim:Terminal.TopologicalNode ?value}.
              #BIND(EXISTS{$this ^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled true} AS ?enable).
              BIND(EXISTS{$this ^cim:RegulatingControl.Terminal ?rc} AS ?rctrue).
              BIND(EXISTS{$this cim:Terminal.TopologicalNode ?v} AS ?val).
              #$this cim:Terminal.TopologicalNode ?value .
-				#FILTER (!bound(?value) && bound(?rc)) .
+        #FILTER (!bound(?value) && bound(?rc)) .
         #FILTER (?val=false && ?enable=true) .
         FILTER (?val=false && ?rctrue=true) .
-			}
+      }
