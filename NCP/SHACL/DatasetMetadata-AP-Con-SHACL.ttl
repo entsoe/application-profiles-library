@@ -1375,6 +1375,7 @@ dm:reverseDifferencePreviousVersion-dependency
         sh:targetSubjectsOf  dcatcim:reverseDifference ;
         sh:property          [ sh:path      dcat:previousVersion ;
                                 sh:minCount  1 ;
+                                sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
                                 sh:message   "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
                                 sh:name      "reverseDifferencePreviousVersion-dependency" ;
                                 sh:group     dm:CardinalityGroupCustom ;

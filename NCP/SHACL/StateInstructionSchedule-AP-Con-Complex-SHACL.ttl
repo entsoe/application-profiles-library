@@ -233,6 +233,7 @@ sisc:PeerTemporalDependency.finishToFinishLagKind-required
         sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToFinishLag ;
         sh:property          [ sh:path      nc:PeerTemporalDependency.finishToFinishLagKind ;
                                 sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
                                 sh:message   "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
                                 sh:name      "C:NC:SIS:PeerTemporalDependency.finishToFinishLagKind:required" ;
                                 sh:group     sisc:SISCustomGroup ;
@@ -244,6 +245,7 @@ sisc:PeerTemporalDependency.finishToStartLagKind-required
         sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToStartLag ;
         sh:property          [ sh:path      nc:PeerTemporalDependency.finishToStartLagKind ;
                                 sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
                                 sh:message   "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
                                 sh:name      "C:NC:SIS:PeerTemporalDependency.finishToStartLagKind:required" ;
                                 sh:group     sisc:SISCustomGroup ;
@@ -255,6 +257,7 @@ sisc:PeerTemporalDependency.overlapKind-required
         sh:targetSubjectsOf  nc:PeerTemporalDependency.overlap ;
         sh:property          [ sh:path      nc:PeerTemporalDependency.overlapKind ;
                                 sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
                                 sh:message   "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
                                 sh:name      "C:NC:SIS:PeerTemporalDependency.overlapKind:required" ;
                                 sh:group     sisc:SISCustomGroup ;
@@ -266,6 +269,7 @@ sisc:PeerTemporalDependency.startToStartLagKind-required
         sh:targetSubjectsOf  nc:PeerTemporalDependency.startToStartLag ;
         sh:property          [ sh:path      nc:PeerTemporalDependency.startToStartLagKind ;
                                 sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
                                 sh:message   "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
                                 sh:name      "C:NC:SIS:PeerTemporalDependency.startToStartLagKind:required" ;
                                 sh:group     sisc:SISCustomGroup ;
