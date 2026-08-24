@@ -46,24 +46,16 @@ sisc:PowerShiftKeySchedule  a          sh:NodeShape ;
 sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
         a               sh:PropertyShape ;
         sh:description  "The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution." ;
-        sh:sparql       sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            [ sh:inversePath nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ]
+            nc:PowerShiftKeySchedule.ParticipationFactorTimePoint
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeySchedule.ParticipationFactorTimePoint:dependency" ;
         sh:order        1 ;
-        sh:severity     sh:Violation .
-        
-sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
-        FILTER (?valD="false"^^xsd:boolean && ?valP="false"^^xsd:boolean ).
-      }""" .        
+        sh:severity     sh:Violation .        
 
 
 
