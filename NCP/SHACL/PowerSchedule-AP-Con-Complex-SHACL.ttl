@@ -91,9 +91,9 @@ psc:DCTieCorridor-powerScheduleSparql
             )
         
             FILTER (
-                ?hasSchedulingAreaSchedule="true"^^xsd:boolean
+                ?hasSchedulingAreaSchedule
                 &&
-                ?hasDCPoleSchedule="true"^^xsd:boolean
+                ?hasDCPoleSchedule
             )
         }
     """ .	

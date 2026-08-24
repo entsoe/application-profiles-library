@@ -62,7 +62,7 @@ sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
       WHERE {  
     BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).  
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
-        FILTER (?valD="false"^^xsd:boolean && ?valP="false"^^xsd:boolean ).
+        FILTER (!?valD && !?valP ).
       }""" .        
 
 
@@ -98,19 +98,19 @@ sisc:PowerShiftKeySchedule-associationsSparql
 	BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCEquivalentInjection ?dcei} AS ?vDCEI).
 	BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyBlockOrder ?ebo} AS ?vEBO).
         FILTER (
-      (?vSR="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vPEU="true"^^xsd:boolean && (?vSR="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vGU="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vDCP="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEG="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEC="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vES="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vENI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-	  (?vSA="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) ||
-	  (?vDCEI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean)) ||
-	  (?vEBO="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean ||  ?vENI="true"^^xsd:boolean)) ||
-      (?vHP="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean))
+      (?vSR && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vPEU && (?vSR || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vGU && (?vPEU || ?vSR || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vDCP && (?vPEU || ?vGU || ?vSR || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vEG && (?vPEU || ?vGU || ?vDCP || ?vSR || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vEI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vSR || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vEC && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vSR || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vES && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vSR || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+      (?vENI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
+	  (?vSA && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vENI || ?vDCEI || ?vEBO)) ||
+	  (?vDCEI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vEBO || ?vENI)) ||
+	  (?vEBO && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vDCEI ||  ?vENI)) ||
+      (?vHP && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vSR || ?vSA || ?vDCEI || ?vEBO))
     ).
       }""" .   
 
@@ -139,8 +139,8 @@ sisc:PowerShiftKeyDistribution-associationsSparql
     BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
 
         FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPSKS="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPSKS="false"^^xsd:boolean) 
+      (?vPBS && ?vPSKS) || 
+      (!?vPBS && !?vPSKS) 
     ).
       }""" . 
 
@@ -184,8 +184,8 @@ sisc:PowerBidSchedule-associationsSparql
     BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
 
         FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPRA="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPRA="false"^^xsd:boolean) 
+      (?vPBS && ?vPRA) || 
+      (!?vPBS && !?vPRA) 
     ).
       }""" . 
       
@@ -219,8 +219,8 @@ sisc:PowerBidScheduleTimePoint-attributesSparql
     BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
 
         FILTER (
-      (?vpac="true"^^xsd:boolean && ?vpsc="true"^^xsd:boolean ) || 
-      ((?vpac="true"^^xsd:boolean || ?vpsc="true"^^xsd:boolean) && (?vpp="true"^^xsd:boolean || ?vmap="true"^^xsd:boolean || ?vpprice="true"^^xsd:boolean || ?vrp="true"^^xsd:boolean || ?vsip="true"^^xsd:boolean))
+      (?vpac && ?vpsc ) || 
+      ((?vpac || ?vpsc) && (?vpp || ?vmap || ?vpprice || ?vrp || ?vsip))
     ).
       }""" .     
       
@@ -249,7 +249,7 @@ sisc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
     
-        FILTER (?hasftf="true"^^xsd:boolean && ?hasftfk="false"^^xsd:boolean).
+        FILTER (?hasftf && !?hasftfk).
       }""" .     
 
 sisc:PeerTemporalDependency.finishToStartLagKind-required
@@ -273,7 +273,7 @@ sisc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
     
-        FILTER (?hasfts="true"^^xsd:boolean && ?hasftsk="false"^^xsd:boolean).
+        FILTER (?hasfts && !?hasftsk).
       }""" .       
       
 sisc:PeerTemporalDependency.overlapKind-required
@@ -297,7 +297,7 @@ sisc:PeerTemporalDependency.overlapKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
     
-        FILTER (?hasop="true"^^xsd:boolean && ?hasopk="false"^^xsd:boolean).
+        FILTER (?hasop && !?hasopk).
       }""" .     
 
 sisc:PeerTemporalDependency.startToStartLagKind-required
@@ -321,7 +321,7 @@ sisc:PeerTemporalDependency.startToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
     
-        FILTER (?hassts="true"^^xsd:boolean && ?hasstsk="false"^^xsd:boolean).
+        FILTER (?hassts && !?hasstsk).
       }""" .         
       
 sisc:PeerTemporalDependency.constraintKind-exclusive
@@ -348,5 +348,5 @@ sisc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       

@@ -62,7 +62,7 @@ aec:AssessedElement-associationsSparql
         BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
         BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
         BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
-        FILTER (?aeo1="false"^^xsd:boolean && ?aeo2="false"^^xsd:boolean && ?aeo3="false"^^xsd:boolean && ?aeo4="false"^^xsd:boolean && ?aeo5="false"^^xsd:boolean).
+        FILTER (!?aeo1 && !?aeo2 && !?aeo3 && !?aeo4 && !?aeo5).
       }""" .        
 
 aec:AssessedElementWithContingency
@@ -102,8 +102,6 @@ aec:OperationalLimit.AssessedElement-requiredSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this  
-      WHERE {      
-    BIND(EXISTS{$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true} AS ?hasBCtrue).
-
-        FILTER (?hasBCtrue="false"^^xsd:boolean ).
+      WHERE {
+        FILTER NOT EXISTS {$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true}
       }""" .      

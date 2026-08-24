@@ -64,8 +64,8 @@ asc:AvailabilityEnabled-associationsSparql
     BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
 
         FILTER (
-      (?vGSA="true"^^xsd:boolean && ?vAE="true"^^xsd:boolean) || 
-      (?vGSA="false"^^xsd:boolean && ?vAE="false"^^xsd:boolean) 
+      (?vGSA && ?vAE) || 
+      (!?vGSA && !?vAE) 
     ).
       }""" . 
 
@@ -94,7 +94,7 @@ asc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
     
-        FILTER (?hasftf="true"^^xsd:boolean && ?hasftfk="false"^^xsd:boolean).
+        FILTER (?hasftf && !?hasftfk).
       }""" .     
 
 asc:PeerTemporalDependency.finishToStartLagKind-required
@@ -118,7 +118,7 @@ asc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
     
-        FILTER (?hasfts="true"^^xsd:boolean && ?hasftsk="false"^^xsd:boolean).
+        FILTER (?hasfts && !?hasftsk).
       }""" .       
       
 asc:PeerTemporalDependency.overlapKind-required
@@ -142,7 +142,7 @@ asc:PeerTemporalDependency.overlapKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
     
-        FILTER (?hasop="true"^^xsd:boolean && ?hasopk="false"^^xsd:boolean).
+        FILTER (?hasop && !?hasopk).
       }""" .     
 
 asc:PeerTemporalDependency.startToStartLagKind-required
@@ -166,7 +166,7 @@ asc:PeerTemporalDependency.startToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
     
-        FILTER (?hassts="true"^^xsd:boolean && ?hasstsk="false"^^xsd:boolean).
+        FILTER (?hassts && !?hasstsk).
       }""" .         
       
 asc:PeerTemporalDependency.constraintKind-exclusive
@@ -193,7 +193,7 @@ asc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       	  
 
 

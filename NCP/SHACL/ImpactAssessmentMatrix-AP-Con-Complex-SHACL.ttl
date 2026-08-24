@@ -110,7 +110,7 @@ iamc:RemedialActionImpact-associationsSparql
        
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG="false"^^xsd:boolean && ?hasRA="false"^^xsd:boolean) || (?hasRAG="true"^^xsd:boolean && ?hasRA="true"^^xsd:boolean)).
+        FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
       }""" .       
       
 iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
@@ -137,5 +137,5 @@ iamc:RemedialActionOutcomeValue-associationsSparql
        
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG="false"^^xsd:boolean && ?hasRA="false"^^xsd:boolean) || (?hasRAG="true"^^xsd:boolean && ?hasRA="true"^^xsd:boolean)).
+        FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
       }""" .       

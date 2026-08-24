@@ -67,7 +67,7 @@ erc:AreaReserveResource-associationsSparql
 		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
 		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
 		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
-        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?adusr="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
+        FILTER (!?adugu && !?adupe && !?adusr && !?aduhp).
 			}""" . 
 
 erc:AreaReserveResource-interconnection
@@ -91,7 +91,7 @@ erc:AreaReserveResource-interconnectionSparql
 		BIND(EXISTS{$this nc:AreaReserveResource.SchedulingArea ?o1} AS ?sa).
 		BIND(EXISTS{$this nc:AreaReserveResource.TieCorridor ?o2} AS ?tc).
 
-        FILTER (?sa="false"^^xsd:boolean && ?tc="false"^^xsd:boolean ).
+        FILTER (!?sa && !?tc ).
 			}""" .			
 			
 erc:EnergyComponent  a          sh:NodeShape ;
@@ -122,7 +122,7 @@ erc:EnergyComponent-associationsSparql
 		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
 		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
 		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
-        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?aduec="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
+        FILTER (!?adugu && !?adupe && !?aduec && !?aduhp).
 			}""" . 			
 			
 			
@@ -179,7 +179,7 @@ erc:Circuit-associationsSparql
        
 		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
 		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
-        FILTER (?ce="false"^^xsd:boolean && ?ct="false"^^xsd:boolean).
+        FILTER (!?ce && !?ct).
 			}""" . 		
 			
 erc:FunctionOutputVariable  a          sh:NodeShape ;
@@ -242,7 +242,7 @@ erc:InfeedLimit-requiredAttributesSparql
        
 		BIND(EXISTS{$this nc:InfeedLimit.normalValueA ?o1} AS ?hasNVA).
 		BIND(EXISTS{$this nc:InfeedLimit.normalValueW ?o2} AS ?hasNVW).
-        FILTER (?hasNVA="false"^^xsd:boolean && ?hasNVW="false"^^xsd:boolean).
+        FILTER (!?hasNVA && !?hasNVW).
 			}""" . 			
 
 erc:CrossZonalNetworkElement
@@ -325,9 +325,9 @@ erc:BoundaryPoint-requiredAssociationSparql
             } AS ?hasBorderLink)
 
             FILTER (
-                (?hasBorder="true"^^xsd:boolean && ?hasBorderLink="true"^^xsd:boolean)
+                (?hasBorder && ?hasBorderLink)
                 ||
-                (?hasBorder="false"^^xsd:boolean && ?hasBorderLink="false"^^xsd:boolean)
+                (!?hasBorder && !?hasBorderLink)
             )
         }
     """ .
@@ -401,9 +401,9 @@ erc:CommonResponsibilityPoint-requiredAssociationSparql
             } AS ?hasConnectivityNode)
 
             FILTER (
-                (?hasDCNode="true"^^xsd:boolean && ?hasConnectivityNode="true"^^xsd:boolean)
+                (?hasDCNode && ?hasConnectivityNode)
                 ||
-                (?hasDCNode="false"^^xsd:boolean && ?hasConnectivityNode="false"^^xsd:boolean)
+                (!?hasDCNode && !?hasConnectivityNode)
             )
         }
     """ .
@@ -517,7 +517,7 @@ erc:BoundaryPointBorder-requiredAssociationSparql
                 ?borderLink nc:BoundaryPointBorderLink.BoundaryPointBorder $this .
             } AS ?hasBoundaryPointBorderLink)
 
-            FILTER (?hasBoundaryPoint="false"^^xsd:boolean && ?hasBoundaryPointBorderLink="false"^^xsd:boolean)
+            FILTER (!?hasBoundaryPoint && !?hasBoundaryPointBorderLink)
         }
     """ .
 	
@@ -546,7 +546,7 @@ erc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
     
-        FILTER (?hasftf="true"^^xsd:boolean && ?hasftfk="false"^^xsd:boolean).
+        FILTER (?hasftf && !?hasftfk).
       }""" .     
 
 erc:PeerTemporalDependency.finishToStartLagKind-required
@@ -570,7 +570,7 @@ erc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
     
-        FILTER (?hasfts="true"^^xsd:boolean && ?hasftsk="false"^^xsd:boolean).
+        FILTER (?hasfts && !?hasftsk).
       }""" .       
       
 erc:PeerTemporalDependency.overlapKind-required
@@ -594,7 +594,7 @@ erc:PeerTemporalDependency.overlapKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
     
-        FILTER (?hasop="true"^^xsd:boolean && ?hasopk="false"^^xsd:boolean).
+        FILTER (?hasop && !?hasopk).
       }""" .     
 
 erc:PeerTemporalDependency.startToStartLagKind-required
@@ -618,7 +618,7 @@ erc:PeerTemporalDependency.startToStartLagKind-requiredSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
     BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
     
-        FILTER (?hassts="true"^^xsd:boolean && ?hasstsk="false"^^xsd:boolean).
+        FILTER (?hassts && !?hasstsk).
       }""" .         
       
 erc:PeerTemporalDependency.constraintKind-exclusive
@@ -645,5 +645,5 @@ erc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       	
