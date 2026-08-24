@@ -117,12 +117,12 @@ erc:HydroPowerPlant-operatingModeSparql
 		sh:message      "The SynchronousMachine.operatingMode is not consistent for all SynchronousMachine objects part of a HydroPowerPlant." ;
 		sh:prefixes cim: ;
 		sh:select """
-	      SELECT $this (COUNT(?value) AS ?countv)
+	      SELECT $this (COUNT(DISTINCT ?value) AS ?countv)
         WHERE {
         $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
         }
-        GROUP BY $this ?value
-        HAVING(?countv>1)
+        GROUP BY $this
+        HAVING(COUNT(DISTINCT ?value)>1)
       """ .    
 
 erc:Circuit  a          sh:NodeShape ;

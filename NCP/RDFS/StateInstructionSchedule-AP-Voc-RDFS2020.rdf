@@ -6494,7 +6494,7 @@ Note: This attribute shall be specified when startToStartLag is provided.</rdfs:
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PowerShiftKeySchedule.EnergySource">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <rdfs:comment>The energy source which has a power shift key schedule. The renewable resources should be modelled as PowerElecronicsUnit.</rdfs:comment>
+    <rdfs:comment>The energy source which has a power shift key schedule. The renewable resources should be modelled as PowerElectronicsUnit.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PowerShiftKeySchedule"/>
     <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#EnergySource.PowerShiftKeySchedule"/>
     <rdfs:label xml:lang="en">EnergySource</rdfs:label>
