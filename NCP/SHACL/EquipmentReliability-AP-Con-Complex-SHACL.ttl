@@ -47,7 +47,7 @@ erc:AreaReserveResource  a          sh:NodeShape ;
 
 erc:AreaReserveResource-associations
         a               sh:PropertyShape ;
-        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
+        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
         sh:sparql       erc:AreaReserveResource-associationsSparql ;
         sh:path         rdf:type ;
         sh:group        erc:ERgroup ;
@@ -57,14 +57,14 @@ erc:AreaReserveResource-associations
         
 erc:AreaReserveResource-associationsSparql
 		a         sh:SPARQLConstraint ;  
-		sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
+		sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
 		sh:prefixes cim: ;
 		sh:select """
 			SELECT  $this  
 			WHERE {      
        
 		BIND(EXISTS{$this nc:AreaReserveResource.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:AreaReserveResource.PowerElectronicsUnit ?o2} AS ?adupe).
 		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
 		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
         FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?adusr="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
@@ -102,7 +102,7 @@ erc:EnergyComponent  a          sh:NodeShape ;
 
 erc:EnergyComponent-associations
         a               sh:PropertyShape ;
-        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
         sh:sparql       erc:EnergyComponent-associationsSparql ;
         sh:path         rdf:type ;
         sh:group        erc:ERgroup ;
@@ -112,16 +112,16 @@ erc:EnergyComponent-associations
         
 erc:EnergyComponent-associationsSparql
 		a         sh:SPARQLConstraint ;  
-		sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+		sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
 		sh:prefixes cim: ;
 		sh:select """
 			SELECT  $this  
 			WHERE {      
        
 		BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
-		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
+		BIND(EXISTS{$this nc:EnergyComponent.PowerElectronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o3} AS ?aduec).
+		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o4} AS ?aduhp).
         FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?aduec="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
 			}""" . 			
 			
@@ -145,12 +145,12 @@ erc:HydroPowerPlant-operatingModeSparql
 		sh:message      "The SynchronousMachine.operatingMode is not consistent for all SynchronousMachine objects part of a HydroPowerPlant." ;
 		sh:prefixes cim: ;
 		sh:select """
-	      SELECT $this (COUNT(?value) AS ?countv)
+	      SELECT $this (COUNT(DISTINCT ?value) AS ?countv)
         WHERE {
         $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
         }
-        GROUP BY $this ?value
-        HAVING(?countv>1)
+        GROUP BY $this
+        HAVING(COUNT(DISTINCT ?value)>1)
       """ .    
 
 erc:Circuit  a          sh:NodeShape ;

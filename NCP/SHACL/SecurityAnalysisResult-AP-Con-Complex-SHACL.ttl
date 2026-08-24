@@ -225,7 +225,7 @@ sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql
     $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
         BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
 
-        FILTER ((?stage="false"^^xsd:boolean && ?ra=cim:SchemeRemedialAction) || (?stage="true"^^xsd:boolean && ?ra!=cim:SchemeRemedialAction) ).
+        FILTER ((?stage="false"^^xsd:boolean && ?ratype=nc:SchemeRemedialAction) || (?stage="true"^^xsd:boolean && ?ratype!=nc:SchemeRemedialAction) ).
       }""" .          
       
 sarc:PowerFlowResult-voltageAndAngle

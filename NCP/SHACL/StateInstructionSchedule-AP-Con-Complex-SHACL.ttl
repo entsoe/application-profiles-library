@@ -68,7 +68,7 @@ sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
 
 sisc:PowerShiftKeySchedule-associations
         a               sh:PropertyShape ;
-        sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
+        sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicsUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
         sh:sparql       sisc:PowerShiftKeySchedule-associationsSparql ;
         sh:path         rdf:type ;
         sh:group        sisc:SISCustomGroup ;
@@ -78,13 +78,13 @@ sisc:PowerShiftKeySchedule-associations
         
 sisc:PowerShiftKeySchedule-associationsSparql
     a         sh:SPARQLConstraint ;  
-    sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
+    sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicsUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
+    BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicsUnit ?peu} AS ?vPEU).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity ?eg} AS ?vEG).
