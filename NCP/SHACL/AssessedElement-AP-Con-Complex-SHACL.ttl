@@ -94,8 +94,6 @@ aec:OperationalLimit.AssessedElement-requiredSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this  
-      WHERE {      
-    BIND(EXISTS{$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true} AS ?hasBCtrue).
-
-        FILTER (?hasBCtrue="false"^^xsd:boolean ).
+      WHERE {
+        FILTER NOT EXISTS {$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true}
       }""" .      

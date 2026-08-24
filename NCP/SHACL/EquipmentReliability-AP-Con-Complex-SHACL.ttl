@@ -279,9 +279,9 @@ erc:BoundaryPoint-requiredAssociationSparql
             } AS ?hasBorderLink)
 
             FILTER (
-                (?hasBorder="true"^^xsd:boolean && ?hasBorderLink="true"^^xsd:boolean)
+                (?hasBorder && ?hasBorderLink)
                 ||
-                (?hasBorder="false"^^xsd:boolean && ?hasBorderLink="false"^^xsd:boolean)
+                (!?hasBorder && !?hasBorderLink)
             )
         }
     """ .
@@ -355,9 +355,9 @@ erc:CommonResponsibilityPoint-requiredAssociationSparql
             } AS ?hasConnectivityNode)
 
             FILTER (
-                (?hasDCNode="true"^^xsd:boolean && ?hasConnectivityNode="true"^^xsd:boolean)
+                (?hasDCNode && ?hasConnectivityNode)
                 ||
-                (?hasDCNode="false"^^xsd:boolean && ?hasConnectivityNode="false"^^xsd:boolean)
+                (!?hasDCNode && !?hasConnectivityNode)
             )
         }
     """ .
@@ -535,5 +535,5 @@ erc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       	

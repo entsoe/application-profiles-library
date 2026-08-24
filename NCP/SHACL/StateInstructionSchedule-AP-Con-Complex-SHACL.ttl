@@ -111,8 +111,8 @@ sisc:PowerShiftKeyDistribution-associationsSparql
     BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
 
         FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPSKS="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPSKS="false"^^xsd:boolean) 
+      (?vPBS && ?vPSKS) || 
+      (!?vPBS && !?vPSKS) 
     ).
       }""" . 
 
@@ -156,8 +156,8 @@ sisc:PowerBidSchedule-associationsSparql
     BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
 
         FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPRA="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPRA="false"^^xsd:boolean) 
+      (?vPBS && ?vPRA) || 
+      (!?vPBS && !?vPRA) 
     ).
       }""" . 
       
@@ -191,8 +191,8 @@ sisc:PowerBidScheduleTimePoint-attributesSparql
     BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
 
         FILTER (
-      (?vpac="true"^^xsd:boolean && ?vpsc="true"^^xsd:boolean ) || 
-      ((?vpac="true"^^xsd:boolean || ?vpsc="true"^^xsd:boolean) && (?vpp="true"^^xsd:boolean || ?vmap="true"^^xsd:boolean || ?vpprice="true"^^xsd:boolean || ?vrp="true"^^xsd:boolean || ?vsip="true"^^xsd:boolean))
+      (?vpac && ?vpsc ) || 
+      ((?vpac || ?vpsc) && (?vpp || ?vmap || ?vpprice || ?vrp || ?vsip))
     ).
       }""" .     
       
@@ -272,5 +272,5 @@ sisc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       

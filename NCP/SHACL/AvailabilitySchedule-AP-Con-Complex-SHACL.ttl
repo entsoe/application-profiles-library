@@ -64,8 +64,8 @@ asc:AvailabilityEnabled-associationsSparql
     BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
 
         FILTER (
-      (?vGSA="true"^^xsd:boolean && ?vAE="true"^^xsd:boolean) || 
-      (?vGSA="false"^^xsd:boolean && ?vAE="false"^^xsd:boolean) 
+      (?vGSA && ?vAE) || 
+      (!?vGSA && !?vAE) 
     ).
       }""" . 
 
@@ -145,7 +145,7 @@ asc:PeerTemporalDependency.constraintKind-exclusiveSparql
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
     BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop="true"^^xsd:boolean || ?hassts="true"^^xsd:boolean || ?hasfts="true"^^xsd:boolean || ?hasftf="true"^^xsd:boolean).
+        FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
       }""" .       	  
 
 

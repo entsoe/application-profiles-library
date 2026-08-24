@@ -1341,7 +1341,7 @@ dm:alternativeVersionAndPreferredVersion-dependencySparql
     BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
     BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
 
-        FILTER ((?hasaltv="true"^^xsd:boolean && ?hasprefv="false"^^xsd:boolean) || (?hasaltv="false"^^xsd:boolean && ?hasprefv="true"^^xsd:boolean)).
+        FILTER ((?hasaltv && !?hasprefv) || (!?hasaltv && ?hasprefv)).
         }""" .      
 
 

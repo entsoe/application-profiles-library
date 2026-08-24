@@ -112,10 +112,8 @@ rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this  
-      WHERE {  
-    
-    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-        FILTER (?a1="false"^^xsd:boolean  ).
+      WHERE {
+        FILTER NOT EXISTS {$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1}
       }""" .      
 
 rasc:RemedialActionScheduleDependency  a          sh:NodeShape ;
@@ -142,7 +140,7 @@ rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
-        FILTER (?a1="true"^^xsd:boolean && ?a2="false"^^xsd:boolean ).
+        FILTER (?a1 && !?a2 ).
       }""" .            
       
 rasc:RemedialActionScheduleDependency-associations
@@ -167,7 +165,7 @@ rasc:RemedialActionScheduleDependency-associationsSparql
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
     
-        FILTER ((?a1="true"^^xsd:boolean && ?a2="true"^^xsd:boolean && ?a3="true"^^xsd:boolean) || (?a1="false"^^xsd:boolean && (?a2="false"^^xsd:boolean || ?a3="false"^^xsd:boolean))).
+        FILTER ((?a1 && ?a2 && ?a3) || (!?a1 && (!?a2 || !?a3))).
       }""" .    
 
 
@@ -195,7 +193,7 @@ rasc:RemedialActionScheduleResponse.rejectionReasonKind-requiredSparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
-        FILTER (?hasRK="false"^^xsd:boolean && ?hasR="true"^^xsd:boolean ).
+        FILTER (!?hasRK && ?hasR ).
       }""" .    
 
 rasc:RemedialActionScheduleResponse.rejectionReason-applicability
@@ -218,7 +216,7 @@ rasc:RemedialActionScheduleResponse.rejectionReason-applicabilitySparql
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
-        FILTER (?hasRR="false"^^xsd:boolean && ?hasR="true"^^xsd:boolean ).
+        FILTER (!?hasRR && ?hasR ).
       }""" .   
 
 
