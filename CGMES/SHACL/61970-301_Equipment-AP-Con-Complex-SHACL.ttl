@@ -1623,7 +1623,7 @@ equ:NonlinearShuntCompensator  a  sh:NodeShape ;
 equ:ShuntCompensator.maximumSections-numberOfInstances
         a               sh:PropertyShape ;
         sh:sparql       equ:ShuntCompensator.maximumSections-numberOfInstancesSparql ;
-        sh:description  "The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. " ;
+        sh:description  "The number of NonlinearShuntCompensatorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. " ;
         sh:name         "C:301:EQ:NonlinearShuntCompensatorPoint:numberOfInstances" ;
         sh:path         cim:ShuntCompensator.maximumSections ;
         sh:group        equ:EQ301UMLvarious ;
@@ -1636,20 +1636,13 @@ equ:ShuntCompensator.maximumSections-numberOfInstancesSparql
     sh:message "The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator does not equal to ShuntCompensator.maximumSections." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this ?value ?typesall
+      SELECT  $this (COUNT(?nlscp) AS ?numpoints)
       WHERE {
-        {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
-        WHERE {
-            $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
-            #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
-            #?nscpointsall rdf:type ?typeall .
-          }
-        GROUP BY $this ?typesall
-        }
-        $this $PATH ?value .  
-        FILTER (?value!=?typesall) .
-      }""" .        
+        $this $PATH ?value .
+        OPTIONAL { $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator ?nlscp } .
+      }
+      GROUP BY $this ?value
+      HAVING (?numpoints!=?value)""" .        
       
 #equ:Clamp
 #        a               sh:NodeShape ;
