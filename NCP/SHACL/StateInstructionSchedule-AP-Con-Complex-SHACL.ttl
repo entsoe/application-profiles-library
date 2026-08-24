@@ -66,53 +66,33 @@ sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
       }""" .        
 
 
+
 sisc:PowerShiftKeySchedule-associations
         a               sh:PropertyShape ;
         sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
-        sh:sparql       sisc:PowerShiftKeySchedule-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:PowerShiftKeySchedule.DCEquivalentInjection
+        nc:PowerShiftKeySchedule.DCPole
+        nc:PowerShiftKeySchedule.EnergyBlockOrder
+        nc:PowerShiftKeySchedule.EnergyConsumer
+        nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity
+        nc:PowerShiftKeySchedule.EnergySource
+        nc:PowerShiftKeySchedule.EquivalentInjection
+        nc:PowerShiftKeySchedule.ExternalNetworkInjection
+        nc:PowerShiftKeySchedule.GeneratingUnit
+        nc:PowerShiftKeySchedule.HydroPump
+        nc:PowerShiftKeySchedule.PowerElectronicUnit
+        nc:PowerShiftKeySchedule.ScheduleResource
+        nc:PowerShiftKeySchedule.SchedulingArea
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeySchedule:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
         
-sisc:PowerShiftKeySchedule-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity ?eg} AS ?vEG).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EquivalentInjection ?ei} AS ?vEI).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyConsumer ?ec} AS ?vEC).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergySource ?es} AS ?vES).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ExternalNetworkInjection ?eni} AS ?vENI).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.HydroPump ?hp} AS ?vHP).
-	
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.SchedulingArea ?sa} AS ?vSA).
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCEquivalentInjection ?dcei} AS ?vDCEI).
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyBlockOrder ?ebo} AS ?vEBO).
-        FILTER (
-      (?vSR="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vPEU="true"^^xsd:boolean && (?vSR="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vGU="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vDCP="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEG="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vEC="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vES="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-      (?vENI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) || 
-	  (?vSA="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean)) ||
-	  (?vDCEI="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean)) ||
-	  (?vEBO="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vHP="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean ||  ?vENI="true"^^xsd:boolean)) ||
-      (?vHP="true"^^xsd:boolean && (?vPEU="true"^^xsd:boolean || ?vGU="true"^^xsd:boolean || ?vDCP="true"^^xsd:boolean || ?vEG="true"^^xsd:boolean || ?vEI="true"^^xsd:boolean || ?vEC="true"^^xsd:boolean || ?vES="true"^^xsd:boolean || ?vENI="true"^^xsd:boolean || ?vSR="true"^^xsd:boolean || ?vSA="true"^^xsd:boolean || ?vDCEI="true"^^xsd:boolean || ?vEBO="true"^^xsd:boolean))
-    ).
-      }""" .   
 
 sisc:PowerShiftKeyDistribution  a          sh:NodeShape ;
         sh:property      sisc:PowerShiftKeyDistribution-associations;
