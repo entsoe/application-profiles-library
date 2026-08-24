@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value ?ends
-			WHERE {
+      SELECT  $this ?value ?ends
+      WHERE {
         {
         SELECT $this (COUNT(?typeend) AS ?ends)
         WHERE {
@@ -42,6 +42,6 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         #OPTIONAL {?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 }.
 
         FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .        
-			}
-      HAVING(?ends=2)
+        FILTER (?ends=2) .
+      }
       

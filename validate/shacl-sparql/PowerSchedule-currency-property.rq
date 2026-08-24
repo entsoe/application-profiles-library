@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformer-associationNotUsed
-# PowerTransformer-associationNotUsed
-# The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.
+# https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#PowerSchedule-currency-property
+# PowerSchedule-currency-property
+# If PowerTimePoint.price is provided, PowerSchedule.currency is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,9 +20,14 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
-        $this cim:ConductingEquipment.BaseVoltage ?value .
-        BIND(EXISTS{$this cim:ConductingEquipment.BaseVoltage ?v } AS ?hasvalue). 
-        FILTER (?hasvalue=true) .        
-			}
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        

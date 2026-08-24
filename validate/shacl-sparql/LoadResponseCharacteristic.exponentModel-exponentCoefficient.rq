@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         
         OPTIONAL {$this cim:LoadResponseCharacteristic.pFrequencyExponent ?pfe }.
@@ -39,4 +39,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
                 (?value=false && (bound(?pfe) || bound(?pve) || bound(?qfe) || bound(?qve) || !bound(?pcc) || !bound(?pci) || !bound(?pcp) || !bound(?qcc) || !bound(?qci) || !bound(?qcp))) || 
                 (?value=false && bound(?pcc) && bound(?pci) && bound(?pcp) && bound(?qcc) && bound(?qci) && bound(?qcp) && (?pcc+?pci+?pcp!=1 || ?qcc+?qci+?qcp!=1)  )
         ) .
-			}
+      }

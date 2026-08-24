@@ -20,15 +20,15 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-	      SELECT $this ?value ?v
+        SELECT $this ?value ?v
         WHERE {
-		$this dcterms:conformsTo ?conformsTo .
-		{
-			SELECT $this (count(?value) as ?v)
-			WHERE {
-			OPTIONAL {$this $PATH ?value } .
-			}
-			GROUP BY $this $PATH 
-		}
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2>)).
+    $this dcterms:conformsTo ?conformsTo .
+    {
+      SELECT $this (count(?value) as ?v)
+      WHERE {
+      OPTIONAL {$this $PATH ?value } .
+      }
+      GROUP BY $this $PATH 
+    }
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0>)).
         }

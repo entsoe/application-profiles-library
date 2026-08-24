@@ -38,7 +38,7 @@ sarc:SARgroup
         sh:order    0 .
 
 sarc:PowerFlowResult  a          sh:NodeShape ;
-        sh:property      sarc:PowerFlowResult.value, sarc:PowerFlowResult-ApparentPowerLimit, sarc:PowerFlowResult-ActivePowerLimit, sarc:PowerFlowResult-ReactivePowerLimit, sarc:PowerFlowResult-VoltageLimit, sarc:PowerFlowResult-VoltageAngleLimit, sarc:PowerFlowResult-CurrentLimit, sarc:PowerFlowResult-voltageAndAngle, sarc:PowerFlowResult-association, sarc:PowerFlowResult-topologicalNode;
+        sh:property      sarc:PowerFlowResult.value, sarc:PowerFlowResult-ApparentPowerLimit, sarc:PowerFlowResult-ActivePowerLimit, sarc:PowerFlowResult-ReactivePowerLimit, sarc:PowerFlowResult-VoltageAngleLimit, sarc:PowerFlowResult-CurrentLimit, sarc:PowerFlowResult-voltageAndAngle, sarc:PowerFlowResult-association, sarc:PowerFlowResult-topologicalNode;
         sh:targetClass  nc:BaseCasePowerFlowResult , nc:ContingencyPowerFlowResult.
 
 
@@ -64,7 +64,7 @@ sarc:PowerFlowResult.valueSparql
         #BIND(EXISTS{$this nc:PowerFlowResult.OperationalLimit ?o1} AS ?ol1).
     BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
     BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
-        FILTER (?val="false"^^xsd:boolean || ?aval="false"^^xsd:boolean ).
+        FILTER (!?val || !?aval ).
       }""" .        
 
 sarc:PowerFlowResult-ApparentPowerLimit
@@ -85,8 +85,7 @@ sarc:PowerFlowResult-ApparentPowerLimitSparql
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val="false"^^xsd:boolean ).
+        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && NOT EXISTS {$this $PATH ?o1}).
       }""" .        
 
 sarc:PowerFlowResult-ActivePowerLimit
@@ -107,8 +106,7 @@ sarc:PowerFlowResult-ActivePowerLimitSparql
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val="false"^^xsd:boolean ).
+        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit) && NOT EXISTS {$this $PATH ?o1}).
       }""" .       
       
 sarc:PowerFlowResult-ReactivePowerLimit
@@ -129,31 +127,33 @@ sarc:PowerFlowResult-ReactivePowerLimitSparql
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val="false"^^xsd:boolean ).
+        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && NOT EXISTS {$this $PATH ?o1}).
       }""" .       
       
 sarc:PowerFlowResult-VoltageLimit
-        a               sh:PropertyShape ;
+        a               sh:NodeShape ;
         sh:description  "PowerFlowResult.valueV is required attribute if a VoltageLimit is referenced by the association end PowerFlowResult.OperationalLimit." ;
-        sh:sparql       sarc:PowerFlowResult-VoltageLimitSparql ;
-        sh:path         nc:PowerFlowResult.valueV ;
+        sh:target       
+        [
+              a sh:SPARQLTarget ;
+              sh:prefixes cim: ;
+              sh:select    """
+              SELECT  $this  
+              WHERE {      
+                     $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
+                     FILTER (?oltype IN (cim:VoltageLimit, cim16:VoltageLimit, cim17:VoltageLimit)).
+                     FILTER NOT EXISTS {$this nc:PowerFlowResult.valueV ?value}
+                    }
+                  """
+        ] ;
+        sh:property     [ sh:path      nc:PowerFlowResult.valueV ;
+                          sh:minCount  1 ;
+                          sh:message   "PowerFlowResult.valueV is required attribute when a VoltageLimit is referenced by the association end PowerFlowResult.OperationalLimit." ] ;
         sh:group        sarc:SARgroup ;
         sh:name         "C:NC:SAR:PowerFlowResult:VoltageLimit" ;
         sh:order        5 ;
         sh:severity     sh:Violation .
-        
-sarc:PowerFlowResult-VoltageLimitSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerFlowResult.valueV is not provided for VoltageLimit." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {      
-        $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val="false"^^xsd:boolean ).
-      }""" .   
+
 
 sarc:PowerFlowResult-VoltageAngleLimit
         a               sh:PropertyShape ;
@@ -173,8 +173,7 @@ sarc:PowerFlowResult-VoltageAngleLimitSparql
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER (?oltype=nc:VoltageAngleLimit && ?val="false"^^xsd:boolean ).
+        FILTER (?oltype=nc:VoltageAngleLimit && NOT EXISTS {$this $PATH ?o1}).
       }""" .      
       
 sarc:PowerFlowResult-CurrentLimit
@@ -195,8 +194,7 @@ sarc:PowerFlowResult-CurrentLimitSparql
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val="false"^^xsd:boolean ).
+        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && NOT EXISTS {$this $PATH ?o1}).
       }""" .      
       
 sarc:RemedialActionApplied  a          sh:NodeShape ;
@@ -225,7 +223,7 @@ sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql
     $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
         BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
 
-        FILTER ((?stage="false"^^xsd:boolean && ?ratype=nc:SchemeRemedialAction) || (?stage="true"^^xsd:boolean && ?ratype!=nc:SchemeRemedialAction) ).
+        FILTER ((!?stage && ?ra=cim:SchemeRemedialAction) || (?stage && ?ra!=cim:SchemeRemedialAction) ).
       }""" .          
       
 sarc:PowerFlowResult-voltageAndAngle
@@ -251,7 +249,7 @@ sarc:PowerFlowResult-voltageAndAngleSparql
     BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
     BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
 
-        FILTER ((?hasvalueV="true"^^xsd:boolean || ?hasvalueAngle="true"^^xsd:boolean) && (?hasT="true"^^xsd:boolean || ?hasPTC="true"^^xsd:boolean) ).
+        FILTER ((?hasvalueV || ?hasvalueAngle) && (?hasT || ?hasPTC) ).
       }""" .    
 
 sarc:PowerFlowResult-association
@@ -299,5 +297,5 @@ sarc:PowerFlowResult-topologicalNodeSparql
     BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
     BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
-        FILTER ( ?hasTN="true"^^xsd:boolean && (?hasvalueW="true"^^xsd:boolean || ?hasvalueVA="true"^^xsd:boolean || ?hasvalueVAR="true"^^xsd:boolean || ?hasvalueA="true"^^xsd:boolean)).
+        FILTER ( ?hasTN && (?hasvalueW || ?hasvalueVA || ?hasvalueVAR || ?hasvalueA)).
       }""" .        

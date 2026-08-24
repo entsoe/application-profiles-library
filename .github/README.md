@@ -67,9 +67,9 @@ All current releases of CGMES ([v3.0](https://github.com/entsoe/application-prof
 
 For context, CGMES v3.0 profiles have the metadata under owl:Onthology. On the other hand, CGMES v2.4 profiles have the metadata under entsoe:<profile>Version.
 
-A maintenance request detected that [File Header RDFS of CGMES v3.0](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/CurrentRelease/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf) was missing the metadata. This originated a the addition of a [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/CurrentRelease/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) that features a new Ontology file header added to the schema (RDFS).
+A maintenance request detected that [File Header RDFS of CGMES v3.0](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf) was missing the metadata. This originated a the addition of a [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) that features a new Ontology file header added to the schema (RDFS).
 
-It is recommended to use the [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/CurrentRelease/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) instead of the [old](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/CurrentRelease/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf).
+It is recommended to use the [new File Header RDFS](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf) instead of the [old](https://github.com/entsoe/application-profiles-library/blob/main/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2019.rdf).
 
 
 # RDF schemas (RDFS)

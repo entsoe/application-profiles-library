@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.finishToStartLagKind-required
-# PowerBidDependency.finishToStartLagKind-required
-# If PowerBidDependency.finishToStartLag is present PowerBidDependency.finishToStartLagKind is required.
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.overlapKind-required
+# PeerTemporalDependency.overlapKind-required
+# If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,11 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		 
-		BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLag ?fts} AS ?hasfts).	
-		BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
-		
-        FILTER (?hasfts=true && ?hasftsk=false).
-			}
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
+    
+        FILTER (?hasop="true"^^xsd:boolean && ?hasopk="false"^^xsd:boolean).
+      }

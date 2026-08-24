@@ -20,9 +20,9 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {      
+      SELECT  $this  
+      WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-		BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val=false ).
-			}
+    BIND(EXISTS{$this $PATH ?o1} AS ?val).
+        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val="false"^^xsd:boolean ).
+      }

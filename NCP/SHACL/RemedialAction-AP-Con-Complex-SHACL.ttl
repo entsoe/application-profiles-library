@@ -63,8 +63,8 @@ rac:GridStateAlteration-associationsSparql
     BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
 
         FILTER (
-      (?vGSARA="true"^^xsd:boolean && ?vGSAC="true"^^xsd:boolean) || 
-      (?vGSARA="false"^^xsd:boolean && ?vGSAC="false"^^xsd:boolean) 
+      (?vGSARA && ?vGSAC) || 
+      (!?vGSARA && !?vGSAC) 
     ).
       }""" . 
       

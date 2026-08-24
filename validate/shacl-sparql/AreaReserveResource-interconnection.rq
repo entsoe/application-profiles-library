@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.overlapKind-required
-# PowerBidDependency.overlapKind-required
-# If PowerBidDependency.overlap is present PowerBidDependency.overlapKind is required.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaReserveResource-interconnection
+# AreaReserveResource-interconnection
+# An AreaReserveResource shall be associated with either a SchedulingArea or a TieCorridor, but not both.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -21,10 +21,10 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
 			SELECT  $this  
-			WHERE {  
-		 
-		BIND(EXISTS{$this nc:PowerBidDependency.overlap ?op} AS ?hasop).	
-		BIND(EXISTS{$this nc:PowerBidDependency.overlapKind ?opk} AS ?hasopk).
-		
-        FILTER (?hasop=true && ?hasopk=false).
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:AreaReserveResource.SchedulingArea ?o1} AS ?sa).
+		BIND(EXISTS{$this nc:AreaReserveResource.TieCorridor ?o2} AS ?tc).
+
+        FILTER (?sa="false"^^xsd:boolean && ?tc="false"^^xsd:boolean ).
 			}

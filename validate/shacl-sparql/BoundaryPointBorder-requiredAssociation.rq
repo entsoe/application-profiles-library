@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3#IdentifiedObject.description-stringLength
-# IdentifiedObject.description-stringLength
-# The string IdentifiedObject.description is maximum 256 characters.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorder-requiredAssociation
+# BoundaryPointBorder-requiredAssociation
+# A BoundaryPointBorder shall have minimum one BoundaryPoint or one BoundaryPointBorderLink.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,9 +20,16 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value  
-			WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>256) .
-			}
+        SELECT $this
+        WHERE {
+            BIND(EXISTS {
+                ?boundaryPoint nc:BoundaryPoint.BoundaryPointBorder $this .
+            } AS ?hasBoundaryPoint)
+
+            BIND(EXISTS {
+                ?borderLink nc:BoundaryPointBorderLink.BoundaryPointBorder $this .
+            } AS ?hasBoundaryPointBorderLink)
+
+            FILTER (?hasBoundaryPoint="false"^^xsd:boolean && ?hasBoundaryPointBorderLink="false"^^xsd:boolean)
+        }
+    

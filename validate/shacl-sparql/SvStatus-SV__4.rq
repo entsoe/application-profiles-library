@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  DISTINCT $this ?value 
-			WHERE {
+      SELECT  DISTINCT $this ?value 
+      WHERE {
         $this cim:TopologicalIsland.TopologicalNodes ?tn.
         ?tn ^cim:ConnectivityNode.TopologicalNode/^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment ?value.
         OPTIONAL {?value  ^cim:SvStatus.ConductingEquipment  ?svstatus} .
@@ -30,4 +30,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         #OPTIONAL {$this  ^cim:SvStatus.ConductingEquipment  ?svstatus} .
         #FILTER (bound(?topologicalisland) && !bound(?svstatus) && ?value!=cim:Equipment ).
         FILTER (!bound(?svstatus) && ?value!=cim:Equipment ).
-			}
+      }
