@@ -48,51 +48,32 @@ erc:AreaReserveResource  a          sh:NodeShape ;
 erc:AreaReserveResource-associations
         a               sh:PropertyShape ;
         sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-        sh:sparql       erc:AreaReserveResource-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            nc:AreaReserveResource.GeneratingUnit
+            nc:AreaReserveResource.PowerElecronicsUnit
+            nc:AreaReserveResource.ScheduleResource
+            nc:AreaReserveResource.HydroPump
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:AreaReserveResource:associations" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
-        
-erc:AreaReserveResource-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:AreaReserveResource.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
-		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
-        FILTER (!?adugu && !?adupe && !?adusr && !?aduhp).
-			}""" . 
 
 erc:AreaReserveResource-interconnection
         a               sh:PropertyShape ;
         sh:description  "An AreaReserveResource shall be associated with either a SchedulingArea or a TieCorridor, but not both." ;
-        sh:sparql       erc:AreaReserveResource-interconnectionSparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            nc:AreaReserveResource.SchedulingArea
+            nc:AreaReserveResource.TieCorridor
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "AreaReserveResource is not associated with either TieCorridor or SchedulingArea." ;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:AreaReserveResource:interconnection" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
-        
-erc:AreaReserveResource-interconnectionSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "AreaReserveResource is not associated with either TieCorridor or SchedulingArea." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:AreaReserveResource.SchedulingArea ?o1} AS ?sa).
-		BIND(EXISTS{$this nc:AreaReserveResource.TieCorridor ?o2} AS ?tc).
-
-        FILTER (!?sa && !?tc ).
-			}""" .			
 			
 erc:EnergyComponent  a          sh:NodeShape ;
         sh:property      erc:EnergyComponent-associations;
@@ -103,27 +84,18 @@ erc:EnergyComponent  a          sh:NodeShape ;
 erc:EnergyComponent-associations
         a               sh:PropertyShape ;
         sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-        sh:sparql       erc:EnergyComponent-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            nc:EnergyComponent.GeneratingUnit
+            nc:EnergyComponent.PowerElecronicsUnit
+            nc:EnergyComponent.EnergyConsumer
+            nc:EnergyComponent.HydroPump
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:EnergyComponent:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
-        
-erc:EnergyComponent-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
-		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
-        FILTER (!?adugu && !?adupe && !?aduec && !?aduhp).
-			}""" . 			
 			
 			
 erc:HydroPowerPlant  a          sh:NodeShape ;
@@ -162,25 +134,16 @@ erc:Circuit  a          sh:NodeShape ;
 erc:Circuit-associations
         a               sh:PropertyShape ;
         sh:description  "The Circuit shall be associated with either Equipment or Terminal." ;
-        sh:sparql       erc:Circuit-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            nc:Equipment.Circuit
+            nc:Circuit.IdentifyingTerminal
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "Circuit is not associated with either Equipment or Terminal." ;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:Circuit:associations" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
-        
-erc:Circuit-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "Circuit is not associated with either Equipment or Terminal." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
-		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
-        FILTER (!?ce && !?ct).
-			}""" . 		
 			
 erc:FunctionOutputVariable  a          sh:NodeShape ;
         sh:property      erc:FunctionOutputVariable.PropertyReference-value;
@@ -225,25 +188,16 @@ erc:InfeedLimit  a          sh:NodeShape ;
 erc:InfeedLimit-requiredAttributes
         a               sh:PropertyShape ;
         sh:description  "An InfeedLimit shall have either .normalValueA or .normalValueW." ;
-        sh:sparql       erc:InfeedLimit-requiredAttributesSparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            nc:InfeedLimit.normalValueA
+            nc:InfeedLimit.normalValueW
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "InfeedLimit does not have either .normalValueA or .normalValueW." ;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:InfeedLimit:requiredAttributes" ;
         sh:order        7 ;
         sh:severity     sh:Violation .
-        
-erc:InfeedLimit-requiredAttributesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "InfeedLimit does not have either .normalValueA or .normalValueW." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:InfeedLimit.normalValueA ?o1} AS ?hasNVA).
-		BIND(EXISTS{$this nc:InfeedLimit.normalValueW ?o2} AS ?hasNVW).
-        FILTER (!?hasNVA && !?hasNVW).
-			}""" . 			
 
 erc:CrossZonalNetworkElement
     a sh:NodeShape ;
@@ -495,132 +449,68 @@ erc:BoundaryPointBorder-requiredAssociation
     a sh:PropertyShape ;
     sh:name "C:NC:ER:BoundaryPointBorder:requiredAssociation" ;
     sh:description "A BoundaryPointBorder shall have minimum one BoundaryPoint or one BoundaryPointBorderLink." ;
-    sh:path rdf:type ;
-    sh:sparql erc:BoundaryPointBorder-requiredAssociationSparql ;
+    sh:path [ sh:alternativePath (
+        [ sh:inversePath nc:BoundaryPoint.BoundaryPointBorder ]
+        [ sh:inversePath nc:BoundaryPointBorderLink.BoundaryPointBorder ]
+      ) ] ;
+    sh:minCount 1 ;
+    sh:message "BoundaryPointBorder is not associated with a BoundaryPoint or a BoundaryPointBorderLink." ;
     sh:group erc:ERgroup ;
     sh:order 14 ;
     sh:severity sh:Violation .
-
-
-erc:BoundaryPointBorder-requiredAssociationSparql
-    a sh:SPARQLConstraint ;
-    sh:message "BoundaryPointBorder is not associated with a BoundaryPoint or a BoundaryPointBorderLink." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this
-        WHERE {
-            BIND(EXISTS {
-                ?boundaryPoint nc:BoundaryPoint.BoundaryPointBorder $this .
-            } AS ?hasBoundaryPoint)
-
-            BIND(EXISTS {
-                ?borderLink nc:BoundaryPointBorderLink.BoundaryPointBorder $this .
-            } AS ?hasBoundaryPointBorderLink)
-
-            FILTER (!?hasBoundaryPoint && !?hasBoundaryPointBorderLink)
-        }
-    """ .
 	
 erc:ThermalGeneratingUnitDependency  a          sh:NodeShape ;
-        sh:property      erc:PeerTemporalDependency.finishToFinishLagKind-required, erc:PeerTemporalDependency.finishToStartLagKind-required, erc:PeerTemporalDependency.overlapKind-required, erc:PeerTemporalDependency.startToStartLagKind-required, erc:PeerTemporalDependency.constraintKind-exclusive;
+        sh:property      erc:PeerTemporalDependency.constraintKind-exclusive;
         sh:targetClass  nc:ThermalGeneratingUnitDependency .      
 
 erc:PeerTemporalDependency.finishToFinishLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.finishToFinishLagKind:required" ;
-        sh:order        7 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
-    
-        FILTER (?hasftf && !?hasftfk).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToFinishLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToFinishLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.finishToFinishLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     7 ;
+                                sh:severity  sh:Violation ] .
 
 erc:PeerTemporalDependency.finishToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.finishToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.finishToStartLagKind:required" ;
-        sh:order        8 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
-    
-        FILTER (?hasfts && !?hasftsk).
-      }""" .       
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.finishToStartLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     8 ;
+                                sh:severity  sh:Violation ] .
+
 erc:PeerTemporalDependency.overlapKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.overlapKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.overlapKind:required" ;
-        sh:order        9 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.overlapKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
-    
-        FILTER (?hasop && !?hasopk).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.overlap ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.overlapKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
+                                sh:message   "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.overlapKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     9 ;
+                                sh:severity  sh:Violation ] .
 
 erc:PeerTemporalDependency.startToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
-        sh:sparql       erc:PeerTemporalDependency.startToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        erc:ERgroup ;
-        sh:name         "C:NC:ER:PeerTemporalDependency.startToStartLagKind:required" ;
-        sh:order        10 ;
-        sh:severity     sh:Violation .
-        
-erc:PeerTemporalDependency.startToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
-    
-        FILTER (?hassts && !?hasstsk).
-      }""" .         
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.startToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.startToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
+                                sh:name      "C:NC:ER:PeerTemporalDependency.startToStartLagKind:required" ;
+                                sh:group     erc:ERgroup ;
+                                sh:order     10 ;
+                                sh:severity  sh:Violation ] .
+
 erc:PeerTemporalDependency.constraintKind-exclusive
         a               sh:PropertyShape ;
         sh:description  "If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag." ;

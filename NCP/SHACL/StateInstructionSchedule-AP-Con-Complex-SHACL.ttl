@@ -46,73 +46,45 @@ sisc:PowerShiftKeySchedule  a          sh:NodeShape ;
 sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency
         a               sh:PropertyShape ;
         sh:description  "The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution." ;
-        sh:sparql       sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql ;
-        sh:path         rdf:type ;
+        sh:path         [ sh:alternativePath (
+            [ sh:inversePath nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ]
+            nc:PowerShiftKeySchedule.ParticipationFactorTimePoint
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeySchedule.ParticipationFactorTimePoint:dependency" ;
         sh:order        1 ;
-        sh:severity     sh:Violation .
-        
-sisc:PowerShiftKeySchedule.ParticipationFactorTimePoint-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "The association end PowerShiftKeySchedule.ParticipationFactorTimePoint is not instantiated for PowerShiftKeySchedule that is not associated with PowerShiftKeyDistribution." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
-        FILTER (!?valD && !?valP ).
-      }""" .        
+        sh:severity     sh:Violation .        
+
 
 
 sisc:PowerShiftKeySchedule-associations
         a               sh:PropertyShape ;
         sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
-        sh:sparql       sisc:PowerShiftKeySchedule-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:PowerShiftKeySchedule.DCEquivalentInjection
+        nc:PowerShiftKeySchedule.DCPole
+        nc:PowerShiftKeySchedule.EnergyBlockOrder
+        nc:PowerShiftKeySchedule.EnergyConsumer
+        nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity
+        nc:PowerShiftKeySchedule.EnergySource
+        nc:PowerShiftKeySchedule.EquivalentInjection
+        nc:PowerShiftKeySchedule.ExternalNetworkInjection
+        nc:PowerShiftKeySchedule.GeneratingUnit
+        nc:PowerShiftKeySchedule.HydroPump
+        nc:PowerShiftKeySchedule.PowerElectronicUnit
+        nc:PowerShiftKeySchedule.ScheduleResource
+        nc:PowerShiftKeySchedule.SchedulingArea
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeySchedule:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
         
-sisc:PowerShiftKeySchedule-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).  
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity ?eg} AS ?vEG).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EquivalentInjection ?ei} AS ?vEI).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyConsumer ?ec} AS ?vEC).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergySource ?es} AS ?vES).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.ExternalNetworkInjection ?eni} AS ?vENI).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.HydroPump ?hp} AS ?vHP).
-	
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.SchedulingArea ?sa} AS ?vSA).
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCEquivalentInjection ?dcei} AS ?vDCEI).
-	BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyBlockOrder ?ebo} AS ?vEBO).
-        FILTER (
-      (?vSR && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vPEU && (?vSR || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vGU && (?vPEU || ?vSR || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vDCP && (?vPEU || ?vGU || ?vSR || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vEG && (?vPEU || ?vGU || ?vDCP || ?vSR || ?vEI || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vEI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vSR || ?vEC || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vEC && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vSR || ?vES || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vES && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vSR || ?vENI || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-      (?vENI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vDCEI || ?vEBO)) || 
-	  (?vSA && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vENI || ?vDCEI || ?vEBO)) ||
-	  (?vDCEI && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vEBO || ?vENI)) ||
-	  (?vEBO && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vSR || ?vHP || ?vSA || ?vDCEI ||  ?vENI)) ||
-      (?vHP && (?vPEU || ?vGU || ?vDCP || ?vEG || ?vEI || ?vEC || ?vES || ?vENI || ?vSR || ?vSA || ?vDCEI || ?vEBO))
-    ).
-      }""" .   
 
 sisc:PowerShiftKeyDistribution  a          sh:NodeShape ;
         sh:property      sisc:PowerShiftKeyDistribution-associations;
@@ -225,105 +197,57 @@ sisc:PowerBidScheduleTimePoint-attributesSparql
       }""" .     
       
 sisc:PowerBidDependency  a          sh:NodeShape ;
-        sh:property      sisc:PeerTemporalDependency.finishToFinishLagKind-required, sisc:PeerTemporalDependency.finishToStartLagKind-required, sisc:PeerTemporalDependency.overlapKind-required, sisc:PeerTemporalDependency.startToStartLagKind-required, sisc:PeerTemporalDependency.constraintKind-exclusive;
+        sh:property      sisc:PeerTemporalDependency.constraintKind-exclusive;
         sh:targetClass  nc:PowerBidDependency .      
 
 sisc:PeerTemporalDependency.finishToFinishLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
-        sh:sparql       sisc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        sisc:SISCustomGroup ;
-        sh:name         "C:NC:SIS:PeerTemporalDependency.finishToFinishLagKind:required" ;
-        sh:order        7 ;
-        sh:severity     sh:Violation .
-        
-sisc:PeerTemporalDependency.finishToFinishLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
-    
-        FILTER (?hasftf && !?hasftfk).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToFinishLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToFinishLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToFinishLagKind is missing when PeerTemporalDependency.finishToFinishLag is present." ;
+                                sh:name      "C:NC:SIS:PeerTemporalDependency.finishToFinishLagKind:required" ;
+                                sh:group     sisc:SISCustomGroup ;
+                                sh:order     7 ;
+                                sh:severity  sh:Violation ] .
 
 sisc:PeerTemporalDependency.finishToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
-        sh:sparql       sisc:PeerTemporalDependency.finishToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        sisc:SISCustomGroup ;
-        sh:name         "C:NC:SIS:PeerTemporalDependency.finishToStartLagKind:required" ;
-        sh:order        8 ;
-        sh:severity     sh:Violation .
-        
-sisc:PeerTemporalDependency.finishToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
-    
-        FILTER (?hasfts && !?hasftsk).
-      }""" .       
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.finishToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.finishToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.finishToStartLagKind is missing when PeerTemporalDependency.finishToStartLag is present." ;
+                                sh:name      "C:NC:SIS:PeerTemporalDependency.finishToStartLagKind:required" ;
+                                sh:group     sisc:SISCustomGroup ;
+                                sh:order     8 ;
+                                sh:severity  sh:Violation ] .
+
 sisc:PeerTemporalDependency.overlapKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
-        sh:sparql       sisc:PeerTemporalDependency.overlapKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        sisc:SISCustomGroup ;
-        sh:name         "C:NC:SIS:PeerTemporalDependency.overlapKind:required" ;
-        sh:order        9 ;
-        sh:severity     sh:Violation .
-        
-sisc:PeerTemporalDependency.overlapKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
-    
-        FILTER (?hasop && !?hasopk).
-      }""" .     
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.overlap ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.overlapKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required." ;
+                                sh:message   "PeerTemporalDependency.overlapKind is missing when PeerTemporalDependency.overlap is present." ;
+                                sh:name      "C:NC:SIS:PeerTemporalDependency.overlapKind:required" ;
+                                sh:group     sisc:SISCustomGroup ;
+                                sh:order     9 ;
+                                sh:severity  sh:Violation ] .
 
 sisc:PeerTemporalDependency.startToStartLagKind-required
-        a               sh:PropertyShape ;
-        sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
-        sh:sparql       sisc:PeerTemporalDependency.startToStartLagKind-requiredSparql ;
-        sh:path         rdf:type ;
-        sh:group        sisc:SISCustomGroup ;
-        sh:name         "C:NC:SIS:PeerTemporalDependency.startToStartLagKind:required" ;
-        sh:order        10 ;
-        sh:severity     sh:Violation .
-        
-sisc:PeerTemporalDependency.startToStartLagKind-requiredSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-     
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
-    
-        FILTER (?hassts && !?hasstsk).
-      }""" .         
-      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  nc:PeerTemporalDependency.startToStartLag ;
+        sh:property          [ sh:path      nc:PeerTemporalDependency.startToStartLagKind ;
+                                sh:minCount  1 ;
+                                sh:description  "If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required." ;
+                                sh:message   "PeerTemporalDependency.startToStartLagKind is missing when PeerTemporalDependency.startToStartLag is present." ;
+                                sh:name      "C:NC:SIS:PeerTemporalDependency.startToStartLagKind:required" ;
+                                sh:group     sisc:SISCustomGroup ;
+                                sh:order     10 ;
+                                sh:severity  sh:Violation ] .
+
 sisc:PeerTemporalDependency.constraintKind-exclusive
         a               sh:PropertyShape ;
         sh:description  "If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag." ;

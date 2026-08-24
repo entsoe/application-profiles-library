@@ -1036,7 +1036,7 @@ dm:Dataset  rdf:type  sh:NodeShape ;
         sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet.    
     
 dm:DifferenceSet  rdf:type  sh:NodeShape ;
-        sh:property     dm:forwardReverse-dependency,dm:reverseDifferencePreviousVersion-dependency ;
+        sh:property     dm:forwardReverse-dependency ;
         sh:targetClass  dcatcim:DifferenceSet.    
     
 
@@ -1348,48 +1348,28 @@ dm:alternativeVersionAndPreferredVersion-dependencySparql
 
 dm:forwardReverse-dependency
         a               sh:PropertyShape ;
-        sh:sparql       dm:forwardReverse-dependencySparql ;
         sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:name         "forwardReverse-dependency" ;
-        sh:path         rdf:type;
+        sh:path         [ sh:alternativePath (
+            dcatcim:forwardDifference
+            dcatcim:reverseDifference
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "None of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        18 ;
         sh:severity     sh:Violation .
         
     
-dm:forwardReverse-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "None of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
-    BIND(EXISTS{$this dcatcim:reverseDifference ?value1} AS ?hasprefv).
-
-        FILTER ((!?hasaltv && !?hasprefv) ).
-        }""" .
     
 dm:reverseDifferencePreviousVersion-dependency
-        a               sh:PropertyShape ;
-        sh:sparql       dm:reverseDifferencePreviousVersion-dependencySparql ;
-        sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
-        sh:name         "reverseDifferencePreviousVersion-dependency" ;
-        sh:path         rdf:type;
-        sh:group        dm:CardinalityGroupCustom ;
-        sh:order        19 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:reverseDifferencePreviousVersion-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:reverseDifference ?value} AS ?hasrd).
-    BIND(EXISTS{$this dcat:previousVersion ?value1} AS ?haspv).
-
-        FILTER (?hasrd && !?haspv).
-        }""" .      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  dcatcim:reverseDifference ;
+        sh:property          [ sh:path      dcat:previousVersion ;
+                                sh:minCount  1 ;
+                                sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
+                                sh:message   "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
+                                sh:name      "reverseDifferencePreviousVersion-dependency" ;
+                                sh:group     dm:CardinalityGroupCustom ;
+                                sh:order     19 ;
+                                sh:severity  sh:Violation ] .
