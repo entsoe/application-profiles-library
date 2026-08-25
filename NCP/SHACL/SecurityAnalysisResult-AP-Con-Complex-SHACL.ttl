@@ -257,24 +257,17 @@ sarc:PowerFlowResult-voltageAndAngleSparql
 sarc:PowerFlowResult-association
         a               sh:PropertyShape ;
         sh:description  "PowerFlowResult shall be associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
-        sh:sparql       sarc:PowerFlowResult-associationSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerFlowResult is not associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
+        sh:path [sh:alternativePath (
+        nc:PowerFlowResult.ACDCTerminal
+        nc:PowerFlowResult.PowerTransferCorridor
+        nc:PowerFlowResult.TopologicalNode
+                )];
+        sh:minCount 1;
         sh:group        sarc:SARgroup ;
         sh:name         "C:NC:SAR:PowerFlowResult:association" ;
         sh:order        10 ;
         sh:severity     sh:Violation .
-        
-sarc:PowerFlowResult-associationSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerFlowResult is not associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this (nc:PowerFlowResult.ACDCTerminal/rdf:type)|(nc:PowerFlowResult.TopologicalNode/rdf:type)|(nc:PowerFlowResult.PowerTransferCorridor/rdf:type) ?assocType.
-
-        FILTER (?assocType NOT IN (cim:DCTerminal, cim17:DCTerminal, cim16:DCTerminal, cim:Terminal, cim17:Terminal, cim16:Terminal, cim:TopologicalNode, cim17:TopologicalNode, cim16:TopologicalNode, nc:PowerTransferCorridor) ).
-      }""" .     
 
 sarc:PowerFlowResult-topologicalNode
         a               sh:PropertyShape ;

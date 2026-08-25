@@ -47,28 +47,19 @@ erc:AreaReserveResource  a          sh:NodeShape ;
 
 erc:AreaReserveResource-associations
         a               sh:PropertyShape ;
-        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-        sh:sparql       erc:AreaReserveResource-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
+        sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:AreaReserveResource.GeneratingUnit
+        nc:AreaReserveResource.HydroPump
+        nc:AreaReserveResource.PowerElectronicsUnit
+        nc:AreaReserveResource.ScheduleResource
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:AreaReserveResource:associations" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
-        
-erc:AreaReserveResource-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:AreaReserveResource.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
-		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
-        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?adusr="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
-			}""" . 
 
 erc:AreaReserveResource-interconnection
         a               sh:PropertyShape ;
@@ -102,28 +93,19 @@ erc:EnergyComponent  a          sh:NodeShape ;
 
 erc:EnergyComponent-associations
         a               sh:PropertyShape ;
-        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-        sh:sparql       erc:EnergyComponent-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:EnergyComponent.EnergyConsumer
+        nc:EnergyComponent.GeneratingUnit
+        nc:EnergyComponent.HydroPump
+        nc:EnergyComponent.PowerElectronicsUnit
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:EnergyComponent:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
-        
-erc:EnergyComponent-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
-		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
-        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?aduec="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
-			}""" . 			
 			
 			
 erc:HydroPowerPlant  a          sh:NodeShape ;
@@ -162,25 +144,16 @@ erc:Circuit  a          sh:NodeShape ;
 erc:Circuit-associations
         a               sh:PropertyShape ;
         sh:description  "The Circuit shall be associated with either Equipment or Terminal." ;
-        sh:sparql       erc:Circuit-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "Circuit is not associated with either Equipment or Terminal." ;
+        sh:path [sh:alternativePath (
+        [sh:inversePath nc:Equipment.Circuit]
+        nc:Circuit.IdentifyingTerminal
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:Circuit:associations" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
-        
-erc:Circuit-associationsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "Circuit is not associated with either Equipment or Terminal." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
-		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
-        FILTER (?ce="false"^^xsd:boolean && ?ct="false"^^xsd:boolean).
-			}""" . 		
 			
 erc:FunctionOutputVariable  a          sh:NodeShape ;
         sh:property      erc:FunctionOutputVariable.PropertyReference-value;

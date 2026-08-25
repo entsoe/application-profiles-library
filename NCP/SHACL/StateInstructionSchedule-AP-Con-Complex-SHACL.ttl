@@ -82,7 +82,7 @@ sisc:PowerShiftKeySchedule-associations
         nc:PowerShiftKeySchedule.ExternalNetworkInjection
         nc:PowerShiftKeySchedule.GeneratingUnit
         nc:PowerShiftKeySchedule.HydroPump
-        nc:PowerShiftKeySchedule.PowerElectronicUnit
+        nc:PowerShiftKeySchedule.PowerElectronicsUnit
         nc:PowerShiftKeySchedule.ScheduleResource
         nc:PowerShiftKeySchedule.SchedulingArea
                 )];
@@ -101,28 +101,17 @@ sisc:PowerShiftKeyDistribution  a          sh:NodeShape ;
 sisc:PowerShiftKeyDistribution-associations
         a               sh:PropertyShape ;
         sh:description  "PowerShiftKeyDistribution shall include one and only one association to either PowerBidSchedule or PowerShiftKeyStrategy." ;
-        sh:sparql       sisc:PowerShiftKeyDistribution-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerShiftKeyDistribution is not associated with either PowerBidSchedule or PowerShiftKeyStrategy or it is associated with both." ;
+        sh:path [sh:alternativePath (
+        nc:PowerShiftKeyDistribution.PowerBidSchedule
+        nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeyDistribution:associations" ;
         sh:order        3 ;
         sh:severity     sh:Violation .
-        
-sisc:PowerShiftKeyDistribution-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerShiftKeyDistribution is not associated with either PowerBidSchedule or PowerShiftKeyStrategy or it is associated with both." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).  
-    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
-
-        FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPSKS="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPSKS="false"^^xsd:boolean) 
-    ).
-      }""" . 
 
 sisc:GenericSequenceSchedule  a          sh:NodeShape ;
         sh:property      sisc:GenericSequenceSchedule-associations;
@@ -133,7 +122,7 @@ sisc:GenericSequenceSchedule-associations
         sh:description  "Association end GenericSequenceSchedule.EnergyBlockOrder is required." ;
     sh:message      "The association end GenericSequenceSchedule.EnergyBlockOrder is not provided." ;
         sh:path         nc:GenericSequenceSchedule.EnergyBlockOrder ;
-    sh:MinCount    1;
+    sh:minCount    1;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:GenericSequenceSchedule:associations" ;
         sh:order        4 ;
@@ -146,28 +135,17 @@ sisc:PowerBidSchedule  a          sh:NodeShape ;
 sisc:PowerBidSchedule-associations
         a               sh:PropertyShape ;
         sh:description  "PowerBidSchedule shall include one and only one association to either ScheduleResource or PowerRemedialAction." ;
-        sh:sparql       sisc:PowerBidSchedule-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerBidSchedule is not associated with either ScheduleResource or PowerRemedialAction or it is associated with both." ;
+        sh:path [sh:alternativePath (
+        nc:PowerBidSchedule.PowerRemedialAction
+        nc:PowerBidSchedule.ScheduleResource
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerBidSchedule:associations" ;
         sh:order        5 ;
         sh:severity     sh:Violation .
-        
-sisc:PowerBidSchedule-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerBidSchedule is not associated with either ScheduleResource or PowerRemedialAction or it is associated with both." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).  
-    BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
-
-        FILTER (
-      (?vPBS="true"^^xsd:boolean && ?vPRA="true"^^xsd:boolean) || 
-      (?vPBS="false"^^xsd:boolean && ?vPRA="false"^^xsd:boolean) 
-    ).
-      }""" . 
       
 sisc:PowerBidScheduleTimePoint  a          sh:NodeShape ;
         sh:property      sisc:PowerBidScheduleTimePoint-attributes;
