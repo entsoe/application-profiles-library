@@ -48,7 +48,7 @@ io:IdentifiedObject.name-stringLength
         sh:group        io:IOstringLength ;
         sh:name         "C:452:ALL:IdentifiedObject.name:stringLength" ;
         sh:order        1 ;
-		sh:message      "String length is greater than 128 characters." ;
+        sh:message      "String length is greater than 128 characters." ;
         sh:severity     sh:Violation .
         
 io:IdentifiedObjectStringLengthDescription  a          sh:NodeShape ;

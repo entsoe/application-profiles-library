@@ -81,8 +81,9 @@ svu:CsConverter.gamma-valueRangeTypicalSparql
       WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
-        FILTER (?value<17 || ?value>20) .        
-      }""" .         
+        FILTER (?value<17 || ?value>20) .
+      }
+      """ .
 
 svu:CsConverter.alpha-valueRangeTypical
         a                sh:PropertyShape ;
@@ -103,8 +104,9 @@ svu:CsConverter.alpha-valueRangeTypicalSparql
       WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
-        FILTER (?value<10 || ?value>18) .        
-      }""" .        
+        FILTER (?value<10 || ?value>18) .
+      }
+      """ .
 
 svu:CsConverter.gamma-valueRange
         a                sh:PropertyShape ;

@@ -78,17 +78,18 @@ opn452:Measurement.Terminal-requiredCasesSparql
     sh:select """
       SELECT  $this ?value ?terminal ?terminal1 ?terminal2 ?terminal3 ?meastype
       WHERE {
-             $this $PATH ?value .
-             OPTIONAL {$this cim:Measurement.Terminal ?terminal}.
-             $this cim:Measurement.measurementType ?meastype . 
-             ?terminal1 cim:Terminal.ConductingEquipment ?value ;
-                        cim:ACDCTerminal.sequenceNumber 1 .
-             OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?value ;
-                        cim:ACDCTerminal.sequenceNumber 2 .}
-             OPTIONAL {?terminal3 cim:Terminal.ConductingEquipment ?value ;
-                        cim:ACDCTerminal.sequenceNumber 3 .}
+        $this $PATH ?value .
+        OPTIONAL {$this cim:Measurement.Terminal ?terminal}.
+        $this cim:Measurement.measurementType ?meastype .
+        ?terminal1 cim:Terminal.ConductingEquipment ?value ;
+        cim:ACDCTerminal.sequenceNumber 1 .
+        OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?value ;
+          cim:ACDCTerminal.sequenceNumber 2 .}
+        OPTIONAL {?terminal3 cim:Terminal.ConductingEquipment ?value ;
+          cim:ACDCTerminal.sequenceNumber 3 .}
         FILTER ((bound(?terminal) && (?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (!bound(?terminal) && !(?meastype="TapPosition" || ?meastype="SwitchPosition" )) || (bound(?terminal) && ((?terminal!=?terminal1 && !bound(?terminal2) && !bound(?terminal3)) || (bound(?terminal2) && !bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2) || (bound(?terminal2) && bound(?terminal3) && ?terminal!=?terminal1 && ?terminal!=?terminal2 && ?terminal!=?terminal3)))) .
-      }""" .
+      }
+      """ .
 
 
 

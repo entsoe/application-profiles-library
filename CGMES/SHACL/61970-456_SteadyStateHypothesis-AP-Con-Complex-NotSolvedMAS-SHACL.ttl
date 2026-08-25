@@ -70,17 +70,18 @@ sshn456:EquivalentInjection-regulation
         sh:severity     sh:Violation .
         
 sshn456:EquivalentInjection-regulationSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Inconsistancy between EquivalentInjection.regulationCapability,  EquivalentInjection.regulationStatus and EquivalentInjection.regulationTarget. " ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value.
-        OPTIONAL {$this cim:EquivalentInjection.regulationStatus ?rstatus}.
-        OPTIONAL {$this cim:EquivalentInjection.regulationTarget ?rtarget}. 
-        FILTER ((?value=true && (!bound(?rstatus) || !bound(?rtarget))) || (?value=false && (bound(?rstatus) || bound(?rtarget)))) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Inconsistancy between EquivalentInjection.regulationCapability,  EquivalentInjection.regulationStatus and EquivalentInjection.regulationTarget. " ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value.
+            OPTIONAL {$this cim:EquivalentInjection.regulationStatus ?rstatus}.
+            OPTIONAL {$this cim:EquivalentInjection.regulationTarget ?rtarget}.
+            FILTER ((?value=true && (!bound(?rstatus) || !bound(?rtarget))) || (?value=false && (bound(?rstatus) || bound(?rtarget)))) .
+          }
+          """ .
     
 sshn456:RotatingMachine  a  sh:NodeShape ;
         sh:property     sshn456:RotatingMachine.p-limits , sshn456:RotatingMachine.q-limits;
@@ -99,21 +100,22 @@ sshn456:RotatingMachine.p-limits
         
     
 sshn456:RotatingMachine.p-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Active power is outside defined active power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this cim:Equipment.inService true .
-        $this cim:RotatingMachine.GeneratingUnit ?genunit.
-        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?hasgenunit} AS ?hasgu).
-        $this $PATH ?value .
-        ?genunit cim:GeneratingUnit.maxOperatingP ?maxp . 
-        ?genunit cim:GeneratingUnit.minOperatingP ?minp .
-        FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-        #FILTER (?hasgu=true && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-			}""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "Active power is outside defined active power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this cim:Equipment.inService true .
+            $this cim:RotatingMachine.GeneratingUnit ?genunit.
+            #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?hasgenunit} AS ?hasgu).
+            $this $PATH ?value .
+            ?genunit cim:GeneratingUnit.maxOperatingP ?maxp .
+            ?genunit cim:GeneratingUnit.minOperatingP ?minp .
+            FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .
+            #FILTER (?hasgu=true && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .
+          }
+          """ .
 
 sshn456:RotatingMachine.q-limits
         a               sh:PropertyShape ;
@@ -127,22 +129,23 @@ sshn456:RotatingMachine.q-limits
         
     
 sshn456:RotatingMachine.q-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Reactive power is outside defined reactive power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this cim:Equipment.inService true .
-        $this $PATH ?value .
-        BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?curve} AS ?hascurve).
-        #OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq}.
-        #OPTIONAL {$this cim:SynchronousMachine.minQ ?minq}.
-        $this cim:SynchronousMachine.maxQ ?maxq.
-        $this cim:SynchronousMachine.minQ ?minq.
-        #FILTER (?hascurve=false && bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
-        FILTER (?hascurve=false && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .           
-			}""" .        
+        a         sh:SPARQLConstraint ;
+        sh:message "Reactive power is outside defined reactive power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this cim:Equipment.inService true .
+            $this $PATH ?value .
+            BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?curve} AS ?hascurve).
+            #OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq}.
+            #OPTIONAL {$this cim:SynchronousMachine.minQ ?minq}.
+            $this cim:SynchronousMachine.maxQ ?maxq.
+            $this cim:SynchronousMachine.minQ ?minq.
+            #FILTER (?hascurve=false && bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .
+            FILTER (?hascurve=false && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .
+          }
+          """ .
       
             
 sshn456:TapChanger  a  sh:NodeShape ;
@@ -161,22 +164,23 @@ sshn456:TapChanger.step-value
         
     
 sshn456:TapChanger.step-valueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not integer for an active discrete regulating control." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        #OPTIONAL {$this cim:TapChanger.TapChangerControl ?contr}.
-        #?contr cim:RegulatingControl.discrete ?discrete . 
-        #?contr cim:RegulatingControl.enabled ?enabled .
-        $this cim:TapChanger.TapChangerControl ?contr.
-        ?contr cim:RegulatingControl.discrete true . 
-        ?contr cim:RegulatingControl.enabled true .
-        #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")  && bound(?contr) && ?discrete=true && ?enabled=true) .  
-        FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .         
-			}""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "The value is not integer for an active discrete regulating control." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            #OPTIONAL {$this cim:TapChanger.TapChangerControl ?contr}.
+            #?contr cim:RegulatingControl.discrete ?discrete .
+            #?contr cim:RegulatingControl.enabled ?enabled .
+            $this cim:TapChanger.TapChangerControl ?contr.
+            ?contr cim:RegulatingControl.discrete true .
+            ?contr cim:RegulatingControl.enabled true .
+            #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")  && bound(?contr) && ?discrete=true && ?enabled=true) .
+            FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .
+          }
+          """ .
 
 sshn456:ShuntCompensator  a  sh:NodeShape ;
         sh:property     sshn456:ShuntCompensator.sections-value ;
@@ -195,22 +199,23 @@ sshn456:ShuntCompensator.sections-value
         
     
 sshn456:ShuntCompensator.sections-valueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not integer for an active discrete regulating control." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
-        #?contr cim:RegulatingControl.discrete ?discrete . 
-        #?contr cim:RegulatingControl.enabled ?enabled .
-        $this cim:RegulatingCondEq.RegulatingControl ?contr.
-        ?contr cim:RegulatingControl.discrete true . 
-        ?contr cim:RegulatingControl.enabled true .
-        #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") && bound(?contr) && ?discrete=true && ?enabled=true) .
-        FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") ) .        
-			}""" .            
+        a         sh:SPARQLConstraint ;
+        sh:message "The value is not integer for an active discrete regulating control." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
+            #?contr cim:RegulatingControl.discrete ?discrete .
+            #?contr cim:RegulatingControl.enabled ?enabled .
+            $this cim:RegulatingCondEq.RegulatingControl ?contr.
+            ?contr cim:RegulatingControl.discrete true .
+            ?contr cim:RegulatingControl.enabled true .
+            #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") && bound(?contr) && ?discrete=true && ?enabled=true) .
+            FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") ) .
+          }
+          """ .
 
 sshn456:RegulatingControl  a  sh:NodeShape ;
         sh:property     sshn456:RegulatingControl.targetValue-value;
@@ -228,17 +233,18 @@ sshn456:RegulatingControl.targetValue-value
         
     
 sshn456:RegulatingControl.targetValue-valueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is negative or zero for RegulatingControl in voltage mode." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage .
-        $this $PATH ?value .
-        FILTER (?value<=0 ) . 
-        #FILTER (?value<=0 && ?mode=cim:RegulatingControlModeKind.voltage) .        
-			}""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "The value is negative or zero for RegulatingControl in voltage mode." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage .
+            $this $PATH ?value .
+            FILTER (?value<=0 ) .
+            #FILTER (?value<=0 && ?mode=cim:RegulatingControlModeKind.voltage) .
+          }
+          """ .
 
     
       
@@ -259,17 +265,18 @@ sshn456:ExternalNetworkInjection.p-limits
         
     
 sshn456:ExternalNetworkInjection.p-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Active power is outside defined active power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExternalNetworkInjection.maxP ?maxp . 
-        $this cim:ExternalNetworkInjection.minP ?minp .
-        FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-			}""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "Active power is outside defined active power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExternalNetworkInjection.maxP ?maxp .
+            $this cim:ExternalNetworkInjection.minP ?minp .
+            FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .
+          }
+          """ .
 
 sshn456:ExternalNetworkInjection.q-limits
         a               sh:PropertyShape ;
@@ -283,17 +290,18 @@ sshn456:ExternalNetworkInjection.q-limits
         
     
 sshn456:ExternalNetworkInjection.q-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Reactive power is outside defined reactive power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExternalNetworkInjection.maxQ ?maxq . 
-        $this cim:ExternalNetworkInjection.minQ ?minq .
-        FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .        
-			}""" .            
+        a         sh:SPARQLConstraint ;
+        sh:message "Reactive power is outside defined reactive power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExternalNetworkInjection.maxQ ?maxq .
+            $this cim:ExternalNetworkInjection.minQ ?minq .
+            FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .
+          }
+          """ .
       
 sshn456:EquivalentInjection  a  sh:NodeShape ;
         sh:property     sshn456:EquivalentInjection.p-limits , sshn456:EquivalentInjection.q-limits;
@@ -312,20 +320,21 @@ sshn456:EquivalentInjection.p-limits
         
     
 sshn456:EquivalentInjection.p-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Active power is outside defined active power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        #OPTIONAL {$this cim:EquivalentInjection.maxP ?maxp} . 
-        #OPTIONAL {$this cim:EquivalentInjection.minP ?minp} .
-        $this cim:EquivalentInjection.maxP ?maxp . 
-        $this cim:EquivalentInjection.minP ?minp .
-        #FILTER (bound(?maxp) && bound(?minp) && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .  
-        FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-			}""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "Active power is outside defined active power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            #OPTIONAL {$this cim:EquivalentInjection.maxP ?maxp} .
+            #OPTIONAL {$this cim:EquivalentInjection.minP ?minp} .
+            $this cim:EquivalentInjection.maxP ?maxp .
+            $this cim:EquivalentInjection.minP ?minp .
+            #FILTER (bound(?maxp) && bound(?minp) && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .
+            FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .
+          }
+          """ .
 
 sshn456:EquivalentInjection.q-limits
         a               sh:PropertyShape ;
@@ -339,20 +348,21 @@ sshn456:EquivalentInjection.q-limits
         
     
 sshn456:EquivalentInjection.q-limitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Reactive power is outside defined reactive power limits." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        #OPTIONAL {$this cim:EquivalentInjection.maxQ ?maxq} . 
-        #OPTIONAL {$this cim:EquivalentInjection.minQ ?minq} .
-        $this cim:EquivalentInjection.maxQ ?maxq . 
-        $this cim:EquivalentInjection.minQ ?minq .
-        #FILTER (bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
-        FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .        
-			}""" .            
+        a         sh:SPARQLConstraint ;
+        sh:message "Reactive power is outside defined reactive power limits." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            #OPTIONAL {$this cim:EquivalentInjection.maxQ ?maxq} .
+            #OPTIONAL {$this cim:EquivalentInjection.minQ ?minq} .
+            $this cim:EquivalentInjection.maxQ ?maxq .
+            $this cim:EquivalentInjection.minQ ?minq .
+            #FILTER (bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .
+            FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .
+          }
+          """ .
             
 sshn456:SynchronousMachine  a  sh:NodeShape ;
         sh:property     sshn456:SynchronousMachine.operatingMode-matchType , sshn456:RotatingMachine-pAndQcapabilityCurveP , sshn456:RotatingMachine-pAndQcapabilityCurveQ ;
@@ -371,19 +381,20 @@ sshn456:SynchronousMachine.operatingMode-matchType
         
     
 sshn456:SynchronousMachine.operatingMode-matchTypeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value of SynchronousMachine.operatingMode is not consistent with the value of SynchronousMachine.type." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:SynchronousMachine.type ?type .
-         
-        FILTER ((?value=cim:SynchronousMachineOperatingMode.motor && ?type NOT IN (cim:SynchronousMachineKind.motor , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
-        (?value=cim:SynchronousMachineOperatingMode.condenser && ?type NOT IN (cim:SynchronousMachineKind.condenser , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
-        (?value=cim:SynchronousMachineOperatingMode.generator && ?type NOT IN (cim:SynchronousMachineKind.generator , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor))) .        
-			}""" .         
+        a         sh:SPARQLConstraint ;
+        sh:message "The value of SynchronousMachine.operatingMode is not consistent with the value of SynchronousMachine.type." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:SynchronousMachine.type ?type .
+
+            FILTER ((?value=cim:SynchronousMachineOperatingMode.motor && ?type NOT IN (cim:SynchronousMachineKind.motor , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
+              (?value=cim:SynchronousMachineOperatingMode.condenser && ?type NOT IN (cim:SynchronousMachineKind.condenser , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
+              (?value=cim:SynchronousMachineOperatingMode.generator && ?type NOT IN (cim:SynchronousMachineKind.generator , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor))) .
+          }
+          """ .
      
      
 sshn456:RotatingMachine-pAndQcapabilityCurveP
@@ -397,29 +408,30 @@ sshn456:RotatingMachine-pAndQcapabilityCurveP
         sh:severity     sh:Violation .
         
 sshn456:RotatingMachine-pAndQcapabilityCurvePSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The active power is not within the limits defined by the ReactiveCapabilityCurve." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value 
-			WHERE {
-        $this cim:RotatingMachine.p ?value .
-        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
-               
-        {
-        SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+        a         sh:SPARQLConstraint ;
+        sh:message "The active power is not within the limits defined by the ReactiveCapabilityCurve." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
           WHERE {
-            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
-            ?rcc1 ^cim:CurveData.Curve ?curvedata .
-            ?curvedata rdf:type ?cdtype .
-            ?curvedata cim:CurveData.xvalue ?xvalue .
-            FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
-          }
-          GROUP BY $this ?cdtype
-        }
+            $this cim:RotatingMachine.p ?value .
+            OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
 
-        FILTER ( bound(?rcc) && !(-?value>=?minxvalue && -?value<=?maxxvalue)).
-			}""" .       
+            {
+              SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+              WHERE {
+                OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+                ?rcc1 ^cim:CurveData.Curve ?curvedata .
+                ?curvedata rdf:type ?cdtype .
+                ?curvedata cim:CurveData.xvalue ?xvalue .
+                FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+              }
+              GROUP BY $this ?cdtype
+            }
+
+            FILTER ( bound(?rcc) && !(-?value>=?minxvalue && -?value<=?maxxvalue)).
+          }
+          """ .
         
         
 sshn456:RotatingMachine-pAndQcapabilityCurveQ
@@ -433,30 +445,31 @@ sshn456:RotatingMachine-pAndQcapabilityCurveQ
         sh:severity     sh:Violation .
         
 sshn456:RotatingMachine-pAndQcapabilityCurveQSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The reactive power is not within the limits defined by the ReactiveCapabilityCurve." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value 
-			WHERE {
-        $this cim:RotatingMachine.q ?value .
-        OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
-               
-        {
-        SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+        a         sh:SPARQLConstraint ;
+        sh:message "The reactive power is not within the limits defined by the ReactiveCapabilityCurve." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value
           WHERE {
-            OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
-            ?rcc1 ^cim:CurveData.Curve ?curvedata .
-            ?curvedata rdf:type ?cdtype .
-            ?curvedata cim:CurveData.y1value ?y1value .
-            ?curvedata cim:CurveData.y2value ?y2value .
-            FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
-          }
-          GROUP BY $this ?cdtype
-        }
+            $this cim:RotatingMachine.q ?value .
+            OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
 
-        FILTER ( bound(?rcc) && !(-?value>=?my1value && -?value<=?my2value)).
-			}""" .         
+            {
+              SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+              WHERE {
+                OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+                ?rcc1 ^cim:CurveData.Curve ?curvedata .
+                ?curvedata rdf:type ?cdtype .
+                ?curvedata cim:CurveData.y1value ?y1value .
+                ?curvedata cim:CurveData.y2value ?y2value .
+                FILTER (bound(?rcc1) && ?cdtype=cim:CurveData ) .
+              }
+              GROUP BY $this ?cdtype
+            }
+
+            FILTER ( bound(?rcc) && !(-?value>=?my1value && -?value<=?my2value)).
+          }
+          """ .
         
         
         
@@ -476,26 +489,26 @@ sshn456:GeneratingUnit-singleActivePowerSlack
         
     
 sshn456:GeneratingUnit-singleActivePowerSlackSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Either there is no highest value among GeneratingUnit.normalPF or there are multiple maximum values which are the same." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value ?countm ?countd (COUNT(?npf1) as ?counte) ?countall
-        WHERE {
-          ?gu cim:GeneratingUnit.normalPF ?npf1 .
-          BIND ("" AS ?value).
-          FILTER (?npf1=?countm)
-          {
-            SELECT $this (COUNT(DISTINCT ?npf) as ?countd) (MAX(?npf) as ?countm) (COUNT(?npf) as ?countall)
-            WHERE {
-              ?gu cim:GeneratingUnit.normalPF ?npf .
+        a         sh:SPARQLConstraint ;
+        sh:message "Either there is no highest value among GeneratingUnit.normalPF or there are multiple maximum values which are the same." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value ?countm ?countd (COUNT(?npf1) as ?counte) ?countall
+          WHERE {
+            ?gu cim:GeneratingUnit.normalPF ?npf1 .
+            BIND ("" AS ?value).
+            FILTER (?npf1=?countm)
+            {
+              SELECT $this (COUNT(DISTINCT ?npf) as ?countd) (MAX(?npf) as ?countm) (COUNT(?npf) as ?countall)
+              WHERE {
+                ?gu cim:GeneratingUnit.normalPF ?npf .
+              }
+              GROUP BY $this datatype(?npf)
             }
-            GROUP BY $this datatype(?npf)
           }
-        }
-        GROUP BY $this ?value ?countm ?countd datatype(?npf1) ?countall
-        HAVING((?countd<2 && ?countall!=1) || ?countm=0 || ?counte!=1)
-      """ .          
+          GROUP BY $this ?value ?countm ?countd datatype(?npf1) ?countall
+          HAVING((?countd<2 && ?countall!=1) || ?countm=0 || ?counte!=1)
+          """ .
         
 sshn456:Equipment  a  sh:NodeShape ;
         sh:property     sshn456:Equipment.inService-eqshhCardinality;

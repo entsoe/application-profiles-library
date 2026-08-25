@@ -75,16 +75,17 @@ dy457:ExcitationSystemDynamics.SynchronousMachineDynamicsSynchronousMachineSimpl
         
     
 dy457:ExcitationSystemDynamics.SynchronousMachineDynamicsSynchronousMachineSimplified-valueTypeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The association ExcitationSystemDynamics.SynchronousMachineDynamics points to an object of type SynchronousMachineSimplified." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        ?value rdf:type ?type .
-        FILTER (?type=cim:SynchronousMachineSimplified) .       
-			}""" .     
+        a         sh:SPARQLConstraint ;
+        sh:message "The association ExcitationSystemDynamics.SynchronousMachineDynamics points to an object of type SynchronousMachineSimplified." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            ?value rdf:type ?type .
+            FILTER (?type=cim:SynchronousMachineSimplified) .
+          }
+          """ .
 
 dy457:SynchronousMachineTimeConstantReactance
         a               sh:NodeShape ;
@@ -103,19 +104,20 @@ dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotorSi
         
     
 dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotorSimplifiedSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this
-			WHERE {
-        $this $PATH ?modelType .
-        $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
-        $this cim:RotatingMachineDynamics.statorResistance ?statorResistance .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
-        FILTER (?modelType=cim:SynchronousMachineModelKind.subtransientSimplified && ?rotorType=cim:RotorKind.roundRotor && (?statorResistance!=0 || ?sfqaxis!=0 || ?sf120qaxis!=0)) .       
-			}""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            $this $PATH ?modelType .
+            $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
+            $this cim:RotatingMachineDynamics.statorResistance ?statorResistance .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
+            FILTER (?modelType=cim:SynchronousMachineModelKind.subtransientSimplified && ?rotorType=cim:RotorKind.roundRotor && (?statorResistance!=0 || ?sfqaxis!=0 || ?sf120qaxis!=0)) .
+          }
+          """ .
       
 dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientSalientPole
         a               sh:PropertyShape ;
@@ -129,18 +131,19 @@ dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientSalientPole
         
     
 dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientSalientPoleSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this
-			WHERE {
-        $this $PATH ?modelType .
-        $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
-        FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.salientPole && (?sfqaxis!=0 || ?sf120qaxis!=0)) .       
-			}""" .       
+        a         sh:SPARQLConstraint ;
+        sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            $this $PATH ?modelType .
+            $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
+            FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.salientPole && (?sfqaxis!=0 || ?sf120qaxis!=0)) .
+          }
+          """ .
 
 dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotor
         a               sh:PropertyShape ;
@@ -154,22 +157,23 @@ dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotor
         
     
 dy457:SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotorSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this
-			WHERE {
-        $this $PATH ?modelType .
-        $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
-        OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
-        OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor120 ?s2} .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
-        OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
-        OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.xQuadTrans ?xqtans} .
-        OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.tpqo ?tpqo} .
-        FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.roundRotor && (!bound(?sfqaxis) || !bound(?sf120qaxis) || !bound(?s1) || !bound(?s2) || !bound(?xqtans) || !bound(?tpqo))) .       
-			}""" .        
+        a         sh:SPARQLConstraint ;
+        sh:message "Missing attributes or default values not provided according to 61970-457 Annex A." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            $this $PATH ?modelType .
+            $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
+            OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
+            OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor120 ?s2} .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
+            OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
+            OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.xQuadTrans ?xqtans} .
+            OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.tpqo ?tpqo} .
+            FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.roundRotor && (!bound(?sfqaxis) || !bound(?sf120qaxis) || !bound(?s1) || !bound(?s2) || !bound(?xqtans) || !bound(?tpqo))) .
+          }
+          """ .
       
       
       

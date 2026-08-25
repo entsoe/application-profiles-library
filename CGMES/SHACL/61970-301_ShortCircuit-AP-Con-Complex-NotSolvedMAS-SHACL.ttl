@@ -81,11 +81,12 @@ scn301:MutualCoupling-terminalsAssignmentSparql
       WHERE {
         #$this cim:MutualCoupling.First_Terminal ?firstterminal .
         #$this cim:MutualCoupling.Second_Terminal ?secondterminal .
-        #?firstterminal cim:Terminal.ConductingEquipment ?line1 . 
-        #?secondterminal cim:Terminal.ConductingEquipment ?line2 . 
+        #?firstterminal cim:Terminal.ConductingEquipment ?line1 .
+        #?secondterminal cim:Terminal.ConductingEquipment ?line2 .
         $this cim:MutualCoupling.First_Terminal/cim:Terminal.ConductingEquipment ?line1 .
         $this cim:MutualCoupling.Second_Terminal/cim:Terminal.ConductingEquipment ?line2 .
         ?line1 rdf:type ?typeline1 .
         ?line2 rdf:type ?typeline2 .
         FILTER (?typeline1 NOT IN (cim:ACLineSegment, cim:Equipment) || ?typeline2 NOT IN (cim:ACLineSegment, cim:Equipment) || ?line1=?line2) .
-      }""" .      
+      }
+      """ .
