@@ -71,38 +71,39 @@ tpn301:Terminal.phases-consistencyTopologicalNode
 
    
 tpn301:Terminal.phases-consistencyTopologicalNodeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The phase codes for the connected terminals are not consistent. Terminal 1 code:{?value1} Terminal 2 code: {?value2}." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT  $this ?value2 ?terms ?value1 ?value
-			WHERE {
-        {
-        SELECT $this (COUNT(?typeterm) AS ?terms) ?value
-        WHERE {
-        $this ^cim:Terminal.TopologicalNode  ?value.
-        ?value rdf:type ?typeterm .
-        #FILTER (?typeterm=cim:Terminal).
-        }
-        GROUP BY $this ?typeterm ?value
-        HAVING (?terms>1)
-        }
-      
-        $this ^cim:Terminal.TopologicalNode ?term2  .
-        ?value cim:Terminal.phases ?value1  .
-        OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
-        
-        #?term1 cim:Terminal.TopologicalNode $this  .
-        #OPTIONAL {?term1 cim:Terminal.phases ?value2 } .
-        #?term2 cim:Terminal.TopologicalNode $this  .
-        #OPTIONAL {?term2 cim:Terminal.phases ?value1 } .        
-        #FILTER ((?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
-        #(?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
-        #(?terms>1 && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
-        #) .
-        FILTER ((?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
-        (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
-        (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
-        ) .
-			}""" .                   
+        a         sh:SPARQLConstraint ;
+        sh:message      "The phase codes for the connected terminals are not consistent. Terminal 1 code:{?value1} Terminal 2 code: {?value2}." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT  $this ?value2 ?terms ?value1 ?value
+          WHERE {
+            {
+              SELECT $this (COUNT(?typeterm) AS ?terms) ?value
+              WHERE {
+                $this ^cim:Terminal.TopologicalNode  ?value.
+                ?value rdf:type ?typeterm .
+                #FILTER (?typeterm=cim:Terminal).
+              }
+              GROUP BY $this ?typeterm ?value
+              HAVING (?terms>1)
+            }
+
+            $this ^cim:Terminal.TopologicalNode ?term2  .
+            ?value cim:Terminal.phases ?value1  .
+            OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
+
+            #?term1 cim:Terminal.TopologicalNode $this  .
+            #OPTIONAL {?term1 cim:Terminal.phases ?value2 } .
+            #?term2 cim:Terminal.TopologicalNode $this  .
+            #OPTIONAL {?term2 cim:Terminal.phases ?value1 } .
+            #FILTER ((?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+            #(?terms>1 && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+            #(?terms>1 && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+            #) .
+            FILTER ((?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
+              (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+              (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+            ) .
+          }
+          """ .
                 

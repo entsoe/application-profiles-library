@@ -111,10 +111,11 @@ rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
     sh:message      "RemedialActionScheduleDependency.kind is not provided for RemedialActionScheduleDependency objects part of a RemedialActionScheduleGroup." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
+      SELECT  $this
       WHERE {
         FILTER NOT EXISTS {$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1}
-      }""" .      
+      }
+      """ .
 
 rasc:RemedialActionScheduleDependency  a          sh:NodeShape ;
         sh:property     rasc:RemedialActionScheduleDependency.kind-applicability, rasc:RemedialActionScheduleDependency-associations;
@@ -135,13 +136,14 @@ rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
     sh:message      "RemedialActionScheduleDependency.kind is provided for RemedialActionScheduleDependency objects not part of a RemedialActionScheduleGroup." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    
-    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
+      SELECT  $this
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
+        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
         FILTER (?a1 && !?a2 ).
-      }""" .            
+      }
+      """ .
       
 rasc:RemedialActionScheduleDependency-associations
         a               sh:PropertyShape ;
@@ -159,14 +161,15 @@ rasc:RemedialActionScheduleDependency-associationsSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this  ?a1 ?a2 ?a3
-      WHERE {  
-    
-    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
-    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
-    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
-    
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
+        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
+        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
+
         FILTER ((?a1 && ?a2 && ?a3) || (!?a1 && (!?a2 || !?a3))).
-      }""" .    
+      }
+      """ .
 
 
 rasc:RemedialActionScheduleResponse  a          sh:NodeShape ;
@@ -188,13 +191,14 @@ rasc:RemedialActionScheduleResponse.rejectionReasonKind-requiredSparql
     sh:message      "RemedialActionScheduleResponse.rejectionReasonKind is missing when RemedialActionScheduleResponse.kind equals RemedialActionScheduleResponseKind.refused." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    
-    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
-    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
+      SELECT  $this
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
+        BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
         FILTER (!?hasRK && ?hasR ).
-      }""" .    
+      }
+      """ .
 
 rasc:RemedialActionScheduleResponse.rejectionReason-applicability
         a               sh:PropertyShape ;
@@ -211,13 +215,14 @@ rasc:RemedialActionScheduleResponse.rejectionReason-applicabilitySparql
     sh:message      "RemedialActionScheduleResponse.rejectionReason is missing when RemedialActionScheduleResponse.rejectionReasonKind equals RejectionReasonKind.other." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    
-    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
-    BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
+      SELECT  $this
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
+        BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
         FILTER (!?hasRR && ?hasR ).
-      }""" .   
+      }
+      """ .
 
 
 rasc:PowerSchedule  a          sh:NodeShape ;
@@ -239,29 +244,29 @@ rasc:PowerSchedule-currencyConsistencySparql
         sh:message      "Currency is missing. If PowerTimePoint.price is provided, currency shall be provided either on PowerSchedule or on the associated PowerScheduleAction." ;
         sh:prefixes     cim: ;
         sh:select       """
-            SELECT DISTINCT $this
-            WHERE {
-                $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+          SELECT DISTINCT $this
+          WHERE {
+            $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
 
-                $this ^nc:PowerScheduleAction.PowerSchedule ?powerScheduleAction .
-                ?powerScheduleAction rdf:type ?actionType .
+            $this ^nc:PowerScheduleAction.PowerSchedule ?powerScheduleAction .
+            ?powerScheduleAction rdf:type ?actionType .
 
-                FILTER (
-                    ?actionType IN (
-                        nc:CountertradeScheduleAction,
-                        nc:RedispatchScheduleAction
-                    )
-                )
+            FILTER (
+              ?actionType IN (
+                nc:CountertradeScheduleAction,
+                nc:RedispatchScheduleAction
+              )
+            )
 
-                FILTER NOT EXISTS {
-                    $this $PATH ?powerScheduleCurrency .
-                }
-
-                FILTER NOT EXISTS {
-                    ?powerScheduleAction nc:PowerScheduleAction.currency ?powerScheduleActionCurrency .
-                }
+            FILTER NOT EXISTS {
+              $this $PATH ?powerScheduleCurrency .
             }
-        """ .
+
+            FILTER NOT EXISTS {
+              ?powerScheduleAction nc:PowerScheduleAction.currency ?powerScheduleActionCurrency .
+            }
+          }
+          """ .
 
 
 rasc:PowerSchedule-currency-property
@@ -279,17 +284,17 @@ rasc:PowerSchedule-currencySparql
         sh:prefixes     cim: ;
         sh:message      "PowerSchedule.currency is not provided but a PowerTimePoint.price is provided." ;
         sh:select       """
-            SELECT $this
-            WHERE {
-                FILTER EXISTS {
-                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
-                }
-
-                FILTER NOT EXISTS {
-                    $this $PATH ?currency .
-                }
+          SELECT $this
+          WHERE {
+            FILTER EXISTS {
+              $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
             }
-        """ .		
+
+            FILTER NOT EXISTS {
+              $this $PATH ?currency .
+            }
+          }
+          """ .
 
 rasc:PowerScheduleAction-currencyNS  a          sh:NodeShape ;
         sh:property     rasc:PowerScheduleAction-currency-property ;
@@ -310,14 +315,14 @@ rasc:PowerScheduleAction-currency-propertySparql
         sh:prefixes     cim: ;
         sh:message      "PowerScheduleAction.currency is not provided but a PowerScheduleAction.energyPrice is provided." ;
         sh:select       """
-            SELECT $this
-            WHERE {
-                FILTER EXISTS {
-                    $this nc:PowerScheduleAction.energyPrice ?price .
-                }
-
-                FILTER NOT EXISTS {
-                    $this $PATH ?currency .
-                }
+          SELECT $this
+          WHERE {
+            FILTER EXISTS {
+              $this nc:PowerScheduleAction.energyPrice ?price .
             }
-        """ .			
+
+            FILTER NOT EXISTS {
+              $this $PATH ?currency .
+            }
+          }
+          """ .

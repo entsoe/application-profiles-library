@@ -352,8 +352,9 @@ sshu:CsConverter.maxAlpha-valueRangeTypicalSparql
       WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
-        FILTER (?value>18) .        
-      }""" .        
+        FILTER (?value>18) .
+      }
+      """ .
         
 sshu:CsConverter.minAlpha-valueRangeTypical
         a                    sh:PropertyShape ;
@@ -375,8 +376,9 @@ sshu:CsConverter.minAlpha-valueRangeTypicalSparql
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.rectifier .
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.maxAlpha ?maxalpha} .
-        FILTER (?value<10 || ?value>?maxalpha) .        
-      }""" .         
+        FILTER (?value<10 || ?value>?maxalpha) .
+      }
+      """ .
 
 sshu:CsConverter.maxGamma-valueRangeTypical
         a                sh:PropertyShape ;
@@ -397,8 +399,9 @@ sshu:CsConverter.maxGamma-valueRangeTypicalSparql
       WHERE {
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
-        FILTER (?value>20) .        
-      }""" .        
+        FILTER (?value>20) .
+      }
+      """ .
 
 sshu:CsConverter.minGamma-valueRangeTypical
         a                    sh:PropertyShape ;
@@ -420,8 +423,9 @@ sshu:CsConverter.minGamma-valueRangeTypicalSparql
         $this cim:CsConverter.operatingMode cim:CsOperatingModeKind.inverter .
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.maxGamma ?maxgamma} .
-        FILTER (?value<17 || ?value>?maxgamma) .        
-      }""" .        
+        FILTER (?value<17 || ?value>?maxgamma) .
+      }
+      """ .
 
 sshu:ShuntCompensator.sections-valueRange
         a                sh:PropertyShape ;
@@ -511,8 +515,9 @@ sshu:CsConverter.pPccControl-targetValuePpccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
-        FILTER (!bound(?targetppcc) && ?value=cim:CsPpccControlKind.activePower) .        
-      }""" .
+        FILTER (!bound(?targetppcc) && ?value=cim:CsPpccControlKind.activePower) .
+      }
+      """ .
       
 
 sshu:CsConverter.pPccControl-targetValueIdc
@@ -535,8 +540,9 @@ sshu:CsConverter.pPccControl-targetValueIdcSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:CsConverter.targetIdc ?targetidc}.
-        FILTER (!bound(?targetidc) && ?value=cim:CsPpccControlKind.dcCurrent) .        
-      }""" .  
+        FILTER (!bound(?targetidc) && ?value=cim:CsPpccControlKind.dcCurrent) .
+      }
+      """ .
 
 sshu:CsConverter.pPccControl-targetValueUdc
         a               sh:PropertyShape ;
@@ -558,8 +564,9 @@ sshu:CsConverter.pPccControl-targetValueUdcSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
-        FILTER (!bound(?targetudc) && ?value=cim:CsPpccControlKind.dcVoltage) .        
-      }""" .      
+        FILTER (!bound(?targetudc) && ?value=cim:CsPpccControlKind.dcVoltage) .
+      }
+      """ .
       
 
 sshu:VsConverter.pPccControl-targetValuephasePcc
@@ -582,8 +589,9 @@ sshu:VsConverter.pPccControl-targetValuephasePccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
-        FILTER (!bound(?targetphasepcc) && ?value=cim:VsPpccControlKind.phasePcc) .        
-      }""" .    
+        FILTER (!bound(?targetphasepcc) && ?value=cim:VsPpccControlKind.phasePcc) .
+      }
+      """ .
       
 sshu:VsConverter.pPccControl-targetValuePpcc
         a               sh:PropertyShape ;
@@ -605,8 +613,9 @@ sshu:VsConverter.pPccControl-targetValuePpccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
-        FILTER (!bound(?targetppcc) && ?value=cim:VsPpccControlKind.pPcc) .        
-      }""" .       
+        FILTER (!bound(?targetppcc) && ?value=cim:VsPpccControlKind.pPcc) .
+      }
+      """ .
       
 
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroop
@@ -631,8 +640,9 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopSparql
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
-        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroop) .        
-      }""" .   
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroop) .
+      }
+      """ .
 
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilot
         a               sh:PropertyShape ;
@@ -656,8 +666,9 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopPilotSparql
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
-        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopPilot) .        
-      }""" .         
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopPilot) .
+      }
+      """ .
  
       
 sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensation
@@ -683,8 +694,9 @@ sshu:VsConverter.pPccControl-targetValuepPccAndUdcDroopWithCompensationSparql
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
         OPTIONAL {$this cim:VsConverter.droopCompensation ?droopcompensation}.
-        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop) || !bound(?droopcompensation)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation) .        
-      }""" .       
+        FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop) || !bound(?droopcompensation)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation) .
+      }
+      """ .
            
 sshu:VsConverter.pPccControl-targetValueUdc
         a               sh:PropertyShape ;
@@ -706,8 +718,9 @@ sshu:VsConverter.pPccControl-targetValueUdcSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
-        FILTER (!bound(?targetudc) && ?value=cim:VsPpccControlKind.udc) .        
-      }""" .    
+        FILTER (!bound(?targetudc) && ?value=cim:VsPpccControlKind.udc) .
+      }
+      """ .
 
 sshu:VsConverter.qPccControl-targetValuepowerFactorPcc
         a               sh:PropertyShape ;
@@ -729,8 +742,9 @@ sshu:VsConverter.qPccControl-targetValuepowerFactorPccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPowerFactorPcc ?targetpowerfactorpcc}.
-        FILTER (!bound(?targetpowerfactorpcc) && ?value=cim:VsQpccControlKind.powerFactorPcc) .        
-      }""" .
+        FILTER (!bound(?targetpowerfactorpcc) && ?value=cim:VsQpccControlKind.powerFactorPcc) .
+      }
+      """ .
 
 
 sshu:VsConverter.qPccControl-targetValuepulseWidthModulation
@@ -754,8 +768,9 @@ sshu:VsConverter.qPccControl-targetValuepulseWidthModulationSparql
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetPWMfactor ?targetpwmfactor}.
         OPTIONAL {$this cim:VsConverter.targetPhasePcc ?targetphasepcc}.
-        FILTER ((!bound(?targetpwmfactor) || !bound(?targetphasepcc)) && ?value=cim:VsQpccControlKind.pulseWidthModulation) .        
-      }""" .
+        FILTER ((!bound(?targetpwmfactor) || !bound(?targetphasepcc)) && ?value=cim:VsQpccControlKind.pulseWidthModulation) .
+      }
+      """ .
 
 
 sshu:VsConverter.qPccControl-targetValuereactivePcc
@@ -778,8 +793,9 @@ sshu:VsConverter.qPccControl-targetValuereactivePccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetQpcc ?targetqpcc}.
-        FILTER (!bound(?targetqpcc) && ?value=cim:VsQpccControlKind.reactivePcc) .        
-      }""" .
+        FILTER (!bound(?targetqpcc) && ?value=cim:VsQpccControlKind.reactivePcc) .
+      }
+      """ .
 
 
 sshu:VsConverter.qPccControl-targetValuevoltagePcc
@@ -802,8 +818,9 @@ sshu:VsConverter.qPccControl-targetValuevoltagePccSparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:VsConverter.targetUpcc ?targetupcc}.
-        FILTER (!bound(?targetupcc) && ?value=cim:VsQpccControlKind.voltagePcc) .        
-      }""" .
+        FILTER (!bound(?targetupcc) && ?value=cim:VsQpccControlKind.voltagePcc) .
+      }
+      """ .
 
 sshu:RegulatingControl.targetDeadband-applicability
         a               sh:PropertyShape ;
@@ -825,8 +842,9 @@ sshu:RegulatingControl.targetDeadband-applicabilitySparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:RegulatingControl.targetDeadband ?targetdeadband}.
-        FILTER ((bound(?targetdeadband) && ?value=false) || (!bound(?targetdeadband) && ?value=true)) .        
-      }""" .      
+        FILTER ((bound(?targetdeadband) && ?value=false) || (!bound(?targetdeadband) && ?value=true)) .
+      }
+      """ .
       
       
 sshu:EnergySource.activePower-consumer
@@ -848,8 +866,9 @@ sshu:EnergySource.activePower-consumerSparql
       SELECT  $this ?value
       WHERE {
         $this $PATH ?value .
-        FILTER (?value>0) .        
-      }""" .      
+        FILTER (?value>0) .
+      }
+      """ .
       
       
       

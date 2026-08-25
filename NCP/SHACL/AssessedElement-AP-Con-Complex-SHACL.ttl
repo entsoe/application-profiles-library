@@ -93,7 +93,8 @@ aec:OperationalLimit.AssessedElement-requiredSparql
     sh:message      "BaseCaseCurrentLimit is not associated with an AssessedElement with AssessedElement.inBaseCase set to true. " ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
+      SELECT  $this
       WHERE {
         FILTER NOT EXISTS {$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true}
-      }""" .      
+      }
+      """ .

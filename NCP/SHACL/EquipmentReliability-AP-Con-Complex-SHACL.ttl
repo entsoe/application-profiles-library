@@ -27,7 +27,7 @@ erc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Equipment Reliability profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.4.2"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -37,7 +37,7 @@ erc:ERgroup
         a           sh:PropertyGroup ;
         rdfs:label  "EquipmentReliabilityGroup" ;
         sh:order    0 .
-		
+
 
 erc:AreaReserveResource  a          sh:NodeShape ;
         sh:property      erc:AreaReserveResource-associations, erc:AreaReserveResource-interconnection;
@@ -74,7 +74,7 @@ erc:AreaReserveResource-interconnection
         sh:name         "C:NC:ER:AreaReserveResource:interconnection" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
-			
+
 erc:EnergyComponent  a          sh:NodeShape ;
         sh:property      erc:EnergyComponent-associations;
         sh:targetClass  nc:EnergyComponent .
@@ -96,12 +96,12 @@ erc:EnergyComponent-associations
         sh:name         "C:NC:ER:EnergyComponent:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
-			
-			
+
+
 erc:HydroPowerPlant  a          sh:NodeShape ;
         sh:property      erc:HydroPowerPlant-operatingMode;
         sh:targetClass  cim:HydroPowerPlant, cim16:HydroPowerPlant, cim17:HydroPowerPlant .			
-		
+
 erc:HydroPowerPlant-operatingMode
         a               sh:PropertyShape ;
         sh:description  "The SynchronousMachine.operatingMode of all SynchronousMachine objects part of a HydroPowerPlant shall be consistent." ;
@@ -113,17 +113,17 @@ erc:HydroPowerPlant-operatingMode
         sh:severity     sh:Violation .
         
 erc:HydroPowerPlant-operatingModeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The SynchronousMachine.operatingMode is not consistent for all SynchronousMachine objects part of a HydroPowerPlant." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this (COUNT(DISTINCT ?value) AS ?countv)
-        WHERE {
-        $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
-        }
-        GROUP BY $this
-        HAVING(COUNT(DISTINCT ?value)>1)
-      """ .    
+        a         sh:SPARQLConstraint ;
+        sh:message      "The SynchronousMachine.operatingMode is not consistent for all SynchronousMachine objects part of a HydroPowerPlant." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this (COUNT(DISTINCT ?value) AS ?countv)
+          WHERE {
+            $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
+          }
+          GROUP BY $this
+          HAVING(COUNT(DISTINCT ?value)>1)
+          """ .
 
 erc:Circuit  a          sh:NodeShape ;
         sh:property      erc:Circuit-associations;
@@ -144,7 +144,7 @@ erc:Circuit-associations
         sh:name         "C:NC:ER:Circuit:associations" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
-			
+
 erc:FunctionOutputVariable  a          sh:NodeShape ;
         sh:property      erc:FunctionOutputVariable.PropertyReference-value;
         sh:targetClass  nc:FunctionOutputVariable .
@@ -156,12 +156,12 @@ erc:FunctionOutputVariable.PropertyReference-value
         sh:description  "The value of the association end FunctionOutputVariable.PropertyReference shall be one of the values published in the PropertyReference collection." ;
         sh:message      "The value of the PropertyReference is not part of the reference data." ;
         sh:path         nc:FunctionOutputVariable.PropertyReference ;
-		sh:in			(nc:PowerElectronicsUnit.participationFactor cim17:VsConverter.droop cim:SynchronousMachine.referencePriority cim17:EnergySource.activePower nc:EnergyResourceGroupCapacity.participationFactor nc:ReactivePowerControlFunction.targetValue nc:AssessedElementWithRemedialAction.enabled cim:ACDCConverter.p cim17:ExternalNetworkInjection.referencePriority nc:TCSCController.mode cim17:ControlArea.netInterchange cim17:RegulatingControl.targetDeadband nc:DCPole.minEconomicP nc:GeneratingUnit.costCurrency nc:DCPole.participationFactor cim:ShuntCompensator.sections cim16:CsConverter.targetAlpha nc:AreaReserveResource.availableP cim:CsConverter.targetAlpha nc:AreaReserveResource.enabled cim:EquivalentInjection.regulationStatus nc:AssessedElementWithContingency.enabled cim:SynchronousMachine.operatingMode nc:AssessedElement.individualValidationAdjustmentJustification nc:AssessedElement.scannedThresholdMargin nc:LoadFrequencyControlArea.mFRRContracted nc:StageTrigger.armed nc:BaseCaseCurrentLimit.value nc:GridPowerCapacity.minInterchange nc:CurrentDroopOverride.enabled cim:RotatingMachine.p nc:DCActivePowerControlFunction.targetValue cim17:EnergyConsumer.p nc:LoadFrequencyControlArea.aFRRContracted cim17:PowerElectronicsConnection.p cim17:Switch.open cim16:RegulatingControl.targetDeadband cim17:BatteryUnit.batteryState cim:EnergySource.voltageAngle cim16:VsConverter.qShare nc:CompensatorController.mode cim16:RotatingMachine.p nc:GridPowerCapacity.netACInterchangeTolerance nc:VoltageAngleLimit.value cim16:ACDCConverter.q nc:ACEmulationControlFunction.timeConstant cim16:RegulatingCondEq.controlEnabled cim17:RotatingMachine.q nc:DirectCurrentEquipmentController.mode cim:RegulatingControl.targetDeadband nc:CurrentDroopOverride.targetValueInductiveI cim:PowerElectronicsConnection.q cim17:ACDCConverter.udc cim16:ACDCTerminal.connected nc:RemedialActionScheme.inService nc:GridPowerCapacity.minImportP cim17:ActivePowerLimit.value cim17:ACDCConverter.targetPpcc cim16:CsConverter.pPccControl cim16:ControlArea.netInterchange nc:InfeedLimit.valueA nc:GridPowerCapacity.regulatingDownAllocation cim:ACDCConverter.targetPpcc nc:LoadFrequencyControlArea.aFRRAvailable cim:RegulatingCondEq.controlEnabled cim17:VsConverter.targetPWMfactor nc:BiddingZoneBorder.alreadyAllocatedCapacity nc:GeneratingUnit.isRamping cim16:ACDCConverter.idc cim:VoltageLimit.value nc:AutomationFunction.enabled nc:FACTSEquipment.q cim:ExternalNetworkInjection.q nc:BiddingZoneBorder.availableTransferCapacity cim:VsConverter.droopCompensation nc:GridPowerCapacity.regulatingUpAllocation cim17:EnergySource.reactivePower cim:ACDCConverter.q cim16:EnergySource.activePower nc:RemedialActionGroup.maxRegulatingUp cim16:CsConverter.targetGamma cim17:CurrentLimit.value nc:PhaseControlFunction.targetValue nc:SchedulingArea.p cim17:VsConverter.qPccControl nc:DCVoltageSource.voltageSetpoint cim16:GeneratingUnit.normalPF cim17:ApparentPowerLimit.value nc:HydroPump.participationFactor nc:BiddingZoneBorder.totalTransferCapacity nc:EnergyResourceGroupCapacity.availabilityFactor nc:GeneratingUnit.mustRunQ nc:GeneratingUnit.mustRun cim:ACDCConverter.udc nc:AreaReserveResource.activatedP cim:RotatingMachine.q nc:GridPowerCapacity.netDCInterchange nc:DCVoltageControlFunction.targetValue cim17:EnergyConsumer.q cim17:RegulatingControl.maxAllowedTargetValue nc:RangeConstraint.value cim16:CsConverter.operatingMode cim17:PowerElectronicsConnection.q nc:LoadFrequencyControlArea.fcrContracted nc:PowerElectronicsUnit.p cim:EnergyConsumer.p cim16:RotatingMachine.q nc:AssessedElement.individualValidationAdjustmentShare nc:BiddingZoneBorder.alreadyAllocatedFlow nc:EnergyResourceGroupCapacity.installedCapacityP nc:VoltageAngleControlFunction.targetValue cim17:Switch.locked nc:DCCurrentControlFunction.targetValue cim:RegulatingControl.targetValueUnitMultiplier nc:LoadFrequencyControlArea.aFRRActivated nc:AreaReserveResource.kind cim17:VsConverter.targetPowerFactorPcc nc:AssessedElement.coordinatedValidationAdjustment cim:RegulatingControl.targetValue cim16:EquivalentInjection.regulationTarget nc:PowerRemedialAction.maxRegulatingUp cim17:Contingency.mustStudy nc:AssessedElement.individualValidationAdjustment cim16:VsConverter.qPccControl cim17:GeneratingUnit.startupCost nc:ContingencyWithRemedialAction.enabled nc:CurrentDroopControlFunction.targetValueInductive nc:AreaReserveResource.priority cim17:SynchronousMachine.referencePriority nc:PowerRemedialAction.maxRegulatingDown cim:VsConverter.targetPowerFactorPcc cim:EquivalentInjection.p nc:PowerShiftKeyStrategy.participationFactor nc:PowerTransferCorridor.enabled cim17:VsConverter.targetPhasePcc nc:ScheduleResource.p nc:AreaReserveResource.allocatedP nc:GeneratingUnit.shutdownCost nc:CrossBorderRelevance.enabled nc:GridPowerCapacity.maxInterchange cim:RegulatingControl.discrete nc:DCPole.p cim17:RegulatingControl.targetValue cim:ControlArea.netInterchange cim:ControlArea.pTolerance nc:CurrentControlFunction.targetValue nc:EnergyBlockOrder.sequence cim16:StaticVarCompensator.q cim:BatteryUnit.storedE cim17:EnergySource.voltageAngle nc:ImpedanceControlFunction.targetValue nc:SchedulingArea.q cim:ExternalNetworkInjection.referencePriority cim17:GeneratingUnit.normalPF cim:EnergySource.activePower nc:LoadFrequencyControlArea.fcrAvailable cim17:EquivalentInjection.regulationTarget nc:RemedialActionDependency.enabled nc:DCSwitch.locked cim16:ExternalNetworkInjection.p cim17:Equipment.inService cim:ApparentPowerLimit.value cim:CsConverter.operatingMode cim:VsConverter.targetUpcc cim17:TapChanger.step nc:FrequencyControlFunction.targetValue cim16:RegulatingControl.discrete cim17:VsConverter.qShare cim:RegulatingControl.minAllowedTargetValue nc:GridStateAlteration.enabled cim17:ACDCConverter.p cim17:RegulatingControl.enabled nc:ActivePowerControlFunction.targetValue cim17:AsynchronousMachine.asynchronousMachineType cim16:ACDCConverter.uc nc:CurrentDroopOverride.targetValueCapacitiveI cim:CsConverter.pPccControl cim16:ACDCConverter.targetUdc nc:FrequencyControlFunction.frequencyBias cim17:EquivalentInjection.p nc:PowerShiftKeyStrategy.enabled nc:DCFiringAngleControlFunction.targetValue cim16:ACDCConverter.targetPpcc cim:Equipment.networkAnalysisEnabled cim17:ACDCConverter.targetUdc nc:GateInputPin.enabled nc:BiddingZoneBorder.netTransferCapacity cim17:RegulatingControl.discrete nc:AssessedElement.positiveVirtualMargin nc:DCEquivalentInjection.p nc:GridStateAlteration.participationFactor cim17:VsConverter.targetUpcc cim17:CsConverter.operatingMode cim17:ACDCTerminal.connected nc:InjectionController.mode cim:AsynchronousMachine.asynchronousMachineType cim16:ControlArea.pTolerance nc:ThyristorControlledSeriesCompensator.currentSection nc:SchedulingArea.participationFactor cim16:TapChanger.controlEnabled cim:Equipment.inService nc:PTCActivePowerSupport.value nc:GridPowerCapacity.netACInterchange cim17:ShuntCompensator.sections cim:EquivalentInjection.q cim16:EnergyConsumer.p cim:EquivalentInjection.regulationTarget cim:VsConverter.targetQpcc cim16:RegulatingControl.targetValueUnitMultiplier cim17:SynchronousMachine.operatingMode cim17:TapChanger.controlEnabled cim:RegulatingControl.maxAllowedTargetValue cim17:EnergySource.voltageMagnitude cim:ACDCConverter.uc cim16:SynchronousMachine.operatingMode nc:DCPole.q nc:EnergyResourceGroupCapacity.availableCapacityP cim16:TapChanger.step cim:GeneratingUnit.normalPF cim:VsConverter.pPccControl cim:VsConverter.targetPWMfactor nc:GeneratingUnit.warmStartupCost cim16:EquivalentInjection.regulationStatus cim:ACDCTerminal.connected cim16:ShuntCompensator.sections cim:ActivePowerLimit.value nc:DCSwitch.open nc:AssessedElement.maxFlow nc:EnergyBlockOrder.participationFactor nc:AssessedElement.maxMarginAdjustment nc:RemedialAction.available cim16:EquivalentInjection.p nc:BiddingZoneBorder.transmissionReliabilityMargin cim17:CsConverter.pPccControl cim16:VsConverter.targetQpcc cim17:VsConverter.targetQpcc cim:CsConverter.targetIdc cim17:ExternalNetworkInjection.p cim:RegulatingControl.enabled cim:EnergyConsumer.q nc:EnergyResourceGroupCapacity.p cim17:EquivalentInjection.regulationStatus nc:AssessedElement.targetRemainingAvailableMarginJustification nc:DCPole.maxEconomicP cim17:VsConverter.pPccControl cim:BatteryUnit.batteryState cim16:EnergySource.reactivePower nc:CurrentDroopControlFunction.targetValueCapacitive cim:ACDCConverter.idc cim17:BatteryUnit.storedE nc:CircuitShare.contributionFactor nc:RemedialActionScheme.armed cim17:ACDCConverter.idc cim16:CsConverter.targetIdc nc:ACEmulationControlFunction.referenceP cim16:VsConverter.pPccControl cim17:RotatingMachine.p nc:AreaReserveResource.contractedP nc:PowerFactorControlFunction.targetValue cim17:RegulatingControl.targetValueUnitMultiplier cim:PowerElectronicsConnection.p nc:BiddingZone.netPosition nc:DCExtinctionAngleControlFunction.targetValue nc:AssessedElement.appointedMargin nc:VoltageControlFunction.targetValue cim:Switch.open cim16:Switch.open nc:VoltageInjectionControlFunction.targetValue cim:TapChanger.step cim16:SynchronousMachine.referencePriority nc:ThyristorControlledSeriesCompensator.compensationZ cim17:CsConverter.targetIdc cim:VsConverter.qShare nc:InfeedLimit.valueW nc:StageTrigger.inService cim:VsConverter.qPccControl nc:FunctionBlock.enabled cim17:CsConverter.targetAlpha cim16:ACDCConverter.udc cim:ACDCConverter.targetUdc cim:TapChanger.controlEnabled cim:ExternalNetworkInjection.p cim17:VsConverter.droopCompensation cim:EnergySource.reactivePower nc:ACEmulationControlFunction.gain nc:GeneratingUnit.participationFactor cim16:VsConverter.droop nc:AssessedElement.enabled cim:CsConverter.targetGamma cim17:StaticVarCompensator.q cim17:RegulatingCondEq.controlEnabled cim16:RegulatingControl.targetValue cim:VsConverter.targetPhasePcc cim16:ExternalNetworkInjection.q nc:EnergyBlockOrder.p cim17:CsConverter.targetGamma nc:FuelStorage.energyStorage cim16:VsConverter.targetUpcc cim:Switch.locked cim:EnergySource.voltageMagnitude cim17:ACDCConverter.uc cim17:ACDCConverter.q cim16:EquivalentInjection.q cim16:AsynchronousMachine.asynchronousMachineType nc:GeneratingUnit.mustRunP cim:Contingency.mustStudy nc:SubstationController.mode cim17:ExternalNetworkInjection.q nc:AssessedElement.coordinatedValidationAdjustmentJustification cim16:ACDCConverter.p cim:GeneratingUnit.startupCost nc:Contingency.probability nc:Reservoir.energyStorage cim17:EquivalentInjection.q nc:DCPulseWidthModulationControlFunction.targetValue cim17:Equipment.networkAnalysisEnabled nc:RotatingMachineController.mode nc:AssessedElement.criticalElementJustification nc:LoadFrequencyControlArea.mFRRActivated cim16:RegulatingControl.enabled cim:CurrentLimit.value cim17:RegulatingControl.minAllowedTargetValue nc:EnergyConsumer.participationFactor nc:SSSCController.mode cim16:ExternalNetworkInjection.referencePriority cim17:VoltageLimit.value cim16:EnergyConsumer.q cim17:ControlArea.pTolerance nc:RemedialActionGroup.maxRegulatingDown cim:StaticVarCompensator.q cim:VsConverter.droop cim16:VsConverter.droopCompensation nc:ScheduleResource.participationFactor);
+        sh:in			(nc:PowerElectronicsUnit.participationFactor cim17:VsConverter.droop cim:SynchronousMachine.referencePriority cim17:EnergySource.activePower nc:EnergyResourceGroupCapacity.participationFactor nc:ReactivePowerControlFunction.targetValue nc:AssessedElementWithRemedialAction.enabled cim:ACDCConverter.p cim17:ExternalNetworkInjection.referencePriority nc:TCSCController.mode cim17:ControlArea.netInterchange cim17:RegulatingControl.targetDeadband nc:DCPole.minEconomicP nc:GeneratingUnit.costCurrency nc:DCPole.participationFactor cim:ShuntCompensator.sections cim16:CsConverter.targetAlpha nc:AreaReserveResource.availableP cim:CsConverter.targetAlpha nc:AreaReserveResource.enabled cim:EquivalentInjection.regulationStatus nc:AssessedElementWithContingency.enabled cim:SynchronousMachine.operatingMode nc:AssessedElement.individualValidationAdjustmentJustification nc:AssessedElement.scannedThresholdMargin nc:LoadFrequencyControlArea.mFRRContracted nc:StageTrigger.armed nc:BaseCaseCurrentLimit.value nc:GridPowerCapacity.minInterchange nc:CurrentDroopOverride.enabled cim:RotatingMachine.p nc:DCActivePowerControlFunction.targetValue cim17:EnergyConsumer.p nc:LoadFrequencyControlArea.aFRRContracted cim17:PowerElectronicsConnection.p cim17:Switch.open cim16:RegulatingControl.targetDeadband cim17:BatteryUnit.batteryState cim:EnergySource.voltageAngle cim16:VsConverter.qShare nc:CompensatorController.mode cim16:RotatingMachine.p nc:GridPowerCapacity.netACInterchangeTolerance nc:VoltageAngleLimit.value cim16:ACDCConverter.q nc:ACEmulationControlFunction.timeConstant cim16:RegulatingCondEq.controlEnabled cim17:RotatingMachine.q nc:DirectCurrentEquipmentController.mode cim:RegulatingControl.targetDeadband nc:CurrentDroopOverride.targetValueInductiveI cim:PowerElectronicsConnection.q cim17:ACDCConverter.udc cim16:ACDCTerminal.connected nc:RemedialActionScheme.inService nc:GridPowerCapacity.minImportP cim17:ActivePowerLimit.value cim17:ACDCConverter.targetPpcc cim16:CsConverter.pPccControl cim16:ControlArea.netInterchange nc:InfeedLimit.valueA nc:GridPowerCapacity.regulatingDownAllocation cim:ACDCConverter.targetPpcc nc:LoadFrequencyControlArea.aFRRAvailable cim:RegulatingCondEq.controlEnabled cim17:VsConverter.targetPWMfactor nc:BiddingZoneBorder.alreadyAllocatedCapacity nc:GeneratingUnit.isRamping cim16:ACDCConverter.idc cim:VoltageLimit.value nc:AutomationFunction.enabled nc:FACTSEquipment.q cim:ExternalNetworkInjection.q nc:BiddingZoneBorder.availableTransferCapacity cim:VsConverter.droopCompensation nc:GridPowerCapacity.regulatingUpAllocation cim17:EnergySource.reactivePower cim:ACDCConverter.q cim16:EnergySource.activePower nc:RemedialActionGroup.maxRegulatingUp cim16:CsConverter.targetGamma cim17:CurrentLimit.value nc:PhaseControlFunction.targetValue nc:SchedulingArea.p cim17:VsConverter.qPccControl nc:DCVoltageSource.voltageSetpoint cim16:GeneratingUnit.normalPF cim17:ApparentPowerLimit.value nc:HydroPump.participationFactor nc:BiddingZoneBorder.totalTransferCapacity nc:EnergyResourceGroupCapacity.availabilityFactor nc:GeneratingUnit.mustRunQ nc:GeneratingUnit.mustRun cim:ACDCConverter.udc nc:AreaReserveResource.activatedP cim:RotatingMachine.q nc:GridPowerCapacity.netDCInterchange nc:DCVoltageControlFunction.targetValue cim17:EnergyConsumer.q cim17:RegulatingControl.maxAllowedTargetValue nc:RangeConstraint.value cim16:CsConverter.operatingMode cim17:PowerElectronicsConnection.q nc:LoadFrequencyControlArea.fcrContracted nc:PowerElectronicsUnit.p cim:EnergyConsumer.p cim16:RotatingMachine.q nc:AssessedElement.individualValidationAdjustmentShare nc:BiddingZoneBorder.alreadyAllocatedFlow nc:EnergyResourceGroupCapacity.installedCapacityP nc:VoltageAngleControlFunction.targetValue cim17:Switch.locked nc:DCCurrentControlFunction.targetValue cim:RegulatingControl.targetValueUnitMultiplier nc:LoadFrequencyControlArea.aFRRActivated nc:AreaReserveResource.kind cim17:VsConverter.targetPowerFactorPcc nc:AssessedElement.coordinatedValidationAdjustment cim:RegulatingControl.targetValue cim16:EquivalentInjection.regulationTarget nc:PowerRemedialAction.maxRegulatingUp cim17:Contingency.mustStudy nc:AssessedElement.individualValidationAdjustment cim16:VsConverter.qPccControl cim17:GeneratingUnit.startupCost nc:ContingencyWithRemedialAction.enabled nc:CurrentDroopControlFunction.targetValueInductive nc:AreaReserveResource.priority cim17:SynchronousMachine.referencePriority nc:PowerRemedialAction.maxRegulatingDown cim:VsConverter.targetPowerFactorPcc cim:EquivalentInjection.p nc:PowerShiftKeyStrategy.participationFactor nc:PowerTransferCorridor.enabled cim17:VsConverter.targetPhasePcc nc:ScheduleResource.p nc:AreaReserveResource.allocatedP nc:GeneratingUnit.shutdownCost nc:CrossBorderRelevance.enabled nc:GridPowerCapacity.maxInterchange cim:RegulatingControl.discrete nc:DCPole.p cim17:RegulatingControl.targetValue cim:ControlArea.netInterchange cim:ControlArea.pTolerance nc:CurrentControlFunction.targetValue nc:EnergyBlockOrder.sequence cim16:StaticVarCompensator.q cim:BatteryUnit.storedE cim17:EnergySource.voltageAngle nc:ImpedanceControlFunction.targetValue nc:SchedulingArea.q cim:ExternalNetworkInjection.referencePriority cim17:GeneratingUnit.normalPF cim:EnergySource.activePower nc:LoadFrequencyControlArea.fcrAvailable cim17:EquivalentInjection.regulationTarget nc:RemedialActionDependency.enabled nc:DCSwitch.locked cim16:ExternalNetworkInjection.p cim17:Equipment.inService cim:ApparentPowerLimit.value cim:CsConverter.operatingMode cim:VsConverter.targetUpcc cim17:TapChanger.step nc:FrequencyControlFunction.targetValue cim16:RegulatingControl.discrete cim17:VsConverter.qShare cim:RegulatingControl.minAllowedTargetValue nc:GridStateAlteration.enabled cim17:ACDCConverter.p cim17:RegulatingControl.enabled nc:ActivePowerControlFunction.targetValue cim17:AsynchronousMachine.asynchronousMachineType cim16:ACDCConverter.uc nc:CurrentDroopOverride.targetValueCapacitiveI cim:CsConverter.pPccControl cim16:ACDCConverter.targetUdc nc:FrequencyControlFunction.frequencyBias cim17:EquivalentInjection.p nc:PowerShiftKeyStrategy.enabled nc:DCFiringAngleControlFunction.targetValue cim16:ACDCConverter.targetPpcc cim:Equipment.networkAnalysisEnabled cim17:ACDCConverter.targetUdc nc:GateInputPin.enabled nc:BiddingZoneBorder.netTransferCapacity cim17:RegulatingControl.discrete nc:AssessedElement.positiveVirtualMargin nc:DCEquivalentInjection.p nc:GridStateAlteration.participationFactor cim17:VsConverter.targetUpcc cim17:CsConverter.operatingMode cim17:ACDCTerminal.connected nc:InjectionController.mode cim:AsynchronousMachine.asynchronousMachineType cim16:ControlArea.pTolerance nc:ThyristorControlledSeriesCompensator.currentSection nc:SchedulingArea.participationFactor cim16:TapChanger.controlEnabled cim:Equipment.inService nc:PTCActivePowerSupport.value nc:GridPowerCapacity.netACInterchange cim17:ShuntCompensator.sections cim:EquivalentInjection.q cim16:EnergyConsumer.p cim:EquivalentInjection.regulationTarget cim:VsConverter.targetQpcc cim16:RegulatingControl.targetValueUnitMultiplier cim17:SynchronousMachine.operatingMode cim17:TapChanger.controlEnabled cim:RegulatingControl.maxAllowedTargetValue cim17:EnergySource.voltageMagnitude cim:ACDCConverter.uc cim16:SynchronousMachine.operatingMode nc:DCPole.q nc:EnergyResourceGroupCapacity.availableCapacityP cim16:TapChanger.step cim:GeneratingUnit.normalPF cim:VsConverter.pPccControl cim:VsConverter.targetPWMfactor nc:GeneratingUnit.warmStartupCost cim16:EquivalentInjection.regulationStatus cim:ACDCTerminal.connected cim16:ShuntCompensator.sections cim:ActivePowerLimit.value nc:DCSwitch.open nc:AssessedElement.maxFlow nc:EnergyBlockOrder.participationFactor nc:AssessedElement.maxMarginAdjustment nc:RemedialAction.available cim16:EquivalentInjection.p nc:BiddingZoneBorder.transmissionReliabilityMargin cim17:CsConverter.pPccControl cim16:VsConverter.targetQpcc cim17:VsConverter.targetQpcc cim:CsConverter.targetIdc cim17:ExternalNetworkInjection.p cim:RegulatingControl.enabled cim:EnergyConsumer.q nc:EnergyResourceGroupCapacity.p cim17:EquivalentInjection.regulationStatus nc:AssessedElement.targetRemainingAvailableMarginJustification nc:DCPole.maxEconomicP cim17:VsConverter.pPccControl cim:BatteryUnit.batteryState cim16:EnergySource.reactivePower nc:CurrentDroopControlFunction.targetValueCapacitive cim:ACDCConverter.idc cim17:BatteryUnit.storedE nc:CircuitShare.contributionFactor nc:RemedialActionScheme.armed cim17:ACDCConverter.idc cim16:CsConverter.targetIdc nc:ACEmulationControlFunction.referenceP cim16:VsConverter.pPccControl cim17:RotatingMachine.p nc:AreaReserveResource.contractedP nc:PowerFactorControlFunction.targetValue cim17:RegulatingControl.targetValueUnitMultiplier cim:PowerElectronicsConnection.p nc:BiddingZone.netPosition nc:DCExtinctionAngleControlFunction.targetValue nc:AssessedElement.appointedMargin nc:VoltageControlFunction.targetValue cim:Switch.open cim16:Switch.open nc:VoltageInjectionControlFunction.targetValue cim:TapChanger.step cim16:SynchronousMachine.referencePriority nc:ThyristorControlledSeriesCompensator.compensationZ cim17:CsConverter.targetIdc cim:VsConverter.qShare nc:InfeedLimit.valueW nc:StageTrigger.inService cim:VsConverter.qPccControl nc:FunctionBlock.enabled cim17:CsConverter.targetAlpha cim16:ACDCConverter.udc cim:ACDCConverter.targetUdc cim:TapChanger.controlEnabled cim:ExternalNetworkInjection.p cim17:VsConverter.droopCompensation cim:EnergySource.reactivePower nc:ACEmulationControlFunction.gain nc:GeneratingUnit.participationFactor cim16:VsConverter.droop nc:AssessedElement.enabled cim:CsConverter.targetGamma cim17:StaticVarCompensator.q cim17:RegulatingCondEq.controlEnabled cim16:RegulatingControl.targetValue cim:VsConverter.targetPhasePcc cim16:ExternalNetworkInjection.q nc:EnergyBlockOrder.p cim17:CsConverter.targetGamma nc:FuelStorage.energyStorage cim16:VsConverter.targetUpcc cim:Switch.locked cim:EnergySource.voltageMagnitude cim17:ACDCConverter.uc cim17:ACDCConverter.q cim16:EquivalentInjection.q cim16:AsynchronousMachine.asynchronousMachineType nc:GeneratingUnit.mustRunP cim:Contingency.mustStudy nc:SubstationController.mode cim17:ExternalNetworkInjection.q nc:AssessedElement.coordinatedValidationAdjustmentJustification cim16:ACDCConverter.p cim:GeneratingUnit.startupCost nc:Contingency.probability nc:Reservoir.energyStorage cim17:EquivalentInjection.q nc:DCPulseWidthModulationControlFunction.targetValue cim17:Equipment.networkAnalysisEnabled nc:RotatingMachineController.mode nc:AssessedElement.criticalElementJustification nc:LoadFrequencyControlArea.mFRRActivated cim16:RegulatingControl.enabled cim:CurrentLimit.value cim17:RegulatingControl.minAllowedTargetValue nc:EnergyConsumer.participationFactor nc:SSSCController.mode cim16:ExternalNetworkInjection.referencePriority cim17:VoltageLimit.value cim16:EnergyConsumer.q cim17:ControlArea.pTolerance nc:RemedialActionGroup.maxRegulatingDown cim:StaticVarCompensator.q cim:VsConverter.droop cim16:VsConverter.droopCompensation nc:ScheduleResource.participationFactor);
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:FunctionOutputVariable.PropertyReference:value" ;
         sh:order        5 ;
         sh:severity     sh:Violation .			
-		
+
 erc:EquivalentGeneratingUnit  a          sh:NodeShape ;
         sh:property      erc:RotatingMachine.GeneratingUnit-associationApplicability;
         sh:targetClass  nc:EquivalentGeneratingUnit .
@@ -170,8 +170,8 @@ erc:RotatingMachine.GeneratingUnit-associationApplicability
         a               sh:PropertyShape ;
         sh:description  "An EquivalentGeneratingUnit shall not be referenced by a RotatingMachine via the association end RotatingMachine.GeneratingUnit." ;
         sh:message      "A RotatingMachine is associated with a EquivalentGeneratingUnit" ;
-		sh:maxCount		0;
-		sh:path         [ sh:alternativePath  ( [ sh:inversePath  cim:RotatingMachine.GeneratingUnit ]
+        sh:maxCount		0;
+        sh:path         [ sh:alternativePath  ( [ sh:inversePath  cim:RotatingMachine.GeneratingUnit ]
                                                 [ sh:inversePath  cim17:RotatingMachine.GeneratingUnit ]
                                                 [ sh:inversePath  cim16:RotatingMachine.GeneratingUnit ]
                                               )
@@ -206,12 +206,12 @@ erc:CrossZonalNetworkElement
 
 erc:CrossZonalNetworkElement.BiddingZoneBorder-usage
     a sh:PropertyShape ;
-	sh:name "C:NC:ER:CrossZonalNetworkElement.BiddingZoneBorder:usage" ;
-	sh:description "A CrossZonalNetworkElement shall be associated with exactly two BiddingZoneBorder instances. The two associated BiddingZoneBorder instances shall represent the same pair of bidding zones, but in opposite directions. This means that the FromBiddingZone of one BiddingZoneBorder shall be equal to the ToBiddingZone of the other BiddingZoneBorder, and the ToBiddingZone of the first BiddingZoneBorder shall be equal to the FromBiddingZone of the other. The two bidding zones shall be different." ;
+    sh:name "C:NC:ER:CrossZonalNetworkElement.BiddingZoneBorder:usage" ;
+    sh:description "A CrossZonalNetworkElement shall be associated with exactly two BiddingZoneBorder instances. The two associated BiddingZoneBorder instances shall represent the same pair of bidding zones, but in opposite directions. This means that the FromBiddingZone of one BiddingZoneBorder shall be equal to the ToBiddingZone of the other BiddingZoneBorder, and the ToBiddingZone of the first BiddingZoneBorder shall be equal to the FromBiddingZone of the other. The two bidding zones shall be different." ;
     sh:path nc:CrossZonalNetworkElement.BiddingZoneBorder ;
-	sh:sparql erc:CrossZonalNetworkElement.BiddingZoneBorder-usageSparql ;
-	sh:group        erc:ERgroup ;
-	sh:order        8 ;
+    sh:sparql erc:CrossZonalNetworkElement.BiddingZoneBorder-usageSparql ;
+    sh:group        erc:ERgroup ;
+    sh:order        8 ;
     sh:severity sh:Violation .
 
 erc:CrossZonalNetworkElement.BiddingZoneBorder-usageSparql
@@ -219,31 +219,31 @@ erc:CrossZonalNetworkElement.BiddingZoneBorder-usageSparql
     sh:message "The two BiddingZoneBorder instances do not represent the same pair of different bidding zones in opposite directions." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT DISTINCT $this
-        WHERE {
-            $this $PATH ?border1 .
-            $this $PATH ?border2 .
+      SELECT DISTINCT $this
+      WHERE {
+        $this $PATH ?border1 .
+        $this $PATH ?border2 .
 
-            FILTER (?border1 != ?border2)
+        FILTER (?border1 != ?border2)
 
-            ?border1
-                nc:BiddingZoneBorder.FromBiddingZone ?from1 ;
-                nc:BiddingZoneBorder.ToBiddingZone   ?to1 .
+        ?border1
+        nc:BiddingZoneBorder.FromBiddingZone ?from1 ;
+        nc:BiddingZoneBorder.ToBiddingZone   ?to1 .
 
-            ?border2
-                nc:BiddingZoneBorder.FromBiddingZone ?from2 ;
-                nc:BiddingZoneBorder.ToBiddingZone   ?to2 .
+        ?border2
+        nc:BiddingZoneBorder.FromBiddingZone ?from2 ;
+        nc:BiddingZoneBorder.ToBiddingZone   ?to2 .
 
-            FILTER (
-                ?from1 = ?to1
-                ||
-                ?from1 != ?to2
-                ||
-                ?to1 != ?from2
-            )
-        }
-    """ .	
-	
+        FILTER (
+          ?from1 = ?to1
+          ||
+          ?from1 != ?to2
+          ||
+          ?to1 != ?from2
+        )
+      }
+      """ .
+
 
 erc:BoundaryPoint
     a sh:NodeShape ;
@@ -268,23 +268,23 @@ erc:BoundaryPoint-requiredAssociationSparql
     sh:message "BoundaryPoint is not associated with neither BoundaryPointBorder nor BoundaryPointBorderLink." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this
-        WHERE {
-            BIND(EXISTS {
-                $this nc:BoundaryPoint.BoundaryPointBorder ?border .
-            } AS ?hasBorder)
+      SELECT $this
+      WHERE {
+        BIND(EXISTS {
+            $this nc:BoundaryPoint.BoundaryPointBorder ?border .
+          } AS ?hasBorder)
 
-            BIND(EXISTS {
-                $this ^nc:BoundaryPointBorderLink.BoundaryPoint ?borderLink .
-            } AS ?hasBorderLink)
+        BIND(EXISTS {
+            $this ^nc:BoundaryPointBorderLink.BoundaryPoint ?borderLink .
+          } AS ?hasBorderLink)
 
-            FILTER (
-                (?hasBorder && ?hasBorderLink)
-                ||
-                (!?hasBorder && !?hasBorderLink)
-            )
-        }
-    """ .
+        FILTER (
+          (?hasBorder && ?hasBorderLink)
+          ||
+          (!?hasBorder && !?hasBorderLink)
+        )
+      }
+      """ .
 
 
 erc:BoundaryPoint-naming
@@ -303,23 +303,23 @@ erc:BoundaryPoint-namingSparql
     sh:message "BoundaryPoint name is not consistent with partyOneResourceName and partyTwoResourceName." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value
-        WHERE {
-            $this nc:BoundaryPoint.partyOneResourceName ?partyOneResourceName ;
-                  nc:BoundaryPoint.partyTwoResourceName ?partyTwoResourceName .
+      SELECT $this ?value
+      WHERE {
+        $this nc:BoundaryPoint.partyOneResourceName ?partyOneResourceName ;
+        nc:BoundaryPoint.partyTwoResourceName ?partyTwoResourceName .
 
-            OPTIONAL {
-                $this $PATH ?value .
-            }
-
-            BIND(CONCAT(STR(?partyOneResourceName), "-", STR(?partyTwoResourceName)) AS ?expectedName)
-
-            FILTER (
-                !BOUND(?value)
-                || STR(?value) != ?expectedName
-            )
+        OPTIONAL {
+          $this $PATH ?value .
         }
-    """ .
+
+        BIND(CONCAT(STR(?partyOneResourceName), "-", STR(?partyTwoResourceName)) AS ?expectedName)
+
+        FILTER (
+          !BOUND(?value)
+          || STR(?value) != ?expectedName
+        )
+      }
+      """ .
 
 
 erc:CommonResponsibilityPoint
@@ -344,23 +344,23 @@ erc:CommonResponsibilityPoint-requiredAssociationSparql
     sh:message "CommonResponsibilityPoint in not associated with neither DCNode nor ConnectivityNode or it is associated with both." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this
-        WHERE {
-            BIND(EXISTS {
-                $this nc:CommonResponsibilityPoint.DCNode ?dcNode .
-            } AS ?hasDCNode)
+      SELECT $this
+      WHERE {
+        BIND(EXISTS {
+            $this nc:CommonResponsibilityPoint.DCNode ?dcNode .
+          } AS ?hasDCNode)
 
-            BIND(EXISTS {
-                $this nc:CommonResponsibilityPoint.ConnectivityNode ?connectivityNode .
-            } AS ?hasConnectivityNode)
+        BIND(EXISTS {
+            $this nc:CommonResponsibilityPoint.ConnectivityNode ?connectivityNode .
+          } AS ?hasConnectivityNode)
 
-            FILTER (
-                (?hasDCNode && ?hasConnectivityNode)
-                ||
-                (!?hasDCNode && !?hasConnectivityNode)
-            )
-        }
-    """ .
+        FILTER (
+          (?hasDCNode && ?hasConnectivityNode)
+          ||
+          (!?hasDCNode && !?hasConnectivityNode)
+        )
+      }
+      """ .
 
 
 erc:BoundaryPointBorderLink
@@ -385,22 +385,22 @@ erc:BoundaryPointBorderLink-usageSparql
     sh:message "BoundaryPointBorderLink is used for a BoundaryPoint that is not associated with more than one BoundaryPointBorder." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT DISTINCT $this
-        WHERE {
-            $this $PATH  ?boundaryPoint.
+      SELECT DISTINCT $this
+      WHERE {
+        $this $PATH  ?boundaryPoint.
 
-            FILTER NOT EXISTS {
-                ?boundaryPoint ^nc:BoundaryPointBorderLink.BoundaryPoint ?link1, ?link2 .
+        FILTER NOT EXISTS {
+          ?boundaryPoint ^nc:BoundaryPointBorderLink.BoundaryPoint ?link1, ?link2 .
 
-                FILTER (?link1 != ?link2)
+          FILTER (?link1 != ?link2)
 
-                ?link1 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border1 .
-                ?link2 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border2 .
+          ?link1 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border1 .
+          ?link2 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border2 .
 
-                FILTER (?border1 != ?border2)
-            }
+          FILTER (?border1 != ?border2)
         }
-    """ .
+      }
+      """ .
 
 
 erc:BoundaryPointBorder
@@ -426,23 +426,23 @@ erc:BoundaryPointBorder-namingSparql
     sh:message "BoundaryPointBorder name is not consistent with partyOneName and partyTwoName." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value
-        WHERE {
-            $this nc:BoundaryPointBorder.partyOneName ?partyOneName ;
-                  nc:BoundaryPointBorder.partyTwoName ?partyTwoName .
+      SELECT $this ?value
+      WHERE {
+        $this nc:BoundaryPointBorder.partyOneName ?partyOneName ;
+        nc:BoundaryPointBorder.partyTwoName ?partyTwoName .
 
-            OPTIONAL {
-                $this $PATH ?value .
-            }
-
-            BIND(CONCAT(STR(?partyOneName), "-", STR(?partyTwoName)) AS ?expectedName)
-
-            FILTER (
-                !BOUND(?value)
-                || STR(?value) != ?expectedName
-            )
+        OPTIONAL {
+          $this $PATH ?value .
         }
-    """ .
+
+        BIND(CONCAT(STR(?partyOneName), "-", STR(?partyTwoName)) AS ?expectedName)
+
+        FILTER (
+          !BOUND(?value)
+          || STR(?value) != ?expectedName
+        )
+      }
+      """ .
 
 
 erc:BoundaryPointBorder-requiredAssociation
@@ -458,7 +458,7 @@ erc:BoundaryPointBorder-requiredAssociation
     sh:group erc:ERgroup ;
     sh:order 14 ;
     sh:severity sh:Violation .
-	
+
 erc:ThermalGeneratingUnitDependency  a          sh:NodeShape ;
         sh:property      erc:PeerTemporalDependency.constraintKind-exclusive;
         sh:targetClass  nc:ThermalGeneratingUnitDependency .      
@@ -526,14 +526,15 @@ erc:PeerTemporalDependency.constraintKind-exclusiveSparql
     sh:message      "Some of the following attributes are defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag when PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
-    
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
-    
+      SELECT  $this
+      WHERE {
+        $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
+
+        BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
+
         FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
-      }""" .       	
+      }
+      """ .

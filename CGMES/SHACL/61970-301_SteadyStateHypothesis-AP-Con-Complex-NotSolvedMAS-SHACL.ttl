@@ -156,21 +156,22 @@ sshn301:CsConverter.targetAlpha-applicabilitySparql
         $this $PATH ?value.
         $this cim:CsConverter.operatingMode ?opermode .
         #OPTIONAL {$this cim:ACDCConverter.PccTerminal ?pccterminal}.
-        #OPTIONAL {?pccterminal cim:Terminal.ConductingEquipment ?condeq}. 
+        #OPTIONAL {?pccterminal cim:Terminal.ConductingEquipment ?condeq}.
         #OPTIONAL {?condeq rdf:type ?condeqtype}.
         #OPTIONAL {?pccterminal cim:RegulatingControl.Terminal ?regcontrol}.
         #OPTIONAL {?regcontrol cim:RegulatingControl.discrete ?discrete}.
-        
+
         OPTIONAL {$this cim:ACDCConverter.PccTerminal ?pccterminal .
-                  ?pccterminal cim:Terminal.ConductingEquipment/rdf:type cim:PowerTransformer .
-                  ?pccterminal ^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete ?discrete .
+          ?pccterminal cim:Terminal.ConductingEquipment/rdf:type cim:PowerTransformer .
+          ?pccterminal ^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete ?discrete .
         } .
-        
-        
+
+
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
-        #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .   
-        FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete=true) || !bound(?discrete) )) .          
-      }""" .
+        #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .
+        FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete=true) || !bound(?discrete) )) .
+      }
+      """ .
       
 sshn301:CsConverter.targetGamma-applicability
         a               sh:PropertyShape ;
@@ -194,20 +195,21 @@ sshn301:CsConverter.targetGamma-applicabilitySparql
         $this $PATH ?value.
         $this cim:CsConverter.operatingMode ?opermode .
         #OPTIONAL {$this cim:ACDCConverter.PccTerminal ?pccterminal}.
-        #OPTIONAL {?pccterminal cim:Terminal.ConductingEquipment ?condeq}. 
+        #OPTIONAL {?pccterminal cim:Terminal.ConductingEquipment ?condeq}.
         #OPTIONAL {?condeq rdf:type ?condeqtype}.
         #OPTIONAL {?pccterminal cim:RegulatingControl.Terminal ?regcontrol}.
         #OPTIONAL {?regcontrol cim:RegulatingControl.discrete ?discrete}.
-        
+
         OPTIONAL {$this cim:ACDCConverter.PccTerminal ?pccterminal .
-                  ?pccterminal cim:Terminal.ConductingEquipment/rdf:type cim:PowerTransformer .
-                  ?pccterminal ^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete ?discrete .
+          ?pccterminal cim:Terminal.ConductingEquipment/rdf:type cim:PowerTransformer .
+          ?pccterminal ^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete ?discrete .
         } .
-        
+
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
-        #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) . 
-        FILTER ((?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?discrete=true ) || !bound(?discrete))) .        
-      }""" .      
+        #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .
+        FILTER ((?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?discrete=true ) || !bound(?discrete))) .
+      }
+      """ .
 
 sshn301:RegulatingControl  a  sh:NodeShape ;
         sh:property     sshn301:RegulatingControl-requiredAttributes;
@@ -231,15 +233,16 @@ sshn301:RegulatingControl-requiredAttributesSparql
     sh:message "Both minAllowedTargetValue and maxAllowedTargetValue are not provided for RegulatingControl in mode powerFactor." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this 
+      SELECT  $this
       WHERE {
         #$this $PATH ?value .
         $this $PATH cim:RegulatingControlModeKind.powerFactor .
         OPTIONAL {$this cim:RegulatingControl.minAllowedTargetValue ?minvalue}.
-        OPTIONAL {$this cim:RegulatingControl.maxAllowedTargetValue ?maxvalue}. 
+        OPTIONAL {$this cim:RegulatingControl.maxAllowedTargetValue ?maxvalue}.
         #FILTER (?value=cim:RegulatingControlModeKind.powerFactor && (!bound(?minvalue) || !bound(?maxvalue))) .
-        FILTER (!bound(?minvalue) || !bound(?maxvalue)) .        
-      }""" .
+        FILTER (!bound(?minvalue) || !bound(?maxvalue)) .
+      }
+      """ .
       
       
 sshn301:TapChanger  a  sh:NodeShape ;
@@ -268,10 +271,11 @@ sshn301:TapChanger.step-valueTypeSparql
         $this $PATH ?value .
         $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.discrete true.
         #OPTIONAL {$this cim:TapChanger.TapChangerControl ?contr}.
-        #?contr cim:RegulatingControl.discrete ?discrete . 
-        #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") && bound(?contr) && ?discrete=true) .  
-        FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .        
-      }""" .   
+        #?contr cim:RegulatingControl.discrete ?discrete .
+        #FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i") && bound(?contr) && ?discrete=true) .
+        FILTER (STRENDS(str(?value), ".") && !REGEX(STRAFTER(str(?value), "."), "^[0]$", "i")) .
+      }
+      """ .
 
 
 sshn301:LinearShuntCompensator  a  sh:NodeShape ;
@@ -300,10 +304,11 @@ sshn301:ShuntCompensator.sections-valueLinearSparql
         $this cim:ShuntCompensator.maximumSections ?maxsections .
         #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
         #$this cim:RegulatingCondEq.controlEnabled ?contrenabled .
-        
-        #FILTER (bound(?contr) && ?contrenabled=true && !(?value>=0 && ?value<=?maxsections)) . 
-        FILTER ( !(?value>=0 && ?value<=?maxsections)) .        
-      }""" .       
+
+        #FILTER (bound(?contr) && ?contrenabled=true && !(?value>=0 && ?value<=?maxsections)) .
+        FILTER ( !(?value>=0 && ?value<=?maxsections)) .
+      }
+      """ .
       
 sshn301:NonlinearShuntCompensator  a  sh:NodeShape ;
         sh:property     sshn301:ShuntCompensator.sections-valueNonLinear ;
@@ -328,25 +333,25 @@ sshn301:ShuntCompensator.sections-valueNonLinearSparql
       SELECT  $this ?value (COUNT(?type) AS ?types) ?typesall
       WHERE {
         {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
-        WHERE {
+          SELECT $this (COUNT(?typeall) AS ?typesall)
+          WHERE {
             ?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
             ?nscpointsall rdf:type ?typeall .
           }
-        GROUP BY $this ?typesall
+          GROUP BY $this ?typesall
         }
         $this $PATH ?value .
         #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
         #$this cim:RegulatingCondEq.controlEnabled ?contrenabled .
         ?nscpoints cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
         ?nscpoints rdf:type ?type .
-        ?nscpoints cim:NonlinearShuntCompensatorPoint.sectionNumber ?sectionnumber .  
+        ?nscpoints cim:NonlinearShuntCompensatorPoint.sectionNumber ?sectionnumber .
         #FILTER (bound(?contr) && ?contrenabled=true && ?value!=?sectionnumber) .
         FILTER (?value!=?sectionnumber) .
       }
       GROUP BY $this ?value ?types ?typesall
       HAVING(?types=?typesall)
-      """ .        
+      """ .
  
 sshn301:ControlArea  a  sh:NodeShape ;
         sh:property     sshn301:ControlArea-netInterchangeCalculation ;
@@ -373,18 +378,19 @@ sshn301:ControlArea-netInterchangeCalculationSparql
         $this cim:ControlArea.type cim:ControlAreaTypeKind.Interchange .
         $this cim:ControlArea.netInterchange ?value .
         {
-        SELECT $this (SUM(?p) AS ?sump)
-        WHERE {
-              ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
-              ?term cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode/rdf:type eu:BoundaryPoint .
-              ?term cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection .
-              ?term rdf:type ?termtype.
-              ?term cim:Terminal.ConductingEquipment/cim:EquivalentInjection.p ?p .
+          SELECT $this (SUM(?p) AS ?sump)
+          WHERE {
+            ?term ^cim:TieFlow.Terminal/cim:TieFlow.ControlArea $this  .
+            ?term cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode/rdf:type eu:BoundaryPoint .
+            ?term cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentInjection .
+            ?term rdf:type ?termtype.
+            ?term cim:Terminal.ConductingEquipment/cim:EquivalentInjection.p ?p .
           }
-        GROUP BY $this ?termtype
+          GROUP BY $this ?termtype
         }
         FILTER (?value!=?sump) .
-      } """ . 
+      }
+      """ .
 
  
             
