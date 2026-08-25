@@ -2358,7 +2358,6 @@ ssi:RotatingMachineController-AllowedProperties
         sh:order              151;
         sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:property           [ sh:path  nc:RotatingMachineController.mode ];
-        sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:RotatingMachineController .
 
@@ -2414,7 +2413,6 @@ ssi:SSSCController-AllowedProperties
         sh:order              148;
         sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:property           [ sh:path  nc:SSSCController.mode ];
-        sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:SSSCController .
 
@@ -2433,7 +2431,6 @@ ssi:InjectionController-AllowedProperties
         sh:order              147;
         sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:property           [ sh:path  nc:InjectionController.mode ];
-        sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:InjectionController .
 
@@ -2453,7 +2450,6 @@ ssi:CompensatorController-AllowedProperties
         sh:order              146;
         sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:property           [ sh:path  nc:CompensatorController.mode ];
-        sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:CompensatorController .
 
@@ -2653,7 +2649,6 @@ ssi:TCSCController-AllowedProperties
         sh:order              135;
         sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:property           [ sh:path  nc:TCSCController.mode ];
-        sh:property           [ sh:path  nc:AutomationFunction.enabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:TCSCController .
 
@@ -4323,10 +4318,6 @@ ssi:PetersenCoil-AllowedProperties
         sh:order              104;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:PetersenCoil , cim17:PetersenCoil , cim:PetersenCoil .
 
@@ -4345,10 +4336,6 @@ ssi:GroundingImpedance-AllowedProperties
         sh:order              103;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:GroundingImpedance , cim16:GroundingImpedance , cim:GroundingImpedance .
 
@@ -4366,8 +4353,6 @@ ssi:Jumper-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              102;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4388,8 +4373,6 @@ ssi:Fuse-AllowedProperties
         sh:order              101;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim:Fuse , cim17:Fuse .
 
@@ -4408,10 +4391,6 @@ ssi:GroundDisconnector-AllowedProperties
         sh:order              100;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:GroundDisconnector , cim16:GroundDisconnector , cim:GroundDisconnector .
 
@@ -4429,8 +4408,6 @@ ssi:Cut-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              99;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4451,10 +4428,6 @@ ssi:Disconnector-AllowedProperties
         sh:order              98;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Disconnector , cim17:Disconnector , cim:Disconnector .
 
@@ -4473,10 +4446,6 @@ ssi:Breaker-AllowedProperties
         sh:order              97;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Breaker , cim16:Breaker , cim:Breaker .
 
@@ -4495,10 +4464,6 @@ ssi:LoadBreakSwitch-AllowedProperties
         sh:order              96;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:LoadBreakSwitch , cim16:LoadBreakSwitch , cim:LoadBreakSwitch .
 
@@ -4515,8 +4480,6 @@ ssi:Switch-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              95;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4537,10 +4500,6 @@ ssi:EquivalentBranch-AllowedProperties
         sh:order              94;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentBranch , cim17:EquivalentBranch , cim:EquivalentBranch .
 
@@ -4559,10 +4518,6 @@ ssi:EquivalentInjection-AllowedProperties
         sh:order              93;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentInjection , cim17:EquivalentInjection , cim:EquivalentInjection .
 
@@ -4582,10 +4537,6 @@ ssi:EquivalentShunt-AllowedProperties
         sh:order              92;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentShunt , cim17:EquivalentShunt , cim:EquivalentShunt .
 
@@ -4604,10 +4555,6 @@ ssi:BusbarSection-AllowedProperties
         sh:order              91;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:BusbarSection , cim17:BusbarSection , cim:BusbarSection .
 
@@ -4626,10 +4573,6 @@ ssi:Junction-AllowedProperties
         sh:order              90;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Junction , cim17:Junction , cim:Junction .
 
@@ -4648,8 +4591,6 @@ ssi:Clamp-AllowedProperties
         sh:order              89;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim:Clamp , cim17:Clamp .
 
@@ -4666,8 +4607,6 @@ ssi:EnergySource-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              88;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4690,8 +4629,6 @@ ssi:StaticSynchronousSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:FACTSEquipment.q ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:StaticSynchronousSeriesCompensator .
 
@@ -4713,8 +4650,6 @@ ssi:ModularStaticSynchronousSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:FACTSEquipment.q ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ModularStaticSynchronousSeriesCompensator .
 
@@ -4755,12 +4690,6 @@ ssi:StaticVarCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
         sh:property           [ sh:path  nc:FACTSEquipment.q ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:StaticVarCompensator , nc:StaticVarCompensator , cim16:StaticVarCompensator .
 
@@ -4781,10 +4710,6 @@ ssi:NonlinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:NonlinearShuntCompensator , cim16:NonlinearShuntCompensator , cim:NonlinearShuntCompensator .
 
@@ -4802,8 +4727,6 @@ ssi:SynchronousMachine-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              82;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4826,10 +4749,6 @@ ssi:AsynchronousMachine-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:AsynchronousMachine , cim16:AsynchronousMachine , cim:AsynchronousMachine .
 
@@ -4850,12 +4769,6 @@ ssi:ExternalNetworkInjection-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim:ExternalNetworkInjection , cim16:ExternalNetworkInjection , cim17:ExternalNetworkInjection .
 
@@ -4873,8 +4786,6 @@ ssi:PowerTransformer-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              79;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4895,8 +4806,6 @@ ssi:VsConverter-AllowedProperties
         sh:order              78;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:VsConverter , cim17:VsConverter .
 
@@ -4913,8 +4822,6 @@ ssi:ModularMultilevelConverter-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              77;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -4936,8 +4843,6 @@ ssi:CsConverter-AllowedProperties
         sh:order              76;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:CsConverter , cim16:CsConverter .
 
@@ -4957,10 +4862,6 @@ ssi:NonConformLoad-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:EnergyConsumer.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:NonConformLoad , cim17:NonConformLoad , cim:NonConformLoad .
 
@@ -4980,10 +4881,6 @@ ssi:ConformLoad-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:EnergyConsumer.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:ConformLoad , cim17:ConformLoad , cim:ConformLoad .
 
@@ -5003,10 +4900,6 @@ ssi:StationSupply-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:EnergyConsumer.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:StationSupply , cim16:StationSupply , cim:StationSupply .
 
@@ -5026,12 +4919,6 @@ ssi:EnergyConsumer-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:EnergyConsumer.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EnergyConsumer , cim17:EnergyConsumer , cim:EnergyConsumer .
 
@@ -5050,10 +4937,6 @@ ssi:SeriesCompensator-AllowedProperties
         sh:order              71;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:SeriesCompensator , cim17:SeriesCompensator , cim:SeriesCompensator .
 
@@ -5073,10 +4956,8 @@ ssi:PhotoVoltaicUnit-AllowedProperties
         sh:order              70;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PhotoVoltaicUnit , cim:PhotoVoltaicUnit .
 
@@ -5097,8 +4978,6 @@ ssi:EquivalentPowerElectronicsUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:EquivalentPowerElectronicsUnit .
 
@@ -5118,10 +4997,8 @@ ssi:PowerElectronicsWindUnit-AllowedProperties
         sh:order              68;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PowerElectronicsWindUnit , cim:PowerElectronicsWindUnit .
 
@@ -5142,10 +5019,6 @@ ssi:BatteryUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:severity           sh:Info;
         sh:targetClass        cim:BatteryUnit , cim17:BatteryUnit .
@@ -5167,8 +5040,6 @@ ssi:FlexibleEnergyUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:FlexibleEnergyUnit .
 
@@ -5190,8 +5061,6 @@ ssi:ElectricalChargingUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ElectricalChargingUnit .
 
@@ -5212,8 +5081,6 @@ ssi:DCEquivalentInjection-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:DCEquivalentInjection.p ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCEquivalentInjection .
 
@@ -5233,12 +5100,6 @@ ssi:DCGround-AllowedProperties
         sh:order              63;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCGround , cim16:DCGround , cim:DCGround .
 
@@ -5257,12 +5118,6 @@ ssi:DCShunt-AllowedProperties
         sh:order              62;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCShunt , cim16:DCShunt , cim:DCShunt .
 
@@ -5279,8 +5134,6 @@ ssi:DCHarmonicFilter-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              61;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5301,8 +5154,6 @@ ssi:DCSmoothingReactorArrester-AllowedProperties
         sh:order              60;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCSmoothingReactorArrester .
 
@@ -5320,8 +5171,6 @@ ssi:DCSmoothingReactor-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              59;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5344,8 +5193,6 @@ ssi:DCVoltageSource-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:DCVoltageSource.voltageSetpoint ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCVoltageSource .
 
@@ -5362,8 +5209,6 @@ ssi:ModularMultilevelConverterValve-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              57;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5385,8 +5230,6 @@ ssi:InsulatedGateBipolarTransistorValve-AllowedProperties
         sh:order              56;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:InsulatedGateBipolarTransistorValve .
 
@@ -5404,8 +5247,6 @@ ssi:GateTurnOffThyristorValve-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              55;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5427,8 +5268,6 @@ ssi:ThyristorValve-AllowedProperties
         sh:order              54;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ThyristorValve .
 
@@ -5445,8 +5284,6 @@ ssi:DiodeValve-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              53;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5467,12 +5304,6 @@ ssi:DCChopper-AllowedProperties
         sh:order              52;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCChopper , cim17:DCChopper , cim16:DCChopper .
 
@@ -5491,12 +5322,6 @@ ssi:DCBusbar-AllowedProperties
         sh:order              51;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCBusbar , cim:DCBusbar , cim16:DCBusbar .
 
@@ -5517,8 +5342,6 @@ ssi:DCConverterParallelingSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCConverterParallelingSwitch .
 
@@ -5540,8 +5363,6 @@ ssi:DCMetalicReturnSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCMetalicReturnSwitch .
 
@@ -5563,8 +5384,6 @@ ssi:DCNeutralBusGroundingSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCNeutralBusGroundingSwitch .
 
@@ -5586,8 +5405,6 @@ ssi:DCEarthReturnTransferSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCEarthReturnTransferSwitch .
 
@@ -5609,8 +5426,6 @@ ssi:DCLineParallelingSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCLineParallelingSwitch .
 
@@ -5632,8 +5447,6 @@ ssi:DCBypassSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCBypassSwitch .
 
@@ -5654,12 +5467,6 @@ ssi:DCDisconnector-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCDisconnector , cim16:DCDisconnector , cim:DCDisconnector .
 
@@ -5680,12 +5487,6 @@ ssi:DCBreaker-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCBreaker , cim16:DCBreaker , cim17:DCBreaker .
 
@@ -5706,12 +5507,6 @@ ssi:DCSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:DCSwitch.locked ];
         sh:property           [ sh:path  nc:DCSwitch.open ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCSwitch , cim17:DCSwitch , cim:DCSwitch .
 
@@ -5749,12 +5544,6 @@ ssi:HydroPump-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:HydroPump.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:HydroPump , cim:HydroPump , cim16:HydroPump .
 
@@ -5771,8 +5560,6 @@ ssi:FaultIndicator-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              39;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5793,8 +5580,6 @@ ssi:WaveTrap-AllowedProperties
         sh:order              38;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim:WaveTrap , cim17:WaveTrap .
 
@@ -5811,8 +5596,6 @@ ssi:CurrentTransformer-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              37;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5834,8 +5617,6 @@ ssi:PostLineSensor-AllowedProperties
         sh:order              36;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim:PostLineSensor , cim17:PostLineSensor .
 
@@ -5852,8 +5633,6 @@ ssi:SurgeArrester-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              35;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -5883,10 +5662,6 @@ ssi:SolarGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:SolarGeneratingUnit , cim17:SolarGeneratingUnit , cim:SolarGeneratingUnit .
 
@@ -5911,8 +5686,6 @@ ssi:IndustryUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.warmStartupCost ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunP ];
         sh:property           [ sh:path  nc:GeneratingUnit.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
@@ -5944,10 +5717,6 @@ ssi:HydroGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:HydroGeneratingUnit , cim16:HydroGeneratingUnit , cim:HydroGeneratingUnit .
 
@@ -5976,12 +5745,6 @@ ssi:NuclearGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:NuclearGeneratingUnit , cim:NuclearGeneratingUnit , cim16:NuclearGeneratingUnit .
 
@@ -6006,8 +5769,6 @@ ssi:GeothermalGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.warmStartupCost ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunP ];
         sh:property           [ sh:path  nc:GeneratingUnit.participationFactor ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
@@ -6040,12 +5801,6 @@ ssi:ThermalGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:ThermalGeneratingUnit , cim:ThermalGeneratingUnit , cim16:ThermalGeneratingUnit .
 
@@ -6074,12 +5829,6 @@ ssi:GeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:GeneratingUnit , cim:GeneratingUnit , cim16:GeneratingUnit .
 
@@ -6096,12 +5845,6 @@ ssi:DCLineSegment-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              27;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -6165,10 +5908,6 @@ ssi:ACLineSegment-AllowedProperties
         sh:order              25;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim:ACLineSegment , cim16:ACLineSegment , cim17:ACLineSegment .
 
@@ -6187,8 +5926,6 @@ ssi:PowerElectronicsMarineUnit-AllowedProperties
         sh:order              24;
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
@@ -6259,8 +5996,6 @@ ssi:DCNeutralBusSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCSwitch.locked ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCNeutralBusSwitch .
 
@@ -6289,8 +6024,6 @@ ssi:EquivalentGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.warmStartupCost ];
         sh:property           [ sh:path  nc:GeneratingUnit.isRamping ];
         sh:property           [ sh:path  nc:GeneratingUnit.shutdownCost ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:EquivalentGeneratingUnit .
 
@@ -6376,10 +6109,6 @@ ssi:LinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:LinearShuntCompensator , cim:LinearShuntCompensator , cim16:LinearShuntCompensator .
 
@@ -6401,8 +6130,6 @@ ssi:PowerElectricalChemicalUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerElectricalChemicalUnit .
 
@@ -6422,8 +6149,6 @@ ssi:StaticSynchronousCompensator-AllowedProperties
         sh:order              18;
         sh:property           [ sh:path  nc:FACTSEquipment.q ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
@@ -6491,8 +6216,6 @@ ssi:MobileElectricalUnit-AllowedProperties
         sh:order              17;
         sh:property           [ sh:path  nc:PowerElectronicsUnit.participationFactor ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.p ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
@@ -6950,8 +6673,6 @@ ssi:WindGeneratingUnit-AllowedProperties
         sh:order              14;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRun ];
         sh:property           [ sh:path  nc:GeneratingUnit.mustRunQ ];
@@ -6961,8 +6682,6 @@ ssi:WindGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.warmStartupCost ];
         sh:property           [ sh:path  nc:GeneratingUnit.isRamping ];
         sh:property           [ sh:path  nc:GeneratingUnit.shutdownCost ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:WindGeneratingUnit , cim17:WindGeneratingUnit , cim:WindGeneratingUnit .
 
@@ -7023,12 +6742,6 @@ ssi:DCSeriesDevice-AllowedProperties
         sh:order              12;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCSeriesDevice , cim:DCSeriesDevice , cim17:DCSeriesDevice .
 
@@ -7087,8 +6800,6 @@ ssi:PotentialTransformer-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              10;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -7210,8 +6921,6 @@ ssi:ThyristorControlledSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:ThyristorControlledSeriesCompensator.compensationZ ];
         sh:property           [ sh:path  nc:FACTSEquipment.q ];
         sh:property           [ sh:path  cim:RegulatingCondEq.controlEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ThyristorControlledSeriesCompensator .
 
@@ -7294,8 +7003,6 @@ ssi:EquivalentACDCConverter-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              7;
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
@@ -7453,8 +7160,6 @@ ssi:DisconnectingCircuitBreaker-AllowedProperties
         sh:order              5;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DisconnectingCircuitBreaker , cim:DisconnectingCircuitBreaker .
 
@@ -7521,10 +7226,6 @@ ssi:Ground-AllowedProperties
         sh:order              4;
         sh:property           [ sh:path  cim:Equipment.inService ];
         sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
-        sh:property           [ sh:path  cim:Equipment.networkAnalysisEnabled ];
-        sh:property           [ sh:path  cim:Equipment.inService ];
         sh:severity           sh:Info;
         sh:targetClass        cim:Ground , cim17:Ground , cim16:Ground .
 

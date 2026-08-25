@@ -1379,7 +1379,6 @@ er:PhaseTapChangerTabular-AllowedProperties
         sh:name               "PropertyNotInProfile";
         sh:order              224;
         sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
-        sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PhaseTapChangerTabular , cim16:PhaseTapChangerTabular .
 
@@ -1397,7 +1396,6 @@ er:PhaseTapChangerAsymmetrical-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              223;
-        sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PhaseTapChangerAsymmetrical , cim16:PhaseTapChangerAsymmetrical .
@@ -1417,7 +1415,6 @@ er:PhaseTapChangerSymmetrical-AllowedProperties
         sh:name               "PropertyNotInProfile";
         sh:order              222;
         sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
-        sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PhaseTapChangerSymmetrical , cim16:PhaseTapChangerSymmetrical .
 
@@ -1435,7 +1432,6 @@ er:PhaseTapChangerLinear-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              221;
-        sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PhaseTapChangerLinear , cim16:PhaseTapChangerLinear .
@@ -1477,7 +1473,6 @@ er:RatioTapChanger-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              220;
-        sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:property           [ sh:path  nc:TapChanger.TapChangerController ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:RatioTapChanger , cim16:RatioTapChanger .
@@ -11496,12 +11491,6 @@ er:PowerElectronicsUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.ScheduleResource ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:PowerElectronicsUnit .
 
@@ -11527,14 +11516,6 @@ er:PetersenCoil-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PetersenCoil , cim16:PetersenCoil .
 
@@ -11559,14 +11540,6 @@ er:GroundingImpedance-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:GroundingImpedance , cim17:GroundingImpedance .
 
@@ -11640,14 +11613,6 @@ er:GroundDisconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:GroundDisconnector , cim17:GroundDisconnector .
 
@@ -11697,14 +11662,6 @@ er:Disconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Disconnector , cim16:Disconnector .
 
@@ -11754,14 +11711,6 @@ er:Breaker-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Breaker , cim17:Breaker .
 
@@ -11786,14 +11735,6 @@ er:LoadBreakSwitch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:LoadBreakSwitch , cim17:LoadBreakSwitch .
 
@@ -11818,14 +11759,6 @@ er:Switch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Switch , cim17:Switch .
 
@@ -11850,14 +11783,6 @@ er:EquivalentBranch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:EquivalentBranch , cim16:EquivalentBranch .
 
@@ -11883,14 +11808,6 @@ er:EquivalentInjection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:EquivalentInjection , cim17:EquivalentInjection , cim16:EquivalentInjection .
 
@@ -11916,14 +11833,6 @@ er:EquivalentShunt-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:EquivalentShunt , cim16:EquivalentShunt .
 
@@ -11948,14 +11857,6 @@ er:Ground-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Ground , cim17:Ground .
 
@@ -11980,14 +11881,6 @@ er:BusbarSection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:BusbarSection , cim16:BusbarSection .
 
@@ -12012,14 +11905,6 @@ er:Junction-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Junction , cim16:Junction .
 
@@ -12068,14 +11953,6 @@ er:EnergySource-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EnergySource , cim17:EnergySource .
 
@@ -12110,12 +11987,6 @@ er:StaticSynchronousSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:FACTSEquipment.ratedU ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:StaticSynchronousSeriesCompensator .
 
@@ -12151,12 +12022,6 @@ er:ModularStaticSynchronousSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:FACTSEquipment.ratedU ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ModularStaticSynchronousSeriesCompensator .
 
@@ -12215,30 +12080,8 @@ er:StaticVarCompensator-AllowedProperties
         sh:property           [ sh:path  nc:FACTSEquipment.maxL ];
         sh:property           [ sh:path  nc:FACTSEquipment.slope ];
         sh:property           [ sh:path  nc:FACTSEquipment.ratedU ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:StaticVarCompensator , nc:StaticVarCompensator , cim17:StaticVarCompensator .
 
@@ -12264,14 +12107,6 @@ er:LinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:LinearShuntCompensator , cim16:LinearShuntCompensator .
 
@@ -12297,14 +12132,6 @@ er:NonlinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:NonlinearShuntCompensator , cim17:NonlinearShuntCompensator .
 
@@ -12330,14 +12157,6 @@ er:SynchronousMachine-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:SynchronousMachine , cim17:SynchronousMachine .
 
@@ -12363,14 +12182,6 @@ er:AsynchronousMachine-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:AsynchronousMachine , cim17:AsynchronousMachine .
 
@@ -12396,30 +12207,8 @@ er:ExternalNetworkInjection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:RegulatingCondEq.EquipmentController ];
         sh:property           [ sh:path  nc:ExternalNetworkInjection.EquivalentGeneratingUnit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:ExternalNetworkInjection , cim16:ExternalNetworkInjection , cim:ExternalNetworkInjection .
 
@@ -12445,14 +12234,6 @@ er:PowerTransformer-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:PowerTransformer , cim16:PowerTransformer .
 
@@ -12477,14 +12258,6 @@ er:VsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:VsConverter , cim17:VsConverter .
 
@@ -12517,12 +12290,6 @@ er:ModularMultilevelConverter-AllowedProperties
         sh:property           [ sh:path  cim:VsConverter.qShare ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ModularMultilevelConverter .
 
@@ -12548,14 +12315,6 @@ er:CsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:CsConverter , cim16:CsConverter .
 
@@ -12580,14 +12339,6 @@ er:NonConformLoad-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:NonConformLoad , cim16:NonConformLoad .
 
@@ -12612,14 +12363,6 @@ er:ConformLoad-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:ConformLoad , cim16:ConformLoad .
 
@@ -12644,14 +12387,6 @@ er:StationSupply-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:StationSupply , cim17:StationSupply .
 
@@ -12677,30 +12412,8 @@ er:EnergyConsumer-AllowedProperties
         sh:property           [ sh:path  nc:EnergyConsumer.maxEconomicP ];
         sh:property           [ sh:path  nc:EnergyConsumer.minEconomicP ];
         sh:property           [ sh:path  nc:EnergyConsumer.normalParticipationFactor ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:EnergyConsumer , cim17:EnergyConsumer , cim16:EnergyConsumer .
 
@@ -12725,14 +12438,6 @@ er:ACLineSegment-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:ACLineSegment , cim16:ACLineSegment .
 
@@ -12757,14 +12462,6 @@ er:SeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:SeriesCompensator , cim16:SeriesCompensator .
 
@@ -12819,12 +12516,6 @@ er:EquivalentPowerElectronicsUnit-AllowedProperties
         sh:property           [ sh:path  nc:EquivalentPowerElectronicsUnit.EquivalentPowerPlant ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:EquivalentPowerElectronicsUnit .
 
@@ -12879,22 +12570,8 @@ er:BatteryUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.minEconomicP ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.ScheduleResource ];
         sh:property           [ sh:path  cim:BatteryUnit.ratedE ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:BatteryUnit , cim:BatteryUnit .
 
@@ -12928,12 +12605,6 @@ er:FlexibleEnergyUnit-AllowedProperties
         sh:property           [ sh:path  nc:FlexibleEnergyUnit.uncontrollable ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:FlexibleEnergyUnit .
 
@@ -12964,12 +12635,6 @@ er:ElectricalChargingUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.ScheduleResource ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ElectricalChargingUnit .
 
@@ -12999,12 +12664,6 @@ er:DCEquivalentInjection-AllowedProperties
         sh:property           [ sh:path  nc:DCEquivalentInjection.minP ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCEquivalentInjection .
 
@@ -13030,30 +12689,8 @@ er:DCGround-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCGround , cim16:DCGround , cim17:DCGround .
 
@@ -13078,30 +12715,8 @@ er:DCShunt-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCShunt , cim16:DCShunt , cim17:DCShunt .
 
@@ -13128,12 +12743,6 @@ er:DCHarmonicFilter-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCHarmonicFilter .
 
@@ -13160,12 +12769,6 @@ er:DCSmoothingReactorArrester-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCSmoothingReactorArrester .
 
@@ -13193,12 +12796,6 @@ er:DCSmoothingReactor-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCSmoothingReactor .
 
@@ -13228,12 +12825,6 @@ er:DCVoltageSource-AllowedProperties
         sh:property           [ sh:path  nc:DCVoltageSource.internalResistance ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCVoltageSource .
 
@@ -13267,12 +12858,6 @@ er:ModularMultilevelConverterValve-AllowedProperties
         sh:property           [ sh:path  nc:ModularMultilevelConverterValve.numberOfSubmodules ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ModularMultilevelConverterValve .
 
@@ -13302,12 +12887,6 @@ er:InsulatedGateBipolarTransistorValve-AllowedProperties
         sh:property           [ sh:path  nc:InsulatedGateBipolarTransistorValve.VsConverter ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:InsulatedGateBipolarTransistorValve .
 
@@ -13336,12 +12915,6 @@ er:GateTurnOffThyristorValve-AllowedProperties
         sh:property           [ sh:path  nc:DCValve.valveU0 ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:GateTurnOffThyristorValve .
 
@@ -13371,12 +12944,6 @@ er:ThyristorValve-AllowedProperties
         sh:property           [ sh:path  nc:ThyristorValve.CsConverter ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:ThyristorValve .
 
@@ -13404,12 +12971,6 @@ er:DiodeValve-AllowedProperties
         sh:property           [ sh:path  nc:DCValve.valveU0 ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DiodeValve .
 
@@ -13434,30 +12995,8 @@ er:DCChopper-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCChopper , cim17:DCChopper , cim:DCChopper .
 
@@ -13482,30 +13021,8 @@ er:DCBusbar-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCBusbar , cim:DCBusbar , cim17:DCBusbar .
 
@@ -13532,12 +13049,6 @@ er:DCConverterParallelingSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCConverterParallelingSwitch .
 
@@ -13565,12 +13076,6 @@ er:DCMetalicReturnSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCMetalicReturnSwitch .
 
@@ -13598,12 +13103,6 @@ er:DCNeutralBusGroundingSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCNeutralBusGroundingSwitch .
 
@@ -13631,12 +13130,6 @@ er:DCEarthReturnTransferSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCEarthReturnTransferSwitch .
 
@@ -13664,12 +13157,6 @@ er:DCLineParallelingSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCLineParallelingSwitch .
 
@@ -13697,12 +13184,6 @@ er:DCBypassSwitch-AllowedProperties
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCBypassSwitch .
 
@@ -13727,30 +13208,8 @@ er:DCDisconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCDisconnector , cim16:DCDisconnector , cim17:DCDisconnector .
 
@@ -13775,30 +13234,8 @@ er:DCBreaker-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCBreaker , cim16:DCBreaker , cim:DCBreaker .
 
@@ -13823,30 +13260,8 @@ er:DCSwitch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCSwitch , cim17:DCSwitch , cim16:DCSwitch .
 
@@ -13873,12 +13288,6 @@ er:Installation-AllowedProperties
         sh:property           [ sh:path  nc:Installation.EnergyConnection ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:Installation .
 
@@ -13907,30 +13316,8 @@ er:HydroPump-AllowedProperties
         sh:property           [ sh:path  nc:HydroPump.minOperatingP ];
         sh:property           [ sh:path  nc:HydroPump.maxEconomicP ];
         sh:property           [ sh:path  nc:HydroPump.maxOperatingP ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:HydroPump , cim:HydroPump , cim17:HydroPump .
 
@@ -14101,14 +13488,6 @@ er:WindGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:WindGeneratingUnit , cim17:WindGeneratingUnit .
 
@@ -14134,14 +13513,6 @@ er:SolarGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:SolarGeneratingUnit , cim16:SolarGeneratingUnit .
 
@@ -14189,12 +13560,6 @@ er:IndustryUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunP ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:IndustryUnit .
 
@@ -14219,14 +13584,6 @@ er:HydroGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:HydroGeneratingUnit , cim17:HydroGeneratingUnit .
 
@@ -14273,30 +13630,8 @@ er:NuclearGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunP ];
         sh:property           [ sh:path  nc:NuclearGeneratingUnit.reactorKind ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:NuclearGeneratingUnit , cim:NuclearGeneratingUnit , cim17:NuclearGeneratingUnit .
 
@@ -14345,12 +13680,6 @@ er:GeothermalGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeothermalGeneratingUnit.kind ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:GeothermalGeneratingUnit .
 
@@ -14398,30 +13727,8 @@ er:ThermalGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunP ];
         sh:property           [ sh:path  nc:ThermalGeneratingUnit.CompressedAirEnergyStoragePlant ];
         sh:property           [ sh:path  nc:ThermalGeneratingUnit.ThermalPowerPlant ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:ThermalGeneratingUnit , cim:ThermalGeneratingUnit , cim17:ThermalGeneratingUnit .
 
@@ -14467,30 +13774,8 @@ er:GeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:GeneratingUnit.costCurrency ];
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunQ ];
         sh:property           [ sh:path  nc:GeneratingUnit.normalMustRunP ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:GeneratingUnit , cim:GeneratingUnit , cim17:GeneratingUnit .
 
@@ -14774,30 +14059,8 @@ er:DCLineSegment-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCLineSegment , cim16:DCLineSegment , cim:DCLineSegment .
 
@@ -14880,12 +14143,6 @@ er:PowerElectronicsMarineUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.PowerElectronicsUnitController ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.maxEconomicP ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.normalParticipationFactor ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerElectronicsMarineUnit .
 
@@ -14913,12 +14170,6 @@ er:DCNeutralBusSwitch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:DCNeutralBusSwitch .
 
@@ -15652,12 +14903,6 @@ er:EquivalentGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:GeneratingUnit.maxStartupLoad ];
         sh:property           [ sh:path  cim:GeneratingUnit.maxEconomicP ];
         sh:property           [ sh:path  nc:GeneratingUnit.shutdownTime ];
@@ -15736,12 +14981,6 @@ er:PowerElectricalChemicalUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.PowerElectronicsUnitController ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.maxEconomicP ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.normalParticipationFactor ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:PowerElectricalChemicalUnit .
 
@@ -15767,8 +15006,6 @@ er:StaticSynchronousCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
         sh:property           [ sh:path  nc:FACTSEquipment.ratedU ];
         sh:property           [ sh:path  nc:FACTSEquipment.slope ];
         sh:property           [ sh:path  nc:FACTSEquipment.maxL ];
@@ -15779,10 +15016,6 @@ er:StaticSynchronousCompensator-AllowedProperties
         sh:property           [ sh:path  nc:FACTSEquipment.maxC ];
         sh:property           [ sh:path  nc:FACTSEquipment.ratedL ];
         sh:property           [ sh:path  nc:RegulatingCondEq.EquipmentController ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
         sh:severity           sh:Info;
         sh:targetClass        nc:StaticSynchronousCompensator .
 
@@ -16331,12 +15564,6 @@ er:MobileElectricalUnit-AllowedProperties
         sh:property           [ sh:path  nc:PowerElectronicsUnit.PowerElectronicsUnitController ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.maxEconomicP ];
         sh:property           [ sh:path  nc:PowerElectronicsUnit.normalParticipationFactor ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:MobileElectricalUnit .
 
@@ -16742,30 +15969,8 @@ er:DCSeriesDevice-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
-        sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
         sh:property           [ sh:path  nc:DCConductingEquipment.ratedCurrent ];
         sh:property           [ sh:path  cim:DCConductingEquipment.ratedUdc ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCSeriesDevice , cim17:DCSeriesDevice , cim:DCSeriesDevice .
 
@@ -17494,12 +16699,6 @@ er:ThyristorControlledSeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:Equipment.PTCTriggeredEquipment ];
         sh:property           [ sh:path  nc:Equipment.DetailedEquipment ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
         sh:property           [ sh:path  nc:ThyristorControlledSeriesCompensator.reconnectionI ];
         sh:property           [ sh:path  nc:ThyristorControlledSeriesCompensator.minI ];
         sh:property           [ sh:path  nc:ThyristorControlledSeriesCompensator.flexibleInductiveZ ];
@@ -18321,12 +17520,6 @@ er:EquivalentACDCConverter-AllowedProperties
         sh:property           [ sh:path  cim:ACDCConverter.baseS ];
         sh:property           [ sh:path  cim:ACDCConverter.maxP ];
         sh:property           [ sh:path  cim:ACDCConverter.maxUdc ];
-        sh:property           [ sh:path  nc:Equipment.AggregatedEquipment ];
-        sh:property           [ sh:path  nc:Equipment.Circuit ];
-        sh:property           [ sh:path  cim:IdentifiedObject.mRID ];
-        sh:property           [ sh:path  eu:IdentifiedObject.energyIdentCodeEic ];
-        sh:property           [ sh:path  cim:IdentifiedObject.description ];
-        sh:property           [ sh:path  cim:IdentifiedObject.name ];
         sh:severity           sh:Info;
         sh:targetClass        nc:EquivalentACDCConverter .
 
