@@ -89,7 +89,7 @@ io:IdentifiedObject.energyIdentCodeEic-stringLength
 io:IdentifiedObjectStringLengthName  a          sh:NodeShape ;
         sh:property     io:IdentifiedObject.name-stringLength ;
         sh:targetSubjectsOf  cim:IdentifiedObject.name .
-		
+
 io:IdentifiedObject.name-stringLength
         a               sh:PropertyShape ;
         sh:description  "The string IdentifiedObject.name has a maximum of 128 characters." ;

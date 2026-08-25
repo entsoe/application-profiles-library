@@ -100,12 +100,12 @@ all600:All-GENC1Sparql
     sh:select """
       SELECT  $this (COUNT(?value) AS ?counts) ?value
       WHERE {
-          ?value rdf:type ?o.
-          FILTER(?o!=cim:Equipment).
+        ?value rdf:type ?o.
+        FILTER(?o!=cim:Equipment).
       }
       GROUP BY $this ?value
       HAVING(?counts>1)
-      """ . 
+      """ .
       
         
         
@@ -141,12 +141,13 @@ all600:All-GENC4Sparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-          ?value rdf:type ?o.
-          BIND(str(?value) AS ?uuid) .
-          #BIND(str($this) AS ?uuid) .
-          BIND(STRAFTER(?uuid,"#_") AS ?secondpart) .
-          FILTER(!REGEX(?secondpart, "^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i")).
-      }""" . 
+        ?value rdf:type ?o.
+        BIND(str(?value) AS ?uuid) .
+        #BIND(str($this) AS ?uuid) .
+        BIND(STRAFTER(?uuid,"#_") AS ?secondpart) .
+        FILTER(!REGEX(?secondpart, "^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i")).
+      }
+      """ .
         
 #all600:IDlen a  sh:NodeShape ;
 #        sh:property     all600:All-GENC5;
@@ -180,13 +181,14 @@ all600:All-GENC5Sparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-          ?value rdf:type ?o.
-          #BIND(str(?s) AS ?uuid) .
-          #$this rdf:type ?value .
-          #BIND(str($this) AS ?uuid) .
-          BIND(STRAFTER(str(?value),"#_") AS ?secondpart) .
-          FILTER(STRLEN(?secondpart)>59 && ?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") ).
-      }""" . 
+        ?value rdf:type ?o.
+        #BIND(str(?s) AS ?uuid) .
+        #$this rdf:type ?value .
+        #BIND(str($this) AS ?uuid) .
+        BIND(STRAFTER(str(?value),"#_") AS ?secondpart) .
+        FILTER(STRLEN(?secondpart)>59 && ?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") ).
+      }
+      """ .
 
 
 #all600:IDunderscore a  sh:NodeShape ;
@@ -247,9 +249,10 @@ all600:Model.created-HGEN4Sparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-          $this $PATH ?value .
-          FILTER(!STRENDS(str(?value),"Z")).
-      }""" .    
+        $this $PATH ?value .
+        FILTER(!STRENDS(str(?value),"Z")).
+      }
+      """ .
 
 all600:Model.scenarioTime-HGEN4
         a               sh:PropertyShape ;
@@ -268,9 +271,10 @@ all600:Model.scenarioTime-HGEN4Sparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-          $this $PATH ?value .
-          FILTER(!STRENDS(str(?value),"Z")).
-      }""" .  
+        $this $PATH ?value .
+        FILTER(!STRENDS(str(?value),"Z")).
+      }
+      """ .
 
 all600:Float a  sh:NodeShape ;
         sh:property     all600:Float-specialValues;
@@ -305,11 +309,12 @@ all600:Float-specialValuesSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-          ?s ?p ?value .
-          #BIND(str($this) AS ?value).
-          FILTER(isLiteral(?this) && DATATYPE(?value)=xsd:float && (!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF"))).
-          #FILTER(!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF")).
-      }""" . 
+        ?s ?p ?value .
+        #BIND(str($this) AS ?value).
+        FILTER(isLiteral(?this) && DATATYPE(?value)=xsd:float && (!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF"))).
+        #FILTER(!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF")).
+      }
+      """ .
     
 all600:FullModelProf11 a  sh:NodeShape ;
         sh:property     all600:Model.profile-allowedValues ;

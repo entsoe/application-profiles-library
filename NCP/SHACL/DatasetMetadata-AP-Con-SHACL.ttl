@@ -1040,10 +1040,6 @@ dm:DifferenceSet  rdf:type  sh:NodeShape ;
         sh:targetClass  dcatcim:DifferenceSet.    
     
 
-#The NC-cardinality constraints below are conditional cardinality constraints: the property
-#is mandatory only when the dataset declares conformance to one of the listed NC application
-#profiles. They are expressed in SHACL Core, as sh:or ( [ sh:not <condition> ] [ <requirement> ] ).
-#The condition shapes hold when at least one dcterms:conformsTo value is one of the listed profiles.
 
 dm:conformsToNCProfile
         a                       sh:PropertyShape ;
@@ -1147,14 +1143,15 @@ dm:conformsTo-NC-cardinalitySparql
     sh:message "Cardinality violation. Missing required property." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
+      SELECT $this ?value
+      WHERE {
 
-    $this dcterms:spatial ?spatial .
-    OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
-    
-    FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
-        }""" .     
+        $this dcterms:spatial ?spatial .
+        OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
+
+        FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
+      }
+      """ .
 
   
 
@@ -1211,12 +1208,13 @@ dm:description.langTag-presenceSparql
     sh:message "Language tag is not declared or it is not en." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    $this $PATH ?value .
+      SELECT $this ?value
+      WHERE {
+        $this $PATH ?value .
 
         FILTER (lang(?value)!="en" ).
-        }""" .
+      }
+      """ .
 
 dm:versionNotes.langTag-presence
         a               sh:PropertyShape ;
@@ -1234,12 +1232,13 @@ dm:versionNotes.langTag-presenceSparql
     sh:message "Language tag is not declared.{?value}" ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    $this $PATH ?value .
+      SELECT $this ?value
+      WHERE {
+        $this $PATH ?value .
 
         FILTER (lang(?value)!="en" ).
-        }""" .    
+      }
+      """ .
 
 dm:alternativeVersionAndPreferredVersion-dependency
         a               sh:PropertyShape ;
@@ -1257,13 +1256,14 @@ dm:alternativeVersionAndPreferredVersion-dependencySparql
     sh:message "One of the properties dcatcim:alternativeVersionOf or dcatcim:preferredVersion is not present." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
-    BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
+      SELECT $this ?value
+      WHERE {
+        BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
+        BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
 
         FILTER ((?hasaltv && !?hasprefv) || (!?hasaltv && ?hasprefv)).
-        }""" .      
+      }
+      """ .
 
 
 

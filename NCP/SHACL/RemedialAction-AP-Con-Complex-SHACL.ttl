@@ -57,16 +57,17 @@ rac:GridStateAlteration-associationsSparql
     sh:message      "GridStateAlteration is not associated with either GridStateAlterationRemedialAction or GridStateAlterationCollection or it is associated with both." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).  
-    BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
+      SELECT  $this
+      WHERE {
+        BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).
+        BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
 
         FILTER (
-      (?vGSARA && ?vGSAC) || 
-      (!?vGSARA && !?vGSAC) 
-    ).
-      }""" . 
+          (?vGSARA && ?vGSAC) ||
+          (!?vGSARA && !?vGSAC)
+        ).
+      }
+      """ .
       
     
 

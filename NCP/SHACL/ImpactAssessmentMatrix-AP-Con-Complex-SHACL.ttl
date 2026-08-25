@@ -105,13 +105,14 @@ iamc:RemedialActionImpact-associationsSparql
     sh:message      "A RemedialActionImpact does not have either RemedialActionGroup or RemedialAction associated with it." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
-       
-    BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
-    BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
+      SELECT  $this
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
+        BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
         FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
-      }""" .       
+      }
+      """ .
       
 iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
         sh:property     iamc:RemedialActionOutcomeValue-associations;
@@ -132,10 +133,11 @@ iamc:RemedialActionOutcomeValue-associationsSparql
     sh:message      "A RemedialActionOutcomeValue does not have either RemedialActionGroup or RemedialAction associated with it." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
-       
-    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
-    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
+      SELECT  $this
+      WHERE {
+
+        BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
+        BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
         FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
-      }""" .       
+      }
+      """ .

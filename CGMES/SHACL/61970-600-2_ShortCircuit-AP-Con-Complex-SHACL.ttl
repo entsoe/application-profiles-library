@@ -78,10 +78,11 @@ sc600:SeriesCompensator.varistorRatedCurrent-requiredSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        OPTIONAL {$this $PATH ?value }. 
+        OPTIONAL {$this $PATH ?value }.
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
-        FILTER (!bound(?value) && ?varpresent=true) .        
-      }""" .       
+        FILTER (!bound(?value) && ?varpresent=true) .
+      }
+      """ .
       
 sc600:SeriesCompensator.varistorVoltageThreshold-required
         a               sh:PropertyShape ;
@@ -101,7 +102,8 @@ sc600:SeriesCompensator.varistorVoltageThreshold-requiredSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        OPTIONAL {$this $PATH ?value }. 
+        OPTIONAL {$this $PATH ?value }.
         $this cim:SeriesCompensator.varistorPresent ?varpresent .
-        FILTER (!bound(?value) && ?varpresent=true) .        
-      }""" .        
+        FILTER (!bound(?value) && ?varpresent=true) .
+      }
+      """ .

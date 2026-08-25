@@ -63,23 +63,23 @@ sisc:PowerShiftKeySchedule-associations
         a               sh:PropertyShape ;
         sh:description  "PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
         sh:message      "PowerShiftKeySchedule has more than one associations to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump." ;
-        sh:path [sh:alternativePath (
-        nc:PowerShiftKeySchedule.DCEquivalentInjection
-        nc:PowerShiftKeySchedule.DCPole
-        nc:PowerShiftKeySchedule.EnergyBlockOrder
-        nc:PowerShiftKeySchedule.EnergyConsumer
-        nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity
-        nc:PowerShiftKeySchedule.EnergySource
-        nc:PowerShiftKeySchedule.EquivalentInjection
-        nc:PowerShiftKeySchedule.ExternalNetworkInjection
-        nc:PowerShiftKeySchedule.GeneratingUnit
-        nc:PowerShiftKeySchedule.HydroPump
-        nc:PowerShiftKeySchedule.PowerElectronicUnit
-        nc:PowerShiftKeySchedule.ScheduleResource
-        nc:PowerShiftKeySchedule.SchedulingArea
-                )];
-        sh:minCount 1;
-        sh:maxCount 1;
+        sh:path         [ sh:alternativePath (
+            nc:PowerShiftKeySchedule.DCEquivalentInjection
+            nc:PowerShiftKeySchedule.DCPole
+            nc:PowerShiftKeySchedule.EnergyBlockOrder
+            nc:PowerShiftKeySchedule.EnergyConsumer
+            nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity
+            nc:PowerShiftKeySchedule.EnergySource
+            nc:PowerShiftKeySchedule.EquivalentInjection
+            nc:PowerShiftKeySchedule.ExternalNetworkInjection
+            nc:PowerShiftKeySchedule.GeneratingUnit
+            nc:PowerShiftKeySchedule.HydroPump
+            nc:PowerShiftKeySchedule.PowerElectronicUnit
+            nc:PowerShiftKeySchedule.ScheduleResource
+            nc:PowerShiftKeySchedule.SchedulingArea
+          ) ] ;
+        sh:minCount     1 ;
+        sh:maxCount     1 ;
         sh:group        sisc:SISCustomGroup ;
         sh:name         "C:NC:SIS:PowerShiftKeySchedule:associations" ;
         sh:order        2 ;
@@ -105,16 +105,17 @@ sisc:PowerShiftKeyDistribution-associationsSparql
     sh:message      "PowerShiftKeyDistribution is not associated with either PowerBidSchedule or PowerShiftKeyStrategy or it is associated with both." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).  
-    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
+      SELECT  $this
+      WHERE {
+        BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).
+        BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
 
         FILTER (
-      (?vPBS && ?vPSKS) || 
-      (!?vPBS && !?vPSKS) 
-    ).
-      }""" . 
+          (?vPBS && ?vPSKS) ||
+          (!?vPBS && !?vPSKS)
+        ).
+      }
+      """ .
 
 sisc:GenericSequenceSchedule  a          sh:NodeShape ;
         sh:property      sisc:GenericSequenceSchedule-associations;
@@ -150,16 +151,17 @@ sisc:PowerBidSchedule-associationsSparql
     sh:message      "PowerBidSchedule is not associated with either ScheduleResource or PowerRemedialAction or it is associated with both." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).  
-    BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
+      SELECT  $this
+      WHERE {
+        BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).
+        BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
 
         FILTER (
-      (?vPBS && ?vPRA) || 
-      (!?vPBS && !?vPRA) 
-    ).
-      }""" . 
+          (?vPBS && ?vPRA) ||
+          (!?vPBS && !?vPRA)
+        ).
+      }
+      """ .
       
 sisc:PowerBidScheduleTimePoint  a          sh:NodeShape ;
         sh:property      sisc:PowerBidScheduleTimePoint-attributes;
@@ -180,21 +182,22 @@ sisc:PowerBidScheduleTimePoint-attributesSparql
     sh:message      "PowerBidScheduleTimePoint does not have one of the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).  
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.shutdownCost ?psc} AS ?vpsc).
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.p ?pp} AS ?vpp).
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.minimumActivationP ?pmap} AS ?vmap).
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.price ?pprice} AS ?vpprice).
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.reservePrice ?prp} AS ?vrp).
-    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
+      SELECT  $this
+      WHERE {
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.shutdownCost ?psc} AS ?vpsc).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.p ?pp} AS ?vpp).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.minimumActivationP ?pmap} AS ?vmap).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.price ?pprice} AS ?vpprice).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.reservePrice ?prp} AS ?vrp).
+        BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
 
         FILTER (
-      (?vpac && ?vpsc ) || 
-      ((?vpac || ?vpsc) && (?vpp || ?vmap || ?vpprice || ?vrp || ?vsip))
-    ).
-      }""" .     
+          (?vpac && ?vpsc ) ||
+          ((?vpac || ?vpsc) && (?vpp || ?vmap || ?vpprice || ?vrp || ?vsip))
+        ).
+      }
+      """ .
       
 sisc:PowerBidDependency  a          sh:NodeShape ;
         sh:property      sisc:PeerTemporalDependency.constraintKind-exclusive;
@@ -263,14 +266,15 @@ sisc:PeerTemporalDependency.constraintKind-exclusiveSparql
     sh:message      "Some of the following attributes are defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag when PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
-    
-    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
-    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
-    
+      SELECT  $this
+      WHERE {
+        $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
+
+        BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
+        BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
+
         FILTER (?hasop || ?hassts || ?hasfts || ?hasftf).
-      }""" .       
+      }
+      """ .
