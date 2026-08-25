@@ -958,10 +958,6 @@ gd:PetersenCoil-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:PetersenCoil , cim17:PetersenCoil .
 
@@ -981,10 +977,6 @@ gd:GroundingImpedance-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:GroundingImpedance , cim16:GroundingImpedance .
@@ -1047,10 +1039,6 @@ gd:GroundDisconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:GroundDisconnector , cim16:GroundDisconnector .
 
@@ -1091,10 +1079,6 @@ gd:Disconnector-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Disconnector , cim17:Disconnector .
@@ -1137,10 +1121,6 @@ gd:Breaker-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Breaker , cim16:Breaker .
 
@@ -1160,10 +1140,6 @@ gd:LoadBreakSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:LoadBreakSwitch , cim16:LoadBreakSwitch .
@@ -1185,10 +1161,6 @@ gd:Switch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Switch , cim16:Switch .
 
@@ -1209,10 +1181,6 @@ gd:EquivalentBranch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentBranch , cim17:EquivalentBranch .
 
@@ -1232,10 +1200,6 @@ gd:EquivalentInjection-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentInjection , cim17:EquivalentInjection .
@@ -1258,10 +1222,6 @@ gd:EquivalentShunt-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:EquivalentShunt , cim17:EquivalentShunt .
 
@@ -1281,10 +1241,6 @@ gd:Ground-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:Ground , cim16:Ground .
@@ -1306,10 +1262,6 @@ gd:BusbarSection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:BusbarSection , cim17:BusbarSection .
 
@@ -1329,10 +1281,6 @@ gd:Junction-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:Junction , cim17:Junction .
@@ -1373,10 +1321,6 @@ gd:EnergySource-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:EnergySource , cim16:EnergySource .
@@ -1503,14 +1447,6 @@ gd:StaticVarCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:StaticVarCompensator , cim17:StaticVarCompensator , nc:StaticVarCompensator .
 
@@ -1531,10 +1467,6 @@ gd:LinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:LinearShuntCompensator , cim17:LinearShuntCompensator .
@@ -1557,10 +1489,6 @@ gd:NonlinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:NonlinearShuntCompensator , cim16:NonlinearShuntCompensator .
 
@@ -1581,10 +1509,6 @@ gd:SynchronousMachine-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:SynchronousMachine , cim16:SynchronousMachine .
@@ -1607,10 +1531,6 @@ gd:AsynchronousMachine-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:AsynchronousMachine , cim16:AsynchronousMachine .
 
@@ -1632,14 +1552,6 @@ gd:ExternalNetworkInjection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:ExternalNetworkInjection , cim:ExternalNetworkInjection , cim16:ExternalNetworkInjection .
 
@@ -1660,10 +1572,6 @@ gd:PowerTransformer-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:PowerTransformer , cim17:PowerTransformer .
@@ -1706,10 +1614,6 @@ gd:VsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:VsConverter , cim16:VsConverter .
 
@@ -1751,10 +1655,6 @@ gd:CsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:CsConverter , cim17:CsConverter .
 
@@ -1774,10 +1674,6 @@ gd:NonConformLoad-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:NonConformLoad , cim17:NonConformLoad .
@@ -1799,10 +1695,6 @@ gd:ConformLoad-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:ConformLoad , cim17:ConformLoad .
 
@@ -1822,10 +1714,6 @@ gd:StationSupply-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:StationSupply , cim16:StationSupply .
@@ -1847,14 +1735,6 @@ gd:EnergyConsumer-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:EnergyConsumer , cim16:EnergyConsumer , cim17:EnergyConsumer .
 
@@ -1875,10 +1755,6 @@ gd:ACLineSegment-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:ACLineSegment , cim17:ACLineSegment .
 
@@ -1898,10 +1774,6 @@ gd:SeriesCompensator-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:SeriesCompensator , cim17:SeriesCompensator .
@@ -2005,10 +1877,6 @@ gd:BatteryUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:BatteryUnit , cim17:BatteryUnit .
@@ -2135,14 +2003,6 @@ gd:DCGround-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCGround , cim17:DCGround , cim16:DCGround .
 
@@ -2162,14 +2022,6 @@ gd:DCShunt-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCShunt , cim17:DCShunt , cim16:DCShunt .
@@ -2253,14 +2105,6 @@ gd:DCSeriesDevice-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCSeriesDevice , cim:DCSeriesDevice , cim17:DCSeriesDevice .
 
@@ -2300,14 +2144,6 @@ gd:DCLineSegment-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCLineSegment , cim:DCLineSegment , cim16:DCLineSegment .
@@ -2432,14 +2268,6 @@ gd:DCChopper-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCChopper , cim:DCChopper , cim17:DCChopper .
 
@@ -2459,14 +2287,6 @@ gd:DCBusbar-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:DCBusbar , cim17:DCBusbar , cim:DCBusbar .
@@ -2634,14 +2454,6 @@ gd:DCDisconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCDisconnector , cim17:DCDisconnector , cim16:DCDisconnector .
 
@@ -2662,14 +2474,6 @@ gd:DCBreaker-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:DCBreaker , cim:DCBreaker , cim16:DCBreaker .
 
@@ -2689,14 +2493,6 @@ gd:DCSwitch-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim:DCSwitch , cim16:DCSwitch , cim17:DCSwitch .
@@ -2737,14 +2533,6 @@ gd:HydroPump-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:HydroPump , cim17:HydroPump , cim:HydroPump .
@@ -2909,10 +2697,6 @@ gd:WindGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:WindGeneratingUnit , cim16:WindGeneratingUnit .
 
@@ -2933,10 +2717,6 @@ gd:SolarGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:SolarGeneratingUnit , cim17:SolarGeneratingUnit .
@@ -2979,10 +2759,6 @@ gd:HydroGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim17:HydroGeneratingUnit , cim16:HydroGeneratingUnit .
 
@@ -3003,14 +2779,6 @@ gd:NuclearGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:NuclearGeneratingUnit , cim17:NuclearGeneratingUnit , cim:NuclearGeneratingUnit .
@@ -3053,14 +2821,6 @@ gd:ThermalGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:ThermalGeneratingUnit , cim17:ThermalGeneratingUnit , cim:ThermalGeneratingUnit .
@@ -3194,14 +2954,6 @@ gd:GeneratingUnit-AllowedProperties
         sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
         sh:targetClass        cim16:GeneratingUnit , cim17:GeneratingUnit , cim:GeneratingUnit .

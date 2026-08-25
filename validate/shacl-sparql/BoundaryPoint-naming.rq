@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.energyIdentCodeEic-stringLength
-# IdentifiedObject.energyIdentCodeEic-stringLength
-# The length of the string is 16 characters as defined by the EIC code.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPoint-naming
+# BoundaryPoint-naming
+# If both partyOneResourceName and partyTwoResourceName are provided, IdentifiedObject.name shall be <partyOneResourceName>-<partyTwoResourceName>.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,9 +20,20 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value  
-			WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)!=16) .
-			}
+        SELECT $this ?value
+        WHERE {
+            $this nc:BoundaryPoint.partyOneResourceName ?partyOneResourceName ;
+                  nc:BoundaryPoint.partyTwoResourceName ?partyTwoResourceName .
+
+            OPTIONAL {
+                $this $PATH ?value .
+            }
+
+            BIND(CONCAT(STR(?partyOneResourceName), "-", STR(?partyTwoResourceName)) AS ?expectedName)
+
+            FILTER (
+                !BOUND(?value)
+                || STR(?value) != ?expectedName
+            )
+        }
+    

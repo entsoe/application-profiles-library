@@ -20,8 +20,8 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         $this cim:IdentifiedObject.name ?value .
         
         FILTER NOT EXISTS {
@@ -81,4 +81,4 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
         FILTER NOT EXISTS {
         $this ^cim:Terminal.ConnectivityNode/cim:Terminal.ConductingEquipment/rdf:type cim:EquivalentBranch 
         }.
-			}
+      }

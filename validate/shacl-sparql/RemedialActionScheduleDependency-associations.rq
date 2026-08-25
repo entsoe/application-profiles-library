@@ -20,12 +20,12 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  ?a1 ?a2 ?a3
-			WHERE {  
-		
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
-		BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
-		
-        FILTER ((?a1=true && ?a2=true && ?a3=true) || (?a1=false && (?a2=false || ?a3=false))).
-			}
+      SELECT  $this  ?a1 ?a2 ?a3
+      WHERE {  
+    
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
+    BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
+    
+        FILTER ((?a1="true"^^xsd:boolean && ?a2="true"^^xsd:boolean && ?a3="true"^^xsd:boolean) || (?a1="false"^^xsd:boolean && (?a2="false"^^xsd:boolean || ?a3="false"^^xsd:boolean))).
+      }

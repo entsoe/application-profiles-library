@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		
+      SELECT  $this  
+      WHERE {  
+    
         BIND(EXISTS{$this nc:PowerFlowResult.valueV ?o1} AS ?hasvalueV).
-		BIND(EXISTS{$this nc:PowerFlowResult.valueAngle ?o2} AS ?hasvalueAngle).
-		BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
-		BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
+    BIND(EXISTS{$this nc:PowerFlowResult.valueAngle ?o2} AS ?hasvalueAngle).
+    BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
+    BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
 
-        FILTER ((?hasvalueV=true || ?hasvalueAngle=true) && (?hasT=true || ?hasPTC=true) ).
-			}
+        FILTER ((?hasvalueV="true"^^xsd:boolean || ?hasvalueAngle="true"^^xsd:boolean) && (?hasT="true"^^xsd:boolean || ?hasPTC="true"^^xsd:boolean) ).
+      }

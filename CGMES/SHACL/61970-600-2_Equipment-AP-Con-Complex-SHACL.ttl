@@ -93,13 +93,14 @@ eq600:TapChanger.neutralU-valueRangePairSparql
     sh:message "The value is not the same as the PowerTransformerEnd.ratedU." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
+      SELECT $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:RatioTapChanger.TransformerEnd/cim:PowerTransformerEnd.ratedU ?rratedu } .
         OPTIONAL {$this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.ratedU ?pratedu } .
         FILTER ((bound(?rratedu) && ?value!=?rratedu) || (bound(?pratedu) && ?value!=?pratedu)).
-        }""" . 
+      }
+      """ .
         
 eq600:SubstationCountShape
        a sh:NodeShape ;
@@ -122,8 +123,8 @@ eq600:Substation-countSparql
     sh:message "The model has either one Substation or a Substation per VoltageLevel. Number of Substation-s: {?substations}. Number of VoltageLevel-s: {?voltagelevels}." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this  ?substations ?voltagelevels
-        WHERE {
+      SELECT $this  ?substations ?voltagelevels
+      WHERE {
         {
           SELECT $this (COUNT(?ss) AS ?substations)
           WHERE {
@@ -138,9 +139,10 @@ eq600:Substation-countSparql
           }
           GROUP BY $this
         }
-        
+
         FILTER (?substations=1 || ?substations=?voltagelevels).
-        }""" .   
+      }
+      """ .
 
 eq600:GeographicalRegionCountShape
        a sh:NodeShape ;
@@ -179,13 +181,14 @@ eq600:ReactiveCapabilityCurve-unitsSparql
     sh:message "Not correct or not provided units of a ReactiveCapabilityCurve of a SynchronousMachine." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this  
-        WHERE {
+      SELECT $this
+      WHERE {
         $this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/rdf:type cim:SynchronousMachine .
         $this cim:Curve.xUnit ?xunit .
         $this cim:Curve.y1Unit ?y1unit .
         $this cim:Curve.y2Unit ?y2unit .
         BIND(EXISTS{$this cim:Curve.y2Unit ?y2unitcheck} AS ?hasy2unit).
         FILTER (?hasy2unit=false && ?xunit!=cim:UnitSymbol.W && ?y2unit!=cim:UnitSymbol.VAr && ?y1unit!=cim:UnitSymbol.VAr).
-        }""" .           
+      }
+      """ .
                  

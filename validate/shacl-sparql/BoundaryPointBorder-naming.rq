@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaDispatchableUnit-associations
-# AreaDispatchableUnit-associations
-# The AreaDispatchableUnit shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer, ScheduleResource or HydroPump.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorder-naming
+# BoundaryPointBorder-naming
+# If both partyOneName and partyTwoName are provided, IdentifiedObject.name shall be <partyOneName>-<partyTwoName>.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,13 +20,20 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {      
-       
-		BIND(EXISTS{$this nc:AreaDispatchableUnit.GeneratingUnit ?o1} AS ?adugu).
-		BIND(EXISTS{$this nc:AreaDispatchableUnit.PowerElecronicsUnit ?o2} AS ?adupe).
-		BIND(EXISTS{$this nc:AreaDispatchableUnit.EnergyConsumer ?o3} AS ?aduec).
-		BIND(EXISTS{$this nc:AreaDispatchableUnit.ScheduleResource ?o4} AS ?adusr).
-		BIND(EXISTS{$this nc:AreaDispatchableUnit.HydroPump ?o5} AS ?aduhp).
-        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?adusr=false && ?aduhp=false).
-			}
+        SELECT $this ?value
+        WHERE {
+            $this nc:BoundaryPointBorder.partyOneName ?partyOneName ;
+                  nc:BoundaryPointBorder.partyTwoName ?partyTwoName .
+
+            OPTIONAL {
+                $this $PATH ?value .
+            }
+
+            BIND(CONCAT(STR(?partyOneName), "-", STR(?partyTwoName)) AS ?expectedName)
+
+            FILTER (
+                !BOUND(?value)
+                || STR(?value) != ?expectedName
+            )
+        }
+    

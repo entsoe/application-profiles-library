@@ -27,5 +27,5 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
 		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
 		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
-        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?aduhp=false).
+        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?aduec="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
 			}

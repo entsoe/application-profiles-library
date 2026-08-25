@@ -20,12 +20,12 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {      
+      SELECT  $this  
+      WHERE {      
         BIND(EXISTS{$this nc:AssessedElement.ConductingEquipment ?o1} AS ?aeo1).
-		BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
-		BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
-		BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
-		BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
-        FILTER (?aeo1=false && ?aeo2=false && ?aeo3=false && ?aeo4=false && ?aeo5=false).
-			}
+        BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
+        BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
+        BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
+        BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
+        FILTER (?aeo1="false"^^xsd:boolean && ?aeo2="false"^^xsd:boolean && ?aeo3="false"^^xsd:boolean && ?aeo4="false"^^xsd:boolean && ?aeo5="false"^^xsd:boolean).
+      }

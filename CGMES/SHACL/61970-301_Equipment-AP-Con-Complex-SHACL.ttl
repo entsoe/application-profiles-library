@@ -907,7 +907,8 @@ equ:Equipment.aggregate-notUsedSparql
       WHERE {
         OPTIONAL {$this $PATH ?value }.
         FILTER (bound(?value)) .
-      }""" .        
+      }
+      """ .
       
 
 equ:EquivalentBranch.r21-usage
@@ -930,7 +931,8 @@ equ:EquivalentBranch.r21-usageSparql
         OPTIONAL {$this $PATH ?value }.
         $this cim:EquivalentBranch.r ?r .
         FILTER (bound(?value) && ?value!=?r) .
-      }""" .  
+      }
+      """ .
       
 equ:EquivalentBranch.x21-usage
         a               sh:PropertyShape ;
@@ -952,7 +954,8 @@ equ:EquivalentBranch.x21-usageSparql
         OPTIONAL {$this $PATH ?value }.
         $this cim:EquivalentBranch.x ?x .
         FILTER (bound(?value) && ?value!=?x) .
-      }""" .      
+      }
+      """ .
 
 
 equ:EquivalentInjection.regulationCapability-associatedCurve
@@ -975,7 +978,8 @@ equ:EquivalentInjection.regulationCapability-associatedCurveSparql
         $this $PATH ?value
         OPTIONAL {$this cim:EquivalentInjection.ReactiveCapabilityCurve ?curve }.
         FILTER (bound(?curve) && ?value=false) .
-      }""" .
+      }
+      """ .
 
 equ:Clamp.lengthFromTerminal1-length
         a                sh:PropertyShape ;
@@ -1055,7 +1059,7 @@ equ:LoadResponseCharacteristic.exponentModel-exponentCoefficientSparql
       SELECT  $this ?value
       WHERE {
         $this $PATH ?value .
-        
+
         OPTIONAL {$this cim:LoadResponseCharacteristic.pFrequencyExponent ?pfe }.
         OPTIONAL {$this cim:LoadResponseCharacteristic.pVoltageExponent ?pve }.
         OPTIONAL {$this cim:LoadResponseCharacteristic.qFrequencyExponent ?qfe }.
@@ -1066,12 +1070,13 @@ equ:LoadResponseCharacteristic.exponentModel-exponentCoefficientSparql
         OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantCurrent ?qcc }.
         OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantImpedance ?qci }.
         OPTIONAL {$this cim:LoadResponseCharacteristic.qConstantPower ?qcp }.
- 
+
         FILTER ((?value=true && (!bound(?pfe) || !bound(?pve) || !bound(?qfe) || !bound(?qve) || bound(?pcc) || bound(?pci) || bound(?pcp) || bound(?qcc) || bound(?qci) || bound(?qcp))) ||
-                (?value=false && (bound(?pfe) || bound(?pve) || bound(?qfe) || bound(?qve) || !bound(?pcc) || !bound(?pci) || !bound(?pcp) || !bound(?qcc) || !bound(?qci) || !bound(?qcp))) || 
-                (?value=false && bound(?pcc) && bound(?pci) && bound(?pcp) && bound(?qcc) && bound(?qci) && bound(?qcp) && (?pcc+?pci+?pcp!=1 || ?qcc+?qci+?qcp!=1)  )
+          (?value=false && (bound(?pfe) || bound(?pve) || bound(?qfe) || bound(?qve) || !bound(?pcc) || !bound(?pci) || !bound(?pcp) || !bound(?qcc) || !bound(?qci) || !bound(?qcp))) ||
+          (?value=false && bound(?pcc) && bound(?pci) && bound(?pcp) && bound(?qcc) && bound(?qci) && bound(?qcp) && (?pcc+?pci+?pcp!=1 || ?qcc+?qci+?qcp!=1)  )
         ) .
-      }""" .        
+      }
+      """ .
         
         
 
@@ -1227,9 +1232,10 @@ equ:PhaseTapChangerAsymmetrical.windingConnectionAngle-valueRangeSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        $this $PATH ?value . 
-        FILTER (contains(str(?value), ".") || (?value!=-150 && ?value!=-120 && ?value!=-90 && ?value!=-60 && ?value!=-30 && ?value!=150 && ?value!=120 && ?value!=90 && ?value!=60 && ?value!=30)) .        
-      }""" .      
+        $this $PATH ?value .
+        FILTER (contains(str(?value), ".") || (?value!=-150 && ?value!=-120 && ?value!=-90 && ?value!=-60 && ?value!=-30 && ?value!=150 && ?value!=120 && ?value!=90 && ?value!=60 && ?value!=30)) .
+      }
+      """ .
 
 equ:GeneratingUnit.nominalP  a  sh:NodeShape ;
         sh:property     equ:GeneratingUnit.nominalP-valueRangePair ;
@@ -1266,12 +1272,13 @@ equ:PhaseTapChangerLinear.xMin-valueRangePairSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        $this $PATH ?value . 
-        $this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.x ?x . 
-        #$this cim:PhaseTapChanger.TransformerEnd ?theend . 
-        #?theend cim:PowerTransformerEnd.x ?x . 
-        FILTER (?value!=?x ) .        
-      }""" .  
+        $this $PATH ?value .
+        $this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.x ?x .
+        #$this cim:PhaseTapChanger.TransformerEnd ?theend .
+        #?theend cim:PowerTransformerEnd.x ?x .
+        FILTER (?value!=?x ) .
+      }
+      """ .
 
 
 equ:PhaseTapChangerNonLinear.xMin-valueRangePair
@@ -1292,35 +1299,24 @@ equ:PhaseTapChangerNonLinear.xMin-valueRangePairSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        $this $PATH ?value . 
-        $this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.x ?x . 
-        #$this cim:PhaseTapChanger.TransformerEnd ?theend . 
-        #?theend cim:PowerTransformerEnd.x ?x . 
-        FILTER (?value!=?x ) .        
-      }""" .  
+        $this $PATH ?value .
+        $this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.x ?x .
+        #$this cim:PhaseTapChanger.TransformerEnd ?theend .
+        #?theend cim:PowerTransformerEnd.x ?x .
+        FILTER (?value!=?x ) .
+      }
+      """ .
 
 equ:PowerTransformer-associationNotUsed
         a               sh:PropertyShape ;
-        sh:sparql       equ:PowerTransformer-associationNotUsedSparql ;
-        sh:path         rdf:type ;
+        sh:path         cim:ConductingEquipment.BaseVoltage ;
+        sh:maxCount     0 ;
         sh:description  "The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead." ;
+        sh:message      "The inherited association ConductingEquipment.BaseVoltage is used." ;
         sh:name         "C:301:EQ:PowerTransformer:associationNotUsed" ;
         sh:group        equ:EQ301UML ;
         sh:order        74 ;
         sh:severity     sh:Violation .
-        
-    
-equ:PowerTransformer-associationNotUsedSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "The inherited association ConductingEquipment.BaseVoltage is used." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this ?value
-      WHERE {
-        $this cim:ConductingEquipment.BaseVoltage ?value .
-        BIND(EXISTS{$this cim:ConductingEquipment.BaseVoltage ?v } AS ?hasvalue). 
-        FILTER (?hasvalue=true) .        
-      }""" .  
 
 
 equ:Switch-numberOfTerminals
@@ -1381,10 +1377,11 @@ equ:OperationalLimitType.acceptableDuration-usageSparql
       SELECT  $this ?value
       WHERE {
         $this $PATH ?value .
-        BIND(EXISTS{$this $PATH ?v } AS ?hasvalue). 
+        BIND(EXISTS{$this $PATH ?v } AS ?hasvalue).
         $this cim:OperationalLimitType.isInfiniteDuration ?indur .
-        FILTER (?hasvalue=true && ?indur=true ) .        
-      }""" .         
+        FILTER (?hasvalue=true && ?indur=true ) .
+      }
+      """ .
       
 equ:PowerTransformerEnd.r-valueRange
         a               sh:PropertyShape ;
@@ -1404,11 +1401,12 @@ equ:PowerTransformerEnd.r-valueRangeSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        $this $PATH ?value . 
+        $this $PATH ?value .
         OPTIONAL {$this cim:Equipment.aggregate ?aggregate }.
         #BIND(EXISTS{$this cim:Equipment.aggregate ?a } AS ?hasaggregate).
-        FILTER ((!bound(?aggregate) || ?aggregate=false) && ?value<0 ) .        
-      }""" .     
+        FILTER ((!bound(?aggregate) || ?aggregate=false) && ?value<0 ) .
+      }
+      """ .
 
 equ:PowerTransformerEnd.ratedS-valueRange2winding
         a               sh:PropertyShape ;
@@ -1429,13 +1427,13 @@ equ:PowerTransformerEnd.ratedS-valueRange2windingSparql
       SELECT  $this ?value ?ends
       WHERE {
         {
-        SELECT $this (COUNT(?typeend) AS ?ends)
-        WHERE {
-        $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+          SELECT $this (COUNT(?typeend) AS ?ends)
+          WHERE {
+            $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+          }
+          GROUP BY $this ?typeend
         }
-        GROUP BY $this ?typeend
-        }
-        
+
         ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
         ?end1 cim:TransformerEnd.endNumber  1.
         ?end1 cim:PowerTransformerEnd.ratedS  ?value .
@@ -1447,10 +1445,10 @@ equ:PowerTransformerEnd.ratedS-valueRange2windingSparql
         BIND(EXISTS{?end2 cim:PowerTransformerEnd.ratedS  ?r} AS ?hasratedsend2).
         #OPTIONAL {?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 }.
 
-        FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .        
+        FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .
         FILTER (?ends=2) .
       }
-      """ .       
+      """ .
       
       
 equ:PowerTransformerEnd.ratedU-valueRange
@@ -1472,13 +1470,13 @@ equ:PowerTransformerEnd.ratedU-valueRangeSparql
       SELECT  $this ?value ?ends
       WHERE {
         {
-        SELECT $this (COUNT(?typeend) AS ?ends)
-        WHERE {
-        $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+          SELECT $this (COUNT(?typeend) AS ?ends)
+          WHERE {
+            $this ^cim:PowerTransformerEnd.PowerTransformer/rdf:type ?typeend .
+          }
+          GROUP BY $this ?typeend
         }
-        GROUP BY $this ?typeend
-        }
-        
+
         ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
         ?end1 cim:TransformerEnd.endNumber  1.
         ?end1 cim:PowerTransformerEnd.ratedU  ?value .
@@ -1493,10 +1491,9 @@ equ:PowerTransformerEnd.ratedU-valueRangeSparql
         OPTIONAL {?end3 cim:TransformerEnd.endNumber  3 }.
         OPTIONAL {?end3 cim:PowerTransformerEnd.ratedU  ?rateduend3 }.
 
-        FILTER (((?value<?rateduend2 || ?value<=0 || ?rateduend2<=0) && ?ends=2 && ?end1!=?end2 && ?end3=?end1) || (?ends=3 && ?end1!=?end2 && ?end1!=?end3 && ?end2!=?end3 && (?value<?rateduend2 || ?rateduend2<?rateduend3 || ?value<=0 || ?rateduend2<=0 || ?rateduend3<=0))) .        
+        FILTER (((?value<?rateduend2 || ?value<=0 || ?rateduend2<=0) && ?ends=2 && ?end1!=?end2 && ?end3=?end1) || (?ends=3 && ?end1!=?end2 && ?end1!=?end3 && ?end2!=?end3 && (?value<?rateduend2 || ?rateduend2<?rateduend3 || ?value<=0 || ?rateduend2<=0 || ?rateduend3<=0))) .
       }
-
-      """ . 
+      """ .
            
       
       
@@ -1516,13 +1513,14 @@ equ:RegulatingControl-terminalConnectivityNodeSparql
     sh:message "The Terminal referenced by the RegulatingControl is not associated with a ConnectivityNode."  ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT $this ?value 
+      SELECT $this ?value
       WHERE {
         $this $PATH ?value .
         BIND(EXISTS{?value cim:Terminal.ConnectivityNode ?cn} AS ?hascn).
         #OPTIONAL {?value cim:Terminal.ConnectivityNode ?cn }.
         FILTER (?hascn=false) .
-        } """ .      
+      }
+      """ .
       
 equ:ACDCConverter
         a               sh:NodeShape ;
@@ -1609,8 +1607,9 @@ equ:ConductingEquipment.BaseVoltage-usageSparql
         BIND(EXISTS{$this cim:ConductingEquipment.BaseVoltage ?basevoltage} AS ?hasbv).
         #$this cim:ConductingEquipment.BaseVoltage ?basevoltage .
         #FILTER (!isLiteral(?basevoltage) && ?type=cim:VoltageLevel && ?condeqtype!=cim:ACLineSegment && ?condeqtype!=cim:EquivalentBranch && ?condeqtype!=cim:SeriesCompensator) .
-        FILTER (?hasbv=true && ?condeqtype!=cim:ACLineSegment && ?condeqtype!=cim:EquivalentBranch && ?condeqtype!=cim:SeriesCompensator && ?condeqtype!=cim:Equipment) .        
-      }""" .
+        FILTER (?hasbv=true && ?condeqtype!=cim:ACLineSegment && ?condeqtype!=cim:EquivalentBranch && ?condeqtype!=cim:SeriesCompensator && ?condeqtype!=cim:Equipment) .
+      }
+      """ .
 
 equ:NonlinearShuntCompensator  a  sh:NodeShape ;
         sh:property     equ:ShuntCompensator.maximumSections-numberOfInstances ;
@@ -1635,17 +1634,18 @@ equ:ShuntCompensator.maximumSections-numberOfInstancesSparql
       SELECT  $this ?value ?typesall
       WHERE {
         {
-        SELECT $this (COUNT(?typeall) AS ?typesall)
-        WHERE {
+          SELECT $this (COUNT(?typeall) AS ?typesall)
+          WHERE {
             $this ^cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator/rdf:type ?typeall .
             #?nscpointsall cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator  $this .
             #?nscpointsall rdf:type ?typeall .
           }
-        GROUP BY $this ?typesall
+          GROUP BY $this ?typesall
         }
-        $this $PATH ?value .  
+        $this $PATH ?value .
         FILTER (?value!=?typesall) .
-      }""" .        
+      }
+      """ .
       
 #equ:Clamp
 #        a               sh:NodeShape ;
@@ -1876,40 +1876,41 @@ equ:Terminal.phases-consistencyConnectivityNodeSparql
       SELECT  $this ?value2 ?terms ?value1 ?value
       WHERE {
         {
-        SELECT $this (COUNT(?typeterm) AS ?terms) ?value
-        WHERE {
-        $this ^cim:Terminal.ConnectivityNode ?value .
-        ?value rdf:type ?typeterm .
-        #?term cim:Terminal.ConnectivityNode $this .
-        #?term rdf:type ?typeterm .
+          SELECT $this (COUNT(?typeterm) AS ?terms) ?value
+          WHERE {
+            $this ^cim:Terminal.ConnectivityNode ?value .
+            ?value rdf:type ?typeterm .
+            #?term cim:Terminal.ConnectivityNode $this .
+            #?term rdf:type ?typeterm .
+          }
+          GROUP BY $this ?typeterm ?value
+          HAVING (?terms>1)
         }
-        GROUP BY $this ?typeterm ?value
-        HAVING (?terms>1)
-        }
-      
+
         #$this ^cim:Terminal.ConnectivityNode ?value  .
         $this ^cim:Terminal.ConnectivityNode ?term2  .
         ?value cim:Terminal.phases ?value1  .
         OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
-      
+
         #?value cim:Terminal.ConnectivityNode $this  .
         #?term1 cim:Terminal.phases ?value1  .
         #?term2 cim:Terminal.ConnectivityNode $this  .
         #?term2 cim:Terminal.phases ?value2.
-        
+
         #BIND(EXISTS{?term1 cim:Terminal.phases ?v1} AS ?hasvalue1).
-  
-        
-        #BIND(EXISTS{?term2 cim:Terminal.phases ?v2} AS ?hasvalue2).        
+
+
+        #BIND(EXISTS{?term2 cim:Terminal.phases ?v2} AS ?hasvalue2).
         #FILTER ((?terms>1 && ?hasvalue2=true && ?hasvalue1=true && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
         #(?terms>1 && ?hasvalue2=true && ?hasvalue1=true && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
         #(?terms>1 && ?hasvalue1=true && ?hasvalue2=false && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         #) .
         FILTER ((?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
-        (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
-        (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+          (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+          (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         ) .
-      }""" .                   
+      }
+      """ .
                 
                 
 equ:Terminal.phases-consistencyEquipment
@@ -1929,18 +1930,19 @@ equ:Terminal.phases-consistencyEquipmentSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this ?value2 ?value1
-      WHERE {      
+      WHERE {
         $this ^cim:Terminal.ConductingEquipment ?term1  .
         ?term1 cim:ACDCTerminal.sequenceNumber 1 .
         $this ^cim:Terminal.ConductingEquipment ?term2  .
-        ?term2 cim:ACDCTerminal.sequenceNumber 2 
+        ?term2 cim:ACDCTerminal.sequenceNumber 2
         OPTIONAL {?term1 cim:Terminal.phases ?value1 } .
-        OPTIONAL {?term2 cim:Terminal.phases ?value2 } . 
+        OPTIONAL {?term2 cim:Terminal.phases ?value2 } .
         FILTER ((bound(?value1) && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N) && (?value2!=cim:PhaseCode.ABCN && ?value2!=cim:PhaseCode.N)) ||
-        (bound(?value1) && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
-        (bound(?value1) && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
+          (bound(?value1) && bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
+          (bound(?value1) && !bound(?value2) && ?term1!=?term2 && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         ) .
-      }""" .                   
+      }
+      """ .
                
                 
 #equ:CurveData
@@ -1995,12 +1997,13 @@ equ:LimitKind.patl-allowedTypeSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this ?value
-      WHERE {      
+      WHERE {
         $this cim:OperationalLimit.OperationalLimitType/eu:OperationalLimitType.kind ?value.
         #?type eu:OperationalLimitType.kind ?value .
 
         FILTER (?value=eu:LimitKind.patl) .
-      }""" .          
+      }
+      """ .
       
 
 equ:LimitKind
@@ -2024,7 +2027,7 @@ equ:LimitKind.patl-numberOfLimitTypeSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this (COUNT(?ol) AS ?patls) ?infdur ?value
-      WHERE {      
+      WHERE {
         $this cim:OperationalLimitType.isInfiniteDuration ?infdur .
         $this eu:OperationalLimitType.kind eu:LimitKind.patl .
         $this ^cim:OperationalLimit.OperationalLimitType ?ol .
@@ -2032,9 +2035,9 @@ equ:LimitKind.patl-numberOfLimitTypeSparql
         ?ol cim:OperationalLimit.OperationalLimitSet ?value .
         FILTER (?typeol IN (cim:ApparentPowerLimit , cim:ActivePowerLimit , cim:CurrentLimit)) .
       }
-      GROUP BY $this ?value ?infdur 
+      GROUP BY $this ?value ?infdur
       HAVING (?patls>1 || ?infdur=false)
-      """ .    
+      """ .
 
 equ:LimitKind.tc-duration
         a               sh:PropertyShape ;
@@ -2053,7 +2056,7 @@ equ:LimitKind.tc-durationSparql
     sh:prefixes cim: ;
     sh:select """
       SELECT  $this (COUNT(?ol) AS ?tcs) ?adur ?value
-      WHERE {      
+      WHERE {
         $this eu:OperationalLimitType.kind eu:LimitKind.tc .
         $this ^cim:OperationalLimit.OperationalLimitType ?ol .
         ?ol cim:OperationalLimit.OperationalLimitSet ?value .
@@ -2061,7 +2064,7 @@ equ:LimitKind.tc-durationSparql
       }
       GROUP BY $this ?value ?adur ?value
       HAVING (?tcs>1 || (bound(?adur) && ?adur!=0))
-      """ . 
+      """ .
 
       
 equ:TapChanger
@@ -2085,13 +2088,14 @@ equ:TapChanger.ltcFlag-tapChangerControlSparql
     sh:message      "An artificial tap changer is used to simulate control behaviour in power flow." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this ?value  
-      WHERE {      
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         BIND(EXISTS{$this cim:TapChanger.TapChangerControl ?tcc } AS ?hastcc).
-        
+
         FILTER (?hastcc=true && ?value=false) .
-      }""" .        
+      }
+      """ .
       
 equ:DCConverterUnit-tapChangerControl
         a               sh:PropertyShape ;
@@ -2109,14 +2113,15 @@ equ:DCConverterUnit-tapChangerControlSparql
     sh:message      "TapChangerControl is association to a transformer contained in DCConverterUnit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this ?value  
-      WHERE {      
+      SELECT  $this ?value
+      WHERE {
         OPTIONAL {$this cim:TapChanger.TapChangerControl ?value }.
         OPTIONAL {$this cim:RatioTapChanger.TransformerEnd/cim:PowerTransformerEnd.PowerTransformer/cim:Equipment.EquipmentContainer/rdf:type ?typeratiotc }.
         OPTIONAL {$this cim:PhaseTapChanger.TransformerEnd/cim:PowerTransformerEnd.PowerTransformer/cim:Equipment.EquipmentContainer/rdf:type ?typephasetc }.
-        
+
         FILTER (bound(?value) && ((bound(?typeratiotc) && ?typeratiotc=cim:DCConverterUnit) || (bound(?typephasetc) && ?typephasetc=cim:DCConverterUnit))) .
-      }""" .         
+      }
+      """ .
     
 
 equ:CsConverter
@@ -2140,14 +2145,15 @@ equ:DCConverterUnit-cscPowerTransformerSparql
     sh:message      "A DCConverterUnit that contains CsConverter does not contain a PowerTransformer." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this ?value  
-      WHERE {      
+      SELECT  $this ?value
+      WHERE {
         $this cim:Equipment.EquipmentContainer ?value .
-        
+
         FILTER NOT EXISTS {
-        ?value ^cim:Equipment.EquipmentContainer/rdf:type cim:PowerTransformer 
+          ?value ^cim:Equipment.EquipmentContainer/rdf:type cim:PowerTransformer
         }.
-      }""" .         
+      }
+      """ .
                   
       
 equ:PowerTransformerEnd
@@ -2171,13 +2177,14 @@ equ:PowerTransformerEnd-terminalConsistencySparql
     sh:message      "The Terminal referenced by TransformerEnd.Terminal points to a PowerTransformer which is different than the referenced element via PowerTransformerEnd.PowerTransformer." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this   
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this cim:TransformerEnd.Terminal/cim:Terminal.ConductingEquipment ?endtermpt .
         $this cim:PowerTransformerEnd.PowerTransformer ?pendpt .
-        
+
         FILTER (?endtermpt!=?pendpt) .
-      }""" .       
+      }
+      """ .
 
 equ:ShuntCompensator.nomU-nominalVoltageDifference
         a               sh:PropertyShape ;
@@ -2195,13 +2202,14 @@ equ:ShuntCompensator.nomU-nominalVoltageDifferenceSparql
     sh:message      "The value differs with more than 10% of the nominal voltage abtained via the containment to VoltageLevel." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this ?value   
-      WHERE {      
+      SELECT  $this ?value
+      WHERE {
         $this cim:ShuntCompensator.nomU ?value .
         $this cim:Equipment.EquipmentContainer/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?nomv .
-        
+
         FILTER (?value<0.9*?nomv && ?value>1.1*?nomv) .
-      }""" .      
+      }
+      """ .
       
       
 equ:ControlAreaGeneratingUnit.GeneratingUnit  a  sh:NodeShape ;
@@ -2226,11 +2234,11 @@ equ:ControlAreaGeneratingUnit.GeneratingUnit-instanceSparql
     sh:select """
       SELECT  $this (COUNT(?ca) AS ?count)
       WHERE {
-        $this ^cim:ControlAreaGeneratingUnit.GeneratingUnit/cim:ControlAreaGeneratingUnit.ControlArea ?ca.   
+        $this ^cim:ControlAreaGeneratingUnit.GeneratingUnit/cim:ControlAreaGeneratingUnit.ControlArea ?ca.
       }
       GROUP BY $this ?ca
       HAVING(?count>1)
-      """ .        
+      """ .
       
 equ:ACDCTerminal  a  sh:NodeShape ;
         sh:property     equ:ACDCTerminal.sequenceNumber-numbering ;
@@ -2254,13 +2262,13 @@ equ:ACDCTerminal.sequenceNumber-numberingSparql
     sh:select """
       SELECT  $this (COUNT(?sn) AS ?countsn) (COUNT(DISTINCT ?sn) AS ?countdsn) (MIN(?sn) AS ?minsn) (SUM(?sn) AS ?sumsn) (COUNT(?terms) AS ?countterms)
       WHERE {
-        $this (^cim:Terminal.ConductingEquipment)|(^cim:DCTerminal.DCConductingEquipment) ?terms. 
+        $this (^cim:Terminal.ConductingEquipment)|(^cim:DCTerminal.DCConductingEquipment) ?terms.
         ?terms rdf:type ?type .
         ?terms cim:ACDCTerminal.sequenceNumber ?sn .
       }
       GROUP BY $this ?type
       HAVING(?countsn!=?countdsn || ?minsn!=1 || (?countterms=1 && ?sumsn!=1) || (?countterms=2 && (?sumsn/2)!=1.5) || (?countterms=3 && (?sumsn/3)!=2))
-      """ .       
+      """ .
       
 equ:PowerTransformer-twoWinding
         a               sh:NodeShape ;
@@ -2297,7 +2305,7 @@ equ:PowerTransformerEnd-secondWindingValuesSparql
     sh:select """
       SELECT  $this ?value
       WHERE {
-        ?value cim:PowerTransformerEnd.PowerTransformer $this .  
+        ?value cim:PowerTransformerEnd.PowerTransformer $this .
         ?value cim:TransformerEnd.endNumber 2 .
         #?value cim:TransformerEnd.endNumber ?endnumber .
         ?value cim:PowerTransformerEnd.r ?r .
@@ -2307,7 +2315,8 @@ equ:PowerTransformerEnd-secondWindingValuesSparql
         FILTER (!(?r=0 && ?r0=0 && ?x=0 && ?x0=0)).
         #FILTER ((!(?r=0 && ?r0=0 && ?x=0 && ?x0=0) && ?endnumber=2) || (!(?r!=0 && ?r0!=0 && ?x!=0 && ?x0!=0) && ?endnumber=1)).
         #FILTER (?r!=0 || ?r0!=0 || ?x!=0 || ?x0!=0).
-      } """ .       
+      }
+      """ .
       
             
 equ:TransformerEnd.endNumber-unique
@@ -2329,26 +2338,26 @@ equ:TransformerEnd.endNumber-uniqueSparql
       SELECT  $this ?value
       WHERE {
         {
-        SELECT $this (COUNT(DISTINCT ?endnumber) as ?countd) (COUNT(?endnumber) as ?count) (MIN(?endnumber) as ?minendnumber) (MAX(?ratedu) as ?maxratedu) 
-        WHERE {
-          $this ^cim:PowerTransformerEnd.PowerTransformer ?ends .
-          ?ends rdf:type ?endtype .
-          ?ends cim:TransformerEnd.endNumber ?endnumber .
-          ?ends cim:PowerTransformerEnd.ratedU ?ratedu .
+          SELECT $this (COUNT(DISTINCT ?endnumber) as ?countd) (COUNT(?endnumber) as ?count) (MIN(?endnumber) as ?minendnumber) (MAX(?ratedu) as ?maxratedu)
+          WHERE {
+            $this ^cim:PowerTransformerEnd.PowerTransformer ?ends .
+            ?ends rdf:type ?endtype .
+            ?ends cim:TransformerEnd.endNumber ?endnumber .
+            ?ends cim:PowerTransformerEnd.ratedU ?ratedu .
+          }
+          GROUP BY $this ?endtype
         }
-        GROUP BY $this ?endtype
-        }
-        
+
         ?end1 cim:PowerTransformerEnd.PowerTransformer $this .
         ?end1 cim:TransformerEnd.endNumber ?minendnumber.
         ?end1 cim:PowerTransformerEnd.ratedU ?end1ratedu .
-        
+
         ?end2 cim:PowerTransformerEnd.PowerTransformer $this .
         ?end2 cim:PowerTransformerEnd.ratedU ?maxratedu .
         BIND("" as ?value).
         FILTER(?countd!=?count || (?countd=?count && ?end1ratedu!=?maxratedu && ?end1!=?end2) ).
-      } 
-      """ .      
+      }
+      """ .
 
 equ:OperationalLimitType.isInfiniteDuration-usage
         a               sh:PropertyShape ;
@@ -2372,5 +2381,6 @@ equ:OperationalLimitType.isInfiniteDuration-usageSparql
         $this $PATH ?value .
         BIND(EXISTS{$this $PATH ?v} AS ?hasvalue).
         $this cim:OperationalLimitType.isInfiniteDuration ?indur .
-        FILTER (?hasvalue=false && ?indur=false ) .        
-      }""" .      
+        FILTER (?hasvalue=false && ?indur=false ) .
+      }
+      """ .

@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidScheduleTimePoint-attributes
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerBidScheduleTimePoint-attributes
 # PowerBidScheduleTimePoint-attributes
 # PowerBidScheduleTimePoint can have the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP.
 
@@ -20,18 +20,18 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).	
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.shutdownCost ?psc} AS ?vpsc).
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.p ?pp} AS ?vpp).
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.minimumActivationP ?pmap} AS ?vmap).
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.price ?pprice} AS ?vpprice).
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.reservePrice ?prp} AS ?vrp).
-		BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).  
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.shutdownCost ?psc} AS ?vpsc).
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.p ?pp} AS ?vpp).
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.minimumActivationP ?pmap} AS ?vmap).
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.price ?pprice} AS ?vpprice).
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.reservePrice ?prp} AS ?vrp).
+    BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
 
         FILTER (
-			(?vpac=true && ?vpsc=true ) || 
-			((?vpac=true || ?vpsc=true) && (?vpp=true || ?vmap=true || ?vpprice=true || ?vrp=true || ?vsip=true))
-		).
-			}
+      (?vpac="true"^^xsd:boolean && ?vpsc="true"^^xsd:boolean ) || 
+      ((?vpac="true"^^xsd:boolean || ?vpsc="true"^^xsd:boolean) && (?vpp="true"^^xsd:boolean || ?vmap="true"^^xsd:boolean || ?vpprice="true"^^xsd:boolean || ?vrp="true"^^xsd:boolean || ?vsip="true"^^xsd:boolean))
+    ).
+      }

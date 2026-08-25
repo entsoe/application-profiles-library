@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/PowerSchedule-Complex/2.4#PowerSchedule-dcassociations
-# PowerSchedule-dcassociations
-# PowerSchedule can have associations to either DCTieCorridor or DCPole but not both.
+# https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaReserveResource-associations
+# AreaReserveResource-associations
+# The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -21,9 +21,11 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
 			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:AvailabilityEnabled.DCTieCorridor ?dctc.} AS ?vDCTC).	
-		BIND(EXISTS{$this nc:AvailabilityEnabled.DCPole ?dcp.} AS ?vDCP).
-
-        FILTER (?vDCTC=true && ?vDCP=true).
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:AreaReserveResource.GeneratingUnit ?o1} AS ?adugu).
+		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
+		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
+        FILTER (?adugu="false"^^xsd:boolean && ?adupe="false"^^xsd:boolean && ?adusr="false"^^xsd:boolean && ?aduhp="false"^^xsd:boolean).
 			}

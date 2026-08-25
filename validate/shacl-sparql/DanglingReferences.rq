@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/Common-Complex/1.0#DanglingReferences
+# https://ap-con.cim4.eu/Common-Complex/1.1#DanglingReferences
 # DanglingReferences
 # It is required that at the receiving end of the exchange all references in the instance files pointing to instance files from other profiles which are part of the exchange should be satisfied. Therefore, the complete set of instance files necessary for the grid model shall have fulfilled references (no dangling references are allowed).
 

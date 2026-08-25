@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3#IdentifiedObject.name-stringLength
-# IdentifiedObject.name-stringLength
-# The string IdentifiedObject.name has a maximum of 128 characters.
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.finishToStartLagKind-required
+# PeerTemporalDependency.finishToStartLagKind-required
+# If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,9 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value  
-			WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>128) .
-			}
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
+    
+        FILTER (?hasfts="true"^^xsd:boolean && ?hasftsk="false"^^xsd:boolean).
+      }

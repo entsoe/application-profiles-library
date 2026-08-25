@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/RemedialAction-Complex/2.4#GridStateAlteration-associations
+# https://ap-con.cim4.eu/RemedialAction-Complex/2.5#GridStateAlteration-associations
 # GridStateAlteration-associations
 # A GridStateAlteration shall have either association to GridStateAlterationRemedialAction or GridStateAlterationCollection.
 
@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).	
-		BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).  
+    BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
 
         FILTER (
-			(?vGSARA=true && ?vGSAC=true) || 
-			(?vGSARA=false && ?vGSAC=false) 
-		).
-			}
+      (?vGSARA="true"^^xsd:boolean && ?vGSAC="true"^^xsd:boolean) || 
+      (?vGSARA="false"^^xsd:boolean && ?vGSAC="false"^^xsd:boolean) 
+    ).
+      }

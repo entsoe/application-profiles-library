@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.shortName-stringLength
-# IdentifiedObject.shortName-stringLength
-# Length of the string 12 characters maximum.
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.finishToFinishLagKind-required
+# PeerTemporalDependency.finishToFinishLagKind-required
+# If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,9 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value  
-			WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>12) .
-			}
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
+    
+        FILTER (?hasftf="true"^^xsd:boolean && ?hasftfk="false"^^xsd:boolean).
+      }

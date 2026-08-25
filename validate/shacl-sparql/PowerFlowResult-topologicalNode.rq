@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:PowerFlowResult.TopologicalNode ?ot} AS ?hasTN).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:PowerFlowResult.TopologicalNode ?ot} AS ?hasTN).
         BIND(EXISTS{$this nc:PowerFlowResult.valueW ?o1} AS ?hasvalueW).
-		BIND(EXISTS{$this nc:PowerFlowResult.valueVA ?o2} AS ?hasvalueVA).
-		BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
-		BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
+    BIND(EXISTS{$this nc:PowerFlowResult.valueVA ?o2} AS ?hasvalueVA).
+    BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
+    BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
-        FILTER ( ?hasTN=true && (?hasvalueW=true || ?hasvalueVA=true || ?hasvalueVAR=true || ?hasvalueA=true)).
-			}
+        FILTER ( ?hasTN="true"^^xsd:boolean && (?hasvalueW="true"^^xsd:boolean || ?hasvalueVA="true"^^xsd:boolean || ?hasvalueVAR="true"^^xsd:boolean || ?hasvalueA="true"^^xsd:boolean)).
+      }

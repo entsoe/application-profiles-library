@@ -20,15 +20,15 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this (COUNT(?ol) AS ?patls) ?infdur ?value
-			WHERE {      
+      SELECT  $this (COUNT(?ol) AS ?patls) ?infdur ?value
+      WHERE {      
         $this cim:OperationalLimitType.isInfiniteDuration ?infdur .
         $this eu:OperationalLimitType.kind eu:LimitKind.patl .
         $this ^cim:OperationalLimit.OperationalLimitType ?ol .
         ?ol  rdf:type ?typeol .
         ?ol cim:OperationalLimit.OperationalLimitSet ?value .
         FILTER (?typeol IN (cim:ApparentPowerLimit , cim:ActivePowerLimit , cim:CurrentLimit)) .
-			}
+      }
       GROUP BY $this ?value ?infdur 
       HAVING (?patls>1 || ?infdur=false)
       
