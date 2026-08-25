@@ -79,7 +79,7 @@ eqn600:EquivalentInjection.regulationCapability-notHVDCSparql
         OPTIONAL {$this cim:EquivalentInjection.ReactiveCapabilityCurve ?curve}.
         OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode ?bp } .
         OPTIONAL {?bp eu:BoundaryPoint.isDirectCurrent ?ishvdc } .
-        FILTER (bound(?bp) && bound(?ishvdc) && ?ishvdc=false && (bound(?curve) || ?value=true)) .        
+        FILTER (bound(?bp) && bound(?ishvdc) && !?ishvdc && (bound(?curve) || ?value)) .        
       }""" .
 
 

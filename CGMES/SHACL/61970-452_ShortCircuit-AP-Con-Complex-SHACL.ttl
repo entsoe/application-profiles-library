@@ -81,7 +81,7 @@ sc452:TransformerEnd-groundingSparql
         $this $PATH ?value .
         OPTIONAL {$this cim:TransformerEnd.rground ?rground} .
         OPTIONAL {$this cim:TransformerEnd.xground ?xground} .
-        FILTER (?value=true && (!bound(?xground) || !bound(?rground))) .        
+        FILTER (?value && (!bound(?xground) || !bound(?rground))) .        
       }""" .
 
 sc452:SynchronousMachine
@@ -111,6 +111,6 @@ sc452:SynchronousMachine-attributesSparql
         $this $PATH ?value .
         OPTIONAL {$this cim:SynchronousMachine.earthingStarPointR ?earthingStarPointR} .
         OPTIONAL {$this cim:SynchronousMachine.earthingStarPointX ?earthingStarPointX} .
-        FILTER (?value=true && (!bound(?earthingStarPointR) || !bound(?earthingStarPointX))) .        
+        FILTER (?value && (!bound(?earthingStarPointR) || !bound(?earthingStarPointX))) .        
       }""" .
 

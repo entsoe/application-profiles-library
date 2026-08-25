@@ -86,7 +86,7 @@ tpn600:Terminal-EXCH8TopologicalNodeSparql
              #$this cim:Terminal.TopologicalNode ?value .
         #FILTER (!bound(?value) && bound(?rc)) .
         #FILTER (?val=false && ?enable=true) .
-        FILTER (?val=false && ?rctrue=true) .
+        FILTER (!?val && ?rctrue) .
       }""" .
 
 

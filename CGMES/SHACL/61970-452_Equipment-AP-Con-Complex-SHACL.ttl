@@ -563,7 +563,7 @@ eq452:StaticVarCompensator-controlModeSparql
         BIND(EXISTS{$this cim:StaticVarCompensator.voltageSetPoint ?b} AS ?hasvsetpoint).
         #OPTIONAL {$this cim:StaticVarCompensator.sVCControlMode ?svcmode }.
         #OPTIONAL {$this cim:StaticVarCompensator.voltageSetPoint ?vsetpoint }.
-        FILTER ((?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage) || ?hassvcmode=true || ?hasvsetpoint=true).
+        FILTER ((?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage) || ?hassvcmode || ?hasvsetpoint).
         }""" . 
 
 eq452:GeneratingUnit-typeDependency
@@ -866,7 +866,7 @@ eq452:CurveData.xvalue-valueSparql
         }
 
         #FILTER ((?hasrcc=true && bound(?minp) && bound(?maxp) && ?maxp!=?maxxvalue && ?minp!=?minxvalue)) .
-        FILTER (?hasrcc=true && !(?maxp=?maxxvalue && ?minp=?minxvalue)) .
+        FILTER (?hasrcc && !(?maxp=?maxxvalue && ?minp=?minxvalue)) .
         } """ .
  
  
@@ -909,7 +909,7 @@ eq452:SynchronousMachine-reactiveLimitsSparql
           GROUP BY $this ?cdtype
         }
 
-        FILTER ((?hasrcc=false && !(bound(?minq) && bound(?maxq))) || (?hasrcc=true && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
+        FILTER ((!?hasrcc && !(bound(?minq) && bound(?maxq))) || (?hasrcc && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
         } """ .
         
         
@@ -1042,7 +1042,7 @@ eq452:OperationalLimitSet-limitsSparql
                   }.
           
           FILTER ((!bound(?equipment) && bound(?auxeq)) ||
-                  (bound(?equipment) && ?termmatch=false && ?value NOT IN (cim:CurrentTransformer, cim:PotentialTransformer, cim:PostLineSensor, cim:SurgeArrester, cim:WaveTrap, cim:FaultIndicator, cim:PowerElectronicsWindUnit, cim:PhotoVoltaicUnit, cim:BatteryUnit, cim:HydroPump, cim:GeneratingUnit, cim:HydroGeneratingUnit, cim:NuclearGeneratingUnit, cim:SolarGeneratingUnit, cim:ThermalGeneratingUnit, cim:WindGeneratingUnit, cim:Equipment) )
+                  (bound(?equipment) && !?termmatch && ?value NOT IN (cim:CurrentTransformer, cim:PotentialTransformer, cim:PostLineSensor, cim:SurgeArrester, cim:WaveTrap, cim:FaultIndicator, cim:PowerElectronicsWindUnit, cim:PhotoVoltaicUnit, cim:BatteryUnit, cim:HydroPump, cim:GeneratingUnit, cim:HydroGeneratingUnit, cim:NuclearGeneratingUnit, cim:SolarGeneratingUnit, cim:ThermalGeneratingUnit, cim:WindGeneratingUnit, cim:Equipment) )
                    ).
         }""" . 
 
@@ -1688,7 +1688,7 @@ eq452:PowerTransformerEnd.x-valueSparql
           BIND(EXISTS{$this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3 } AS ?threewin) .
           
           #FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
-          FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
+          FILTER ((!(?x1>0 && ?x2=0) && !?threewin )|| (?threewin && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
         } """ .         
 
 eq452:GeneratingUnit.maxOperatingP-ratedS

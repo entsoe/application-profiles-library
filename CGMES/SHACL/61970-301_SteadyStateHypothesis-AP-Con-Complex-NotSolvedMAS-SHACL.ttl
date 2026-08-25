@@ -169,7 +169,7 @@ sshn301:CsConverter.targetAlpha-applicabilitySparql
         
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
         #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) .   
-        FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete=true) || !bound(?discrete) )) .          
+        FILTER ((?opermode=cim:CsOperatingModeKind.inverter || (bound(?pccterminal)  && ?discrete) || !bound(?discrete) )) .          
       }""" .
       
 sshn301:CsConverter.targetGamma-applicability
@@ -206,7 +206,7 @@ sshn301:CsConverter.targetGamma-applicabilitySparql
         
         #?regcontrol cim:RegulatingControl.Terminal ?pccterm .
         #FILTER (bound(?value) && (?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?condeqtype=cim:PowerTransformer && ?discrete=true && ?pccterm=?pccterminal))) . 
-        FILTER ((?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?discrete=true ) || !bound(?discrete))) .        
+        FILTER ((?opermode=cim:CsOperatingModeKind.rectifier || (bound(?pccterminal) && ?discrete ) || !bound(?discrete))) .        
       }""" .      
 
 sshn301:RegulatingControl  a  sh:NodeShape ;

@@ -91,5 +91,5 @@ eqbdn301:BoundaryPoint.isExcludedFromAreaInterchange-requiredTieFlowSparql
              OPTIONAL {?terminal cim:Terminal.ConnectivityNode ?cnbp }.
              OPTIONAL {?tieflow cim:TieFlow.Terminal ?terminal }.
            
-        FILTER ((bound(?value) && ?value=false && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value=true && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
+        FILTER ((bound(?value) && !?value && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
       }""" .

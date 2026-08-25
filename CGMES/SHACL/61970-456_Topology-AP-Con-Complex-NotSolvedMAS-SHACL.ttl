@@ -90,5 +90,5 @@ tpn456:Switch-sameTopologicalNodeSparql
              OPTIONAL {?terminal2 cim:Terminal.ConnectivityNode ?cn2}.
              OPTIONAL {?terminal2 cim:Terminal.TopologicalNode ?tn2}.
              ?cn2 cim:ConnectivityNode.TopologicalNode ?cntn2 .          
-				FILTER (?value=true && (?terminal1!=?terminal2 && (?tn1=?tn2 || ?cntn1=?cntn2))) .
+				FILTER (?value && (?terminal1!=?terminal2 && (?tn1=?tn2 || ?cntn1=?cntn2))) .
 			}""" .

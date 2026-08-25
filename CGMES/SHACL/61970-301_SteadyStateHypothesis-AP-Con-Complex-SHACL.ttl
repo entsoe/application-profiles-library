@@ -825,7 +825,7 @@ sshu:RegulatingControl.targetDeadband-applicabilitySparql
       WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:RegulatingControl.targetDeadband ?targetdeadband}.
-        FILTER ((bound(?targetdeadband) && ?value=false) || (!bound(?targetdeadband) && ?value=true)) .        
+        FILTER ((bound(?targetdeadband) && !?value) || (!bound(?targetdeadband) && ?value)) .        
       }""" .      
       
       

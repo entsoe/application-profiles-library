@@ -186,6 +186,6 @@ eq600:ReactiveCapabilityCurve-unitsSparql
         $this cim:Curve.y1Unit ?y1unit .
         $this cim:Curve.y2Unit ?y2unit .
         BIND(EXISTS{$this cim:Curve.y2Unit ?y2unitcheck} AS ?hasy2unit).
-        FILTER (?hasy2unit=false && ?xunit!=cim:UnitSymbol.W && ?y2unit!=cim:UnitSymbol.VAr && ?y1unit!=cim:UnitSymbol.VAr).
+        FILTER (!?hasy2unit && ?xunit!=cim:UnitSymbol.W && ?y2unit!=cim:UnitSymbol.VAr && ?y1unit!=cim:UnitSymbol.VAr).
         }""" .           
                  

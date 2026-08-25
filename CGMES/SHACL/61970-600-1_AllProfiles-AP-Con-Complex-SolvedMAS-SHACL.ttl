@@ -287,7 +287,7 @@ sm600:SvTapStep.position-SV__4Sparql
         OPTIONAL {$this  cim:TapChanger.TapChangerControl/cim:RegulatingControl.enabled ?rcenabled} .
         #OPTIONAL {$this  ^cim:SvTapStep.TapChanger/cim:SvTapStep.position  ?svtapsteppos} .
         #FILTER (bound(?svtapsteppos) && ((?controlen=false && ?svtapsteppos!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svtapsteppos!=?value) )  ).
-        FILTER ((?controlen=false && ?svtapsteppos!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svtapsteppos!=?value)  ).
+        FILTER ((!?controlen && ?svtapsteppos!=?value) || (bound(?rcenabled) && !?rcenabled && ?svtapsteppos!=?value)  ).
       }""" . 
 
 sm600:SvShuntCompensatorSections.sections-SV__4
@@ -314,7 +314,7 @@ sm600:SvShuntCompensatorSections.sections-SV__4Sparql
         OPTIONAL {$this  cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.enabled ?rcenabled} .
         #OPTIONAL {$this  ^cim:SvShuntCompensatorSections.ShuntCompensator/cim:SvShuntCompensatorSections.sections  ?svshuntsec} .
         #FILTER (bound(?svshuntsec) && ((?controlen=false && ?svshuntsec!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svshuntsec!=?value) )  ).
-        FILTER ((?controlen=false && ?svshuntsec!=?value) || (bound(?rcenabled) && ?rcenabled=false && ?svshuntsec!=?value)   ).
+        FILTER ((!?controlen && ?svshuntsec!=?value) || (bound(?rcenabled) && !?rcenabled && ?svshuntsec!=?value)   ).
       }""" .
 
 

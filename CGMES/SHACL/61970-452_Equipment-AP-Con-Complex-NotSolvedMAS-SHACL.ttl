@@ -88,7 +88,7 @@ eqn452:RegulatingControl.targetValue-tapChangerSparql
         #$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
         $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
         
-				FILTER (?mode=cim:RegulatingControlModeKind.voltage && ?contrenabled=true && ?enabled=true && !( ?value/?valuenomu>=(1-(?svi/100)*(?neutralstep-?lowstep)) && ?value/?valuenomu<=(1+(?svi/100)*(?highstep-?neutralstep)) ) ) .
+				FILTER (?mode=cim:RegulatingControlModeKind.voltage && ?contrenabled && ?enabled && !( ?value/?valuenomu>=(1-(?svi/100)*(?neutralstep-?lowstep)) && ?value/?valuenomu<=(1+(?svi/100)*(?highstep-?neutralstep)) ) ) .
 			}""" .
       
       

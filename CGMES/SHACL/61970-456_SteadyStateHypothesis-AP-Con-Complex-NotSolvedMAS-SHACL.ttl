@@ -79,7 +79,7 @@ sshn456:EquivalentInjection-regulationSparql
         $this $PATH ?value.
         OPTIONAL {$this cim:EquivalentInjection.regulationStatus ?rstatus}.
         OPTIONAL {$this cim:EquivalentInjection.regulationTarget ?rtarget}. 
-        FILTER ((?value=true && (!bound(?rstatus) || !bound(?rtarget))) || (?value=false && (bound(?rstatus) || bound(?rtarget)))) .        
+        FILTER ((?value && (!bound(?rstatus) || !bound(?rtarget))) || (!?value && (bound(?rstatus) || bound(?rtarget)))) .        
 			}""" .
     
 sshn456:RotatingMachine  a  sh:NodeShape ;
@@ -141,7 +141,7 @@ sshn456:RotatingMachine.q-limitsSparql
         $this cim:SynchronousMachine.maxQ ?maxq.
         $this cim:SynchronousMachine.minQ ?minq.
         #FILTER (?hascurve=false && bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
-        FILTER (?hascurve=false && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .           
+        FILTER (!?hascurve && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .           
 			}""" .        
       
             
