@@ -145,7 +145,6 @@ sarc:PowerFlowResult-VoltageLimit
               WHERE {      
                      $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
                      FILTER (?oltype IN (cim:VoltageLimit, cim16:VoltageLimit, cim17:VoltageLimit)).
-                     FILTER NOT EXISTS {$this nc:PowerFlowResult.valueV ?value}
                     }
                   """
         ] ;
