@@ -1,6 +1,6 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.startToStartLagKind-required
-# PowerBidDependency.startToStartLagKind-required
-# If PowerBidDependency.startToStartLag is present PowerBidDependency.startToStartLagKind is required.
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.startToStartLagKind-required
+# PeerTemporalDependency.startToStartLagKind-required
+# If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,11 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		 
-		BIND(EXISTS{$this nc:PowerBidDependency.startToStartLag ?sts} AS ?hassts).	
-		BIND(EXISTS{$this nc:PowerBidDependency.startToStartLagKind ?stsk} AS ?hasstsk).
-		
-        FILTER (?hassts=true && ?hasstsk=false).
-			}
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
+    
+        FILTER (?hassts="true"^^xsd:boolean && ?hasstsk="false"^^xsd:boolean).
+      }

@@ -103,13 +103,6 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#ShuntCompens
         
         FILTER (?value<0.9*?nomv && ?value>1.1*?nomv) .
       }"
-http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformer-associationNotUsed,PowerTransformer-associationNotUsed,The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.,"
-      SELECT  $this ?value
-      WHERE {
-        $this cim:ConductingEquipment.BaseVoltage ?value .
-        BIND(EXISTS{$this cim:ConductingEquipment.BaseVoltage ?v } AS ?hasvalue). 
-        FILTER (?hasvalue=true) .        
-      }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformerEnd.ratedS-valueRange2winding,PowerTransformerEnd.ratedS-valueRange2winding,For a two-winding transformer the values for the high and low voltage sides shall be identical. ,"
       SELECT  $this ?value ?ends
       WHERE {
@@ -133,8 +126,8 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransfo
         #OPTIONAL {?end2 cim:PowerTransformerEnd.ratedS  ?ratedsend2 }.
 
         FILTER (?hasvalue=true && ?hasratedsend2=true && ?end1!=?end2 && ?value!=?ratedsend2) .        
+        FILTER (?ends=2) .
       }
-      HAVING(?ends=2)
       "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformerEnd.ratedU-valueRange,PowerTransformerEnd.ratedU-valueRange,"A high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater than or equal to ratedU for the lower voltage sides. The attribute shall be a positive value.","
       SELECT  $this ?value ?ends
@@ -740,8 +733,8 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/3.0#
         FILTER (?value<17 || ?value>?maxgamma) .        
       }"
 http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-301/notSolved/3.0#Terminal.phases-consistencyTopologicalNode,Terminal.phases-consistencyTopologicalNode,The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.,"
-      SELECT  $this ?value2 ?terms ?value1 ?value
-      WHERE {
+			SELECT  $this ?value2 ?terms ?value1 ?value
+			WHERE {
         {
         SELECT $this (COUNT(?typeterm) AS ?terms) ?value
         WHERE {
@@ -769,223 +762,223 @@ http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-301/notSolved/3.0#Ter
         (?value!=?term2 && bound(?value2) && (?value1=cim:PhaseCode.ABC) && (?value2!=cim:PhaseCode.ABC)) ||
         (?value!=?term2 && !bound(?value2) && (?value1=cim:PhaseCode.ABCN || ?value1=cim:PhaseCode.N))
         ) .
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcIEEEAC8B.kpr-valueRange,ExcIEEEAC8B.kpr-valueRange,Voltage regulator proportional gain (K<sub>PR</sub>) (> 0 if ExcIEEEAC8B.kir = 0).  Typical value = 80.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcIEEEAC8B.kir ?kir .
         FILTER (?kir=0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcBBC.k-valueRange,ExcBBC.k-valueRange,Steady state gain (K) (not = 0).  Typical value = 300.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         FILTER (?value=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcIEEEDC4B.td-valueRange,ExcIEEEDC4B.td-valueRange,"Regulator derivative filter time constant (T<sub>D</sub>) (> 0 if ExcIEEEDC4B.kd > 0).  Typical value = 0,01.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcIEEEDC4B.kd ?kd .
         FILTER (?kd>0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcIEEEAC7B.kpa-valueRange,ExcIEEEAC7B.kpa-valueRange,"Voltage regulator proportional gain (K<sub>PA</sub>) (> 0 if ExcIEEEAC7B.kia = 0).  Typical value = 65,36.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcIEEEAC7B.kia ?kia .
         FILTER (?kia=0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcIEEEAC7B.kpr-valueRange,ExcIEEEAC7B.kpr-valueRange,"Voltage regulator proportional gain (K<sub>PR</sub>) (> 0 if ExcIEEEAC7B.kir = 0).  Typical value = 4,24.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcIEEEAC7B.kir ?kir .
         FILTER (?kir=0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#PssWECC-inputSignals,PssWECC-inputSignals,shall be different than PssWECC.inputSignal2Type.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:PssWECC.inputSignal2Type ?input2 .
         FILTER (?value=?input2) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcSEXS.kc-valueRange,ExcSEXS.kc-valueRange,"PI controller gain (Kc) (> 0 if ExcSEXS.tc > 0).  Typical value = 0,08.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcSEXS.tc ?tc .
         FILTER (?tc>0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#ExcAC8B.kpr-valueRange,ExcAC8B.kpr-valueRange,Voltage regulator proportional gain (Kpr) (> 0 if ExcAC8B.kir = 0).  Typical value = 80.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExcAC8B.kir ?kir .
         FILTER (?kir=0 && ?value<=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv0-valueRange,GovHydro4.bgv0-valueRange,"Kaplan blade servo point 0 (Bgv0) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 0.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv1-valueRange,GovHydro4.bgv1-valueRange,"Kaplan blade servo point 1 (Bgv1) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 0.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv2-valueRange,GovHydro4.bgv2-valueRange,"Kaplan blade servo point 2 (Bgv2) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 0,1.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv3-valueRange,GovHydro4.bgv3-valueRange,"Kaplan blade servo point 3 (Bgv3) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 0,667.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv4-valueRange,GovHydro4.bgv4-valueRange,"Kaplan blade servo point 4 (Bgv4) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 0,9.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bgv5-valueRange,GovHydro4.bgv5-valueRange,"Kaplan blade servo point 5 (Bgv5) (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 1.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.bmax-valueRange,GovHydro4.bmax-valueRange,"Maximum blade adjustment factor (Bmax)  (= 0 for simple, = 0 for Francis/Pelton).  Typical value for Kaplan = 1,1276.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv0-valueRange,GovHydro4.gv0-valueRange,"Nonlinear gain point 0, PU gv (Gv0) (= 0 for simple).  Typical for Francis/Pelton = 0,1, Kaplan = 0,1.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv1-valueRange,GovHydro4.gv1-valueRange,"Nonlinear gain point 1, PU gv (Gv1) (= 0 for simple, > GovHydro4.gv0 for Francis/Pelton and Kaplan). Typical value for Francis/Pelton = 0,4, Kaplan = 0,4.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         $this cim:GovHydro4.gv0 ?gv0 .
         FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv2-valueRange,GovHydro4.gv2-valueRange,"Nonlinear gain point 2, PU gv (Gv2) (= 0 for simple, > GovHydro4.gv1 for Francis/Pelton and Kaplan). Typical value for Francis/Pelton = 0,5, Kaplan = 0,5.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         $this cim:GovHydro4.gv1 ?gv1 .
         FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv1)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv3-valueRange,GovHydro4.gv3-valueRange,"Nonlinear gain point 3, PU gv (Gv3)  (= 0 for simple, > GovHydro4.gv2 for Francis/Pelton and Kaplan). Typical value for Francis/Pelton = 0,7, Kaplan = 0,7.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         $this cim:GovHydro4.gv2 ?gv2 .
         FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv2)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv4-valueRange,GovHydro4.gv4-valueRange,"Nonlinear gain point 4, PU gv (Gv4)  (= 0 for simple, > GovHydro4.gv3 for Francis/Pelton and Kaplan). Typical value for  Francis/Pelton = 0,8, Kaplan = 0,8.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         $this cim:GovHydro4.gv3 ?gv3 .
         FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv3)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.gv5-valueRange,GovHydro4.gv5-valueRange,"Nonlinear gain point 5, PU gv (Gv5)  (= 0 for simple, < 1 and > GovHydro4.gv4 for Francis/Pelton and Kaplan). Typical value for Francis/Pelton = 0,9, Kaplan = 0,9.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         $this cim:GovHydro4.gv4 ?gv4 .
         FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv4 && ?value>=1)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv0-valueRange,GovHydro4.pgv0-valueRange,"Nonlinear gain point 0, PU power (Pgv0) (= 0 for simple).  Typical value = 0.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv1-valueRange,GovHydro4.pgv1-valueRange,"Nonlinear gain point 1, PU power (Pgv1) (= 0 for simple). Typical value for Francis/Pelton = 0,42, Kaplan = 0,35.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv2-valueRange,GovHydro4.pgv2-valueRange,"Nonlinear gain point 2, PU power (Pgv2) (= 0 for simple). Typical value for Francis/Pelton = 0,56, Kaplan = 0,468.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv3-valueRange,GovHydro4.pgv3-valueRange,"Nonlinear gain point 3, PU power (Pgv3) (= 0 for simple). Typical value for Francis/Pelton = 0,8, Kaplan = 0,796.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv4-valueRange,GovHydro4.pgv4-valueRange,"Nonlinear gain point 4, PU power (Pgv4) (= 0 for simple). Typical value for Francis/Pelton = 0,9, Kaplan = 0,917.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovHydro4.pgv5-valueRange,GovHydro4.pgv5-valueRange,"Nonlinear gain point 5, PU power (Pgv5) (= 0 for simple). Typical value for Francis/Pelton = 0,97, Kaplan = 0,99.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:GovHydro4.model ?model .
         FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#GovSteamFV3.t5-valueRange,GovSteamFV3.t5-valueRange,"Time constant of second boiler pass (i.e. reheater) (T5) (> 0 if fast valving is used, otherwise >= 0).  Typical value = 0,5.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         FILTER (?value<0) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#Pss2ST-inputSignals,Pss2ST-inputSignals,shall be different than Pss2ST.inputSignal2Type.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:Pss2ST.inputSignal2Type ?input2 .
         FILTER (?value=?input2) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#SynchronousMachineSimplified-requiredAttributes,SynchronousMachineSimplified-requiredAttributes,The parameters used for the simplified model include:- RotatingMachineDynamics.damping (D);- RotatingMachineDynamics.inertia (H);- RotatingMachineDynamics.statorLeakageReactance (used to exchange jXp for SynchronousMachineSimplified);- RotatingMachineDynamics.statorResistance (Rs).,"
-      SELECT $this
-      WHERE {
+			SELECT $this
+			WHERE {
           OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
           OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor120 ?s2} .
         FILTER (bound(?s1) || bound(?s2)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.staticLoadModelType-exponental,LoadStatic.staticLoadModelType-exponental,"This model is an exponential representation of the load. Exponential equations for active and reactive power are used and the following attributes are required: kp1, kp2, kp3, kpf, ep1, ep2, ep3, kq1, kq2, kq3, kqf, eq1, eq2, eq3.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
           OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
           OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
@@ -1004,10 +997,10 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.stati
           OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
           OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
         FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) || !bound(?ep1) || !bound(?ep2) || !bound(?ep3) || !bound(?eq1) || !bound(?eq2) || !bound(?eq3)) && ?value=cim:StaticLoadModelKind.exponential) || ((bound(?kp4) || bound(?kq4)) && ?value=cim:StaticLoadModelKind.exponential)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.staticLoadModelType-zIP1,LoadStatic.staticLoadModelType-zIP1,"This model integrates the frequency-dependent load (primarily motors).  ZIP1 equations for active and reactive power are used and the following attributes are required: kp1, kp2, kp3, kpf, kq1, kq2, kq3, kqf.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
           OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
           OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
@@ -1026,10 +1019,10 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.stati
           OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
           OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
         FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP1) || (?value=cim:StaticLoadModelKind.zIP1 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3) || bound(?kp4) || bound(?kq4)))) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.staticLoadModelType-zIP2,LoadStatic.staticLoadModelType-zIP2,"This model separates the frequency-dependent load (primarily motors) from other load.  ZIP2 equations for active and reactive power are used and the following attributes are required: kp1, kp2, kp3, kq4, kpf, kq1, kq2, kq3, kq4, kqf.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
           OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
           OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
@@ -1048,10 +1041,10 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.stati
           OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
           OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
         FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kp4) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kq4) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP2) || (?value=cim:StaticLoadModelKind.zIP2 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)))) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.staticLoadModelType-constantZ,LoadStatic.staticLoadModelType-constantZ,The load is represented as a constant impedance.  ConstantZ equations are used  for active and reactive power and no attributes are required.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
           OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
           OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
@@ -1070,17 +1063,17 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#LoadStatic.stati
           OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
           OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
         FILTER ((bound(?kp1) || bound(?kp2) || bound(?kp3) || bound(?kp4) || bound(?kpf) || bound(?kq1) || bound(?kq2) || bound(?kq3) || bound(?kq4) || bound(?kqf) || bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)) && ?value=cim:StaticLoadModelKind.constantZ) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-302/1.0#RotatingMachineDynamics.saturationFactor120-valueRange,RotatingMachineDynamics.saturationFactor120-valueRange,Saturation factor at 120% of rated terminal voltage (S12) (>= RotatingMachineDynamics.saturationFactor). ,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:RotatingMachineDynamics.saturationFactor ?saturationFactor .
         FILTER (?value<?saturationFactor) .        
-      }"
-http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0#RegulatingControl.targetValue-tapChanger,RegulatingControl.targetValue-tapChanger,"In cases where RequlatingControl.mode is voltage and both TapChanger.controlEnabled and RequlatingControl.enabled are true, The RegulatingControl.targetValue in per unit value is calculated by RegulatingControl.targetValue/BaseVoltage.nominalVoltage. shall be within the regulating capability limits:  The tap changer upper capability limit in per unit value is calculated by 1+RatioTapChanger.stepVoltageIncrement/100*(TapChanger.highStep-TapChanger.neutralStep). The tap changer lower capability limit in per unit value is calculated by 1-RatioTapChanger.stepVoltageIncrement/100*(TapChanger.neutralStep-TapChanger.lowStep).","
-      SELECT $this ?value
-      WHERE {
+			}"
+http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0#RegulatingControl.targetValue-tapChanger,RegulatingControl.targetValue-tapChanger,"In cases where RequlatingControl.mode is voltage and both TapChanger.controlEnabled and RequlatingControl.enabled are true, The RegulatingControl.targetValue in per unit value is calculated by RegulatingControl.targetValue/BaseVoltage.nominalVoltage. shall be within the regulating capability limits:	The tap changer upper capability limit in per unit value is calculated by 1+RatioTapChanger.stepVoltageIncrement/100*(TapChanger.highStep-TapChanger.neutralStep). The tap changer lower capability limit in per unit value is calculated by 1-RatioTapChanger.stepVoltageIncrement/100*(TapChanger.neutralStep-TapChanger.lowStep).","
+			SELECT $this ?value
+			WHERE {
         $this cim:RegulatingControl.targetValue ?value .
         $this cim:RegulatingControl.mode ?mode .
         $this ^cim:TapChanger.TapChangerControl/cim:TapChanger.controlEnabled ?contrenabled .
@@ -1092,10 +1085,10 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/notSolved/3.0#Re
         #$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
         $this cim:RegulatingControl.Terminal/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?valuenomu .
         
-        FILTER (?mode=cim:RegulatingControlModeKind.voltage && ?contrenabled=true && ?enabled=true && !( ?value/?valuenomu>=(1-(?svi/100)*(?neutralstep-?lowstep)) && ?value/?valuenomu<=(1+(?svi/100)*(?highstep-?neutralstep)) ) ) .
-      }"
+				FILTER (?mode=cim:RegulatingControlModeKind.voltage && ?contrenabled=true && ?enabled=true && !( ?value/?valuenomu>=(1-(?svi/100)*(?neutralstep-?lowstep)) && ?value/?valuenomu<=(1+(?svi/100)*(?highstep-?neutralstep)) ) ) .
+			}"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#GeneratingUnit.maxOperatingP-ratedS,GeneratingUnit.maxOperatingP-ratedS,GeneratingUnit.maxOperatingP shall be less than or equal to the sum of RotatingMachine.ratedS for RotatingMachine-s associated to the GeneratingUnit.,"
-        SELECT $this  ?value 
+	      SELECT $this  ?value 
         WHERE {
           $this cim:GeneratingUnit.maxOperatingP ?value .
           {
@@ -1115,7 +1108,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#GeneratingUn
         } 
         "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Switch-connection,Switch-connection,Switch and its subclasses shall only connect to ConnectivityNode-s that are contained in either the same VoltageLevel or in different VoltageLevel-s which have the same BaseVoltage.,"
-        SELECT $this  
+	      SELECT $this  
         WHERE {
         {
           SELECT $this ?cnc2 ?cnc1
@@ -1151,7 +1144,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Switch-conne
         FILTER (bound(?cn1nv) && bound(?cn2nv) && ?cn1nv!=?cn2nv).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#PowerTransformerEnd.x-value,PowerTransformerEnd.x-value,Transformers with zero series reactance do not exist. PowerTransformerEnd.x of high voltage end in case of a two winding transformer shall be a positive value. In case of a three winding transformer the PowerTransformerEnd.x shall not be zero.,"
-        SELECT DISTINCT $this  
+	      SELECT DISTINCT $this  
         WHERE {
           
           $this ^cim:PowerTransformerEnd.PowerTransformer ?end1 ; 
@@ -1175,7 +1168,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#PowerTransfo
           FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#PhaseTapChanger-controlModeP,PhaseTapChanger-controlModeP,The association TapChanger.TapChangerControl for PhaseTapChanger-s shall only point to a TapChangerControl that has the following control modes for RegulatingControl.mode: activePower or voltage.,"
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
         #?rcontrol cim:RegulatingControl.mode ?value  .
@@ -1183,7 +1176,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#PhaseTapChan
         FILTER (?value!=cim:RegulatingControlModeKind.activePower && ?value!=cim:RegulatingControlModeKind.voltage).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapabilityCurve-reactiveCountP,ReactiveCapabilityCurve-reactiveCountP,"For a SynchronousMachine with a ReactiveCapabilityCurve the number of CurveData instances depends on the attribute SynchronousMachine.type as follows: - condenser, ReactiveCapabilityCurve is given by SynchronousMachine.maxQ and SynchronousMachine.minQ. There shall not be any association to ReactiveCapabilityCurve. - generator or generatorOrCondenser, at least two CurveData instances with CurveData.xvalue greater than or equal to 0. - motor or motorOrCondenser, at least two CurveData instances with CurveData.xvalue less than or equal to 0. - generatorOrMotor or generatorOrCondenserOrMotor, at least three CurveData instances with at least one having CurveData.xvalue greater than or equal to 0 and one having CurveData.xvalue less than or equal to 0. In general, it is required that the points defined by the ReactiveCapabilityCurve form an area of reactive capability different than 0.   ","
-      SELECT $this ?curvedatas  ?value
+	    SELECT $this ?curvedatas  ?value
       WHERE {
         {
         SELECT $this (COUNT(?typecd) AS ?curvedatas) (MAX(?xvalue) AS ?maxxvalue) (MIN(?xvalue) AS ?minxvalue)
@@ -1222,7 +1215,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapa
         
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapabilityCurve-xvalue,ReactiveCapabilityCurve-xvalue,"All CurveData.xvalue for a given ReactiveCapabilityCurve shall be unique, e.g. it is not allowed for two or more .xvalue to have the same float value for a given ReactiveCapabilityCurve.","
-        SELECT $this  
+	      SELECT $this  
         WHERE {
           {
           SELECT $this (COUNT(?xvalue1) AS ?c1)
@@ -1245,7 +1238,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ReactiveCapa
         LIMIT 1
         "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#HydroGeneratingUnit.energyConversionCapability-typeConsistency,HydroGeneratingUnit.energyConversionCapability-typeConsistency,"If HydroGeneratingUnit.energyConversionCapability is generator the associated SynchronousMachine shall have SynchronousMachine.type set to generator or generatorOrCondenser. If HydroGeneratingUnit.energyConversionCapability is pumpAndGenerator the associated SynchronousMachine shall have SynchronousMachine.type set to motor, generatorOrMotor or generatorOrCondenserOrMotor.","
-        SELECT $this  ?value
+	      SELECT $this  ?value
         WHERE {
           $this cim:HydroGeneratingUnit.energyConversionCapability ?value .
           #OPTIONAL {$this cim:HydroGeneratingUnit.energyConversionCapability ?value }.
@@ -1254,7 +1247,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#HydroGenerat
           FILTER ((?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ShuntCompensator-controlMode,ShuntCompensator-controlMode,"For ShuntCompensator, the association RegulatingCondEq.RequlatingControl shall only point to a RequlatingControl that has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.","
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
         #?rcontrol cim:RegulatingControl.mode ?value  .
@@ -1262,7 +1255,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#ShuntCompens
         FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#VsCapabilityCurve-VsCapabilityCurveCount,VsCapabilityCurve-VsCapabilityCurveCount,If CurveData.Curve is a VsCapabilityCurve at least two CurveData shall be associated.,"
-        SELECT $this (COUNT(?typecd) AS ?curvedatas)
+	      SELECT $this (COUNT(?typecd) AS ?curvedatas)
         WHERE {
         ?curvedata cim:CurveData.Curve $this .
         ?curvedata rdf:type ?typecd .
@@ -1271,7 +1264,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#VsCapability
         HAVING(?curvedatas<2)
       "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#VsCapabilityCurve-yvalues,VsCapabilityCurve-yvalues,"If CurveData.Curve is a VsCapabilityCurve, the CurveData.y2value shall be greater than CurveData.y1value.","
-        SELECT $this 
+	      SELECT $this 
         WHERE {
         ?curvedata cim:CurveData.Curve $this .
         ?curvedata cim:CurveData.y1value ?y1value .
@@ -1279,7 +1272,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#VsCapability
         FILTER (?y2value<=?y1value).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#StaticVarCompensator-controlMode,StaticVarCompensator-controlMode,"For StaticVarCompensator, the association RegulatingCondEq.RequlatingControl is required and shall only point to a RequlatingControl that has the following control modes for RegulatingControl.mode: voltage and reactivePower.","
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
         #?rcontrol cim:RegulatingControl.mode ?value  .
@@ -1291,7 +1284,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#StaticVarCom
         FILTER ((?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage) || ?hassvcmode=true || ?hasvsetpoint=true).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#TapChangerControl-remoteQcontrol,TapChangerControl-remoteQcontrol,"A power transformer cannot efficiently control reactive power flow on remote terminals. Therefore, a TapChangerControl controlling reactive power flow shall only control the flow at one of the Terminal-s associated with PowerTransformerEnd-s of the PowerTransformer where the TapChanger is located. Control of a remote Terminal not associated with the PowerTransformer that has the TapChanger is not allowed. This constraint defines that multiple TapChanger-s cannot be controlled by the same TapChangerControl.","
-        SELECT $this  
+	      SELECT $this  
         WHERE {
           $this cim:RegulatingControl.mode ?mode .
           $this cim:RegulatingControl.Terminal ?rcterm .
@@ -1301,7 +1294,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#TapChangerCo
           FILTER (?mode=cim:RegulatingControlModeKind.reactivePower && ((?rcterm!=?tcterm1 && !bound(?tcterm2) && bound(?tcterm1)) || (?rcterm!=?tcterm2 && !bound(?tcterm1) && bound(?tcterm2)))).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine-controlMode,SynchronousMachine-controlMode,"For SynchronousMachine, the association RegulatingCondEq.RequlatingControl shall only point to a RequlatingControl that has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.","
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
         #?rcontrol cim:RegulatingControl.mode ?value  .
@@ -1309,7 +1302,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousM
         FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#GeneratingUnit-typeDependency,GeneratingUnit-typeDependency,GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP shall depend on the SynchronousMachine.type of the associated SynchronousMachine as follows:- condenser: GeneratingUnit.minOperatingP and GeneratingUnit.maxOperatingP shall equal zero.- generator or generatorOrCondenser: GeneratingUnit.minOperatingP shall be greater than or equal to zero and GeneratingUnit.maxOperatingP shall be greater than zero.- motor or motorOrCondenser: GeneratingUnit.minOperatingP shall be a negative value and GeneratingUnit.maxOperatingP shall be a negative value or zero.- generatorOrMotor or generatorOrCondenserOrMotor: GeneratingUnit.minOperatingP shall be a negative value and GeneratingUnit.maxOperatingP shall be greater than zero.,"
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         $this $PATH ?value .
         $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp .
@@ -1360,7 +1353,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousM
         FILTER ((?hasrcc=false && !(bound(?minq) && bound(?maxq))) || (?hasrcc=true && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine.type-condenser,SynchronousMachine.type-condenser,"The SynchronousMachine is not required to be associated with a GeneratingUnit via the association RotatingMachine.GeneratingUnit in cases where a synchronous condenser is being modelled as there is no capability for real power output. In this case, the SynchronousMachine.type shall be set to condenser. The following SynchronousMachine.type-s: motorOrCondenser, generatorOrCondenser, and generatorOrCondenserOrMotor are not allowed to use.","
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         $this $PATH ?value .
         $this $PATH cim:SynchronousMachineKind.condenser  .
@@ -1370,7 +1363,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousM
         FILTER (bound(?genunit) ).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData.xvalue-value,CurveData.xvalue-value,The GeneratingUnit.minOperatingP shall be equal of the minimum of the CurveData.xvalue among all points defined for a ReactveCapabilityCurve. The GeneratingUnit.maxOperatingP shall be equal of the maximum of the CurveData.xvalue among all points defined for a ReactveCapabilityCurve.,"
-      SELECT $this ?value
+	    SELECT $this ?value
       WHERE {      
         $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp.
         $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp.
@@ -1398,7 +1391,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData.xv
         FILTER (?hasrcc=true && !(?maxp=?maxxvalue && ?minp=?minxvalue)) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#RatioTapChanger-controlMode,RatioTapChanger-controlMode,"The association TapChanger.TapChangerControl for RatioTapChanger-s shall only point to a TapChangerControl the has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.","
-        SELECT $this ?value 
+	      SELECT $this ?value 
         WHERE {
         #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
         #?rcontrol cim:RegulatingControl.mode ?value  .
@@ -1406,7 +1399,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#RatioTapChan
         FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#OperationalLimitSet-limits,OperationalLimitSet-limits,"In case the OperationalLimitSet is the operational limit of the AuxiliaryEquipment, then the association end OperationalLimitSet.Equipment is also required. In the case where OperationalLimitSet.Equipment is associated with an instance of ConductingEquipment, OperationalLimitSet.Terminal shall be one of the ConductingEquipment’s Terminal-s.","
-        SELECT DISTINCT $this ?value
+	      SELECT DISTINCT $this ?value
         WHERE {
           $this cim:OperationalLimitSet.Terminal ?olsterm .
           OPTIONAL{$this cim:OperationalLimitSet.Terminal/^cim:AuxiliaryEquipment.Terminal ?auxeq } .
@@ -1420,7 +1413,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#OperationalL
                    ).
         }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousMachine-aggregate,SynchronousMachine-aggregate,If only one SynchronousMachine is associated with the GeneratingUnit then the Equipment.aggregate flag shall be consistent between the SynchronousMachine and GeneratingUnit if it exists in both.,"
-      SELECT $this ?sms ?value 
+	    SELECT $this ?sms ?value 
       WHERE {
         {
         SELECT $this (COUNT(?typesm) AS ?sms) 
@@ -1443,7 +1436,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#SynchronousM
         FILTER (?sms=1 && ?value!=?smaggregate ) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#AsynchronousMachine-aggregate,AsynchronousMachine-aggregate,If one AsynchronousMachine is associated with one GeneratingUnit the flag Equipment.aggregate shall be consistent in case it is provided at both AsynchronousMachine and GeneratingUnit.,"
-      SELECT $this ?sms ?value 
+	    SELECT $this ?sms ?value 
       WHERE {
         {
         SELECT $this (COUNT(?typesm) AS ?sms) 
@@ -1467,7 +1460,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Asynchronous
         FILTER (?sms=1 && ?value!=?smaggregate ) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-equationY2,CurveData-equationY2,"If CurveData.Curve is a ReactiveCapabilityCurve, each CurveData shall satisfy the following relation: CurveData.xvalue^2+CurveData.y2value^2 shall be less than or equal to RotatingMachine.ratedS^2.","
-      SELECT $this ?value 
+	    SELECT $this ?value 
       WHERE {
         $this $PATH ?value .
         ?value rdf:type cim:ReactiveCapabilityCurve .
@@ -1480,7 +1473,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-eq
         FILTER ((?xvalue*?xvalue+?y2value*?y2value)>?rateds*?rateds) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-equationY1,CurveData-equationY1,"If CurveData.Curve is a ReactiveCapabilityCurve, each CurveData shall satisfy the following relation: CurveData.xvalue^2+CurveData.y1value^2 shall be less than or equal to RotatingMachine.ratedS^2.","
-      SELECT $this ?value 
+	    SELECT $this ?value 
       WHERE {
         $this $PATH ?value .
         ?value rdf:type cim:ReactiveCapabilityCurve .
@@ -1492,7 +1485,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-eq
         FILTER ( (?xvalue*?xvalue+?y1value*?y1value)>?rateds*?rateds) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-reactive,CurveData-reactive,"If CurveData.Curve is a ReactiveCapabilityCurve, the CurveData.y2value shall be greater than or equal to CurveData.y1value.It is not allowed that all CurveData.y2value values are equal to CurveData.y1value values.","
-      SELECT $this ?value ?countcd ?sumy1v ?sumy2v
+	    SELECT $this ?value ?countcd ?sumy1v ?sumy2v
       WHERE {
         {
         SELECT $this (COUNT(?curvedtype) AS ?countcd) (SUM(?y1v) AS ?sumy1v) (SUM(?y2v) AS ?sumy2v)
@@ -1521,7 +1514,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#CurveData-re
         FILTER ((?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
         } "
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-452/3.0#Terminal-connection,Terminal-connection,Terminal-s of the two sides of a two-terminal ConductingEquipment (or any of its subclasses) shall not be connected to the same ConnectivityNode.,"
-        SELECT $this  ?value
+	      SELECT $this  ?value
         WHERE {
           ?term1 cim:Terminal.ConductingEquipment $this .
           ?term2 cim:Terminal.ConductingEquipment $this .
@@ -1602,8 +1595,8 @@ http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-456/3.0#Model-angleRefe
       LIMIT 1
       "
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvShuntCompensatorSections.sections-value,SvShuntCompensatorSections.sections-value,"In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, SvShuntCompensatorSections.sections shall be integer.","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:SvShuntCompensatorSections.ShuntCompensator/cim:RegulatingCondEq.RegulatingControl ?contr .
         #$this cim:SvShuntCompensatorSections.ShuntCompensator ?shuntcomp .
@@ -1614,10 +1607,10 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
         ?contr cim:RegulatingControl.discrete true . 
         FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"") ) . 
         #FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"")  && bound(?contr) && ?discrete=true && ?enabled=true) .          
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvTapStep.position-value,SvTapStep.position-value,"In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, SvTapStep.position shall be integer.","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:SvTapStep.TapChanger/cim:TapChanger.TapChangerControl ?contr .
         #$this cim:SvTapStep.TapChanger ?tapchanger .
@@ -1628,16 +1621,16 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
         #?contr cim:RegulatingControl.discrete ?discrete . 
         #?contr cim:RegulatingControl.enabled ?enabled .
         #FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"")  && bound(?contr) && ?discrete=true && ?enabled=true) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvSwitch-instance,SvSwitch-instance,"SvSwitch shall be exchanged for all switching devices. It is expected that in most cases the SvSwitch.open in SV instance data will be identical with Switch.open in SSH instance data. However, in cases where a regulating control is modifying the connection state of the controlled device a difference between SvSwitch.open and Switch.open can occur.","
-      SELECT  $this
-      WHERE {
+			SELECT  $this
+			WHERE {
         OPTIONAL {$this ^cim:SvSwitch.Switch ?svswitch } .
         FILTER (!bound(?svswitch)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvPowerFlow-instance,SvPowerFlow-instance,"As a minimum there shall be an instance of SvPowerFlow associated with the Terminal for all the following classes and their specialisation (subclass) that is part of an energized TopologicalIsland: RotatingMachine, EnergyConsumer, EquivalentInjection, ShuntCompensator, StaticVarCompensator, ExternalNetworkInjection, PowerElectronicsConnection and EnergySource. Additional instances of SvPowerFlow may optionally be available for other in service (SvStatus.inService=true) and energised equipment (equipment connected to a TopologicalNode part of the TopologicalIsland).","
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this  ^cim:SvStatus.ConductingEquipment/cim:SvStatus.inService  true .
         $this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?topologicalisland .
         $this rdf:type ?value .
@@ -1646,10 +1639,10 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
         OPTIONAL {$this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal ?svpowerflow }.
         #FILTER (bound(?topologicalisland) && bound(?svstatus) && ?svstatus=true && !bound(?svpowerflow)).
         FILTER (!bound(?svpowerflow)).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvPowerFlow.p-synchronousMachine,SvPowerFlow.p-synchronousMachine,The SvPowerFlow.p that is given by the steady state power flow solution for a SynchronousMachine shall normally be within the capability of the machine defined in the ReactiveCapabilityCurve or GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP when ReactiveCapabilityCurve is not present. Active power can be outside the capability as part of start-up or shutdown of the generator. CIM cannot represent different operation mode so this constraint will only give a warning. Note that different data exchange processes can assign more restrictive severity depending on the business needs and power flow algorithm applied by the business process.,"
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.p ?value .
         $this cim:RotatingMachine.GeneratingUnit ?gu .
         ?gu cim:GeneratingUnit.minOperatingP ?minp .
@@ -1676,10 +1669,10 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
 
         #FILTER ( (!bound(?rcc) && !(?value>=?minp && ?value<=?maxp)) || (bound(?rcc) && !(?value>=?minxvalue && ?value<=?maxxvalue))).
         FILTER ( (!bound(?rcc) && ((?value!=0 && (-?value<?minp || -?value>?maxp)) || (?value=0 && (?value<?minp || ?value>?maxp)))   ) || (bound(?rcc) && ((?value!=0 && (-?value<?minxvalue || -?value>?maxxvalue)) || (?value=0 && (?value<?minxvalue || ?value>?maxxvalue))))).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvPowerFlow.q-synchronousMachine,SvPowerFlow.q-synchronousMachine,"The SvPowerFlow.q that is given by the steady state power flow solution for a SynchronousMachine shall normally be within the capability of the machine defined in the ReactiveCapabilityCurve or SynchronousMachine.maxQ, SynchronousMachine.minQ when ReactiveCapabilityCurve is not present. Reactive power can be outside the capability if powerflow excludes reactive restriction. CIM cannot represent this so this contains will also give a warning. Note that different data exchange processes can assign more restrictive severity depending on the business needs and power flow algorithm applied by the business process.","
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this ^cim:Terminal.ConductingEquipment/^cim:SvPowerFlow.Terminal/cim:SvPowerFlow.q ?value .
         OPTIONAL {$this cim:SynchronousMachine.minQ ?minq }.
         OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq }.
@@ -1701,10 +1694,10 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
         }
 
         FILTER ( (!bound(?rcc) && bound(?minq) && bound(?maxq) && ((?value!=0 && (-?value<?minq || -?value>?maxq)) || (?value=0 && (?value<?minq || ?value>?maxq)))) || (bound(?rcc) && ((?value!=0 && (-?value<?my1value || -?value>?my2value)) || (?value=0 && (?value<?my1value || ?value>?my2value))))).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvVoltage.v-limits,SvVoltage.v-limits,The SvVoltage.v shall be less than or equal to VoltageLimit.value associated with OperationalLimitType.limitType=highVoltage and greater than or equal to VoltageLimit.value associated with OperationalLimitType.limitType=lowVoltage.,"
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this cim:SvVoltage.v ?value .
         $this cim:SvVoltage.ToplogicalNode/^cim:ConnectivityNode.TopologicalNode/^cim:Terminal.ConnectivityNode ?term .
         
@@ -1726,10 +1719,10 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
        
         FILTER ( ?value>?vhigh || ?value<?vlow).
         #FILTER ( bound(?vhigh) && bound(?vlow) && ?value<=?vhigh && ?value>=?vlow).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#SvVoltage.v-absoluteLimit,SvVoltage.v-absoluteLimit,SvVoltage.v shall be greater than 0.4 pu in cases where associated voltage limits are not defining different limit range.,"
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this cim:SvVoltage.v ?value .
         $this cim:SvVoltage.ToplogicalNode/^cim:ConnectivityNode.TopologicalNode/^cim:Terminal.ConnectivityNode ?term .
         $this cim:SvVoltage.ToplogicalNode/cim:ToplogicalNode.BaseVoltage/cim:BaseVoltage.nominalVoltage ?nvoltage .
@@ -1752,18 +1745,18 @@ http://iec.ch/TC57/ns/CIM/StateVariable-EU/constraints/IEC61970-456/solved/3.0#S
        
 
         FILTER ( !bound(?vhigh) && !bound(?vlow) && (?value/?nvoltage)<=0.4).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#EquivalentInjection-regulation,EquivalentInjection-regulation,"If EquivalentInjection.regulationCapability in EQ is true, then EquivalentInjection.regulationStatus and EquivalentInjection.regulationTarget are required in SSH. If EquivalentInjection.regulationCapability in EQ is false, then EquivalentInjection.regulationStatus and EquivalentInjection.regulationTarget are not exchanged in SSH.","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value.
         OPTIONAL {$this cim:EquivalentInjection.regulationStatus ?rstatus}.
         OPTIONAL {$this cim:EquivalentInjection.regulationTarget ?rtarget}. 
         FILTER ((?value=true && (!bound(?rstatus) || !bound(?rtarget))) || (?value=false && (bound(?rstatus) || bound(?rtarget)))) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine.p-limits,RotatingMachine.p-limits,The negated value (necessary due to sign convention) of RotatingMachine.p shall be less than or equal to GeneratingUnit.maxOperatingP and shall be greater than or equal to GeneratingUnit.minOperatingP of the associated GeneratingUnit.,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this cim:Equipment.inService true .
         $this cim:RotatingMachine.GeneratingUnit ?genunit.
         #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?hasgenunit} AS ?hasgu).
@@ -1772,10 +1765,10 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         ?genunit cim:GeneratingUnit.minOperatingP ?minp .
         FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
         #FILTER (?hasgu=true && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine.q-limits,RotatingMachine.q-limits,"In case there is no ReactiveCapabilityCurve associated with the SynchronousMachine, the negated value (necessary due to sign convention) of RotatingMachine.q shall be less than or equal to SynchronousMachine.maxQ and shall be greater than or equal to SynchronousMachine.minQ.","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this cim:Equipment.inService true .
         $this $PATH ?value .
         BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?curve} AS ?hascurve).
@@ -1785,10 +1778,10 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         $this cim:SynchronousMachine.minQ ?minq.
         #FILTER (?hascurve=false && bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
         FILTER (?hascurve=false && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .           
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#TapChanger.step-value,TapChanger.step-value,"In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, TapChanger.step shall be integer. ","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         #OPTIONAL {$this cim:TapChanger.TapChangerControl ?contr}.
         #?contr cim:RegulatingControl.discrete ?discrete . 
@@ -1798,10 +1791,10 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         ?contr cim:RegulatingControl.enabled true .
         #FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"")  && bound(?contr) && ?discrete=true && ?enabled=true) .  
         FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"")) .         
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#ShuntCompensator.sections-value,ShuntCompensator.sections-value,"In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, ShuntCompensator.sections shall be integer. ","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         #OPTIONAL {$this cim:RegulatingCondEq.RegulatingControl ?contr}.
         #?contr cim:RegulatingControl.discrete ?discrete . 
@@ -1811,34 +1804,34 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         ?contr cim:RegulatingControl.enabled true .
         #FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"") && bound(?contr) && ?discrete=true && ?enabled=true) .
         FILTER (STRENDS(str(?value), ""."") && !REGEX(STRAFTER(str(?value), "".""), ""^[0]$"", ""i"") ) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RegulatingControl.targetValue-value,RegulatingControl.targetValue-value,RegulatingControl.targetValue shall be positive value in cases where the RegulatingControl.mode is set to voltage in EQ profile. ,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage .
         $this $PATH ?value .
         FILTER (?value<=0 ) . 
         #FILTER (?value<=0 && ?mode=cim:RegulatingControlModeKind.voltage) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#ExternalNetworkInjection.p-limits,ExternalNetworkInjection.p-limits,The negated value (necessary due to sign convention) of ExternalNetworkInjection.p shall be less than or equal to ExternalNetworkInjection.maxP and shall be greater than or equal to ExternalNetworkInjection.minP.,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExternalNetworkInjection.maxP ?maxp . 
         $this cim:ExternalNetworkInjection.minP ?minp .
         FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#ExternalNetworkInjection.q-limits,ExternalNetworkInjection.q-limits,The negated value (necessary due to sign convention) of ExternalNetworkInjection.q shall be less than or equal to ExternalNetworkInjection.maxQ and shall be greater than or equal to ExternalNetworkInjection.minQ.,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:ExternalNetworkInjection.maxQ ?maxq . 
         $this cim:ExternalNetworkInjection.minQ ?minq .
         FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#EquivalentInjection.p-limits,EquivalentInjection.p-limits,The negated value (necessary due to sign convention) of EquivalentInjection.p shall be less than or equal to EquivalentInjection.maxP and shall be greater than or equal to EquivalentInjection.minP.,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         #OPTIONAL {$this cim:EquivalentInjection.maxP ?maxp} . 
         #OPTIONAL {$this cim:EquivalentInjection.minP ?minp} .
@@ -1846,10 +1839,10 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         $this cim:EquivalentInjection.minP ?minp .
         #FILTER (bound(?maxp) && bound(?minp) && !(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .  
         FILTER (!(-?value<=?maxp && -?value>=?minp && ?value!=0) && !(?value<=?maxp && ?value>=?minp && ?value=0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#EquivalentInjection.q-limits,EquivalentInjection.q-limits,The negated value (necessary due to sign convention) of EquivalentInjection.q shall be less than or equal to EquivalentInjection.maxQ and shall be greater than or equal to EquivalentInjection.minQ.,"
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         #OPTIONAL {$this cim:EquivalentInjection.maxQ ?maxq} . 
         #OPTIONAL {$this cim:EquivalentInjection.minQ ?minq} .
@@ -1857,20 +1850,20 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         $this cim:EquivalentInjection.minQ ?minq .
         #FILTER (bound(?maxq) && bound(?minq) && !(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .  
         FILTER (!(-?value<=?maxq && -?value>=?minq && ?value!=0) && !(?value<=?maxq && ?value>=?minq && ?value=0)) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#SynchronousMachine.operatingMode-matchType,SynchronousMachine.operatingMode-matchType,"The SynchronousMachine.operatingMode shall be consistent with the SynchronousMachine.type. SynchronousMachine.operatingMode = motor shall be provided for SynchronousMachine.type in (motor, generatorOrMotor, motorOrCondenser, generatorOrCondenserOrMotor), SynchronousMachine.operatingMode = condenser shall be provided for SynchronousMachine.type in (condenser, generatorOrCondenser, motorOrCondenser, generatorOrCondenserOrMotor), and SynchronousMachine.operatingMode = generator shall be provided for SynchronousMachine.type in (generator, generatorOrMotor, generatorOrCondenser, generatorOrCondenserOrMotor).","
-      SELECT  $this ?value
-      WHERE {
+			SELECT  $this ?value
+			WHERE {
         $this $PATH ?value .
         $this cim:SynchronousMachine.type ?type .
          
         FILTER ((?value=cim:SynchronousMachineOperatingMode.motor && ?type NOT IN (cim:SynchronousMachineKind.motor , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
         (?value=cim:SynchronousMachineOperatingMode.condenser && ?type NOT IN (cim:SynchronousMachineKind.condenser , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.motorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor)) ||
         (?value=cim:SynchronousMachineOperatingMode.generator && ?type NOT IN (cim:SynchronousMachineKind.generator , cim:SynchronousMachineKind.generatorOrMotor , cim:SynchronousMachineKind.generatorOrCondenser , cim:SynchronousMachineKind.generatorOrCondenserOrMotor))) .        
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine-pAndQcapabilityCurveP,RotatingMachine-pAndQcapabilityCurveP,"In cases where a ReactiveCapabilityCurve is associated, the RotatingMachine.p shall be less than or equal to the maximum active power value defined by the curve and it shall be greater than or equal to the minimum active power value defined by the curve. The RotatingMachine.q shall be less than or equal to the maximum reactive power value defined by the curve and it shall be greater than or equal to the minimum reactive power value defined by the curve.","
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this cim:RotatingMachine.p ?value .
         OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
                
@@ -1887,10 +1880,10 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         }
 
         FILTER ( bound(?rcc) && !(-?value>=?minxvalue && -?value<=?maxxvalue)).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#RotatingMachine-pAndQcapabilityCurveQ,RotatingMachine-pAndQcapabilityCurveQ,"In cases where a ReactiveCapabilityCurve is associated, the RotatingMachine.p shall be less than or equal to the maximum active power value defined by the curve and it shall be greater than or equal to the minimum active power value defined by the curve. The RotatingMachine.q shall be less than or equal to the maximum reactive power value defined by the curve and it shall be greater than or equal to the minimum reactive power value defined by the curve.","
-      SELECT  $this ?value 
-      WHERE {
+			SELECT  $this ?value 
+			WHERE {
         $this cim:RotatingMachine.q ?value .
         OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
                
@@ -1908,9 +1901,9 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         }
 
         FILTER ( bound(?rcc) && !(-?value>=?my1value && -?value<=?my2value)).
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notSolved/3.0#GeneratingUnit-singleActivePowerSlack,GeneratingUnit-singleActivePowerSlack,Active power slack by a single generator per ControlArea: one generator has GeneratingUnit.normalPF set to a highest value (non-zero) and all other generating units have a zero GeneratingUnit.normalPF.,"
-      SELECT  $this ?value ?countm ?countd (COUNT(?npf1) as ?counte) ?countall
+			SELECT  $this ?value ?countm ?countd (COUNT(?npf1) as ?counte) ?countall
         WHERE {
           ?gu cim:GeneratingUnit.normalPF ?npf1 .
           BIND ("""" AS ?value).
@@ -1927,8 +1920,8 @@ http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-456/notS
         HAVING((?countd<2 && ?countall!=1) || ?countm=0 || ?counte!=1)
       "
 http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-456/notSolved/3.0#Switch-sameTopologicalNode,Switch-sameTopologicalNode,The Terminal-s of the two sides of a retained Switch (Switch.retained=true) or any of its subclasses shall not be connected to the same TopologicalNode.,"
-      SELECT  $this ?value ?cntn1 ?tn1
-      WHERE {
+			SELECT  $this ?value ?cntn1 ?tn1
+			WHERE {
              $this $PATH ?value .
              ?terminal1 cim:Terminal.ConductingEquipment $this .
              ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
@@ -1941,11 +1934,11 @@ http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-456/notSolved/3.0#Swi
              OPTIONAL {?terminal2 cim:Terminal.ConnectivityNode ?cn2}.
              OPTIONAL {?terminal2 cim:Terminal.TopologicalNode ?tn2}.
              ?cn2 cim:ConnectivityNode.TopologicalNode ?cntn2 .          
-        FILTER (?value=true && (?terminal1!=?terminal2 && (?tn1=?tn2 || ?cntn1=?cntn2))) .
-      }"
+				FILTER (?value=true && (?terminal1!=?terminal2 && (?tn1=?tn2 || ?cntn1=?cntn2))) .
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/notSolved/1.0#TurbineGovernorDynamics-mbaseEquation,TurbineGovernorDynamics-mbaseEquation,"The vast majority of turbine-governor models have mwbase as a parameter. The parameter is specified explicitly in the turbine-governor models to support use of a different value by transient analysis tools, if needed. If this parameter is present it shall correspond to RotatingMachine.ratedPowerFactor * RotatingMachine.ratedS.","
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
           $this rdf:type ?type .
           OPTIONAL {$this cim:GovHydroIEEE0.mwbase ?value }.
           OPTIONAL {$this cim:GovHydroIEEE2.mwbase ?value }.
@@ -1978,27 +1971,27 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/notSolved/1.0#Turbin
           OPTIONAL {?sm cim:RotatingMachine.ratedPowerFactor ?ratedPowerFactor} .
           OPTIONAL {?sm cim:RotatingMachine.ratedS ?ratedS} .
         FILTER ((!bound(?ratedPowerFactor) || !bound(?ratedS)) || ?value!=?ratedPowerFactor*?ratedS ) . 
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/1.0#ExcitationSystemDynamics.SynchronousMachineDynamicsSynchronousMachineSimplified-valueType,ExcitationSystemDynamics.SynchronousMachineDynamicsSynchronousMachineSimplified-valueType,ExcitationSystemDynamics.SynchronousMachineDynamics cannot point to an object of type SynchronousMachineSimplified.,"
-      SELECT $this ?value
-      WHERE {
+			SELECT $this ?value
+			WHERE {
         $this $PATH ?value .
         ?value rdf:type ?type .
         FILTER (?type=cim:SynchronousMachineSimplified) .       
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/1.0#SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotorSimplified,SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotorSimplified,Annex A specifies the usage of different attributes related to the model type. If SynchronousMachineTimeConstantReactance.modelType is subtransientSimplified and .rotorType is roundRotor the following optional attributes are not exchanged or set to 0: - SynchronousMachineDetailed.saturationFactorQAxis; - SynchronousMachineDetailed.saturationFactor120QAxis. RotatingMachineDynamics.statorResistance is set to 0.,"
-      SELECT $this
-      WHERE {
+			SELECT $this
+			WHERE {
         $this $PATH ?modelType .
         $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
         $this cim:RotatingMachineDynamics.statorResistance ?statorResistance .
         OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
         OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
         FILTER (?modelType=cim:SynchronousMachineModelKind.subtransientSimplified && ?rotorType=cim:RotorKind.roundRotor && (?statorResistance!=0 || ?sfqaxis!=0 || ?sf120qaxis!=0)) .       
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/1.0#SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotor,SynchronousMachineTimeConstantReactance-modelType-SubtransientRoundRotor,Annex A specifies the usage of different attributes related to the model type. If SynchronousMachineTimeConstantReactance.modelType is subtransient and .rotorType is roundRotor the following optional attributes are required:- SynchronousMachineTimeConstantReactance.xQuadTrans;- SynchronousMachineTimeConstantReactance.tpqo;- SynchronousMachineDetailed.saturationFactorQAxis;- SynchronousMachineDetailed.saturationFactor120QAxis;- RotatingMachineDynamics.saturationFactor;- RotatingMachineDynamics.saturationFactor120.,"
-      SELECT $this
-      WHERE {
+			SELECT $this
+			WHERE {
         $this $PATH ?modelType .
         $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
         OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
@@ -2008,16 +2001,16 @@ http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/1.0#SynchronousMachi
         OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.xQuadTrans ?xqtans} .
         OPTIONAL {$this cim:SynchronousMachineTimeConstantReactance.tpqo ?tpqo} .
         FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.roundRotor && (!bound(?sfqaxis) || !bound(?sf120qaxis) || !bound(?s1) || !bound(?s2) || !bound(?xqtans) || !bound(?tpqo))) .       
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/Dynamics/constraints/IEC61970-457/1.0#SynchronousMachineTimeConstantReactance-modelType-SubtransientSalientPole,SynchronousMachineTimeConstantReactance-modelType-SubtransientSalientPole,Annex A specifies the usage of different attributes related to the model type. If SynchronousMachineTimeConstantReactance.modelType is subtransient and .rotorType is salientPole the following optional attributes are not exchanged or set to 0: - SynchronousMachineDetailed.saturationFactorQAxis - SynchronousMachineDetailed.saturationFactor120QAxis.,"
-      SELECT $this
-      WHERE {
+			SELECT $this
+			WHERE {
         $this $PATH ?modelType .
         $this cim:SynchronousMachineTimeConstantReactance.rotorType ?rotorType .
         OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactorQAxis ?sfqaxis} .
         OPTIONAL {$this cim:SynchronousMachineDetailed.saturationFactor120QAxis ?sf120qaxis} .
         FILTER (?modelType=cim:SynchronousMachineModelKind.subtransient && ?rotorType=cim:RotorKind.salientPole && (?sfqaxis!=0 || ?sf120qaxis!=0)) .       
-      }"
+			}"
 http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#All-GENC1,All-GENC1,All IdentifiedObject-s shall have a persistent and globally unique identifier (Master Resource Identifier - mRID).,"
       SELECT  $this (COUNT(?value) AS ?counts) ?value
       WHERE {
@@ -2065,12 +2058,6 @@ http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Float-specialVal
           #BIND(str($this) AS ?value).
           FILTER(isLiteral(?this) && DATATYPE(?value)=xsd:float && (!isNumeric($this) || CONTAINS(?value, ""NaN"") || CONTAINS(?value, ""INF""))).
           #FILTER(!isNumeric($this) || CONTAINS(?value, ""NaN"") || CONTAINS(?value, ""INF"")).
-      }"
-http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Model.modelingAuthoritySet-marp10-12,Model.modelingAuthoritySet-marp10-12,MARP10: The model authority set defined in file header of a state variable instance file of a merged model is the model authority set which creates the state variables. MARP11:The model authority set defined in file header of a diagram layout instance file of a merged model is the model authority set which creates the diagram layout. MARP12:The model authority set defined in file header of a topology instance file of a merged model is the model authority set which creates the topology as an output of topology processing.,"
-      SELECT  $this ?value 
-      WHERE {
-          $this $PATH ?value .
-          FILTER(STRLEN(str(?value))=0).
       }"
 http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600/3.0#SvVoltage-SV__4,SvVoltage-SV__4,All state variables shall be instantiated in the SV instance file (distribution) for all energized elements part of a TopologicalIsland independently of the regulating status of the elements (e.g. for a shunt compensator that is not regulating the SvShuntCompensatorSections.sections shall be the same as ShuntCompensator.sections). All instances shall be representing computed values obtained from a power flow calculation. For SvPowerFlow instances refer to profile constraint on the SvPowerFlow class.,"
       SELECT  $this
@@ -2168,8 +2155,8 @@ http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0#RegulatingCon
       }
       GROUP BY $this ?mode
       }
+      FILTER (?count>1) .
       }
-      HAVING (?count>1)
       #LIMIT 1
       "
 http://iec.ch/TC57/ns/CIM/SolvedMAS/constraints/IEC61970-600-2/3.0#RegulatingControl-point,RegulatingControl-point,The controlled point and the controlling equipment shall be located in the same TopologicalIsland. In cases where the controlling point is a TopologicalNode only one RegulatingControl shall be instantiated following the terms of constraint C:452:EQ:RegulatingControl:samePoint.,"
@@ -2227,34 +2214,6 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600-2/3.0#ReactiveCa
         BIND(EXISTS{$this cim:Curve.y2Unit ?y2unitcheck} AS ?hasy2unit).
         FILTER (?hasy2unit=false && ?xunit!=cim:UnitSymbol.W && ?y2unit!=cim:UnitSymbol.VAr && ?y1unit!=cim:UnitSymbol.VAr).
         }"
-http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.shortName-stringLength,IdentifiedObject.shortName-stringLength,Length of the string 12 characters maximum.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>12) .
-      }"
-http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.energyIdentCodeEic-stringLength,IdentifiedObject.energyIdentCodeEic-stringLength,The length of the string is 16 characters as defined by the EIC code.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)!=16) .
-      }"
-http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.name-stringLength,IdentifiedObject.name-stringLength,The string IdentifiedObject.name has a maximum of 128 characters.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>128) .
-      }"
-http://iec.ch/TC57/ns/CIM/IdentifiedObjectStringLength/constraints/3.0#IdentifiedObject.description-stringLength,IdentifiedObject.description-stringLength,The string IdentifiedObject.description is maximum 256 characters.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
-        
-        FILTER (STRLEN(?value)>256) .
-      }"
 http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/constraints/IEC61970-600-2/3.0#SeriesCompensator.varistorRatedCurrent-required,SeriesCompensator.varistorRatedCurrent-required,The SeriesCompensator.varistorRatedCurrent is requited if SeriesCompensator.varistorPresent is true.,"
       SELECT  $this ?value
       WHERE {
@@ -2389,36 +2348,77 @@ https://ap-con.cim4.eu/AssessedElement-Complex/2.4#AssessedElement-associations,
       SELECT  $this  
       WHERE {      
         BIND(EXISTS{$this nc:AssessedElement.ConductingEquipment ?o1} AS ?aeo1).
-    BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
-    BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
-    BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
-    BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
-        FILTER (?aeo1=false && ?aeo2=false && ?aeo3=false && ?aeo4=false && ?aeo5=false).
+        BIND(EXISTS{$this nc:AssessedElement.OperationalLimit ?o2} AS ?aeo2).
+        BIND(EXISTS{$this nc:AssessedElement.DCTieCorridor ?o3} AS ?aeo3).
+        BIND(EXISTS{$this nc:AssessedElement.AssessedPowerTransferCorridor ?o4} AS ?aeo4).
+        BIND(EXISTS{$this nc:AssessedElement.Line ?o5} AS ?aeo5).
+        FILTER (?aeo1=""false""^^xsd:boolean && ?aeo2=""false""^^xsd:boolean && ?aeo3=""false""^^xsd:boolean && ?aeo4=""false""^^xsd:boolean && ?aeo5=""false""^^xsd:boolean).
       }"
 https://ap-con.cim4.eu/AssessedElement-Complex/2.4#OperationalLimit.AssessedElement-required,OperationalLimit.AssessedElement-required,A BaseCaseCurrentLimit shall be associated with an AssessedElement via the association end OperationalLimit.AssessedElement. The AssessedElement.inBaseCase shall be set to true.,"
       SELECT  $this  
       WHERE {      
     BIND(EXISTS{$this ^nc:AssessedElement.OperationalLimit/nc:AssessedElement.inBaseCase true} AS ?hasBCtrue).
 
-        FILTER (?hasBCtrue=false ).
+        FILTER (?hasBCtrue=""false""^^xsd:boolean ).
       }"
-https://common-constraints.eu/ClassCount-property,ClassCount-property,Counts instance of classes present in the data graph.," 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             "
-https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.3#AvailabilityEnabled-associations,AvailabilityEnabled-associations,AvailabilityEnabled shall have an association with either GridStateAlteration or AssessedElement.,"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#AvailabilityEnabled-associations,AvailabilityEnabled-associations,AvailabilityEnabled shall have an association with either GridStateAlteration or AssessedElement.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:AvailabilityEnabled.GridStateAlteration ?gsa.} AS ?vGSA).  
     BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
 
         FILTER (
-      (?vGSA=true && ?vAE=true) || 
-      (?vGSA=false && ?vAE=false) 
+      (?vGSA=""true""^^xsd:boolean && ?vAE=""true""^^xsd:boolean) || 
+      (?vGSA=""false""^^xsd:boolean && ?vAE=""false""^^xsd:boolean) 
     ).
+      }"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#PeerTemporalDependency.finishToFinishLagKind-required,PeerTemporalDependency.finishToFinishLagKind-required,If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
+    
+        FILTER (?hasftf=""true""^^xsd:boolean && ?hasftfk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#PeerTemporalDependency.finishToStartLagKind-required,PeerTemporalDependency.finishToStartLagKind-required,If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
+    
+        FILTER (?hasfts=""true""^^xsd:boolean && ?hasftsk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#PeerTemporalDependency.overlapKind-required,PeerTemporalDependency.overlapKind-required,If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
+    
+        FILTER (?hasop=""true""^^xsd:boolean && ?hasopk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#PeerTemporalDependency.startToStartLagKind-required,PeerTemporalDependency.startToStartLagKind-required,If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
+    
+        FILTER (?hassts=""true""^^xsd:boolean && ?hasstsk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#PeerTemporalDependency.constraintKind-exclusive,PeerTemporalDependency.constraintKind-exclusive,"If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag.","
+      SELECT  $this  
+      WHERE {  
+    $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
+    
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
+    
+        FILTER (?hasop=""true""^^xsd:boolean || ?hassts=""true""^^xsd:boolean || ?hasfts=""true""^^xsd:boolean || ?hasftf=""true""^^xsd:boolean).
       }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#spatial-NC-cardinality,spatial-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value ?v
@@ -2431,7 +2431,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#spatial-NC-cardinality,spatial
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2>)).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0>)).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#accrualPeriodicity-NC-cardinality,accrualPeriodicity-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value ?v
@@ -2444,7 +2444,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#accrualPeriodicity-NC-cardinal
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/ImpactAssessmentMatrix/2.3> , <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4> )).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/ImpactAssessmentMatrix/2.4> , <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5> )).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#usedSettings-NC-cardinality,usedSettings-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value ?v
@@ -2470,23 +2470,15 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#accessRights-NC-cardinality,ac
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> )).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#conformsTo-NC-cardinality,conformsTo-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value 
         WHERE {
 
-    #{
-    #  SELECT $this (count(?value) as ?v)
-    #  WHERE {
-    #  OPTIONAL {$this $PATH ?value } .
-    #  }
-    #  GROUP BY $this $PATH 
-    #}
     $this dcterms:spatial ?spatial .
     OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
     
-        #FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> ) && ?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && bound(?conformsTo)).
     FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#requires-NC-cardinality,requires-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
@@ -2500,7 +2492,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#requires-NC-cardinality,requir
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> )).
+        FILTER (?v=0 && ?conformsTo IN (<<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#issued-NC-cardinality,issued-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value ?v
@@ -2513,7 +2505,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#issued-NC-cardinality,issued-N
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> )).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#keyword-NC-cardinality,keyword-NC-cardinality,This constraint validates the cardinality of the property (attribute).,"
         SELECT $this ?value ?v
@@ -2526,7 +2518,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#keyword-NC-cardinality,keyword
       }
       GROUP BY $this $PATH 
     }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.3> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.3>, <https://ap.cim4.eu/EquipmentReliability/2.3>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.3>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.3>, <https://ap.cim4.eu/RemedialAction/2.3>, <https://ap.cim4.eu/RemedialActionSchedule/2.3>, <https://ap.cim4.eu/SecurityAnalysisResult/2.4>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.3>, <https://ap.cim4.eu/SteadyStateInstruction/2.3>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/2.2> )).
+        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#versionNotes.langTag-presence,versionNotes.langTag-presence,This constraint validates the presence of language tag with value en for the property (attribute).,"
         SELECT $this ?value 
@@ -2548,7 +2540,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#alternativeVersionAndPreferred
     BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
     BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
 
-        FILTER ((?hasaltv=true && ?hasprefv=false) || (?hasaltv=false && ?hasprefv=true)).
+        FILTER ((?hasaltv=""true""^^xsd:boolean && ?hasprefv=""false""^^xsd:boolean) || (?hasaltv=""false""^^xsd:boolean && ?hasprefv=""true""^^xsd:boolean)).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#forwardReverse-dependency,forwardReverse-dependency,"This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:referseDifference is present.","
         SELECT $this ?value 
@@ -2556,7 +2548,7 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#forwardReverse-dependency,forw
     BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
     BIND(EXISTS{$this dcatcim:referseDifference ?value1} AS ?hasprefv).
 
-        FILTER ((?hasaltv=false && ?hasprefv=false) ).
+        FILTER ((?hasaltv=""false""^^xsd:boolean && ?hasprefv=""false""^^xsd:boolean) ).
         }"
 https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#reverseDifferencePreviousVersion-dependency,reverseDifferencePreviousVersion-dependency,If dcatcim:reverseDifference exists there must be a dcat:previousVersion.,"
         SELECT $this ?value 
@@ -2564,31 +2556,39 @@ https://ap-con.cim4.eu/DatasetMetadata-Simple/3.0#reverseDifferencePreviousVersi
     BIND(EXISTS{$this dcatcim:reverseDifference ?value} AS ?hasrd).
     BIND(EXISTS{$this dcat:previousVersion ?value1} AS ?haspv).
 
-        FILTER (?hasrd=true && ?haspv=false).
+        FILTER (?hasrd=""true""^^xsd:boolean && ?haspv=""false""^^xsd:boolean).
         }"
-https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaDispatchableUnit-associations,AreaDispatchableUnit-associations,"The AreaDispatchableUnit shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer, ScheduleResource or HydroPump.","
-      SELECT  $this  
-      WHERE {      
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaReserveResource-associations,AreaReserveResource-associations,"The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump.","
+			SELECT  $this  
+			WHERE {      
        
-    BIND(EXISTS{$this nc:AreaDispatchableUnit.GeneratingUnit ?o1} AS ?adugu).
-    BIND(EXISTS{$this nc:AreaDispatchableUnit.PowerElecronicsUnit ?o2} AS ?adupe).
-    BIND(EXISTS{$this nc:AreaDispatchableUnit.EnergyConsumer ?o3} AS ?aduec).
-    BIND(EXISTS{$this nc:AreaDispatchableUnit.ScheduleResource ?o4} AS ?adusr).
-    BIND(EXISTS{$this nc:AreaDispatchableUnit.HydroPump ?o5} AS ?aduhp).
-        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?adusr=false && ?aduhp=false).
-      }"
+		BIND(EXISTS{$this nc:AreaReserveResource.GeneratingUnit ?o1} AS ?adugu).
+		BIND(EXISTS{$this nc:AreaReserveResource.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:AreaReserveResource.ScheduleResource ?o4} AS ?adusr).
+		BIND(EXISTS{$this nc:AreaReserveResource.HydroPump ?o5} AS ?aduhp).
+        FILTER (?adugu=""false""^^xsd:boolean && ?adupe=""false""^^xsd:boolean && ?adusr=""false""^^xsd:boolean && ?aduhp=""false""^^xsd:boolean).
+			}"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#AreaReserveResource-interconnection,AreaReserveResource-interconnection,"An AreaReserveResource shall be associated with either a SchedulingArea or a TieCorridor, but not both.","
+			SELECT  $this  
+			WHERE {      
+       
+		BIND(EXISTS{$this nc:AreaReserveResource.SchedulingArea ?o1} AS ?sa).
+		BIND(EXISTS{$this nc:AreaReserveResource.TieCorridor ?o2} AS ?tc).
+
+        FILTER (?sa=""false""^^xsd:boolean && ?tc=""false""^^xsd:boolean ).
+			}"
 https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#EnergyComponent-associations,EnergyComponent-associations,"The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump.","
-      SELECT  $this  
-      WHERE {      
+			SELECT  $this  
+			WHERE {      
        
-    BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
-    BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
-    BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
-    BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
-        FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?aduhp=false).
-      }"
+		BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit ?o1} AS ?adugu).
+		BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
+		BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer ?o2} AS ?aduec).
+		BIND(EXISTS{$this nc:EnergyComponent.HydroPump ?o2} AS ?aduhp).
+        FILTER (?adugu=""false""^^xsd:boolean && ?adupe=""false""^^xsd:boolean && ?aduec=""false""^^xsd:boolean && ?aduhp=""false""^^xsd:boolean).
+			}"
 https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#HydroPowerPlant-operatingMode,HydroPowerPlant-operatingMode,The SynchronousMachine.operatingMode of all SynchronousMachine objects part of a HydroPowerPlant shall be consistent.,"
-        SELECT $this (COUNT(?value) AS ?countv)
+	      SELECT $this (COUNT(?value) AS ?countv)
         WHERE {
         $this ^cim16:HydroGeneratingUnit.HydroPowerPlant/^cim16:RotatingMachine.GeneratingUnit/cim16:SynchronousMachine.operatingMode|^cim17:HydroGeneratingUnit.HydroPowerPlant/^cim17:RotatingMachine.GeneratingUnit/cim17:SynchronousMachine.operatingMode|^cim:HydroGeneratingUnit.HydroPowerPlant/^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.operatingMode|^cim16:HydroPump.HydroPowerPlant/cim16:HydroPump.RotatingMachine/cim16:SynchronousMachine.operatingMode|^cim17:HydroPump.HydroPowerPlant/cim17:HydroPump.RotatingMachine/cim17:SynchronousMachine.operatingMode|^cim:HydroPump.HydroPowerPlant/cim:HydroPump.RotatingMachine/cim:SynchronousMachine.operatingMode ?value .
         }
@@ -2596,20 +2596,196 @@ https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#HydroPowerPlant-operatin
         HAVING(?countv>1)
       "
 https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#Circuit-associations,Circuit-associations,The Circuit shall be associated with either Equipment or Terminal.,"
-      SELECT  $this  
-      WHERE {      
+			SELECT  $this  
+			WHERE {      
        
-    BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
-    BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
-        FILTER (?ce=false && ?ct=false).
-      }"
+		BIND(EXISTS{$this nc:Equipment.Circuit ?o1} AS ?ce).
+		BIND(EXISTS{$this nc:Circuit.IdentifyingTerminal ?o2} AS ?ct).
+        FILTER (?ce=""false""^^xsd:boolean && ?ct=""false""^^xsd:boolean).
+			}"
 https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#InfeedLimit-requiredAttributes,InfeedLimit-requiredAttributes,An InfeedLimit shall have either .normalValueA or .normalValueW.,"
-      SELECT  $this  
-      WHERE {      
+			SELECT  $this  
+			WHERE {      
        
-    BIND(EXISTS{$this nc:InfeedLimit.normalValueA ?o1} AS ?hasNVA).
-    BIND(EXISTS{$this nc:InfeedLimit.normalValueW ?o2} AS ?hasNVW).
-        FILTER (?hasNVA=false && ?hasNVW=false).
+		BIND(EXISTS{$this nc:InfeedLimit.normalValueA ?o1} AS ?hasNVA).
+		BIND(EXISTS{$this nc:InfeedLimit.normalValueW ?o2} AS ?hasNVW).
+        FILTER (?hasNVA=""false""^^xsd:boolean && ?hasNVW=""false""^^xsd:boolean).
+			}"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#CrossZonalNetworkElement.BiddingZoneBorder-usage,CrossZonalNetworkElement.BiddingZoneBorder-usage,"A CrossZonalNetworkElement shall be associated with exactly two BiddingZoneBorder instances. The two associated BiddingZoneBorder instances shall represent the same pair of bidding zones, but in opposite directions. This means that the FromBiddingZone of one BiddingZoneBorder shall be equal to the ToBiddingZone of the other BiddingZoneBorder, and the ToBiddingZone of the first BiddingZoneBorder shall be equal to the FromBiddingZone of the other. The two bidding zones shall be different.","
+        SELECT DISTINCT $this
+        WHERE {
+            $this $PATH ?border1 .
+            $this $PATH ?border2 .
+
+            FILTER (?border1 != ?border2)
+
+            ?border1
+                nc:BiddingZoneBorder.FromBiddingZone ?from1 ;
+                nc:BiddingZoneBorder.ToBiddingZone   ?to1 .
+
+            ?border2
+                nc:BiddingZoneBorder.FromBiddingZone ?from2 ;
+                nc:BiddingZoneBorder.ToBiddingZone   ?to2 .
+
+            FILTER (
+                ?from1 = ?to1
+                ||
+                ?from1 != ?to2
+                ||
+                ?to1 != ?from2
+            )
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPoint-requiredAssociation,BoundaryPoint-requiredAssociation,A BoundaryPoint shall have association to BoundaryPointBorder or BoundaryPointBorderLink and not both.,"
+        SELECT $this
+        WHERE {
+            BIND(EXISTS {
+                $this nc:BoundaryPoint.BoundaryPointBorder ?border .
+            } AS ?hasBorder)
+
+            BIND(EXISTS {
+                $this ^nc:BoundaryPointBorderLink.BoundaryPoint ?borderLink .
+            } AS ?hasBorderLink)
+
+            FILTER (
+                (?hasBorder=""true""^^xsd:boolean && ?hasBorderLink=""true""^^xsd:boolean)
+                ||
+                (?hasBorder=""false""^^xsd:boolean && ?hasBorderLink=""false""^^xsd:boolean)
+            )
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPoint-naming,BoundaryPoint-naming,"If both partyOneResourceName and partyTwoResourceName are provided, IdentifiedObject.name shall be <partyOneResourceName>-<partyTwoResourceName>.","
+        SELECT $this ?value
+        WHERE {
+            $this nc:BoundaryPoint.partyOneResourceName ?partyOneResourceName ;
+                  nc:BoundaryPoint.partyTwoResourceName ?partyTwoResourceName .
+
+            OPTIONAL {
+                $this $PATH ?value .
+            }
+
+            BIND(CONCAT(STR(?partyOneResourceName), ""-"", STR(?partyTwoResourceName)) AS ?expectedName)
+
+            FILTER (
+                !BOUND(?value)
+                || STR(?value) != ?expectedName
+            )
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#CommonResponsibilityPoint-requiredAssociation,CommonResponsibilityPoint-requiredAssociation,CommonResponsibilityPoint shall have association to either DCNode or ConnectivityNode and not both.,"
+        SELECT $this
+        WHERE {
+            BIND(EXISTS {
+                $this nc:CommonResponsibilityPoint.DCNode ?dcNode .
+            } AS ?hasDCNode)
+
+            BIND(EXISTS {
+                $this nc:CommonResponsibilityPoint.ConnectivityNode ?connectivityNode .
+            } AS ?hasConnectivityNode)
+
+            FILTER (
+                (?hasDCNode=""true""^^xsd:boolean && ?hasConnectivityNode=""true""^^xsd:boolean)
+                ||
+                (?hasDCNode=""false""^^xsd:boolean && ?hasConnectivityNode=""false""^^xsd:boolean)
+            )
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorderLink-usage,BoundaryPointBorderLink-usage,"BoundaryPointBorderLink shall only be used when a BoundaryPoint is associated with more than one BoundaryPointBorder. If a BoundaryPoint is associated with exactly one BoundaryPointBorder, the BoundaryPointBorderLink class shall not be used.","
+        SELECT DISTINCT $this
+        WHERE {
+            $this $PATH  ?boundaryPoint.
+
+            FILTER NOT EXISTS {
+                ?boundaryPoint ^nc:BoundaryPointBorderLink.BoundaryPoint ?link1, ?link2 .
+
+                FILTER (?link1 != ?link2)
+
+                ?link1 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border1 .
+                ?link2 nc:BoundaryPointBorderLink.BoundaryPointBorder ?border2 .
+
+                FILTER (?border1 != ?border2)
+            }
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorder-naming,BoundaryPointBorder-naming,"If both partyOneName and partyTwoName are provided, IdentifiedObject.name shall be <partyOneName>-<partyTwoName>.","
+        SELECT $this ?value
+        WHERE {
+            $this nc:BoundaryPointBorder.partyOneName ?partyOneName ;
+                  nc:BoundaryPointBorder.partyTwoName ?partyTwoName .
+
+            OPTIONAL {
+                $this $PATH ?value .
+            }
+
+            BIND(CONCAT(STR(?partyOneName), ""-"", STR(?partyTwoName)) AS ?expectedName)
+
+            FILTER (
+                !BOUND(?value)
+                || STR(?value) != ?expectedName
+            )
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#BoundaryPointBorder-requiredAssociation,BoundaryPointBorder-requiredAssociation,A BoundaryPointBorder shall have minimum one BoundaryPoint or one BoundaryPointBorderLink.,"
+        SELECT $this
+        WHERE {
+            BIND(EXISTS {
+                ?boundaryPoint nc:BoundaryPoint.BoundaryPointBorder $this .
+            } AS ?hasBoundaryPoint)
+
+            BIND(EXISTS {
+                ?borderLink nc:BoundaryPointBorderLink.BoundaryPointBorder $this .
+            } AS ?hasBoundaryPointBorderLink)
+
+            FILTER (?hasBoundaryPoint=""false""^^xsd:boolean && ?hasBoundaryPointBorderLink=""false""^^xsd:boolean)
+        }
+    "
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#PeerTemporalDependency.finishToFinishLagKind-required,PeerTemporalDependency.finishToFinishLagKind-required,If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
+    
+        FILTER (?hasftf=""true""^^xsd:boolean && ?hasftfk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#PeerTemporalDependency.finishToStartLagKind-required,PeerTemporalDependency.finishToStartLagKind-required,If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
+    
+        FILTER (?hasfts=""true""^^xsd:boolean && ?hasftsk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#PeerTemporalDependency.overlapKind-required,PeerTemporalDependency.overlapKind-required,If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
+    
+        FILTER (?hasop=""true""^^xsd:boolean && ?hasopk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#PeerTemporalDependency.startToStartLagKind-required,PeerTemporalDependency.startToStartLagKind-required,If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required.,"
+      SELECT  $this  
+      WHERE {  
+     
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
+    
+        FILTER (?hassts=""true""^^xsd:boolean && ?hasstsk=""false""^^xsd:boolean).
+      }"
+https://ap-con.cim4.eu/EquipmentReliability-Complex/2.4#PeerTemporalDependency.constraintKind-exclusive,PeerTemporalDependency.constraintKind-exclusive,"If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag.","
+      SELECT  $this  
+      WHERE {  
+    $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
+    
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
+    
+        FILTER (?hasop=""true""^^xsd:boolean || ?hassts=""true""^^xsd:boolean || ?hasfts=""true""^^xsd:boolean || ?hasftf=""true""^^xsd:boolean).
       }"
 https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4#RemedialActionImpact-associations,RemedialActionImpact-associations,A RemedialActionImpact shall have either RemedialActionGroup or RemedialAction associated with it.,"
       SELECT  $this  
@@ -2617,7 +2793,7 @@ https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4#RemedialActionImpact-a
        
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
+        FILTER ((?hasRAG=""false""^^xsd:boolean && ?hasRA=""false""^^xsd:boolean) || (?hasRAG=""true""^^xsd:boolean && ?hasRA=""true""^^xsd:boolean)).
       }"
 https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4#RemedialActionOutcomeValue-associations,RemedialActionOutcomeValue-associations,A RemedialActionOutcomeValue shall have either RemedialActionGroup or RemedialAction associated with it.,"
       SELECT  $this  
@@ -2625,39 +2801,76 @@ https://ap-con.cim4.eu/ImpactAssessmentMatrix-Complex/2.4#RemedialActionOutcomeV
        
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
     BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
+        FILTER ((?hasRAG=""false""^^xsd:boolean && ?hasRA=""false""^^xsd:boolean) || (?hasRAG=""true""^^xsd:boolean && ?hasRA=""true""^^xsd:boolean)).
       }"
-https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3#IdentifiedObject.name-stringLength,IdentifiedObject.name-stringLength,The string IdentifiedObject.name has a maximum of 128 characters.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
+https://ap-con.cim4.eu/ClassCount-Complex/2.5#ClassCount-property,ClassCount-property,Counts instance of classes present in the data graph.," 
+            SELECT $this ?class (COUNT(?instance) AS ?value)
+            WHERE {
+                    ?instance rdf:type ?class .
+                   }
+            GROUP BY $this ?class
+             "
+https://ap-con.cim4.eu/PowerSchedule-Complex/2.5#DCTieCorridor-powerSchedule,DCTieCorridor-powerSchedule,The schedule for the DCTieCorridor is given by its SchedulingArea. Either the schedule of DCTieCorridor or the DCPole is provided.,"
+        SELECT DISTINCT $this
+        WHERE {
+            FILTER EXISTS {
+                ?powerSchedule rdf:type nc:PowerSchedule .
+            }
+			
+			BIND (
+                EXISTS {
+                    $this
+                        nc:DCTieCorridor.SchedulingArea
+                        ?schedulingArea .
         
-        FILTER (STRLEN(?value)>128) .
-      }"
-https://ap-con.cim4.eu/IdentifiedObject-Complex/2.3#IdentifiedObject.description-stringLength,IdentifiedObject.description-stringLength,The string IdentifiedObject.description is maximum 256 characters.,"
-      SELECT  $this ?value  
-      WHERE {      
-        ?s $PATH ?value .
+                    ?powerSchedule
+                        nc:PowerSchedule.SchedulingArea
+                        ?schedulingArea .
+                }
+                AS ?hasSchedulingAreaSchedule
+            )
         
-        FILTER (STRLEN(?value)>256) .
-      }"
-https://ap-con.cim4.eu/PowerSchedule-Complex/2.4#PowerSchedule-dcassociations,PowerSchedule-dcassociations,PowerSchedule can have associations to either DCTieCorridor or DCPole but not both.,"
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:AvailabilityEnabled.DCTieCorridor ?dctc.} AS ?vDCTC).  
-    BIND(EXISTS{$this nc:AvailabilityEnabled.DCPole ?dcp.} AS ?vDCP).
+            BIND (
+                EXISTS {
+                    ?dcPole
+                        nc:DCPole.DCTieCorridor
+                        $this .
+        
+                    ?powerSchedule
+                        nc:PowerSchedule.DCPole
+                        ?dcPole .
+                }
+                AS ?hasDCPoleSchedule
+            )
+        
+            FILTER (
+                ?hasSchedulingAreaSchedule=""true""^^xsd:boolean
+                &&
+                ?hasDCPoleSchedule=""true""^^xsd:boolean
+            )
+        }
+    "
+https://ap-con.cim4.eu/PowerSchedule-Complex/2.5#PowerSchedule-currency-property,PowerSchedule-currency-property,"If PowerTimePoint.price is provided, PowerSchedule.currency is required.","
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+                }
 
-        FILTER (?vDCTC=true && ?vDCP=true).
-      }"
-https://ap-con.cim4.eu/RemedialAction-Complex/2.4#GridStateAlteration-associations,GridStateAlteration-associations,A GridStateAlteration shall have either association to GridStateAlterationRemedialAction or GridStateAlterationCollection.,"
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        "
+https://ap-con.cim4.eu/RemedialAction-Complex/2.5#GridStateAlteration-associations,GridStateAlteration-associations,A GridStateAlteration shall have either association to GridStateAlterationRemedialAction or GridStateAlterationCollection.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).  
     BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
 
         FILTER (
-      (?vGSARA=true && ?vGSAC=true) || 
-      (?vGSARA=false && ?vGSAC=false) 
+      (?vGSARA=""true""^^xsd:boolean && ?vGSAC=""true""^^xsd:boolean) || 
+      (?vGSARA=""false""^^xsd:boolean && ?vGSAC=""false""^^xsd:boolean) 
     ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule-proposingEntity,RemedialActionSchedule-proposingEntity,The RemedialActionSchedule shall have a proposing entity either the Security Coordinator (RemedialActionSchedule.ProposingEntity) or at least one ProposingRemedialActionScheduleShare.,"
@@ -2665,21 +2878,21 @@ https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule
       WHERE {  
     BIND(EXISTS{$this nc:RemedialActionSchedule.ProposingEntity ?o1} AS ?pesc).
     BIND(EXISTS{$this ^nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ?o2} AS ?peso).
-        FILTER (?pesc=false && ?peso=false ).
+        FILTER (?pesc=""false""^^xsd:boolean && ?peso=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleGroup-dependency,RemedialActionScheduleGroup-dependency,A RemedialActionScheduleGroup shall have at least one RemedialActionScheduleDependency with association end RemedialActionScheduleDependency.ProposedRemedialActionSchedule  and at least one RemedialActionScheduleDependency with association end  RemedialActionScheduleDependency.ReplacedRemedialActionSchedule.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o1} AS ?a1).
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o2} AS ?a2).
-        FILTER (?a1=false && ?a2=false ).
+        FILTER (?a1=""false""^^xsd:boolean && ?a2=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleDependency.kind-cardinality,RemedialActionScheduleDependency.kind-cardinality,RemedialActionScheduleDependency.kind is required for all RemedialActionScheduleDependency objects part of a RemedialActionScheduleGroup.,"
       SELECT  $this  
       WHERE {  
     
     BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-        FILTER (?a1=false  ).
+        FILTER (?a1=""false""^^xsd:boolean  ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleDependency.kind-applicability,RemedialActionScheduleDependency.kind-applicability,RemedialActionScheduleDependency.kind shall not be provided for RemedialActionScheduleDependency objects that are not part of a RemedialActionScheduleGroup.,"
       SELECT  $this  
@@ -2687,7 +2900,7 @@ https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule
     
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o2} AS ?a2).
-        FILTER (?a1=true && ?a2=false ).
+        FILTER (?a1=""true""^^xsd:boolean && ?a2=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleDependency-associations,RemedialActionScheduleDependency-associations,"When a RemedialActionScheduleDependency is part of a RemedialActionScheduleGroup, it is required to provide either RemedialActionScheduleDependency.ProposedRemedialActionSchedule or RemedialActionScheduleDependency.ReplacedRemedialActionSchedule (i.e., not both associations). When a RemedialActionScheduleDependency is not part of a RemedialActionScheduleGroup, it is required to provide both RemedialActionScheduleDependency.ProposedRemedialActionSchedule and RemedialActionScheduleDependency.ReplacedRemedialActionSchedule.","
       SELECT  $this  ?a1 ?a2 ?a3
@@ -2697,7 +2910,7 @@ https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
     BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
     
-        FILTER ((?a1=true && ?a2=true && ?a3=true) || (?a1=false && (?a2=false || ?a3=false))).
+        FILTER ((?a1=""true""^^xsd:boolean && ?a2=""true""^^xsd:boolean && ?a3=""true""^^xsd:boolean) || (?a1=""false""^^xsd:boolean && (?a2=""false""^^xsd:boolean || ?a3=""false""^^xsd:boolean))).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleResponse.rejectionReasonKind-required,RemedialActionScheduleResponse.rejectionReasonKind-required,RemedialActionScheduleResponse.rejectionReasonKind is required if RemedialActionScheduleResponse.kind equals RemedialActionScheduleResponseKind.refused.,"
       SELECT  $this  
@@ -2705,7 +2918,7 @@ https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind ?o1} AS ?hasRK).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.kind nc:RemedialActionScheduleResponseKind.refused} AS ?hasR).
-        FILTER (?hasRK=false && ?hasR=true ).
+        FILTER (?hasRK=""false""^^xsd:boolean && ?hasR=""true""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionScheduleResponse.rejectionReason-applicability,RemedialActionScheduleResponse.rejectionReason-applicability,RemedialActionScheduleResponse.rejectionReason is used when RemedialActionScheduleResponse.rejectionReasonKind equals RejectionReasonKind.other.,"
       SELECT  $this  
@@ -2713,8 +2926,56 @@ https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#RemedialActionSchedule
     
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReason ?o1} AS ?hasRR).
     BIND(EXISTS{$this nc:RemedialActionScheduleResponse.rejectionReasonKind nc:RejectionReasonKind.other} AS ?hasR).
-        FILTER (?hasRR=false && ?hasR=true ).
+        FILTER (?hasRR=""false""^^xsd:boolean && ?hasR=""true""^^xsd:boolean ).
       }"
+https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#PowerSchedule-currencyConsistency,PowerSchedule-currencyConsistency,If PowerTimePoint.price is provided and PowerSchedule is associated with PowerScheduleAction either PowerScheduleAction.currency or PowerSchedule.currency shall be provided.,"
+            SELECT DISTINCT $this
+            WHERE {
+                $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+
+                $this ^nc:PowerScheduleAction.PowerSchedule ?powerScheduleAction .
+                ?powerScheduleAction rdf:type ?actionType .
+
+                FILTER (
+                    ?actionType IN (
+                        nc:CountertradeScheduleAction,
+                        nc:RedispatchScheduleAction
+                    )
+                )
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?powerScheduleCurrency .
+                }
+
+                FILTER NOT EXISTS {
+                    ?powerScheduleAction nc:PowerScheduleAction.currency ?powerScheduleActionCurrency .
+                }
+            }
+        "
+https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#PowerSchedule-currency-property,PowerSchedule-currency-property,"If PowerTimePoint.price is provided, PowerSchedule.currency is required.","
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        "
+https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#PowerScheduleAction-currency-property,PowerScheduleAction-currency-property,"If PowerScheduleAction.energyPrice is provided, the PowerScheduleAction.currency is required.","
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this nc:PowerScheduleAction.energyPrice ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        "
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult.value,PowerFlowResult.value,PowerFlowResult.value and PowerFlowResult.absoluteValue are required attributes if the association end PowerFlowResult.OperationalLimit is provided.,"
       SELECT  $this  
       WHERE {  
@@ -2722,49 +2983,49 @@ https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult.value,
         #BIND(EXISTS{$this nc:PowerFlowResult.OperationalLimit ?o1} AS ?ol1).
     BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
     BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
-        FILTER (?val=false || ?aval=false ).
+        FILTER (?val=""false""^^xsd:boolean || ?aval=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-ApparentPowerLimit,PowerFlowResult-ApparentPowerLimit,PowerFlowResult.valueVA is required attribute if an ApparentPowerLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val=false ).
+        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-ActivePowerLimit,PowerFlowResult-ActivePowerLimit,PowerFlowResult.valueW is required attribute if an ActivePowerLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val=false ).
+        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-ReactivePowerLimit,PowerFlowResult-ReactivePowerLimit,PowerFlowResult.valueVAR is required attribute if a ReactivePowerLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val=false ).
+        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-VoltageLimit,PowerFlowResult-VoltageLimit,PowerFlowResult.valueV is required attribute if a VoltageLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val=false ).
+        FILTER ((?oltype=cim:VoltageLimit || ?oltype=cim16:VoltageLimit || ?oltype=cim17:VoltageLimit) && ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-VoltageAngleLimit,PowerFlowResult-VoltageAngleLimit,PowerFlowResult.valueAngle is required attribute if a VoltageAngleLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER (?oltype=nc:VoltageAngleLimit && ?val=false ).
+        FILTER (?oltype=nc:VoltageAngleLimit && ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-CurrentLimit,PowerFlowResult-CurrentLimit,PowerFlowResult.valueA is required attribute if a CurrentLimit is referenced by the association end PowerFlowResult.OperationalLimit.,"
       SELECT  $this  
       WHERE {      
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
     BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val=false ).
+        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val=""false""^^xsd:boolean ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-voltageAndAngle,PowerFlowResult-voltageAndAngle,PowerFlowResult.valueV and PowerFlowResult.valueAngle shall not be instantiated if PowerFlowResult is associated with ACDCTerminal or PowerTransferCorridor.,"
       SELECT  $this  
@@ -2775,7 +3036,7 @@ https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-voltag
     BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
     BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
 
-        FILTER ((?hasvalueV=true || ?hasvalueAngle=true) && (?hasT=true || ?hasPTC=true) ).
+        FILTER ((?hasvalueV=""true""^^xsd:boolean || ?hasvalueAngle=""true""^^xsd:boolean) && (?hasT=""true""^^xsd:boolean || ?hasPTC=""true""^^xsd:boolean) ).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-association,PowerFlowResult-association,"PowerFlowResult shall be associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor.","
       SELECT  $this  
@@ -2791,9 +3052,9 @@ https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#PowerFlowResult-topolo
         BIND(EXISTS{$this nc:PowerFlowResult.valueW ?o1} AS ?hasvalueW).
     BIND(EXISTS{$this nc:PowerFlowResult.valueVA ?o2} AS ?hasvalueVA).
     BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
-    BIND(EXISTS{$this PowerFlowResult.valueA ?o4} AS ?hasvalueA).
+    BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
-        FILTER ( ?hasTN=true && (?hasvalueW=true || ?hasvalueVA=true || ?hasvalueVAR=true || ?hasvalueA=true)).
+        FILTER ( ?hasTN=""true""^^xsd:boolean && (?hasvalueW=""true""^^xsd:boolean || ?hasvalueVA=""true""^^xsd:boolean || ?hasvalueVAR=""true""^^xsd:boolean || ?hasvalueA=""true""^^xsd:boolean)).
       }"
 https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#RemedialActionApplied.StageForRemedialActionScheme-cardinality,RemedialActionApplied.StageForRemedialActionScheme-cardinality,The association end RemedialActionApplied.StageForRemedialActionScheme is required if RemedialActionApplied.RemedialAction references SchemeRemedialAction and it is not provided for any other RemedialAction objects.,"
       SELECT  $this  
@@ -2801,64 +3062,71 @@ https://ap-con.cim4.eu/SecurityAnalysisResult-Complex/2.5#RemedialActionApplied.
     $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
         BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
 
-        FILTER ((?stage=false && ?ra=cim:SchemeRemedialAction) || (?stage=true && ?ra!=cim:SchemeRemedialAction) ).
+        FILTER ((?stage=""false""^^xsd:boolean && ?ra=cim:SchemeRemedialAction) || (?stage=""true""^^xsd:boolean && ?ra!=cim:SchemeRemedialAction) ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency,PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency,The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency,PowerShiftKeySchedule.ParticipationFactorTimePoint-dependency,The multiplicity of the association end PowerShiftKeySchedule.ParticipationFactorTimePoint shall be 1..n for all cases except if the PowerShiftKeySchedule is associated with PowerShiftKeyDistribution.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this ^nc:PowerShiftKeyDistribution.PowerShiftKeySchedule ?pskd} AS ?valD).  
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.ParticipationFactorTimePoint ?pftp} AS ?valP).
-        FILTER (?valD=false && ?valP=false ).
+        FILTER (?valD=""false""^^xsd:boolean && ?valP=""false""^^xsd:boolean ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeySchedule-associations,PowerShiftKeySchedule-associations,"PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyGroup, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection and HydroPump.","
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerShiftKeySchedule-associations,PowerShiftKeySchedule-associations,"PowerShiftKeySchedule shall include one and only one association to ScheduleResource, PowerElectronicUnit, GeneratingUnit, DCPole, EnergyResourceGroupCapacity, EquivalentInjection, EnergyConsumer, EnergySource, ExternalNetworkInjection, SchedulingArea, DCEquivalentInjection, EnergyBlockOrder and HydroPump.","
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.ScheduleResource ?sr} AS ?vSR).  
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.PowerElectronicUnit ?peu} AS ?vPEU).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.GeneratingUnit ?gu} AS ?vGU).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCPole ?dcp} AS ?vDCP).
-    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyGroup ?eg} AS ?vEG).
+    BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyResourceGroupCapacity ?eg} AS ?vEG).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.EquivalentInjection ?ei} AS ?vEI).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyConsumer ?ec} AS ?vEC).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergySource ?es} AS ?vES).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.ExternalNetworkInjection ?eni} AS ?vENI).
     BIND(EXISTS{$this nc:PowerShiftKeySchedule.HydroPump ?hp} AS ?vHP).
+	
+	BIND(EXISTS{$this nc:PowerShiftKeySchedule.SchedulingArea ?sa} AS ?vSA).
+	BIND(EXISTS{$this nc:PowerShiftKeySchedule.DCEquivalentInjection ?dcei} AS ?vDCEI).
+	BIND(EXISTS{$this nc:PowerShiftKeySchedule.EnergyBlockOrder ?ebo} AS ?vEBO).
         FILTER (
-      (?vSR=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vPEU=true && (?vSR=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vGU=true && (?vPEU=true || ?vSR=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vDCP=true && (?vPEU=true || ?vGU=true || ?vSR=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vEG=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vSR=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vEI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vSR=true || ?vEC=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vEC=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vSR=true || ?vES=true || ?vENI=true || ?vHP=true)) || 
-      (?vES=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vSR=true || ?vENI=true || ?vHP=true)) || 
-      (?vENI=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vSR=true || ?vHP=true)) || 
-      (?vHP=true && (?vPEU=true || ?vGU=true || ?vDCP=true || ?vEG=true || ?vEI=true || ?vEC=true || ?vES=true || ?vENI=true || ?vSR=true))
+      (?vSR=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vPEU=""true""^^xsd:boolean && (?vSR=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vGU=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vDCP=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vEG=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vEI=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vEC=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vES=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+      (?vENI=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) || 
+	  (?vSA=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean)) ||
+	  (?vDCEI=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean)) ||
+	  (?vEBO=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vHP=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean ||  ?vENI=""true""^^xsd:boolean)) ||
+      (?vHP=""true""^^xsd:boolean && (?vPEU=""true""^^xsd:boolean || ?vGU=""true""^^xsd:boolean || ?vDCP=""true""^^xsd:boolean || ?vEG=""true""^^xsd:boolean || ?vEI=""true""^^xsd:boolean || ?vEC=""true""^^xsd:boolean || ?vES=""true""^^xsd:boolean || ?vENI=""true""^^xsd:boolean || ?vSR=""true""^^xsd:boolean || ?vSA=""true""^^xsd:boolean || ?vDCEI=""true""^^xsd:boolean || ?vEBO=""true""^^xsd:boolean))
     ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeyDistribution-associations,PowerShiftKeyDistribution-associations,PowerShiftKeyDistribution shall include one and only one association to either PowerBidSchedule or PowerShiftKeyStrategy.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerShiftKeyDistribution-associations,PowerShiftKeyDistribution-associations,PowerShiftKeyDistribution shall include one and only one association to either PowerBidSchedule or PowerShiftKeyStrategy.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).  
     BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
 
         FILTER (
-      (?vPBS=true && ?vPSKS=true) || 
-      (?vPBS=false && ?vPSKS=false) 
+      (?vPBS=""true""^^xsd:boolean && ?vPSKS=""true""^^xsd:boolean) || 
+      (?vPBS=""false""^^xsd:boolean && ?vPSKS=""false""^^xsd:boolean) 
     ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidSchedule-associations,PowerBidSchedule-associations,PowerBidSchedule shall include one and only one association to either ScheduleResource or PowerRemedialAction.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerBidSchedule-associations,PowerBidSchedule-associations,PowerBidSchedule shall include one and only one association to either ScheduleResource or PowerRemedialAction.,"
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:PowerBidSchedule.ScheduleResource ?pbs} AS ?vPBS).  
     BIND(EXISTS{$this nc:PowerBidSchedule.PowerRemedialAction ?pra} AS ?vPRA).
 
         FILTER (
-      (?vPBS=true && ?vPRA=true) || 
-      (?vPBS=false && ?vPRA=false) 
+      (?vPBS=""true""^^xsd:boolean && ?vPRA=""true""^^xsd:boolean) || 
+      (?vPBS=""false""^^xsd:boolean && ?vPRA=""false""^^xsd:boolean) 
     ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidScheduleTimePoint-attributes,PowerBidScheduleTimePoint-attributes,"PowerBidScheduleTimePoint can have the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP.","
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerBidScheduleTimePoint-attributes,PowerBidScheduleTimePoint-attributes,"PowerBidScheduleTimePoint can have the following combinations of optional attributes: 1) activationCost, 2) shutdownCost or 3) any of the following p, minimumActivationP, price, reservePrice, stepIncrementP.","
       SELECT  $this  
       WHERE {  
     BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.activationCost ?pac} AS ?vpac).  
@@ -2870,57 +3138,57 @@ https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidScheduleTime
     BIND(EXISTS{$this nc:PowerBidScheduleTimePoint.stepIncrementP ?psip} AS ?vsip).
 
         FILTER (
-      (?vpac=true && ?vpsc=true ) || 
-      ((?vpac=true || ?vpsc=true) && (?vpp=true || ?vmap=true || ?vpprice=true || ?vrp=true || ?vsip=true))
+      (?vpac=""true""^^xsd:boolean && ?vpsc=""true""^^xsd:boolean ) || 
+      ((?vpac=""true""^^xsd:boolean || ?vpsc=""true""^^xsd:boolean) && (?vpp=""true""^^xsd:boolean || ?vmap=""true""^^xsd:boolean || ?vpprice=""true""^^xsd:boolean || ?vrp=""true""^^xsd:boolean || ?vsip=""true""^^xsd:boolean))
     ).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.finishToFinishLagKind-required,PowerBidDependency.finishToFinishLagKind-required,If PowerBidDependency.finishToFinishLag is present PowerBidDependency.finishToFinishLagKind is required.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.finishToFinishLagKind-required,PeerTemporalDependency.finishToFinishLagKind-required,If PeerTemporalDependency.finishToFinishLag is present PeerTemporalDependency.finishToFinishLagKind is required.,"
       SELECT  $this  
       WHERE {  
      
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLag ?ftf} AS ?hasftf).  
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLagKind ?ftfk} AS ?hasftfk).
     
-        FILTER (?hasftf=true && ?hasftfk=false).
+        FILTER (?hasftf=""true""^^xsd:boolean && ?hasftfk=""false""^^xsd:boolean).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.finishToStartLagKind-required,PowerBidDependency.finishToStartLagKind-required,If PowerBidDependency.finishToStartLag is present PowerBidDependency.finishToStartLagKind is required.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.finishToStartLagKind-required,PeerTemporalDependency.finishToStartLagKind-required,If PeerTemporalDependency.finishToStartLag is present PeerTemporalDependency.finishToStartLagKind is required.,"
       SELECT  $this  
       WHERE {  
      
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLag ?fts} AS ?hasfts).  
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLagKind ?ftsk} AS ?hasftsk).
     
-        FILTER (?hasfts=true && ?hasftsk=false).
+        FILTER (?hasfts=""true""^^xsd:boolean && ?hasftsk=""false""^^xsd:boolean).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.overlapKind-required,PowerBidDependency.overlapKind-required,If PowerBidDependency.overlap is present PowerBidDependency.overlapKind is required.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.overlapKind-required,PeerTemporalDependency.overlapKind-required,If PeerTemporalDependency.overlap is present PeerTemporalDependency.overlapKind is required.,"
       SELECT  $this  
       WHERE {  
      
-    BIND(EXISTS{$this nc:PowerBidDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PowerBidDependency.overlapKind ?opk} AS ?hasopk).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlapKind ?opk} AS ?hasopk).
     
-        FILTER (?hasop=true && ?hasopk=false).
+        FILTER (?hasop=""true""^^xsd:boolean && ?hasopk=""false""^^xsd:boolean).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.startToStartLagKind-required,PowerBidDependency.startToStartLagKind-required,If PowerBidDependency.startToStartLag is present PowerBidDependency.startToStartLagKind is required.,"
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.startToStartLagKind-required,PeerTemporalDependency.startToStartLagKind-required,If PeerTemporalDependency.startToStartLag is present PeerTemporalDependency.startToStartLagKind is required.,"
       SELECT  $this  
       WHERE {  
      
-    BIND(EXISTS{$this nc:PowerBidDependency.startToStartLag ?sts} AS ?hassts).  
-    BIND(EXISTS{$this nc:PowerBidDependency.startToStartLagKind ?stsk} AS ?hasstsk).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLagKind ?stsk} AS ?hasstsk).
     
-        FILTER (?hassts=true && ?hasstsk=false).
+        FILTER (?hassts=""true""^^xsd:boolean && ?hasstsk=""false""^^xsd:boolean).
       }"
-https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerBidDependency.kind-exclusive,PowerBidDependency.kind-exclusive,"If PowerBidDependency.kind is set to PowerBidDependencyKind.exclusive, the following attributes shall not be defined: PowerBidDependency.overlap, PowerBidDependency.startToStartLag, PowerBidDependency.finishToStartLag, PowerBidDependency.finishToFinishLag.","
+https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PeerTemporalDependency.constraintKind-exclusive,PeerTemporalDependency.constraintKind-exclusive,"If PeerTemporalDependency.constraintKind is set to DependencyConstraintKind.exclusive, the following attributes shall not be defined: PeerTemporalDependency.overlap, PeerTemporalDependency.startToStartLag, PeerTemporalDependency.finishToStartLag, PeerTemporalDependency.finishToFinishLag.","
       SELECT  $this  
       WHERE {  
-    $this nc:PowerBidDependency.kind nc:PowerBidDependencyKind.exclusive.
+    $this nc:PeerTemporalDependency.constraintKind nc:DependencyConstraintKind.exclusive.
     
-    BIND(EXISTS{$this nc:PowerBidDependency.overlap ?op} AS ?hasop).  
-    BIND(EXISTS{$this nc:PowerBidDependency.startToStartLag ?sts} AS ?hassts).
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToStartLag ?fts} AS ?hasfts).
-    BIND(EXISTS{$this nc:PowerBidDependency.finishToFinishLag ?ftf} AS ?hasftf).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.overlap ?op} AS ?hasop).  
+    BIND(EXISTS{$this nc:PeerTemporalDependency.startToStartLag ?sts} AS ?hassts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToStartLag ?fts} AS ?hasfts).
+    BIND(EXISTS{$this nc:PeerTemporalDependency.finishToFinishLag ?ftf} AS ?hasftf).
     
-        FILTER (?hasop=true || ?hassts=true || ?hasfts=true || ?hasftf=true).
+        FILTER (?hasop=""true""^^xsd:boolean || ?hassts=""true""^^xsd:boolean || ?hasfts=""true""^^xsd:boolean || ?hasftf=""true""^^xsd:boolean).
       }"
 http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#PowerTransformer-twoWinding,PowerTransformer-twoWinding,"1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.","
                 SELECT DISTINCT ?this
@@ -3069,7 +3337,7 @@ http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-600/notSolved/3.0#Bo
                   
                 }
                 "
-https://ap-con.cim4.eu/Common-Complex/1.0#DanglingReferences,DanglingReferences,"It is required that at the receiving end of the exchange all references in the instance files pointing to instance files from other profiles which are part of the exchange should be satisfied. Therefore, the complete set of instance files necessary for the grid model shall have fulfilled references (no dangling references are allowed).","
+https://ap-con.cim4.eu/Common-Complex/1.1#DanglingReferences,DanglingReferences,"It is required that at the receiving end of the exchange all references in the instance files pointing to instance files from other profiles which are part of the exchange should be satisfied. Therefore, the complete set of instance files necessary for the grid model shall have fulfilled references (no dangling references are allowed).","
             SELECT DISTINCT ?this
             WHERE {
                 ?subject ?predicate ?this .

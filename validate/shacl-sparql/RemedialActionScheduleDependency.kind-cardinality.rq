@@ -20,9 +20,9 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		
-		BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
-        FILTER (?a1=false  ).
-			}
+      SELECT  $this  
+      WHERE {  
+    
+    BIND(EXISTS{$this ^nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup/nc:RemedialActionScheduleDependency.kind ?o1} AS ?a1).
+        FILTER (?a1="false"^^xsd:boolean  ).
+      }

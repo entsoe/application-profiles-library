@@ -58,45 +58,45 @@ psc:DCTieCorridor-powerScheduleSparql
     sh:prefixes cim: ;
     sh:message "The PowerSchedule associated with the DCTieCorridor is not defined through its SchedulingArea or one of its DCPole instances." ;
     sh:select """
-        SELECT DISTINCT $this
-        WHERE {
-            FILTER EXISTS {
-                ?powerSchedule rdf:type nc:PowerSchedule .
-            }
-			
-			BIND (
-                EXISTS {
-                    $this
-                        nc:DCTieCorridor.SchedulingArea
-                        ?schedulingArea .
-        
-                    ?powerSchedule
-                        nc:PowerSchedule.SchedulingArea
-                        ?schedulingArea .
-                }
-                AS ?hasSchedulingAreaSchedule
-            )
-        
-            BIND (
-                EXISTS {
-                    ?dcPole
-                        nc:DCPole.DCTieCorridor
-                        $this .
-        
-                    ?powerSchedule
-                        nc:PowerSchedule.DCPole
-                        ?dcPole .
-                }
-                AS ?hasDCPoleSchedule
-            )
-        
-            FILTER (
-                ?hasSchedulingAreaSchedule="true"^^xsd:boolean
-                &&
-                ?hasDCPoleSchedule="true"^^xsd:boolean
-            )
+      SELECT DISTINCT $this
+      WHERE {
+        FILTER EXISTS {
+          ?powerSchedule rdf:type nc:PowerSchedule .
         }
-    """ .	
+
+        BIND (
+          EXISTS {
+            $this
+            nc:DCTieCorridor.SchedulingArea
+            ?schedulingArea .
+
+            ?powerSchedule
+            nc:PowerSchedule.SchedulingArea
+            ?schedulingArea .
+          }
+          AS ?hasSchedulingAreaSchedule
+        )
+
+        BIND (
+          EXISTS {
+            ?dcPole
+            nc:DCPole.DCTieCorridor
+            $this .
+
+            ?powerSchedule
+            nc:PowerSchedule.DCPole
+            ?dcPole .
+          }
+          AS ?hasDCPoleSchedule
+        )
+
+        FILTER (
+          ?hasSchedulingAreaSchedule
+          &&
+          ?hasDCPoleSchedule
+        )
+      }
+      """ .
 
 
 psc:PowerSchedule-currency
@@ -119,17 +119,17 @@ psc:PowerSchedule-currencySparql
         sh:prefixes     cim: ;
         sh:message      "PowerSchedule.currency is not provided but a PowerTimePoint.price is provided." ;
         sh:select       """
-            SELECT $this
-            WHERE {
-                FILTER EXISTS {
-                    $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
-                }
-
-                FILTER NOT EXISTS {
-                    $this $PATH ?currency .
-                }
+          SELECT $this
+          WHERE {
+            FILTER EXISTS {
+              $this ^nc:PowerTimePoint.PowerSchedule/nc:PowerTimePoint.price ?price .
             }
-        """ .
+
+            FILTER NOT EXISTS {
+              $this $PATH ?currency .
+            }
+          }
+          """ .
 
 
 

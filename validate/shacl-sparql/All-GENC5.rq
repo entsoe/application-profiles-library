@@ -20,12 +20,12 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
           ?value rdf:type ?o.
           #BIND(str(?s) AS ?uuid) .
           #$this rdf:type ?value .
           #BIND(str($this) AS ?uuid) .
           BIND(STRAFTER(str(?value),"#_") AS ?secondpart) .
           FILTER(STRLEN(?secondpart)>59 && ?secondpart="" && !REGEX(STR(?uuid), "^urn:uuid:[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$", "i") ).
-			}
+      }

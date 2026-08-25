@@ -20,10 +20,10 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
           ?s ?p ?value .
           #BIND(str($this) AS ?value).
           FILTER(isLiteral(?this) && DATATYPE(?value)=xsd:float && (!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF"))).
           #FILTER(!isNumeric($this) || CONTAINS(?value, "NaN") || CONTAINS(?value, "INF")).
-			}
+      }

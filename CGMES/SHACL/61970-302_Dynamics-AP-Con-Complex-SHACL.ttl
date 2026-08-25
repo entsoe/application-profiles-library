@@ -15055,16 +15055,17 @@ dyu:ExcAC8B.kpr-valueRange
         
     
 dyu:ExcAC8B.kpr-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcAC8B.kir = 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcAC8B.kir ?kir .
-        FILTER (?kir=0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcAC8B.kir = 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcAC8B.kir ?kir .
+            FILTER (?kir=0 && ?value<=0) .
+          }
+          """ .
         
 
 dyu:ExcBBC.k-valueRange
@@ -15079,15 +15080,16 @@ dyu:ExcBBC.k-valueRange
         
     
 dyu:ExcBBC.k-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        FILTER (?value=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            FILTER (?value=0) .
+          }
+          """ .
 
 dyu:ExcIEEEAC7B.kpa-valueRange
         a               sh:PropertyShape ;
@@ -15101,16 +15103,17 @@ dyu:ExcIEEEAC7B.kpa-valueRange
         
     
 dyu:ExcIEEEAC7B.kpa-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcIEEEAC7B.kia = 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcIEEEAC7B.kia ?kia .
-        FILTER (?kia=0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcIEEEAC7B.kia = 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcIEEEAC7B.kia ?kia .
+            FILTER (?kia=0 && ?value<=0) .
+          }
+          """ .
 
 dyu:ExcIEEEAC7B.kpr-valueRange
         a               sh:PropertyShape ;
@@ -15124,16 +15127,17 @@ dyu:ExcIEEEAC7B.kpr-valueRange
         
     
 dyu:ExcIEEEAC7B.kpr-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcIEEEAC7B.kir = 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcIEEEAC7B.kir ?kir .
-        FILTER (?kir=0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcIEEEAC7B.kir = 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcIEEEAC7B.kir ?kir .
+            FILTER (?kir=0 && ?value<=0) .
+          }
+          """ .
 
 dyu:ExcIEEEAC8B.kpr-valueRange
         a               sh:PropertyShape ;
@@ -15147,16 +15151,17 @@ dyu:ExcIEEEAC8B.kpr-valueRange
         
     
 dyu:ExcIEEEAC8B.kpr-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcIEEEAC8B.kir = 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcIEEEAC8B.kir ?kir .
-        FILTER (?kir=0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcIEEEAC8B.kir = 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcIEEEAC8B.kir ?kir .
+            FILTER (?kir=0 && ?value<=0) .
+          }
+          """ .
 
 dyu:ExcIEEEDC4B.td-valueRange
         a               sh:PropertyShape ;
@@ -15170,16 +15175,17 @@ dyu:ExcIEEEDC4B.td-valueRange
         
     
 dyu:ExcIEEEDC4B.td-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcIEEEDC4B.kd > 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcIEEEDC4B.kd ?kd .
-        FILTER (?kd>0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcIEEEDC4B.kd > 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcIEEEDC4B.kd ?kd .
+            FILTER (?kd>0 && ?value<=0) .
+          }
+          """ .
 
 dyu:ExcSEXS.kc-valueRange
         a               sh:PropertyShape ;
@@ -15193,16 +15199,17 @@ dyu:ExcSEXS.kc-valueRange
         
     
 dyu:ExcSEXS.kc-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value negative or zero when ExcSEXS.tc > 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:ExcSEXS.tc ?tc .
-        FILTER (?tc>0 && ?value<=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value negative or zero when ExcSEXS.tc > 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:ExcSEXS.tc ?tc .
+            FILTER (?tc>0 && ?value<=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv0-valueRange
         a               sh:PropertyShape ;
@@ -15216,16 +15223,17 @@ dyu:GovHydro4.bgv0-valueRange
         
     
 dyu:GovHydro4.bgv0-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv1-valueRange
         a               sh:PropertyShape ;
@@ -15239,16 +15247,17 @@ dyu:GovHydro4.bgv1-valueRange
         
     
 dyu:GovHydro4.bgv1-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv2-valueRange
         a               sh:PropertyShape ;
@@ -15262,16 +15271,17 @@ dyu:GovHydro4.bgv2-valueRange
         
     
 dyu:GovHydro4.bgv2-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv3-valueRange
         a               sh:PropertyShape ;
@@ -15285,16 +15295,17 @@ dyu:GovHydro4.bgv3-valueRange
         
     
 dyu:GovHydro4.bgv3-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv4-valueRange
         a               sh:PropertyShape ;
@@ -15308,16 +15319,17 @@ dyu:GovHydro4.bgv4-valueRange
         
     
 dyu:GovHydro4.bgv4-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bgv5-valueRange
         a               sh:PropertyShape ;
@@ -15331,16 +15343,17 @@ dyu:GovHydro4.bgv5-valueRange
         
     
 dyu:GovHydro4.bgv5-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.bmax-valueRange
         a               sh:PropertyShape ;
@@ -15354,16 +15367,17 @@ dyu:GovHydro4.bmax-valueRange
         
     
 dyu:GovHydro4.bmax-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or francisPelton." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple || ?model=cim:GovHydro4ModelKind.francisPelton) && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.gv0-valueRange
         a               sh:PropertyShape ;
@@ -15377,16 +15391,17 @@ dyu:GovHydro4.gv0-valueRange
         
     
 dyu:GovHydro4.gv0-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.gv1-valueRange
         a               sh:PropertyShape ;
@@ -15400,17 +15415,18 @@ dyu:GovHydro4.gv1-valueRange
         
     
 dyu:GovHydro4.gv1-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv0 when GovHydro4.model is francisPelton or kaplan." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        $this cim:GovHydro4.gv0 ?gv0 .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv0)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv0 when GovHydro4.model is francisPelton or kaplan." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            $this cim:GovHydro4.gv0 ?gv0 .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv0)) .
+          }
+          """ .
 
 dyu:GovHydro4.gv2-valueRange
         a               sh:PropertyShape ;
@@ -15424,17 +15440,18 @@ dyu:GovHydro4.gv2-valueRange
         
     
 dyu:GovHydro4.gv2-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv1 when GovHydro4.model is francisPelton or kaplan." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        $this cim:GovHydro4.gv1 ?gv1 .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv1)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv1 when GovHydro4.model is francisPelton or kaplan." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            $this cim:GovHydro4.gv1 ?gv1 .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv1)) .
+          }
+          """ .
 
 dyu:GovHydro4.gv3-valueRange
         a               sh:PropertyShape ;
@@ -15448,17 +15465,18 @@ dyu:GovHydro4.gv3-valueRange
         
     
 dyu:GovHydro4.gv3-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv2 when GovHydro4.model is francisPelton or kaplan." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        $this cim:GovHydro4.gv2 ?gv2 .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv2)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv2 when GovHydro4.model is francisPelton or kaplan." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            $this cim:GovHydro4.gv2 ?gv2 .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv2)) .
+          }
+          """ .
 
 dyu:GovHydro4.gv4-valueRange
         a               sh:PropertyShape ;
@@ -15472,17 +15490,18 @@ dyu:GovHydro4.gv4-valueRange
         
     
 dyu:GovHydro4.gv4-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv3 when GovHydro4.model is francisPelton or kaplan." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        $this cim:GovHydro4.gv3 ?gv3 .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv3)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or it is not greater than GovHydro4.gv3 when GovHydro4.model is francisPelton or kaplan." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            $this cim:GovHydro4.gv3 ?gv3 .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv3)) .
+          }
+          """ .
 
 dyu:GovHydro4.gv5-valueRange
         a               sh:PropertyShape ;
@@ -15496,17 +15515,18 @@ dyu:GovHydro4.gv5-valueRange
         
     
 dyu:GovHydro4.gv5-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple or it is either not greater than GovHydro4.gv4 or it is not less than 1 when GovHydro4.model is francisPelton or kaplan." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        $this cim:GovHydro4.gv4 ?gv4 .
-        FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv4 && ?value>=1)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple or it is either not greater than GovHydro4.gv4 or it is not less than 1 when GovHydro4.model is francisPelton or kaplan." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            $this cim:GovHydro4.gv4 ?gv4 .
+            FILTER ((?model=cim:GovHydro4ModelKind.simple && ?value!=0) || ((?model=cim:GovHydro4ModelKind.francisPelton || ?model=cim:GovHydro4ModelKind.kaplan) && ?value<=?gv4 && ?value>=1)) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv0-valueRange
         a               sh:PropertyShape ;
@@ -15520,16 +15540,17 @@ dyu:GovHydro4.pgv0-valueRange
         
     
 dyu:GovHydro4.pgv0-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv1-valueRange
         a               sh:PropertyShape ;
@@ -15543,16 +15564,17 @@ dyu:GovHydro4.pgv1-valueRange
         
     
 dyu:GovHydro4.pgv1-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv2-valueRange
         a               sh:PropertyShape ;
@@ -15566,16 +15588,17 @@ dyu:GovHydro4.pgv2-valueRange
         
     
 dyu:GovHydro4.pgv2-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv3-valueRange
         a               sh:PropertyShape ;
@@ -15589,16 +15612,17 @@ dyu:GovHydro4.pgv3-valueRange
         
     
 dyu:GovHydro4.pgv3-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv4-valueRange
         a               sh:PropertyShape ;
@@ -15612,16 +15636,17 @@ dyu:GovHydro4.pgv4-valueRange
         
     
 dyu:GovHydro4.pgv4-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovHydro4.pgv5-valueRange
         a               sh:PropertyShape ;
@@ -15635,16 +15660,17 @@ dyu:GovHydro4.pgv5-valueRange
         
     
 dyu:GovHydro4.pgv5-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not 0 when GovHydro4.model is simple." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:GovHydro4.model ?model .
-        FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not 0 when GovHydro4.model is simple." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:GovHydro4.model ?model .
+            FILTER (?model=cim:GovHydro4ModelKind.simple && ?value!=0) .
+          }
+          """ .
 
 dyu:GovSteamFV3.t5-valueRange
         a               sh:PropertyShape ;
@@ -15658,15 +15684,16 @@ dyu:GovSteamFV3.t5-valueRange
         
     
 dyu:GovSteamFV3.t5-valueRangeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is not greater than or equal to 0." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        FILTER (?value<0) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is not greater than or equal to 0." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            FILTER (?value<0) .
+          }
+          """ .
 
 dyu:LoadStatic
         a               sh:NodeShape ;
@@ -15686,31 +15713,32 @@ dyu:LoadStatic.staticLoadModelType-exponental
         
     
 dyu:LoadStatic.staticLoadModelType-exponentalSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Required properties (attributes) for exponential model type are not defined or there are unnecessary properties defined." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-          OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
-          OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
-          OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
-          OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
-          OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
-          OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
-          OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
-          OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
-          OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
-          OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
-          OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
-          OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
-          OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
-          OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
-          OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
-          OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
-        FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) || !bound(?ep1) || !bound(?ep2) || !bound(?ep3) || !bound(?eq1) || !bound(?eq2) || !bound(?eq3)) && ?value=cim:StaticLoadModelKind.exponential) || ((bound(?kp4) || bound(?kq4)) && ?value=cim:StaticLoadModelKind.exponential)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Required properties (attributes) for exponential model type are not defined or there are unnecessary properties defined." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
+            OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
+            OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
+            OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
+            OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
+            OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
+            OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
+            OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
+            OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
+            OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
+            OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
+            OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
+            OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
+            OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
+            OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
+            OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
+            FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) || !bound(?ep1) || !bound(?ep2) || !bound(?ep3) || !bound(?eq1) || !bound(?eq2) || !bound(?eq3)) && ?value=cim:StaticLoadModelKind.exponential) || ((bound(?kp4) || bound(?kq4)) && ?value=cim:StaticLoadModelKind.exponential)) .
+          }
+          """ .
   
 
 dyu:LoadStatic.staticLoadModelType-zIP1
@@ -15725,31 +15753,32 @@ dyu:LoadStatic.staticLoadModelType-zIP1
         
     
 dyu:LoadStatic.staticLoadModelType-zIP1Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Required properties (attributes) for zIP1 model type are not defined or there are unnecessary properties defined." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-          OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
-          OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
-          OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
-          OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
-          OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
-          OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
-          OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
-          OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
-          OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
-          OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
-          OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
-          OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
-          OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
-          OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
-          OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
-          OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
-        FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP1) || (?value=cim:StaticLoadModelKind.zIP1 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3) || bound(?kp4) || bound(?kq4)))) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Required properties (attributes) for zIP1 model type are not defined or there are unnecessary properties defined." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
+            OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
+            OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
+            OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
+            OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
+            OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
+            OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
+            OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
+            OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
+            OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
+            OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
+            OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
+            OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
+            OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
+            OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
+            OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
+            FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP1) || (?value=cim:StaticLoadModelKind.zIP1 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3) || bound(?kp4) || bound(?kq4)))) .
+          }
+          """ .
   
 dyu:LoadStatic.staticLoadModelType-zIP2
         a               sh:PropertyShape ;
@@ -15763,31 +15792,32 @@ dyu:LoadStatic.staticLoadModelType-zIP2
         
     
 dyu:LoadStatic.staticLoadModelType-zIP2Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Required properties (attributes) for zIP2 model type are not defined or there are unnecessary properties defined." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-          OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
-          OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
-          OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
-          OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
-          OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
-          OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
-          OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
-          OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
-          OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
-          OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
-          OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
-          OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
-          OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
-          OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
-          OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
-          OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
-        FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kp4) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kq4) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP2) || (?value=cim:StaticLoadModelKind.zIP2 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)))) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Required properties (attributes) for zIP2 model type are not defined or there are unnecessary properties defined." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
+            OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
+            OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
+            OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
+            OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
+            OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
+            OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
+            OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
+            OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
+            OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
+            OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
+            OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
+            OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
+            OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
+            OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
+            OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
+            FILTER (((!bound(?kp1) || !bound(?kp2) || !bound(?kp3) || !bound(?kp4) || !bound(?kpf) || !bound(?kq1) || !bound(?kq2) || !bound(?kq3) || !bound(?kq4) || !bound(?kqf) ) && ?value=cim:StaticLoadModelKind.zIP2) || (?value=cim:StaticLoadModelKind.zIP2 && (bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)))) .
+          }
+          """ .
 
 dyu:LoadStatic.staticLoadModelType-constantZ
         a               sh:PropertyShape ;
@@ -15801,31 +15831,32 @@ dyu:LoadStatic.staticLoadModelType-constantZ
         
     
 dyu:LoadStatic.staticLoadModelType-constantZSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The load is represented as a constant impedance but other properties (attributes) are defined." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-          OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
-          OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
-          OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
-          OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
-          OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
-          OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
-          OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
-          OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
-          OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
-          OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
-          OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
-          OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
-          OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
-          OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
-          OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
-          OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
-        FILTER ((bound(?kp1) || bound(?kp2) || bound(?kp3) || bound(?kp4) || bound(?kpf) || bound(?kq1) || bound(?kq2) || bound(?kq3) || bound(?kq4) || bound(?kqf) || bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)) && ?value=cim:StaticLoadModelKind.constantZ) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "The load is represented as a constant impedance but other properties (attributes) are defined." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            OPTIONAL {$this cim:LoadStatic.kp1 ?kp1} .
+            OPTIONAL {$this cim:LoadStatic.kp2 ?kp2} .
+            OPTIONAL {$this cim:LoadStatic.kp3 ?kp3} .
+            OPTIONAL {$this cim:LoadStatic.kp4 ?kp4} .
+            OPTIONAL {$this cim:LoadStatic.kpf ?kpf} .
+            OPTIONAL {$this cim:LoadStatic.kq1 ?kq1} .
+            OPTIONAL {$this cim:LoadStatic.kq2 ?kq2} .
+            OPTIONAL {$this cim:LoadStatic.kq3 ?kq3} .
+            OPTIONAL {$this cim:LoadStatic.kq4 ?kq4} .
+            OPTIONAL {$this cim:LoadStatic.kqf ?kqf} .
+            OPTIONAL {$this cim:LoadStatic.ep1 ?ep1} .
+            OPTIONAL {$this cim:LoadStatic.ep2 ?ep2} .
+            OPTIONAL {$this cim:LoadStatic.ep3 ?ep3} .
+            OPTIONAL {$this cim:LoadStatic.eq1 ?eq1} .
+            OPTIONAL {$this cim:LoadStatic.eq2 ?eq2} .
+            OPTIONAL {$this cim:LoadStatic.eq3 ?eq3} .
+            FILTER ((bound(?kp1) || bound(?kp2) || bound(?kp3) || bound(?kp4) || bound(?kpf) || bound(?kq1) || bound(?kq2) || bound(?kq3) || bound(?kq4) || bound(?kqf) || bound(?ep1) || bound(?ep2) || bound(?ep3) || bound(?eq1) || bound(?eq2) || bound(?eq3)) && ?value=cim:StaticLoadModelKind.constantZ) .
+          }
+          """ .
 
 dyu:MechanicalLoadDynamics
         a               sh:NodeShape ;
@@ -15907,16 +15938,17 @@ dyu:Pss2ST-inputSignals
         
     
 dyu:Pss2ST-inputSignalsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Input signal #1 and input signal #2 are not different." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:Pss2ST.inputSignal2Type ?input2 .
-        FILTER (?value=?input2) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Input signal #1 and input signal #2 are not different." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:Pss2ST.inputSignal2Type ?input2 .
+            FILTER (?value=?input2) .
+          }
+          """ .
 
 dyu:PssIEEE1A.inputSignalType-allowedValues
         a               sh:PropertyShape ;
@@ -15986,16 +16018,17 @@ dyu:PssWECC-inputSignals
         
     
 dyu:PssWECC-inputSignalsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Input signal #1 and input signal #2 are not different." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:PssWECC.inputSignal2Type ?input2 .
-        FILTER (?value=?input2) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Input signal #1 and input signal #2 are not different." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:PssWECC.inputSignal2Type ?input2 .
+            FILTER (?value=?input2) .
+          }
+          """ .
 
 
 dyu:RotatingMachineDynamics
@@ -16015,16 +16048,17 @@ dyu:RotatingMachineDynamics.saturationFactor120-valueRange
         
     
 dyu:RotatingMachineDynamics.saturationFactor120Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message      "The value is less than RotatingMachineDynamics.saturationFactor." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-        $this $PATH ?value .
-        $this cim:RotatingMachineDynamics.saturationFactor ?saturationFactor .
-        FILTER (?value<?saturationFactor) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message      "The value is less than RotatingMachineDynamics.saturationFactor." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:RotatingMachineDynamics.saturationFactor ?saturationFactor .
+            FILTER (?value<?saturationFactor) .
+          }
+          """ .
 
 dyu:SynchronousMachineSimplified-requiredAttributes
         a               sh:PropertyShape ;
@@ -16038,14 +16072,15 @@ dyu:SynchronousMachineSimplified-requiredAttributes
         
     
 dyu:SynchronousMachineSimplified-requiredAttributesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Saturation related attributes are not needed for SynchronousMachineSimplified." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this
-			WHERE {
-          OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
-          OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor120 ?s2} .
-        FILTER (bound(?s1) || bound(?s2)) .        
-			}""" .
+        a         sh:SPARQLConstraint ;
+        sh:message "Saturation related attributes are not needed for SynchronousMachineSimplified." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor ?s1} .
+            OPTIONAL {$this cim:RotatingMachineDynamics.saturationFactor120 ?s2} .
+            FILTER (bound(?s1) || bound(?s2)) .
+          }
+          """ .
       

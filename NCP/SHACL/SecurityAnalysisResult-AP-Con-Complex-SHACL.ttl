@@ -58,14 +58,15 @@ sarc:PowerFlowResult.valueSparql
     sh:message      "PowerFlowResult is associated with OperationalLimit but PowerFlowResult.value and/or PowerFlowResult.absoluteValue are not provided." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this nc:PowerFlowResult.OperationalLimit ?o1.
+      SELECT  $this
+      WHERE {
+        $this nc:PowerFlowResult.OperationalLimit ?o1.
         #BIND(EXISTS{$this nc:PowerFlowResult.OperationalLimit ?o1} AS ?ol1).
-    BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
-    BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
-        FILTER (?val="false"^^xsd:boolean || ?aval="false"^^xsd:boolean ).
-      }""" .        
+        BIND(EXISTS{$this nc:PowerFlowResult.value ?o2} AS ?val).
+        BIND(EXISTS{$this nc:PowerFlowResult.absoluteValue ?o3} AS ?aval).
+        FILTER (!?val || !?aval ).
+      }
+      """ .
 
 sarc:PowerFlowResult-ApparentPowerLimit
         a               sh:PropertyShape ;
@@ -82,12 +83,12 @@ sarc:PowerFlowResult-ApparentPowerLimitSparql
     sh:message      "PowerFlowResult.valueVA is not provided for ApparentPowerLimit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && ?val="false"^^xsd:boolean ).
-      }""" .        
+        FILTER ((?oltype=cim:ApparentPowerLimit || ?oltype=cim16:ApparentPowerLimit || ?oltype=cim17:ApparentPowerLimit) && NOT EXISTS {$this $PATH ?o1}).
+      }
+      """ .
 
 sarc:PowerFlowResult-ActivePowerLimit
         a               sh:PropertyShape ;
@@ -104,12 +105,12 @@ sarc:PowerFlowResult-ActivePowerLimitSparql
     sh:message      "PowerFlowResult.valueW is not provided for ActivePowerLimit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit)&& ?val="false"^^xsd:boolean ).
-      }""" .       
+        FILTER ((?oltype=cim:ActivePowerLimit || ?oltype=cim16:ActivePowerLimit || ?oltype=cim17:ActivePowerLimit) && NOT EXISTS {$this $PATH ?o1}).
+      }
+      """ .
       
 sarc:PowerFlowResult-ReactivePowerLimit
         a               sh:PropertyShape ;
@@ -126,12 +127,12 @@ sarc:PowerFlowResult-ReactivePowerLimitSparql
     sh:message      "PowerFlowResult.valueVAR is not provided for ReactivePowerLimit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && ?val="false"^^xsd:boolean ).
-      }""" .       
+        FILTER ((?oltype=cim:ReactivePowerLimit || ?oltype=cim16:ReactivePowerLimit || ?oltype=cim17:ReactivePowerLimit) && NOT EXISTS {$this $PATH ?o1}).
+      }
+      """ .
       
 sarc:PowerFlowResult-VoltageLimit
         a               sh:NodeShape ;
@@ -172,12 +173,12 @@ sarc:PowerFlowResult-VoltageAngleLimitSparql
     sh:message      "PowerFlowResult.valueAngle is not provided for VoltageAngleLimit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER (?oltype=nc:VoltageAngleLimit && ?val="false"^^xsd:boolean ).
-      }""" .      
+        FILTER (?oltype=nc:VoltageAngleLimit && NOT EXISTS {$this $PATH ?o1}).
+      }
+      """ .
       
 sarc:PowerFlowResult-CurrentLimit
         a               sh:PropertyShape ;
@@ -194,12 +195,12 @@ sarc:PowerFlowResult-CurrentLimitSparql
     sh:message      "PowerFlowResult.valueA is not provided for CurrentLimit." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {      
+      SELECT  $this
+      WHERE {
         $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-    BIND(EXISTS{$this $PATH ?o1} AS ?val).
-        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val="false"^^xsd:boolean ).
-      }""" .      
+        FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && NOT EXISTS {$this $PATH ?o1}).
+      }
+      """ .
       
 sarc:RemedialActionApplied  a          sh:NodeShape ;
         sh:property      sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinality;
@@ -222,13 +223,14 @@ sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql
     sh:message      "RemedialActionApplied is either not associated with Stage for a SchemeRemedialAction or it is provided for other type of RemedialAction." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
+      SELECT  $this
+      WHERE {
+        $this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
         BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
 
-        FILTER ((?stage="false"^^xsd:boolean && ?ra=cim:SchemeRemedialAction) || (?stage="true"^^xsd:boolean && ?ra!=cim:SchemeRemedialAction) ).
-      }""" .          
+        FILTER ((!?stage && ?ra=cim:SchemeRemedialAction) || (?stage && ?ra!=cim:SchemeRemedialAction) ).
+      }
+      """ .
       
 sarc:PowerFlowResult-voltageAndAngle
         a               sh:PropertyShape ;
@@ -245,38 +247,32 @@ sarc:PowerFlowResult-voltageAndAngleSparql
     sh:message      "PowerFlowResult.valueV and PowerFlowResult.valueAngle are instantiated if PowerFlowResult is associated with ACDCTerminal or PowerTransferCorridor." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    
-        BIND(EXISTS{$this nc:PowerFlowResult.valueV ?o1} AS ?hasvalueV).
-    BIND(EXISTS{$this nc:PowerFlowResult.valueAngle ?o2} AS ?hasvalueAngle).
-    BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
-    BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
+      SELECT  $this
+      WHERE {
 
-        FILTER ((?hasvalueV="true"^^xsd:boolean || ?hasvalueAngle="true"^^xsd:boolean) && (?hasT="true"^^xsd:boolean || ?hasPTC="true"^^xsd:boolean) ).
-      }""" .    
+        BIND(EXISTS{$this nc:PowerFlowResult.valueV ?o1} AS ?hasvalueV).
+        BIND(EXISTS{$this nc:PowerFlowResult.valueAngle ?o2} AS ?hasvalueAngle).
+        BIND(EXISTS{$this nc:PowerFlowResult.ACDCTerminal ?o3} AS ?hasT).
+        BIND(EXISTS{$this nc:PowerFlowResult.PowerTransferCorridor ?o4} AS ?hasPTC).
+
+        FILTER ((?hasvalueV || ?hasvalueAngle) && (?hasT || ?hasPTC) ).
+      }
+      """ .
 
 sarc:PowerFlowResult-association
         a               sh:PropertyShape ;
         sh:description  "PowerFlowResult shall be associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
-        sh:sparql       sarc:PowerFlowResult-associationSparql ;
-        sh:path         rdf:type ;
+        sh:message      "PowerFlowResult is not associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
+        sh:path [sh:alternativePath (
+        nc:PowerFlowResult.ACDCTerminal
+        nc:PowerFlowResult.PowerTransferCorridor
+        nc:PowerFlowResult.TopologicalNode
+                )];
+        sh:minCount 1;
         sh:group        sarc:SARgroup ;
         sh:name         "C:NC:SAR:PowerFlowResult:association" ;
         sh:order        10 ;
         sh:severity     sh:Violation .
-        
-sarc:PowerFlowResult-associationSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "PowerFlowResult is not associated with either ACDCTerminal, TopologicalNode or PowerTransferCorridor." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  
-      WHERE {  
-    $this (nc:PowerFlowResult.ACDCTerminal/rdf:type)|(nc:PowerFlowResult.TopologicalNode/rdf:type)|(nc:PowerFlowResult.PowerTransferCorridor/rdf:type) ?assocType.
-
-        FILTER (?assocType NOT IN (cim:DCTerminal, cim17:DCTerminal, cim16:DCTerminal, cim:Terminal, cim17:Terminal, cim16:Terminal, cim:TopologicalNode, cim17:TopologicalNode, cim16:TopologicalNode, nc:PowerTransferCorridor) ).
-      }""" .     
 
 sarc:PowerFlowResult-topologicalNode
         a               sh:PropertyShape ;
@@ -293,13 +289,14 @@ sarc:PowerFlowResult-topologicalNodeSparql
     sh:message      "PowerFlowResult.valueW, PowerFlowResult.valueVA, PowerFlowResult.valueVAR and PowerFlowResult.valueA are instantiated if PowerFlowResult is associated with TopologicalNode." ;
     sh:prefixes cim: ;
     sh:select """
-      SELECT  $this  
-      WHERE {  
-    BIND(EXISTS{$this nc:PowerFlowResult.TopologicalNode ?ot} AS ?hasTN).
+      SELECT  $this
+      WHERE {
+        BIND(EXISTS{$this nc:PowerFlowResult.TopologicalNode ?ot} AS ?hasTN).
         BIND(EXISTS{$this nc:PowerFlowResult.valueW ?o1} AS ?hasvalueW).
-    BIND(EXISTS{$this nc:PowerFlowResult.valueVA ?o2} AS ?hasvalueVA).
-    BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
-    BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
+        BIND(EXISTS{$this nc:PowerFlowResult.valueVA ?o2} AS ?hasvalueVA).
+        BIND(EXISTS{$this nc:PowerFlowResult.valueVAR ?o3} AS ?hasvalueVAR).
+        BIND(EXISTS{$this nc:PowerFlowResult.valueA ?o4} AS ?hasvalueA).
 
-        FILTER ( ?hasTN="true"^^xsd:boolean && (?hasvalueW="true"^^xsd:boolean || ?hasvalueVA="true"^^xsd:boolean || ?hasvalueVAR="true"^^xsd:boolean || ?hasvalueA="true"^^xsd:boolean)).
-      }""" .        
+        FILTER ( ?hasTN && (?hasvalueW || ?hasvalueVA || ?hasvalueVAR || ?hasvalueA)).
+      }
+      """ .

@@ -42,24 +42,24 @@ com:DanglingReferences
         a sh:SPARQLTarget ;
     sh:prefixes cim: ;
         sh:select """
-            SELECT DISTINCT ?this
-            WHERE {
-                ?subject ?predicate ?this .
+          SELECT DISTINCT ?this
+          WHERE {
+            ?subject ?predicate ?this .
 
-                FILTER(?predicate != rdf:type)
-                FILTER(isIRI(?this))
+            FILTER(?predicate != rdf:type)
+            FILTER(isIRI(?this))
 
-                FILTER(
-                    STRSTARTS(STR(?this), "urn:uuid:")
-                    || CONTAINS(STR(?this), "#_")
-                    || STRENDS(STR(?this), "#")
-                )
+            FILTER(
+              STRSTARTS(STR(?this), "urn:uuid:")
+              || CONTAINS(STR(?this), "#_")
+              || STRENDS(STR(?this), "#")
+            )
 
-                FILTER NOT EXISTS {
-                    ?this rdf:type ?type .
-                }
+            FILTER NOT EXISTS {
+              ?this rdf:type ?type .
             }
-        """ ;
+          }
+          """ ;
     ] ;
 
     sh:property com:All-DanglingReferences .

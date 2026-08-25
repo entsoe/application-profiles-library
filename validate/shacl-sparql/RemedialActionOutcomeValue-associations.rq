@@ -20,10 +20,10 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {      
+      SELECT  $this  
+      WHERE {      
        
-		BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
-		BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((?hasRAG=false && ?hasRA=false) || (?hasRAG=true && ?hasRA=true)).
-			}
+    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
+    BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
+        FILTER ((?hasRAG="false"^^xsd:boolean && ?hasRA="false"^^xsd:boolean) || (?hasRAG="true"^^xsd:boolean && ?hasRA="true"^^xsd:boolean)).
+      }

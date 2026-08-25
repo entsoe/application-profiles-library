@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.3#AvailabilityEnabled-associations
+# https://ap-con.cim4.eu/AvailabilitySchedule-Complex/2.4#AvailabilityEnabled-associations
 # AvailabilityEnabled-associations
 # AvailabilityEnabled shall have an association with either GridStateAlteration or AssessedElement.
 
@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:AvailabilityEnabled.GridStateAlteration ?gsa.} AS ?vGSA).	
-		BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.GridStateAlteration ?gsa.} AS ?vGSA).  
+    BIND(EXISTS{$this nc:AvailabilityEnabled.AssessedElement ?ae.} AS ?vAE).
 
         FILTER (
-			(?vGSA=true && ?vAE=true) || 
-			(?vGSA=false && ?vAE=false) 
-		).
-			}
+      (?vGSA="true"^^xsd:boolean && ?vAE="true"^^xsd:boolean) || 
+      (?vGSA="false"^^xsd:boolean && ?vAE="false"^^xsd:boolean) 
+    ).
+      }

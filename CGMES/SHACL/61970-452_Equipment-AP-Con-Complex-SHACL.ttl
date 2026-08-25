@@ -348,18 +348,18 @@ eq452:VsCapabilityCurve-VsCapabilityCurveCount
         
     
 eq452:VsCapabilityCurve-VsCapabilityCurveCountSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Less than two instances of CurveData are associated." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this (COUNT(?typecd) AS ?curvedatas)
-        WHERE {
-        ?curvedata cim:CurveData.Curve $this .
-        ?curvedata rdf:type ?typecd .
-        }
-        GROUP BY $this ?typecd
-        HAVING(?curvedatas<2)
-      """ .      
+        a         sh:SPARQLConstraint ;
+        sh:message "Less than two instances of CurveData are associated." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this (COUNT(?typecd) AS ?curvedatas)
+          WHERE {
+            ?curvedata cim:CurveData.Curve $this .
+            ?curvedata rdf:type ?typecd .
+          }
+          GROUP BY $this ?typecd
+          HAVING(?curvedatas<2)
+          """ .
       
       
 eq452:ReactiveCapabilityCurve-reactiveCountP
@@ -374,48 +374,49 @@ eq452:ReactiveCapabilityCurve-reactiveCountP
         
     
 eq452:ReactiveCapabilityCurve-reactiveCountPSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Reactive capability curve does not have the required number of points or the CurveData.xvalue is not in the defined range."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?curvedatas  ?value
-      WHERE {
-        {
-        SELECT $this (COUNT(?typecd) AS ?curvedatas) (MAX(?xvalue) AS ?maxxvalue) (MIN(?xvalue) AS ?minxvalue)
-        WHERE {
-        $this  ^cim:CurveData.Curve/rdf:type ?typecd .
-        $this  ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue .
-        #?curvedata cim:CurveData.Curve $this .
-        #?curvedata rdf:type ?typecd .
-        #?curvedata cim:CurveData.xvalue ?xvalue .
-        }
-        GROUP BY $this ?typecd 
-        }
-        
-        $this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?type .
-        #BIND(EXISTS{$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?a} AS ?hasrcc).
-        
-        #OPTIONAL {?sm cim:SynchronousMachine.InitialReactiveCapabilityCurve $this }.
-        #OPTIONAL {?sm cim:SynchronousMachine.type ?type }.
-        #OPTIONAL {$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve ?mach }.
-        $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1 .
-        #?curvedata1 cim:CurveData.Curve $this .
-        #?curvedata1 cim:CurveData.xvalue ?xvalue1 .
-        BIND("" as ?value).
+        a         sh:SPARQLConstraint ;
+        sh:message "Reactive capability curve does not have the required number of points or the CurveData.xvalue is not in the defined range."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?curvedatas  ?value
+          WHERE {
+            {
+              SELECT $this (COUNT(?typecd) AS ?curvedatas) (MAX(?xvalue) AS ?maxxvalue) (MIN(?xvalue) AS ?minxvalue)
+              WHERE {
+                $this  ^cim:CurveData.Curve/rdf:type ?typecd .
+                $this  ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue .
+                #?curvedata cim:CurveData.Curve $this .
+                #?curvedata rdf:type ?typecd .
+                #?curvedata cim:CurveData.xvalue ?xvalue .
+              }
+              GROUP BY $this ?typecd
+            }
+
+            $this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?type .
+            #BIND(EXISTS{$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:SynchronousMachine.type ?a} AS ?hasrcc).
+
+            #OPTIONAL {?sm cim:SynchronousMachine.InitialReactiveCapabilityCurve $this }.
+            #OPTIONAL {?sm cim:SynchronousMachine.type ?type }.
+            #OPTIONAL {$this ^cim:SynchronousMachine.InitialReactiveCapabilityCurve ?mach }.
+            $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1 .
+            #?curvedata1 cim:CurveData.Curve $this .
+            #?curvedata1 cim:CurveData.xvalue ?xvalue1 .
+            BIND("" as ?value).
 
 
-        #FILTER (?hasrcc=true && ((?type=cim:SynchronousMachineKind.condenser ) ||
-        #((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
-        #((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
-        #((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
-        #) .
-        FILTER (((?type=cim:SynchronousMachineKind.condenser ) ||
-        ((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
-        ((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
-        ((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
-        ) .
-        
-        } """ .       
+            #FILTER (?hasrcc=true && ((?type=cim:SynchronousMachineKind.condenser ) ||
+            #((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
+            #((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
+            #((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
+            #) .
+            FILTER (((?type=cim:SynchronousMachineKind.condenser ) ||
+                ((?type=cim:SynchronousMachineKind.generator || ?type=cim:SynchronousMachineKind.generatorOrCondenser) && (?curvedatas<2 || ?xvalue1<0)) ||
+                ((?type=cim:SynchronousMachineKind.motor || ?type=cim:SynchronousMachineKind.motorOrCondenser) && (?curvedatas<2 || ?xvalue1>0)) ||
+                ((?type=cim:SynchronousMachineKind.generatorOrMotor || ?type=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?curvedatas<3 || !(?maxxvalue>=0 && ?minxvalue<=0))))
+            ) .
+
+          }
+          """ .
 
 eq452:VsCapabilityCurve-yvalues
         a               sh:PropertyShape ;
@@ -429,17 +430,18 @@ eq452:VsCapabilityCurve-yvalues
         
     
 eq452:VsCapabilityCurve-yvaluesSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "CurveData.y2value is not greater than CurveData.y1value" ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this 
-        WHERE {
-        ?curvedata cim:CurveData.Curve $this .
-        ?curvedata cim:CurveData.y1value ?y1value .
-        ?curvedata cim:CurveData.y2value ?y2value .
-        FILTER (?y2value<=?y1value).
-        }""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "CurveData.y2value is not greater than CurveData.y1value" ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            ?curvedata cim:CurveData.Curve $this .
+            ?curvedata cim:CurveData.y1value ?y1value .
+            ?curvedata cim:CurveData.y2value ?y2value .
+            FILTER (?y2value<=?y1value).
+          }
+          """ .
 
 eq452:PhaseTapChanger-controlModeP
         a               sh:PropertyShape ;
@@ -453,17 +455,18 @@ eq452:PhaseTapChanger-controlModeP
         
     
 eq452:PhaseTapChanger-controlModePSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Unallowed regulating control mode for a PhaseTapChanger." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
-        #?rcontrol cim:RegulatingControl.mode ?value  .
-        $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.mode ?value  .
-        FILTER (?value!=cim:RegulatingControlModeKind.activePower && ?value!=cim:RegulatingControlModeKind.voltage).
-        }""" .  
+        a         sh:SPARQLConstraint ;
+        sh:message "Unallowed regulating control mode for a PhaseTapChanger." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
+            #?rcontrol cim:RegulatingControl.mode ?value  .
+            $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.mode ?value  .
+            FILTER (?value!=cim:RegulatingControlModeKind.activePower && ?value!=cim:RegulatingControlModeKind.voltage).
+          }
+          """ .
 
 eq452:RatioTapChanger-controlMode
         a               sh:PropertyShape ;
@@ -477,17 +480,18 @@ eq452:RatioTapChanger-controlMode
         
     
 eq452:RatioTapChanger-controlModeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Unallowed regulating control mode for a RatioTapChanger." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
-        #?rcontrol cim:RegulatingControl.mode ?value  .
-        $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.mode ?value  .
-        FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Unallowed regulating control mode for a RatioTapChanger." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            #?rcontrol ^cim:TapChanger.TapChangerControl $this  .
+            #?rcontrol cim:RegulatingControl.mode ?value  .
+            $this cim:TapChanger.TapChangerControl/cim:RegulatingControl.mode ?value  .
+            FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
+          }
+          """ .
 
 eq452:ShuntCompensator-controlMode
         a               sh:PropertyShape ;
@@ -501,17 +505,18 @@ eq452:ShuntCompensator-controlMode
         
     
 eq452:ShuntCompensator-controlModeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Unallowed regulating control mode for a ShuntCompensator." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
-        #?rcontrol cim:RegulatingControl.mode ?value  .
-        $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value  .
-        FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Unallowed regulating control mode for a ShuntCompensator." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
+            #?rcontrol cim:RegulatingControl.mode ?value  .
+            $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value  .
+            FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
+          }
+          """ .
 
 eq452:SynchronousMachine-controlMode
         a               sh:PropertyShape ;
@@ -525,17 +530,18 @@ eq452:SynchronousMachine-controlMode
         
     
 eq452:SynchronousMachine-controlModeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Unallowed regulating control mode for a SynchronousMachine." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
-        #?rcontrol cim:RegulatingControl.mode ?value  .
-        $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value  .
-        FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Unallowed regulating control mode for a SynchronousMachine." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
+            #?rcontrol cim:RegulatingControl.mode ?value  .
+            $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value  .
+            FILTER (?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage && ?value!=cim:RegulatingControlModeKind.powerFactor).
+          }
+          """ .
 
 
 eq452:StaticVarCompensator-controlMode
@@ -550,21 +556,22 @@ eq452:StaticVarCompensator-controlMode
         
     
 eq452:StaticVarCompensator-controlModeSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Unallowed regulating control mode for a StaticVarCompensator or not allowed usage of StaticVarCompensator.sVCControlMode or StaticVarCompensator.voltageSetPoint." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
-        #?rcontrol cim:RegulatingControl.mode ?value  .
-        $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value .
-        BIND(EXISTS{$this cim:StaticVarCompensator.sVCControlMode ?a} AS ?hassvcmode).
-        BIND(EXISTS{$this cim:StaticVarCompensator.voltageSetPoint ?b} AS ?hasvsetpoint).
-        #OPTIONAL {$this cim:StaticVarCompensator.sVCControlMode ?svcmode }.
-        #OPTIONAL {$this cim:StaticVarCompensator.voltageSetPoint ?vsetpoint }.
-        FILTER ((?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage) || ?hassvcmode=true || ?hasvsetpoint=true).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Unallowed regulating control mode for a StaticVarCompensator or not allowed usage of StaticVarCompensator.sVCControlMode or StaticVarCompensator.voltageSetPoint." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            #?rcontrol ^cim:RegulatingCondEq.RegulatingControl $this  .
+            #?rcontrol cim:RegulatingControl.mode ?value  .
+            $this cim:RegulatingCondEq.RegulatingControl/cim:RegulatingControl.mode ?value .
+            BIND(EXISTS{$this cim:StaticVarCompensator.sVCControlMode ?a} AS ?hassvcmode).
+            BIND(EXISTS{$this cim:StaticVarCompensator.voltageSetPoint ?b} AS ?hasvsetpoint).
+            #OPTIONAL {$this cim:StaticVarCompensator.sVCControlMode ?svcmode }.
+            #OPTIONAL {$this cim:StaticVarCompensator.voltageSetPoint ?vsetpoint }.
+            FILTER ((?value!=cim:RegulatingControlModeKind.reactivePower && ?value!=cim:RegulatingControlModeKind.voltage) || ?hassvcmode=true || ?hasvsetpoint=true).
+          }
+          """ .
 
 eq452:GeneratingUnit-typeDependency
         a               sh:PropertyShape ;
@@ -578,34 +585,35 @@ eq452:GeneratingUnit-typeDependency
         
     
 eq452:GeneratingUnit-typeDependencySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Inconsistancy between GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP and SynchronousMachine.type." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        $this $PATH ?value .
-        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp .
-        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp .
-        #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit ?genunit } .
-        #OPTIONAL {?genunit cim:GeneratingUnit.maxOperatingP ?maxp } .
-        #OPTIONAL {?genunit cim:GeneratingUnit.minOperatingP ?minp } .
-        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?a} AS ?hasgenunit).
-        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?b} AS ?hasmaxp).
-        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?c} AS ?hasminp).
-        
-        
-        #FILTER ((?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && ?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
-        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
-        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
-        #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
-        #).
-         FILTER ((?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
-        ((?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
-        ((?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
-        ((?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
-        ).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Inconsistancy between GeneratingUnit.maxOperatingP and GeneratingUnit.minOperatingP and SynchronousMachine.type." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp .
+            $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp .
+            #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit ?genunit } .
+            #OPTIONAL {?genunit cim:GeneratingUnit.maxOperatingP ?maxp } .
+            #OPTIONAL {?genunit cim:GeneratingUnit.minOperatingP ?minp } .
+            #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?a} AS ?hasgenunit).
+            #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?b} AS ?hasmaxp).
+            #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?c} AS ?hasminp).
+
+
+            #FILTER ((?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && ?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
+            #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
+            #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
+            #(?hasgenunit=true && ?hasmaxp=true && ?hasminp=true && (?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
+            #).
+            FILTER ((?value=cim:SynchronousMachineKind.condenser && (?maxp!=0 || ?minp!=0)) ||
+              ((?value=cim:SynchronousMachineKind.generator || ?value=cim:SynchronousMachineKind.generatorOrCondenser) && (?maxp<=0 || ?minp<0)) ||
+              ((?value=cim:SynchronousMachineKind.motor || ?value=cim:SynchronousMachineKind.motorOrCondenser) && (?maxp>0 || ?minp>=0)) ||
+              ((?value=cim:SynchronousMachineKind.generatorOrMotor || ?value=cim:SynchronousMachineKind.generatorOrCondenserOrMotor) && (?maxp<=0 || ?minp>=0))
+            ).
+          }
+          """ .
 
 eq452:GeneratingUnit.aggregate
         a               sh:NodeShape ;
@@ -624,32 +632,33 @@ eq452:SynchronousMachine-aggregate
         
     
 eq452:SynchronousMachine-aggregateSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not consistent with .aggregate for the associated GeneratingUnit."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?sms ?value 
-      WHERE {
-        {
-        SELECT $this (COUNT(?typesm) AS ?sms) 
-        WHERE {
-        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/rdf:type cim:SynchronousMachine} AS ?hasam).
-        $this ^cim:RotatingMachine.GeneratingUnit/rdf:type ?typesm.
-        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
-        #OPTIONAL {?sm rdf:type ?typesm }.
-        FILTER(?typesm=cim:SynchronousMachine ).
-        }
-        GROUP BY $this ?typesm 
-        }
-        $this $PATH ?value.
-        #OPTIONAL {$this $PATH ?value }.
-        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
-        #OPTIONAL {?sm cim:Equipment.aggregate ?smaggregate }.
-        $this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregate .
-        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregatea} AS ?hasaggr).
-        #FILTER (?sms=1 && bound(?value) && ?hasaggr=true && ?value!=?smaggregate ) .
-        FILTER (?sms=1 && ?value!=?smaggregate ) .
-        } """ . 
+        a         sh:SPARQLConstraint ;
+        sh:message "The value is not consistent with .aggregate for the associated GeneratingUnit."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?sms ?value
+          WHERE {
+            {
+              SELECT $this (COUNT(?typesm) AS ?sms)
+              WHERE {
+                #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/rdf:type cim:SynchronousMachine} AS ?hasam).
+                $this ^cim:RotatingMachine.GeneratingUnit/rdf:type ?typesm.
+                #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+                #OPTIONAL {?sm rdf:type ?typesm }.
+                FILTER(?typesm=cim:SynchronousMachine ).
+              }
+              GROUP BY $this ?typesm
+            }
+            $this $PATH ?value.
+            #OPTIONAL {$this $PATH ?value }.
+            #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+            #OPTIONAL {?sm cim:Equipment.aggregate ?smaggregate }.
+            $this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregate .
+            #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregatea} AS ?hasaggr).
+            #FILTER (?sms=1 && bound(?value) && ?hasaggr=true && ?value!=?smaggregate ) .
+            FILTER (?sms=1 && ?value!=?smaggregate ) .
+          }
+          """ .
         
 eq452:AsynchronousMachine-aggregate
         a               sh:PropertyShape ;
@@ -663,33 +672,34 @@ eq452:AsynchronousMachine-aggregate
         
     
 eq452:AsynchronousMachine-aggregateSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value is not consistent with .aggregate for the associated GeneratingUnit."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?sms ?value 
-      WHERE {
-        {
-        SELECT $this (COUNT(?typesm) AS ?sms) 
-        WHERE {
-        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/rdf:type cim:AsynchronousMachine} AS ?hasam).
-        $this ^cim:RotatingMachine.GeneratingUnit/rdf:type ?typesm.
-        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
-        #OPTIONAL {?sm rdf:type ?typesm }.
-        #FILTER(?typesm=cim:AsynchronousMachine && ?hasam=true).
-        FILTER(?typesm=cim:AsynchronousMachine).
-        }
-        GROUP BY $this ?typesm 
-        }
-        $this $PATH ?value.
-        #OPTIONAL {$this $PATH ?value }.
-        #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
-        #OPTIONAL {?sm cim:Equipment.aggregate ?smaggregate }.
-        $this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregate .
-        #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregatea} AS ?hasaggr).
-        #FILTER (?sms=1 && bound(?value) && ?hasaggr=true && ?value!=?smaggregate ) .
-        FILTER (?sms=1 && ?value!=?smaggregate ) .
-        } """ .        
+        a         sh:SPARQLConstraint ;
+        sh:message "The value is not consistent with .aggregate for the associated GeneratingUnit."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?sms ?value
+          WHERE {
+            {
+              SELECT $this (COUNT(?typesm) AS ?sms)
+              WHERE {
+                #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/rdf:type cim:AsynchronousMachine} AS ?hasam).
+                $this ^cim:RotatingMachine.GeneratingUnit/rdf:type ?typesm.
+                #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+                #OPTIONAL {?sm rdf:type ?typesm }.
+                #FILTER(?typesm=cim:AsynchronousMachine && ?hasam=true).
+                FILTER(?typesm=cim:AsynchronousMachine).
+              }
+              GROUP BY $this ?typesm
+            }
+            $this $PATH ?value.
+            #OPTIONAL {$this $PATH ?value }.
+            #OPTIONAL {?sm cim:RotatingMachine.GeneratingUnit $this }.
+            #OPTIONAL {?sm cim:Equipment.aggregate ?smaggregate }.
+            $this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregate .
+            #BIND(EXISTS{$this ^cim:RotatingMachine.GeneratingUnit/cim:Equipment.aggregate ?smaggregatea} AS ?hasaggr).
+            #FILTER (?sms=1 && bound(?value) && ?hasaggr=true && ?value!=?smaggregate ) .
+            FILTER (?sms=1 && ?value!=?smaggregate ) .
+          }
+          """ .
 
 eq452:IdentifiedObject.name-validValues
         a               sh:PropertyShape ;
@@ -733,22 +743,23 @@ eq452:CurveData-equationY2
         
     
 eq452:CurveData-equationY2Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The following is not fulfilled: CurveData.xvalue^2+CurveData.y2value^2 shall be less than or equal to RotatingMachine.ratedS^2."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?value 
-      WHERE {
-        $this $PATH ?value .
-        ?value rdf:type cim:ReactiveCapabilityCurve .
-        $this cim:CurveData.xvalue ?xvalue .
-        $this cim:CurveData.y2value ?y2value.
-        #OPTIONAL {$this cim:CurveData.y2value ?y2value } .
-        #BIND (EXISTS{?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds} AS ?smrateds).
-        ?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds .
-        #FILTER (?smrateds=true && bound(?y2value) && (?xvalue*?xvalue+?y2value*?y2value)>?rateds*?rateds) .
-        FILTER ((?xvalue*?xvalue+?y2value*?y2value)>?rateds*?rateds) .
-        } """ . 
+        a         sh:SPARQLConstraint ;
+        sh:message "The following is not fulfilled: CurveData.xvalue^2+CurveData.y2value^2 shall be less than or equal to RotatingMachine.ratedS^2."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            ?value rdf:type cim:ReactiveCapabilityCurve .
+            $this cim:CurveData.xvalue ?xvalue .
+            $this cim:CurveData.y2value ?y2value.
+            #OPTIONAL {$this cim:CurveData.y2value ?y2value } .
+            #BIND (EXISTS{?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds} AS ?smrateds).
+            ?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds .
+            #FILTER (?smrateds=true && bound(?y2value) && (?xvalue*?xvalue+?y2value*?y2value)>?rateds*?rateds) .
+            FILTER ((?xvalue*?xvalue+?y2value*?y2value)>?rateds*?rateds) .
+          }
+          """ .
 
 eq452:CurveData-equationY1
         a               sh:PropertyShape ;
@@ -762,21 +773,22 @@ eq452:CurveData-equationY1
         
     
 eq452:CurveData-equationY1Sparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The following is not fulfilled: CurveData.xvalue^2+CurveData.y1value^2 shall be less than or equal to RotatingMachine.ratedS^2."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?value 
-      WHERE {
-        $this $PATH ?value .
-        ?value rdf:type cim:ReactiveCapabilityCurve .
-        $this cim:CurveData.xvalue ?xvalue .
-        $this cim:CurveData.y1value ?y1value  .
-        #BIND (EXISTS{?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds} AS ?smrateds).
-        ?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds .
-        #FILTER ( ?smrateds=true && (?xvalue*?xvalue+?y1value*?y1value)>?rateds*?rateds) .
-        FILTER ( (?xvalue*?xvalue+?y1value*?y1value)>?rateds*?rateds) .
-        } """ . 
+        a         sh:SPARQLConstraint ;
+        sh:message "The following is not fulfilled: CurveData.xvalue^2+CurveData.y1value^2 shall be less than or equal to RotatingMachine.ratedS^2."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            ?value rdf:type cim:ReactiveCapabilityCurve .
+            $this cim:CurveData.xvalue ?xvalue .
+            $this cim:CurveData.y1value ?y1value  .
+            #BIND (EXISTS{?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds} AS ?smrateds).
+            ?value ^cim:SynchronousMachine.InitialReactiveCapabilityCurve/cim:RotatingMachine.ratedS ?rateds .
+            #FILTER ( ?smrateds=true && (?xvalue*?xvalue+?y1value*?y1value)>?rateds*?rateds) .
+            FILTER ( (?xvalue*?xvalue+?y1value*?y1value)>?rateds*?rateds) .
+          }
+          """ .
 
 
 eq452:CurveData-reactive
@@ -791,38 +803,39 @@ eq452:CurveData-reactive
         
     
 eq452:CurveData-reactiveSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Either CurveData.y2value is not >= CurveData.y1value or CurveData.y2value = CurveData.y1value for all curve points."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?value ?countcd ?sumy1v ?sumy2v
-      WHERE {
-        {
-        SELECT $this (COUNT(?curvedtype) AS ?countcd) (SUM(?y1v) AS ?sumy1v) (SUM(?y2v) AS ?sumy2v)
-        WHERE {
-        $this cim:CurveData.Curve/rdf:type cim:ReactiveCapabilityCurve .
-        $this cim:CurveData.Curve/^cim:CurveData.Curve ?curved .
-        #$this cim:CurveData.Curve ?rcc .
-        #?rcc rdf:type ?curvetype .
-        #?rcc ^cim:CurveData.Curve ?curved .
-        ?curved rdf:type ?curvedtype .
-        ?curved cim:CurveData.y1value ?y1v.
-        ?curved cim:CurveData.y2value ?y2v.
-        #OPTIONAL {?curved cim:CurveData.y2value ?y2v }.
-        #FILTER(bound(?y2v)).
-        }
-        GROUP BY $this ?curvedtype
-        }
-        
-        $this cim:CurveData.Curve ?value .
-        #?value rdf:type ?curvetype .
-        ?value rdf:type cim:ReactiveCapabilityCurve .
-        $this cim:CurveData.y1value ?y1value  .
-        $this cim:CurveData.y2value ?y2value.
-        #OPTIONAL {$this cim:CurveData.y2value ?y2value }.
-        #FILTER (?curvetype=cim:ReactiveCapabilityCurve && bound(?y2value) && (?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
-        FILTER ((?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
-        } """ . 
+        a         sh:SPARQLConstraint ;
+        sh:message "Either CurveData.y2value is not >= CurveData.y1value or CurveData.y2value = CurveData.y1value for all curve points."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value ?countcd ?sumy1v ?sumy2v
+          WHERE {
+            {
+              SELECT $this (COUNT(?curvedtype) AS ?countcd) (SUM(?y1v) AS ?sumy1v) (SUM(?y2v) AS ?sumy2v)
+              WHERE {
+                $this cim:CurveData.Curve/rdf:type cim:ReactiveCapabilityCurve .
+                $this cim:CurveData.Curve/^cim:CurveData.Curve ?curved .
+                #$this cim:CurveData.Curve ?rcc .
+                #?rcc rdf:type ?curvetype .
+                #?rcc ^cim:CurveData.Curve ?curved .
+                ?curved rdf:type ?curvedtype .
+                ?curved cim:CurveData.y1value ?y1v.
+                ?curved cim:CurveData.y2value ?y2v.
+                #OPTIONAL {?curved cim:CurveData.y2value ?y2v }.
+                #FILTER(bound(?y2v)).
+              }
+              GROUP BY $this ?curvedtype
+            }
+
+            $this cim:CurveData.Curve ?value .
+            #?value rdf:type ?curvetype .
+            ?value rdf:type cim:ReactiveCapabilityCurve .
+            $this cim:CurveData.y1value ?y1value  .
+            $this cim:CurveData.y2value ?y2value.
+            #OPTIONAL {$this cim:CurveData.y2value ?y2value }.
+            #FILTER (?curvetype=cim:ReactiveCapabilityCurve && bound(?y2value) && (?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
+            FILTER ((?y2value<?y1value || (?y2value=?sumy1v/?countcd && ?y1value=?sumy2v/?countcd ))) .
+          }
+          """ .
 
 
 eq452:CurveData.xvalue-value
@@ -837,37 +850,38 @@ eq452:CurveData.xvalue-value
         
     
 eq452:CurveData.xvalue-valueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The CurveData.xvalue for ReactveCapabilityCurve are not consistent with GeneratingUnit.minOperatingP and GeneratingUnit.maxOperatingP."  ;
-		sh:prefixes cim: ;
-		sh:select """
-	    SELECT $this ?value
-      WHERE {      
-        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp.
-        $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp.
-        #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp } .
-        #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp } .
-        #OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
-        BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcca} AS ?hasrcc).
-        
-        {
-        SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+        a         sh:SPARQLConstraint ;
+        sh:message "The CurveData.xvalue for ReactveCapabilityCurve are not consistent with GeneratingUnit.minOperatingP and GeneratingUnit.maxOperatingP."  ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
           WHERE {
-            #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
-            #?rcc1 ^cim:CurveData.Curve ?curvedata .
-            $this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedata .
-            #BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedataa} AS ?hascurvedata).
-            ?curvedata rdf:type ?cdtype .
-            ?curvedata cim:CurveData.xvalue ?xvalue .
-            #FILTER (?hascurvedata=true && ?cdtype=cim:CurveData ) .
-            FILTER (?cdtype=cim:CurveData ) .
-          }
-          GROUP BY $this ?cdtype
-        }
+            $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp.
+            $this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp.
+            #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP ?minp } .
+            #OPTIONAL {$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP ?maxp } .
+            #OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+            BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcca} AS ?hasrcc).
 
-        #FILTER ((?hasrcc=true && bound(?minp) && bound(?maxp) && ?maxp!=?maxxvalue && ?minp!=?minxvalue)) .
-        FILTER (?hasrcc=true && !(?maxp=?maxxvalue && ?minp=?minxvalue)) .
-        } """ .
+            {
+              SELECT $this (MAX(?xvalue) AS ?maxxvalue)  (MIN(?xvalue) AS ?minxvalue)
+              WHERE {
+                #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+                #?rcc1 ^cim:CurveData.Curve ?curvedata .
+                $this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedata .
+                #BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedataa} AS ?hascurvedata).
+                ?curvedata rdf:type ?cdtype .
+                ?curvedata cim:CurveData.xvalue ?xvalue .
+                #FILTER (?hascurvedata=true && ?cdtype=cim:CurveData ) .
+                FILTER (?cdtype=cim:CurveData ) .
+              }
+              GROUP BY $this ?cdtype
+            }
+
+            #FILTER ((?hasrcc=true && bound(?minp) && bound(?maxp) && ?maxp!=?maxxvalue && ?minp!=?minxvalue)) .
+            FILTER (?hasrcc=true && !(?maxp=?maxxvalue && ?minp=?minxvalue)) .
+          }
+          """ .
  
  
 eq452:SynchronousMachine-reactiveLimits
@@ -882,35 +896,36 @@ eq452:SynchronousMachine-reactiveLimits
         
     
 eq452:SynchronousMachine-reactiveLimitsSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "One of the following is not fulfilled: 1)Neither SynchronousMachine.minQ,  SynchronousMachine.maxQ nor SynchronousMachine.InitialReactiveCapabilityCurve are provided 2) Either SynchronousMachine.minQ is not equal to min of CurveData.y1value-s or  SynchronousMachine.maxQ is not equal to max CurveData.y2value-s." ;
-		sh:prefixes cim: ;
-		sh:select """
-        SELECT $this 
-      WHERE {
-        OPTIONAL {$this cim:SynchronousMachine.minQ ?minq } .
-        OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq } .
-        #OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
-        BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcca} AS ?hasrcc).
-        
-        {
-        SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+        a         sh:SPARQLConstraint ;
+        sh:message "One of the following is not fulfilled: 1)Neither SynchronousMachine.minQ,  SynchronousMachine.maxQ nor SynchronousMachine.InitialReactiveCapabilityCurve are provided 2) Either SynchronousMachine.minQ is not equal to min of CurveData.y1value-s or  SynchronousMachine.maxQ is not equal to max CurveData.y2value-s." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
           WHERE {
-            #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
-            #?rcc1 ^cim:CurveData.Curve ?curvedata .
-            $this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedata .
-            #BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedataa} AS ?hascurvedata).
-            ?curvedata rdf:type ?cdtype .
-            ?curvedata cim:CurveData.y1value ?y1value .
-            ?curvedata cim:CurveData.y2value ?y2value .
-            #FILTER (?hascurvedata=true && ?cdtype=cim:CurveData ) .
-            FILTER (?cdtype=cim:CurveData ) .
-          }
-          GROUP BY $this ?cdtype
-        }
+            OPTIONAL {$this cim:SynchronousMachine.minQ ?minq } .
+            OPTIONAL {$this cim:SynchronousMachine.maxQ ?maxq } .
+            #OPTIONAL {$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcc } .
+            BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve ?rcca} AS ?hasrcc).
 
-        FILTER ((?hasrcc=false && !(bound(?minq) && bound(?maxq))) || (?hasrcc=true && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
-        } """ .
+            {
+              SELECT $this (MAX(?y2value) AS ?my2value)  (MIN(?y1value) AS ?my1value)
+              WHERE {
+                #OPTIONAL {?rcc1 ^cim:SynchronousMachine.InitialReactiveCapabilityCurve $this } .
+                #?rcc1 ^cim:CurveData.Curve ?curvedata .
+                $this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedata .
+                #BIND(EXISTS{$this cim:SynchronousMachine.InitialReactiveCapabilityCurve/^cim:CurveData.Curve ?curvedataa} AS ?hascurvedata).
+                ?curvedata rdf:type ?cdtype .
+                ?curvedata cim:CurveData.y1value ?y1value .
+                ?curvedata cim:CurveData.y2value ?y2value .
+                #FILTER (?hascurvedata=true && ?cdtype=cim:CurveData ) .
+                FILTER (?cdtype=cim:CurveData ) .
+              }
+              GROUP BY $this ?cdtype
+            }
+
+            FILTER ((?hasrcc=false && !(bound(?minq) && bound(?maxq))) || (?hasrcc=true && bound(?minq) && bound(?maxq) && !(?maxq=?my2value && ?minq=?my1value))) .
+          }
+          """ .
         
         
 eq452:RegulatingControl-RegulatingEquipment
@@ -949,19 +964,20 @@ eq452:SynchronousMachine.type-condenser
         
     
 eq452:SynchronousMachine.type-condenserSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "SynchronousMachine of type condenser with associated GeneratingUnit." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this ?value 
-        WHERE {
-        $this $PATH ?value .
-        $this $PATH cim:SynchronousMachineKind.condenser  .
-        OPTIONAL {$this cim:RotatingMachine.GeneratingUnit ?genunit } .
-        #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?genunit} AS ?opt).
-        #FILTER (?opt=true && ?value=cim:SynchronousMachineKind.condenser ).
-        FILTER (bound(?genunit) ).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "SynchronousMachine of type condenser with associated GeneratingUnit." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this $PATH ?value .
+            $this $PATH cim:SynchronousMachineKind.condenser  .
+            OPTIONAL {$this cim:RotatingMachine.GeneratingUnit ?genunit } .
+            #BIND(EXISTS{$this cim:RotatingMachine.GeneratingUnit ?genunit} AS ?opt).
+            #FILTER (?opt=true && ?value=cim:SynchronousMachineKind.condenser ).
+            FILTER (bound(?genunit) ).
+          }
+          """ .
         
 eq452:Switch-connection
         a               sh:PropertyShape ;
@@ -975,45 +991,46 @@ eq452:Switch-connection
         
     
 eq452:Switch-connectionSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Switch (or its subclasses) connects ConnectivityNode-s that are not contained in either the same VoltageLevel or in different VoltageLevel-s which have the same BaseVoltage." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  
-        WHERE {
-        {
-          SELECT $this ?cnc2 ?cnc1
+        a         sh:SPARQLConstraint ;
+        sh:message "Switch (or its subclasses) connects ConnectivityNode-s that are not contained in either the same VoltageLevel or in different VoltageLevel-s which have the same BaseVoltage." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
           WHERE {
-            ?term1 cim:Terminal.ConductingEquipment $this .
-            ?term2 cim:Terminal.ConductingEquipment $this .
-            ?term1 cim:ACDCTerminal.sequenceNumber 1 .
-            ?term2 cim:ACDCTerminal.sequenceNumber 2 .
-            #OPTIONAL {?term1 cim:Terminal.ConnectivityNode ?cn1 } .
-            #OPTIONAL {?cn1 cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1 } .
-            ?term1 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1 .
-            #BIND(EXISTS{?term1 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1a} AS ?hascnc1).
-            #OPTIONAL {?term2 cim:Terminal.ConnectivityNode ?cn2 } .
-            #OPTIONAL {?cn2 cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2 } .
-            ?term2 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2 .
-            #BIND(EXISTS{?term2 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2a} AS ?hascnc2).
-            #FILTER (?hascnc1=true && ?hascnc2=true).
+            {
+              SELECT $this ?cnc2 ?cnc1
+              WHERE {
+                ?term1 cim:Terminal.ConductingEquipment $this .
+                ?term2 cim:Terminal.ConductingEquipment $this .
+                ?term1 cim:ACDCTerminal.sequenceNumber 1 .
+                ?term2 cim:ACDCTerminal.sequenceNumber 2 .
+                #OPTIONAL {?term1 cim:Terminal.ConnectivityNode ?cn1 } .
+                #OPTIONAL {?cn1 cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1 } .
+                ?term1 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1 .
+                #BIND(EXISTS{?term1 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc1a} AS ?hascnc1).
+                #OPTIONAL {?term2 cim:Terminal.ConnectivityNode ?cn2 } .
+                #OPTIONAL {?cn2 cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2 } .
+                ?term2 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2 .
+                #BIND(EXISTS{?term2 cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer ?cnc2a} AS ?hascnc2).
+                #FILTER (?hascnc1=true && ?hascnc2=true).
+              }
             }
-        }
-        
-        OPTIONAL {?cnc1 cim:Bay.VoltageLevel/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
-        OPTIONAL {?cnc1 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
-        OPTIONAL {?cnc1 ^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
-        OPTIONAL {?cnc1 cim:DCConverterUnit.Substation/^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
 
-        
-        OPTIONAL {?cnc2 cim:Bay.VoltageLevel/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
-        OPTIONAL {?cnc2 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
-        OPTIONAL {?cnc2 ^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
-        OPTIONAL {?cnc2 cim:DCConverterUnit.Substation/^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
-        
-        #FILTER (bound(?cn1) && bound(?cn2) && bound(?cn1nv) && bound(?cn2nv) && ?cn1nv!=?cn2nv).
-        FILTER (bound(?cn1nv) && bound(?cn2nv) && ?cn1nv!=?cn2nv).
-        }""" .        
+            OPTIONAL {?cnc1 cim:Bay.VoltageLevel/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
+            OPTIONAL {?cnc1 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
+            OPTIONAL {?cnc1 ^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
+            OPTIONAL {?cnc1 cim:DCConverterUnit.Substation/^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn1nv } .
+
+
+            OPTIONAL {?cnc2 cim:Bay.VoltageLevel/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
+            OPTIONAL {?cnc2 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
+            OPTIONAL {?cnc2 ^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
+            OPTIONAL {?cnc2 cim:DCConverterUnit.Substation/^cim:VoltageLevel.Substation/cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?cn2nv } .
+
+            #FILTER (bound(?cn1) && bound(?cn2) && bound(?cn1nv) && bound(?cn2nv) && ?cn1nv!=?cn2nv).
+            FILTER (bound(?cn1nv) && bound(?cn2nv) && ?cn1nv!=?cn2nv).
+          }
+          """ .
 
 
 eq452:OperationalLimitSet-limits
@@ -1028,23 +1045,24 @@ eq452:OperationalLimitSet-limits
         
     
 eq452:OperationalLimitSet-limitsSparql
-		a         sh:SPARQLConstraint ;  
+        a         sh:SPARQLConstraint ;
     sh:message    "Either OperationalLimitSet.Equipment is not provided for a Terminal that is associated with AuxiliaryEquipment or in case of ConductingEquipment the OperationalLimitSet.Terminal is not one of the the ConductingEquipment’s Terminal-s." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT DISTINCT $this ?value
-        WHERE {
-          $this cim:OperationalLimitSet.Terminal ?olsterm .
-          OPTIONAL{$this cim:OperationalLimitSet.Terminal/^cim:AuxiliaryEquipment.Terminal ?auxeq } .
-          OPTIONAL{$this cim:OperationalLimitSet.Equipment ?equipment .
-                   ?equipment rdf:type ?value .
-                   BIND(EXISTS{?equipment ^cim:Terminal.ConductingEquipment ?olsterm} AS ?termmatch).
-                  }.
-          
-          FILTER ((!bound(?equipment) && bound(?auxeq)) ||
-                  (bound(?equipment) && ?termmatch=false && ?value NOT IN (cim:CurrentTransformer, cim:PotentialTransformer, cim:PostLineSensor, cim:SurgeArrester, cim:WaveTrap, cim:FaultIndicator, cim:PowerElectronicsWindUnit, cim:PhotoVoltaicUnit, cim:BatteryUnit, cim:HydroPump, cim:GeneratingUnit, cim:HydroGeneratingUnit, cim:NuclearGeneratingUnit, cim:SolarGeneratingUnit, cim:ThermalGeneratingUnit, cim:WindGeneratingUnit, cim:Equipment) )
-                   ).
-        }""" . 
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT DISTINCT $this ?value
+          WHERE {
+            $this cim:OperationalLimitSet.Terminal ?olsterm .
+            OPTIONAL{$this cim:OperationalLimitSet.Terminal/^cim:AuxiliaryEquipment.Terminal ?auxeq } .
+            OPTIONAL{$this cim:OperationalLimitSet.Equipment ?equipment .
+              ?equipment rdf:type ?value .
+              BIND(EXISTS{?equipment ^cim:Terminal.ConductingEquipment ?olsterm} AS ?termmatch).
+            }.
+
+            FILTER ((!bound(?equipment) && bound(?auxeq)) ||
+              (bound(?equipment) && ?termmatch=false && ?value NOT IN (cim:CurrentTransformer, cim:PotentialTransformer, cim:PostLineSensor, cim:SurgeArrester, cim:WaveTrap, cim:FaultIndicator, cim:PowerElectronicsWindUnit, cim:PhotoVoltaicUnit, cim:BatteryUnit, cim:HydroPump, cim:GeneratingUnit, cim:HydroGeneratingUnit, cim:NuclearGeneratingUnit, cim:SolarGeneratingUnit, cim:ThermalGeneratingUnit, cim:WindGeneratingUnit, cim:Equipment) )
+            ).
+          }
+          """ .
 
         
 eq452:EQ452containment
@@ -1596,19 +1614,20 @@ eq452:TapChangerControl-remoteQcontrol
         
     
 eq452:TapChangerControl-remoteQcontrolSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "TapChangerControl with RegulatingControl.mode equals reactivePower controls a Terminal which is not associated with PowerTransformerEnd-s of the PowerTransformer where the TapChanger is located." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  
-        WHERE {
-          $this cim:RegulatingControl.mode ?mode .
-          $this cim:RegulatingControl.Terminal ?rcterm .
-          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm1 }.
-          OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm2 }.
-        
-          FILTER (?mode=cim:RegulatingControlModeKind.reactivePower && ((?rcterm!=?tcterm1 && !bound(?tcterm2) && bound(?tcterm1)) || (?rcterm!=?tcterm2 && !bound(?tcterm1) && bound(?tcterm2)))).
-        }""" . 
+        a         sh:SPARQLConstraint ;
+        sh:message "TapChangerControl with RegulatingControl.mode equals reactivePower controls a Terminal which is not associated with PowerTransformerEnd-s of the PowerTransformer where the TapChanger is located." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
+          WHERE {
+            $this cim:RegulatingControl.mode ?mode .
+            $this cim:RegulatingControl.Terminal ?rcterm .
+            OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:RatioTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm1 }.
+            OPTIONAL {$this ^cim:TapChanger.TapChangerControl/cim:PhaseTapChanger.TransformerEnd/cim:TransformerEnd.Terminal ?tcterm2 }.
+
+            FILTER (?mode=cim:RegulatingControlModeKind.reactivePower && ((?rcterm!=?tcterm1 && !bound(?tcterm2) && bound(?tcterm1)) || (?rcterm!=?tcterm2 && !bound(?tcterm1) && bound(?tcterm2)))).
+          }
+          """ .
 
   
 eq452:ReactiveCapabilityCurve-xvalue
@@ -1623,32 +1642,32 @@ eq452:ReactiveCapabilityCurve-xvalue
         
     
 eq452:ReactiveCapabilityCurve-xvalueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "CurveData.xvalue for a given ReactiveCapabilityCurve are not unique." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  
-        WHERE {
-          {
-          SELECT $this (COUNT(?xvalue1) AS ?c1)
+        a         sh:SPARQLConstraint ;
+        sh:message "CurveData.xvalue for a given ReactiveCapabilityCurve are not unique." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this
           WHERE {
-              $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1.
+            {
+              SELECT $this (COUNT(?xvalue1) AS ?c1)
+              WHERE {
+                $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue1.
+              }
+              GROUP BY $this ?xvalue1
             }
-            GROUP BY $this ?xvalue1
-          }
-          
-          {
-          SELECT DISTINCT $this (COUNT(?xvalue2) AS ?c2)
-          WHERE {
-              $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue2.
-            }
-            GROUP BY $this ?xvalue2
-          }
 
-          FILTER (?c1!=?c2).
-        }
-        LIMIT 1
-        """ .  
+            {
+              SELECT DISTINCT $this (COUNT(?xvalue2) AS ?c2)
+              WHERE {
+                $this ^cim:CurveData.Curve/cim:CurveData.xvalue ?xvalue2.
+              }
+              GROUP BY $this ?xvalue2
+            }
+
+            FILTER (?c1!=?c2).
+          }
+          LIMIT 1
+          """ .
         
         
 eq452:PowerTransformerEnd.x-value
@@ -1663,33 +1682,34 @@ eq452:PowerTransformerEnd.x-value
         
     
 eq452:PowerTransformerEnd.x-valueSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "One of of the following occurs: 1) The value is negative or zero for winding one a two-winding transformer. 2) The value is zero for a three-winding transformer." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT DISTINCT $this  
-        WHERE {
-          
-          $this ^cim:PowerTransformerEnd.PowerTransformer ?end1 ; 
-                ^cim:PowerTransformerEnd.PowerTransformer ?end2 ;
-                ^cim:PowerTransformerEnd.PowerTransformer ?end3 .
-          
-          #?end1 cim:PowerTransformerEnd.PowerTransformer $this .
-          #?end2 cim:PowerTransformerEnd.PowerTransformer $this .
-          #?end3 cim:PowerTransformerEnd.PowerTransformer $this .
-          ?end1 cim:TransformerEnd.endNumber 1.
-          ?end2 cim:TransformerEnd.endNumber 2.
-          ?end1 cim:PowerTransformerEnd.x ?x1 .
-          ?end2 cim:PowerTransformerEnd.x ?x2 .
-          #?end3 cim:TransformerEnd.endNumber 3 .
-          #?end3 cim:PowerTransformerEnd.x ?x3 .
-          OPTIONAL{?end3 cim:TransformerEnd.endNumber 3 .
-                   ?end3 cim:PowerTransformerEnd.x ?x3 } .
-          BIND(EXISTS{$this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3 } AS ?threewin) .
-          
-          #FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
-          FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
-        } """ .         
+        a         sh:SPARQLConstraint ;
+        sh:message "One of of the following occurs: 1) The value is negative or zero for winding one a two-winding transformer. 2) The value is zero for a three-winding transformer." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT DISTINCT $this
+          WHERE {
+
+            $this ^cim:PowerTransformerEnd.PowerTransformer ?end1 ;
+            ^cim:PowerTransformerEnd.PowerTransformer ?end2 ;
+            ^cim:PowerTransformerEnd.PowerTransformer ?end3 .
+
+            #?end1 cim:PowerTransformerEnd.PowerTransformer $this .
+            #?end2 cim:PowerTransformerEnd.PowerTransformer $this .
+            #?end3 cim:PowerTransformerEnd.PowerTransformer $this .
+            ?end1 cim:TransformerEnd.endNumber 1.
+            ?end2 cim:TransformerEnd.endNumber 2.
+            ?end1 cim:PowerTransformerEnd.x ?x1 .
+            ?end2 cim:PowerTransformerEnd.x ?x2 .
+            #?end3 cim:TransformerEnd.endNumber 3 .
+            #?end3 cim:PowerTransformerEnd.x ?x3 .
+            OPTIONAL{?end3 cim:TransformerEnd.endNumber 3 .
+              ?end3 cim:PowerTransformerEnd.x ?x3 } .
+            BIND(EXISTS{$this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3 } AS ?threewin) .
+
+            #FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
+            FILTER ((!(?x1>0 && ?x2=0) && ?threewin=false )|| (?threewin=true && !(?x1!=0 && ?x2!=0 && ?x3!=0)) ).
+          }
+          """ .
 
 eq452:GeneratingUnit.maxOperatingP-ratedS
         a               sh:PropertyShape ;
@@ -1703,29 +1723,29 @@ eq452:GeneratingUnit.maxOperatingP-ratedS
         
     
 eq452:GeneratingUnit.maxOperatingP-ratedSSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "GeneratingUnit.maxOperatingP is greater than the sum of RotatingMachine.ratedS for  RotatingMachine-s associated to GeneratingUnit." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  ?value 
-        WHERE {
-          $this cim:GeneratingUnit.maxOperatingP ?value .
-          {
-          SELECT $this (SUM(?rmrateds) AS ?sumrs)
+        a         sh:SPARQLConstraint ;
+        sh:message "GeneratingUnit.maxOperatingP is greater than the sum of RotatingMachine.ratedS for  RotatingMachine-s associated to GeneratingUnit." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this  ?value
           WHERE {
+            $this cim:GeneratingUnit.maxOperatingP ?value .
+            {
+              SELECT $this (SUM(?rmrateds) AS ?sumrs)
+              WHERE {
 
-             $this ^cim:RotatingMachine.GeneratingUnit/cim:RotatingMachine.ratedS ?rmrateds .
-             
-             #?rm cim:RotatingMachine.GeneratingUnit $this .
-             #?rm rdf:type ?rmtype .
-             #?rm cim:RotatingMachine.ratedS ?rmrateds.
-             }
-             #GROUP BY $this ?rmtype
-             GROUP BY $this 
-          }    
-          FILTER (?value>?sumrs).
-        } 
-        """ .         
+                $this ^cim:RotatingMachine.GeneratingUnit/cim:RotatingMachine.ratedS ?rmrateds .
+
+                #?rm cim:RotatingMachine.GeneratingUnit $this .
+                #?rm rdf:type ?rmtype .
+                #?rm cim:RotatingMachine.ratedS ?rmrateds.
+              }
+              #GROUP BY $this ?rmtype
+              GROUP BY $this
+            }
+            FILTER (?value>?sumrs).
+          }
+          """ .
         
               
 eq452:HydroGeneratingUnit.energyConversionCapability-typeConsistency
@@ -1740,18 +1760,19 @@ eq452:HydroGeneratingUnit.energyConversionCapability-typeConsistency
         
     
 eq452:HydroGeneratingUnit.energyConversionCapability-typeConsistencySparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The HydroGeneratingUnit.energyConversionCapability of the associated SynchronousMachine is not consistent with SynchronousMachine.type." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  ?value
-        WHERE {
-          $this cim:HydroGeneratingUnit.energyConversionCapability ?value .
-          #OPTIONAL {$this cim:HydroGeneratingUnit.energyConversionCapability ?value }.
-          $this ^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.type ?type.
-          #FILTER ((bound(?value) && ?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (bound(?value) && ?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
-          FILTER ((?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
-        } """ .         
+        a         sh:SPARQLConstraint ;
+        sh:message "The HydroGeneratingUnit.energyConversionCapability of the associated SynchronousMachine is not consistent with SynchronousMachine.type." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this  ?value
+          WHERE {
+            $this cim:HydroGeneratingUnit.energyConversionCapability ?value .
+            #OPTIONAL {$this cim:HydroGeneratingUnit.energyConversionCapability ?value }.
+            $this ^cim:RotatingMachine.GeneratingUnit/cim:SynchronousMachine.type ?type.
+            #FILTER ((bound(?value) && ?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (bound(?value) && ?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
+            FILTER ((?value=cim:HydroEnergyConversionKind.generator && ?type NOT IN (cim:SynchronousMachineKind.generator, cim:SynchronousMachineKind.generatorOrCondenser ) ) || (?value=cim:HydroEnergyConversionKind.pumpAndGenerator && ?type NOT IN (cim:SynchronousMachineKind.motor, cim:SynchronousMachineKind.generatorOrMotor, cim:SynchronousMachineKind.generatorOrCondenserOrMotor) )).
+          }
+          """ .
         
 eq452:ConductingEquipment-twoTerminalsShape
         a               sh:NodeShape ;
@@ -1770,21 +1791,22 @@ eq452:Terminal-connection
         
     
 eq452:Terminal-connectionSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "Terminal-s of a  two-terminal ConductingEquipment (or any of its subclasses) connect to the same ConnectivityNode." ;
-		sh:prefixes cim: ;
-		sh:select """
-	      SELECT $this  ?value
-        WHERE {
-          ?term1 cim:Terminal.ConductingEquipment $this .
-          ?term2 cim:Terminal.ConductingEquipment $this .
+        a         sh:SPARQLConstraint ;
+        sh:message "Terminal-s of a  two-terminal ConductingEquipment (or any of its subclasses) connect to the same ConnectivityNode." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this  ?value
+          WHERE {
+            ?term1 cim:Terminal.ConductingEquipment $this .
+            ?term2 cim:Terminal.ConductingEquipment $this .
 
-          ?term1 cim:ACDCTerminal.sequenceNumber 1 .
-          ?term2 cim:ACDCTerminal.sequenceNumber 2 .
-          
-          ?term1 cim:Terminal.ConnectivityNode ?cn1 .         
-          ?term2 cim:Terminal.ConnectivityNode ?cn2 .
-          FILTER (?cn1=?cn2).
-        } """ .         
+            ?term1 cim:ACDCTerminal.sequenceNumber 1 .
+            ?term2 cim:ACDCTerminal.sequenceNumber 2 .
+
+            ?term1 cim:Terminal.ConnectivityNode ?cn1 .
+            ?term2 cim:Terminal.ConnectivityNode ?cn2 .
+            FILTER (?cn1=?cn2).
+          }
+          """ .
         
         

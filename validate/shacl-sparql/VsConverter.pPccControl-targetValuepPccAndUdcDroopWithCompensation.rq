@@ -20,12 +20,12 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value .
         OPTIONAL {$this cim:ACDCConverter.targetPpcc ?targetppcc}.
         OPTIONAL {$this cim:ACDCConverter.targetUdc ?targetudc}.
         OPTIONAL {$this cim:VsConverter.droop ?droop}.
         OPTIONAL {$this cim:VsConverter.droopCompensation ?droopcompensation}.
         FILTER ((!bound(?targetppcc) || !bound(?targetudc) || !bound(?droop) || !bound(?droopcompensation)) && ?value=cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation) .        
-			}
+      }

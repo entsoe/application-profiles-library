@@ -1,4 +1,4 @@
-# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.4#PowerShiftKeyDistribution-associations
+# https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.5#PowerShiftKeyDistribution-associations
 # PowerShiftKeyDistribution-associations
 # PowerShiftKeyDistribution shall include one and only one association to either PowerBidSchedule or PowerShiftKeyStrategy.
 
@@ -20,13 +20,13 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this  
-			WHERE {  
-		BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).	
-		BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
+      SELECT  $this  
+      WHERE {  
+    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerBidSchedule ?pbs} AS ?vPBS).  
+    BIND(EXISTS{$this nc:PowerShiftKeyDistribution.PowerShiftKeyStrategy ?psks} AS ?vPSKS).
 
         FILTER (
-			(?vPBS=true && ?vPSKS=true) || 
-			(?vPBS=false && ?vPSKS=false) 
-		).
-			}
+      (?vPBS="true"^^xsd:boolean && ?vPSKS="true"^^xsd:boolean) || 
+      (?vPBS="false"^^xsd:boolean && ?vPSKS="false"^^xsd:boolean) 
+    ).
+      }

@@ -22,7 +22,7 @@ pd:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Prefix declaration"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/PrefixDeclaration-Complex/2.5> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.5.0"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .

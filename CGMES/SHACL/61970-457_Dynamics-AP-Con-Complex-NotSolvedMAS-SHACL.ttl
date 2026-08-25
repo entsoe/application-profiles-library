@@ -73,43 +73,44 @@ dyn457:TurbineGovernorDynamics-mbaseEquation
         
     
 dyn457:TurbineGovernorDynamics-mbaseEquationSparql
-		a         sh:SPARQLConstraint ;  
-		sh:message "The value does not equal RotatingMachine.ratedPowerFactor * RotatingMachine.ratedS or either both or one of the following attributes are not defined: .ratedPowerFactor, .ratedS." ;
-		sh:prefixes cim: ;
-		sh:select """
-			SELECT $this ?value
-			WHERE {
-          $this rdf:type ?type .
-          OPTIONAL {$this cim:GovHydroIEEE0.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroIEEE2.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamIEEE1.mwbase ?value }.
-          OPTIONAL {$this cim:GovCT1.mwbase ?value }.
-          OPTIONAL {$this cim:GovCT2.mwbase ?value }.
-          OPTIONAL {$this cim:GovGAST.mwbase ?value }.
-          OPTIONAL {$this cim:GovGAST1.mwbase ?value }.
-          OPTIONAL {$this cim:GovGAST2.mwbase ?value }.
-          OPTIONAL {$this cim:GovGASTWD.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydro1.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydro2.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydro3.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydro4.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroDD.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroPID.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroPID2.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroR.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroWEH.mwbase ?value }.
-          OPTIONAL {$this cim:GovHydroWPID.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteam1.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteam0.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamCC.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamEU.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamFV3.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamSGO.mwbase ?value }.
-          OPTIONAL {$this cim:GovSteamFV2.mwbase ?value }.
-          $this cim:TurbineGovernorDynamics.SynchronousMachineDynamics ?smd .
-          ?smd cim:SynchronousMachineDynamics.SynchronousMachine ?sm .
-          OPTIONAL {?sm cim:RotatingMachine.ratedPowerFactor ?ratedPowerFactor} .
-          OPTIONAL {?sm cim:RotatingMachine.ratedS ?ratedS} .
-        FILTER ((!bound(?ratedPowerFactor) || !bound(?ratedS)) || ?value!=?ratedPowerFactor*?ratedS ) . 
-			}""" .      
+        a         sh:SPARQLConstraint ;
+        sh:message "The value does not equal RotatingMachine.ratedPowerFactor * RotatingMachine.ratedS or either both or one of the following attributes are not defined: .ratedPowerFactor, .ratedS." ;
+        sh:prefixes cim: ;
+        sh:select """
+          SELECT $this ?value
+          WHERE {
+            $this rdf:type ?type .
+            OPTIONAL {$this cim:GovHydroIEEE0.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroIEEE2.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamIEEE1.mwbase ?value }.
+            OPTIONAL {$this cim:GovCT1.mwbase ?value }.
+            OPTIONAL {$this cim:GovCT2.mwbase ?value }.
+            OPTIONAL {$this cim:GovGAST.mwbase ?value }.
+            OPTIONAL {$this cim:GovGAST1.mwbase ?value }.
+            OPTIONAL {$this cim:GovGAST2.mwbase ?value }.
+            OPTIONAL {$this cim:GovGASTWD.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydro1.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydro2.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydro3.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydro4.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroDD.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroPID.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroPID2.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroR.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroWEH.mwbase ?value }.
+            OPTIONAL {$this cim:GovHydroWPID.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteam1.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteam0.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamCC.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamEU.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamFV3.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamSGO.mwbase ?value }.
+            OPTIONAL {$this cim:GovSteamFV2.mwbase ?value }.
+            $this cim:TurbineGovernorDynamics.SynchronousMachineDynamics ?smd .
+            ?smd cim:SynchronousMachineDynamics.SynchronousMachine ?sm .
+            OPTIONAL {?sm cim:RotatingMachine.ratedPowerFactor ?ratedPowerFactor} .
+            OPTIONAL {?sm cim:RotatingMachine.ratedS ?ratedS} .
+            FILTER ((!bound(?ratedPowerFactor) || !bound(?ratedS)) || ?value!=?ratedPowerFactor*?ratedS ) .
+          }
+          """ .
 

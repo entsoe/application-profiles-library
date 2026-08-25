@@ -1032,131 +1032,101 @@ dm:conformsTo-cardinality
 
    
 dm:Dataset  rdf:type  sh:NodeShape ;
-        sh:property     dm:spatial-NC-cardinality, dm:accrualPeriodicity-NC-cardinality, dm:usedSettings-NC-cardinality, dm:accessRights-NC-cardinality, dm:conformsTo-NC-cardinality,  dm:requires-NC-cardinality, dm:issued-NC-cardinality, dm:keyword-NC-cardinality, dm:versionNotes.langTag-presence, dm:description.langTag-presence, dm:alternativeVersionAndPreferredVersion-dependency ;
+        sh:property     dm:conformsTo-NC-cardinality , dm:versionNotes.langTag-presence , dm:description.langTag-presence , dm:alternativeVersionAndPreferredVersion-dependency ;
         sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet.    
     
 dm:DifferenceSet  rdf:type  sh:NodeShape ;
-        sh:property     dm:forwardReverse-dependency,dm:reverseDifferencePreviousVersion-dependency ;
+        sh:property     dm:forwardReverse-dependency ;
         sh:targetClass  dcatcim:DifferenceSet.    
     
 
+
+dm:conformsToNCProfile
+        a                       sh:PropertyShape ;
+        sh:description          "Holds if the dataset declares conformance to at least one NC application profile that mandates the common dataset metadata." ;
+        sh:path                 dcterms:conformsTo ;
+        sh:qualifiedValueShape  [ sh:in ( <https://ap.cim4.eu/AssessedElement/2.4>
+                                          <https://ap.cim4.eu/Contingency/2.3>
+                                          <https://ap.cim4.eu/AvailabilitySchedule/2.4>
+                                          <https://ap.cim4.eu/EquipmentReliability/2.5>
+                                          <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>
+                                          <https://ap.cim4.eu/MonitoringArea/2.3>
+                                          <https://ap.cim4.eu/PowerSchedule/2.5>
+                                          <https://ap.cim4.eu/RemedialAction/2.5>
+                                          <https://ap.cim4.eu/RemedialActionSchedule/2.4>
+                                          <https://ap.cim4.eu/SecurityAnalysisResult/2.5>
+                                          <https://ap.cim4.eu/SensitivityMatrix/2.3>
+                                          <https://ap.cim4.eu/StateInstructionSchedule/2.5>
+                                          <https://ap.cim4.eu/SteadyStateInstruction/2.5>
+                                          <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>
+                                          <https://ap.cim4.eu/PowerSystemProject/2.3>
+                                          <https://ap.cim4.eu/ObjectRegistry/3.0> ) ] ;
+        sh:qualifiedMinCount    1 .
+
+dm:conformsToNCProfileAccrualPeriodicity
+        a                       sh:PropertyShape ;
+        sh:description          "Holds if the dataset declares conformance to at least one NC application profile that mandates the accrual periodicity." ;
+        sh:path                 dcterms:conformsTo ;
+        sh:qualifiedValueShape  [ sh:in ( <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>
+                                          <https://ap.cim4.eu/RemedialActionSchedule/2.4>
+                                          <https://ap.cim4.eu/SecurityAnalysisResult/2.5> ) ] ;
+        sh:qualifiedMinCount    1 .
+
+dm:conformsToNCProfileUsedSettings
+        a                       sh:PropertyShape ;
+        sh:description          "Holds if the dataset declares conformance to at least one NC application profile that mandates the used settings." ;
+        sh:path                 dcterms:conformsTo ;
+        sh:qualifiedValueShape  [ sh:in ( <https://ap.cim4.eu/SecurityAnalysisResult/2.4> ) ] ;
+        sh:qualifiedMinCount    1 .
+
 dm:spatial-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:spatial-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "spatial-NC-cardinality" ;
-        sh:path         dcterms:spatial ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        1 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:spatial-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0>)).
-        }""" . 
-    
-    
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfile ]
+                          [ sh:path dcterms:spatial ; sh:minCount 1 ] ) .
+
 dm:accrualPeriodicity-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:accrualPeriodicity-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "accrualPeriodicity-NC-cardinality" ;
-        sh:path         prov:accrualPeriodicity ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        4 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:accrualPeriodicity-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/ImpactAssessmentMatrix/2.4> , <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5> )).
-        }""" .             
-    
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfileAccrualPeriodicity ]
+                          [ sh:path prov:accrualPeriodicity ; sh:minCount 1 ] ) .
+
 dm:usedSettings-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:usedSettings-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "usedSettings-NC-cardinality" ;
-        sh:path         eumd:usedSettings ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        5 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:usedSettings-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/SecurityAnalysisResult/2.4> )).
-        }""" .       
-    
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfileUsedSettings ]
+                          [ sh:path eumd:usedSettings ; sh:minCount 1 ] ) .
+
 dm:accessRights-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:accessRights-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "accessRights-NC-cardinality" ;
-        sh:path         dcterms:accessRights ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        6 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:accessRights-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
-        }""" .     
-    
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfile ]
+                          [ sh:path dcterms:accessRights ; sh:minCount 1 ] ) .
+
 dm:conformsTo-NC-cardinality
         a               sh:PropertyShape ;
         sh:sparql       dm:conformsTo-NC-cardinalitySparql ;
@@ -1173,107 +1143,55 @@ dm:conformsTo-NC-cardinalitySparql
     sh:message "Cardinality violation. Missing required property." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
+      SELECT $this ?value
+      WHERE {
 
-    $this dcterms:spatial ?spatial .
-    OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
-    
-    FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
-        }""" .     
+        $this dcterms:spatial ?spatial .
+        OPTIONAL {$this dcterms:conformsTo ?conformsTo }.
+
+        FILTER (?spatial!=<https://energy.referencedata.eu/Frame/BoundaryModel> && !bound(?conformsTo)).
+      }
+      """ .
 
   
-    
+
 dm:requires-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:requires-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "requires-NC-cardinality" ;
-        sh:path         dcterms:requires ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        9 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:requires-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
-        }""" .           
-    
-   
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfile ]
+                          [ sh:path dcterms:requires ; sh:minCount 1 ] ) .
+
 dm:issued-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:issued-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "issued-NC-cardinality" ;
-        sh:path         dcterms:issued ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        11 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:issued-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
-        }""" .    	
-    
-  
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfile ]
+                          [ sh:path dcterms:issued ; sh:minCount 1 ] ) .
+
 dm:keyword-NC-cardinality
-        a               sh:PropertyShape ;
-        sh:sparql       dm:keyword-NC-cardinalitySparql ;
+        a               sh:NodeShape ;
         sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:message      "Cardinality violation. Missing required property." ;
         sh:name         "keyword-NC-cardinality" ;
-        sh:path         dcat:keyword ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        13 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:keyword-NC-cardinalitySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "Cardinality violation. Missing required property." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value ?v
-        WHERE {
-    $this dcterms:conformsTo ?conformsTo .
-    {
-      SELECT $this (count(?value) as ?v)
-      WHERE {
-      OPTIONAL {$this $PATH ?value } .
-      }
-      GROUP BY $this $PATH 
-    }
-        FILTER (?v=0 && ?conformsTo IN (<https://ap.cim4.eu/AssessedElement/2.4> , <https://ap.cim4.eu/Contingency/2.3>, <https://ap.cim4.eu/AvailabilitySchedule/2.4>, <https://ap.cim4.eu/EquipmentReliability/2.5>, <https://ap.cim4.eu/ImpactAssessmentMatrix/2.4>, <https://ap.cim4.eu/MonitoringArea/2.3>, <https://ap.cim4.eu/PowerSchedule/2.5>, <https://ap.cim4.eu/RemedialAction/2.5>, <https://ap.cim4.eu/RemedialActionSchedule/2.4>, <https://ap.cim4.eu/SecurityAnalysisResult/2.5>, <https://ap.cim4.eu/SensitivityMatrix/2.3>, <https://ap.cim4.eu/StateInstructionSchedule/2.5>, <https://ap.cim4.eu/SteadyStateInstruction/2.5>, <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.1>, <https://ap.cim4.eu/PowerSystemProject/2.3>, <https://ap.cim4.eu/ObjectRegistry/3.0> )).
-        }""" .    
-    
-  
+        sh:severity     sh:Violation ;
+        sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
+        sh:or           ( [ sh:not dm:conformsToNCProfile ]
+                          [ sh:path dcat:keyword ; sh:minCount 1 ] ) .
+
+
 dm:description.langTag-presence
         a               sh:PropertyShape ;
         sh:sparql       dm:description.langTag-presenceSparql ;
@@ -1290,12 +1208,13 @@ dm:description.langTag-presenceSparql
     sh:message "Language tag is not declared or it is not en." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    $this $PATH ?value .
+      SELECT $this ?value
+      WHERE {
+        $this $PATH ?value .
 
         FILTER (lang(?value)!="en" ).
-        }""" .
+      }
+      """ .
 
 dm:versionNotes.langTag-presence
         a               sh:PropertyShape ;
@@ -1313,12 +1232,13 @@ dm:versionNotes.langTag-presenceSparql
     sh:message "Language tag is not declared.{?value}" ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    $this $PATH ?value .
+      SELECT $this ?value
+      WHERE {
+        $this $PATH ?value .
 
         FILTER (lang(?value)!="en" ).
-        }""" .    
+      }
+      """ .
 
 dm:alternativeVersionAndPreferredVersion-dependency
         a               sh:PropertyShape ;
@@ -1336,60 +1256,41 @@ dm:alternativeVersionAndPreferredVersion-dependencySparql
     sh:message "One of the properties dcatcim:alternativeVersionOf or dcatcim:preferredVersion is not present." ;
     sh:prefixes cim: ;
     sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
-    BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
+      SELECT $this ?value
+      WHERE {
+        BIND(EXISTS{$this dcatcim:alternativeVersionOf ?value} AS ?hasaltv).
+        BIND(EXISTS{$this dcatcim:preferredVersion ?value1} AS ?hasprefv).
 
-        FILTER ((?hasaltv="true"^^xsd:boolean && ?hasprefv="false"^^xsd:boolean) || (?hasaltv="false"^^xsd:boolean && ?hasprefv="true"^^xsd:boolean)).
-        }""" .      
+        FILTER ((?hasaltv && !?hasprefv) || (!?hasaltv && ?hasprefv)).
+      }
+      """ .
 
 
 
 dm:forwardReverse-dependency
         a               sh:PropertyShape ;
-        sh:sparql       dm:forwardReverse-dependencySparql ;
-        sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:referseDifference is present." ;
+        sh:description  "This constraint validates if at least one of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:name         "forwardReverse-dependency" ;
-        sh:path         rdf:type;
+        sh:path         [ sh:alternativePath (
+            dcatcim:forwardDifference
+            dcatcim:reverseDifference
+          ) ] ;
+        sh:minCount     1 ;
+        sh:message      "None of the properties dcatcim:forwardDifference, dcatcim:reverseDifference is present." ;
         sh:group        dm:CardinalityGroupCustom ;
         sh:order        18 ;
         sh:severity     sh:Violation .
         
     
-dm:forwardReverse-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "None of the properties dcatcim:forwardDifference, dcatcim:referseDifference is present." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:forwardDifference ?value} AS ?hasaltv).
-    BIND(EXISTS{$this dcatcim:referseDifference ?value1} AS ?hasprefv).
-
-        FILTER ((?hasaltv="false"^^xsd:boolean && ?hasprefv="false"^^xsd:boolean) ).
-        }""" .
     
 dm:reverseDifferencePreviousVersion-dependency
-        a               sh:PropertyShape ;
-        sh:sparql       dm:reverseDifferencePreviousVersion-dependencySparql ;
-        sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
-        sh:name         "reverseDifferencePreviousVersion-dependency" ;
-        sh:path         rdf:type;
-        sh:group        dm:CardinalityGroupCustom ;
-        sh:order        19 ;
-        sh:severity     sh:Violation .
-        
-    
-dm:reverseDifferencePreviousVersion-dependencySparql
-    a         sh:SPARQLConstraint ;  
-    sh:message "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
-    sh:prefixes cim: ;
-    sh:select """
-        SELECT $this ?value 
-        WHERE {
-    BIND(EXISTS{$this dcatcim:reverseDifference ?value} AS ?hasrd).
-    BIND(EXISTS{$this dcat:previousVersion ?value1} AS ?haspv).
-
-        FILTER (?hasrd="true"^^xsd:boolean && ?haspv="false"^^xsd:boolean).
-        }""" .      
+        a                    sh:NodeShape ;
+        sh:targetSubjectsOf  dcatcim:reverseDifference ;
+        sh:property          [ sh:path      dcat:previousVersion ;
+                                sh:minCount  1 ;
+                                sh:description  "If dcatcim:reverseDifference exists there must be a dcat:previousVersion." ;
+                                sh:message   "dcatcim:reverseDifference exists but dcat:previousVersion is not present." ;
+                                sh:name      "reverseDifferencePreviousVersion-dependency" ;
+                                sh:group     dm:CardinalityGroupCustom ;
+                                sh:order     19 ;
+                                sh:severity  sh:Violation ] .

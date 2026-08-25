@@ -1,6 +1,6 @@
-# http://iec.ch/TC57/ns/CIM/All-EU/constraints/IEC61970-600-1/3.0#Model.modelingAuthoritySet-marp10-12
-# Model.modelingAuthoritySet-marp10-12
-# MARP10: The model authority set defined in file header of a state variable instance file of a merged model is the model authority set which creates the state variables. MARP11:The model authority set defined in file header of a diagram layout instance file of a merged model is the model authority set which creates the diagram layout. MARP12:The model authority set defined in file header of a topology instance file of a merged model is the model authority set which creates the topology as an output of topology processing.
+# https://ap-con.cim4.eu/RemedialActionSchedule-Complex/2.4#PowerScheduleAction-currency-property
+# PowerScheduleAction-currency-property
+# If PowerScheduleAction.energyPrice is provided, the PowerScheduleAction.currency is required.
 
 PREFIX adms:    <http://www.w3.org/ns/adms#>
 PREFIX cim:     <https://cim.ucaiug.io/ns#>
@@ -20,8 +20,14 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value 
-			WHERE {
-          $this $PATH ?value .
-          FILTER(STRLEN(str(?value))=0).
-			}
+            SELECT $this
+            WHERE {
+                FILTER EXISTS {
+                    $this nc:PowerScheduleAction.energyPrice ?price .
+                }
+
+                FILTER NOT EXISTS {
+                    $this $PATH ?currency .
+                }
+            }
+        

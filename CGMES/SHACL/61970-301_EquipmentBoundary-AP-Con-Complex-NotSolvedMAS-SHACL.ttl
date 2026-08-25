@@ -78,18 +78,19 @@ eqbdn301:BoundaryPoint.isExcludedFromAreaInterchange-requiredTieFlowSparql
     sh:select """
       SELECT  $this ?value ?terminal ?tieflow
       WHERE {
-             ?terminal1 cim:Terminal.ConductingEquipment ?condeq .
-             ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
-             ?terminal1 cim:Terminal.ConnectivityNode ?cn1 .
-             
-             OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?condeq}.
-             OPTIONAL {?terminal2 cim:ACDCTerminal.sequenceNumber 2}.
-             OPTIONAL {?terminal2 cim:Terminal.ConnectivityNode ?cn2}.
-             
-             OPTIONAL {$this $PATH ?value}.
-             $this eu:BoundaryPoint.ConnectivityNode ?cnbp .
-             OPTIONAL {?terminal cim:Terminal.ConnectivityNode ?cnbp }.
-             OPTIONAL {?tieflow cim:TieFlow.Terminal ?terminal }.
-           
+        ?terminal1 cim:Terminal.ConductingEquipment ?condeq .
+        ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
+        ?terminal1 cim:Terminal.ConnectivityNode ?cn1 .
+
+        OPTIONAL {?terminal2 cim:Terminal.ConductingEquipment ?condeq}.
+        OPTIONAL {?terminal2 cim:ACDCTerminal.sequenceNumber 2}.
+        OPTIONAL {?terminal2 cim:Terminal.ConnectivityNode ?cn2}.
+
+        OPTIONAL {$this $PATH ?value}.
+        $this eu:BoundaryPoint.ConnectivityNode ?cnbp .
+        OPTIONAL {?terminal cim:Terminal.ConnectivityNode ?cnbp }.
+        OPTIONAL {?tieflow cim:TieFlow.Terminal ?terminal }.
+
         FILTER ((bound(?value) && ?value=false && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2)) || (!bound(?value) && !bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))|| (bound(?value) && ?value=true && bound(?tieflow) && (?cnbp=?cn1 || ?cnbp=?cn2) && bound(?terminal1) && bound(?terminal2) && ?cn1!=?cn2 && (?terminal=?terminal1 || ?terminal=?terminal2))) .
-      }""" .
+      }
+      """ .

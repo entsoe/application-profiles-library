@@ -20,11 +20,11 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this ?value
-			WHERE {
+      SELECT  $this ?value
+      WHERE {
         $this $PATH ?value.
         OPTIONAL {$this cim:EquivalentInjection.ReactiveCapabilityCurve ?curve}.
         OPTIONAL {$this ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/^eu:BoundaryPoint.ConnectivityNode ?bp } .
         OPTIONAL {?bp eu:BoundaryPoint.isDirectCurrent ?ishvdc } .
         FILTER (bound(?bp) && bound(?ishvdc) && ?ishvdc=false && (bound(?curve) || ?value=true)) .        
-			}
+      }

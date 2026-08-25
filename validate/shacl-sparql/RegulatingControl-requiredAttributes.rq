@@ -20,12 +20,12 @@ PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 
-			SELECT  $this 
-			WHERE {
+      SELECT  $this 
+      WHERE {
         #$this $PATH ?value .
         $this $PATH cim:RegulatingControlModeKind.powerFactor .
         OPTIONAL {$this cim:RegulatingControl.minAllowedTargetValue ?minvalue}.
         OPTIONAL {$this cim:RegulatingControl.maxAllowedTargetValue ?maxvalue}. 
         #FILTER (?value=cim:RegulatingControlModeKind.powerFactor && (!bound(?minvalue) || !bound(?maxvalue))) .
         FILTER (!bound(?minvalue) || !bound(?maxvalue)) .        
-			}
+      }
