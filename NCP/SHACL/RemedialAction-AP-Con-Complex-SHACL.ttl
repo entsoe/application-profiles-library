@@ -45,29 +45,17 @@ rac:GridStateAlteration  a          sh:NodeShape ;
 rac:GridStateAlteration-associations
         a               sh:PropertyShape ;
         sh:description  "A GridStateAlteration shall have either association to GridStateAlterationRemedialAction or GridStateAlterationCollection." ;
-        sh:sparql       rac:GridStateAlteration-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "GridStateAlteration is not associated with either GridStateAlterationRemedialAction or GridStateAlterationCollection or it is associated with both." ;
+        sh:path [sh:alternativePath (
+        nc:GridStateAlteration.GridStateAlterationCollection
+        nc:GridStateAlteration.GridStateAlterationRemedialAction
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        rac:RACustomGroup ;
         sh:name         "C:NC:RA:GridStateAlteration:associations" ;
         sh:order        1 ;
         sh:severity     sh:Violation .
-        
-rac:GridStateAlteration-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "GridStateAlteration is not associated with either GridStateAlterationRemedialAction or GridStateAlterationCollection or it is associated with both." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this
-      WHERE {
-        BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationRemedialAction ?gsara} AS ?vGSARA).
-        BIND(EXISTS{$this nc:GridStateAlteration.GridStateAlterationCollection ?gsac} AS ?vGSAC).
-
-        FILTER (
-          (?vGSARA && ?vGSAC) ||
-          (!?vGSARA && !?vGSAC)
-        ).
-      }
-      """ .
       
     
 

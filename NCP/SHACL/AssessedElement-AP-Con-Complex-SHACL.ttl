@@ -43,19 +43,19 @@ aec:AssessedElement  a          sh:NodeShape ;
 aec:AssessedElement-associations
         a               sh:PropertyShape ;
         sh:description  "An AssessedElement shall have at least one of the following association ends instantiated: AssessedElement.ConductingEquipment, AssessedElement.OperationalLimit, AssessedElement.DCTieCorridor, AssessedElement.AssessedPowerTransferCorridor, AssessedElement.Line." ;
-        sh:path         [ sh:alternativePath (
-            nc:AssessedElement.ConductingEquipment
-            nc:AssessedElement.OperationalLimit
-            nc:AssessedElement.DCTieCorridor
-            nc:AssessedElement.AssessedPowerTransferCorridor
-            nc:AssessedElement.Line
-          ) ] ;
-        sh:minCount     1 ;
         sh:message      "AssessedElement does not have at least one of the following association ends instantiated: AssessedElement.ConductingEquipment, AssessedElement.OperationalLimit, AssessedElement.DCTieCorridor, AssessedElement.AssessedPowerTransferCorridor, AssessedElement.Line." ;
+        sh:path [sh:alternativePath (
+        nc:AssessedElement.AssessedPowerTransferCorridor
+        nc:AssessedElement.ConductingEquipment
+        nc:AssessedElement.DCTieCorridor
+        nc:AssessedElement.Line
+        nc:AssessedElement.OperationalLimit
+                )];
+        sh:minCount 1;
         sh:group        aec:AEgroup ;
         sh:name         "C:NC:AE:AssessedElement:associations" ;
         sh:order        1 ;
-        sh:severity     sh:Violation .        
+        sh:severity     sh:Violation .
 
 aec:AssessedElementWithContingency
         rdf:type        sh:NodeShape;

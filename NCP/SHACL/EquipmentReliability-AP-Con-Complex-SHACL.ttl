@@ -47,15 +47,15 @@ erc:AreaReserveResource  a          sh:NodeShape ;
 
 erc:AreaReserveResource-associations
         a               sh:PropertyShape ;
-        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
-        sh:path         [ sh:alternativePath (
-            nc:AreaReserveResource.GeneratingUnit
-            nc:AreaReserveResource.PowerElecronicsUnit
-            nc:AreaReserveResource.ScheduleResource
-            nc:AreaReserveResource.HydroPump
-          ) ] ;
-        sh:minCount     1 ;
-        sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElecronicsUnit, ScheduleResource or HydroPump." ;
+        sh:description  "The AreaReserveResource shall be associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
+        sh:message      "AreaReserveResource is not associated with either GeneratingUnit, PowerElectronicsUnit, ScheduleResource or HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:AreaReserveResource.GeneratingUnit
+        nc:AreaReserveResource.HydroPump
+        nc:AreaReserveResource.PowerElectronicsUnit
+        nc:AreaReserveResource.ScheduleResource
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:AreaReserveResource:associations" ;
         sh:order        1 ;
@@ -83,21 +83,21 @@ erc:EnergyComponent  a          sh:NodeShape ;
 
 erc:EnergyComponent-associations
         a               sh:PropertyShape ;
-        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
-        sh:path         [ sh:alternativePath (
-            nc:EnergyComponent.GeneratingUnit
-            nc:EnergyComponent.PowerElecronicsUnit
-            nc:EnergyComponent.EnergyConsumer
-            nc:EnergyComponent.HydroPump
-          ) ] ;
-        sh:minCount     1 ;
-        sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElectronicsUnit, EnergyConsumer or HydroPump." ;
+        sh:path [sh:alternativePath (
+        nc:EnergyComponent.EnergyConsumer
+        nc:EnergyComponent.GeneratingUnit
+        nc:EnergyComponent.HydroPump
+        nc:EnergyComponent.PowerElectronicsUnit
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:EnergyComponent:associations" ;
         sh:order        2 ;
         sh:severity     sh:Violation .
-
-
+			
+			
 erc:HydroPowerPlant  a          sh:NodeShape ;
         sh:property      erc:HydroPowerPlant-operatingMode;
         sh:targetClass  cim:HydroPowerPlant, cim16:HydroPowerPlant, cim17:HydroPowerPlant .			
@@ -134,17 +134,17 @@ erc:Circuit  a          sh:NodeShape ;
 erc:Circuit-associations
         a               sh:PropertyShape ;
         sh:description  "The Circuit shall be associated with either Equipment or Terminal." ;
-        sh:path         [ sh:alternativePath (
-            nc:Equipment.Circuit
-            nc:Circuit.IdentifyingTerminal
-          ) ] ;
-        sh:minCount     1 ;
         sh:message      "Circuit is not associated with either Equipment or Terminal." ;
+        sh:path [sh:alternativePath (
+        [sh:inversePath nc:Equipment.Circuit]
+        nc:Circuit.IdentifyingTerminal
+                )];
+        sh:minCount 1;
         sh:group        erc:ERgroup ;
         sh:name         "C:NC:ER:Circuit:associations" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
-
+			
 erc:FunctionOutputVariable  a          sh:NodeShape ;
         sh:property      erc:FunctionOutputVariable.PropertyReference-value;
         sh:targetClass  nc:FunctionOutputVariable .

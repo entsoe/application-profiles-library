@@ -93,26 +93,17 @@ iamc:RemedialActionImpact  a          sh:NodeShape ;
 iamc:RemedialActionImpact-associations
         a               sh:PropertyShape ;
         sh:description  "A RemedialActionImpact shall have either RemedialActionGroup or RemedialAction associated with it." ;
-        sh:sparql       iamc:RemedialActionImpact-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "A RemedialActionImpact does not have either RemedialActionGroup or RemedialAction associated with it or it has both." ;
+        sh:path [sh:alternativePath (
+        nc:RemedialActionImpact.RemedialAction
+        nc:RemedialActionImpact.RemedialActionGroup
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        iamc:IAMgroup ;
         sh:name         "C:NC:IAM:RemedialActionImpact:associations" ;
         sh:order        4 ;
         sh:severity     sh:Violation .
-        
-iamc:RemedialActionImpact-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "A RemedialActionImpact does not have either RemedialActionGroup or RemedialAction associated with it." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this
-      WHERE {
-
-        BIND(EXISTS{$this nc:RemedialActionImpact.RemedialActionGroup ?o1} AS ?hasRAG).
-        BIND(EXISTS{$this nc:RemedialActionImpact.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
-      }
-      """ .
       
 iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
         sh:property     iamc:RemedialActionOutcomeValue-associations;
@@ -121,23 +112,14 @@ iamc:RemedialActionOutcomeValue  a          sh:NodeShape ;
 iamc:RemedialActionOutcomeValue-associations
         a               sh:PropertyShape ;
         sh:description  "A RemedialActionOutcomeValue shall have either RemedialActionGroup or RemedialAction associated with it." ;
-        sh:sparql       iamc:RemedialActionOutcomeValue-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "A RemedialActionOutcomeValue does not have either RemedialActionGroup or RemedialAction associated with it or it has both." ;
+        sh:path [sh:alternativePath (
+        nc:RemedialActionOutcomeValue.RemedialAction
+        nc:RemedialActionOutcomeValue.RemedialActionGroup
+                )];
+        sh:minCount 1;
+        sh:maxCount 1;
         sh:group        iamc:IAMgroup ;
         sh:name         "C:NC:IAM:RemedialActionOutcomeValue:associations" ;
         sh:order        5 ;
         sh:severity     sh:Violation .
-        
-iamc:RemedialActionOutcomeValue-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "A RemedialActionOutcomeValue does not have either RemedialActionGroup or RemedialAction associated with it." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this
-      WHERE {
-
-        BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialActionGroup ?o1} AS ?hasRAG).
-        BIND(EXISTS{$this nc:RemedialActionOutcomeValue.RemedialAction ?o2} AS ?hasRA).
-        FILTER ((!?hasRAG && !?hasRA) || (?hasRAG && ?hasRA)).
-      }
-      """ .

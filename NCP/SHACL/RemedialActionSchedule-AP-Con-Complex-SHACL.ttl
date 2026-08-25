@@ -118,7 +118,7 @@ rasc:RemedialActionScheduleDependency.kind-cardinalitySparql
       """ .
 
 rasc:RemedialActionScheduleDependency  a          sh:NodeShape ;
-        sh:property     rasc:RemedialActionScheduleDependency.kind-applicability, rasc:RemedialActionScheduleDependency-associations;
+        sh:property     rasc:RemedialActionScheduleDependency.kind-applicability;
         sh:targetClass  nc:RemedialActionScheduleDependency.
 
 rasc:RemedialActionScheduleDependency.kind-applicability
@@ -146,30 +146,44 @@ rasc:RemedialActionScheduleDependency.kind-applicabilitySparql
       """ .
       
 rasc:RemedialActionScheduleDependency-associations
-        a               sh:PropertyShape ;
+        a               sh:NodeShape ;
         sh:description  "When a RemedialActionScheduleDependency is part of a RemedialActionScheduleGroup, it is required to provide either RemedialActionScheduleDependency.ProposedRemedialActionSchedule or RemedialActionScheduleDependency.ReplacedRemedialActionSchedule (i.e., not both associations). When a RemedialActionScheduleDependency is not part of a RemedialActionScheduleGroup, it is required to provide both RemedialActionScheduleDependency.ProposedRemedialActionSchedule and RemedialActionScheduleDependency.ReplacedRemedialActionSchedule." ;
-        sh:sparql       rasc:RemedialActionScheduleDependency-associationsSparql ;
-        sh:path         rdf:type ;
+        sh:message      "RemedialActionScheduleDependency associations are not consistent. When part of a RemedialActionScheduleGroup exactly one of ProposedRemedialActionSchedule and ReplacedRemedialActionSchedule shall be provided, otherwise both shall be provided." ;
+        sh:or (
+        [
+        sh:property [
+                sh:path         nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ;
+                sh:minCount     1 ;
+                ] ;
+        sh:property [
+                sh:path [sh:alternativePath (
+                        nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule
+                        nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule
+                        )] ;
+                sh:minCount     1 ;
+                sh:maxCount     1 ;
+                ] ;
+        ]
+        [
+        sh:property [
+                sh:path         nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ;
+                sh:maxCount     0 ;
+                ] ;
+        sh:property [
+                sh:path         nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ;
+                sh:minCount     1 ;
+                ] ;
+        sh:property [
+                sh:path         nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ;
+                sh:minCount     1 ;
+                ] ;
+        ]
+        );
         sh:group        rasc:RASgroup ;
         sh:name         "C:NC:RAS:RemedialActionScheduleDependency:associations" ;
-        sh:order        7 ;
-        sh:severity     sh:Violation .
-        
-rasc:RemedialActionScheduleDependency-associationsSparql
-    a         sh:SPARQLConstraint ;  
-    sh:message      "RemedialActionScheduleDependency associations are not consistant.{?a1} {?a2} {?a3}" ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT  $this  ?a1 ?a2 ?a3
-      WHERE {
-
-        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ?o1} AS ?a1).
-        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ?o2} AS ?a2).
-        BIND(EXISTS{$this nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ?o3} AS ?a3).
-
-        FILTER ((?a1 && ?a2 && ?a3) || (!?a1 && (!?a2 || !?a3))).
-      }
-      """ .
+        sh:order        6 ;
+        sh:severity     sh:Violation ;
+        sh:targetClass  nc:RemedialActionScheduleDependency .
 
 
 rasc:RemedialActionScheduleResponse  a          sh:NodeShape ;
