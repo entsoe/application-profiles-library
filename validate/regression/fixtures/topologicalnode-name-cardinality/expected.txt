@@ -1,0 +1,3 @@
+# focusNode  sourceShape  severity -- the exact results violating.ttl must produce.
+<https://example.org/regression#TN-no-name> <http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-456/3.0#IdentifiedObject.name-cardinality> Violation
+<https://example.org/regression#DCTN-two-names> <http://iec.ch/TC57/ns/CIM/Topology-EU/constraints/IEC61970-456/3.0#IdentifiedObject.name-cardinality> Violation

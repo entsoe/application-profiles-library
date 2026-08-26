@@ -1,0 +1,11 @@
+# Load sign convention: an EnergySource produces, so activePower must not be
+# positive. sshu:EnergySource.activePower-consumer flags anything above zero.
+@prefix cim:  <http://iec.ch/TC57/CIM100#> .
+@prefix ex:   <https://example.org/regression#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:ES-producing  a  cim:EnergySource ;
+    cim:EnergySource.activePower  "-42.5"^^xsd:float .
+
+ex:ES-idle  a  cim:EnergySource ;
+    cim:EnergySource.activePower  "0"^^xsd:float .

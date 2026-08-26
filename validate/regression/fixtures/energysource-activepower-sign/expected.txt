@@ -1,0 +1,2 @@
+# focusNode  sourceShape  severity -- the exact results violating.ttl must produce.
+<https://example.org/regression#ES-consuming> <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/constraints/IEC61970-301/3.0#EnergySource.activePower-consumer> Warning
