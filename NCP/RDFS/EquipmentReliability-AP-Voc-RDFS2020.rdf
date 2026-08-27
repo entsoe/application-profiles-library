@@ -2,6 +2,7 @@
 <!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:er="https://ap-voc.cim4.eu/EquipmentReliability#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
@@ -11,15 +12,14 @@
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/EquipmentReliability#Ontology">
     <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the equipment reliability profile.</dcterms:description>
     <dcterms:identifier>801d52fe-7506-4b79-b81f-ad7c83a27151</dcterms:identifier>
@@ -324,6 +324,28 @@ BoundaryPointBorderLink does not imply direction or hierarchy between the two pa
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>A geographically defined area characterised according to a climate classification and used as a spatial reference for representative meteorological, hydrological and marine conditions relevant to energy production, consumption and resource availability.
+Note: ClimateZone provides selected climatological normal values as structured information and may reference time series for detailed climate, weather, hydrological and marine data. A normal value represents a climatological reference condition for the area. Time series may represent observed, historical, modelled, forecast, scenario or climatological data. Reference period, scenario, source, calculation method and other provenance information are represented separately.
+ClimateZone may be used to associate energy resources and energy-system studies with climate-dependent conditions such as temperature, wind, solar irradiance, precipitation, snow, hydro inflow, extreme weather, waves, sea ice and sea currents.
+Example: Climate study zones defined in the Pan-European Climate Database (PECD) for European energy-system modelling.</rdfs:comment>
+    <rdfs:label xml:lang="en">ClimateZone</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>The kind of classification scheme used to define a climate zone.
+Note: The classification kind identifies the methodology or controlled classification system according to which the climate zone is defined. It does not identify the climate category, code or identifier assigned to the zone within that classification. The category, code or identifier defined by the selected classification scheme is provided separately.</rdfs:comment>
+    <rdfs:label xml:lang="en">ClimateZoneClassificationKind</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype>new</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClosedDistributionSystemOperator">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
     <rdfs:comment>A system operator which distributes electricity (or gas) within a geographically confined industrial, commercial or shared services and does not supply household customers.</rdfs:comment>
@@ -446,6 +468,17 @@ A CommonResponsibilityPoint is anchored to the connectivity model by association
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
     <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#SystemOperationCoordinator"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountPerArea">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>Number of discrete occurrences or events per unit area.
+
+Note: Intended for spatial event densities such as lightning density. A new UnitSymbol countPerm2 is required if this quantity is represented as a CIMDatatype with an explicit unit.</rdfs:comment>
+    <rdfs:label xml:lang="en">CountPerArea</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <cims:stereotype>new</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CrossZonalDCPole">
@@ -1221,11 +1254,9 @@ An EnergyExchangePoint may also be used as the reference for operational coordin
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyKind">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
-    <rdfs:comment>Short: 
-Categorisation of energy sources and behaviours used to group generation, storage and consumption for scenario simulations and aggregated reporting.
-
-Long: 
-Identification of the energy grouping used to classify generation, storage and consumption. EnergyKind provides a categorisation based on technologies, weather-dependent resources and consumption flexibility. It supports forecast simulation for scenario development and enables consistent aggregated reporting.</rdfs:comment>
+    <rdfs:comment>A broad classification of an energy resource according to its energy source, storage function, or consumption behaviour.
+Note: EnergyKind provides a high-level grouping suitable for scenario modelling, forecasting, capacity aggregation and reporting. It is intended to classify generation, storage and consumption using a common set of categories without representing detailed fuel, energy-source or technology classifications. More detailed classifications may be provided separately, for example by an `EnergyResourceType` using externally defined energy-source or technology codes.
+The classification may represent the origin of energy, such as hydro, solar or wind; an energy storage behaviour, such as battery or buffer; or the flexibility characteristics of consumption, such as time-shiftable or unconstrained consumption.</rdfs:comment>
     <rdfs:label xml:lang="en">EnergyKind</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
     <cims:stereotype>NC</cims:stereotype>
@@ -1233,7 +1264,11 @@ Identification of the energy grouping used to classify generation, storage and c
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
-    <rdfs:comment>Energy resource capacity represents the installed, available, or effective capacity of energy-producing or energy-consuming group of resources. It supports both static snapshot values and dynamic time-series reflecting forecast, scheduled, actual, or hindcast availability under meteorological or hydrological conditions. The capacity value is associated with a specific energy kind and, where applicable, linked to weather information relevant for weather-dependent resources.“</rdfs:comment>
+    <rdfs:comment>An aggregation of energy resources having common energy characteristics for which installed, available, or effective capacity is represented.
+
+Note: EnergyResourceGroupCapacity groups energy resources for capacity modelling, forecasting, scenario analysis and aggregation. The group may be characterised by an energy kind, energy source, technology, location, scenario, weather condition or other modelling context.
+The aggregated capacity may be represented by static values or by time-series values describing forecast, scheduled, actual or hindcast conditions. An EnergyComponent represents the part of an aggregated value associated with a particular underlying unit or resource. The aggregated value of the EnergyResourceGroupCapacity may therefore be distributed among its associated EnergyComponents, for example in proportion to the capability of the corresponding units or according to an ordered block-based allocation.
+Weather or other environmental information may be referenced where it is relevant to the capacity or availability of the grouped resources/</rdfs:comment>
     <rdfs:label xml:lang="en">EnergyResourceGroupCapacity</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
@@ -1502,6 +1537,13 @@ Note: Grid power capacity represents a power system or network-constrained capac
     <rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#Hours">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>Time specified in hours.</rdfs:comment>
+    <rdfs:label xml:lang="en">Hours</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#HydroPowerPlant">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
     <rdfs:comment>A hydro power station which can generate or pump. When generating, the generator turbines receive water from an upper reservoir. When pumping, the pumps receive their water from a lower reservoir.</rdfs:comment>
@@ -1622,6 +1664,24 @@ Installations are typically owned and operated by the site holder, not the utili
     <rdfs:comment>An integer number. The range is unspecified and not limited.</rdfs:comment>
     <rdfs:label xml:lang="en">Integer</rdfs:label>
     <cims:stereotype>Primitive</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Irradiation">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>Energy carried by electromagnetic radiation incident on a surface per unit area over a time interval.
+
+Note: Intended for accumulated solar energy such as annual global, direct or diffuse solar irradiation.</rdfs:comment>
+    <rdfs:label xml:lang="en">Irradiation</rdfs:label>
+    <cims:stereotype>NC</cims:stereotype>
+    <cims:stereotype>new</cims:stereotype>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Length">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>Unit of length. It shall be a positive value or zero.</rdfs:comment>
+    <rdfs:label xml:lang="en">Length</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#LimitDependencyCurve">
@@ -1903,7 +1963,9 @@ If a particular piece of equipment has multiple operational limits of the same k
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
-    <rdfs:comment>An abstract directed dependency between two peer instances of the same domain class that defines temporal and operational constraints governing their relative execution or operation.</rdfs:comment>
+    <rdfs:comment>An abstract directed dependency between two peer instances of the same domain class that defines temporal and operational constraints governing their relative execution or operation.
+Note: Temporal lag constraints relate the next applicable transition of the dependent to the latest applicable transition of the dependee. A dependee transition remains applicable while the dependee remains in the state resulting from that transition. If the dependee subsequently changes state before the corresponding transition of the dependent occurs, the previous transition is superseded and the constraint is evaluated from the next applicable transition. Once the corresponding transition of the dependent has occurred, the lag constraint is satisfied for that operating cycle.
+Each lag is qualified by its corresponding ReferenceValueKind, which specifies whether the lag represents an exact, minimum, or maximum temporal constraint.</rdfs:comment>
     <rdfs:label xml:lang="en">PeerTemporalDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -2351,6 +2413,13 @@ It typically includes transformers, switchgear, protection, and measurement equi
     <rdfs:subClassOf rdf:resource="https://cim4.eu/ns/nc#LimitDependencyCurve"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#Speed">
+    <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
+    <rdfs:comment>Distance per unit of time.</rdfs:comment>
+    <rdfs:label xml:lang="en">Speed</rdfs:label>
+    <cims:stereotype>CIMDatatype</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#StaticSynchronousCompensator">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
     <rdfs:comment>Static synchronous compensator (STATCOM), also known as a static synchronous condenser (STATCON), is a type of flexible AC transmission system regulating equipment used on alternating current electricity transmission networks. It is based on a power electronics voltage-source converter and can act as either a source or sink of reactive AC power to an electricity network. If connected to a source of power it can also provide active AC power.</rdfs:comment>
@@ -2559,7 +2628,12 @@ Note: SystemOperator represents the execution of power system operational respon
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ThermalGeneratingUnitDependency">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/EquipmentReliability#EquipmentReliabilityProfile"/>
     <rdfs:comment>A peer temporal dependency that defines temporal or operational constraints between two thermal generating units participating in combined operation.
-Note : The dependency may define required operating relationships, start-up or shutdown sequencing, loading conditions, temporal constraints, or overlap between the generating units.</rdfs:comment>
+Note: The dependency may define required operating relationships, start-up or shutdown sequencing, loading conditions, temporal constraints, or overlap between the generating units.
+A lag is evaluated relative to the latest applicable state transition of the dependee generating unit. If the dependee changes state again before the corresponding transition of the dependent generating unit occurs, the previous reference transition is superseded. Consequently, a previous start of the dependee cannot satisfy a start-to-start constraint after the dependee has subsequently stopped and started again. Once the dependent has performed the corresponding transition, that lag constraint is satisfied for that operating cycle.
+Example:
+- startToStartLag = 30M, startToStartLagKind = minimum: a dependent steam generating unit may start no earlier than 30 minutes after the dependee gas generating unit starts. If the gas generating unit stops during this period and subsequently starts again, the 30M duration is evaluated from the new start.
+- finishToStartLag = 2H, finishToStartLagKind = exact: the dependent generating unit starts exactly two hours after the dependee generating unit stops, provided that the dependee has not subsequently changed state.
+- finishToFinishLag = 20M, finishToFinishLagKind = maximum: the dependent generating unit shall stop no later than 20 minutes after the dependee generating unit stops.</rdfs:comment>
     <rdfs:label xml:lang="en">ThermalGeneratingUnitDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
@@ -2741,6 +2815,41 @@ The integer values are used for harmonization with IEC 61850.</rdfs:comment>
     <rdfs:comment>This package contains equipment reliability profile.</rdfs:comment>
     <rdfs:label xml:lang="en">EquipmentReliabilityProfile</rdfs:label>
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind.koppenGeiger">
+    <rdfs:comment>The K&amp;#246;ppen-Geiger climate classification.
+Note: The K&amp;#246;ppen-Geiger classification categorises climates principally from long-term temperature and precipitation conditions and their seasonal distribution. Climate categories are represented by codes such as Cfb, Dfb or ET.</rdfs:comment>
+    <rdfs:label xml:lang="en">koppenGeiger</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind.national">
+    <rdfs:comment>A climate classification established or adopted by a national authority.
+Note: National classifications may be established for building regulation, infrastructure design, agriculture, environmental assessment, energy planning or another nationally defined purpose. The responsible authority and classification version should be identifiable when relevant.</rdfs:comment>
+    <rdfs:label xml:lang="en">national</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind.other">
+    <rdfs:comment>A climate classification scheme other than those explicitly represented by ClimateZoneClassificationKind.
+Note: The classification scheme should be identified using ClimateZone.otherClassification. The issuing organisation and applicable version should be identifiable when relevant.</rdfs:comment>
+    <rdfs:label xml:lang="en">other</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind.pecd">
+    <rdfs:comment>The climate-zone classification defined by the Pan-European Climate Database (PECD) for climate and energy-system studies.
+Note: PECD climate zones support the spatial aggregation of climate variables and renewable-energy data used in European power-system studies. The applicable PECD version should be identified separately when relevant.</rdfs:comment>
+    <rdfs:label xml:lang="en">pecd</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZoneClassificationKind.regional">
+    <rdfs:comment>A climate classification established or adopted for a geographical region.
+Note: A regional classification may be established by a sub-national, multi-national or other regional authority or organisation and may cover an area that does not correspond to national boundaries.</rdfs:comment>
+    <rdfs:label xml:lang="en">regional</rdfs:label>
+    <cims:stereotype>enum</cims:stereotype>
+    <rdf:type rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CombinedCycleConfigurationKind.hybrid">
     <rdfs:label xml:lang="en">hybrid</rdfs:label>
@@ -5226,6 +5335,551 @@ The allowed value range is [0,100].</rdfs:comment>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.EnergyResourceGroupCapacity">
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <rdfs:comment>The Energy Resource Group Capacity that has this climate zone.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.ClimateZone"/>
+    <rdfs:label xml:lang="en">EnergyResourceGroupCapacity</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.classificationKind">
+    <rdfs:comment>The kind of climate classification scheme according to which the ClimateZone is defined.
+Note: The attribute identifies the classification scheme and not the code or identifier of the ClimateZone within that scheme. When the classification scheme is not explicitly represented by ClimateZoneClassificationKind, classificationKind shall be set to other and otherClassification shall identify the scheme.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">classificationKind</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#ClimateZoneClassificationKind"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.code">
+    <rdfs:comment>The code or identifier assigned to the ClimateZone by the selected climate classification scheme.
+Note: The interpretation of the code depends on ClimateZone.classificationKind. The code should conform to the identification or naming convention defined by the corresponding classification scheme.
+Example: "Dfb" or "Cfb" for K&amp;#246;ppen-Geiger, or a zone code defined by PECD or a national classification.</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">code</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualDiffuseSolarIrradiation">
+    <rdfs:comment>The climatological normal total diffuse solar energy received per unit area during an annual period.
+Note: The orientation of the applicable reference surface is defined by the data specification or provenance information.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualDiffuseSolarIrradiation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualDirectSolarIrradiation">
+    <rdfs:comment>The climatological normal total direct solar energy received per unit area during an annual period.
+Note: The orientation of the applicable reference surface is defined by the data specification or provenance information.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualDirectSolarIrradiation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualEvaporation">
+    <rdfs:comment>The climatological normal amount of water returned to the atmosphere through evaporation and evapotranspiration during an annual period, expressed as an equivalent depth of water.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualEvaporation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualExtremeFireDangerDays">
+    <rdfs:comment>The climatological normal number of days during an annual period classified as having extreme fire danger.
+Note: The criterion for extreme fire danger is determined by the applicable wildfire index and classification identified through the data provenance. The CIM model does not prescribe a specific threshold.
+Example: When the European Forest Fire Information System (EFFIS) classification is applied, extreme fire danger corresponds to an Canadian Fire Weather Index (FWI) of 50 or greater. A value of "18.5" therefore indicates a climatological normal of 18.5 days per year with FWI greater than or equal to 50.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualExtremeFireDangerDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualFreezingPrecipitationDays">
+    <rdfs:comment>The climatological normal number of days during an annual period with freezing precipitation.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualFreezingPrecipitationDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualFrostDays">
+    <rdfs:comment>The climatological normal number of frost days during an annual period.
+Note: The threshold used to define a frost day is determined by the applicable meteorological specification, normally using minimum air temperature.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualFrostDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualGlobalSolarIrradiation">
+    <rdfs:comment>The climatological normal total global solar energy received per unit area during an annual period.
+Note: Global solar irradiation includes direct and diffuse solar radiation incident on the applicable reference surface. For a horizontal reference surface it corresponds to global horizontal irradiation.
+Example: A value may be expressed as annual solar energy per square metre, such as MJ/m2 or an equivalent unit.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualGlobalSolarIrradiation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualHailDays">
+    <rdfs:comment>The climatological normal number of days during an annual period on which hail occurs.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualHailDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualHeatwaveDays">
+    <rdfs:comment>The climatological normal number of days during an annual period occurring as part of a heatwave.
+Note: A heatwave represents unusually high temperature persisting for a defined minimum duration. The temperature criteria and minimum duration are specified by the applicable climate dataset or scenario.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualHeatwaveDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualHighAvalancheDangerDays">
+    <rdfs:comment>The climatological normal number of days during an annual period classified as having high avalanche danger.
+Note: The criterion for high avalanche danger is determined by the applicable avalanche methodology and classification identified through data provenance. The CIM model does not prescribe a particular threshold.
+Example: "8.5" when high avalanche danger is defined as EAWS danger level 4 or 5.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualHighAvalancheDangerDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualHotDays">
+    <rdfs:comment>The climatological normal number of hot days during an annual period.
+Note: A hot day is defined using the threshold specified by the applicable climate dataset or scenario. The threshold may be an absolute temperature or a percentile relative to the local climatology.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualHotDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualHydroInflow">
+    <rdfs:comment>The climatological normal energy equivalent of natural hydro inflow associated with hydro resources in the ClimateZone during an annual period.
+Note: The value represents the potential energy associated with natural inflow and not generated electrical energy. This representation is intended for aggregated power-system and adequacy studies where hydro inflow is expressed as an energy quantity.
+Example: The value may represent the annual energy equivalent of natural inflow to reservoir hydropower resources within the ClimateZone.</rdfs:comment>
+    <cims:dataType rdf:resource="#RealEnergy"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualHydroInflow</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualIcingDays">
+    <rdfs:comment>The climatological normal number of days during an annual period with meteorological conditions producing significant icing.
+Note: The criteria defining an icing day are provided by the applicable data specification or provenance information. The attribute may be used to characterise climate-related availability risk for overhead lines, wind turbines and other exposed equipment.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualIcingDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualLightningDensity">
+    <rdfs:comment>The climatological normal number of lightning events per unit area during an annual period.
+Note: The definition of a lightning event, for example a flash or ground strike, is determined by the applicable data specification.
+Example: 1.5 flashes/km2 indicates that an average of 1.5 lightning flashes per square kilometre occurs during a normal year.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim4.eu/ns/nc#CountPerArea"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualLightningDensity</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualMaxDailyPrecipitation">
+    <rdfs:comment>The climatological normal of the maximum precipitation accumulated during a single day within an annual period.
+Note: This value provides an indication of exposure to extreme precipitation that is not represented by normalAnnualPrecipitation alone.
+Example: A value of 85 mm indicates that the normal annual maximum one-day precipitation is approximately 85 mm.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualMaxDailyPrecipitation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualMaxSignificantWaveHeight">
+    <rdfs:comment>The climatological normal of the maximum significant wave height occurring during an annual period.
+Note: This value characterises exposure to severe sea states relevant to accessibility, equipment loading and availability of offshore resources.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualMaxSignificantWaveHeight</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualMaxTempAt2m">
+    <rdfs:comment>The climatological normal of the maximum air temperature at 2 metres above ground level occurring during an annual period.
+Note: This represents an annual extreme maximum rather than the normal mean of daily maximum temperatures.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualMaxTempAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualMaxWindGustAt10m">
+    <rdfs:comment>The climatological normal of the maximum wind gust at 10 metres above ground level occurring during an annual period.
+Note: This value characterises exposure to strong short-duration wind events rather than the normal wind resource.
+Example: A value of 31 m/s indicates that the climatological normal annual maximum gust is approximately 31 m/s.</rdfs:comment>
+    <cims:dataType rdf:resource="#Speed"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualMaxWindGustAt10m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualMinTempAt2m">
+    <rdfs:comment>The climatological normal of the minimum air temperature at 2 metres above ground level occurring during an annual period.
+Note: This represents an annual extreme minimum rather than the normal mean of daily minimum temperatures.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualMinTempAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualPotentialEvaporation">
+    <rdfs:comment>The climatological normal potential amount of water that could be returned to the atmosphere by evaporation during an annual period, expressed as an equivalent depth of water.
+Note: Potential evaporation represents atmospheric evaporative demand and is not limited by actual water availability.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualPotentialEvaporation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualPrecipitation">
+    <rdfs:comment>The climatological normal total precipitation received during an annual period.
+Note: Precipitation includes liquid and solid precipitation and is expressed as an equivalent depth of water over the area.
+Example: 1100 mm represents an annual precipitation volume equivalent to 1100 litres of water per square metre.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualPrecipitation</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualRainfall">
+    <rdfs:comment>The climatological normal amount of liquid precipitation received during an annual period.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualRainfall</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualRunoff">
+    <rdfs:comment>The climatological normal runoff during an annual period, expressed as an equivalent depth of water over the area.
+Note: Runoff represents water leaving the land surface and subsurface drainage system after precipitation, snowmelt, evaporation, infiltration and storage effects.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualRunoff</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualSeaIceDays">
+    <rdfs:comment>The climatological normal number of days during an annual period for which sea ice is present within the ClimateZone.
+Note: The minimum ice concentration or other criterion used to determine sea-ice presence is defined by the applicable data specification.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualSeaIceDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualSnowfall">
+    <rdfs:comment>The climatological normal amount of solid precipitation received during an annual period, expressed as its equivalent amount of liquid water.
+Note: The value represents water input from snowfall rather than physical snow depth.
+Example: 500 mm means that the annual snowfall normally contains an amount of water equivalent to a 500 mm layer of liquid water.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualSnowfall</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualSnowmelt">
+    <rdfs:comment>The climatological normal amount of water released by melting snow during an annual period.
+Note: Snowmelt is expressed as the equivalent depth of liquid water produced from the snowpack.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualSnowmelt</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualSunshineDuration">
+    <rdfs:comment>The climatological normal total duration of sunshine during an annual period.
+Example: 1650 h represents approximately 1650 hours of sunshine during a normal year.</rdfs:comment>
+    <cims:dataType rdf:resource="#Hours"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualSunshineDuration</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualThunderDays">
+    <rdfs:comment>The climatological normal number of days during an annual period on which thunder is observed.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualThunderDays</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalAnnualTropicalNights">
+    <rdfs:comment>The climatological normal number of tropical nights during an annual period.
+Note: A tropical night is a night for which the minimum air temperature remains above the applicable threshold. A threshold of 20 degC is commonly used in European climate indicators, but the applicable threshold is defined by the dataset or scenario.</rdfs:comment>
+    <cims:dataType rdf:resource="#Decimal"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalAnnualTropicalNights</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalCloudCover">
+    <rdfs:comment>The climatological normal proportion of the sky covered by cloud.</rdfs:comment>
+    <cims:dataType rdf:resource="#PerCent"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalCloudCover</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalDewPointTempAt2m">
+    <rdfs:comment>The climatological normal dew-point temperature at 2 metres above ground level.
+Note: Dew-point temperature indicates atmospheric moisture content and may be used together with air temperature to derive relative humidity and icing conditions.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalDewPointTempAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalMaxSeaCurrentSpeed">
+    <rdfs:comment>The climatological normal maximum sea-current speed within the ClimateZone.
+Note: The value characterises strong current conditions relevant to marine-energy resource potential and equipment loading. The applicable depth and method for determining the maximum are defined by the source dataset or provenance information.</rdfs:comment>
+    <cims:dataType rdf:resource="#Speed"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalMaxSeaCurrentSpeed</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalMaxSeaIceThickness">
+    <rdfs:comment>The climatological normal maximum sea-ice thickness during the seasonal cycle within a marine ClimateZone.
+Note: This attribute is primarily relevant for high-latitude offshore areas and may be used when assessing accessibility and availability of offshore resources.
+Example: 0.8 m indicates that the normal seasonal maximum sea-ice thickness is approximately 0.8 metres.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalMaxSeaIceThickness</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalMaxSnowWater">
+    <rdfs:comment>The climatological normal of the maximum amount of water stored in the snowpack during the seasonal cycle.
+Note: Snow water represents the water content of the snowpack expressed as an equivalent depth of liquid water. The value characterises seasonal snow storage and is more hydrologically meaningful than physical snow depth.
+Example: 450 mm indicates that the normal seasonal maximum snowpack contains an amount of water equivalent to a 450 mm layer of liquid water.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalMaxSnowWater</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalPopulationWeightedTempAt2m">
+    <rdfs:comment>The climatological normal population-weighted air temperature at 2 metres above ground level.
+Note: Population-weighted temperature is a spatially aggregated temperature in which locations with a higher population are given greater weight. It provides a representative temperature for the conditions experienced by the population and is particularly relevant for energy-demand modelling. The population dataset, weighting method and other provenance information are represented separately.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalPopulationWeightedTempAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalRelativeHumidityAt2m">
+    <rdfs:comment>The climatological normal relative humidity at 2 metres above ground level.</rdfs:comment>
+    <cims:dataType rdf:resource="#PerCent"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalRelativeHumidityAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalSeaCurrentSpeed">
+    <rdfs:comment>The climatological normal speed of the sea-water current within the ClimateZone.
+Note: Sea-current speed depends on depth. The applicable depth or vertical reference is defined by the source dataset or provenance information.</rdfs:comment>
+    <cims:dataType rdf:resource="#Speed"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalSeaCurrentSpeed</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalSeaSurfaceTemp">
+    <rdfs:comment>The climatological normal sea-surface temperature within a marine ClimateZone.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalSeaSurfaceTemp</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalSignificantWaveHeight">
+    <rdfs:comment>The climatological normal significant wave height within a marine ClimateZone.
+Note: Significant wave height is a statistical representation of sea state commonly approximated as the mean height of the highest one-third of waves.
+Example: A value of 2.1 m represents a climate where the normal significant wave height is approximately 2.1 metres.</rdfs:comment>
+    <cims:dataType rdf:resource="#Length"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalSignificantWaveHeight</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalSurfacePressure">
+    <rdfs:comment>The climatological normal atmospheric pressure at the surface.</rdfs:comment>
+    <cims:dataType rdf:resource="#Pressure"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalSurfacePressure</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalTempAt2m">
+    <rdfs:comment>The climatological normal air temperature at 2 metres above ground level.
+Note: Two metres above ground is the standard reference height for near-surface air temperature.</rdfs:comment>
+    <cims:dataType rdf:resource="#Temperature"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalTempAt2m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalWavePeriod">
+    <rdfs:comment>The climatological normal representative wave period within a marine ClimateZone.
+Note: The precise wave-period statistic, such as mean or peak period, is determined by the applicable data specification.</rdfs:comment>
+    <cims:dataType rdf:resource="#Seconds"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalWavePeriod</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalWindSpeedAt100m">
+    <rdfs:comment>The climatological normal wind speed at 100 metres above ground level.
+Note: Wind speed at 100 metres is commonly available in meteorological and energy datasets and provides a useful indication of the wind resource for electricity generation.</rdfs:comment>
+    <cims:dataType rdf:resource="#Speed"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalWindSpeedAt100m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.normalWindSpeedAt10m">
+    <rdfs:comment>The climatological normal wind speed at 10 metres above ground level.
+Note: Ten metres above ground is the conventional reference height for near-surface meteorological wind observations.</rdfs:comment>
+    <cims:dataType rdf:resource="#Speed"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">normalWindSpeedAt10m</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.otherClassification">
+    <rdfs:comment>The name or identifier of the climate classification scheme when ClimateZone.classificationKind equals other.
+Note: This attribute shall only be used when ClimateZone.classificationKind is set to other. It identifies the classification scheme that is not explicitly represented by ClimateZoneClassificationKind. The value should be sufficiently descriptive to identify the scheme.
+Example: "Trewartha Climate Classification", "Holdridge Life Zones", "Thornthwaite Climate Classification", "Company Internal Climate Zones".</rdfs:comment>
+    <cims:dataType rdf:resource="#String"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">otherClassification</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#ClimateZone.ref">
+    <rdfs:comment>A URI identifying the ClimateZone within the applicable climate classification scheme.
+Note: The URI identifies the classified zone or concept rather than the classification scheme itself. It may be used as an alternative to code when the classification is published as linked data or another URI-based controlled vocabulary. Both code and ref may be provided when the classification defines both representations.
+Example: "https://example.org/climate/pecd/zone-12" as an illustrative URI identifying a climate zone within a PECD classification.</rdfs:comment>
+    <cims:dataType rdf:resource="https://cim.ucaiug.io/ns/eu#URI"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <rdfs:label xml:lang="en">ref</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CombinedCyclePlant.kind">
     <rdfs:comment>The configuration used to arrange and coordinate the thermal generating units of the combined cycle plant.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#CombinedCyclePlant"/>
@@ -5431,6 +6085,32 @@ Note that for instance, if the targetValue is 100 kV and the targetValueDeadband
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
     <rdfs:range rdf:resource="https://cim4.eu/ns/nc#CapacityCalculationRegion"/>
     <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountPerArea.multiplier">
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#CountPerArea"/>
+    <cims:isFixed>none</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountPerArea.unit">
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#CountPerArea"/>
+    <cims:isFixed>countPerm2</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#CountPerArea.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#CountPerArea"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#CrossZonalDCPole.DCPole">
@@ -6070,6 +6750,16 @@ In the case of priority strategy, the item with the lowest number gets allocated
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCSwitch.normalOpen">
+    <rdfs:comment>The attribute is used in cases when no Measurement for the status value is present. If the DCSwitch has a status measurement the Discrete.normalValue is expected to match with the DCSwitch.normalOpen.</rdfs:comment>
+    <cims:dataType rdf:resource="#Boolean"/>
+    <rdfs:domain rdf:resource="#DCSwitch"/>
+    <rdfs:label xml:lang="en">normalOpen</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#DCSystem.directionKind">
     <rdfs:comment>Direction kind of the DC system.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#DCSystem"/>
@@ -6635,6 +7325,17 @@ In the case of priority strategy, the item with the lowest number gets allocated
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.ClimateZone">
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <rdfs:comment>The climate zone for the energy group.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
+    <cims:inverseRoleName rdf:resource="https://cim4.eu/ns/nc#ClimateZone.EnergyResourceGroupCapacity"/>
+    <rdfs:label xml:lang="en">ClimateZone</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="https://cim4.eu/ns/nc#ClimateZone"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.EnergyComponent">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The energy component that is part of this energy group.</rdfs:comment>
@@ -6683,6 +7384,18 @@ In the case of priority strategy, the item with the lowest number gets allocated
     <cims:dataType rdf:resource="#ActivePower"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
     <rdfs:label xml:lang="en">normalAvailableCapacityP</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity.normalCapacityAllocationFactor">
+    <rdfs:comment>The normal relative weighting used to allocate an aggregate capacity requirement to this energy resource group.
+
+Note: The value provides the default weighting for top-down capacity allocation when a more specific `capacityAllocationFactor` is not provided. The factor is relative to the factors of other applicable energy resource groups and is not required to represent a percentage or to sum to 1 across the groups. The allocation algorithm may normalize the applicable factors and take account of availability, existing capacity and other modelling constraints.</rdfs:comment>
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity"/>
+    <rdfs:label xml:lang="en">normalCapacityAllocationFactor</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <cims:stereotype>NC</cims:stereotype>
@@ -7754,6 +8467,32 @@ When the ramp is not provided, the optimisation process shall consider the chang
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#Hours.multiplier">
+    <rdfs:domain rdf:resource="#Hours"/>
+    <cims:isFixed>none</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Hours.unit">
+    <rdfs:domain rdf:resource="#Hours"/>
+    <cims:isFixed>h</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Hours.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#Hours"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#HydroPowerPlant.Reservoir">
     <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <rdfs:comment>Generators discharge water to or pumps are supplied water from a downstream reservoir.</rdfs:comment>
@@ -8066,6 +8805,57 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdfs:range rdf:resource="#VsConverter"/>
     <cims:stereotype>NC</cims:stereotype>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Irradiation.multiplier">
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Irradiation.unit">
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <cims:isFixed>JPerm2</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://cim4.eu/ns/nc#Irradiation.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#Irradiation"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Length.multiplier">
+    <rdfs:domain rdf:resource="#Length"/>
+    <cims:isFixed>none</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Length.unit">
+    <rdfs:domain rdf:resource="#Length"/>
+    <cims:isFixed>m</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Length.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#Length"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#Line.ACTieCorridor">
@@ -8687,8 +9477,7 @@ Note: Certain dependency constraint kinds may require or prohibit the use of tem
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToFinishLag">
-    <rdfs:comment>The time between the completion or deactivation of the dependee and the completion or deactivation of the dependent.
-Note: The interpretation of this attribute depends on finishToFinishLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the next finish or deactivation of the dependent relative to the latest applicable finish or deactivation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToFinishLag</rdfs:label>
@@ -8698,8 +9487,13 @@ Note: The interpretation of this attribute depends on finishToFinishLagKind. Its
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToFinishLagKind">
-    <rdfs:comment>The interpretation of finishToFinishLag.
-Note: This attribute shall be specified when finishToFinishLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether finishToFinishLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when finishToFinishLag is provided.
+Example: finishToFinishLag = 2D1H30M is interpreted together with finishToFinishLagKind:
+- exact: the dependent finishes exactly 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+- minimum: the dependent may finish no earlier than 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+- maximum: the dependent shall finish no later than 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+In all cases, the dependee finish remains applicable only while the dependee remains in the state resulting from that finish. If the dependee subsequently changes state before the dependent finishes, the applicability of the previous finish is re-evaluated.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToFinishLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -8709,8 +9503,7 @@ Note: This attribute shall be specified when finishToFinishLag is provided.</rdf
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToStartLag">
-    <rdfs:comment>The time between the completion or deactivation of the dependee and the start or activation of the dependent.
-Note: The interpretation of this attribute depends on finishToStartLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the next start or activation of the dependent relative to the latest applicable finish or deactivation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToStartLag</rdfs:label>
@@ -8720,8 +9513,13 @@ Note: The interpretation of this attribute depends on finishToStartLagKind. Its 
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToStartLagKind">
-    <rdfs:comment>The interpretation of finishToStartLag.
-Note: This attribute shall be specified when finishToStartLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether finishToStartLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when finishToStartLag is provided.
+Example: finishToStartLag = 20M is interpreted together with finishToStartLagKind:
+- exact: the dependent starts exactly 20 minutes after the latest applicable finish of the dependee.
+- minimum: the dependent may start no earlier than 20 minutes after the latest applicable finish of the dependee.
+- maximum: the dependent shall start no later than 20 minutes after the latest applicable finish of the dependee.
+In all cases, the dependee finish remains applicable only while the dependee remains in the state resulting from that finish. If the dependee subsequently changes state before the dependent starts, the constraint is evaluated from the next applicable finish of the dependee.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToStartLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -8742,8 +9540,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.overlap">
-    <rdfs:comment>The duration for which the dependee and dependent are active or effective simultaneously.
-Note: The interpretation of this attribute depends on overlapKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the period for which the dependee and dependent are simultaneously active or effective.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">overlap</rdfs:label>
@@ -8753,8 +9550,13 @@ Note: The interpretation of this attribute depends on overlapKind. Its applicabi
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.overlapKind">
-    <rdfs:comment>The interpretation of overlap.
-Note: This attribute shall be specified when overlap is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether overlap is an exact, minimum, or maximum duration of simultaneous activity or effectiveness.
+Note: This attribute shall be specified when overlap is provided.
+Example: overlap = 1H28M45S is interpreted together with overlapKind:
+- exact: the dependee and dependent are simultaneously active or effective for exactly 1 hour, 28 minutes, and 45 seconds.
+- minimum: the dependee and dependent shall be simultaneously active or effective for at least 1 hour, 28 minutes, and 45 seconds.
+- maximum: the dependee and dependent shall be simultaneously active or effective for no more than 1 hour, 28 minutes, and 45 seconds.
+Unlike the lag attributes, overlap constrains the duration of a simultaneous state rather than the temporal separation between two state transitions.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">overlapKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -8764,14 +9566,7 @@ Note: This attribute shall be specified when overlap is provided.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.startToStartLag">
-    <rdfs:comment>The time between the start or activation of the dependee and the start or activation of the dependent.
-Note: The interpretation of this attribute depends on startToStartLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.
-&lt;ul&gt;
-	&lt;li&gt;&lt;ul&gt;
-	&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</rdfs:comment>
+    <rdfs:comment>The duration constraining the next start or activation of the dependent relative to the latest applicable start or activation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">startToStartLag</rdfs:label>
@@ -8781,8 +9576,13 @@ Note: The interpretation of this attribute depends on startToStartLagKind. Its a
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.startToStartLagKind">
-    <rdfs:comment>The interpretation of startToStartLag.
-Note: This attribute shall be specified when startToStartLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether startToStartLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when startToStartLag is provided.
+Example: startToStartLag = 2H is interpreted together with startToStartLagKind:
+- exact: the dependent starts exactly 2 hours after the latest applicable start of the dependee.
+- minimum: the dependent may start no earlier than 2 hours after the latest applicable start of the dependee.
+- maximum: the dependent shall start no later than 2 hours after the latest applicable start of the dependee.
+In all cases, the dependee start remains applicable only while the dependee remains in the state resulting from that start. If the dependee subsequently changes state before the dependent starts, the constraint is evaluated from the next applicable start of the dependee.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">startToStartLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -10104,6 +10904,32 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#Speed.multiplier">
+    <rdfs:domain rdf:resource="#Speed"/>
+    <cims:isFixed>none</cims:isFixed>
+    <rdfs:label xml:lang="en">multiplier</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitMultiplier"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Speed.unit">
+    <rdfs:domain rdf:resource="#Speed"/>
+    <cims:isFixed>mPers</cims:isFixed>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <rdfs:range rdf:resource="#UnitSymbol"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Speed.value">
+    <cims:dataType rdf:resource="#Float"/>
+    <rdfs:domain rdf:resource="#Speed"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#SubSchedulingArea.SecondarySubstation">
     <cims:AssociationUsed>No</cims:AssociationUsed>
     <rdfs:comment>The secondary substation that is connected to this subscheduling area.</rdfs:comment>
@@ -10774,19 +11600,19 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#RampingPrincipleKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.exact">
-    <rdfs:comment>Exact value applies.</rdfs:comment>
+    <rdfs:comment>The referenced value is to be met exactly.</rdfs:comment>
     <rdfs:label xml:lang="en">exact</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.maximum">
-    <rdfs:comment>The value is a maximum.</rdfs:comment>
+    <rdfs:comment>The referenced value establishes a upper bound.</rdfs:comment>
     <rdfs:label xml:lang="en">maximum</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.minimum">
-    <rdfs:comment>The value is a minimum.</rdfs:comment>
+    <rdfs:comment>The referenced value establishes a lower bound.</rdfs:comment>
     <rdfs:label xml:lang="en">minimum</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
