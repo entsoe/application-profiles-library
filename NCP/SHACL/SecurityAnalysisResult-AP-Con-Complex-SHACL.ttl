@@ -142,13 +142,12 @@ sarc:PowerFlowResult-VoltageLimit
               a sh:SPARQLTarget ;
               sh:prefixes cim: ;
               sh:select    """
-                SELECT  $this
-                WHERE {
-                  $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
-                  FILTER (?oltype IN (cim:VoltageLimit, cim16:VoltageLimit, cim17:VoltageLimit)).
-                  FILTER NOT EXISTS {$this nc:PowerFlowResult.valueV ?value}
-                }
-                """
+              SELECT  $this  
+              WHERE {      
+                     $this nc:PowerFlowResult.OperationalLimit/rdf:type ?oltype.
+                     FILTER (?oltype IN (cim:VoltageLimit, cim16:VoltageLimit, cim17:VoltageLimit)).
+                    }
+                  """
         ] ;
         sh:property     [ sh:path      nc:PowerFlowResult.valueV ;
                           sh:minCount  1 ;
