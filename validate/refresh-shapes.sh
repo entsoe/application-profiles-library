@@ -5,7 +5,7 @@ GDBUSER=""
 GDBPASS=""
 
 # Step 1: Download the ZIP file
-curl -L https://github.com/ar-chad/application-profiles-library/archive/refs/heads/main.zip -o apl.zip || { echo "Failed to download ZIP file"; exit 1; }
+curl -L https://github.com/entsoe/application-profiles-library/archive/refs/heads/main.zip -o apl.zip || { echo "Failed to download ZIP file"; exit 1; }
 
 # Step 2: Unzip the file
 unzip -o apl.zip || { echo "Failed to unzip file"; exit 1; }
