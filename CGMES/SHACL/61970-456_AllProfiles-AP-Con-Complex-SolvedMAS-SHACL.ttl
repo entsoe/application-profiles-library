@@ -75,40 +75,40 @@ sm456:Model-angleReferenceSparql
     sh:select """
       SELECT $this ?sm1 ?tn ?value ?tn1
       WHERE {
-          {
+        {
           #SELECT $this (COUNT(?smrp) as ?count)
           SELECT $this (COUNT(?type) as ?count)
           WHERE {
-              #?sm cim:SynchronousMachine.referencePriority ?smrp .
-              ?sm cim:SynchronousMachine.referencePriority 1 .
-              ?sm rdf:type cim:SynchronousMachine .
-              ?sm rdf:type ?type .
-              #FILTER (?smrp=1).
-            }
-            GROUP BY $this ?type
+            #?sm cim:SynchronousMachine.referencePriority ?smrp .
+            ?sm cim:SynchronousMachine.referencePriority 1 .
+            ?sm rdf:type cim:SynchronousMachine .
+            ?sm rdf:type ?type .
+            #FILTER (?smrp=1).
           }
-          ?sm1 cim:SynchronousMachine.referencePriority 1 .
-          ?sm1 rdf:type cim:SynchronousMachine .
-          
-          
-          OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode ?tn .
-                    ?tn ^cim:TopologicalIsland.TopologicalNodes ?ti .
-                    }.
-          OPTIONAL {?ti2 cim:TopologicalIsland.AngleRefTopologicalNode ?tn1 .
-                     ?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 .
-                     }.
-          
-          #OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti }.
-          #OPTIONAL {?ti cim:TopologicalIsland.AngleRefTopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti1 .
-          
-          #OPTIONAL {?tn ^cim:TopologicalIsland.TopologicalNodes ?ti }.
-          #OPTIONAL {?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 }.
-          
-          BIND("" as ?value).
-      
-          FILTER (?count!=1 || !bound(?ti) || !bound(?ti1) || (bound(?ti) && bound(?ti1) && ?ti!=?ti1)).
-      } 
+          GROUP BY $this ?type
+        }
+        ?sm1 cim:SynchronousMachine.referencePriority 1 .
+        ?sm1 rdf:type cim:SynchronousMachine .
+
+
+        OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode ?tn .
+          ?tn ^cim:TopologicalIsland.TopologicalNodes ?ti .
+        }.
+        OPTIONAL {?ti2 cim:TopologicalIsland.AngleRefTopologicalNode ?tn1 .
+          ?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 .
+        }.
+
+        #OPTIONAL {?sm1 ^cim:Terminal.ConductingEquipment/cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti }.
+        #OPTIONAL {?ti cim:TopologicalIsland.AngleRefTopologicalNode/^cim:TopologicalIsland.TopologicalNodes ?ti1 .
+
+        #OPTIONAL {?tn ^cim:TopologicalIsland.TopologicalNodes ?ti }.
+        #OPTIONAL {?tn1 ^cim:TopologicalIsland.TopologicalNodes ?ti1 }.
+
+        BIND("" as ?value).
+
+        FILTER (?count!=1 || !bound(?ti) || !bound(?ti1) || (bound(?ti) && bound(?ti1) && ?ti!=?ti1)).
+      }
       LIMIT 1
-      """ .    
+      """ .
     
     

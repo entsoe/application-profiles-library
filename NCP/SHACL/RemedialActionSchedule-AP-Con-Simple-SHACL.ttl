@@ -2241,7 +2241,7 @@ ras:AllowedClasses-property
         rdf:type        sh:PropertyShape;
         sh:description  "Checks if the dataset contains classes which are not defined in the profile to which this dataset conforms to.";
         sh:group        ras:ProfileClassesGroup;
-        sh:in           ( nc:EventSchedule nc:RemedialActionSchemeSchedule nc:CountertradeScheduleAction nc:AvailabilitySchedule nc:RemedialActionSchedule nc:RedispatchScheduleAction nc:RemedialActionScheduleDependency nc:EventTimePoint nc:RemedialActionScheduleGroup nc:GridStateIntensitySchedule nc:GenericValueTimePoint nc:SchemeRemedialAction nc:RemedialActionCost nc:PowerSchedule nc:RemedialActionScheduleResponse nc:PowerTimePoint nc:ProposingRemedialActionScheduleShare md:FullModel dm:DifferenceModel dcat:Dataset );
+        sh:in           ( nc:EventSchedule nc:RemedialActionSchemeSchedule nc:CountertradeScheduleAction nc:AvailabilitySchedule nc:RemedialActionSchedule nc:RemedialActionScheduleDependency nc:EventTimePoint nc:RemedialActionScheduleGroup nc:GenericValueTimePoint nc:SchemeRemedialAction nc:RemedialActionCost nc:PowerSchedule nc:RemedialActionScheduleResponse nc:RedispatchScheduleAction nc:GridStateIntensitySchedule nc:PowerTimePoint nc:ProposingRemedialActionScheduleShare md:FullModel dm:DifferenceModel dcat:Dataset );
         sh:message      "This class is not part of the profile to which this dataset conforms to.";
         sh:name         "ClassNotInProfile";
         sh:order        1;

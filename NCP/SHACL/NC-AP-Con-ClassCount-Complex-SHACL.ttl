@@ -23,7 +23,7 @@ cc:Ontology  rdf:type         owl:Ontology ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "Class count constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/ClassCount-Complex/2.5> ;
-		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
+        dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
         owl:versionInfo       "2.5.0"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
@@ -46,18 +46,18 @@ cc:ClassCount-property
         sh:path         rdf:type;
         sh:severity     sh:Info;
         sh:sparql       cc:ClassCount-propertySparql .		
-		
+
 cc:ClassCount-propertySparql
         rdf:type     sh:SPARQLConstraint;
         sh:message   "The class {?class} appears {?value} times in the data graph.";
         sh:prefixes  cim:;
-        sh:select    """ 
-            SELECT $this ?class (COUNT(?instance) AS ?value)
-            WHERE {
-                    ?instance rdf:type ?class .
-                   }
-            GROUP BY $this ?class
-             """ .
+        sh:select    """
+          SELECT $this ?class (COUNT(?instance) AS ?value)
+          WHERE {
+            ?instance rdf:type ?class .
+          }
+          GROUP BY $this ?class
+          """ .
 
 
 

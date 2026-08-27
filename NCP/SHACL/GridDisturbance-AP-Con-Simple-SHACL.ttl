@@ -958,12 +958,8 @@ gd:PetersenCoil-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:PetersenCoil , cim17:PetersenCoil .
+        sh:targetClass        cim17:PetersenCoil , cim16:PetersenCoil .
 
 gd:PetersenCoil  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -982,12 +978,8 @@ gd:GroundingImpedance-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:GroundingImpedance , cim16:GroundingImpedance .
+        sh:targetClass        cim16:GroundingImpedance , cim17:GroundingImpedance .
 
 gd:GroundingImpedance
         rdf:type        sh:NodeShape;
@@ -1047,12 +1039,8 @@ gd:GroundDisconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:GroundDisconnector , cim16:GroundDisconnector .
+        sh:targetClass        cim16:GroundDisconnector , cim17:GroundDisconnector .
 
 gd:GroundDisconnector
         rdf:type        sh:NodeShape;
@@ -1092,12 +1080,8 @@ gd:Disconnector-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:Disconnector , cim17:Disconnector .
+        sh:targetClass        cim17:Disconnector , cim16:Disconnector .
 
 gd:Disconnector  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1137,12 +1121,8 @@ gd:Breaker-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:Breaker , cim16:Breaker .
+        sh:targetClass        cim16:Breaker , cim17:Breaker .
 
 gd:Breaker  rdf:type    sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1161,12 +1141,8 @@ gd:LoadBreakSwitch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:LoadBreakSwitch , cim16:LoadBreakSwitch .
+        sh:targetClass        cim16:LoadBreakSwitch , cim17:LoadBreakSwitch .
 
 gd:LoadBreakSwitch  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1185,12 +1161,8 @@ gd:Switch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:Switch , cim16:Switch .
+        sh:targetClass        cim16:Switch , cim17:Switch .
 
 gd:Switch  rdf:type     sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1209,12 +1181,8 @@ gd:EquivalentBranch-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:EquivalentBranch , cim17:EquivalentBranch .
+        sh:targetClass        cim17:EquivalentBranch , cim16:EquivalentBranch .
 
 gd:EquivalentBranch  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1233,12 +1201,8 @@ gd:EquivalentInjection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:EquivalentInjection , cim17:EquivalentInjection .
+        sh:targetClass        cim17:EquivalentInjection , cim16:EquivalentInjection .
 
 gd:EquivalentInjection
         rdf:type        sh:NodeShape;
@@ -1258,12 +1222,8 @@ gd:EquivalentShunt-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:EquivalentShunt , cim17:EquivalentShunt .
+        sh:targetClass        cim17:EquivalentShunt , cim16:EquivalentShunt .
 
 gd:EquivalentShunt  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1282,12 +1242,8 @@ gd:Ground-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:Ground , cim16:Ground .
+        sh:targetClass        cim16:Ground , cim17:Ground .
 
 gd:Ground  rdf:type     sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1306,12 +1262,8 @@ gd:BusbarSection-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:BusbarSection , cim17:BusbarSection .
+        sh:targetClass        cim17:BusbarSection , cim16:BusbarSection .
 
 gd:BusbarSection  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1330,12 +1282,8 @@ gd:Junction-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:Junction , cim17:Junction .
+        sh:targetClass        cim17:Junction , cim16:Junction .
 
 gd:Junction  rdf:type   sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1374,12 +1322,8 @@ gd:EnergySource-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:EnergySource , cim16:EnergySource .
+        sh:targetClass        cim16:EnergySource , cim17:EnergySource .
 
 gd:EnergySource  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1499,20 +1443,12 @@ gd:StaticVarCompensator-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              75;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:StaticVarCompensator , cim17:StaticVarCompensator , nc:StaticVarCompensator .
+        sh:targetClass        cim17:StaticVarCompensator , nc:StaticVarCompensator , cim16:StaticVarCompensator .
 
 gd:StaticVarCompensator
         rdf:type        sh:NodeShape;
@@ -1532,12 +1468,8 @@ gd:LinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:LinearShuntCompensator , cim17:LinearShuntCompensator .
+        sh:targetClass        cim17:LinearShuntCompensator , cim16:LinearShuntCompensator .
 
 gd:LinearShuntCompensator
         rdf:type        sh:NodeShape;
@@ -1557,12 +1489,8 @@ gd:NonlinearShuntCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:NonlinearShuntCompensator , cim16:NonlinearShuntCompensator .
+        sh:targetClass        cim16:NonlinearShuntCompensator , cim17:NonlinearShuntCompensator .
 
 gd:NonlinearShuntCompensator
         rdf:type        sh:NodeShape;
@@ -1582,12 +1510,8 @@ gd:SynchronousMachine-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:SynchronousMachine , cim16:SynchronousMachine .
+        sh:targetClass        cim16:SynchronousMachine , cim17:SynchronousMachine .
 
 gd:SynchronousMachine
         rdf:type        sh:NodeShape;
@@ -1607,12 +1531,8 @@ gd:AsynchronousMachine-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:AsynchronousMachine , cim16:AsynchronousMachine .
+        sh:targetClass        cim16:AsynchronousMachine , cim17:AsynchronousMachine .
 
 gd:AsynchronousMachine
         rdf:type        sh:NodeShape;
@@ -1628,20 +1548,12 @@ gd:ExternalNetworkInjection-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              70;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:ExternalNetworkInjection , cim:ExternalNetworkInjection , cim16:ExternalNetworkInjection .
+        sh:targetClass        cim:ExternalNetworkInjection , cim16:ExternalNetworkInjection , cim17:ExternalNetworkInjection .
 
 gd:ExternalNetworkInjection
         rdf:type        sh:NodeShape;
@@ -1661,12 +1573,8 @@ gd:PowerTransformer-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:PowerTransformer , cim17:PowerTransformer .
+        sh:targetClass        cim17:PowerTransformer , cim16:PowerTransformer .
 
 gd:PowerTransformer  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1706,12 +1614,8 @@ gd:VsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:VsConverter , cim16:VsConverter .
+        sh:targetClass        cim16:VsConverter , cim17:VsConverter .
 
 gd:VsConverter  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1751,12 +1655,8 @@ gd:CsConverter-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:CsConverter , cim17:CsConverter .
+        sh:targetClass        cim17:CsConverter , cim16:CsConverter .
 
 gd:CsConverter  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1775,12 +1675,8 @@ gd:NonConformLoad-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:NonConformLoad , cim17:NonConformLoad .
+        sh:targetClass        cim17:NonConformLoad , cim16:NonConformLoad .
 
 gd:NonConformLoad  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1799,12 +1695,8 @@ gd:ConformLoad-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:ConformLoad , cim17:ConformLoad .
+        sh:targetClass        cim17:ConformLoad , cim16:ConformLoad .
 
 gd:ConformLoad  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1823,12 +1715,8 @@ gd:StationSupply-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:StationSupply , cim16:StationSupply .
+        sh:targetClass        cim16:StationSupply , cim17:StationSupply .
 
 gd:StationSupply  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1843,20 +1731,12 @@ gd:EnergyConsumer-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              61;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:EnergyConsumer , cim16:EnergyConsumer , cim17:EnergyConsumer .
+        sh:targetClass        cim16:EnergyConsumer , cim17:EnergyConsumer , cim:EnergyConsumer .
 
 gd:EnergyConsumer  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1875,12 +1755,8 @@ gd:ACLineSegment-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:ACLineSegment , cim17:ACLineSegment .
+        sh:targetClass        cim17:ACLineSegment , cim16:ACLineSegment .
 
 gd:ACLineSegment  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -1899,12 +1775,8 @@ gd:SeriesCompensator-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:SeriesCompensator , cim17:SeriesCompensator .
+        sh:targetClass        cim17:SeriesCompensator , cim16:SeriesCompensator .
 
 gd:SeriesCompensator  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2006,12 +1878,8 @@ gd:BatteryUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:BatteryUnit , cim17:BatteryUnit .
+        sh:targetClass        cim17:BatteryUnit , cim:BatteryUnit .
 
 gd:BatteryUnit  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2131,20 +1999,12 @@ gd:DCGround-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              48;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:DCGround , cim17:DCGround , cim16:DCGround .
+        sh:targetClass        cim17:DCGround , cim16:DCGround , cim:DCGround .
 
 gd:DCGround  rdf:type   sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2159,20 +2019,12 @@ gd:DCShunt-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              47;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:DCShunt , cim17:DCShunt , cim16:DCShunt .
+        sh:targetClass        cim17:DCShunt , cim16:DCShunt , cim:DCShunt .
 
 gd:DCShunt  rdf:type    sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2249,20 +2101,12 @@ gd:DCSeriesDevice-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              43;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:DCSeriesDevice , cim:DCSeriesDevice , cim17:DCSeriesDevice .
+        sh:targetClass        cim:DCSeriesDevice , cim17:DCSeriesDevice , cim16:DCSeriesDevice .
 
 gd:DCSeriesDevice  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2297,20 +2141,12 @@ gd:DCLineSegment-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              41;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:DCLineSegment , cim:DCLineSegment , cim16:DCLineSegment .
+        sh:targetClass        cim:DCLineSegment , cim16:DCLineSegment , cim17:DCLineSegment .
 
 gd:DCLineSegment  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2428,20 +2264,12 @@ gd:DCChopper-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              35;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:DCChopper , cim:DCChopper , cim17:DCChopper .
+        sh:targetClass        cim:DCChopper , cim17:DCChopper , cim16:DCChopper .
 
 gd:DCChopper  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2456,20 +2284,12 @@ gd:DCBusbar-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              34;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:DCBusbar , cim17:DCBusbar , cim:DCBusbar .
+        sh:targetClass        cim17:DCBusbar , cim:DCBusbar , cim16:DCBusbar .
 
 gd:DCBusbar  rdf:type   sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2630,20 +2450,12 @@ gd:DCDisconnector-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              26;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:DCDisconnector , cim17:DCDisconnector , cim16:DCDisconnector .
+        sh:targetClass        cim17:DCDisconnector , cim16:DCDisconnector , cim:DCDisconnector .
 
 gd:DCDisconnector  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2658,20 +2470,12 @@ gd:DCBreaker-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              25;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:DCBreaker , cim:DCBreaker , cim16:DCBreaker .
+        sh:targetClass        cim:DCBreaker , cim16:DCBreaker , cim17:DCBreaker .
 
 gd:DCBreaker  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2686,20 +2490,12 @@ gd:DCSwitch-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              24;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim:DCSwitch , cim16:DCSwitch , cim17:DCSwitch .
+        sh:targetClass        cim16:DCSwitch , cim17:DCSwitch , cim:DCSwitch .
 
 gd:DCSwitch  rdf:type   sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2734,20 +2530,12 @@ gd:HydroPump-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              22;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:HydroPump , cim17:HydroPump , cim:HydroPump .
+        sh:targetClass        cim17:HydroPump , cim:HydroPump , cim16:HydroPump .
 
 gd:HydroPump  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;
@@ -2909,12 +2697,8 @@ gd:WindGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:WindGeneratingUnit , cim16:WindGeneratingUnit .
+        sh:targetClass        cim16:WindGeneratingUnit , cim17:WindGeneratingUnit .
 
 gd:WindGeneratingUnit
         rdf:type        sh:NodeShape;
@@ -2934,12 +2718,8 @@ gd:SolarGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:SolarGeneratingUnit , cim17:SolarGeneratingUnit .
+        sh:targetClass        cim17:SolarGeneratingUnit , cim16:SolarGeneratingUnit .
 
 gd:SolarGeneratingUnit
         rdf:type        sh:NodeShape;
@@ -2979,12 +2759,8 @@ gd:HydroGeneratingUnit-AllowedProperties
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim17:HydroGeneratingUnit , cim16:HydroGeneratingUnit .
+        sh:targetClass        cim16:HydroGeneratingUnit , cim17:HydroGeneratingUnit .
 
 gd:HydroGeneratingUnit
         rdf:type        sh:NodeShape;
@@ -3000,20 +2776,12 @@ gd:NuclearGeneratingUnit-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              10;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:NuclearGeneratingUnit , cim17:NuclearGeneratingUnit , cim:NuclearGeneratingUnit .
+        sh:targetClass        cim17:NuclearGeneratingUnit , cim:NuclearGeneratingUnit , cim16:NuclearGeneratingUnit .
 
 gd:NuclearGeneratingUnit
         rdf:type        sh:NodeShape;
@@ -3050,20 +2818,12 @@ gd:ThermalGeneratingUnit-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              8;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:ThermalGeneratingUnit , cim17:ThermalGeneratingUnit , cim:ThermalGeneratingUnit .
+        sh:targetClass        cim17:ThermalGeneratingUnit , cim:ThermalGeneratingUnit , cim16:ThermalGeneratingUnit .
 
 gd:ThermalGeneratingUnit
         rdf:type        sh:NodeShape;
@@ -3191,20 +2951,12 @@ gd:GeneratingUnit-AllowedProperties
         sh:message            "This property is not part of the profile to which this dataset conforms to.";
         sh:name               "PropertyNotInProfile";
         sh:order              7;
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
-        sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.Interruption ];
-        sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:property           [ sh:path  cim:Equipment.Outages ];
         sh:property           [ sh:path  nc:Equipment.Interruption ];
         sh:property           [ sh:path  cim:Equipment.Faults ];
-        sh:property           [ sh:path  nc:Equipment.UnplannedOutage ];
         sh:severity           sh:Info;
-        sh:targetClass        cim16:GeneratingUnit , cim17:GeneratingUnit , cim:GeneratingUnit .
+        sh:targetClass        cim17:GeneratingUnit , cim:GeneratingUnit , cim16:GeneratingUnit .
 
 gd:GeneratingUnit  rdf:type  sh:NodeShape;
         sh:property     gd:Equipment.Faults-cardinality , gd:Equipment.Interruption-cardinality , gd:Equipment.Outages-cardinality , gd:Equipment.UnplannedOutage-valueType , gd:Equipment.UnplannedOutage-cardinality;

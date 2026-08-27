@@ -3,6 +3,7 @@
 <rdf:RDF
     xmlns:ps="https://ap-voc.cim4.eu/PowerSchedule#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -10,13 +11,12 @@
     xmlns:dcat="http://www.w3.org/ns/dcat#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/PowerSchedule#Ontology">
     <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
@@ -182,7 +182,11 @@ DCTieCorridor is linked to its own SchedulingArea. The active and reactive power
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#EnergyResourceGroupCapacity">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/PowerSchedule#PowerScheduleProfile"/>
-    <rdfs:comment>Energy resource capacity represents the installed, available, or effective capacity of energy-producing or energy-consuming group of resources. It supports both static snapshot values and dynamic time-series reflecting forecast, scheduled, actual, or hindcast availability under meteorological or hydrological conditions. The capacity value is associated with a specific energy kind and, where applicable, linked to weather information relevant for weather-dependent resources.“</rdfs:comment>
+    <rdfs:comment>An aggregation of energy resources having common energy characteristics for which installed, available, or effective capacity is represented.
+
+Note: EnergyResourceGroupCapacity groups energy resources for capacity modelling, forecasting, scenario analysis and aggregation. The group may be characterised by an energy kind, energy source, technology, location, scenario, weather condition or other modelling context.
+The aggregated capacity may be represented by static values or by time-series values describing forecast, scheduled, actual or hindcast conditions. An EnergyComponent represents the part of an aggregated value associated with a particular underlying unit or resource. The aggregated value of the EnergyResourceGroupCapacity may therefore be distributed among its associated EnergyComponents, for example in proportion to the capability of the corresponding units or according to an ordered block-based allocation.
+Weather or other environmental information may be referenced where it is relevant to the capacity or availability of the grouped resources/</rdfs:comment>
     <rdfs:label xml:lang="en">EnergyResourceGroupCapacity</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>

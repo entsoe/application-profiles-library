@@ -2,6 +2,7 @@
 <!--Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:nc="https://cim4.eu/ns/nc#"
     xmlns:cim="https://cim.ucaiug.io/ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -10,15 +11,14 @@
     xmlns:as="https://ap-voc.cim4.eu/AvailabilitySchedule#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
-    xmlns:dcterms="http://purl.org/dc/terms/"
   xml:base="https://cim.ucaiug.io/ns" > 
   <rdf:Description rdf:about="https://ap-voc.cim4.eu/AvailabilitySchedule#Ontology">
-    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
-    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
     <dcterms:conformsTo>file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-600-2:ed-1</dcterms:conformsTo>
     <dcterms:conformsTo>file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dcterms:conformsTo>
+    <dcterms:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dcterms:conformsTo>
     <dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project</dcterms:creator>
     <dcterms:description xml:lang="en">This vocabulary is describing the availability schedule profile.</dcterms:description>
     <dcterms:identifier>14c6b492-885e-4444-8123-2f649178d06c</dcterms:identifier>
@@ -397,7 +397,12 @@ Multiple outage requests may contribute to a single availability schedule, and a
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#OutageDependency">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/AvailabilitySchedule#AvailabilityScheduleProfile"/>
-    <rdfs:comment>A peer temporal dependency that defines temporal or operational constraints between two outage requests.</rdfs:comment>
+    <rdfs:comment>A peer temporal dependency that defines temporal or operational constraints between two outage requests.
+Note: The dependency constrains the start or end of the dependent outage relative to the start or end of the dependee outage. Lag constraints are evaluated using the latest applicable transition of the dependee. This supports sequencing and coordination of related outages without implying a hierarchical relationship between the outage requests.
+Example:
+- startToStartLag = 1H, startToStartLagKind = minimum: the dependent outage may start no earlier than one hour after the dependee outage starts.
+- finishToStartLag = 20M, finishToStartLagKind = exact: the dependent outage starts exactly 20 minutes after the dependee outage ends, for example to allow a defined switching or restoration sequence between the outages.
+- finishToFinishLag = 30M, finishToFinishLagKind = maximum: the dependent outage shall end no later than 30 minutes after the dependee outage ends.</rdfs:comment>
     <rdfs:label xml:lang="en">OutageDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
@@ -438,7 +443,9 @@ Multiple outage requests may contribute to a single availability schedule, and a
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency">
     <cims:belongsToCategory rdf:resource="https://ap-voc.cim4.eu/AvailabilitySchedule#AvailabilityScheduleProfile"/>
-    <rdfs:comment>An abstract directed dependency between two peer instances of the same domain class that defines temporal and operational constraints governing their relative execution or operation.</rdfs:comment>
+    <rdfs:comment>An abstract directed dependency between two peer instances of the same domain class that defines temporal and operational constraints governing their relative execution or operation.
+Note: Temporal lag constraints relate the next applicable transition of the dependent to the latest applicable transition of the dependee. A dependee transition remains applicable while the dependee remains in the state resulting from that transition. If the dependee subsequently changes state before the corresponding transition of the dependent occurs, the previous transition is superseded and the constraint is evaluated from the next applicable transition. Once the corresponding transition of the dependent has occurred, the lag constraint is satisfied for that operating cycle.
+Each lag is qualified by its corresponding ReferenceValueKind, which specifies whether the lag represents an exact, minimum, or maximum temporal constraint.</rdfs:comment>
     <rdfs:label xml:lang="en">PeerTemporalDependency</rdfs:label>
     <cims:stereotype>NC</cims:stereotype>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -1808,8 +1815,7 @@ Note: Certain dependency constraint kinds may require or prohibit the use of tem
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToFinishLag">
-    <rdfs:comment>The time between the completion or deactivation of the dependee and the completion or deactivation of the dependent.
-Note: The interpretation of this attribute depends on finishToFinishLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the next finish or deactivation of the dependent relative to the latest applicable finish or deactivation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToFinishLag</rdfs:label>
@@ -1819,8 +1825,13 @@ Note: The interpretation of this attribute depends on finishToFinishLagKind. Its
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToFinishLagKind">
-    <rdfs:comment>The interpretation of finishToFinishLag.
-Note: This attribute shall be specified when finishToFinishLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether finishToFinishLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when finishToFinishLag is provided.
+Example: finishToFinishLag = 2D1H30M is interpreted together with finishToFinishLagKind:
+- exact: the dependent finishes exactly 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+- minimum: the dependent may finish no earlier than 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+- maximum: the dependent shall finish no later than 2 days, 1 hour and 30 minutes after the latest applicable finish of the dependee.
+In all cases, the dependee finish remains applicable only while the dependee remains in the state resulting from that finish. If the dependee subsequently changes state before the dependent finishes, the applicability of the previous finish is re-evaluated.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToFinishLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -1830,8 +1841,7 @@ Note: This attribute shall be specified when finishToFinishLag is provided.</rdf
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToStartLag">
-    <rdfs:comment>The time between the completion or deactivation of the dependee and the start or activation of the dependent.
-Note: The interpretation of this attribute depends on finishToStartLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the next start or activation of the dependent relative to the latest applicable finish or deactivation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToStartLag</rdfs:label>
@@ -1841,8 +1851,13 @@ Note: The interpretation of this attribute depends on finishToStartLagKind. Its 
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.finishToStartLagKind">
-    <rdfs:comment>The interpretation of finishToStartLag.
-Note: This attribute shall be specified when finishToStartLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether finishToStartLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when finishToStartLag is provided.
+Example: finishToStartLag = 20M is interpreted together with finishToStartLagKind:
+- exact: the dependent starts exactly 20 minutes after the latest applicable finish of the dependee.
+- minimum: the dependent may start no earlier than 20 minutes after the latest applicable finish of the dependee.
+- maximum: the dependent shall start no later than 20 minutes after the latest applicable finish of the dependee.
+In all cases, the dependee finish remains applicable only while the dependee remains in the state resulting from that finish. If the dependee subsequently changes state before the dependent starts, the constraint is evaluated from the next applicable finish of the dependee.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">finishToStartLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -1863,8 +1878,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.overlap">
-    <rdfs:comment>The duration for which the dependee and dependent are active or effective simultaneously.
-Note: The interpretation of this attribute depends on overlapKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.</rdfs:comment>
+    <rdfs:comment>The duration constraining the period for which the dependee and dependent are simultaneously active or effective.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">overlap</rdfs:label>
@@ -1874,8 +1888,13 @@ Note: The interpretation of this attribute depends on overlapKind. Its applicabi
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.overlapKind">
-    <rdfs:comment>The interpretation of overlap.
-Note: This attribute shall be specified when overlap is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether overlap is an exact, minimum, or maximum duration of simultaneous activity or effectiveness.
+Note: This attribute shall be specified when overlap is provided.
+Example: overlap = 1H28M45S is interpreted together with overlapKind:
+- exact: the dependee and dependent are simultaneously active or effective for exactly 1 hour, 28 minutes, and 45 seconds.
+- minimum: the dependee and dependent shall be simultaneously active or effective for at least 1 hour, 28 minutes, and 45 seconds.
+- maximum: the dependee and dependent shall be simultaneously active or effective for no more than 1 hour, 28 minutes, and 45 seconds.
+Unlike the lag attributes, overlap constrains the duration of a simultaneous state rather than the temporal separation between two state transitions.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">overlapKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -1885,14 +1904,7 @@ Note: This attribute shall be specified when overlap is provided.</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.startToStartLag">
-    <rdfs:comment>The time between the start or activation of the dependee and the start or activation of the dependent.
-Note: The interpretation of this attribute depends on startToStartLagKind. Its applicability may depend on the selected constraintKind and the semantics of the specialization.
-&lt;ul&gt;
-	&lt;li&gt;&lt;ul&gt;
-	&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</rdfs:comment>
+    <rdfs:comment>The duration constraining the next start or activation of the dependent relative to the latest applicable start or activation of the dependee.</rdfs:comment>
     <cims:dataType rdf:resource="#Duration"/>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">startToStartLag</rdfs:label>
@@ -1902,8 +1914,13 @@ Note: The interpretation of this attribute depends on startToStartLagKind. Its a
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#PeerTemporalDependency.startToStartLagKind">
-    <rdfs:comment>The interpretation of startToStartLag.
-Note: This attribute shall be specified when startToStartLag is provided.</rdfs:comment>
+    <rdfs:comment>Specifies whether startToStartLag is an exact, minimum, or maximum temporal constraint.
+Note: This attribute shall be specified when startToStartLag is provided.
+Example: startToStartLag = 2H is interpreted together with startToStartLagKind:
+- exact: the dependent starts exactly 2 hours after the latest applicable start of the dependee.
+- minimum: the dependent may start no earlier than 2 hours after the latest applicable start of the dependee.
+- maximum: the dependent shall start no later than 2 hours after the latest applicable start of the dependee.
+In all cases, the dependee start remains applicable only while the dependee remains in the state resulting from that start. If the dependee subsequently changes state before the dependent starts, the constraint is evaluated from the next applicable start of the dependee.</rdfs:comment>
     <rdfs:domain rdf:resource="https://cim4.eu/ns/nc#PeerTemporalDependency"/>
     <rdfs:label xml:lang="en">startToStartLagKind</rdfs:label>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -2015,19 +2032,19 @@ Note: This attribute shall be specified when startToStartLag is provided.</rdfs:
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#RecordStatusKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.exact">
-    <rdfs:comment>Exact value applies.</rdfs:comment>
+    <rdfs:comment>The referenced value is to be met exactly.</rdfs:comment>
     <rdfs:label xml:lang="en">exact</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.maximum">
-    <rdfs:comment>The value is a maximum.</rdfs:comment>
+    <rdfs:comment>The referenced value establishes a upper bound.</rdfs:comment>
     <rdfs:label xml:lang="en">maximum</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://cim4.eu/ns/nc#ReferenceValueKind.minimum">
-    <rdfs:comment>The value is a minimum.</rdfs:comment>
+    <rdfs:comment>The referenced value establishes a lower bound.</rdfs:comment>
     <rdfs:label xml:lang="en">minimum</rdfs:label>
     <cims:stereotype>enum</cims:stereotype>
     <rdf:type rdf:resource="https://cim4.eu/ns/nc#ReferenceValueKind"/>
