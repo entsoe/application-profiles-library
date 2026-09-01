@@ -544,12 +544,11 @@ dm:publisher-cardinality
 
 dm:accrualPeriodicity-datatype
         rdf:type        sh:PropertyShape;
-        sh:datatype     xsd:anyURI;
         sh:description  "This constraint validates the datatype of the property (attribute).";
         sh:group        dm:DatatypesGroup;
         sh:message      "The datatype is not literal or it violates the xsd datatype.";
         sh:name         "accrualPeriodicity-datatype";
-        sh:nodeKind     sh:Literal;
+        sh:nodeKind     sh:IRI;
         sh:order        19;
         sh:path         dcterms:accrualPeriodicity;
         sh:severity     sh:Violation .
