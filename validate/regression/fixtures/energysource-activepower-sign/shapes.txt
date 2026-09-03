@@ -1,0 +1,2 @@
+# One repo-relative SHACL file per line; blank lines and # comments ignored.
+CGMES/SHACL/61970-301_SteadyStateHypothesis-AP-Con-Complex-SHACL.ttl

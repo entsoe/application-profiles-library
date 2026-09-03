@@ -1,0 +1,12 @@
+# A positive activePower on an EnergySource means it is consuming, which the
+# load sign convention forbids.
+@prefix cim:  <http://iec.ch/TC57/CIM100#> .
+@prefix ex:   <https://example.org/regression#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:ES-consuming  a  cim:EnergySource ;
+    cim:EnergySource.activePower  "12.5"^^xsd:float .
+
+# unaffected
+ex:ES-producing  a  cim:EnergySource ;
+    cim:EnergySource.activePower  "-42.5"^^xsd:float .

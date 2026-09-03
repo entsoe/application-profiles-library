@@ -1,0 +1,16 @@
+# Both halves of tp456:IdentifiedObject.name-cardinality (sh:minCount 1,
+# sh:maxCount 1), plus a node that is fine, to prove the shape does not simply
+# reject everything.
+@prefix cim:  <http://iec.ch/TC57/CIM100#> .
+@prefix ex:   <https://example.org/regression#> .
+
+# no name at all -> violates sh:minCount 1
+ex:TN-no-name  a  cim:TopologicalNode .
+
+# two names -> violates sh:maxCount 1
+ex:DCTN-two-names  a  cim:DCTopologicalNode ;
+    cim:IdentifiedObject.name  "First" , "Second" .
+
+# unaffected
+ex:TN-ok  a  cim:TopologicalNode ;
+    cim:IdentifiedObject.name  "Node A" .

@@ -13,6 +13,8 @@ We run `make` using a [Makefile](Makefile) with the following targets:
   The quueries below are run against it, unless metioned otherwise
 - `make rdf-validate`: syntax validation, using jena `riot`
 - `make sparql-validate`: SPARQL validation, using jena `qparse`
+- `make regression`: the regression suite in [regression/](regression/README.md).
+  Pure Python + rdflib, so it also runs in CI where Jena is not installed
 
 ## SPARQL Validation
 
@@ -235,6 +237,26 @@ All SPARQL queries with >=12 lines (86 rows, sorted by lines desc):
 | CurveData-equationY1                                                     |   632 |    12 |
 | ConductingEquipment.BaseVoltage-usage                                    |   693 |    12 |
 
+
+## Regression Suite
+
+[regression/](regression/README.md) holds the reproducible tests asked for in
+[#155](https://github.com/entsoe/application-profiles-library/issues/155):
+one test per defect, failing before the fix and passing after it.
+42 tests today -- 29 guards over things that are currently correct, and 13 that
+reproduce a defect the SHACL still has, each marked `@unittest.expectedFailure`
+with its issue and its current count so the suite stays green until somebody
+fixes one.
+
+Six of those 13 have no issue yet; they were found by writing the tests. See
+[the table](regression/README.md#the-13-known-defects).
+
+Note that `make rdf-validate` and `make sparql-validate` only *write* a report:
+nothing fails when `rdf-validate.txt` or `sparql-validate.txt` come back
+non-empty, and nothing regenerates them either. `sparql-validate.txt` in this
+repo still reports an error in `requires-NC-cardinality.rq`, a query PR #151
+deleted. The regression suite asserts on the same two properties instead of
+reporting on them.
 
 ## Other Ideas
 - SHACL-SHACL validation:
