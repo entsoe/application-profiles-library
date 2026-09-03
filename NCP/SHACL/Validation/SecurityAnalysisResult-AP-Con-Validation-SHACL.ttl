@@ -1,0 +1,33 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base          <https://ap-val.cim4.eu/SecurityAnalysisResult/2.5> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix val:  <https://ap-val.cim4.eu/SecurityAnalysisResult/2.5#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+
+
+val:Ontology  rdf:type    owl:Ontology;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://CIM17-2_CGMES31v01_PROF-20v02_NC24v18_MS10v03_DES10v01.eap" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
+        dcterms:description   "A set of SHACL based constraints that shall be executed when validating a dataset that conforms to Security Analysis Result profile.";
+        dcterms:identifier    "f0de1943-4d30-4229-8b3c-cd56e8e8b60e";
+        dcterms:issued        "2026-09-02T12:37:31.562906"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2026-09-02"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Security Analysis Result Validation"@en;
+        owl:versionIRI    <https://ap-val.cim4.eu/SecurityAnalysisResult/2.5>;
+        owl:versionInfo   "2.5.2"@en;
+        dcat:keyword      "SAR";
+        dcat:theme        "constraint"@en .
+
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-PrefixDeclaration-Complex-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-ClassCount-Complex-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-Complex-IdentifiedObjecStringLength-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/SecurityAnalysisResult-AP-Con-Simple-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/DatasetMetadata-AP-Con-SHACL.ttl> .
+

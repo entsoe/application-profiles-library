@@ -1,0 +1,69 @@
+#Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHO WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. 
+@base          <https://ap-val.cim4.eu/EquipmentReliability/2.5> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix val:  <https://ap-val.cim4.eu/EquipmentReliability/2.5#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix er:    <https://ap-con.cim4.eu/EquipmentReliability-Simple/2.5#> .
+
+
+val:Ontology  rdf:type     owl:Ontology;
+        dcterms:conformsTo    "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://CIM17-2_CGMES31v01_PROF-20v03_NC25v25_MS10v12_DES10v01.eap";
+        dcterms:description   "A set of SHACL based constraints that shall be executed when validating a dataset that conforms to Equipment Reliability profile.";
+        dcterms:identifier    "e63334e2-112f-4302-9402-9d92ea2bbf4e";
+        dcterms:issued        "2026-09-02T12:37:29.711311600"^^xsd:dateTime;
+        dcterms:language      "en-GB";
+        dcterms:license       "https://www.apache.org/licenses/LICENSE-2.0"@en;
+        dcterms:modified      "2026-09-02"^^xsd:date;
+        dcterms:publisher     "ENTSO-E"@en;
+        dcterms:rightsHolder  "ENTSO-E"@en;
+        dcterms:title         "Equipment Reliability Validation"@en;
+        owl:versionIRI    <https://ap-val.cim4.eu/EquipmentReliability/2.5>;
+        owl:versionInfo   "2.5.0"@en;
+        dcat:keyword      "ER";
+        dcat:theme        "constraint"@en .
+
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-PrefixDeclaration-Complex-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-ClassCount-Complex-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/NC-AP-Con-Complex-IdentifiedObjecStringLength-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/EquipmentReliability-AP-Con-Simple-SHACL.ttl> .
+val:   owl:imports  <https://raw.githubusercontent.com/entsoe/application-profiles-library/main/NCP/SHACL/DatasetMetadata-AP-Con-SHACL.ttl> .
+
+er:OperationalLimit.OperationalLimitType-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:OperationalLimit.OperationalLimitSet-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:BiddingZone.CapacityCalculationRegion-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:ReactiveCapabilityCurve.SynchronousMachine2-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:SchedulingArea.SynchronousArea-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:VoltageAngleLimit.AngleReferenceTerminal-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:SchedulingArea.LoadFrequencyControlArea-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:Circuit.IdentifyingTerminal-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
+
+er:PinTerminal.Terminal-valueType
+        rdf:type        sh:PropertyShape;
+        sh:deactivated  true .
