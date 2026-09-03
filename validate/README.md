@@ -14,6 +14,18 @@ We run `make` using a [Makefile](Makefile) with the following targets:
 - `make rdf-validate`: syntax validation, using jena `riot`
 - `make sparql-validate`: SPARQL validation, using jena `qparse`
 
+## Auto shapes refreshement using Dockerfile
+To automatically create environment with all dependencies required for the [Makefile](Makefile):
+
+Edit `refresh-shapes.sh` to add values for GDBUSER and GDBPASS and run:
+>docker build -t apl-validate-image .
+
+To refresh shapes and ontology graphs, run:
+>docker run -it apl-validate-image bash
+>./refresh-shapes.sh
+
+The last command is intended to be run periodically. 
+
 ## SPARQL Validation
 
 The plan is to:
