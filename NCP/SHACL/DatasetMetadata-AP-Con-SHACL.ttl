@@ -1100,7 +1100,7 @@ dm:accrualPeriodicity-NC-cardinality
         sh:severity     sh:Violation ;
         sh:targetClass  dcat:Dataset , dcatcim:DifferenceSet ;
         sh:or           ( [ sh:not dm:conformsToNCProfileAccrualPeriodicity ]
-                          [ sh:path prov:accrualPeriodicity ; sh:minCount 1 ] ) .
+                          [ sh:path dcterms:accrualPeriodicity ; sh:minCount 1 ] ) .
 
 dm:usedSettings-NC-cardinality
         a               sh:NodeShape ;
