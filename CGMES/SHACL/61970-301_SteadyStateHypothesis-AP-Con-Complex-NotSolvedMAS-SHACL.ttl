@@ -339,11 +339,12 @@ sshn301:ShuntCompensator.sections-valueNonLinearSparql
                     cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator
                     $this ;
                     cim:NonlinearShuntCompensatorPoint.sectionNumber
-                    ?value .
+                    ?sectionNumber .
+			FILTER (?sectionNumber = ?value)		
             }
         }
     """ .
- 
+	 
 sshn301:ControlArea  a  sh:NodeShape ;
         sh:property     sshn301:ControlArea-netInterchangeCalculation ;
         sh:targetClass  cim:ControlArea .
