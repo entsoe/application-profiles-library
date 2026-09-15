@@ -1,9 +1,5 @@
 # ENTSO-E Application Profiles Library
 
-v1.1.0 ICTC approved on 11 September 2025
-
-v1.1.1 patch release (bug solving) approved in CIM WG on 7 October 2025
-
 # Overview
 This library contains all applications profiles for Common Grid Model Exchange Standard/Specification (CMGES) and Network Code Profiles (NCP) organised in a folder structure. The application profiles consist of vocabulary schemas (RDFS) and constraints (SHACL) derived from the information model in UML available on the [ENTSO-E CGMES Library](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile).
 
