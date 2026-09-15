@@ -1,0 +1,10 @@
+# Every TopologicalNode and DCTopologicalNode carries exactly one name,
+# which is what tp456:IdentifiedObject.name-cardinality asks for.
+@prefix cim:  <http://iec.ch/TC57/CIM100#> .
+@prefix ex:   <https://example.org/regression#> .
+
+ex:TN-ok  a  cim:TopologicalNode ;
+    cim:IdentifiedObject.name  "Node A" .
+
+ex:DCTN-ok  a  cim:DCTopologicalNode ;
+    cim:IdentifiedObject.name  "DC Node A" .
