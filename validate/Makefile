@@ -10,4 +10,8 @@ sparql-validate: # parse .rq file with qparse, print only files with errors
 
 zip: # first remove, in case file locations have changed. The zip itself is in .gitignore
 	rm -f entsoe-SHACL.zip
-	zip -9 entsoe-SHACL.zip ../*/SHACL/* 
+	zip -9 entsoe-SHACL.zip ../*/SHACL/*
+
+zip-rdfs: # first remove, in case file locations have changed. The zip itself is in .gitignore
+	rm -f entsoe-RDFS.zip
+	zip -9 entsoe-RDFS.zip ../*/RDFS/*
