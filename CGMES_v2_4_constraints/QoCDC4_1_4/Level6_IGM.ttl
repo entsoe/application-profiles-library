@@ -45,11 +45,27 @@ l6igm:KirchhoffsFirstLaw
         sh:property     l6igm:KirchhoffsFirstLaw-ps;
         sh:targetClass  cim:TopologicalNode .
 
-l6igm:RegulatingControl-VoltageTargetConsistencyAtTN
+l6igm:RegulatingControl-VoltageTargetConsistencyAtTN-NS
         rdf:type        sh:NodeShape;
-        sh:name         "VoltageTargetConsistencyAtTN";  
+        sh:property  l6igm:RegulatingControl-VoltageTargetConsistencyAtTN;
+        sh:target    [ rdf:type     sh:SPARQLTarget;
+                       sh:prefixes  cim:;
+                       sh:select    """
+                SELECT DISTINCT ?this
+                WHERE {
+                  ?this rdf:type cim:TopologicalNode   .
+				  ?this ^cim:Terminal.TopologicalNode ?term. 
+				  ?term ^cim:RegulatingControl.Terminal ?ctrl.
+				  ?ctrl cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
+                  ?ctrl cim:RegulatingControl.enabled	  true.
+				  ?term cim:ACDCTerminal.connected true.
+				  ?term (cim:Terminal.ConductingEquipment/cim:RegulatingCondEq.controlEnabled)|(^cim:RegulatingControl.Terminal/^cim:TapChanger.TapChangerControl/cim:TapChanger.ltcFlag)|(cim:Terminal.ConductingEquipment/cim:EquivalentInjection.regulatingCapability) true.
+                }
+                """  
+                     ] .
 
-        sh:targetClass  cim:TopologicalNode;  
+l6igm:RegulatingControl-VoltageTargetConsistencyAtTN
+        rdf:type        sh:PropertyShape;
         sh:description  "For all cim:RegulatingControl and cim:EquivalentInjection instances regulating on cim:Terminal connected to the same cim:TopologicalNode, all cim:RegulatingControl.targetValue shall be equal in case: -cim:RegulatingControl.enabled equals to true -Associated cim:ConductingEquipment objects are switched on (cim:ACDCTerminal.connected equals to true) -cim:RegulatingCondEq.controlEnabled equals to true for associated cim:ConductingEquipment -cim:TapChanger.ltcFlag equals to true in case the control includes cim:TapChanger -cim:RegulatingControl.mode is cim:RegulatingControlModeKind.voltage -cim:EquivalentInjection.regulatingCapability equals to true in case of cim:EquivalentInjection. This rule is valid for both discrete (cim:RegulatingControl.discrete equals to true) and continuous controls (cim:RegulatingControl.discrete equals to false).";
         sh:group        l6igm:Level6-IGM;
         sh:name         "VoltageTargetConsistencyAtTN";
@@ -61,25 +77,26 @@ l6igm:RegulatingControl-VoltageTargetConsistencyAtTN
 
 l6igm:RegulatingControl-VoltageTargetConsistencyAtTNSparql
         rdf:type     sh:SPARQLConstraint;
-        sh:message   "Inconsistent cim:RegulatingControl.targetValue-s (RegulatingControl: {?tv}) at the following cim:TopologicalNode: {?tn}.";
+        sh:message   "Inconsistent cim:RegulatingControl.targetValue-s (RegulatingControl: {?ctrl}) at the following cim:TopologicalNode: {?tn}.";
         sh:prefixes  cim:;
-        sh:select    """
-        SELECT $this (?this AS ?tn) 
-           (COUNT(DISTINCT ?tv) AS ?n)
-    WHERE {
-      $this ^cim:Terminal.TopologicalNode ?term .
+		sh:select """
+        SELECT $this (GROUP_CONCAT(DISTINCT STR(?ctrl); separator=", ") AS ?ctrl) ($this AS ?tn)
+        WHERE {
+            $this ^cim:Terminal.TopologicalNode ?term .
+            ?term ^cim:RegulatingControl.Terminal ?ctrl .
 
-      ?ctrl cim:RegulatingControl.Terminal|cim:TapChangerControl.Terminal  ?term . 
-    
-      ?ctrl cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage ;
-            cim:RegulatingControl.enabled true ;
-            cim:RegulatingControl.targetValue ?tv .
+            ?ctrl
+                cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage ;
+                cim:RegulatingControl.enabled true ;
+                cim:RegulatingControl.targetValue ?tv .
 
-      ?term cim:ACDCTerminal.connected true .
-    }
-    GROUP BY $this
-    HAVING (?n > 1)
-  """ .
+            ?term cim:ACDCTerminal.connected true .
+
+			?term (cim:Terminal.ConductingEquipment/cim:RegulatingCondEq.controlEnabled)|(^cim:RegulatingControl.Terminal/^cim:TapChanger.TapChangerControl/cim:TapChanger.ltcFlag)|(cim:Terminal.ConductingEquipment/cim:EquivalentInjection.regulatingCapability) true.
+        }
+        GROUP BY $this
+        HAVING (COUNT(DISTINCT ?tv) > 1)
+    """ .
 
 l6igm:KirchhoffsFirstLaw-ps
         rdf:type        sh:PropertyShape;

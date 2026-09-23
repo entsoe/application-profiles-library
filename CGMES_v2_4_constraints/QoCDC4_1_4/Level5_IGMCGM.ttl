@@ -143,7 +143,7 @@ l5com:SynchronousMachine-SMNullPSparql
 		$this cim:RotatingMachine.p ?p .
 		$this cim:RotatingMachine.q ?q .
 
-		FILTER (?p=0 && ?q!=0 && ?opmode!=cim:SynchronousMachineOperatingMode.condenser).
+		FILTER ((?p="0"^^xsd:float || ?p="-0"^^xsd:float) && ?q!="0"^^xsd:float && ?opmode!=cim:SynchronousMachineOperatingMode.condenser).
 			}""" .
 
 l5com:SvPowerFlow-instance
@@ -236,29 +236,29 @@ l5com:SvPowerFlow-SvPowerFlowBranchInstances2
 
 l5com:SmallTopologicalIsland
         a               sh:NodeShape ;
-        sh:property     l5com:TI-SmallTopologicalIsland ;
-        sh:targetClass  cim:TopologicalIsland .
-
-l5com:TI-SmallTopologicalIsland
-        a               sh:PropertyShape ;
-		sh:sparql       l5com:TI-SmallTopologicalIslandSparql ;
+        sh:targetClass  cim:TopologicalIsland ;
         sh:description  "A small cim:TopologicalIsland with TNs having zero voltage is in most cases meaningless and should not be exchanged. A cim:TopologicalIsland with three or fewer cim:TopologicalNodes is small." ;
         sh:name         "SmallTopologicalIsland" ;
-        sh:path         cim:TopologicalIsland.TopologicalNodes;
+        sh:message      "Small cim:TopologicalIsland found with zero voltage for all nodes. The number of TopologicalNodes is between one and three." ;
         sh:order        7 ;
         sh:group        l5com:Level5-IGMCGM ;
-        sh:severity     sh:Info .
-
-l5com:TI-SmallTopologicalIslandSparql
-    a          sh:SPARQLConstraint ;
-    sh:message "Small cim:TopologicalIsland found with zero voltage for all nodes. The number of TopologicalNodes is: {?nTN}." ;
-    sh:prefixes cim: ;
-    sh:select """
-      SELECT $this (COUNT(DISTINCT ?tn) AS ?nTN) (MAX(?v) AS ?maxV)
-      WHERE {
-            $this cim:TopologicalIsland.TopologicalNodes ?tn.
-            ?tn ^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?v.
-      }
-	  GROUP BY $this
-	  HAVING(?nTN <= 3 && ?maxV = 0.0)
-    """ .
+        sh:severity     sh:Info ;
+        sh:or (
+            [ sh:property [
+                sh:path     cim:TopologicalIsland.TopologicalNodes ;
+                sh:minCount 4
+            ] ]
+            [ sh:property [
+                sh:path (
+                    cim:TopologicalIsland.TopologicalNodes
+                    [ sh:inversePath cim:SvVoltage.TopologicalNode ]
+                    cim:SvVoltage.v
+                ) ;
+                sh:qualifiedValueShape [ sh:minExclusive 0.0 ] ;
+                sh:qualifiedMinCount 1
+            ] ]
+            [ sh:property [
+                sh:path     cim:TopologicalIsland.TopologicalNodes ;
+                sh:maxCount 0
+            ] ]
+        ) .

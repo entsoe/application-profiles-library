@@ -61,32 +61,33 @@ l8com:Limits-CongestionSparql
         sh:select    """
 			SELECT  $this ?olclvalue ?olappvalue ?olapvalue ?p ?q
 			WHERE {
-				$this cim:OperationalLimitSet.Terminal/^cim:SvPowerFlow.Terminal ?svpf.
-				$this cim:OperationalLimitSet.Terminal/cim:Terminal.TopologicalNode/^cim:SvVoltage.TopologicalNode/cim:SvVoltage.v ?v.
+				$this cim:OperationalLimitSet.Terminal ?terminal .
+				?svpf cim:SvPowerFlow.Terminal ?terminal .
+				?terminal cim:Terminal.TopologicalNode ?topologicalNode .
+				?svVoltage cim:SvVoltage.TopologicalNode ?topologicalNode ;
+				           cim:SvVoltage.v ?v .
 				?svpf cim:SvPowerFlow.p ?p.
 				?svpf cim:SvPowerFlow.q ?q.
 				
-				OPTIONAL {
-					?olcl cim:OperationalLimit.OperationalLimitSet $this .
-					?olcl rdf:type cim:CurrentLimit.
-					?olcl cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.patl.
-					?olcl cim:CurrentLimit.value ?olclvalue.	
-					} .
-				OPTIONAL {
-					?olapp cim:OperationalLimit.OperationalLimitSet $this .
-					?olapp rdf:type cim:ApparentPowerLimit.
-					?olapp cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.patl.
-					?olapp cim:ApparentPowerLimit.value ?olappvalue.	
-					} .	
-				OPTIONAL {
-					?olap cim:OperationalLimit.OperationalLimitSet $this .
-					?olap rdf:type cim:ActivePowerLimit.
-					?olap cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.patl.
-					?olap cim:ActivePowerLimit.value ?olapvalue.	
-					} .
-				BIND ( (?p*?p+?q*?q) AS ?app2).
+				?limit cim:OperationalLimit.OperationalLimitSet $this ;
+				       rdf:type ?limitClass ;
+				       cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.patl ;
+				       (cim:CurrentLimit.value|cim:ApparentPowerLimit.value|cim:ActivePowerLimit.value) ?limitValue .
 
-        FILTER ( (bound(?olclvalue) && ?app2!=0 && (?olclvalue*?olclvalue)<(?app2/(3*(?v*?v)))*1000000) || (bound(?olappvalue) && ?olappvalue*?olappvalue<?app2 && ?app2!=0) || (bound(?olapvalue) && ?olapvalue<?p && ?p!=0)) .
+				BIND(IF(?limitClass = cim:CurrentLimit, ?limitValue, 1/0) AS ?olclvalue) .
+				BIND(IF(?limitClass = cim:ApparentPowerLimit, ?limitValue, 1/0) AS ?olappvalue) .
+				BIND(IF(?limitClass = cim:ActivePowerLimit, ?limitValue, 1/0) AS ?olapvalue) .
+				BIND((?p*?p+?q*?q) AS ?app2) .
+
+        FILTER (
+            (?limitClass = cim:CurrentLimit && ?app2 != 0 &&
+                (?limitValue*?limitValue) < (?app2/(3*(?v*?v)))*1000000)
+            ||
+            (?limitClass = cim:ApparentPowerLimit && ?app2 != 0 &&
+                ?limitValue*?limitValue < ?app2)
+            ||
+            (?limitClass = cim:ActivePowerLimit && ?p != 0 && ?limitValue < ?p)
+        ) .
 			} """ .
 
 l8com:TIConvergenceStatMissing  a  sh:NodeShape ;

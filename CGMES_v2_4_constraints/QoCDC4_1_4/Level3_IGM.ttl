@@ -436,7 +436,7 @@ l3igm:SMRatedSunrealisticSparql
         SELECT $this (MAX(ABS(?pq)) AS ?maxpq)  
           WHERE {
             
-			$this cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP|cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP|cim:SynchronousMachine.minQ|cim:SynchronousMachine.maxQ ?pq.
+			$this (cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.minOperatingP)|(cim:RotatingMachine.GeneratingUnit/cim:GeneratingUnit.maxOperatingP)|cim:SynchronousMachine.minQ|cim:SynchronousMachine.maxQ ?pq.
 			
 			$this rdf:type ?type .
             FILTER (?type=cim:SynchronousMachine ) .
@@ -445,7 +445,7 @@ l3igm:SMRatedSunrealisticSparql
         }
 
 
-        FILTER ((?hasrcc=true && ((?rateds>=?maxxvalue*10 && ?maxxvalue!=0) || (?rateds>=?maxy1value*10 && ?maxy1value!=0) || (?rateds>=?maxy2value*10 && ?maxy2value!=0))) || (?hasrcc=false && (?rateds>?maxpg*10 && ?maxpg!=0))) .
+        FILTER ((?hasrcc=true && ((?rateds>=?maxxvalue*10 && ?maxxvalue!=0) || (?rateds>=?maxy1value*10 && ?maxy1value!=0) || (?rateds>=?maxy2value*10 && ?maxy2value!=0))) || (?hasrcc=false && (?rateds>?maxpq*10 && ?maxpq!=0))) .
         } """ .
 
 l3igm:EnergyAreaMissing
@@ -953,7 +953,7 @@ l3igm:Terminal-EXCH8ConnectivityNodeSparql
         sh:select    """
 			SELECT  $this ?value
 			WHERE {      
-        BIND (EXISTS {?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1"^^xsd:anyURI} AS ?opmodel) .
+        BIND (EXISTS {?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1"} AS ?opmodel) .
         BIND (EXISTS {$this $PATH ?value} AS ?hasassoc) .
         
         FILTER (?opmodel=true && ?hasassoc=false) .
@@ -1040,7 +1040,7 @@ l3igm:SubLoadArea-SubLoadAreaMissingSparql
 	      SELECT $this  
         WHERE {
           BIND(EXISTS{$this cim:LoadGroup.SubLoadArea ?group } AS ?sagr) .
-		  BIND(EXISTS{?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1"^^xsd:anyURI } AS ?opprof) .
+		  BIND(EXISTS{?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1" } AS ?opprof) .
           
           FILTER ( ?sagr=false &&  ?opprof=true).
         } """ .
@@ -1567,7 +1567,7 @@ l3igm:ControlArea-EnergyAreaMissingSparql
 	      SELECT $this  
         WHERE {
           BIND(EXISTS{$this cim:ControlArea.EnergyArea ?group } AS ?sagr) .
-		  BIND(EXISTS{?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1"^^xsd:anyURI } AS ?opprof) .
+		  BIND(EXISTS{?s md:Model.profile "http://entsoe.eu/CIM/EquipmentOperation/3/1" } AS ?opprof) .
           
           FILTER ( ?sagr=false &&  ?opprof=true).
         } """ .
@@ -2420,7 +2420,7 @@ l3igm:Terminal-TerminalSeqNumSparql
 		BIND(EXISTS{$this ^cim:Terminal.ConductingEquipment/cim:ACDCTerminal.sequenceNumber 1} AS ?t1).
 		BIND(EXISTS{$this ^cim:Terminal.ConductingEquipment/cim:ACDCTerminal.sequenceNumber 2} AS ?t2).
 
-		OPTIONAL {$this ^cim:Terminal.ConductingEquipment/^cim:MutualCoupling.First_Terminal ?mcterm }. 
+		OPTIONAL {$this ^cim:Terminal.ConductingEquipment/(^cim:MutualCoupling.First_Terminal|^cim:MutualCoupling.Second_Terminal) ?mcterm }. 
         FILTER ((?type=cim:EquivalentBranch && (?t1=false || ?t2=false)) || (?type=cim:ACLineSegment && bound(?mcterm) && (?t1=false || ?t2=false))).         
 			}""" .
 
@@ -2596,10 +2596,9 @@ l3igm:ACDCTerminal.sequenceNumber-numberingSparql
 			SELECT  $this (COUNT(?sn) AS ?countsn) (COUNT(DISTINCT ?sn) AS ?countdsn) (MIN(?sn) AS ?minsn) (SUM(?sn) AS ?sumsn) (COUNT(?terms) AS ?countterms)
 			WHERE {
         $this (^cim:Terminal.ConductingEquipment)|(^cim:DCTerminal.DCConductingEquipment) ?terms. 
-        ?terms rdf:type ?type .
         ?terms cim:ACDCTerminal.sequenceNumber ?sn .
 			}
-      GROUP BY $this ?type
+      GROUP BY $this
       HAVING(?countsn!=?countdsn || ?minsn!=1 || (?countterms=1 && ?sumsn!=1) || (?countterms=2 && (?sumsn/2)!=1.5) || (?countterms=3 && (?sumsn/3)!=2))
       """ .
 

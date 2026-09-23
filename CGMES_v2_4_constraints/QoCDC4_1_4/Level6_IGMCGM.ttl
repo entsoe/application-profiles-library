@@ -450,27 +450,34 @@ l6com:ControlArea.netInterchange-NetInterchange1Sparql
 
 l6com:RegulatingControl-samePointSparql
         rdf:type     sh:SPARQLConstraint;
-        sh:message   "Conflicting target values of cim:RegulatingControl regulating voltage at the same cim:TopologicalNode. RegulatingControl ID: {?rcfail}.";
+        sh:message   "Conflicting target values of cim:RegulatingControl regulating voltage at the same cim:TopologicalNode. RegulatingControl ID: {?controls}.";
         sh:prefixes  cim:;
-        sh:select    """
-    	SELECT $this ?count ?value ?rcfail
-			WHERE {
-          $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal ?rcfail .
-          ?rcfail cim:RegulatingControl.targetValue ?value .
-      {
-      SELECT $this (count(distinct xsd:float(?val)) as ?count)
-      WHERE {
-             $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal ?rc .
-             ?rc cim:RegulatingControl.enabled true .
-             ?rc cim:RegulatingControl.mode ?mode .
-             ?rc cim:RegulatingControl.targetValue ?val .   
-      }
-      GROUP BY $this ?mode
-			}
-      }
-      HAVING (?count>1)
-      #LIMIT 1
-      """ .
+		sh:select """
+        SELECT $this
+               (GROUP_CONCAT(
+                    DISTINCT CONCAT(
+                        STR(?rc),
+                        " = ",
+                        STR(?val),
+                        " kV"
+                    );
+                    separator=", "
+                ) AS ?controls)
+        WHERE {
+            $this
+                ^cim:Terminal.TopologicalNode/
+                ^cim:RegulatingControl.Terminal
+                ?rc .
+
+            ?rc
+                cim:RegulatingControl.enabled true ;
+                cim:RegulatingControl.discrete false ;
+                cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage ;
+                cim:RegulatingControl.targetValue ?val .
+        }
+        GROUP BY $this
+        HAVING (COUNT(DISTINCT xsd:float(?val)) > 1)
+    """ .
 
 l6com:TapChanger-ContinuousControl
         rdf:type        sh:PropertyShape;
@@ -534,10 +541,10 @@ l6com:SvVoltage.v-limitsSparql
         $this cim:SvVoltage.TopologicalNode/^cim:Terminal.TopologicalNode ?term .
         
         ?limith cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
-        ?limith cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.high .
+        ?limith cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.highVoltage .
 		?limith cim:VoltageLimit.value ?vhigh .
 		?limitl cim:OperationalLimit.OperationalLimitSet/cim:OperationalLimitSet.Terminal ?term .
-        ?limitl cim:OperationalLimit.OperationalLimitType/cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.low .
+        ?limitl cim:OperationalLimit.OperationalLimitType/entsoe:OperationalLimitType.limitType entsoe:LimitTypeKind.lowVoltage .
         ?limitl cim:VoltageLimit.value ?vlow .
 
         FILTER ( ?value!=0 && (?value>?vhigh || ?value<?vlow)).
@@ -861,17 +868,36 @@ l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffW
         sh:severity     sh:Warning;
         sh:sparql       l6com:ExternalNetworkInjection.p-ENIActivePowerInfeedDiffWSparql .
 
-l6com:SvVoltage-SV__4Sparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "cim:SvVoltage is missing for cim:TopologicalNode.";
-        sh:prefixes  cim:;
-        sh:select    """
-			SELECT  $this
-			WHERE {
-        OPTIONAL {$this  ^cim:SvVoltage.TopologicalNode ?svvoltage} .
+#l6com:SvVoltage-SV__4Sparql
+#        rdf:type     sh:SPARQLConstraint;
+#        sh:message   "cim:SvVoltage is missing for cim:TopologicalNode.";
+#        sh:prefixes  cim:;
+#        sh:select    """
+#			SELECT  $this
+#			WHERE {
+#        OPTIONAL {$this  ^cim:SvVoltage.TopologicalNode ?svvoltage} .
+#
+#        FILTER (!bound(?svvoltage)).
+#			}""" .
 
-        FILTER (!bound(?svvoltage)).
-			}""" .
+l6com:SvVoltage-SV__4Sparql
+    a sh:SPARQLConstraint ;
+    sh:message "cim:SvVoltage is missing for a cim:TopologicalNode that is part of a cim:TopologicalIsland." ;
+    sh:prefixes cim: ;
+    sh:select """
+        SELECT $this
+        WHERE {
+            ?topologicalIsland
+                cim:TopologicalIsland.TopologicalNodes
+                $this .
+
+            FILTER NOT EXISTS {
+                ?svVoltage
+                    cim:SvVoltage.TopologicalNode
+                    $this .
+            }
+        }
+    """ .
 
 l6com:EquivalentInjection.q-limits
         rdf:type        sh:PropertyShape;
@@ -885,17 +911,27 @@ l6com:EquivalentInjection.q-limits
 
 l6com:RegulatingControl-VoltageTargetAndDeadbandAtTNSparql
         rdf:type     sh:SPARQLConstraint;
-        sh:message   "Either 1) Regulating ranges of discrete regulating controls do not create intersection or 2) the target values of regulating controls are not within the intersection range.";
+        sh:message   "Either 1) Regulating ranges of discrete regulating controls do not create intersection or 2) the target values of regulating controls are not within the intersection range. The common (intersection) regulating range is [{?rangemin}, {?rangemax}] while the target values of the regulating controls span from {?targetmin} to {?targetmax}.";
         sh:prefixes  cim:;
         sh:select    """
-			SELECT  $this ?value
+			SELECT  $this (MAX(?lo) AS ?rangemin) (MIN(?hi) AS ?rangemax) (MIN(?tvalue) AS ?targetmin) (MAX(?tvalue) AS ?targetmax)
 			WHERE {
-        $this (^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal)|(^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal) ?rcfail .
-        ?rcfail cim:RegulatingControl.targetValue ?tvalue .
-		?rcfail cim:RegulatingControl.targetDeadband ?value .
+        $this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal ?rc .
+        ?rc cim:RegulatingControl.mode cim:RegulatingControlModeKind.voltage .
+        ?rc cim:RegulatingControl.enabled true .
+        ?rc cim:RegulatingControl.targetValue ?tvalue .
 
-		FILTER ((?tvalue<(?tvalue-?value/2) || ?tvalue>(?tvalue+?value/2))) .   		
-			}""" .
+		OPTIONAL {
+		  ?rc cim:RegulatingControl.discrete true .
+		  ?rc cim:RegulatingControl.targetDeadband ?deadband .
+		}
+
+		BIND(IF(BOUND(?deadband), ?tvalue-?deadband/2, -1.0e9) AS ?lo)
+		BIND(IF(BOUND(?deadband), ?tvalue+?deadband/2, 1.0e9) AS ?hi)
+			}
+		GROUP BY $this
+		HAVING (MAX(?lo)>MIN(?hi) || MIN(?tvalue)<MAX(?lo) || MAX(?tvalue)>MIN(?hi))
+		""" .
 
 l6com:ControlArea  rdf:type  sh:NodeShape;
         sh:property     l6com:ControlArea.netInterchange-NetInterchange1 , l6com:ControlArea.netInterchange-NetInterchange2;
@@ -1094,9 +1130,11 @@ l6com:VoltageTargetAndDeadbandAtTN
                 SELECT DISTINCT ?this
                 WHERE {
                   ?this rdf:type cim:TopologicalNode   .
-				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.mode|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
-				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.discrete	  true.
-                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.enabled	  true.
+				  ?this ^cim:Terminal.TopologicalNode ?term.
+				  ?term ^cim:RegulatingControl.Terminal ?ctrl.
+				  ?ctrl cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
+				  ?ctrl cim:RegulatingControl.discrete	  true.
+                  ?ctrl cim:RegulatingControl.enabled 	  true.
                 }
                 """  
                      ] .
@@ -1143,9 +1181,11 @@ l6com:VoltageTargetsAtTN
                 SELECT DISTINCT ?this
                 WHERE {
                   ?this rdf:type cim:TopologicalNode   .
-				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.mode|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
-				  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.discrete|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.discrete	  false.
-                  ?this ^cim:Terminal.TopologicalNode/^cim:RegulatingControl.Terminal/cim:RegulatingControl.enabled|^cim:Terminal.TopologicalNode/^cim:TapChangerControl.Terminal/cim:RegulatingControl.enabled	  true.
+				  ?this ^cim:Terminal.TopologicalNode ?term.
+				  ?term ^cim:RegulatingControl.Terminal ?ctrl.
+				  ?ctrl cim:RegulatingControl.mode	  cim:RegulatingControlModeKind.voltage.
+				  ?ctrl cim:RegulatingControl.discrete	  false.
+                  ?ctrl cim:RegulatingControl.enabled	  true.
                 }
                 """  
                      ] .
