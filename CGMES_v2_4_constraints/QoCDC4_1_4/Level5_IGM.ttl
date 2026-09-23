@@ -52,29 +52,15 @@ l5igm:Terminal-connection
         rdf:type        sh:PropertyShape;
         sh:description  "For every instance of cim:Switch, cim:Breaker, cim:Disconnector, cim:GroundDisconnector and cim:LoadBreakSwitch, it is not allowed to have its cim:Terminals connected to the same cim:ConnectivityNode.";
         sh:group        l5igm:Level5-IGM;
+        sh:message      "A switch that has its terminals connected to the same cim:ConnectivityNode.";
         sh:name         "SwitchTerminals";
         sh:order        13;
-        sh:path         rdf:type;
-        sh:severity     sh:Violation;
-        sh:sparql       l5igm:Terminal-connectionSparql .
-
-l5igm:Terminal-connectionSparql
-        rdf:type     sh:SPARQLConstraint;
-        sh:message   "A switch that has its terminals connected to the same cim: ConnectivityNode.";
-        sh:prefixes  cim:;
-        sh:select    """
-	      SELECT $this  ?value
-        WHERE {
-          ?term1 cim:Terminal.ConductingEquipment $this .
-          ?term2 cim:Terminal.ConductingEquipment $this .
-
-          ?term1 cim:ACDCTerminal.sequenceNumber 1 .
-          ?term2 cim:ACDCTerminal.sequenceNumber 2 .
-          
-          ?term1 cim:Terminal.ConnectivityNode ?cn1 .         
-          ?term2 cim:Terminal.ConnectivityNode ?cn2 .
-          FILTER (?cn1=?cn2).
-        } """ .
+        sh:path         (
+                            [ sh:inversePath cim:Terminal.ConductingEquipment ]
+                            cim:Terminal.ConnectivityNode
+                        );
+        sh:minCount     2;
+        sh:severity     sh:Violation .
 
 l5igm:SynchronousMachine-SMOperatingModeConsistencySparql
         rdf:type     sh:SPARQLConstraint;
@@ -269,9 +255,9 @@ l5igm:Switch-sameTopologicalNodeSparql
              ?terminal1 cim:ACDCTerminal.sequenceNumber 1 .
 			 ?terminal2 cim:ACDCTerminal.sequenceNumber 2 .
 			 ?terminal1 cim:Terminal.TopologicalNode ?tn1 .
-			 ?terminal2 cim:Terminal.TopologicalNode ?tn2 .
+			 ?terminal2 cim:Terminal.TopologicalNode ?tn1 .
 
-		     FILTER (?terminal1!=?terminal2 && ?tn1=?tn2 ) .
+		     FILTER (?terminal1!=?terminal2) .
 			}""" .
 
 l5igm:TapChangerControl-remoteQcontrolSparql
@@ -327,16 +313,16 @@ l5igm:ClosedNonRetainedSwitchVsTNSparql
         sh:select    """
 			SELECT DISTINCT $this ?switch ?tn1 ?tn2
 			WHERE {
-			 $this cim:Switch.retained false.
-			 $this cim:Switch.open false.
-			 BIND($this AS ?switch)
 			 ?term1 cim:Terminal.ConductingEquipment $this.
 			 ?term2 cim:Terminal.ConductingEquipment $this.
+			 BIND($this AS ?switch)
 			 ?term1 cim:ACDCTerminal.sequenceNumber 1.
 			 ?term2 cim:ACDCTerminal.sequenceNumber 2.
 			 ?term1 cim:Terminal.TopologicalNode|(cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode) ?tn1.
 			 ?term2 cim:Terminal.TopologicalNode|(cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode) ?tn2.
 
+				FILTER NOT EXISTS { $this cim:Switch.retained true. }
+				FILTER NOT EXISTS { $this cim:Switch.open true. }
 				FILTER (?tn1!=?tn2) .
 			}""" .
 
@@ -347,9 +333,6 @@ l5igm:Switch-connectionSparql
         sh:select    """
 	      SELECT $this  
         WHERE {
-        {
-          SELECT $this ?cnc2 ?cnc1
-          WHERE {
             ?term1 cim:Terminal.ConductingEquipment $this .
             ?term2 cim:Terminal.ConductingEquipment $this .
             ?term1 cim:ACDCTerminal.sequenceNumber 1 .
@@ -357,16 +340,14 @@ l5igm:Switch-connectionSparql
             ?term1 (cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer)|(cim:Terminal.TopologicalNodeNode/cim:TopologicalNodeNode.ConnectivityNodeContainer) ?cnc1 .
 
             ?term2 (cim:Terminal.ConnectivityNode/cim:ConnectivityNode.ConnectivityNodeContainer)|(cim:Terminal.TopologicalNodeNode/cim:TopologicalNodeNode.ConnectivityNodeContainer) ?cnc2 .
-            }
-        }
-        
-		?cnc1 rdf:type ?cnc1type .
-		?cnc2 rdf:type ?cnc2type .
+
+		?cnc1 rdf:type cim:VoltageLevel .
+		?cnc2 rdf:type cim:VoltageLevel .
 
 		?cnc1 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?vlnv1 .
 		?cnc2 cim:VoltageLevel.BaseVoltage/cim:BaseVoltage.nominalVoltage ?vlnv2 .
 
-		FILTER (?cnc1type=cim:VoltageLevel && ?cnc2type=cim:VoltageLevel && ?cnc1!=?cnc2 && ?vlnv1!=?vlnv2).
+		FILTER (?cnc1!=?cnc2 && ?vlnv1!=?vlnv2).
         }""" .
 
 l5igm:Model-angleReferenceSparql
@@ -628,13 +609,11 @@ l5igm:OpenNonRetainedSwitchVsTNSparql
         sh:select    """
 			SELECT  DISTINCT $this ?switch ?tn1
 			WHERE {
-			 $this cim:Switch.retained false.
 			 $this cim:Switch.open true.
-			 BIND($this AS ?switch)
+			 $this cim:Switch.retained false.
 			 ?term1 cim:Terminal.ConductingEquipment $this.
 			 ?term2 cim:Terminal.ConductingEquipment $this.
-			 ?term1 cim:ACDCTerminal.sequenceNumber 1.
-			 ?term2 cim:ACDCTerminal.sequenceNumber 2.
+			 BIND($this AS ?switch)
 			 ?term1 cim:Terminal.TopologicalNode|(cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode) ?tn1.
 			 ?term2 cim:Terminal.TopologicalNode|(cim:Terminal.ConnectivityNode/cim:ConnectivityNode.TopologicalNode) ?tn2.
 

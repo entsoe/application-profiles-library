@@ -46,12 +46,12 @@ l4cgm:CgmSvSshVersionMismatchSparql
         SELECT ?this
         WHERE {
           ?headersbjSSH rdf:type md:FullModel .
-          ?headersbjSSH md:Model.profile "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1"^^xsd:anyURI.
+          ?headersbjSSH md:Model.profile "http://entsoe.eu/CIM/SteadyStateHypothesis/1/1".
           ?headersbjSSH md:Model.version ?sshVersion .
           ?headersbjSSH md:Model.scenarioTime ?sshTime .
 
           ?headersbjSV rdf:type md:FullModel .
-          ?headersbjSV md:Model.profile "http://iec.ch/TC57/ns/CIM/StateVariables-EU/3.0"^^xsd:anyURI.
+          ?headersbjSV md:Model.profile "http://entsoe.eu/CIM/StateVariables/4/1".
           ?headersbjSV md:Model.version ?svVersion .
           ?headersbjSV md:Model.scenarioTime ?svTime .
 

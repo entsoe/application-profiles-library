@@ -1,0 +1,73 @@
+@base          <http://iec.ch/TC57/ns/CIM/CGMES/Constraints/main/3.0> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix main:  <http://iec.ch/TC57/ns/CIM/CGMES/Constraints/main/3.0#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dl:     <http://entsoe.eu/CIM/DiagramLayout/3/1/Constraints#> .
+@prefix dy:   <http://entsoe.eu/CIM/Dynamics/3/1/Constraints#> .
+@prefix sv:   <http://entsoe.eu/CIM/StateVariables/4/1/Constraints#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix op:      <http://iec.ch/TC57/ns/CIM/Operation-EU/Constraints#> .
+@prefix eqbd:   <http://entsoe.eu/CIM/EquipmentBoundary/3/1/Constraints#> .
+@prefix eq:     <http://entsoe.eu/CIM/EquipmentCore/3/1/Constraints#> .
+@prefix fh:   <http://iec.ch/TC57/61970-552/ModelDescription/Constraints#> .
+@prefix gl:   <http://entsoe.eu/CIM/GeographicalLocation/2/1/Constraints#> .
+@prefix ssh:  <http://entsoe.eu/CIM/SteadyStateHypothesis/1/1/Constraints#> .
+@prefix tpbd:   <http://entsoe.eu/CIM/TopologyBoundary/3/1/Constraints#> .
+@prefix tp:     <http://entsoe.eu/CIM/Topology/4/1/Constraints#> .
+@prefix ae:    <http://entsoe.eu/ns/CIM/AssessedElement-EU/Constraints#> .
+@prefix co:    <http://entsoe.eu/ns/CIM/Contingency-EU/Constraints#> .
+@prefix dh:    <http://entsoe.eu/ns/CIM/DocumentHeader-EU/Constraints#> .
+@prefix er:    <http://entsoe.eu/ns/CIM/EquipmentReliability-EU/Constraints#> .
+@prefix ra:    <http://entsoe.eu/ns/CIM/RemedialAction-EU/Constraints#> .
+@prefix sis:   <http://entsoe.eu/ns/CIM/StateInstructionSchedule-EU/Constraints#> .
+@prefix ssi:   <http://entsoe.eu/ns/CIM/SteadyStateInstruction-EU/Constraints#> .
+@prefix l4igm:  <https://ap-con.cim4.eu/QoCDC-Level4-IGM/4.1.4#> .
+@prefix l4com:  <https://ap-con.cim4.eu/QoCDC-Level4-IGMCGM/4.1.4#> .
+
+main:Ontology  rdf:type         owl:Ontology ;
+        dcterms:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+        dcterms:creator           "ENTSO-E CIM EG"@en ;
+        dcterms:description       "Main constraints."@en ;
+        dcterms:identifier        "urn:uuid:42cd5ac5-45b8-4893-b120-8f22427255dc" ;
+        dcterms:issued            "2021-10-19T12:09:21Z"^^xsd:dateTime ;
+        dcterms:language          "en-GB" ;
+        dcterms:modified          "2020-10-19"^^xsd:date ;
+        dcterms:publisher         "ENTSO-E"@en ;
+        dcterms:rights            "Copyright"@en ;
+        dcterms:rightsHolder      "ENTSO-E"@en ;
+        dcterms:title             "Main Constraints"@en ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/CGMES/Constraints/main/3.0> ;
+        owl:versionInfo       "2.2.0"@en ;
+        dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+        dcat:theme            "constraints"@en .
+
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//SWE_BusinessConstraints//PrefixDeclaration.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level6_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level7_IGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level7_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level8_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level2_Header.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level2_IGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level2_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level3_IGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level3_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level4_IGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level4_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level5_IGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level5_IGMCGM.ttl> .
+main:   owl:imports  <C://SHACL-Constraints//Coreso_SWE//QoCDC_v414//Level6_IGM.ttl> .
+
+l4igm:EQDIFFOperationalLimit-property
+        a               sh:PropertyShape ;
+        sh:deactivated  true .	
+
+l4com:DanglingReferences	
+        a               sh:NodeShape ;
+        sh:deactivated  true .		
