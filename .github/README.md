@@ -3,7 +3,40 @@
 # Overview
 This library contains all applications profiles for Common Grid Model Exchange Standard/Specification (CMGES) and Network Code Profiles (NCP) organised in a folder structure. The application profiles consist of vocabulary schemas (RDFS) and constraints (SHACL) derived from the information model in UML available on the [ENTSO-E CGMES Library](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile).
 
+
+**Note:** The content of this library now lives in three dedicated repositories. This repository links to them as Git submodules and keeps the history and pull requests from before the split.
+
+## Repositories
+
+| Folder | Repository | Content |
+|---|---|---|
+| `CGMES` | [entsoe/CGMES-AP](https://github.com/entsoe/CGMES-AP) | CGMES application profiles |
+| `NCP` | [entsoe/NC-AP](https://github.com/entsoe/NC-AP) | Network Code Profiles (NCP) application profiles |
+| `validate` | [entsoe/PROF-AP-CIM](https://github.com/entsoe/PROF-AP-CIM) | SHACL validation, test datasets and conformance checks for ENTSO-E CIM profiles (RDFS and OWL validation planned) |
+
+
+Changes to the files inside `CGMES`, `NCP` or `validate` cannot be made in this repository.
+
+## Versions
+
+Each submodule is pinned to a specific commit. A change in one of the three repositories does not appear here until the pointer in this repository is updated.
+
 The folders (and branches) reveal which artifacts were used in which release and version of the CGMES and NCP. In the main branch, the folders are also dived into a current release and previous release. As ENTSO-E updates the artefacts, the ones under current release will be moved to previous release (and to additional branches) as archived.
+
+
+## History
+
+
+ENTSO-E agreed to publish all application profiles in one package which has a structure to distinguish CGMES, Network Code Profiles (NCP) and DatasetMetadata related RDFS (vocabulary) and SHACL (constraints) artifacts. Specifically for the NCP and the DatasetMetadata profiles, there is a distinction between the current and past versions. All the material can be found on the CGMES Library under the Application Profiles Library tab.
+
+The application profiles are provided to facilitate the implementation of the profiles and related constraints as defined in different standards, e.g. IEC 61970-600-1:2021, IEC 61970-600-2:2021, IEC 61970-301 and other related 61970-45x series of profiles. 
+
+Note that the application profile serialization based on RDFS and RDF XML syntax is defined in IEC 61970-501:2006 (Ed1) and CIM XML serialization is defined in IEC 61970-552:2016. However, current implementations deviate from these standards due to various reasons. For additional information, please refer to the latest version of the [RDF-syntax User Guide](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile) CGMES Library.
+
+The content of the Application Profiles Library is published under [Apache 2.0 open-source license](https://github.com/entsoe/application-profiles-library/blob/main/LICENSE.txt).
+
+Due to different timeline and roadmap for each project it was decided to split.
+
 
 Note that for some of the previous version’s folders (e.g., for CGMES v2.4, NCP v2.2), an Enhanced folder exists. Such folders have a version that is updated after the official version release. This happens in cases where (profiling and validation) tooling was updated in the meantime and offers users using an archived, but updated version of the artifacts bug fixes discovered years after their release. 
 
@@ -12,10 +45,6 @@ For each release the repository has PROF, RDFS and SHACL packages which contain 
 Enhanced versions of other previous release folders can be generated under request.
 
 
-### How to provide feedback
-When importing any data contained in the repository, you might find bugs or issues to report. Please, open a GitHub issue and include your export log when applicable. Additionally, please write an email to [cim@entsoe.eu](cim@entsoe.eu).
-
-Do not forget to read [CONTRIBUTING](https://github.com/entsoe/application-profiles-library/blob/main/.github/CONTRIBUTING.adoc) file.
 
 ### License
 Please, refer to the [LICENSE](https://github.com/entsoe/application-profiles-library/blob/main/LICENSE.txt) for more information on the open-source license collaboration framework of the repository.
@@ -26,15 +55,7 @@ List of the people and organisations contributing to this repository.
 - [@HarisVranaj](https://github.com/HarisVranaj) - ENTSO-E
 - [@griddigit-eu](https://github.com/griddigit-eu) - gridDigIt
 
-# Introduction
 
-ENTSO-E agreed to publish all application profiles in one package which has a structure to distinguish CGMES, Network Code Profiles (NCP) and DatasetMetadata related RDFS (vocabulary) and SHACL (constraints) artifacts. Specifically for the NCP and the DatasetMetadata profiles, there is a distinction between the current and past versions. All the material can be found on the CGMES Library under the Application Profiles Library tab.
-
-The application profiles are provided to facilitate the implementation of the profiles and related constraints as defined in different standards, e.g. IEC 61970-600-1:2021, IEC 61970-600-2:2021, IEC 61970-301 and other related 61970-45x series of profiles. 
-
-Note that the application profile serialization based on RDFS and RDF XML syntax is defined in IEC 61970-501:2006 (Ed1) and CIM XML serialization is defined in IEC 61970-552:2016. However, current implementations deviate from these standards due to various reasons. For additional information, please refer to the latest version of the [RDF-syntax User Guide](https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/#_ENTSO_E_CGMES_Extension_and_Profile) CGMES Library.
-
-The content of the Application Profiles Library is published under [Apache 2.0 open-source license](https://github.com/entsoe/application-profiles-library/blob/main/LICENSE.txt).
 
 # ENTSO-E GitHub Repository Structure
 
