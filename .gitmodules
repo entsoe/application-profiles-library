@@ -4,3 +4,6 @@
 [submodule "NCP"]
 	path = NCP
 	url = https://github.com/entsoe/NC-AP.git
+[submodule "validate"]
+	path = validate
+	url = https://github.com/entsoe/PROF-AP-CIM.git
