@@ -1,0 +1,6 @@
+[submodule "CGMES"]
+	path = CGMES
+	url = https://github.com/entsoe/CGMES-AP.git
+[submodule "NCP"]
+	path = NCP
+	url = https://github.com/entsoe/NC-AP.git
