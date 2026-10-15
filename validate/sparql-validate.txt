@@ -1,3 +1,0 @@
-
-== shacl-sparql/requires-NC-cardinality.rq ==
-Line 33, column 43: Unresolved prefixed name: https:
