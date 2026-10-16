@@ -7,3 +7,6 @@
 [submodule "validate"]
 	path = validate
 	url = https://github.com/entsoe/PROF-AP-CIM.git
+[submodule "QoCDC"]
+	path = QoCDC
+	url = https://github.com/entsoe/QoCDC-AP.git
