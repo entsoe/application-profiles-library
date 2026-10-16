@@ -19,7 +19,7 @@ Changes to the files inside `CGMES`, `NCP` or `validate` cannot be made in this 
 
 ## Versions
 
-Each submodule is pinned to a specific commit. A change in one of the three repositories does not appear here until the pointer in this repository is updated.
+Each submodule is pinned to a specific commit. A change in one of the four repositories does not appear here until the pointer in this repository is updated.
 
 The folders (and branches) reveal which artifacts were used in which release and version of the CGMES and NCP. In the main branch, the folders are also dived into a current release and previous release. As ENTSO-E updates the artefacts, the ones under current release will be moved to previous release (and to additional branches) as archived.
 
