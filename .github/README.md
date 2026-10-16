@@ -13,7 +13,7 @@ This library contains all applications profiles for Common Grid Model Exchange S
 | `CGMES` | [entsoe/CGMES-AP](https://github.com/entsoe/CGMES-AP) | CGMES application profiles |
 | `NCP` | [entsoe/NC-AP](https://github.com/entsoe/NC-AP) | Network Code Profiles (NCP) application profiles |
 | `validate` | [entsoe/PROF-AP-CIM](https://github.com/entsoe/PROF-AP-CIM) | SHACL validation, test datasets and conformance checks for ENTSO-E CIM profiles (RDFS and OWL validation planned) |
-
+| `QoCDC` | [entsoe/QoCDC-AP](https://github.com/entsoe/QoCDC-AP) | SHACL-based validation constraints for CGMES v2.4 and QoCDC datasets |
 
 Changes to the files inside `CGMES`, `NCP` or `validate` cannot be made in this repository.
 
